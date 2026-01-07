@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Malpulutta kretseri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Malpulutta kretseri</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Malpulutta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Malpulutta kretseri</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Malpulutta-kretseri/imgMalpuluttakretseri.jpeg"
+                 alt="Malpulutta kretseri">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Malpulutta kretseri</strong>, parfois appelé gourami moucheté ou « ornate paradisefish », est un petit gourami labyrinthidé très rare en aquariophilie, endémique du sud‑ouest du Sri Lanka.
+          </p>
+          <p class="section-text">
+            Il atteint environ 5–6&nbsp;cm, avec un corps sombre ponctué de taches claires et des reflets bleutés ou verdâtres sur les nageoires, particulièrement marqués chez le mâle.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C’est une espèce calme mais extrêmement timide, qui passe beaucoup de temps près du fond ou dans les abris végétaux ; un bac spécifique, peu peuplé et très planté est fortement conseillé.
+          </p>
+          <p class="section-text">
+            Les jeunes peuvent être maintenus en petit groupe, mais à l’âge adulte il est préférable de conserver un couple ou un trio (un mâle pour deux femelles) pour limiter la compétition et le stress.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> constructeur de nid de bulles ; le mâle érige un nid, souvent sous un surplomb ou parmi les plantes de surface, puis enserre la femelle lors de la ponte avant de récupérer les œufs et de les placer dans le nid.
+          </p>
+          <p class="section-text">
+            Le mâle garde et ventile les œufs jusqu’à l’éclosion (environ 2–3&nbsp;jours), puis jusqu’à la nage libre ; la femelle doit généralement être retirée après la ponte pour éviter la prédation sur les œufs.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus grand, plus coloré, présentant des nageoires plus développées et des motifs plus contrastés ; femelle plus petite, au ventre plus rebondi lorsqu’elle est gravide.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement 5 à 8&nbsp;ans en aquarium, si l’eau est stable, douce, acide et si le poisson est maintenu dans un environnement calme et sécurisé.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Malpulutta kretseri habite de petits ruisseaux forestiers très ombragés, peu profonds, à courant lent, avec un fond sablo‑vaseux recouvert de feuilles mortes, de branches et de racines, et une végétation rivulaire dense.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Malpulutta-kretseri/imgmapsMalpuluttaKretseri.png"
+              alt="Répartition de Malpulutta kretseri"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Endémique du sud‑ouest du Sri Lanka, dans la zone humide tropicale à forte pluviométrie.</li>
+              <li>Présent dans de petits cours d’eau forestiers et affluents peu profonds de plusieurs bassins fluviaux côtiers.</li>
+            </ul>
+            <p>
+              L’espèce est associée à des milieux fortement menacés par la déforestation et la fragmentation des forêts, ce qui en fait un poisson à statut de conservation préoccupant.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C, optimum autour de 25–26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,5 à 7,0, avec une préférence pour une eau douce et légèrement acide.</p>
+            <p><strong>GH :</strong> 3 à 10&nbsp;°dGH, eau douce à moyennement douce.</p>
+            <p><strong>Courant :</strong> très faible à lent, avec une filtration douce, un éclairage tamisé et de nombreux abris (feuilles, racines, noix de coco, plantes flottantes).</p>
+            <p><strong>Volume conseillé :</strong> à partir de 60–80&nbsp;L pour un couple ou un trio, en bac spécifique très planté et calme.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à micro‑prédateur ; se nourrit surtout de petits invertébrés aquatiques, larves d’insectes et micro‑crustacés.
+            </p>
+            <p>
+              En aquarium, il apprécie particulièrement les proies vivantes et congelées de petite taille (daphnies, artémias, larves de moustique) et peut apprendre à accepter des aliments secs fins, mais une part importante de nourriture vivante reste recommandée.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

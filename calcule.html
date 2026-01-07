@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calcule</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS commun identique aux autres pages -->
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 56px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .navbar-user {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn span.icon { font-size: 1rem; }
+
+    .nav-btn.active {
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    .nav-btn:hover { background: #111827; }
+
+    .navbar-logout {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .navbar-logout:hover { background: #1f2937; }
+
+    .page {
+      padding-top: 72px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .card h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 7px 9px;
+      background: #020617;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    select {
+      width: 100%;
+      padding: 7px 9px;
+      background: #020617;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    .note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    .result {
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .page { padding-top: 90px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Outils de calcul</h1>
+      <p class="subtitle">
+        Convertisseurs rapides pour gérer la chimie de l’eau et les volumes. [web:1][web:200]
+      </p>
+    </div>
+
+    <!-- Bloc 1 : GH / ppm / µS/cm -->
+    <div class="card">
+      <h2>Conversion GH ↔ ppm ↔ µS/cm</h2>
+      <p class="subtitle">
+        1 °GH ≈ 17,9 ppm CaCO₃. Approximation conductivité : 1 ppm ≈ 2 µS/cm. [web:1][web:9]
+      </p>
+
+      <div class="field">
+        <label for="ghInput">GH (°dGH)</label>
+        <input type="number" id="ghInput" step="0.1" min="0" placeholder="Ex : 6">
+      </div>
+      <div class="field">
+        <label for="ppmInput">ppm (mg/L)</label>
+        <input type="number" id="ppmInput" step="1" min="0" placeholder="Ex : 100">
+      </div>
+      <div class="field">
+        <label for="usInput">Conductivité (µS/cm)</label>
+        <input type="number" id="usInput" step="1" min="0" placeholder="Ex : 200">
+      </div>
+
+      <button class="btn-primary" id="ghToPpmBtn">GH → ppm / µS</button>
+      <button class="btn-primary" id="ppmToGhBtn" style="margin-left:6px;">ppm → GH / µS</button>
+      <button class="btn-primary" id="usToPpmBtn" style="margin-left:6px;">µS → ppm / GH</button>
+
+      <div class="result" id="ghResult"></div>
+      <p class="note">
+        Conversion GH/ppm basée sur la définition °dGH ; ppm/µS/cm approximatif (1 ppm ≈ 2 µS/cm). [web:1][web:12]
+      </p>
+    </div>
+
+    <!-- Bloc 2 : volume du bac -->
+    <div class="card">
+      <h2>Calcul du volume du bac</h2>
+      <p class="subtitle">
+        Volume d’un bac rectangulaire à partir des dimensions en cm. [web:200][web:207]
+      </p>
+
+      <div class="field">
+        <label for="longueur">Longueur (cm)</label>
+        <input type="number" id="longueur" min="0" step="0.1" placeholder="Ex : 100">
+      </div>
+      <div class="field">
+        <label for="largeur">Largeur (cm)</label>
+        <input type="number" id="largeur" min="0" step="0.1" placeholder="Ex : 40">
+      </div>
+      <div class="field">
+        <label for="hauteur">Hauteur d’eau (cm)</label>
+        <input type="number" id="hauteur" min="0" step="0.1" placeholder="Ex : 50">
+      </div>
+
+      <button class="btn-primary" id="volumeBtn">Calculer le volume</button>
+
+      <div class="result" id="volumeResult"></div>
+      <p class="note">
+        Volume en litres ≈ (L × l × h) / 1000, sans retirer le décor ni le verre. [web:207][web:211]
+      </p>
+    </div>
+
+    <!-- Bloc 3 : dose de sel -->
+    <div class="card">
+      <h2>Calcul de dose de sel</h2>
+      <p class="subtitle">
+        Masse de sel à ajouter pour une salinité cible (g/L ou ppt). [web:202][web:204]
+      </p>
+
+      <div class="field">
+        <label for="selVolume">Volume d’eau (L)</label>
+        <input type="number" id="selVolume" min="0" step="0.1" placeholder="Ex : 100">
+      </div>
+      <div class="field">
+        <label for="selCible">Salinité cible (g/L ou ppt)</label>
+        <input type="number" id="selCible" min="0" step="0.1" placeholder="Ex : 3 (3 g/L)">
+      </div>
+      <div class="field">
+        <label for="selActuelle">Salinité actuelle (g/L, optionnel)</label>
+        <input type="number" id="selActuelle" min="0" step="0.1" placeholder="Ex : 0 si eau douce">
+      </div>
+
+      <button class="btn-primary" id="selBtn">Calculer la dose de sel</button>
+
+      <div class="result" id="selResult"></div>
+      <p class="note">
+        Masse de sel (g) ≈ (cible − actuelle) × volume (L). 1 g/L = 1 ppt. [web:204][web:55]
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // --- Connexion / rôles / menu commun ---
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    const navbarUser = document.getElementById('navbarUser');
+    const roleLabel =
+      currentUser.role === "admin" ? "Admin" :
+      currentUser.role === "membre_bureau" ? "Membre de bureau" :
+      "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+    const CURRENT_PAGE = "calcule.html";
+    const navbarMenu = document.getElementById('navbarMenu');
+    const navButtons = document.querySelectorAll('.nav-btn[data-link]');
+    navButtons.forEach(btn => {
+      const link = btn.dataset.link;
+      if (link === CURRENT_PAGE) { btn.classList.add('active'); }
+      btn.addEventListener('click', () => { window.location.href = link; });
+    });
+
+    // Onglet Bureau
+    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
+      const bureauBtn = document.createElement("button");
+      bureauBtn.className = "nav-btn";
+      bureauBtn.dataset.link = "bureau.html";
+      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
+      const logoutBtnElem = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
+      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
+      if (CURRENT_PAGE === "bureau.html") { bureauBtn.classList.add('active'); }
+    }
+
+    // Onglet Serre
+    if (currentUser.role === "admin" || currentUser.serre === true) {
+      const serreBtn = document.createElement("button");
+      serreBtn.className = "nav-btn";
+      serreBtn.dataset.link = "serre.html";
+      serreBtn.innerHTML = '<span class="icon">🌿</span> <span>Serre</span>';
+      const logoutBtnElem2 = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(serreBtn, logoutBtnElem2);
+      serreBtn.addEventListener('click', () => { window.location.href = "serre.html"; });
+      if (CURRENT_PAGE === "serre.html") { serreBtn.classList.add('active'); }
+    }
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // --- Bloc 1 : GH <-> ppm <-> µS/cm ---
+    const ghInput = document.getElementById('ghInput');
+    const ppmInput = document.getElementById('ppmInput');
+    const usInput = document.getElementById('usInput');
+    const ghToPpmBtn = document.getElementById('ghToPpmBtn');
+    const ppmToGhBtn = document.getElementById('ppmToGhBtn');
+    const usToPpmBtn = document.getElementById('usToPpmBtn');
+    const ghResult = document.getElementById('ghResult');
+
+    const FACTEUR_GH_PPM = 17.9; // 1 °dGH ≈ 17.9 ppm CaCO3 [web:1][web:213]
+    const FACTEUR_PPM_US = 2.0;  // 1 ppm ≈ 2 µS/cm (approx) [web:9][web:12]
+
+    // GH -> ppm -> µS/cm
+    ghToPpmBtn.addEventListener('click', () => {
+      const gh = parseFloat((ghInput.value || "").toString().replace(',', '.'));
+      if (isNaN(gh)) {
+        ghResult.textContent = "Veuillez entrer un GH valide.";
+        return;
+      }
+      const ppm = gh * FACTEUR_GH_PPM;
+      const us = ppm * FACTEUR_PPM_US;
+      ppmInput.value = ppm.toFixed(0);
+      usInput.value = us.toFixed(0);
+      ghResult.textContent =
+        gh.toFixed(1) + " °GH ≈ " + ppm.toFixed(0) + " ppm ≈ " +
+        us.toFixed(0) + " µS/cm (approximation).";
+    });
+
+    // ppm -> GH -> µS/cm
+    ppmToGhBtn.addEventListener('click', () => {
+      const ppm = parseFloat((ppmInput.value || "").toString().replace(',', '.'));
+      if (isNaN(ppm)) {
+        ghResult.textContent = "Veuillez entrer une valeur en ppm valide.";
+        return;
+      }
+      const gh = ppm / FACTEUR_GH_PPM;
+      const us = ppm * FACTEUR_PPM_US;
+      ghInput.value = gh.toFixed(1);
+      usInput.value = us.toFixed(0);
+      ghResult.textContent =
+        ppm.toFixed(0) + " ppm ≈ " + gh.toFixed(1) + " °GH ≈ " +
+        us.toFixed(0) + " µS/cm (approximation).";
+    });
+
+    // µS/cm -> ppm -> GH
+    usToPpmBtn.addEventListener('click', () => {
+      const us = parseFloat((usInput.value || "").toString().replace(',', '.'));
+      if (isNaN(us)) {
+        ghResult.textContent = "Veuillez entrer une conductivité valide en µS/cm.";
+        return;
+      }
+      const ppm = us / FACTEUR_PPM_US;
+      const gh = ppm / FACTEUR_GH_PPM;
+      ppmInput.value = ppm.toFixed(0);
+      ghInput.value = gh.toFixed(1);
+      ghResult.textContent =
+        us.toFixed(0) + " µS/cm ≈ " + ppm.toFixed(0) + " ppm ≈ " +
+        gh.toFixed(1) + " °GH (approximation).";
+    });
+
+    // --- Bloc 2 : volume bac ---
+    const longueurInput = document.getElementById('longueur');
+    const largeurInput = document.getElementById('largeur');
+    const hauteurInput = document.getElementById('hauteur');
+    const volumeBtn = document.getElementById('volumeBtn');
+    const volumeResult = document.getElementById('volumeResult');
+
+    volumeBtn.addEventListener('click', () => {
+      const L = parseFloat((longueurInput.value || "").toString().replace(',', '.'));
+      const l = parseFloat((largeurInput.value || "").toString().replace(',', '.'));
+      const h = parseFloat((hauteurInput.value || "").toString().replace(',', '.'));
+      if ([L, l, h].some(v => isNaN(v) || v <= 0)) {
+        volumeResult.textContent = "Veuillez entrer des dimensions valides (> 0).";
+        return;
+      }
+      const volumeLitres = (L * l * h) / 1000;
+      volumeResult.textContent =
+        "Volume théorique ≈ " + volumeLitres.toFixed(1) + " L (sans retrait décor/verre).";
+    });
+
+    // --- Bloc 3 : dose de sel ---
+    const selVolumeInput = document.getElementById('selVolume');
+    const selCibleInput = document.getElementById('selCible');
+    const selActuelleInput = document.getElementById('selActuelle');
+    const selBtn = document.getElementById('selBtn');
+    const selResult = document.getElementById('selResult');
+
+    selBtn.addEventListener('click', () => {
+      const vol = parseFloat((selVolumeInput.value || "").toString().replace(',', '.'));
+      const cible = parseFloat((selCibleInput.value || "").toString().replace(',', '.'));
+      let actuelle = parseFloat((selActuelleInput.value || "").toString().replace(',', '.'));
+      if (isNaN(vol) || vol <= 0) {
+        selResult.textContent = "Veuillez entrer un volume valide (> 0 L).";
+        return;
+      }
+      if (isNaN(cible) || cible < 0) {
+        selResult.textContent = "Veuillez entrer une salinité cible valide (g/L).";
+        return;
+      }
+      if (isNaN(actuelle) || actuelle < 0) {
+        actuelle = 0;
+      }
+      const delta = cible - actuelle;
+      if (delta <= 0) {
+        selResult.textContent =
+          "La salinité cible doit être supérieure à la salinité actuelle pour ajouter du sel.";
+        return;
+      }
+      const masse = delta * vol; // g de sel à ajouter [web:202][web:204]
+      selResult.textContent =
+        "Il faut ajouter environ " + masse.toFixed(1) + " g de sel pour passer de " +
+        actuelle.toFixed(1) + " g/L à " + cible.toFixed(1) + " g/L sur " +
+        vol.toFixed(1) + " L.";
+    });
+  </script>
+</body>
+</html>

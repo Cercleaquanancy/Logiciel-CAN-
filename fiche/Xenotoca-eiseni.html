@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Xenotoca eiseni</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut comme Pterophyllum */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Xenotoca eiseni</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Sous-famille :</span> Goodeinae</li>
+              <li><span class="sys-label">Genre :</span> <em>Xenotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Xenotoca eiseni</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Xenotoca-eiseni/Xenotoca-eiseni.PNG"
+                 alt="Xenotoca eiseni">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Xenotoca eiseni</strong> est un goodeidae mexicain connu pour la queue rouge vif des mâles, ce qui lui vaut le nom de « red tail splitfin ».
+          </p>
+          <p class="section-text">
+            Les adultes mesurent environ 6–8&nbsp;cm ; c’est un poisson robuste mais exigeant en termes de qualité d’eau, souvent maintenu par des aquariophiles avertis.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en groupe, avec une hiérarchie marquée entre les mâles, occupant surtout la zone médiane et inférieure dans des eaux peu profondes.
+          </p>
+          <p class="section-text">
+            Les interactions peuvent être vives, surtout entre mâles, ce qui impose un décor structuré et un effectif suffisant pour répartir l’agressivité.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare typique des goodeidae ; les jeunes naissent déjà bien formés et relativement grands, en petites portées.
+          </p>
+          <p class="section-text">
+            Les alevins acceptent rapidement la même nourriture que les adultes et peuvent rester dans le bac des parents si le décor offre suffisamment de caches.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus coloré avec queue rouge et patron contrasté, femelle plus trapue, aux couleurs plus ternes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement 3 à 5&nbsp;ans en aquarium, avec une eau propre, bien oxygénée et des températures modérées.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Xenotoca eiseni occupe des ruisseaux, petites rivières, mares et canaux peu profonds du centre‑ouest du Mexique, aux fonds sableux, pierreux ou vaseux, dans des eaux claires à parfois turbides.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Xenotoca-eiseni/maps-Xenotoca-eiseni.png"
+              alt="Répartition de Xenotoca eiseni"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique, versant Pacifique, dans quelques bassins localisés du centre‑ouest du pays.</li>
+              <li>Ruisseaux, petites rivières et plans d’eau peu profonds à courant faible à modéré, parfois faiblement végétalisés.</li>
+            </ul>
+            <p>
+              L’espèce occupe des habitats variés mais toujours peu profonds et relativement calmes, ce qui se traduit en aquarium par un bac bien oxygéné, sans courant excessif et avec une bonne surface au sol.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 24&nbsp;°C, éviter les températures trop élevées en continu.</p>
+            <p><strong>pH :</strong> 7,0 à 8,2.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH, eau dure à très dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec de très bons changements d’eau réguliers pour maintenir une excellente qualité d’eau.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 120&nbsp;L pour un groupe, avec une bonne surface au sol et un décor structuré.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte part végétale ; mélange de nourritures sèches, vivantes et congelées, complétées par des apports végétaux fréquents (légumes pochés, algues, aliments à base de spiruline).
+            </p>
+            <p>
+              Une alimentation variée et riche en fibres végétales, associée à une eau bien oxygénée et des températures modérées, est essentielle pour garder cette espèce sensible en bonne santé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

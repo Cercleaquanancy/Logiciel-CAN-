@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia wingei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia wingei</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia wingei</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-wingei/Poecilia-wingei.jpeg" alt="Poecilia wingei">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia wingei</strong> est un petit vivipare coloré d’Amérique du Sud, proche parent du guppy classique mais présentant des motifs et colorations distincts.
+          </p>
+          <p class="section-text">
+            Les mâles mesurent 2 à 3&nbsp;cm, très colorés, alors que les femelles atteignent 3 à 4&nbsp;cm et restent plutôt gris‑beige, plus discrètes visuellement.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce est vive et grégaire, occupant principalement les zones médianes et superficielles du bac, où les mâles paradent régulièrement devant les femelles.
+          </p>
+          <p class="section-text">
+            Un maintien en harem, avec plus de femelles que de mâles, limite le harcèlement et permet d’observer un comportement naturel et actif.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare ; la fécondation est interne et la femelle met au monde des alevins entièrement formés, en petites portées mais de manière régulière.
+          </p>
+          <p class="section-text">
+            Les jeunes sont rapidement autonomes mais peuvent être partiellement prédatés, d’où l’intérêt d’un bac bien planté avec mousses et plantes fines.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, très coloré, doté d’un gonopodium ; femelle plus grande, ventre plus rond, coloration sobre.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en moyenne 2 à 3&nbsp;ans en aquarium, un peu plus avec une eau stable, propre et bien oxygénée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, l’espèce fréquente de petits plans d’eau, mares, fossés et lagunes peu profondes du Venezuela, souvent riches en végétation aquatique et parfois légèrement saumâtres.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-wingei/maps-peocilia-winguei.PNG"
+              alt="Répartition de Poecilia wingei"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Nord de l’Amérique du Sud, principalement au Venezuela.</li>
+              <li>Petites eaux calmes, peu profondes, proches des berges et des zones végétalisées.</li>
+            </ul>
+            <p>
+              L’espèce fréquente les bordures riches en plantes, racines et feuilles mortes, qui offrent de nombreuses cachettes aux alevins.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C (tolère ponctuellement de 18 à 30&nbsp;°C).</p>
+            <p><strong>pH :</strong> 6,5 à 8,0.</p>
+            <p><strong>GH :</strong> 3 à 20&nbsp;°dGH, avec une préférence pour une eau au moins moyennement minéralisée.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration douce.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 40–50&nbsp;L pour un groupe en harem (1 mâle pour 2–3 femelles), 20&nbsp;L minimum pour un petit trio spécifique.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore avec une bonne part de micro‑proies ; accepte flocons, granulés fins, nourriture vivante ou congelée (artémias, daphnies) et apports végétaux (spiruline, légumes pochés).
+            </p>
+            <p>
+              Une alimentation variée, distribuée en petites quantités plusieurs fois par jour, favorise des couleurs vives, une bonne santé générale et une reproduction régulière.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

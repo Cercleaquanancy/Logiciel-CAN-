@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Paracheirodon axelrodi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Paracheirodon axelrodi</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Characiformes</li>
+              <li><span class="sys-label">Famille :</span> Characidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Paracheirodon</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Paracheirodon axelrodi</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Paracheirodon-axelrodi/imgParacheirodonaxelrodi.jpeg"
+                 alt="Paracheirodon axelrodi">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Paracheirodon axelrodi</strong>, le cardinalis ou néon rouge, est un petit characidé sud‑américain très apprécié pour sa bande bleue iridescente et sa large bande rouge vif s’étendant de la tête à la queue.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 3–5&nbsp;cm et vivent en bancs serrés dans la zone médiane de l’aquarium, ce qui en fait un poisson de choix pour les bacs plantés de type amazonien.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Espèce grégaire par excellence, Paracheirodon axelrodi doit être maintenu en groupe d’au moins 10 individus, idéalement davantage, pour exprimer pleinement son comportement de banc et limiter le stress.
+          </p>
+          <p class="section-text">
+            Calme et plutôt timide, il apprécie les aquariums densément plantés, avec des zones ombragées, un éclairage tamisé et peu de remous, en cohabitation avec d’autres poissons paisibles de petite taille.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur libre ; les œufs sont disséminés parmi les plantes fines ou sur le substrat, sans soin parental, les adultes pouvant les consommer.
+          </p>
+          <p class="section-text">
+            La reproduction demande généralement un bac spécifique très sombre, une eau extrêmement douce et acide, et des reproducteurs bien conditionnés ; elle reste délicate mais devient de plus en plus maîtrisée en élevage spécialisé.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué ; les femelles sont souvent un peu plus rondes et massives, surtout lorsqu’elles sont gravides, les mâles restant plus sveltes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en général 3 à 5&nbsp;ans en aquarium, avec une eau adaptée, une alimentation variée et une maintenance en banc important.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Paracheirodon axelrodi fréquente les petits cours d’eau forestiers d’Amazonie, souvent de type eau noire, très acides, faiblement minéralisés, ombragés, avec substrat de feuilles mortes, racines et branchages.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Paracheirodon-axelrodi/imgmapsparacheirodonaxelrodi.PNG"
+              alt="Répartition de Paracheirodon axelrodi"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud : bassin du rio Negro au Brésil et bassin de l’Orénoque au Venezuela et en Colombie, ainsi que plusieurs affluents associés.</li>
+              <li>Petits igarapés et ruisseaux de forêt, zones calmes et ombragées des grands systèmes fluviaux, souvent en eau noire ou ambrée.</li>
+            </ul>
+            <p>
+              L’espèce vit dans des eaux chaudes, très douces et acides, chargées en tanins, avec une végétation riveraine dense et un fond tapissé de feuilles et de débris ligneux.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C, idéalement autour de 25–27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,0, avec une préférence nette pour une eau acide à légèrement acide.</p>
+            <p><strong>GH :</strong> 1 à 8&nbsp;°dGH, eau très douce à douce.</p>
+            <p><strong>Courant :</strong> faible, avec une filtration efficace mais un rejet adouci et peu de remous.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 80–100&nbsp;L pour un banc d’une dizaine d’individus, davantage pour de grands groupes ou la cohabitation avec d’autres espèces de banc.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance micro‑carnivore ; se nourrit de petits invertébrés, larves, micro‑crustacés et zooplancton dans la nature, et accepte en aquarium paillettes, micro‑granulés, surgelés fins et petites proies vivantes.
+            </p>
+            <p>
+              Une alimentation variée, distribuée en petites prises, comprenant nauplies d’artémias, daphnies, cyclops et aliments secs de qualité, favorise de belles couleurs, une bonne résistance et une éventuelle préparation à la reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

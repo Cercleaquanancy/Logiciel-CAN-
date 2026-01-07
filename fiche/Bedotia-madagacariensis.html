@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bedotia madagascariensis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page { max-width: 1000px; margin: 16px auto 20px auto; padding: 0 12px 20px 12px; }
+    .fiche-wrapper {
+      background: #020617; border-radius: 12px;
+      border: 1px solid #1f2937; overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a; color: #f9fafb;
+      padding: 12px 16px; text-align: center;
+    }
+    .fiche-header-bar h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 2px; }
+
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Ligne du haut : systématique + photo */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list {
+      list-style: none;
+    }
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%; max-height: 260px;
+      border-radius: 10px; border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600; font-size: 0.95rem;
+      margin-top: 10px; margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem; color: #e5e7eb;
+      line-height: 1.4; margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+    }
+    .bloc h3 { font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8; }
+    .bloc p, .bloc ul { font-size: 0.8rem; color: #e5e7eb; line-height: 1.4; }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%; height: 120px; border-radius: 8px;
+      border: 1px solid #4b5563; object-fit: cover;
+      margin-bottom: 6px; display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem; color: #9ca3af;
+      margin-top: 10px; text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) { 
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Bedotia madagascariensis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Atheriniformes</li>
+              <li><span class="sys-label">Famille :</span> Bedotiidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Bedotia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Bedotia madagascariensis</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Bedotia-madagascariensis/Bedotia-madahascariensis.jpeg"
+                 alt="Bedotia madagascariensis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Bedotia madagascariensis</strong> est un poisson arc‑en‑ciel endémique de Madagascar, au corps allongé et légèrement comprimé latéralement, présentant une bande sombre longitudinale et des nageoires aux reflets orangés ou rougeâtres.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent 8–10&nbsp;cm; c’est une espèce de banc active qui occupe surtout la zone médiane et supérieure de la colonne d’eau et montre des reflets particulièrement vifs dans une eau claire et bien oxygénée.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Bedotia madagascariensis vit en groupes lâches, avec une hiérarchie basée sur la taille; en aquarium, il doit être maintenu en banc d’au moins 8 à 10 individus pour limiter le stress et éviter les comportements de dominance trop marqués sur quelques sujets.
+          </p>
+          <p class="section-text">
+            Poisson globalement paisible, il cohabite bien avec d’autres espèces calmes de taille similaire; il apprécie les bacs bien oxygénés, avec un courant léger à modéré et de longues zones de nage dégagées.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare, avec une ponte disséminée sur la végétation ou des supports fins; les œufs, légèrement adhésifs, se fixent sur les plantes ou les mops, sans véritable protection parentale.
+          </p>
+          <p class="section-text">
+            En aquarium, le frai peut être régulier lorsque les conditions sont stables; pour élever les jeunes, il est conseillé de récupérer les œufs ou d’isoler les parents après la ponte afin d’éviter la prédation des alevins.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles sont plus colorés, avec des nageoires impaires plus étirées et une bande latérale souvent plus marquée; les femelles ont un ventre plus rebondi, surtout en période de reproduction, et des couleurs plus discrètes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> la longévité en captivité se situe en général entre 4 et 6&nbsp;ans dans un aquarium frais, bien brassé et correctement entretenu.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce vit dans des rivières et lacs de l’est de Madagascar, dans des eaux claires et bien ombragées, à faible altitude; elle préfère les secteurs à courant lent à modéré, avec une forte présence de végétation rivulaire, de racines et de branches immergées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Bedotia-geayi/maps-Bedotia-geayi.png"
+              alt="Répartition de Bedotia madagascariensis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Endémique de Madagascar, entre le fleuve Ivoloina et le cours d’eau Manambolo dans la partie est de l’île.</li>
+              <li>Présente dans les tronçons inférieurs de rivières claires et dans certains lacs connectés aux cours d’eau.</li>
+            </ul>
+            <p>
+              Les populations se rencontrent en groupes dans les sections à courant modéré et dans des zones plus calmes proches des berges, souvent ombragées par la végétation.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 25&nbsp;°C, avec une préférence pour une eau plutôt fraîche; éviter les températures élevées prolongées.</p>
+            <p><strong>pH :</strong> environ 6,5 à 7,5.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> léger à modéré, avec une bonne oxygénation et une filtration efficace.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 200&nbsp;L pour un banc d’au moins 8 à 10 individus, avec une façade longue pour permettre la nage en groupe.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à tendance insectivore; dans le milieu naturel, l’espèce consomme surtout de petits invertébrés et des insectes tombant à la surface, complétés par du zooplancton.
+            </p>
+            <p>
+              En aquarium, elle accepte facilement paillettes, granulés de petite taille, nourriture congelée et vivante (daphnies, artémias, larves de moustiques), à distribuer en plusieurs petits repas quotidiens.
+            </p>
+            <p>
+              Une alimentation variée et riche en proies animales favorise la croissance, la reproduction et l’intensité des couleurs de ce poisson arc‑en‑ciel malgache.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

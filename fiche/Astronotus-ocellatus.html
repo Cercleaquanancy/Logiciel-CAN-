@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Astronotus ocellatus (Oscar)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Ligne du haut : systématique + photo */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Astronotus ocellatus</h1>
+        <h2>Oscar</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Astronotus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Astronotus ocellatus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Astronotus-ocellatus/Astronotus-ocellatus.jpeg" alt="Astronotus ocellatus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Astronotus ocellatus</strong> est un grand cichlidé sud‑américain très populaire en aquariophilie, souvent considéré comme l’« oscar » classique des bacs d’Amérique du Sud.
+          </p>
+          <p class="section-text">
+            Il occupe toute la hauteur de la colonne d’eau et atteint facilement 30 à 35&nbsp;cm, voire un peu plus, dans un aquarium spacieux et bien entretenu.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Poisson intelligent, curieux et très interactif avec son soigneur, l’oscar est aussi un cichlidé territorial, surtout à l’âge adulte et en période de reproduction; il inspecte le décor, déplace les éléments et fouille le substrat.
+          </p>
+          <p class="section-text">
+            En aquarium, il utilise la zone médiane et le fond, choisit des repères (racines, pierres, grottes) qu’il défend plus ou moins activement; la cohabitation doit se faire avec des poissons de taille et de robustesse comparables, dans un volume suffisant.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare, pondeur sur substrat découvert; le couple nettoie une pierre, une racine ou une surface plane avant que la femelle n’y dépose plusieurs centaines à quelques milliers d’œufs.
+          </p>
+          <p class="section-text">
+            Les deux parents gardent et ventilent les œufs, déplacent éventuellement les larves et protègent ensuite le nuage d’alevins en nage libre, avec une défense du territoire particulièrement marquée.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très peu marqué; les différences de taille, de forme de la tête ou de la papille génitale en période de reproduction permettent parfois de distinguer les sexes, mais le sexage reste difficile hors observation de couple.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en captivité, l’oscar peut dépasser 10 ans, voire plus de 15 ans, lorsque le volume, la qualité d’eau et la nourriture sont adaptés.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce fréquente des eaux lentes et calmes du bassin amazonien et de l’Orénoque : bras morts, zones inondées, marges de rivières encombrées de racines et de bois, avec substrat meuble et abris multiples.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <!-- Bloc Répartition -->
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Astronotus-ocellatus/mapsAstronotusocellatus.PNG"
+              alt="Répartition d'Astronotus ocellatus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassin de l’Amazone (Brésil, Pérou, Équateur, Bolivie).</li>
+              <li>Bassin de l’Orénoque (Colombie, Venezuela).</li>
+              <li>Guyane française et autres Guyanes.</li>
+              <li>Présence signalée dans certains bassins du Paraguay, de l’Uruguay et du nord de l’Argentine.</li>
+            </ul>
+            <p>
+              L’oscar est largement distribué en Amérique du Sud, présent dans de nombreux affluents (Amazonas, Negro, Madeira, Tapajós, Tocantins, Orénoque, etc.).
+            </p>
+          </div>
+
+          <!-- Bloc paramètres -->
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 27&nbsp;°C, avec une tolérance plus large entre environ 22 et 30&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5, de légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec filtration puissante et renouvellements d’eau réguliers indispensables pour un grand cichlidé très pollueur.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 450&nbsp;L pour un couple, avec un bac spacieux, décor solide et zones bien structurées.</p>
+          </div>
+
+          <!-- Bloc régime -->
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à nette tendance carnivore; dans la nature, il consomme poissons, invertébrés, insectes, mais aussi fruits tombés et matière végétale.
+            </p>
+            <p>
+              En captivité, il accepte facilement granulés et sticks pour grands cichlidés, complétés par des proies congelées ou fraîches (crevettes, moules, morceaux de poisson, vers) et une part végétale pour l’équilibre digestif.
+            </p>
+            <p>
+              Il convient de privilégier des rations variées mais modérées, afin de limiter l’obésité et la pollution organique importante générée par ce poisson vorace.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

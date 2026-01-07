@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta persephone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page { max-width: 1000px; margin: 16px auto 20px auto; padding: 0 12px 20px 12px; }
+    .fiche-wrapper {
+      background: #020617; border-radius: 12px;
+      border: 1px solid #1f2937; overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a; color: #f9fafb;
+      padding: 12px 16px; text-align: center;
+    }
+    .fiche-header-bar h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 2px; }
+
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%; max-height: 260px;
+      border-radius: 10px; border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600; font-size: 0.95rem;
+      margin-top: 10px; margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem; color: #e5e7eb;
+      line-height: 1.45; margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+    }
+    .bloc h3 { font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8; }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem; color: #e5e7eb; line-height: 1.45;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%; height: 120px; border-radius: 8px;
+      border: 1px solid #4b5563; object-fit: cover;
+      margin-bottom: 6px; display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem; color: #9ca3af;
+      margin-top: 10px; text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta persephone</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Betta persephone</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-persephone/Betta-persephone.jpeg"
+                 alt="Betta persephone">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+
+          <p class="section-text">
+            <strong>Betta persephone</strong> est un betta nain des eaux noires, à la robe très sombre soulignée de reflets bleus, endémique de quelques forêts marécageuses de Johor en Malaisie péninsulaire.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 3–4&nbsp;cm; le dimorphisme est modéré, avec des mâles montrant des couleurs plus intenses et des nageoires légèrement plus développées que celles des femelles.
+          </p>
+          <p class="section-text">
+            Espèce réputée délicate, elle supporte mal les variations rapides de paramètres et nécessite une acclimatation douce dans une eau très douce, acide et peu minéralisée.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta persephone est discret et timide; il passe une grande partie du temps sous le couvert des plantes, des racines et de la litière de feuilles, loin des lumières fortes et des courants importants.
+          </p>
+          <p class="section-text">
+            En aquarium, il doit être maintenu en bac spécifique ou avec des espèces extrêmement calmes, car il cède facilement la place à des poissons plus vifs et peut souffrir de la concurrence alimentaire.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> constructeur de nid de bulles; le mâle édifie un nid assez discret parmi les feuilles de surface ou sous un abri, puis recueille les œufs après l’accolade.
+          </p>
+          <p class="section-text">
+            Les œufs et larves sont gardés par le mâle jusqu’à la nage libre; un niveau d’eau bas, une surface très calme et un air humide au‑dessus du bac favorisent la réussite du développement des alevins.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles montrent des reflets bleus plus marqués sur le corps et les nageoires, avec des rayures et une bordure plus nette sur les nageoires; les femelles sont plus ternes, au ventre plus rebondi en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en captivité, la durée de vie observée se situe généralement entre 2 et 3&nbsp;ans pour cette espèce exigeante.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce occupe des ruisseaux forestiers, fossés et mares d’eau noire de forêts de tourbières, où la canopée dense limite fortement la lumière; le substrat est tapissé de feuilles, de branches et de racines, et l’eau est extrêmement douce, acide et chargée en tanins.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-persephone/mapsbettapersephone.PNG"
+              alt="Répartition de Betta persephone"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Sud‑ouest de l’État de Johor, en Malaisie péninsulaire, autour des localités d’Ayer Hitam, Muar et Kluang.</li>
+              <li>Ruisseaux et mares de tourbières, fossés forestiers et petites zones inondées à eau noire, sous une forte couverture végétale.</li>
+            </ul>
+            <p>
+              Ces habitats sont très localisés et fortement menacés par la conversion en plantations, ce qui rend l’espèce vulnérable et explique sa rareté.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C, souvent maintenu autour de 24–25&nbsp;°C.</p>
+            <p><strong>pH :</strong> 4,0 à 6,0, avec une préférence marquée pour une eau nettement acide.</p>
+            <p><strong>GH :</strong> 0 à 3&nbsp;°dGH, eau très douce, à base d’eau osmosée légèrement reminéralisée au besoin.</p>
+            <p><strong>Courant :</strong> très faible; filtration douce (exhausteur, filtre à débit réduit) pour ne pas stresser les poissons ni détruire les nids.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 20–30&nbsp;L pour un couple, plus pour un petit groupe en bac spécifique très planté et sombre.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à tendance insectivore; dans son milieu, il consomme de petites proies aquatiques et des insectes tombant à la surface.
+            </p>
+            <p>
+              En aquarium, il apprécie en priorité les proies vivantes et congelées de petite taille (infusoires, microvers, daphnies, artémias, larves de moustiques); les aliments secs ne sont acceptés qu’avec le temps et doivent rester complémentaires.
+            </p>
+            <p>
+              Une alimentation variée, distribuée en petites quantités, associée à une excellente qualité d’eau, est fondamentale pour maintenir cette espèce sensible en bonne santé et espérer la reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

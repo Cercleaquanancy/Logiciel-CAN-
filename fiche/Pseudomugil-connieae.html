@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pseudomugil connieae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page { max-width: 1000px; margin: 16px auto 20px auto; padding: 0 12px 20px 12px; }
+    .fiche-wrapper {
+      background: #020617; border-radius: 12px;
+      border: 1px solid #1f2937; overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a; color: #f9fafb;
+      padding: 12px 16px; text-align: center;
+    }
+    .fiche-header-bar h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 2px; }
+
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%; max-height: 260px;
+      border-radius: 10px; border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600; font-size: 0.95rem;
+      margin-top: 10px; margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem; color: #e5e7eb;
+      line-height: 1.4; margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+    }
+    .bloc h3 { font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8; }
+    .bloc p, .bloc ul { font-size: 0.8rem; color: #e5e7eb; line-height: 1.4; }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%; height: 120px; border-radius: 8px;
+      border: 1px solid #4b5563; object-fit: cover;
+      margin-bottom: 6px; display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem; color: #9ca3af;
+      margin-top: 10px; text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Pseudomugil connieae</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Atheriniformes</li>
+              <li><span class="sys-label">Famille :</span> Pseudomugilidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Pseudomugil</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Pseudomugil connieae</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Pseudomugil-connieae/Pseudomugil-connieae.jpeg"
+                 alt="Pseudomugil connieae">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Pseudomugil connieae</strong> est un petit poisson arc‑en‑ciel à yeux bleus, originaire de Papouasie‑Nouvelle‑Guinée.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 3–4&nbsp;cm et vivent en banc serré, principalement en zone médiane et supérieure.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce forme des groupes dynamiques où les mâles paradent fréquemment, exhibant leurs nageoires étendues face aux femelles et aux rivaux.
+          </p>
+          <p class="section-text">
+            Un maintien en banc d’au moins une dizaine d’individus dans un bac calme, bien planté et bien oxygéné permet d’observer pleinement ce comportement.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare ; la ponte a lieu quotidiennement en petites quantités sur les plantes fines ou des mops, sans soins parentaux.
+          </p>
+          <p class="section-text">
+            Les œufs peuvent être prélevés pour incubation séparée, ou laissés en bac spécifique très planté pour permettre la survie d’une partie des alevins.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâles plus colorés, présentant des nageoires dorsales et anales plus développées ; femelles plus discrètes, aux nageoires plus courtes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en moyenne 2 à 3&nbsp;ans en aquarium, dans une eau stable et bien oxygénée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce fréquente de petits cours d’eau tropicaux, clairs à légèrement ambrés, avec une végétation aquatique et ripicole abondante et un courant léger.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Pseudomugil-connieae/mapspseudomugil-connieae.png"
+              alt="Répartition de Pseudomugil connieae"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Papouasie‑Nouvelle‑Guinée.</li>
+              <li>Rivières et ruisseaux tropicaux à faible profondeur.</li>
+            </ul>
+            <p>
+              Les milieux sont bien oxygénés et souvent très lumineux, avec un courant léger et un substrat généralement sableux ou graveleux.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5.</p>
+            <p><strong>GH :</strong> 3 à 12&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> léger, avec une bonne oxygénation.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 80&nbsp;L pour un groupe d’au moins 10 individus.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance insectivore ; apprécie les micro‑nourritures vivantes et congelées (daphnies, artémias, microvers), ainsi que les micro‑granulés de bonne qualité.
+            </p>
+            <p>
+              Une alimentation variée et de petite taille favorise des couleurs intenses, une bonne condition et stimule la reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

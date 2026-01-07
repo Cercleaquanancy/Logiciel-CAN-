@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Administration adhérents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #020617;
+      border-right: 1px solid #1f2937;
+      padding: 16px 14px;
+      flex-shrink: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .sidebar button {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: none;
+      background: #111827;
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .sidebar button:hover {
+      background: #1f2937;
+    }
+
+    .main {
+      flex: 1;
+      padding: 18px 22px;
+      min-width: 0;
+    }
+
+    .main h1 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      color: #38bdf8;
+    }
+
+    .main p.subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #e5e7eb;
+    }
+
+    .field {
+      margin-bottom: 8px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 7px 9px;
+      background: #020617;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid #1f2937;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .btn-small {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+    }
+
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-secondary:hover { background: #1f2937; }
+
+    .note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.8rem;
+    }
+
+    .table th,
+    .table td {
+      border-bottom: 1px solid #1f2937;
+      padding: 6px 4px;
+      word-break: break-word;
+      vertical-align: middle;
+    }
+
+    .table th {
+      text-align: left;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #1f2937;
+      color: #e5e7eb;
+    }
+
+    .badge-admin {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .badge-bureau {
+      background: #22c55e;
+      color: #022c22;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .top-bar button {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    .top-bar button:hover {
+      background: #1f2937;
+    }
+
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #1f2937;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .sidebar h2 {
+        width: 100%;
+        margin-bottom: 4px;
+      }
+
+      .sidebar button {
+        flex: 1 1 45%;
+        text-align: center;
+      }
+
+      .main {
+        padding: 14px 12px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn-row button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Admin</h2>
+    <button disabled>👤 Gestion des adhérents</button>
+    <button onclick="window.location.href='login.html'">⬅ Retour connexion</button>
+    <button onclick="window.location.href='index.html'">🏠 Page d’accueil</button>
+  </aside>
+
+  <main class="main">
+    <div class="top-bar">
+      <button id="logoutBtn">Se déconnecter</button>
+    </div>
+
+    <h1>Administration des adhérents</h1>
+    <p class="subtitle">
+      Gestion des comptes (adhérent, membre de bureau, accès serre) + historique des connexions.
+    </p>
+
+    <!-- Gestion des comptes -->
+    <div class="card">
+      <h3>Ajouter / modifier un adhérent</h3>
+      <div class="field">
+        <label for="userLogin">Identifiant adhérent</label>
+        <input type="text" id="userLogin" placeholder="Ex : j.dupont">
+      </div>
+      <div class="field">
+        <label for="userPass">Mot de passe adhérent</label>
+        <input type="password" id="userPass" placeholder="Mot de passe">
+      </div>
+      <div class="field">
+        <label for="userRole">Rôle</label>
+        <select id="userRole">
+          <option value="adhérent">Adhérent</option>
+          <option value="membre_bureau">Membre de bureau</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>
+          <input type="checkbox" id="userSerre">
+          Activer l’accès à la serre pour cet adhérent
+        </label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" id="saveUserBtn">Enregistrer (serveur)</button>
+        <button class="btn-secondary" id="clearUsersBtn">Vider tous les adhérents (serveur)</button>
+      </div>
+      <p class="note">
+        Les comptes sont maintenant stockés sur le serveur dans <code>data.json</code>, commun à toutes les machines.
+      </p>
+    </div>
+
+    <!-- Liste des comptes -->
+    <div class="card">
+      <h3>Liste des comptes</h3>
+      <table class="table" id="usersTable">
+        <thead>
+          <tr>
+            <th>Identifiant</th>
+            <th>Rôle</th>
+            <th>Serre</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- lignes générées en JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Historique des connexions -->
+    <div class="card">
+      <h3>Historique des connexions</h3>
+      <table class="table" id="historyTable">
+        <thead>
+          <tr>
+            <th>Identifiant</th>
+            <th>Rôle</th>
+            <th>Date / heure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- lignes générées en JS -->
+        </tbody>
+      </table>
+      <div class="btn-row" style="margin-top:8px;">
+        <button class="btn-secondary" id="clearHistoryBtn">Vider l’historique (serveur)</button>
+      </div>
+      <p class="note">
+        Historique lu et géré via l’API du serveur (<code>/api/history</code>) partagée entre toutes les machines.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Vérifier que l'utilisateur est admin
+    function checkAdmin() {
+      const stored = localStorage.getItem("user");
+      if (!stored) {
+        window.location.href = "login.html";
+        return;
+      }
+      try {
+        const user = JSON.parse(stored);
+        if (!user || user.role !== "admin") {
+          window.location.href = "login.html";
+        }
+      } catch (e) {
+        window.location.href = "login.html";
+      }
+    }
+
+    checkAdmin();
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // --- Gestion des adhérents via API ---
+    const userLoginInput = document.getElementById('userLogin');
+    const userPassInput = document.getElementById('userPass');
+    const userRoleSelect = document.getElementById('userRole');
+    const userSerreCheckbox = document.getElementById('userSerre');
+    const saveUserBtn = document.getElementById('saveUserBtn');
+    const clearUsersBtn = document.getElementById('clearUsersBtn');
+    const usersTableBody = document.querySelector('#usersTable tbody');
+
+    async function apiGetMembers() {
+      const res = await fetch('/api/members');
+      if (!res.ok) throw new Error('Erreur GET /api/members');
+      return res.json();
+    }
+
+    async function apiSaveMember(login, pass, role, serre) {
+      const res = await fetch('/api/members', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, pass, role, serre })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/members');
+      return res.json();
+    }
+
+    async function apiDeleteMember(login) {
+      const res = await fetch('/api/members/' + encodeURIComponent(login), {
+        method: 'DELETE'
+      });
+      if (!res.ok) throw new Error('Erreur DELETE /api/members');
+      return res.json();
+    }
+
+    async function apiClearMembers() {
+      const res = await fetch('/api/members/clear', { method: 'POST' });
+      if (!res.ok) throw new Error('Erreur POST /api/members/clear');
+      return res.json();
+    }
+
+    function renderUsersList(members) {
+      usersTableBody.innerHTML = "";
+
+      // Admin fixe
+      const trAdmin = document.createElement("tr");
+      const tdAdminLogin = document.createElement("td");
+      const tdAdminRole = document.createElement("td");
+      const tdAdminSerre = document.createElement("td");
+      const tdAdminActions = document.createElement("td");
+      tdAdminLogin.textContent = "CAN.ansorgiinancy";
+      const spanAdmin = document.createElement("span");
+      spanAdmin.className = "badge badge-admin";
+      spanAdmin.textContent = "admin";
+      tdAdminRole.appendChild(spanAdmin);
+      tdAdminSerre.textContent = "—";
+      tdAdminActions.textContent = "—";
+      trAdmin.appendChild(tdAdminLogin);
+      trAdmin.appendChild(tdAdminRole);
+      trAdmin.appendChild(tdAdminSerre);
+      trAdmin.appendChild(tdAdminActions);
+      usersTableBody.appendChild(trAdmin);
+
+      // Adhérents depuis l'API
+      members.forEach(u => {
+        const tr = document.createElement("tr");
+        const tdLogin = document.createElement("td");
+        const tdRole = document.createElement("td");
+        const tdSerre = document.createElement("td");
+        const tdActions = document.createElement("td");
+
+        tdLogin.textContent = u.login;
+
+        const selectRole = document.createElement("select");
+        selectRole.innerHTML = `
+          <option value="adhérent">Adhérent</option>
+          <option value="membre_bureau">Membre de bureau</option>
+        `;
+        selectRole.value = u.role || "adhérent";
+        tdRole.appendChild(selectRole);
+
+        const serreChk = document.createElement("input");
+        serreChk.type = "checkbox";
+        serreChk.checked = !!u.serre;
+        tdSerre.appendChild(serreChk);
+
+        const btnUpdate = document.createElement("button");
+        btnUpdate.textContent = "Mettre à jour";
+        btnUpdate.className = "btn-primary btn-small";
+        btnUpdate.addEventListener("click", async () => {
+          try {
+            await apiSaveMember(u.login, u.pass || "", selectRole.value, serreChk.checked);
+            const newMembers = await apiGetMembers();
+            renderUsersList(newMembers);
+          } catch (e) {
+            alert("Erreur lors de la mise à jour de l'adhérent.");
+            console.error(e);
+          }
+        });
+
+        const btnDel = document.createElement("button");
+        btnDel.textContent = "Supprimer";
+        btnDel.className = "btn-secondary btn-small";
+        btnDel.style.marginLeft = "4px";
+        btnDel.addEventListener("click", async () => {
+          if (confirm('Supprimer l’adhérent "' + u.login + '" ?')) {
+            try {
+              await apiDeleteMember(u.login);
+              const newMembers = await apiGetMembers();
+              renderUsersList(newMembers);
+            } catch (e) {
+              alert("Erreur lors de la suppression de l'adhérent.");
+              console.error(e);
+            }
+          }
+        });
+
+        tdActions.appendChild(btnUpdate);
+        tdActions.appendChild(btnDel);
+
+        tr.appendChild(tdLogin);
+        tr.appendChild(tdRole);
+        tr.appendChild(tdSerre);
+        tr.appendChild(tdActions);
+        usersTableBody.appendChild(tr);
+      });
+    }
+
+    async function loadUsers() {
+      try {
+        const members = await apiGetMembers();
+        renderUsersList(members);
+      } catch (e) {
+        console.error(e);
+        alert("Impossible de charger la liste des adhérents (serveur).");
+      }
+    }
+
+    saveUserBtn.addEventListener('click', async () => {
+      const login = userLoginInput.value.trim();
+      const pass = userPassInput.value;
+      const role = userRoleSelect.value || "adhérent";
+      const serre = userSerreCheckbox.checked;
+
+      if (!login || !pass) {
+        alert("Identifiant et mot de passe obligatoires.");
+        return;
+      }
+
+      try {
+        await apiSaveMember(login, pass, role, serre);
+        userLoginInput.value = "";
+        userPassInput.value = "";
+        userRoleSelect.value = "adhérent";
+        userSerreCheckbox.checked = false;
+        await loadUsers();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de l'enregistrement de l'adhérent (serveur).");
+      }
+    });
+
+    clearUsersBtn.addEventListener('click', async () => {
+      if (confirm("Supprimer tous les adhérents sur le serveur ?")) {
+        try {
+          await apiClearMembers();
+          await loadUsers();
+        } catch (e) {
+          console.error(e);
+          alert("Erreur lors de la suppression des adhérents (serveur).");
+        }
+      }
+    });
+
+    // --- Historique des connexions via API ---
+    const historyTableBody = document.querySelector('#historyTable tbody');
+    const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+    async function apiGetHistory() {
+      const res = await fetch('/api/history');
+      if (!res.ok) throw new Error('Erreur GET /api/history');
+      return res.json();
+    }
+
+    async function apiClearHistory() {
+      const res = await fetch('/api/history/clear', { method: 'POST' });
+      if (!res.ok) throw new Error('Erreur POST /api/history/clear');
+      return res.json();
+    }
+
+    function renderHistoryList(history) {
+      historyTableBody.innerHTML = "";
+      const sorted = history.slice().reverse();
+
+      sorted.forEach(entry => {
+        const tr = document.createElement("tr");
+        const tdUser = document.createElement("td");
+        const tdRole = document.createElement("td");
+        const tdDate = document.createElement("td");
+
+        tdUser.textContent = entry.username || "";
+
+        const span = document.createElement("span");
+        span.className = "badge";
+        if (entry.role === "admin") {
+          span.classList.add("badge-admin");
+          span.textContent = "admin";
+        } else if (entry.role === "membre_bureau") {
+          span.classList.add("badge-bureau");
+          span.textContent = "membre de bureau";
+        } else {
+          span.textContent = "adhérent";
+        }
+        tdRole.appendChild(span);
+
+        const d = entry.date ? new Date(entry.date) : null;
+        tdDate.textContent = d && !isNaN(d) ? d.toLocaleString() : (entry.date || "");
+
+        tr.appendChild(tdUser);
+        tr.appendChild(tdRole);
+        tr.appendChild(tdDate);
+        historyTableBody.appendChild(tr);
+      });
+    }
+
+    async function loadHistory() {
+      try {
+        const history = await apiGetHistory();
+        renderHistoryList(history);
+      } catch (e) {
+        console.error(e);
+        alert("Impossible de charger l'historique (serveur).");
+      }
+    }
+
+    clearHistoryBtn.addEventListener('click', async () => {
+      if (confirm("Supprimer l’historique des connexions sur le serveur ?")) {
+        try {
+          await apiClearHistory();
+          await loadHistory();
+        } catch (e) {
+          console.error(e);
+          alert("Erreur lors de la suppression de l'historique (serveur).");
+        }
+      }
+    });
+
+    // Initialisations
+    loadUsers();
+    loadHistory();
+  </script>
+</body>
+</html>

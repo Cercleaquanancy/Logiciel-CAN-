@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gymnocorymbus ternetzi (Tétra veuve noire)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Ligne du haut : systématique + photo */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Gymnocorymbus ternetzi</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Characiformes</li>
+              <li><span class="sys-label">Famille :</span> Characidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Gymnocorymbus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Gymnocorymbus ternetzi</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Gymnocorymbus-ternetzi/Gymnocorymbus-ternetzi.jpeg" alt="Gymnocorymbus ternetzi">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Gymnocorymbus ternetzi</strong>, le tétra veuve noire, est un petit characidé sud‑américain très répandu en aquariophilie, apprécié pour sa silhouette haute et ses deux bandes verticales sombres sur fond argenté.
+          </p>
+          <p class="section-text">
+            Il atteint en général 4–5&nbsp;cm en aquarium et vit en bancs, occupant surtout la zone médiane, parfois la zone supérieure; c’est une espèce robuste, bien adaptée aux bacs communautaires calmes.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Gymnocorymbus ternetzi forme des bancs dynamiques qui se déplacent en permanence dans la zone médiane; un groupe d’au moins 8–10 individus est indispensable pour diluer l’agressivité et limiter le pincement de nageoires envers les poissons à longues voiles.
+          </p>
+          <p class="section-text">
+            Globalement pacifique mais vif, il apprécie un décor combinant une grande zone de nage dégagée et des zones d’ombre créées par les plantes et les racines, ce qui réduit le stress et favorise un comportement naturel.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ponte libre; les œufs sont dispersés parmi les plantes fines ou les mops de ponte et ne reçoivent aucun soin parental, les adultes les consommant volontiers.
+          </p>
+          <p class="section-text">
+            Pour l’élevage, on utilise généralement un bac spécifique avec plantes ou mops, un couple ou un petit groupe de reproducteurs, puis on retire les adultes après la ponte pour laisser éclore et grandir les alevins.
+          </p>
+
+          <div class="section-title">Dimorphisme & biotope</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les femelles sont plus rondes et trapues, surtout en période de ponte, tandis que les mâles sont un peu plus sveltes avec une nageoire anale légèrement plus effilée.
+          </p>
+          <p class="section-text">
+            <strong>Biotope :</strong> petits affluents, ruisseaux et zones calmes de rivières subtropicales, aux eaux lentes ou stagnantes, peu profondes, bien végétalisées et souvent légèrement teintées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Gymnocorymbus-ternetzi/mapsGymnocorymbus-ternetzi.PNG"
+              alt="Répartition de Gymnocorymbus ternetzi"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassins du rio Paraguay et du rio Guaporé, principalement dans la région du Pantanal, du Brésil jusqu’au Paraguay et au nord de l’Argentine.</li>
+              <li>Présent dans des lagunes, lacs peu profonds, canaux et bras morts associés à ces fleuves.</li>
+            </ul>
+            <p>
+              Il fréquente des eaux lentes, parfois légèrement teintées, avec une végétation aquatique et rivulaire dense offrant de nombreux abris et zones ombragées.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C (tolérance approximative 20–28&nbsp;°C).</p>
+            <p><strong>pH :</strong> 6,0 à 7,5, de légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 3 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration douce assurant une bonne qualité d’eau sans courant trop fort.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 80–100&nbsp;L pour un banc d’au moins 8–10 individus, avec une façade suffisante pour la nage en groupe.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore; accepte facilement flocons, granulés fins, ainsi que nourriture vivante et congelée (daphnies, artémias, petites larves).
+            </p>
+            <p>
+              Une alimentation variée, incluant une petite part végétale, favorise de belles couleurs et une bonne condition générale.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Xiphophorus hellerii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut comme Pterophyllum */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Xiphophorus hellerii</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Xiphophorus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Xiphophorus hellerii</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Xiphophorus-hellerii/Xiphophorus-hellerii.PNG"
+                 alt="Xiphophorus hellerii">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Xiphophorus hellerii</strong>, le porte‑épée, est un vivipare très répandu en aquariophilie, reconnaissable à la longue extension de la nageoire caudale du mâle.
+          </p>
+          <p class="section-text">
+            Les femelles atteignent généralement 10–12&nbsp;cm, les mâles un peu moins, ce qui en fait un poisson assez grand pour un vivipare classique.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en groupe, très active, occupant surtout la zone médiane et supérieure des rivières et canaux, où elle nage sans cesse.
+          </p>
+          <p class="section-text">
+            Les mâles peuvent se montrer insistants envers les femelles et rivaliser entre eux, ce qui impose un ratio favorable aux femelles et un aquarium suffisamment spacieux.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare ; la femelle donne naissance à de nombreux alevins déjà formés après une période de gestation de quelques semaines.
+          </p>
+          <p class="section-text">
+            Les portées sont fréquentes dans une eau chaude et bien nourrie, et les alevins sont rapidement capables d’accepter des nourritures fines sèches ou vivantes.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, plus coloré, avec gonopodium et « épée » caudale marquée ; femelle plus grande, corps plus massif, sans épée.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en moyenne 3 à 5&nbsp;ans en aquarium, parfois davantage dans de bonnes conditions.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Xiphophorus hellerii fréquente rivières, canaux et zones calmes d’Amérique centrale, souvent en eau claire et bien ensoleillée, avec une végétation aquatique et des zones peu profondes.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Xiphophorus-hellerii/maps-Xiphophorus-hellerii.png"
+              alt="Répartition de Xiphophorus hellerii"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique centrale, principalement du Mexique au Honduras, le long du versant atlantique.</li>
+              <li>Cours d’eau peu profonds, canaux, zones marginales de rivières et fossés riches en plantes aquatiques.</li>
+            </ul>
+            <p>
+              L’espèce a été largement introduite en dehors de son aire d’origine, notamment dans les régions tropicales, où elle s’est parfois naturalisée dans des milieux au courant lent et bien végétalisés.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, eau neutre à alcaline.</p>
+            <p><strong>GH :</strong> 12 à 25&nbsp;°dGH, eau dure à très dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec bonne filtration et oxygénation.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 120–150&nbsp;L pour un harem et quelques jeunes, avec une bonne longueur de façade pour la nage.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore opportuniste ; accepte pratiquement toutes les nourritures usuelles (flocons, granulés, congelé, vivant) avec un complément végétal régulier.
+            </p>
+            <p>
+              Une alimentation variée et riche en végétaux (spiruline, légumes pochés) contribue à la bonne santé générale, limite les problèmes digestifs et favorise des couleurs vives.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

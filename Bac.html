@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Suivi du bac</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Chart.js simple -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:#020617;
+      color:#e5e7eb;
+      min-height:100vh;
+    }
+
+    .navbar {
+      position:fixed; top:0; left:0; width:100%;
+      min-height:56px;
+      background:rgba(15,23,42,0.98);
+      border-bottom:1px solid #1f2937;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:4px 16px;
+      z-index:50;
+      flex-wrap:wrap; gap:4px;
+    }
+    .navbar-left { display:flex; align-items:center; gap:10px; }
+    .navbar-title { font-size:0.95rem; font-weight:600; }
+    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+
+    .navbar-menu {
+      display:flex; gap:8px; align-items:center;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav-btn {
+      border:none; background:transparent; color:#cbd5f5;
+      font-size:0.8rem; padding:6px 8px; border-radius:999px;
+      cursor:pointer; display:flex; align-items:center; gap:4px;
+    }
+    .nav-btn span.icon { font-size:1rem; }
+    .nav-btn:hover { background:#111827; }
+
+    .navbar-logout {
+      border-radius:999px; border:1px solid #374151;
+      background:#111827; color:#e5e7eb;
+      padding:5px 10px; font-size:0.8rem; cursor:pointer;
+    }
+    .navbar-logout:hover { background:#1f2937; }
+
+    .page {
+      padding-top:72px;
+      padding:0 12px 20px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .card {
+      background:#020617;
+      border-radius:10px;
+      border:1px solid #1f2937;
+      padding:14px 16px;
+      margin-bottom:14px;
+    }
+
+    h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
+    h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
+    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+
+    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+    input[type="number"],
+    input[type="text"] {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem;
+    }
+    input:focus, textarea:focus {
+      outline:none; border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+    textarea {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem; min-height:70px; resize:vertical;
+    }
+
+    .btn-primary {
+      background:#38bdf8; color:#0f172a;
+      border:none; border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-primary:hover { filter:brightness(1.05); }
+
+    .btn-secondary {
+      background:#111827; color:#e5e7eb;
+      border:1px solid #374151;
+      border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-secondary:hover { background:#1f2937; }
+
+    .btn-danger {
+      background:#b91c1c; color:#fee2e2;
+      border:none; border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-danger:hover { background:#991b1b; }
+
+    .btn-xs {
+      border:none;
+      border-radius:999px;
+      padding:2px 6px;
+      font-size:0.7rem;
+      cursor:pointer;
+      background:#111827;
+      color:#e5e7eb;
+      border:1px solid #374151;
+    }
+
+    .back-link {
+      font-size:0.8rem;
+      color:#93c5fd;
+      cursor:pointer;
+      margin-bottom:6px;
+      display:inline-block;
+    }
+
+    .row-3 {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap:12px;
+    }
+
+    .field { margin-bottom:8px; }
+
+    .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+
+    .chart-wrapper {
+      width:100%;
+      height:260px;
+    }
+    canvas {
+      width:100%;
+      height:100%;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.8rem;
+    }
+    th, td {
+      border:1px solid #1f2937;
+      padding:4px 6px;
+      text-align:left;
+    }
+    th {
+      background:#0b1120;
+      color:#e5e7eb;
+    }
+    tbody tr:nth-child(even) { background:#020617; }
+    tbody tr:nth-child(odd) { background:#020617; }
+
+    /* Cartes espèces */
+    .species-card {
+      background:#020617;
+      border:1px solid #1f2937;
+      border-radius:10px;
+      width:180px;
+      padding:6px 6px 8px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .species-card img {
+      width:100%;
+      height:auto;
+      border-radius:8px;
+      object-fit:contain;
+      background:#020617;
+    }
+    .species-card-title {
+      font-size:0.8rem;
+      font-weight:600;
+      color:#e5e7eb;
+    }
+    .species-card-sub {
+      font-size:0.75rem;
+      color:#9ca3af;
+    }
+    .species-card-actions {
+      display:flex;
+      justify-content:flex-end;
+      gap:4px;
+      margin-top:4px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu">
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquariums</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <span class="back-link" id="backLink">← Retour aux aquariums</span>
+
+    <div class="card">
+      <h1 id="tankTitle">Bac</h1>
+      <p class="subtitle">
+        Suivi des paramètres, des reproductions et de la population pour ce bac.
+      </p>
+      <div id="tankMeta" class="small-note"></div>
+
+      <div style="margin-top:8px;">
+        <button class="btn-secondary" id="backAquariumBtn">Retour à la liste des aquariums</button>
+      </div>
+    </div>
+
+    <!-- Paramètres : saisie en une fois, date auto -->
+    <div class="card">
+      <h2>Paramètres du jour</h2>
+      <div class="row-3">
+        <div class="field">
+          <label for="tempInput">Température (°C)</label>
+          <input type="number" step="0.1" id="tempInput">
+        </div>
+        <div class="field">
+          <label for="phInput">pH</label>
+          <input type="number" step="0.01" id="phInput">
+        </div>
+        <div class="field">
+          <label for="ghInput">GH (°dGH)</label>
+          <input type="number" step="0.5" id="ghInput">
+        </div>
+      </div>
+      <div class="field">
+        <label for="obsInput">Note / observation</label>
+        <textarea id="obsInput"></textarea>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn-primary" id="saveMeasureBtn">Enregistrer les paramètres</button>
+        <button class="btn-secondary" id="reproBtn">Reproduction (marquer cette date)</button>
+      </div>
+    </div>
+
+    <!-- Graphiques -->
+    <div class="card">
+      <h2>Graphiques</h2>
+      <div class="row-3">
+        <div>
+          <h3 style="font-size:0.9rem; margin-bottom:4px;">Température</h3>
+          <div class="chart-wrapper"><canvas id="tempChart"></canvas></div>
+        </div>
+        <div>
+          <h3 style="font-size:0.9rem; margin-bottom:4px;">pH</h3>
+          <div class="chart-wrapper"><canvas id="phChart"></canvas></div>
+        </div>
+        <div>
+          <h3 style="font-size:0.9rem; margin-bottom:4px;">GH</h3>
+          <div class="chart-wrapper"><canvas id="ghChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historique -->
+    <div class="card">
+      <h2>Historique</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+        <button class="btn-danger" id="clearHistoryBtn">Supprimer toutes les données</button>
+      </div>
+      <div id="historyContainer"></div>
+    </div>
+
+    <!-- Population -->
+    <div class="card">
+      <h2>Population du bac</h2>
+      <p class="subtitle">Tape le nom et clique sur la proposition pour l’ajouter depuis les fiches.</p>
+
+      <div class="field" style="position:relative;">
+        <label for="popSearch">Nom de l'espèce</label>
+        <input type="text" id="popSearch" placeholder="Ex : Astronotus, Poecilia...">
+        <div id="popSuggestions" style="
+          position:absolute; top:100%; left:0; right:0;
+          background:#020617; border:1px solid #1f2937;
+          border-radius:6px; max-height:180px; overflow-y:auto;
+          z-index:40; display:none; font-size:0.8rem;
+        "></div>
+      </div>
+
+      <div style="margin:6px 0;">
+        <button class="btn-secondary" id="clearPopBtn">Vider la population</button>
+      </div>
+
+      <div id="populationContainer" style="margin-top:8px; display:flex; flex-wrap:wrap; gap:12px;"></div>
+    </div>
+  </main>
+
+  <!-- Base d'espèces commune -->
+  <script src="especes.js"></script>
+
+  <script>
+    // ===== Auth / nav =====
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    document.getElementById("navbarUser").textContent = currentUser.username;
+
+    document.querySelector(".nav-btn[data-link='aquarium.html']")
+      .addEventListener("click", () => { window.location.href = "aquarium.html"; });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+    document.getElementById("backLink").addEventListener("click", () => {
+      window.location.href = "aquarium.html";
+    });
+
+    const backAquariumBtn = document.getElementById("backAquariumBtn");
+    if (backAquariumBtn) {
+      backAquariumBtn.addEventListener("click", () => {
+        window.location.href = "aquarium.html";
+      });
+    }
+
+    // ===== id bac =====
+    function getTankIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const idStr = params.get("id");
+      if (!idStr) return null;
+      const n = Number(idStr);
+      return Number.isNaN(n) ? null : n;
+    }
+    const tankId = getTankIdFromUrl();
+    if (tankId === null) {
+      alert("Aucun bac spécifié.");
+      window.location.href = "aquarium.html";
+    }
+
+    // IMPORTANT : même clé que dans aquarium.html
+    const AQUA_BAC_KEY = "aquarium_bac_list_v1_" + currentUser.username;
+    const HISTORY_KEY  = "bac_history_indiv_" + currentUser.username + "_" + tankId;
+    const POP_KEY      = "bac_population_fiches_" + currentUser.username + "_" + tankId;
+
+    function loadAquariums() {
+      try { return JSON.parse(localStorage.getItem(AQUA_BAC_KEY) || "[]"); }
+      catch(e) { return []; }
+    }
+    function loadHistory() {
+      try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); }
+      catch(e) { return []; }
+    }
+    function saveHistory(list) {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
+    }
+
+    const allTanks = loadAquariums();
+    const tank = allTanks.find(t => t.id === tankId);
+    if (!tank) {
+      alert("Bac introuvable.");
+      window.location.href = "aquarium.html";
+    }
+    document.getElementById("tankTitle").textContent = "Bac : " + (tank.name || "Sans nom");
+    document.getElementById("tankMeta").textContent = "ID interne : " + tank.id;
+
+    // ===== Population (FICHES commune) =====
+    const FICHES = window.FICHES || [];
+
+    function loadPopulation() {
+      try { return JSON.parse(localStorage.getItem(POP_KEY) || "[]"); }
+      catch(e) { return []; }
+    }
+    function savePopulation(arr) {
+      localStorage.setItem(POP_KEY, JSON.stringify(arr));
+    }
+
+    const popSearchInput      = document.getElementById("popSearch");
+    const popSuggestionsDiv   = document.getElementById("popSuggestions");
+    const populationContainer = document.getElementById("populationContainer");
+    const clearPopBtn         = document.getElementById("clearPopBtn");
+
+    function renderPopulation() {
+      const ids = loadPopulation();
+      populationContainer.innerHTML = "";
+
+      if (!ids.length) {
+        const p = document.createElement("p");
+        p.className = "small-note";
+        p.textContent = "Aucune espèce enregistrée pour ce bac.";
+        populationContainer.appendChild(p);
+        return;
+      }
+
+      ids.forEach(id => {
+        const fiche = FICHES.find(f => f.id === id);
+
+        const card = document.createElement("div");
+        card.className = "species-card";
+
+        if (fiche && fiche.image) {
+          const img = document.createElement("img");
+          img.src = fiche.image;
+          img.alt = fiche.nomScientifique || fiche.nomCommun || "";
+          card.appendChild(img);
+        }
+
+        const title = document.createElement("div");
+        title.className = "species-card-title";
+        // affichage : nom scientifique seulement
+        title.textContent = fiche && fiche.nomScientifique ? fiche.nomScientifique : id;
+        card.appendChild(title);
+
+        const sub = document.createElement("div");
+        sub.className = "species-card-sub";
+        // si tu veux SUPPRIMER aussi le nom commun ici, mets simplement "" à la place
+        sub.textContent = fiche && fiche.nomCommun ? fiche.nomCommun : "";
+        card.appendChild(sub);
+
+        const actions = document.createElement("div");
+        actions.className = "species-card-actions";
+
+        const ficheBtn = document.createElement("button");
+        ficheBtn.className = "btn-xs";
+        ficheBtn.textContent = "Fiche";
+        ficheBtn.addEventListener("click", () => {
+          if (fiche && fiche.page) window.location.href = fiche.page;
+        });
+        actions.appendChild(ficheBtn);
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "btn-xs";
+        delBtn.textContent = "X";
+        delBtn.style.background = "#dc2626";
+        delBtn.style.color = "#f9fafb";
+        delBtn.addEventListener("click", () => {
+          let arr = loadPopulation();
+          arr = arr.filter(v => v !== id);
+          savePopulation(arr);
+          renderPopulation();
+        });
+        actions.appendChild(delBtn);
+
+        card.appendChild(actions);
+        populationContainer.appendChild(card);
+      });
+    }
+
+    function buildPopSuggestions(text) {
+      popSuggestionsDiv.innerHTML = "";
+      const q = text.toLowerCase().trim();
+      if (!q) {
+        popSuggestionsDiv.style.display = "none";
+        return;
+      }
+      const matches = FICHES.filter(f => {
+        const hay = [
+          f.nomScientifique,
+          f.nomCommun,
+          f.ordre,
+          f.famille,
+          f.genre
+        ].join(" ").toLowerCase();
+        return hay.includes(q);
+      }).slice(0, 20);
+
+      if (!matches.length) {
+        popSuggestionsDiv.style.display = "none";
+        return;
+      }
+
+      matches.forEach(f => {
+        const item = document.createElement("div");
+        item.style.padding = "4px 6px";
+        item.style.cursor = "pointer";
+        item.style.borderBottom = "1px solid #1f2937";
+        // texte de suggestion : tu peux ici aussi virer le nom commun si tu veux
+        item.textContent = (f.nomScientifique || f.nomCommun || "");
+        item.addEventListener("mouseenter", () => item.style.background = "#111827");
+        item.addEventListener("mouseleave", () => item.style.background = "transparent");
+        item.addEventListener("click", () => {
+          let ids = loadPopulation();
+          if (!ids.includes(f.id)) {
+            ids.push(f.id);
+            savePopulation(ids);
+            renderPopulation();
+          }
+          popSearchInput.value = "";
+          popSuggestionsDiv.style.display = "none";
+        });
+        item.style.background = "transparent";
+        popSuggestionsDiv.appendChild(item);
+      });
+
+      popSuggestionsDiv.style.display = "block";
+    }
+
+    popSearchInput.addEventListener("input", () => {
+      buildPopSuggestions(popSearchInput.value);
+    });
+    popSearchInput.addEventListener("blur", () => {
+      setTimeout(() => { popSuggestionsDiv.style.display = "none"; }, 150);
+    });
+
+    clearPopBtn.addEventListener("click", () => {
+      if (!confirm("Vider toute la population enregistrée pour ce bac ?")) return;
+      localStorage.removeItem(POP_KEY);
+      renderPopulation();
+    });
+
+    // ===== Historique / mesures =====
+    const tempInput        = document.getElementById("tempInput");
+    const phInput          = document.getElementById("phInput");
+    const ghInput          = document.getElementById("ghInput");
+    const obsInput         = document.getElementById("obsInput");
+    const saveMeasureBtn   = document.getElementById("saveMeasureBtn");
+    const reproBtn         = document.getElementById("reproBtn");
+    const historyContainer = document.getElementById("historyContainer");
+    const clearHistoryBtn  = document.getElementById("clearHistoryBtn");
+
+    function addMeasureEntry(isReproOnly) {
+      const now   = new Date();
+      const tVal  = tempInput.value.trim();
+      const phVal = phInput.value.trim();
+      const ghVal = ghInput.value.trim();
+      const obsVal= obsInput.value.trim();
+
+      if (!isReproOnly) {
+        if (!tVal && !phVal && !ghVal && !obsVal) {
+          alert("Saisis au moins un paramètre ou une note.");
+          return;
+        }
+      } else {
+        if (!confirm("Marquer une reproduction à cette date (sans modifier les valeurs) ?")) return;
+      }
+
+      const entry = {
+        id:   Date.now() + "-" + Math.random().toString(16).slice(2),
+        date: now.toISOString(),
+        temp: isReproOnly ? null : (tVal || null),
+        ph:   isReproOnly ? null : (phVal || null),
+        gh:   isReproOnly ? null : (ghVal || null),
+        obs:  isReproOnly ? ""   : (obsVal || ""),
+        repro: !!isReproOnly
+      };
+
+      const history = loadHistory();
+      history.push(entry);
+      saveHistory(history);
+
+      if (!isReproOnly) {
+        tempInput.value = "";
+        phInput.value   = "";
+        ghInput.value   = "";
+        obsInput.value  = "";
+      }
+
+      renderHistory();
+      updateCharts();
+    }
+
+    saveMeasureBtn.addEventListener("click", () => {
+      addMeasureEntry(false);
+    });
+
+    reproBtn.addEventListener("click", () => {
+      addMeasureEntry(true);
+    });
+
+    function sameDay(d1, d2) {
+      return d1.getFullYear() === d2.getFullYear() &&
+             d1.getMonth() === d2.getMonth() &&
+             d1.getDate() === d2.getDate();
+    }
+
+    function renderHistory() {
+      const hist = loadHistory().slice().sort((a,b)=> new Date(b.date) - new Date(a.date));
+      historyContainer.innerHTML = "";
+      if (!hist.length) {
+        const p = document.createElement("p");
+        p.className = "small-note";
+        p.textContent = "Aucune mesure pour ce bac.";
+        historyContainer.appendChild(p);
+        return;
+      }
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const trh = document.createElement("tr");
+      ["Date / heure","Temp (°C)","pH","GH","Repro","Note",""].forEach(h => {
+        const th = document.createElement("th");
+        th.textContent = h;
+        trh.appendChild(th);
+      });
+      thead.appendChild(trh);
+      table.appendChild(thead);
+      const tbody = document.createElement("tbody");
+      hist.forEach(e => {
+        const tr = document.createElement("tr");
+        const dCell = document.createElement("td");
+        const d = new Date(e.date);
+        dCell.textContent = d.toLocaleString();
+        const t = document.createElement("td");
+        t.textContent = e.temp ?? "-";
+        const p = document.createElement("td");
+        p.textContent = e.ph ?? "-";
+        const g = document.createElement("td");
+        g.textContent = e.gh ?? "-";
+        const r = document.createElement("td");
+        r.textContent = e.repro ? "Oui" : "Non";
+        const o = document.createElement("td");
+        o.textContent = e.obs || "";
+
+        const actionTd = document.createElement("td");
+        const delDayBtn = document.createElement("button");
+        delDayBtn.className = "btn-xs";
+        delDayBtn.textContent = "Suppr jour";
+        delDayBtn.style.background = "#dc2626";
+        delDayBtn.style.color = "#f9fafb";
+        delDayBtn.addEventListener("click", () => {
+          if (!confirm("Supprimer toutes les mesures de ce jour ?")) return;
+          const refDate = new Date(e.date);
+          let arr = loadHistory();
+          arr = arr.filter(x => !sameDay(new Date(x.date), refDate));
+          saveHistory(arr);
+          renderHistory();
+          updateCharts();
+        });
+        actionTd.appendChild(delDayBtn);
+
+        tr.appendChild(dCell); tr.appendChild(t); tr.appendChild(p);
+        tr.appendChild(g); tr.appendChild(r); tr.appendChild(o);
+        tr.appendChild(actionTd);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      historyContainer.appendChild(table);
+    }
+
+    // ===== Graphs Chart.js =====
+    const tempCtx = document.getElementById("tempChart").getContext("2d");
+    const phCtx   = document.getElementById("phChart").getContext("2d");
+    const ghCtx   = document.getElementById("ghChart").getContext("2d");
+
+    const tempChart = new Chart(tempCtx, {
+      type: "line",
+      data: { labels: [], datasets: [{ label:"Température (°C)", data: [], borderColor:"rgba(239,68,68,1)", tension:0 }] },
+      options: { responsive:true, maintainAspectRatio:false }
+    });
+    const phChart = new Chart(phCtx, {
+      type: "line",
+      data: { labels: [], datasets: [{ label:"pH", data: [], borderColor:"rgba(56,189,248,1)", tension:0 }] },
+      options: { responsive:true, maintainAspectRatio:false }
+    });
+    const ghChart = new Chart(ghCtx, {
+      type: "line",
+      data: { labels: [], datasets: [{ label:"GH (°dGH)", data: [], borderColor:"rgba(34,197,94,1)", tension:0 }] },
+      options: { responsive:true, maintainAspectRatio:false }
+    });
+
+    function updateCharts() {
+      const hist = loadHistory().slice().reverse();
+      const labels = hist.map(e => new Date(e.date).toLocaleDateString());
+      tempChart.data.labels = labels;
+      phChart.data.labels   = labels;
+      ghChart.data.labels   = labels;
+
+      tempChart.data.datasets[0].data = hist.map(e => e.temp !== null ? Number(e.temp) : null);
+      phChart.data.datasets[0].data   = hist.map(e => e.ph   !== null ? Number(e.ph)   : null);
+      ghChart.data.datasets[0].data   = hist.map(e => e.gh   !== null ? Number(e.gh)   : null);
+
+      tempChart.update();
+      phChart.update();
+      ghChart.update();
+    }
+
+    clearHistoryBtn.addEventListener("click", () => {
+      if (!confirm("Supprimer toutes les mesures de ce bac ?")) return;
+      localStorage.removeItem(HISTORY_KEY);
+      renderHistory();
+      updateCharts();
+    });
+
+    renderHistory();
+    updateCharts();
+    renderPopulation();
+  </script>
+</body>
+</html>

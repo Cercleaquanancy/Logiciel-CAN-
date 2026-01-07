@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Macropodus opercularis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Macropodus opercularis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Macropodus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Macropodus opercularis</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Macropodus-opercularis/imgMacropodusopercularis.jpeg"
+                 alt="Macropodus opercularis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Macropodus opercularis</strong>, le poisson‑paradis, est l’un des premiers poissons tropicaux maintenus en aquarium, originaire d’Asie de l’Est et du Sud‑Est où il peuple rizières, fossés, mares et petits cours d’eau.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 8–10&nbsp;cm, avec un corps allongé orné de bandes verticales bleutées et rougeâtres, et de longues nageoires plus développées et colorées chez le mâle.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Espèce robuste mais au caractère bien affirmé, Macropodus opercularis est territorial, en particulier les mâles entre eux ; il se maintient de préférence en couple ou en harem dans un bac bien structuré.
+          </p>
+          <p class="section-text">
+            Il occupe surtout la zone médiane et supérieure, aime les aquariums densément plantés avec de nombreuses cachettes et supporte sans difficulté des eaux pauvres en oxygène et des variations de température modérées.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> constructeur de nid de bulles ; le mâle érige un nid en surface, souvent sous une feuille ou parmi les plantes flottantes, puis enlace la femelle sous le nid lors de la ponte.
+          </p>
+          <p class="section-text">
+            Les œufs sont récupérés et placés dans le nid par le mâle, qui assure ensuite la garde et la ventilation jusqu’à l’éclosion et à la nage libre ; la femelle doit parfois être retirée si le mâle se montre trop agressif hors période de frai.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus grand, beaucoup plus coloré, avec nageoires dorsale, anale et caudale très allongées et effilées ; femelle plus petite, couleurs plus ternes, nageoires plus courtes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> autour de 5 à 8&nbsp;ans en aquarium, parfois davantage avec une bonne maintenance.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, on le trouve dans des eaux calmes ou faiblement courantes de plaine : rizières, fossés d’irrigation, marais, mares et bras morts, souvent peu profonds, chauds, riches en végétation et parfois très pauvres en oxygène dissous.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Macropodus-opercularis/imgmapsmacropodusopercularis.png"
+              alt="Répartition de Macropodus opercularis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie : sud de la Chine (du Yangzi Jiang à la rivière des Perles), Taïwan, Hainan, nord et centre du Vietnam, nord‑est du Laos.</li>
+              <li>Introduit dans de nombreux pays (Europe, Amériques, îles) où il peut se maintenir en milieux calmes et tempérés.</li>
+            </ul>
+            <p>
+              Son adaptabilité lui permet de supporter des eaux fraîches en hiver et plus chaudes en été, ce qui explique son succès en bassin extérieur dans les climats tempérés doux.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 26&nbsp;°C, avec tolérance plus large environ 16 à 28&nbsp;°C ; une légère variation saisonnière est bien acceptée.</p>
+            <p><strong>pH :</strong> 6,0 à 8,0, eau légèrement acide à alcaline.</p>
+            <p><strong>GH :</strong> 4 à 20&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> lent à quasi nul, avec une bonne végétation, des racines, des pierres et des plantes flottantes pour l’ombre et la construction du nid.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 80–100&nbsp;L pour un couple, plus pour un harem ou une cohabitation avec d’autres espèces.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore opportuniste ; se nourrit majoritairement de larves d’insectes, vers, petits crustacés et autres invertébrés aquatiques.
+            </p>
+            <p>
+              En aquarium, il accepte sans difficulté proies vivantes et congelées (artémias, daphnies, vers de vase, larves de moustique) ainsi que paillettes et granulés de qualité ; une base protéinée variée renforce la coloration et la vitalité.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

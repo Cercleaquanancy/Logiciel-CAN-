@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Événements</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 56px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .navbar-left { display: flex; align-items: center; gap: 10px; }
+    .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
+    .navbar-user { font-size: 0.8rem; color: #9ca3af; }
+
+    .navbar-menu {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-btn span.icon { font-size: 1rem; }
+    .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
+    .nav-btn:hover { background: #111827; }
+
+    .navbar-logout {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .navbar-logout:hover { background: #1f2937; }
+
+    .page {
+      padding-top: 72px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.5);
+    }
+
+    .card h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* En-tête liste (tri+filtre) */
+    .event-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .event-sort-filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .event-sort-label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+    .event-sort-select,
+    .event-filter-select {
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+    }
+
+    /* Liste / cartes */
+    .event-list {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .event-item {
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 40%);
+      border: 1px solid #1f2937;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.15s ease;
+    }
+    .event-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(15,23,42,0.8);
+      border-color: #38bdf8;
+    }
+    .event-item-main {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .event-title {
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .event-meta {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .event-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .event-tag-date {
+      font-size: 0.8rem;
+      border-radius: 999px;
+      padding: 4px 8px;
+      border: 1px solid #1f2937;
+      background: rgba(15,23,42,0.9);
+      white-space: nowrap;
+      color: #e5e7eb;
+    }
+    .event-tag-type {
+      font-size: 0.75rem;
+      border-radius: 999px;
+      padding: 3px 7px;
+      border: 1px solid #1f2937;
+      background: rgba(8,47,73,0.9);
+      color: #bae6fd;
+      white-space: nowrap;
+    }
+
+    .event-admin-actions {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-left: 2px;
+    }
+    .btn-icon {
+      border: none;
+      background: transparent;
+      color: #fca5a5;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 2px;
+    }
+    .btn-icon:hover { color: #f87171; }
+
+    /* Formulaire admin */
+    .field { margin-bottom: 8px; }
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .text-input, .date-input, .select-input {
+      width: 100%;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      padding: 6px 8px;
+    }
+    .text-input:focus, .date-input:focus, .select-input:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+    }
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      padding: 6px 8px;
+      resize: vertical;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-right: 6px;
+      margin-top: 4px;
+    }
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    .btn-danger {
+      background: #dc2626;
+      color: #f9fafb;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .btn-danger:hover { filter: brightness(1.05); }
+
+    .admin-only-info {
+      font-size: 0.75rem;
+      color: #f97373;
+      margin-bottom: 6px;
+    }
+
+    /* Modale détails */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .modal-backdrop.visible { display: flex; }
+    .modal {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      max-width: 480px;
+      width: 90%;
+      padding: 14px 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #38bdf8;
+    }
+    .modal-close {
+      border: none;
+      background: transparent;
+      color: #9ca3af;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .modal-body { font-size: 0.85rem; color: #d1d5db; }
+    .modal-body-row { margin-bottom: 4px; }
+    .modal-label { font-weight: 600; color: #cbd5f5; }
+    .modal-link {
+      color: #38bdf8;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .modal-link:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .page { padding-top: 90px; }
+      .event-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .event-right {
+        align-self: stretch;
+        justify-content: space-between;
+      }
+      .event-admin-actions {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Événements</h1>
+      <p class="subtitle">
+        Emploi du temps des événements du cercle : clique sur un événement pour voir tous les détails.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Événements à venir</h2>
+      <div class="event-header-line">
+        <p class="subtitle" style="margin-bottom:0;">
+          Double‑clic (admin) pour charger un événement dans le formulaire.
+        </p>
+        <div class="event-sort-filter-group">
+          <span class="event-sort-label">Filtrer :</span>
+          <select id="eventFilterSelect" class="event-filter-select">
+            <option value="all">Tous les types</option>
+            <option value="bourse">Bourse</option>
+            <option value="reunion">Réunion</option>
+            <option value="ag">Assemblée générale</option>
+            <option value="autre">Autre</option>
+          </select>
+          <span class="event-sort-label">Trier :</span>
+          <select id="eventSortSelect" class="event-sort-select">
+            <option value="date-asc">Date la plus proche</option>
+            <option value="date-desc">Date la plus lointaine</option>
+            <option value="title-asc">Titre A → Z</option>
+            <option value="title-desc">Titre Z → A</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="eventList" class="event-list"></div>
+      <p class="small-note">
+        Les événements passés sont automatiquement masqués. Tu peux filtrer par type et modifier l’ordre d’affichage. [web:56][web:145]
+      </p>
+    </div>
+
+    <!-- Bloc admin, visible seulement pour can/admin -->
+    <div class="card" id="adminEventCard" style="display:none;">
+      <h2>Gestion des événements (admin)</h2>
+      <p class="admin-only-info">
+        Zone réservée : seul l’admin (compte CAN / rôle admin) peut créer, modifier ou supprimer les événements.
+      </p>
+
+      <form id="eventForm" onsubmit="return false;">
+        <input type="hidden" id="eventId">
+
+        <div class="field">
+          <label for="eventTitle">Titre</label>
+          <input id="eventTitle" class="text-input" type="text" placeholder="Ex : Bourse aux poissons">
+        </div>
+
+        <div class="field">
+          <label for="eventType">Type</label>
+          <select id="eventType" class="select-input">
+            <option value="bourse">Bourse</option>
+            <option value="reunion">Réunion</option>
+            <option value="ag">Assemblée générale</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="eventDate">Date</label>
+          <input id="eventDate" class="date-input" type="date">
+        </div>
+
+        <div class="field">
+          <label for="eventTime">Heure (optionnel)</label>
+          <input id="eventTime" class="text-input" type="time">
+        </div>
+
+        <div class="field">
+          <label for="eventPlace">Lieu</label>
+          <input id="eventPlace" class="text-input" type="text" placeholder="Ex : Salle des fêtes de Nancy">
+        </div>
+
+        <div class="field">
+          <label for="eventDesc">Description</label>
+          <textarea id="eventDesc" placeholder="Détails de l’événement, programme, matériel à apporter, etc."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="eventLink">Lien externe (optionnel)</label>
+          <input id="eventLink" class="text-input" type="url" placeholder="Ex : lien Facebook ou Google Maps">
+        </div>
+
+        <button id="saveEventBtn" class="btn-primary">Enregistrer l’événement</button>
+        <button id="resetEventBtn" class="btn-primary" type="button">Nouveau</button>
+        <button id="deleteEventBtn" class="btn-danger" type="button">Supprimer</button>
+        <div id="eventFormInfo" class="small-note"></div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modale détails -->
+  <div id="eventModalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Détail de l’événement</div>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-row">
+          <span class="modal-label">Date :</span>
+          <span id="modalDate"></span>
+        </div>
+        <div class="modal-body-row">
+          <span class="modal-label">Heure :</span>
+          <span id="modalTime"></span>
+        </div>
+        <div class="modal-body-row">
+          <span class="modal-label">Lieu :</span>
+          <span id="modalPlace"></span>
+        </div>
+        <div class="modal-body-row">
+          <span class="modal-label">Type :</span>
+          <span id="modalType"></span>
+        </div>
+        <div class="modal-body-row">
+          <span class="modal-label">Description :</span><br>
+          <span id="modalDesc"></span>
+        </div>
+        <div class="modal-body-row" id="modalLinkRow" style="margin-top:4px; display:none;">
+          <span class="modal-label">Lien :</span>
+          <a id="modalLink" href="#" target="_blank" class="modal-link"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Auth + navbar ---
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    const navbarUser = document.getElementById('navbarUser');
+    const roleLabel =
+      currentUser.role === "admin" ? "Admin" :
+      currentUser.role === "membre_bureau" ? "Membre de bureau" :
+      "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+    const CURRENT_PAGE = "evenement.html";
+    const navbarMenu = document.getElementById('navbarMenu');
+    const navButtons = document.querySelectorAll('.nav-btn[data-link]');
+
+    navButtons.forEach(btn => {
+      const link = btn.dataset.link;
+      if (link === CURRENT_PAGE) { btn.classList.add('active'); }
+      btn.addEventListener('click', () => { window.location.href = link; });
+    });
+
+    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
+      const bureauBtn = document.createElement("button");
+      bureauBtn.className = "nav-btn";
+      bureauBtn.dataset.link = "bureau.html";
+      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
+      const logoutBtnElem = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
+      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
+      if (CURRENT_PAGE === "bureau.html") { bureauBtn.classList.add('active'); }
+    }
+
+    if (currentUser.role === "admin" || currentUser.serre === true) {
+      const serreBtn = document.createElement("button");
+      serreBtn.className = "nav-btn";
+      serreBtn.dataset.link = "serre.html";
+      serreBtn.innerHTML = '<span class="icon">🌿</span> <span>Serre</span>';
+      const logoutBtnElem2 = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(serreBtn, logoutBtnElem2);
+      serreBtn.addEventListener('click', () => { window.location.href = "serre.html"; });
+      if (CURRENT_PAGE === "serre.html") { serreBtn.classList.add('active'); }
+    }
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // --- Données événements ---
+    const EVENTS_KEY = "eventsData";
+
+    function loadEvents() {
+      const raw = localStorage.getItem(EVENTS_KEY);
+      if (!raw) return [];
+      try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch(e) {
+        return [];
+      }
+    }
+
+    function saveEvents(events) {
+      localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
+    }
+
+    let EVENTS = loadEvents();
+    if (!EVENTS.length) {
+      EVENTS = [
+        {
+          id: "evt1",
+          type: "bourse",
+          titre: "Bourse aux poissons du cercle",
+          dateIso: "2026-02-10",
+          heure: "10:00",
+          lieu: "Salle des fêtes de Nancy",
+          description: "Vente et échange de poissons, plantes et matériel aquariophile.",
+          lien: ""
+        },
+        {
+          id: "evt2",
+          type: "reunion",
+          titre: "Réunion mensuelle du club",
+          dateIso: "2026-01-25",
+          heure: "20:00",
+          lieu: "Local du cercle",
+          description: "Point sur les projets, organisation des prochaines bourses et ateliers.",
+          lien: ""
+        }
+      ];
+      saveEvents(EVENTS);
+    } else {
+      // migration simple si type manquant
+      EVENTS = EVENTS.map(ev => ev.type ? ev : { ...ev, type: "autre" });
+      saveEvents(EVENTS);
+    }
+
+    const eventListDiv = document.getElementById("eventList");
+    const eventSortSelect = document.getElementById("eventSortSelect");
+    const eventFilterSelect = document.getElementById("eventFilterSelect");
+
+    function isAdminUser() {
+      return currentUser.role === "admin" || currentUser.username === "can"; // [web:123]
+    }
+
+    function getTypeLabel(type) {
+      if (type === "bourse") return "Bourse";
+      if (type === "reunion") return "Réunion";
+      if (type === "ag") return "Assemblée générale";
+      return "Autre";
+    }
+
+    function getSortedFilteredUpcomingEvents() {
+      const today = new Date();
+      const filterType = eventFilterSelect.value || "all";
+
+      let data = EVENTS.filter(ev => new Date(ev.dateIso) >= today);
+
+      if (filterType !== "all") {
+        data = data.filter(ev => (ev.type || "autre") === filterType);
+      }
+
+      const mode = eventSortSelect.value || "date-asc";
+
+      if (mode === "date-asc") {
+        return data.sort((a, b) => new Date(a.dateIso) - new Date(b.dateIso)); // [web:56][web:145]
+      }
+      if (mode === "date-desc") {
+        return data.sort((a, b) => new Date(b.dateIso) - new Date(a.dateIso));
+      }
+      if (mode === "title-asc") {
+        return data.sort((a, b) => (a.titre || "").localeCompare(b.titre || "", "fr"));
+      }
+      if (mode === "title-desc") {
+        return data.sort((a, b) => (b.titre || "").localeCompare(a.titre || "", "fr"));
+      }
+      return data;
+    }
+
+    function renderEvents() {
+      if (!eventListDiv) return;
+
+      const upcoming = getSortedFilteredUpcomingEvents();
+
+      if (!upcoming.length) {
+        eventListDiv.innerHTML = '<p class="small-note">Aucun événement ne correspond au filtre.</p>';
+        return;
+      }
+
+      eventListDiv.innerHTML = upcoming.map(ev => {
+        const d = new Date(ev.dateIso);
+        const dateStr = isNaN(d.getTime()) ? ev.dateIso : d.toLocaleDateString();
+        const hourStr = ev.heure ? (" à " + ev.heure) : "";
+        const typeLabel = getTypeLabel(ev.type || "autre");
+        return `
+          <div class="event-item" data-id="${ev.id}">
+            <div class="event-item-main">
+              <div class="event-title">${ev.titre}</div>
+              <div class="event-meta">${dateStr}${hourStr} – ${ev.lieu}</div>
+            </div>
+            <div class="event-right">
+              <div class="event-tag-type">${typeLabel}</div>
+              <div class="event-tag-date">${dateStr}</div>
+              <div class="event-admin-actions">
+                <button class="btn-icon" title="Supprimer l’événement" data-delete-id="${ev.id}">🗑️</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Clic simple = détails
+      document.querySelectorAll(".event-item").forEach(item => {
+        item.addEventListener("click", (e) => {
+          if (e.target.closest(".btn-icon")) return;
+          const id = item.getAttribute("data-id");
+          const ev = EVENTS.find(e => e.id === id);
+          if (ev) openEventModal(ev);
+        });
+      });
+
+      // Double‑clic admin = remplissage formulaire
+      if (isAdminUser()) {
+        document.querySelectorAll(".event-item").forEach(item => {
+          item.addEventListener("dblclick", () => {
+            const id = item.getAttribute("data-id");
+            const ev = EVENTS.find(e => e.id === id);
+            if (!ev) return;
+            fillFormFromEvent(ev);
+            eventFormInfo.textContent = "Édition de l’événement sélectionné.";
+          });
+        });
+
+        // Icône poubelle = suppression avec confirm
+        document.querySelectorAll("[data-delete-id]").forEach(btn => {
+          btn.parentElement.parentElement.style.display = "flex";
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const id = btn.getAttribute("data-delete-id");
+            confirmAndDelete(id);
+          });
+        });
+
+        // Afficher les actions admin sur les cartes
+        document.querySelectorAll(".event-admin-actions").forEach(block => {
+          block.style.display = "flex";
+        });
+      } else {
+        // cacher actions admin pour adhérents
+        document.querySelectorAll(".event-admin-actions").forEach(block => {
+          block.style.display = "none";
+        });
+      }
+    }
+
+    // Tri + filtre réactifs
+    eventSortSelect.addEventListener("change", renderEvents);
+    eventFilterSelect.addEventListener("change", renderEvents);
+
+    // --- Modale ---
+    const modalBackdrop = document.getElementById("eventModalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDate = document.getElementById("modalDate");
+    const modalTime = document.getElementById("modalTime");
+    const modalPlace = document.getElementById("modalPlace");
+    const modalType = document.getElementById("modalType");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalLinkRow = document.getElementById("modalLinkRow");
+    const modalLink = document.getElementById("modalLink");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+    function openEventModal(ev) {
+      const d = new Date(ev.dateIso);
+      const dateStr = isNaN(d.getTime()) ? ev.dateIso : d.toLocaleDateString();
+
+      modalTitle.textContent = ev.titre;
+      modalDate.textContent = dateStr;
+      modalTime.textContent = ev.heure || "-";
+      modalPlace.textContent = ev.lieu || "-";
+      modalType.textContent = getTypeLabel(ev.type || "autre");
+      modalDesc.textContent = ev.description || "";
+
+      if (ev.lien) {
+        modalLinkRow.style.display = "block";
+        modalLink.href = ev.lien;
+        modalLink.textContent = ev.lien;
+      } else {
+        modalLinkRow.style.display = "none";
+      }
+
+      modalBackdrop.classList.add("visible");
+    }
+
+    function closeEventModal() {
+      modalBackdrop.classList.remove("visible");
+    }
+
+    modalCloseBtn.addEventListener("click", closeEventModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) closeEventModal();
+    });
+
+    // --- Bloc admin (création/modif/suppression) ---
+    const adminEventCard = document.getElementById("adminEventCard");
+    const eventIdInput = document.getElementById("eventId");
+    const eventTitleInput = document.getElementById("eventTitle");
+    const eventTypeInput = document.getElementById("eventType");
+    const eventDateInput = document.getElementById("eventDate");
+    const eventTimeInput = document.getElementById("eventTime");
+    const eventPlaceInput = document.getElementById("eventPlace");
+    const eventDescInput = document.getElementById("eventDesc");
+    const eventLinkInput = document.getElementById("eventLink");
+    const saveEventBtn = document.getElementById("saveEventBtn");
+    const resetEventBtn = document.getElementById("resetEventBtn");
+    const deleteEventBtn = document.getElementById("deleteEventBtn");
+    const eventFormInfo = document.getElementById("eventFormInfo");
+
+    function initAdminBlock() {
+      if (!isAdminUser()) {
+        adminEventCard.style.display = "none";
+        return;
+      }
+      adminEventCard.style.display = "block";
+
+      saveEventBtn.addEventListener("click", () => {
+        const titre = (eventTitleInput.value || "").trim();
+        const type = eventTypeInput.value || "autre";
+        const dateIso = eventDateInput.value;
+        const heure = eventTimeInput.value;
+        const lieu = (eventPlaceInput.value || "").trim();
+        const description = (eventDescInput.value || "").trim();
+        const lien = (eventLinkInput.value || "").trim();
+
+        if (!titre) {
+          alert("Titre obligatoire.");
+          return;
+        }
+        if (!dateIso) {
+          alert("Date obligatoire.");
+          return;
+        }
+
+        const existingId = eventIdInput.value;
+        if (existingId) {
+          const idx = EVENTS.findIndex(e => e.id === existingId);
+          if (idx >= 0) {
+            EVENTS[idx] = { id: existingId, type, titre, dateIso, heure, lieu, description, lien };
+          }
+        } else {
+          const newId = "evt_" + Date.now();
+          EVENTS.push({ id: newId, type, titre, dateIso, heure, lieu, description, lien });
+          eventIdInput.value = newId;
+        }
+
+        saveEvents(EVENTS);
+        eventFormInfo.textContent = "Événement enregistré le " + new Date().toLocaleString() + ".";
+        renderEvents();
+      });
+
+      resetEventBtn.addEventListener("click", () => {
+        clearForm();
+        eventFormInfo.textContent = "Formulaire réinitialisé pour un nouvel événement.";
+      });
+
+      deleteEventBtn.addEventListener("click", () => {
+        const existingId = eventIdInput.value;
+        if (!existingId) {
+          alert("Aucun événement sélectionné à supprimer.");
+          return;
+        }
+        confirmAndDelete(existingId);
+      });
+    }
+
+    function clearForm() {
+      eventIdInput.value = "";
+      eventTitleInput.value = "";
+      eventTypeInput.value = "bourse";
+      eventDateInput.value = "";
+      eventTimeInput.value = "";
+      eventPlaceInput.value = "";
+      eventDescInput.value = "";
+      eventLinkInput.value = "";
+    }
+
+    function fillFormFromEvent(ev) {
+      eventIdInput.value = ev.id;
+      eventTitleInput.value = ev.titre || "";
+      eventTypeInput.value = ev.type || "autre";
+      eventDateInput.value = ev.dateIso || "";
+      eventTimeInput.value = ev.heure || "";
+      eventPlaceInput.value = ev.lieu || "";
+      eventDescInput.value = ev.description || "";
+      eventLinkInput.value = ev.lien || "";
+    }
+
+    function confirmAndDelete(id) {
+      const ev = EVENTS.find(e => e.id === id);
+      const title = ev ? ev.titre : "cet événement";
+      const ok = window.confirm('Supprimer "' + title + '" ? Cette action est définitive.');
+      if (!ok) return;
+      EVENTS = EVENTS.filter(e => e.id !== id);
+      saveEvents(EVENTS);
+      if (eventIdInput.value === id) {
+        clearForm();
+        eventFormInfo.textContent = "Événement supprimé.";
+      }
+      renderEvents();
+    }
+
+    // Init
+    renderEvents();
+    initAdminBlock();
+  </script>
+</body>
+</html>

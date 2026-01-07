@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Serre – Bacs adhérents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:#020617;
+      color:#e5e7eb;
+      min-height:100vh;
+    }
+
+    .navbar {
+      position:fixed; top:0; left:0; width:100%;
+      min-height:56px;
+      background:rgba(15,23,42,0.98);
+      border-bottom:1px solid #1f2937;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:4px 16px;
+      z-index:50;
+      flex-wrap:wrap; gap:4px;
+    }
+    .navbar-left { display:flex; align-items:center; gap:10px; }
+    .navbar-title { font-size:0.95rem; font-weight:600; }
+    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+
+    .navbar-menu {
+      display:flex; gap:8px; align-items:center;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav-btn {
+      border:none; background:transparent; color:#cbd5f5;
+      font-size:0.8rem; padding:6px 8px; border-radius:999px;
+      cursor:pointer; display:flex; align-items:center; gap:4px;
+    }
+    .nav-btn span.icon { font-size:1rem; }
+    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
+    .nav-btn:hover { background:#111827; }
+
+    .navbar-logout {
+      border-radius:999px; border:1px solid #374151;
+      background:#111827; color:#e5e7eb;
+      padding:5px 10px; font-size:0.8rem; cursor:pointer;
+    }
+    .navbar-logout:hover { background:#1f2937; }
+
+    .page {
+      padding-top:72px;
+      padding:0 12px 20px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .card {
+      background:#020617;
+      border-radius:10px;
+      border:1px solid #1f2937;
+      padding:14px 16px;
+      margin-bottom:14px;
+    }
+
+    .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
+    .card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
+    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+
+    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+    textarea {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem; min-height:120px; resize:vertical;
+    }
+    textarea:focus {
+      outline:none; border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary {
+      background:#38bdf8; color:#0f172a;
+      border:none; border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-primary:hover { filter:brightness(1.05); }
+
+    .note-info { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+    .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+
+    .aquarium-grid {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:10px;
+    }
+
+    .aquarium-tag {
+      width:260px;
+      border-radius:14px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      padding:10px 12px 12px;
+      font-size:0.85rem;
+      position:relative;
+      box-shadow:0 6px 16px rgba(15,23,42,0.7);
+    }
+
+    .aquarium-tag-header {
+      text-align:center;
+      font-weight:600;
+      font-size:0.9rem;
+      border-bottom:1px solid #1f2937;
+      padding-bottom:4px;
+      margin-bottom:6px;
+    }
+
+    .aquarium-tag-header input {
+      border:none;
+      background:transparent;
+      text-align:center;
+      width:100%;
+      font-size:0.9rem;
+      color:#e5e7eb;
+      outline:none;
+    }
+
+    .aquarium-tag-delete {
+      position:absolute;
+      top:6px;
+      right:6px;
+      width:20px;
+      height:20px;
+      border-radius:999px;
+      border:none;
+      background:#dc2626;
+      color:#fff;
+      cursor:pointer;
+      font-size:12px;
+      line-height:20px;
+      text-align:center;
+    }
+
+    .aquarium-tag-green-btn {
+      display:block;
+      width:140px;
+      margin:4px auto 4px;
+      background:#22c55e;
+      color:#0b1120;
+      border:none;
+      border-radius:999px;
+      padding:5px 0;
+      font-size:0.8rem;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .aquarium-tag-green-btn:hover { filter:brightness(1.05); }
+
+    .aquarium-tag-block {
+      margin-top:8px;
+      text-align:center;
+      font-size:0.8rem;
+    }
+
+    .aquarium-tag-block-title {
+      font-weight:600;
+      margin-bottom:3px;
+    }
+
+    .aquarium-tag-date-btn {
+      width:95px;
+      height:28px;
+      border-radius:999px;
+      border:1px solid #1f2937;
+      background:#111827;
+      cursor:pointer;
+      font-size:0.78rem;
+    }
+
+    .status-ok   { background:#16a34a; color:#f9fafb; }
+    .status-warn { background:#facc15; color:#111827; }
+    .status-bad  { background:#dc2626; color:#f9fafb; }
+
+    .assign-block {
+      margin-top:8px;
+      font-size:0.78rem;
+      text-align:center;
+    }
+    .assign-title {
+      font-weight:600;
+      margin-bottom:3px;
+    }
+    .assign-row {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-bottom:4px;
+    }
+    .assign-select {
+      background:#020617;
+      color:#e5e7eb;
+      border-radius:999px;
+      border:1px solid #374151;
+      padding:3px 8px;
+      font-size:0.75rem;
+      outline:none;
+    }
+    .assign-btn {
+      border-radius:999px;
+      border:1px solid #16a34a;
+      background:#022c22;
+      color:#bbf7d0;
+      padding:3px 8px;
+      font-size:0.75rem;
+      cursor:pointer;
+    }
+    .assign-btn:hover { background:#065f46; }
+
+    .assign-current {
+      font-size:0.75rem;
+      color:#9ca3af;
+    }
+    .assign-current strong { color:#fbbf24; }
+    .assign-clear {
+      border:none;
+      background:transparent;
+      color:#f97373;
+      cursor:pointer;
+      font-size:0.75rem;
+      margin-left:4px;
+    }
+
+    /* --- Styles bloc nourriture historique --- */
+    .row-feed {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+    }
+    .col-feed {
+      flex:1 1 160px;
+      min-width:0;
+    }
+    .col-feed-button {
+      align-self:flex-end;
+    }
+    .feed-input {
+      width:100%;
+      border-radius:7px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      font-size:0.8rem;
+      padding:6px 8px;
+      margin-bottom:6px;
+    }
+    .feed-input:focus {
+      outline:none;
+      border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+    .feed-select {
+      width:100%;
+      border-radius:7px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      font-size:0.8rem;
+      padding:6px 8px;
+      margin-bottom:6px;
+    }
+    .feed-select:focus {
+      outline:none;
+      border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+    .feed-table-wrapper {
+      margin-top:4px;
+      overflow-x:auto;
+    }
+    .feed-table-wrapper table {
+      width:100%;
+      border-collapse:collapse;
+      font-size:0.8rem;
+    }
+    .feed-table-wrapper th,
+    .feed-table-wrapper td {
+      border:1px solid #1f2937;
+      padding:4px 6px;
+      text-align:left;
+    }
+    .feed-table-wrapper th {
+      background:#111827;
+    }
+    .btn-small {
+      border:none;
+      border-radius:999px;
+      padding:3px 7px;
+      font-size:0.75rem;
+      cursor:pointer;
+    }
+    .btn-del {
+      background:#dc2626;
+      color:#f9fafb;
+    }
+    .btn-del:hover { filter:brightness(1.05); }
+    .feed-result {
+      font-size:0.85rem;
+      color:#cbd5f5;
+      margin-top:8px;
+    }
+    .feed-result strong { color:#38bdf8; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn active" data-link="serre.html"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Gestion des bacs de serre</h1>
+      <p class="subtitle">
+        Étiquettes de bacs pour la serre, avec pense‑bête général, suivi des dates d’entretien et
+        répartition des bacs entre les membres autorisés.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Bloc‑notes de serre</h2>
+      <p class="subtitle">
+        Notes globales sur la serre (rotation des bacs, projets d’ensemencement, matériel, etc.).
+      </p>
+
+      <div class="field">
+        <label for="notesSerre">Notes générales serre</label>
+        <textarea id="notesSerre" placeholder="Ex : Prévoir rotation des bacs de quarantaine, vérifier les stocks de tests d’eau pour la serre…"></textarea>
+      </div>
+      <button class="btn-primary" id="saveSerreNotesBtn">Sauvegarder les notes</button>
+      <div class="note-info" id="serreNotesInfo"></div>
+    </div>
+
+    <div class="card">
+      <h2>Étiquettes des bacs de serre</h2>
+      <p class="subtitle">
+        Un clic ajoute une étiquette de bac de serre. Tu peux renommer le titre, suivre les dates
+        d’entretien et attribuer chaque bac à un membre ayant accès à la serre.
+      </p>
+
+      <button class="btn-primary" id="addSerreBacBtn">Ajouter un bac serre</button>
+
+      <p class="small-note">
+        Couleurs : changement d’eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
+      </p>
+
+      <div id="serreBacList" class="aquarium-grid"></div>
+    </div>
+
+    <!-- NOUVELLE CARTE : STOCKS DE NOURRITURE PAR TYPE + DATE -->
+    <div class="card">
+      <h2>Stocks de nourriture de la serre</h2>
+      <p class="subtitle">
+        Paramétrage par type de nourriture, date et quantité, puis estimation des besoins sur 3, 6, 9 ou 12 mois.
+      </p>
+
+      <h3 style="font-size:0.95rem; margin-top:6px; margin-bottom:6px;">Ajouter un enregistrement</h3>
+      <div class="row-feed">
+        <div class="col-feed">
+          <label for="feedTypeInput">Type de nourriture</label>
+          <input id="feedTypeInput" class="feed-input" type="text" placeholder="Ex : granulés 1 mm">
+        </div>
+        <div class="col-feed">
+          <label for="feedDateInput">Date</label>
+          <input id="feedDateInput" class="feed-input" type="date">
+        </div>
+        <div class="col-feed">
+          <label for="feedQtyInput">Quantité (kg)</label>
+          <input id="feedQtyInput" class="feed-input" type="number" step="0.1" min="0" placeholder="Ex : 5">
+        </div>
+        <div class="col-feed col-feed-button">
+          <button class="btn-primary" id="feedAddBtn">Enregistrer la ligne</button>
+        </div>
+      </div>
+      <p class="small-note">
+        Tu peux saisir plusieurs enregistrements pour le même type à des dates différentes (réceptions, inventaires, etc.).
+      </p>
+
+      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:6px;">Historique enregistré</h3>
+      <div id="feedTableWrapper" class="feed-table-wrapper"></div>
+
+      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:6px;">Calcul des besoins</h3>
+      <div class="row-feed">
+        <div class="col-feed">
+          <label for="feedTypeSelect">Type de nourriture</label>
+          <select id="feedTypeSelect" class="feed-select"></select>
+        </div>
+        <div class="col-feed">
+          <label for="feedDurationSelect">Durée</label>
+          <select id="feedDurationSelect" class="feed-select">
+            <option value="3">3 mois</option>
+            <option value="6">6 mois</option>
+            <option value="9">9 mois</option>
+            <option value="12">12 mois</option>
+          </select>
+        </div>
+        <div class="col-feed col-feed-button">
+          <button class="btn-primary" id="feedCalcBtn">Calculer</button>
+        </div>
+      </div>
+      <div id="feedResult" class="feed-result"></div>
+      <p class="small-note">
+        La consommation moyenne est estimée à partir de l’évolution du stock entre le premier et le dernier enregistrement pour le type choisi.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // --- Auth + navigation ---
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    // --- Restriction accès CAN (admin) ---
+    if (!currentUser || currentUser.username !== "can") {
+      alert("Accès réservé au compte CAN (admin).");
+      window.location.href = "index.html";
+    }  // [web:21][web:33]
+
+    document.getElementById("navbarUser").textContent = currentUser.username;
+
+    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
+      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // --- API membres ---
+    async function apiGetMembers() {
+      const res = await fetch('/api/members');
+      if (!res.ok) throw new Error('Erreur récupération membres');
+      return res.json();
+    }
+
+    // --- API serre ---
+    async function apiGetSerreData() {
+      const res = await fetch('/api/serre');
+      if (!res.ok) throw new Error('Erreur GET /api/serre');
+      return res.json(); // { notes, bacs, assignments, ... }
+    }
+
+    async function apiSaveSerreNotes(notes) {
+      const res = await fetch('/api/serre/notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ notes })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/notes');
+      return res.json();
+    }
+
+    async function apiSaveSerreBacs(bacs, assignments) {
+      const res = await fetch('/api/serre/bacs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bacs, assignments })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/bacs');
+      return res.json();
+    }
+
+    // --- Contrôle d'accès serre ---
+    let SERRE_MEMBRES_AUTORISES = [];
+    let serreBacs = [];
+    let serreAssignments = {};
+    let serreNotes = "";
+
+    async function checkSerreAccess() {
+      const allMembers = await apiGetMembers();
+      const me = allMembers.find(u => u.login === currentUser.username);
+      if (!me || me.serre !== true) {
+        alert("Tu n'as pas l'accès serre. Redirection vers l'accueil.");
+        window.location.href = "index.html";
+        return false;
+      }
+      SERRE_MEMBRES_AUTORISES = allMembers
+        .filter(u => u.serre === true)
+        .map(u => ({ id: u.login, nom: u.login }));
+      return true;
+    }
+
+    // --- Utilitaires dates/statuts ---
+    function formatDateSimple(iso) {
+      if (!iso) return "Jamais";
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return "Jamais";
+      return d.toLocaleDateString();
+    }
+
+    function monthDiff(fromIso, toIso) {
+      if (!fromIso) return Infinity;
+      const d1 = new Date(fromIso);
+      const d2 = new Date(toIso);
+      if (isNaN(d1.getTime()) || isNaN(d2.getTime())) return Infinity;
+      const years = d2.getFullYear() - d1.getFullYear();
+      const months = d2.getMonth() - d1.getMonth();
+      let diff = years * 12 + months;
+      if (d2.getDate() < d1.getDate()) diff -= 1;
+      return diff < 0 ? 0 : diff;
+    }
+
+    function getStatusClass(lastIso, warnMonths, badMonths) {
+      if (!lastIso) return "status-bad";
+      const nowIso = new Date().toISOString();
+      const m = monthDiff(lastIso, nowIso);
+      if (m >= badMonths) return "status-bad";
+      if (m >= warnMonths) return "status-warn";
+      return "status-ok";
+    }
+
+    // --- Rendu des bacs de serre ---
+    const notesSerreTextArea = document.getElementById("notesSerre");
+    const saveSerreNotesBtn = document.getElementById("saveSerreNotesBtn");
+    const serreNotesInfo = document.getElementById("serreNotesInfo");
+    const addSerreBacBtn = document.getElementById("addSerreBacBtn");
+    const serreBacListDiv = document.getElementById("serreBacList");
+
+    function renderSerreBacs() {
+      const list = serreBacs;
+      const assigns = serreAssignments || {};
+      serreBacListDiv.innerHTML = "";
+
+      if (!list || list.length === 0) {
+        const p = document.createElement("p");
+        p.className = "small-note";
+        p.textContent = "Aucune étiquette de bac de serre pour le moment.";
+        serreBacListDiv.appendChild(p);
+        return;
+      }
+
+      list.forEach(bac => {
+        const tag = document.createElement("div");
+        tag.className = "aquarium-tag";
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "aquarium-tag-delete";
+        delBtn.textContent = "×";
+        delBtn.title = "Supprimer ce bac";
+        delBtn.addEventListener("click", async () => {
+          serreBacs = serreBacs.filter(x => x.id !== bac.id);
+          delete serreAssignments[bac.id];
+          await apiSaveSerreBacs(serreBacs, serreAssignments);
+          renderSerreBacs();
+        });
+        tag.appendChild(delBtn);
+
+        const header = document.createElement("div");
+        header.className = "aquarium-tag-header";
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.value = bac.name;
+        titleInput.addEventListener("change", async () => {
+          const newVal = titleInput.value.trim();
+          if (!newVal) {
+            titleInput.value = bac.name;
+            return;
+          }
+          bac.name = newVal;
+          await apiSaveSerreBacs(serreBacs, serreAssignments);
+          renderSerreBacs();
+        });
+        header.appendChild(titleInput);
+        tag.appendChild(header);
+
+        const viewBtn = document.createElement("button");
+        viewBtn.className = "aquarium-tag-green-btn";
+        viewBtn.textContent = "Voir le bac de serre";
+        viewBtn.addEventListener("click", () => {
+          window.location.href = "bac-serre.html?id=" + encodeURIComponent(bac.id);
+        });
+        tag.appendChild(viewBtn);
+
+        const waterBlock = document.createElement("div");
+        waterBlock.className = "aquarium-tag-block";
+        const waterTitle = document.createElement("div");
+        waterTitle.className = "aquarium-tag-block-title";
+        waterTitle.textContent = "Changement d'eau";
+        const waterBtn = document.createElement("button");
+        waterBtn.className = "aquarium-tag-date-btn " +
+          getStatusClass(bac.lastWaterChange, 1, 2);
+        waterBtn.textContent = formatDateSimple(bac.lastWaterChange);
+        waterBtn.addEventListener("click", async () => {
+          bac.lastWaterChange = new Date().toISOString();
+          await apiSaveSerreBacs(serreBacs, serreAssignments);
+          renderSerreBacs();
+        });
+        waterBlock.appendChild(waterTitle);
+        waterBlock.appendChild(waterBtn);
+        tag.appendChild(waterBlock);
+
+        const filterBlock = document.createElement("div");
+        filterBlock.className = "aquarium-tag-block";
+        const filterTitle = document.createElement("div");
+        filterTitle.className = "aquarium-tag-block-title";
+        filterTitle.textContent = "Nettoyage des filtres";
+        const filterBtn = document.createElement("button");
+        filterBtn.className = "aquarium-tag-date-btn " +
+          getStatusClass(bac.lastFilterClean, 3, 6);
+        filterBtn.textContent = formatDateSimple(bac.lastFilterClean);
+        filterBtn.addEventListener("click", async () => {
+          bac.lastFilterClean = new Date().toISOString();
+          await apiSaveSerreBacs(serreBacs, serreAssignments);
+          renderSerreBacs();
+        });
+        filterBlock.appendChild(filterTitle);
+        filterBlock.appendChild(filterBtn);
+        tag.appendChild(filterBlock);
+
+        const assignBlock = document.createElement("div");
+        assignBlock.className = "assign-block";
+
+        const assignTitle = document.createElement("div");
+        assignTitle.className = "assign-title";
+        assignTitle.textContent = "Répartition du bac";
+        assignBlock.appendChild(assignTitle);
+
+        const assignRow = document.createElement("div");
+        assignRow.className = "assign-row";
+
+        const select = document.createElement("select");
+        select.className = "assign-select";
+        const optDefault = document.createElement("option");
+        optDefault.value = "";
+        optDefault.textContent = "-- choisir un membre --";
+        select.appendChild(optDefault);
+
+        if (!SERRE_MEMBRES_AUTORISES.length) {
+          const optInfo = document.createElement("option");
+          optInfo.value = "";
+          optInfo.textContent = "Aucun membre avec accès serre";
+          select.appendChild(optInfo);
+          select.disabled = true;
+        } else {
+          SERRE_MEMBRES_AUTORISES.forEach(m => {
+            const opt = document.createElement("option");
+            opt.value = m.id;
+            opt.textContent = m.nom;
+            select.appendChild(opt);
+          });
+        }
+
+        const assignBtn = document.createElement("button");
+        assignBtn.className = "assign-btn";
+        assignBtn.textContent = "Attribuer";
+        assignBtn.addEventListener("click", async () => {
+          if (!SERRE_MEMBRES_AUTORISES.length) {
+            alert("Aucun membre n’a actuellement l’accès serre dans la page admin.");
+            return;
+          }
+          const val = select.value;
+          if (!val) {
+            alert("Sélectionne un membre autorisé pour ce bac de serre.");
+            return;
+          }
+          const m = SERRE_MEMBRES_AUTORISES.find(x => x.id === val);
+          if (!m) return;
+          serreAssignments[bac.id] = { membreId: val, nom: m.nom };
+          await apiSaveSerreBacs(serreBacs, serreAssignments);
+          renderSerreBacs();
+        });
+
+        assignRow.appendChild(select);
+        assignRow.appendChild(assignBtn);
+        assignBlock.appendChild(assignRow);
+
+        const currentDiv = document.createElement("div");
+        currentDiv.className = "assign-current";
+        const currentAssign = assigns[bac.id];
+        if (currentAssign) {
+          currentDiv.innerHTML =
+            'Responsable actuel : <strong>' + currentAssign.nom +
+            '</strong><button class="assign-clear" type="button">Retirer</button>';
+          currentDiv.querySelector(".assign-clear").addEventListener("click", async () => {
+            delete serreAssignments[bac.id];
+            await apiSaveSerreBacs(serreBacs, serreAssignments);
+            renderSerreBacs();
+          });
+        } else {
+          currentDiv.textContent = "Aucun responsable attribué pour ce bac.";
+        }
+        assignBlock.appendChild(currentDiv);
+
+        tag.appendChild(assignBlock);
+        serreBacListDiv.appendChild(tag);
+      });
+    }
+
+    // --- Bloc nourriture : historique par type et par date ---
+    let feedHistory = []; // { id, type, dateIso, qtyKg }
+
+    const feedTypeInput = document.getElementById('feedTypeInput');
+    const feedDateInput = document.getElementById('feedDateInput');
+    const feedQtyInput = document.getElementById('feedQtyInput');
+    const feedAddBtn = document.getElementById('feedAddBtn');
+    const feedTableWrapper = document.getElementById('feedTableWrapper');
+
+    const feedTypeSelect = document.getElementById('feedTypeSelect');
+    const feedDurationSelect = document.getElementById('feedDurationSelect');
+    const feedCalcBtn = document.getElementById('feedCalcBtn');
+    const feedResult = document.getElementById('feedResult');
+
+    // date par défaut = aujourd'hui
+    (function presetTodayForFeed() {
+      if (!feedDateInput) return;
+      const d = new Date();
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      feedDateInput.value = `${yyyy}-${mm}-${dd}`;
+    })();
+
+    function renderFeedTable() {
+      if (!feedTableWrapper) return;
+
+      if (!feedHistory.length) {
+        feedTableWrapper.innerHTML = '<p class="small-note">Aucun enregistrement pour le moment.</p>';
+        updateFeedTypeSelect();
+        return;
+      }
+
+      const rowsHtml = feedHistory
+        .slice()
+        .sort((a,b) => new Date(a.dateIso) - new Date(b.dateIso))
+        .map(item => `
+          <tr>
+            <td>${item.type}</td>
+            <td>${new Date(item.dateIso).toLocaleDateString()}</td>
+            <td>${item.qtyKg.toFixed(2)} kg</td>
+            <td>
+              <button class="btn-small btn-del" data-id="${item.id}">Supprimer</button>
+            </td>
+          </tr>
+        `)
+        .join('');
+
+      feedTableWrapper.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Quantité (kg)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      `;
+
+      feedTableWrapper.querySelectorAll('.btn-del').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          feedHistory = feedHistory.filter(x => x.id !== id);
+          renderFeedTable();
+        });
+      });
+
+      updateFeedTypeSelect();
+    }
+
+    function updateFeedTypeSelect() {
+      if (!feedTypeSelect) return;
+      const types = Array.from(new Set(feedHistory.map(x => x.type).filter(Boolean)));
+      feedTypeSelect.innerHTML = '';
+      if (!types.length) {
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = 'Aucun type disponible';
+        feedTypeSelect.appendChild(opt);
+        feedTypeSelect.disabled = true;
+        return;
+      }
+      feedTypeSelect.disabled = false;
+      types.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t;
+        feedTypeSelect.appendChild(opt);
+      });
+    }
+
+    if (feedAddBtn) {
+      feedAddBtn.addEventListener('click', () => {
+        const type = (feedTypeInput.value || '').trim();
+        const dateStr = feedDateInput.value;
+        const qty = parseFloat((feedQtyInput.value || '').replace(',', '.'));
+
+        if (!type) {
+          alert("Indique un type de nourriture.");
+          return;
+        }
+        if (!dateStr) {
+          alert("Indique une date.");
+          return;
+        }
+        if (isNaN(qty) || qty < 0) {
+          alert("Quantité invalide.");
+          return;
+        }
+
+        feedHistory.push({
+          id: 'fh_' + Date.now() + '_' + Math.floor(Math.random()*100000),
+          type,
+          dateIso: dateStr,
+          qtyKg: qty
+        });
+
+        feedQtyInput.value = '';
+        renderFeedTable();
+      });
+    }
+
+    if (feedCalcBtn) {
+      feedCalcBtn.addEventListener('click', () => {
+        const type = feedTypeSelect.value;
+        const durationMonths = parseInt(feedDurationSelect.value, 10) || 0;
+
+        if (!type) {
+          alert("Choisis un type de nourriture.");
+          return;
+        }
+        const records = feedHistory.filter(x => x.type === type);
+        if (!records.length) {
+          alert("Aucun enregistrement pour ce type.");
+          return;
+        }
+
+        records.sort((a,b) => new Date(a.dateIso) - new Date(b.dateIso));
+
+        const first = records[0];
+        const last = records[records.length - 1];
+        const firstDate = new Date(first.dateIso);
+        const lastDate = new Date(last.dateIso);
+
+        const daysDiff = (lastDate - firstDate) / (1000*60*60*24);
+        let monthlyUse = 0;
+        if (daysDiff > 0) {
+          const dailyChange = (first.qtyKg - last.qtyKg) / daysDiff;
+          monthlyUse = dailyChange * 30;
+          if (monthlyUse < 0) monthlyUse = 0;
+        }
+
+        const currentStock = last.qtyKg;
+        const needed = monthlyUse * durationMonths;
+        const diff = currentStock - needed;
+
+        let msg = `Type : <strong>${type}</strong>. `;
+        msg += `Consommation moyenne estimée : <strong>${monthlyUse.toFixed(2)} kg/mois</strong>. `;
+        msg += `Besoin pour ${durationMonths} mois : <strong>${needed.toFixed(2)} kg</strong>. `;
+        msg += `Stock actuel (dernier enregistrement) : <strong>${currentStock.toFixed(2)} kg</strong>. `;
+        if (diff >= 0) {
+          msg += `Surplus estimé : <strong>${diff.toFixed(2)} kg</strong>.`;
+        } else {
+          msg += `Manque estimé : <strong>${Math.abs(diff).toFixed(2)} kg</strong>.`;
+        }
+
+        feedResult.innerHTML = msg;
+      });
+    }
+
+    // --- Initialisation ---
+    async function initSerre() {
+      try {
+        const ok = await checkSerreAccess();
+        if (!ok) return;
+
+        const data = await apiGetSerreData();
+        serreNotes = data.notes || "";
+        serreBacs = Array.isArray(data.bacs) ? data.bacs : [];
+        serreAssignments = data.assignments || {};
+
+        notesSerreTextArea.value = serreNotes;
+        serreNotesInfo.textContent = serreNotes ? "Notes de serre chargées." : "";
+        renderSerreBacs();
+        renderFeedTable();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors du chargement des données de serre.");
+      }
+    }
+
+    saveSerreNotesBtn.addEventListener("click", async () => {
+      try {
+        serreNotes = notesSerreTextArea.value;
+        await apiSaveSerreNotes(serreNotes);
+        serreNotesInfo.textContent =
+          "Notes de serre sauvegardées le " + new Date().toLocaleString() + ".";
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de la sauvegarde des notes de serre.");
+      }
+    });
+
+    addSerreBacBtn.addEventListener("click", async () => {
+      const defaultName = "Bac serre " + (serreBacs.length + 1);
+      serreBacs.push({
+        id: Date.now(),
+        name: defaultName,
+        lastWaterChange: null,
+        lastFilterClean: null
+      });
+      try {
+        await apiSaveSerreBacs(serreBacs, serreAssignments);
+        renderSerreBacs();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de la création du bac de serre.");
+      }
+    });
+
+    initSerre();
+  </script>
+</body>
+</html>

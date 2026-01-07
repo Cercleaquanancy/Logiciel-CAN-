@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia latipinna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page { max-width: 1000px; margin: 16px auto 20px auto; padding: 0 12px 20px 12px; }
+    .fiche-wrapper {
+      background: #020617; border-radius: 12px;
+      border: 1px solid #1f2937; overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a; color: #f9fafb;
+      padding: 12px 16px; text-align: center;
+    }
+    .fiche-header-bar h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 2px; }
+
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%; max-height: 260px;
+      border-radius: 10px; border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600; font-size: 0.95rem;
+      margin-top: 10px; margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem; color: #e5e7eb;
+      line-height: 1.45; margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+    }
+    .bloc h3 { font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8; }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem; color: #e5e7eb; line-height: 1.45;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%; height: 120px; border-radius: 8px;
+      border: 1px solid #4b5563; object-fit: cover;
+      margin-bottom: 6px; display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem; color: #9ca3af;
+      margin-top: 10px; text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia latipinna</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia latipinna</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-latipinna/Poecilia-latipinna.jpeg"
+                 alt="Poecilia latipinna">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+
+          <p class="section-text">
+            <strong>Poecilia latipinna</strong> est un grand vivipare euryhalin, connu pour la nageoire dorsale spectaculaire des mâles (forme « sailfin ») et sa grande tolérance aux variations de salinité.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent 10–12&nbsp;cm, voire 15&nbsp;cm, les femelles étant généralement légèrement plus petites mais plus robustes et très prolifiques.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce est active, occupe surtout la partie supérieure et médiane du bac et profite des zones ensoleillées et richement végétalisées où elle broute algues et microfaune.
+          </p>
+          <p class="section-text">
+            Poecilia latipinna vit en groupes, avec des interactions parfois vives entre mâles, ce qui nécessite de l’espace, de nombreuses cachettes végétales et un bon ratio femelles/mâles.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare ; les femelles portent les œufs fécondés et donnent naissance à des jeunes entièrement formés après quelques semaines de gestation.
+          </p>
+          <p class="section-text">
+            Les portées sont fréquentes et nombreuses, la prédation sur les alevins étant importante dans les bacs peu plantés, d’où l’intérêt de zones denses en végétation fine.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâles plus colorés, possédant un gonopodium et surtout une nageoire dorsale très haute et étendue ; femelles plus massives, au ventre volumineux lorsqu’elles sont gravides.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement 3 à 5&nbsp;ans en aquarium, davantage avec une eau dure, bien oxygénée et une alimentation riche en végétaux.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce fréquente ruisseaux côtiers, canaux, marais, étangs et fossés, souvent en eau saumâtre ou influencée par les marées, avec une végétation abondante et une hauteur d’eau modérée.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-latipinna/maps-Poecilia-latipinna.PNG"
+              alt="Répartition de Poecilia latipinna"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Sud‑Est des États‑Unis et Mexique, de la Caroline du Nord au Veracruz.</li>
+              <li>Cours d’eau côtiers, marais, canaux, fossés, souvent influencés par la salinité marine.</li>
+            </ul>
+            <p>
+              Elle occupe des habitats variés allant de l’eau douce dure à l’eau saumâtre, ce qui explique sa grande rusticité en aquarium, tant que l’eau n’est ni acide ni trop douce.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,5 ; l’espèce ne supporte pas les pH acides.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH ; eau dure à très dure, éventuellement légèrement saumâtre.</p>
+            <p><strong>Courant :</strong> faible à modéré ; une bonne oxygénation est nécessaire dans les bacs fortement peuplés.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 200&nbsp;L pour un groupe, l’espèce étant grande, active et très prolifique.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte composante végétale ; consomme algues, biofilm, paillettes et granulés, complétés par des insectes et invertébrés aquatiques occasionnels.
+            </p>
+            <p>
+              Un apport important en végétaux (spiruline, légumes pochés, aliments riches en fibres) limite les problèmes digestifs et favorise des couleurs intenses et une bonne reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia reticulata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia reticulata</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia reticulata</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-reticulata/Poecilia-reticulata.jpeg" alt="Poecilia reticulata">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia reticulata</strong> est un petit vivipare extrêmement répandu en aquariophilie, réputé pour sa facilité de maintenance et la diversité de ses formes et couleurs.
+          </p>
+          <p class="section-text">
+            Les mâles mesurent en général 3 à 4&nbsp;cm, contre 5 à 6&nbsp;cm pour les femelles, avec une espérance de vie de 2 à 3&nbsp;ans en bonnes conditions.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Espèce très active et sociable, Poecilia reticulata occupe surtout les zones médianes et superficielles du bac, en groupes mixtes où les mâles courtisent en permanence les femelles.
+          </p>
+          <p class="section-text">
+            Un ratio avec davantage de femelles que de mâles limite le harcèlement, et un décor bien planté offre des refuges aux individus dominés et aux alevins.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare ; après une gestation d’environ 4 semaines, la femelle met au monde plusieurs dizaines d’alevins entièrement formés, sans soins parentaux.
+          </p>
+          <p class="section-text">
+            Les jeunes sont rapidement autonomes mais peuvent être consommés par les adultes ; un fort couvert végétal ou un bac spécifique facilite leur survie et la sélection des lignées.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, très coloré, avec gonopodium ; femelle plus grande, plus trapue, nageoire anale triangulaire et tache de gestation sombre près de l’anus.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 2 à 3&nbsp;ans en moyenne, parfois un peu plus dans une eau stable, propre et bien oxygénée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, l’espèce occupe de petits cours d’eau, fossés, canaux et zones calmes de rivières en Amérique du Sud et dans les Caraïbes, souvent en eaux légèrement dures à alcalines, parfois saumâtres.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <!-- Bloc Répartition -->
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-reticulata/mapsPoeciliareticulata.PNG"
+              alt="Répartition de Poecilia reticulata"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Nord‑est de l’Amérique du Sud (Venezuela, Guyana, Suriname, nord du Brésil).</li>
+              <li>Trinidad, Tobago et autres îles voisines.</li>
+            </ul>
+            <p>
+              L’espèce a été largement introduite dans de nombreux pays tropicaux et subtropicaux, où elle s’est souvent naturalisée dans les eaux douces peu profondes.
+            </p>
+          </div>
+
+          <!-- Bloc paramètres -->
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C (tolère environ 20–28&nbsp;°C).</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, un milieu légèrement alcalin étant apprécié.</p>
+            <p><strong>GH :</strong> 8 à 20&nbsp;°dGH, eau moyenne à dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, dans une eau propre et bien oxygénée.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 60&nbsp;L pour un petit groupe, idéalement 80–100&nbsp;L ou plus pour une population stable.</p>
+          </div>
+
+          <!-- Bloc régime & comportement -->
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte composante végétale ; accepte flocons, granulés, spiruline, légumes pochés et petite nourriture vivante ou congelée (artémias, daphnies, larves de moustiques).
+            </p>
+            <p>
+              Une alimentation variée, distribuée en plusieurs petits repas, favorise de belles couleurs, une bonne fécondité et limite les problèmes de santé liés aux excès de protéines animales.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

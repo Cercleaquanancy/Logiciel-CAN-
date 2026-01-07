@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fiches encyclopédiques</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 56px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .navbar-user {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn span.icon { font-size: 1rem; }
+
+    .nav-btn.active {
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    .nav-btn:hover { background: #111827; }
+
+    .navbar-logout {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .navbar-logout:hover { background: #1f2937; }
+
+    .page {
+      padding-top: 72px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .card h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .field { margin-bottom: 8px; }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 7px 9px;
+      background: #020617;
+      border-radius: 7px;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #1f2937;
+      color: #e5e7eb;
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+
+    .badge-type { background: #0f766e; }
+    .badge-region { background: #1d4ed8; }
+    .badge-taxo { background: #4b5563; }
+
+    .fiche-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .fiche {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+    }
+
+    .fiche-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .fiche-subtitle {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .fiche-body {
+      font-size: 0.8rem;
+      color: #d1d5db;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { filter: brightness(1.05); }
+
+    .note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .page { padding-top: 90px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
+      <button class="nav-btn active" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Fiches encyclopédiques</h1>
+      <p class="subtitle">
+        Recherche par nom ou via filtres (poisson, crustacé, mollusque, nourriture vivante, origine, taxonomie).
+      </p>
+
+      <div class="filters">
+        <div class="field" style="grid-column: 1 / -1;">
+          <label for="searchInput">Recherche (nom scientifique, commun, mots‑clés…)</label>
+          <input type="text" id="searchInput" placeholder="Ex : Neocaridina, daphnie, Asie...">
+        </div>
+
+        <div class="field">
+          <label for="ordreFilter">Ordre</label>
+          <select id="ordreFilter">
+            <option value="">Tous</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="familleFilter">Famille</label>
+          <select id="familleFilter">
+            <option value="">Toutes</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="genreFilter">Genre</label>
+          <select id="genreFilter">
+            <option value="">Tous</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="continentFilter">Continent</label>
+          <select id="continentFilter">
+            <option value="">Tous</option>
+            <option value="Afrique">Afrique</option>
+            <option value="Amérique du Sud">Amérique du Sud</option>
+            <option value="Amérique du Nord">Amérique du Nord</option>
+            <option value="Asie">Asie</option>
+            <option value="Europe">Europe</option>
+            <option value="Océanie">Océanie</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="paysFilter">Pays (texte libre)</label>
+          <input type="text" id="paysFilter" placeholder="Ex : Brésil, France...">
+        </div>
+
+        <div class="field" style="grid-column: 1 / -1; text-align: right;">
+          <button type="button" id="clearFiltersBtn"
+                  class="btn-primary"
+                  style="background:#111827;color:#e5e7eb;">
+            Réinitialiser les filtres
+          </button>
+        </div>
+      </div>
+
+      <p class="note">
+        La recherche est filtrée en temps réel côté navigateur.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Résultats</h2>
+      <p class="subtitle" id="resultInfo">Chargement des fiches...</p>
+      <div class="fiche-list" id="ficheList"></div>
+    </div>
+  </main>
+
+  <!-- Base d'espèces commune -->
+  <script src="especes.js"></script>
+
+  <script>
+    // --- Connexion / rôles / menu commun ---
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    const navbarUser = document.getElementById('navbarUser');
+    const roleLabel =
+      currentUser.role === "admin" ? "Admin" :
+      currentUser.role === "membre_bureau" ? "Membre de bureau" :
+      "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+    const navbarMenu = document.getElementById('navbarMenu');
+    const navButtons = document.querySelectorAll('.nav-btn[data-link]');
+    navButtons.forEach(btn => {
+      const link = btn.dataset.link;
+      btn.addEventListener('click', () => { window.location.href = link; });
+    });
+
+    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
+      const bureauBtn = document.createElement("button");
+      bureauBtn.className = "nav-btn";
+      bureauBtn.dataset.link = "bureau.html";
+      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
+      const logoutBtnElem = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
+      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
+    }
+
+    if (currentUser.role === "admin" || currentUser.serre === true) {
+      const serreBtn = document.createElement("button");
+      serreBtn.className = "nav-btn";
+      serreBtn.dataset.link = "serre.html";
+      serreBtn.innerHTML = '<span class="icon">🌿</span> <span>Serre</span>';
+      const logoutBtnElem2 = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(serreBtn, logoutBtnElem2);
+      serreBtn.addEventListener('click', () => { window.location.href = "serre.html"; });
+    }
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // --- Données de fiches depuis la base commune ---
+    const fiches = window.FICHES || [];
+
+    // --- Préparation des filtres taxonomiques dynamiques ---
+    const ordreFilter = document.getElementById('ordreFilter');
+    const familleFilter = document.getElementById('familleFilter');
+    const genreFilter = document.getElementById('genreFilter');
+
+    function fillSelectOptions(select, values) {
+      const sorted = Array.from(values).sort((a, b) => a.localeCompare(b, 'fr'));
+      sorted.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v;
+        opt.textContent = v;
+        select.appendChild(opt);
+      });
+    }
+
+    const ordres = new Set();
+    const familles = new Set();
+    const genres = new Set();
+
+    fiches.forEach(f => {
+      if (f.ordre) ordres.add(f.ordre);
+      if (f.famille) familles.add(f.famille);
+      if (f.genre) genres.add(f.genre);
+    });
+
+    fillSelectOptions(ordreFilter, ordres);
+    fillSelectOptions(familleFilter, familles);
+    fillSelectOptions(genreFilter, genres);
+
+    // --- Filtrage et affichage ---
+    const searchInput = document.getElementById('searchInput');
+    const continentFilter = document.getElementById('continentFilter');
+    const paysFilter = document.getElementById('paysFilter');
+    const ficheList = document.getElementById('ficheList');
+    const resultInfo = document.getElementById('resultInfo');
+    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+
+    function normalise(str) {
+      return (str || "")
+        .toString()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function ficheMatches(f, term, ordre, famille, genre, continent, pays) {
+      const ordreNorm = normalise(ordre);
+      const familleNorm = normalise(famille);
+      const genreNorm = normalise(genre);
+      const continentNorm = normalise(continent);
+      const paysNorm = normalise(pays);
+
+      if (ordreNorm && !normalise(f.ordre).includes(ordreNorm)) return false;
+      if (familleNorm && !normalise(f.famille).includes(familleNorm)) return false;
+      if (genreNorm && !normalise(f.genre).includes(genreNorm)) return false;
+      if (continentNorm && !normalise(f.continent).includes(continentNorm)) return false;
+
+      if (paysNorm) {
+        const hasPays = (f.pays || []).some(p => normalise(p).includes(paysNorm));
+        if (!hasPays) return false;
+      }
+
+      if (term) {
+        const t = normalise(term);
+        const haystack = [
+          f.nomCommun,
+          f.nomScientifique,
+          f.ordre,
+          f.famille,
+          f.genre,
+          f.continent,
+          (f.pays || []).join(' '),
+          f.description,
+          (f.motsCles || []).join(' ')
+        ].map(normalise).join(' ');
+        if (!haystack.includes(t)) return false;
+      }
+
+      return true;
+    }
+
+    function renderFiches() {
+      const term = searchInput.value.trim();
+      const ordreVal = ordreFilter.value || "";
+      const familleVal = familleFilter.value || "";
+      const genreVal = genreFilter.value || "";
+      const continentVal = continentFilter.value || "";
+      const paysVal = paysFilter.value.trim();
+
+      ficheList.innerHTML = "";
+
+      const matches = fiches.filter(f =>
+        ficheMatches(f, term, ordreVal, familleVal, genreVal, continentVal, paysVal)
+      );
+
+      resultInfo.textContent =
+        matches.length + " fiche(s) trouvée(s) sur " + fiches.length + ".";
+
+      matches.forEach(f => {
+        const card = document.createElement('div');
+        card.className = "fiche";
+
+        if (f.image) {
+          const img = document.createElement('img');
+          img.src = f.image;
+          img.alt = f.nomScientifique || f.nomCommun || "Image espèce";
+          img.style.width = "100%";
+          img.style.maxHeight = "140px";
+          img.style.objectFit = "cover";
+          img.style.borderRadius = "8px";
+          img.style.marginBottom = "6px";
+          card.appendChild(img);
+        }
+
+        const title = document.createElement('div');
+        title.className = "fiche-title";
+        title.textContent = f.nomScientifique || f.nomCommun || "Espèce";
+
+        const subtitle = document.createElement('div');
+        subtitle.className = "fiche-subtitle";
+        subtitle.textContent =
+          (f.type ? f.type.toUpperCase() : "").trim() +
+          (f.type && f.continent ? " • " : "") +
+          (f.continent || "Origine inconnue");
+
+        const badges = document.createElement('div');
+        if (f.type) {
+          const b = document.createElement('span');
+          b.className = "badge badge-type";
+          b.textContent = f.type;
+          badges.appendChild(b);
+        }
+        if (f.ordre) {
+          const b = document.createElement('span');
+          b.className = "badge badge-taxo";
+          b.textContent = f.ordre;
+          badges.appendChild(b);
+        }
+        if (f.famille) {
+          const b = document.createElement('span');
+          b.className = "badge badge-taxo";
+          b.textContent = f.famille;
+          badges.appendChild(b);
+        }
+        if (f.genre) {
+          const b = document.createElement('span');
+          b.className = "badge badge-taxo";
+          b.textContent = f.genre;
+          badges.appendChild(b);
+        }
+        if (f.continent) {
+          const b = document.createElement('span');
+          b.className = "badge badge-region";
+          b.textContent = f.continent;
+          badges.appendChild(b);
+        }
+
+        const body = document.createElement('div');
+        body.className = "fiche-body";
+        body.textContent = f.description || "";
+
+        const btn = document.createElement('button');
+        btn.className = "btn-primary";
+        btn.textContent = "Voir la fiche";
+        btn.style.marginTop = "6px";
+        btn.addEventListener('click', () => {
+          const target = f.page || ("fiche-espece.html?id=" + encodeURIComponent(f.id));
+          window.location.href = target;
+        });
+
+        card.appendChild(title);
+        card.appendChild(subtitle);
+        card.appendChild(badges);
+        card.appendChild(body);
+        card.appendChild(btn);
+
+        ficheList.appendChild(card);
+      });
+    }
+
+    [searchInput, ordreFilter, familleFilter, genreFilter,
+     continentFilter, paysFilter].forEach(el => {
+      el.addEventListener('input', renderFiches);
+      el.addEventListener('change', renderFiches);
+    });
+
+    clearFiltersBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      ordreFilter.value = '';
+      familleFilter.value = '';
+      genreFilter.value = '';
+      continentFilter.value = '';
+      paysFilter.value = '';
+      renderFiches();
+    });
+
+    renderFiches();
+  </script>
+</body>
+</html>

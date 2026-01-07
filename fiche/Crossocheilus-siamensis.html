@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Crossocheilus siamensis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Crossocheilus siamensis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Cyprinidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Crossocheilus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Crossocheilus siamensis</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Crossocheilus-siamensis/Crossocheilus-siamensis.PNG"
+                 alt="Crossocheilus siamensis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Crossocheilus siamensis</strong>, souvent vendu sous le nom de « mangeur d’algues siamois », est un cyprinidé actif réputé pour son efficacité contre de nombreuses algues, y compris certaines algues pinceaux.
+          </p>
+          <p class="section-text">
+            C’est un poisson élancé pouvant atteindre 12–15&nbsp;cm, qui passe une grande partie de son temps à brouter les surfaces du décor, du substrat et des feuilles.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            En milieu naturel, l’espèce vit en groupes dans des rivières bien oxygénées au courant soutenu ; en aquarium, il est préférable de la maintenir en petit groupe dans un bac spacieux.
+          </p>
+          <p class="section-text">
+            Globalement pacifique, Crossocheilus siamensis peut toutefois se montrer remuant et territorial avec ses congénères à l’âge adulte si l’espace et les cachettes sont insuffisants.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare ; la ponte se fait en pleine eau ou sur le substrat, sans soin parental, mais la reproduction en aquarium d’amateur reste très rare.
+          </p>
+          <p class="section-text">
+            La plupart des individus disponibles dans le commerce proviennent encore d’élevages spécialisés ou de captures, plutôt que de reproductions spontanées en bac communautaire.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très peu marqué ; les femelles adultes ont souvent un abdomen plus rebondi, tandis que les mâles restent un peu plus fuselés.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 8 à 10&nbsp;ans en aquarium, avec une eau propre, bien oxygénée et une alimentation adaptée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce est associée aux cours d’eau clairs et rapides d’Asie du Sud‑Est, avec substrat rocheux ou sableux et de nombreuses surfaces ensoleillées couvertes de biofilm et d’algues.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Crossocheilus-siamensis/mpas-Crossocheilus-siamensis.png"
+              alt="Répartition de Crossocheilus siamensis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud‑Est, notamment Thaïlande, Laos, Cambodge et péninsule Malaise.</li>
+              <li>Rivières et affluents à courant modéré à rapide, avec fonds de roches, graviers ou sable et zones riches en algues et biofilm.</li>
+            </ul>
+            <p>
+              Ces poissons fréquentent des eaux bien oxygénées, souvent claires, où la lumière permet le développement d’un tapis d’algues sur les pierres et les racines, servant de base à leur alimentation.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,5 à 7,5, eau légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> modéré, avec une bonne oxygénation et une filtration efficace pour reproduire un environnement de rivière.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 200&nbsp;L pour un petit groupe, avec une bonne longueur de façade et un décor offrant cachettes et zones de repos.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> principalement herbivore et brouteur de biofilm ; consomme de nombreuses algues, mais doit être complémenté avec des pastilles végétales, aliments à base de spiruline et légumes pochés.
+            </p>
+            <p>
+              Une part raisonnable de nourritures protéinées (petites proies vivantes ou congelées) peut être distribuée, mais l’alimentation doit rester majoritairement végétale pour éviter l’embonpoint et maintenir son rôle de mangeur d’algues.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

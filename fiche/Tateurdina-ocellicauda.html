@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tateurdina ocellicauda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Tateurdina ocellicauda</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Gobiiformes</li>
+              <li><span class="sys-label">Famille :</span> Eleotridae</li>
+              <li><span class="sys-label">Genre :</span> <em>Tateurdina</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Tateurdina ocellicauda</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Tateurdina-ocellicauda/Tateurdina-ocellicauda.jpeg"
+                 alt="Tateurdina ocellicauda">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Tateurdina ocellicauda</strong> est un petit gobioïde d’Océanie, apprécié pour ses couleurs pastel et son comportement calme de micro‑prédateur, évoluant surtout près du substrat.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 5–7&nbsp;cm de longueur totale, ce qui en fait une espèce adaptée aux aquariums de petit volume correctement structurés.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en petits groupes lâches, occupant principalement la zone inférieure et médiane, où elle explore les cavités, racines et plantes basses.
+          </p>
+          <p class="section-text">
+            Territorial autour des cachettes, surtout chez les mâles, elle reste toutefois relativement paisible avec des colocataires calmes de taille similaire.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur en cavité (tubes, coquilles, anfractuosités), la femelle déposant les œufs sur la voûte ou les parois, tandis que le mâle assure la garde et la ventilation.
+          </p>
+          <p class="section-text">
+            Après l’éclosion, les alevins restent quelques jours à proximité de l’abri, puis se dispersent ; un bac spécifique et des nourritures fines vivantes augmentent les chances de réussite.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâles plus massifs, à la tête élargie et aux nageoires plus développées, souvent plus vivement colorés ; femelles plus petites, au ventre jaune/orangé en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement 3 à 5&nbsp;ans en aquarium, avec une eau stable et une alimentation variée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Tateurdina ocellicauda fréquente les petits ruisseaux, fossés et zones calmes des rivières de Papouasie‑Nouvelle‑Guinée, peu profonds, bien oxygénés, au fond de sable, graviers et feuilles mortes.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Tateurdina-ocellicauda/mapsTateurdinaocillicauda.png"
+              alt="Répartition de Tateurdina ocellicauda"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Est de la Papouasie‑Nouvelle‑Guinée, dans les plaines et vallées de la partie orientale de l’île.</li>
+              <li>Ruisseaux, petites rivières et zones calmes de rivières lentes, peu profonds et bien structurés par les racines, pierres et végétation riveraine.</li>
+            </ul>
+            <p>
+              L’espèce vit dans des eaux claires à légèrement ambrées, douces à modérément minéralisées, avec un courant faible à modéré et de nombreuses cachettes naturelles servant de refuges et de sites de ponte.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,5 à 7,5.</p>
+            <p><strong>GH :</strong> 4 à 14&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une bonne oxygénation mais sans fort brassage.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 60&nbsp;L pour un couple, davantage pour un petit groupe avec plusieurs mâles.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte tendance carnivore, acceptant micro‑granulés et aliments secs fins, mais appréciant particulièrement les proies vivantes ou congelées (artémias, daphnies, vers de vase, microvers).
+            </p>
+            <p>
+              Une alimentation variée, distribuée en petites quantités régulières, favorise une bonne condition générale, des couleurs intenses et des comportements de reproduction naturels.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion au site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d4ed8 0, #020617 55%);
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid #1f2937;
+      padding: 24px 24px 20px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 4px;
+      color: #38bdf8;
+    }
+
+    p.subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      background: #020617;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+    }
+
+    .error-message {
+      font-size: 0.8rem;
+      color: #f97373;
+      min-height: 16px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2px;
+      margin-bottom: 4px;
+    }
+
+    .checkbox-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .checkbox-left input {
+      width: 14px;
+      height: 14px;
+    }
+
+    .link {
+      font-size: 0.8rem;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .link:hover { text-decoration: underline; }
+
+    button[type="submit"] {
+      margin-top: 6px;
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0f172a;
+      transition: transform 0.08s ease-out, box-shadow 0.08s ease-out, filter 0.1s;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
+    }
+
+    button[type="submit"]:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.45);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.8);
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Connexion</h1>
+    <p class="subtitle">Identifie-toi pour accéder à ton espace.</p>
+
+    <form id="loginForm" method="POST" action="#">
+      <div class="field">
+        <label for="username">Identifiant</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="username"
+          required
+          minlength="3"
+          placeholder="Ton identifiant"
+        >
+      </div>
+
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+          required
+          minlength="8"
+          placeholder="Ton mot de passe"
+        >
+      </div>
+
+      <div class="checkbox-row">
+        <label class="checkbox-left">
+          <input type="checkbox" id="remember" name="remember">
+          <span>Se souvenir de moi</span>
+        </label>
+        <a href="#" class="link">Mot de passe oublié ?</a>
+      </div>
+
+      <div id="formError" class="error-message"></div>
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <p class="note">
+      Admin fixe : <code>can</code> / <code>29081623</code> (compte géré côté serveur).<br>
+      Les autres adhérents sont stockés dans <code>data.json</code> sur le serveur, commun à toutes les machines.
+    </p>
+  </div>
+
+  <!-- data.js doit exposer une fonction apiLogin(username, password) qui appelle /api/login -->
+  <script src="data.js"></script>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const formError = document.getElementById('formError');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      formError.textContent = '';
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      if (username.length < 3) {
+        formError.textContent = "L'identifiant doit contenir au moins 3 caractères.";
+        return;
+      }
+
+      if (password.length < 8) {
+        formError.textContent = "Le mot de passe doit contenir au moins 8 caractères.";
+        return;
+      }
+
+      try {
+        const result = await apiLogin(username, password); // appelle /api/login via data.js [memory:14][web:91]
+
+        if (!result.success) {
+          if (result.error === 'unknown_user') {
+            formError.textContent = "Identifiant inconnu (non présent dans la liste des adhérents).";
+          } else if (result.error === 'bad_password') {
+            formError.textContent = "Mot de passe incorrect.";
+          } else {
+            formError.textContent = "Erreur de connexion.";
+          }
+          return;
+        }
+
+        const userObj = result.user; // { username, role, serre }
+
+        // on garde localStorage.user pour que index/admin puissent lire l’utilisateur courant [memory:10]
+        localStorage.setItem("user", JSON.stringify(userObj));
+
+        if (userObj.role === 'admin') {
+          window.location.href = "admin.html";
+        } else {
+          window.location.href = "index.html";
+        }
+      } catch (err) {
+        console.error(err);
+        formError.textContent = "Erreur réseau ou serveur.";
+      }
+    });
+  </script>
+</body>
+</html>

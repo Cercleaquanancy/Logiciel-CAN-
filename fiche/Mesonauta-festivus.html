@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mesonauta festivus (Cichlidé drapeau)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; margin-bottom: 14px; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Mesonauta festivus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Sous-famille :</span> Cichlinae</li>
+              <li><span class="sys-label">Genre :</span> <em>Mesonauta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Mesonauta festivus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Mesonauta-festivus/Mesonauta-festivus.PNG"
+                 alt="Mesonauta festivus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Mesonauta festivus</strong> est un cichlidé sud‑américain élégant, proche du scalaire, présentant un corps haut et une bande sombre diagonale caractéristique.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent 10–15&nbsp;cm selon les souches, avec une espérance de vie pouvant dépasser 8–10 ans en bonnes conditions.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C’est un cichlidé plutôt calme pour sa famille, qui vit en couple ou en petit groupe et occupe surtout la zone médiane, restant volontiers à proximité des racines, branches et plantes hautes.
+          </p>
+          <p class="section-text">
+            Il peut cependant devenir nettement territorial en période de reproduction et doit être associé à des poissons de taille moyenne, non agressifs mais suffisamment vifs pour ne pas se faire intimider.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Reproduction :</strong> ovipare, ponte sur substrat (feuilles larges, racines, pierres) soigneusement nettoyé; les deux parents assurent la garde des œufs puis des alevins.
+          </p>
+          <p class="section-text">
+            Un bac bien structuré avec des supports de ponte adaptés, une eau de bonne qualité et un environnement calme augmente les chances d’obtenir une reproduction et des soins parentaux complets.
+          </p>
+
+          <div class="section-title">Dimorphisme & biotope</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâles généralement plus grands, avec nageoires dorsale et anale plus effilées et étirées que chez les femelles.
+          </p>
+          <p class="section-text">
+            <strong>Biotope :</strong> zones calmes de rivières et de lagunes des bassins amazoniens et paraguayens, proches des berges, parmi racines, branches immergées et végétation dense.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Mesonauta-festivus/map-Mesonauta-festivus.png"
+              alt="Répartition de Mesonauta festivus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud : bassins de l’Amazone, de l’Orénoque, du Paraná et du Paraguay.</li>
+              <li>Zones calmes proches des berges, avec racines, branches immergées et parfois eau légèrement teintée par les tanins.</li>
+            </ul>
+            <p>
+              L’espèce fréquente des eaux plutôt lentes, souvent légèrement acides et riches en matière organique, ce qui justifie l’usage de racines et de feuilles en aquarium.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,5 à 7,5, avec une préférence pour une eau douce et légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 2 à 10&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à moyen, avec une filtration efficace mais sans excès de remous.</p>
+            <p><strong>Volume conseillé :</strong> ≥ 200–250&nbsp;L pour un couple ou un petit groupe, avec une bonne hauteur d’eau et un décor structuré.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte composante carnée; accepte granulés et paillettes de qualité pour cichlidés, complétés par des proies vivantes ou congelées (artémias, vers, daphnies) et une petite part végétale.
+            </p>
+            <p>
+              Des repas variés, distribués en petites quantités plusieurs fois par jour, permettent de maintenir de belles couleurs, une bonne croissance et une eau moins chargée en déchets.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+pc potable 
+cd "C:\Users\Elève\Desktop\Logiciel CAN 0.4 serveur"
+node server.js
+
+pc tour
+cd "C:\Users\filho\Desktop\Logiciel CAN 0.4 serveur"
+node server.js
+
+
+lt --port 5500
+
+curl ipv4.icanhazip.com

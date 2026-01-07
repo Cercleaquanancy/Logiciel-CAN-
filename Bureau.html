@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace bureau</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      min-height: 56px;
+      background: rgba(15,23,42,0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .navbar-left { display:flex; align-items:center; gap:10px; }
+    .navbar-title { font-size:0.95rem; font-weight:600; color:#e5e7eb; }
+    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+
+    .navbar-menu {
+      display:flex; gap:8px; align-items:center;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+
+    .nav-btn {
+      border:none; background:transparent; color:#cbd5f5;
+      font-size:0.8rem; padding:6px 8px; border-radius:999px;
+      cursor:pointer; display:flex; align-items:center; gap:4px;
+    }
+    .nav-btn span.icon { font-size:1rem; }
+    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
+    .nav-btn:hover { background:#111827; }
+
+    .navbar-logout {
+      border-radius:999px; border:1px solid #374151;
+      background:#111827; color:#e5e7eb;
+      padding:5px 10px; font-size:0.8rem; cursor:pointer;
+    }
+    .navbar-logout:hover { background:#1f2937; }
+
+    .page {
+      padding-top:72px;
+      padding-left:12px; padding-right:12px; padding-bottom:20px;
+      max-width:1100px; margin:0 auto;
+    }
+
+    .card {
+      background:#020617;
+      border-radius:10px;
+      border:1px solid #1f2937;
+      padding:14px 16px;
+      margin-bottom:14px;
+    }
+
+    .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
+    .card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
+    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+
+    .row-2 {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      gap:14px;
+    }
+
+    .field { margin-bottom:8px; }
+    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem;
+    }
+    textarea { min-height:70px; resize:vertical; }
+    input:focus, textarea:focus {
+      outline:none; border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary {
+      background:#38bdf8; color:#0f172a;
+      border:none; border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-primary:hover { filter:brightness(1.05); }
+
+    /* Chat */
+    .chat-box {
+      border-radius:8px;
+      border:1px solid #1f2937;
+      background:#020617;
+      max-height:260px;
+      overflow-y:auto;
+      padding:6px 8px;
+      font-size:0.8rem;
+    }
+    .chat-msg {
+      margin-bottom:6px;
+      padding:4px 6px;
+      border-radius:6px;
+      background:#111827;
+    }
+    .chat-header-line {
+      display:flex;
+      justify-content:space-between;
+      gap:6px;
+      font-size:0.7rem; color:#9ca3af;
+      margin-bottom:2px;
+      align-items:center;
+    }
+    .chat-text { font-size:0.8rem; }
+    .seen-info {
+      font-size:0.7rem;
+      color:#6b7280;
+      margin-top:2px;
+    }
+
+    /* Sondages */
+    .poll-results { margin-top:6px; font-size:0.8rem; }
+    .poll-option-input { display:flex; gap:4px; margin-bottom:4px; }
+    .poll-option-input input { flex:1; }
+
+    .poll-bar-wrap {
+      background:#111827;
+      border-radius:999px;
+      overflow:hidden;
+      height:8px;
+      margin-top:2px;
+      margin-bottom:4px;
+    }
+    .poll-bar {
+      height:100%;
+      background:#38bdf8;
+      width:0%;
+    }
+
+    .note { font-size:0.75rem; color:#9ca3af; margin-top:6px; }
+
+    /* Agenda (calendrier mensuel) */
+    .calendar-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+    .calendar-header-title {
+      font-weight:600;
+      font-size:0.95rem;
+    }
+    .calendar-nav-btn {
+      background:#111827;
+      color:#e5e7eb;
+      border:none;
+      border-radius:999px;
+      padding:3px 8px;
+      font-size:0.8rem;
+      cursor:pointer;
+    }
+    .calendar-nav-btn:hover { background:#1f2937; }
+
+    .calendar-grid {
+      display:grid;
+      grid-template-columns: repeat(7, 1fr);
+      border:1px solid #1f2937;
+      border-radius:8px;
+      overflow:hidden;
+      font-size:0.75rem;
+    }
+    .calendar-cell-header {
+      background:#0b1220;
+      text-align:center;
+      padding:4px 0;
+      border-bottom:1px solid #1f2937;
+      font-weight:600;
+    }
+    .calendar-cell {
+      min-height:70px;
+      border-right:1px solid #1f2937;
+      border-bottom:1px solid #1f2937;
+      padding:2px 3px;
+      position:relative;
+      cursor:pointer;
+    }
+    .calendar-cell:nth-child(7n) { border-right:none; }
+
+    .calendar-date {
+      font-size:0.7rem;
+      color:#9ca3af;
+    }
+    .calendar-cell.today {
+      background:#111827;
+    }
+    .calendar-event {
+      margin-top:2px;
+      background:#1d4ed8;
+      color:#f9fafb;
+      border-radius:4px;
+      padding:1px 3px;
+      font-size:0.7rem;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    .agenda-form-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:8px;
+      align-items:flex-end;
+    }
+    .agenda-form-row .field {
+      flex:1;
+      min-width:150px;
+      margin-bottom:0;
+    }
+
+    @media (max-width:768px){
+      .page { padding-top:90px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn active" data-link="bureau.html"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Espace bureau</h1>
+      <p class="subtitle">
+        Outils internes pour les membres du bureau : zone de messages partagés, sondages multiples et agenda type calendrier.
+      </p>
+    </div>
+
+    <div class="row-2">
+      <!-- Bloc chat -->
+      <div class="card">
+        <h2>Messages du bureau</h2>
+        <p class="subtitle">
+          Fil de discussion interne. Limité aux 20 derniers messages, avec liste des membres qui ont vu chaque message.
+        </p>
+
+        <div class="chat-box" id="chatBox"></div>
+
+        <div class="field" style="margin-top:8px;">
+          <label for="chatInput">Nouveau message</label>
+          <textarea id="chatInput" placeholder="Info réunion, décision à valider, etc."></textarea>
+        </div>
+        <button class="btn-primary" id="chatSendBtn">Envoyer</button>
+
+        <p class="note">
+          Les messages sont stockés en local dans le navigateur. Les plus anciens sont supprimés automatiquement au‑delà de 20.
+        </p>
+      </div>
+
+      <!-- Bloc sondages -->
+      <div class="card">
+        <h2>Proposition de sujet / sondages</h2>
+        <p class="subtitle">
+          Crée plusieurs sondages autour des sujets proposés. Les sondages sont compressés et se déplient au clic.
+        </p>
+
+        <div class="field">
+          <label for="pollQuestion">Question / sujet</label>
+          <textarea id="pollQuestion" placeholder="Ex : Organisation d’une bourse aux poissons en octobre ?"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Options du sondage</label>
+          <div id="pollOptionsInputs"></div>
+          <button class="btn-primary" id="addOptionBtn" style="margin-top:4px;">Ajouter une option</button>
+        </div>
+
+        <button class="btn-primary" id="createPollBtn" style="margin-top:6px;">Créer un nouveau sondage</button>
+
+        <div id="pollDisplay" class="poll-results" style="margin-top:8px;"></div>
+
+        <p class="note">
+          Chaque utilisateur peut voter une fois par sondage. Un symbole ⚠️ apparaît si tu n’as pas voté après 3 jours.  
+          La liste est limitée aux 10 sondages les plus récents, et chaque sondage peut être supprimé.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bloc agenda calendrier -->
+    <div class="card" id="agendaCard">
+      <h2>Agenda (réunions et événements)</h2>
+      <p class="subtitle">
+        Vue mensuelle type calendrier. Les événements passés sont automatiquement nettoyés.
+      </p>
+
+      <div class="calendar-header">
+        <div>
+          <button class="calendar-nav-btn" id="prevMonthBtn">◀</button>
+          <button class="calendar-nav-btn" id="nextMonthBtn">▶</button>
+        </div>
+        <div class="calendar-header-title" id="calendarTitle"></div>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid"></div>
+
+      <div class="agenda-form-row">
+        <div class="field">
+          <label for="agendaDate">Date</label>
+          <input type="date" id="agendaDate">
+        </div>
+        <div class="field">
+          <label for="agendaTitre">Titre</label>
+          <input type="text" id="agendaTitre" placeholder="Ex : Réunion mensuelle, Bourse aux poissons">
+        </div>
+        <div class="field">
+          <label for="agendaDetails">Détails</label>
+          <input type="text" id="agendaDetails" placeholder="Heure, lieu, ordre du jour...">
+        </div>
+        <button class="btn-primary" id="agendaAddBtn">Ajouter</button>
+      </div>
+
+      <p class="note">
+        Clique sur un jour dans le calendrier pour pré‑remplir la date. Tous les événements strictement antérieurs à aujourd’hui sont supprimés automatiquement.
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // ==== Connexion & rôle ====
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    const navbarUser = document.getElementById("navbarUser");
+    const roleLabel =
+      currentUser.role === "admin" ? "Admin" :
+      currentUser.role === "membre_bureau" ? "Membre de bureau" :
+      "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+    const navbarMenu = document.getElementById("navbarMenu");
+    const navButtons = document.querySelectorAll(".nav-btn[data-link]");
+    navButtons.forEach(btn => {
+      const link = btn.dataset.link;
+      btn.addEventListener("click", () => { window.location.href = link; });
+    });
+
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    if (currentUser.role !== "membre_bureau" && currentUser.role !== "admin") {
+      alert("Accès réservé aux membres du bureau.");
+      window.location.href = "index.html";
+    }
+
+    // ==== Mini‑chat (limite 20 messages + suppression) ====
+    const CHAT_KEY = "bureau_chat_messages_v1";
+    const CHAT_MAX = 20;
+    const chatBox = document.getElementById("chatBox");
+    const chatInput = document.getElementById("chatInput");
+    const chatSendBtn = document.getElementById("chatSendBtn");
+
+    function loadChat() {
+      try { return JSON.parse(localStorage.getItem(CHAT_KEY) || "[]"); }
+      catch(e){ return []; }
+    }
+    function saveChat(msgs) {
+      if (msgs.length > CHAT_MAX) {
+        msgs = msgs.slice(msgs.length - CHAT_MAX);
+      }
+      localStorage.setItem(CHAT_KEY, JSON.stringify(msgs));
+    }
+
+    function renderChat() {
+      const msgs = loadChat();
+      chatBox.innerHTML = "";
+      msgs.forEach(m => {
+        const div = document.createElement("div");
+        div.className = "chat-msg";
+
+        const header = document.createElement("div");
+        header.className = "chat-header-line";
+
+        const left = document.createElement("span");
+        left.textContent = m.author;
+
+        const middle = document.createElement("span");
+        middle.textContent = new Date(m.time).toLocaleString();
+
+        const delBtn = document.createElement("button");
+        delBtn.type = "button";
+        delBtn.textContent = "🗑";
+        delBtn.title = "Supprimer ce message";
+        delBtn.style.border = "none";
+        delBtn.style.background = "transparent";
+        delBtn.style.color = "#9ca3af";
+        delBtn.style.cursor = "pointer";
+        delBtn.style.fontSize = "0.8rem";
+        delBtn.addEventListener("click", () => {
+          let arr = loadChat();
+          arr = arr.filter(msg => msg.id !== m.id);
+          saveChat(arr);
+          renderChat();
+        });
+
+        header.appendChild(left);
+        header.appendChild(middle);
+        header.appendChild(delBtn);
+
+        const text = document.createElement("div");
+        text.className = "chat-text";
+        text.textContent = m.text;
+
+        const seen = document.createElement("div");
+        seen.className = "seen-info";
+        const seenBy = m.seenBy || [];
+        seen.textContent =
+          seenBy.length === 0
+            ? "Vu par : personne pour le moment"
+            : "Vu par : " + seenBy.join(", ");
+
+        div.appendChild(header);
+        div.appendChild(text);
+        div.appendChild(seen);
+        chatBox.appendChild(div);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function markMessagesAsSeen() {
+      let msgs = loadChat();
+      let changed = false;
+      msgs.forEach(m => {
+        if (!m.seenBy) m.seenBy = [];
+        if (!m.seenBy.includes(currentUser.username)) {
+          m.seenBy.push(currentUser.username);
+          changed = true;
+        }
+      });
+      if (changed) {
+        saveChat(msgs);
+        renderChat();
+      }
+    }
+
+    chatSendBtn.addEventListener("click", () => {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      let msgs = loadChat();
+      msgs.push({
+        id: Date.now(),
+        author: currentUser.username,
+        text,
+        time: new Date().toISOString(),
+        seenBy: [currentUser.username]
+      });
+      saveChat(msgs);
+      chatInput.value = "";
+      renderChat();
+    });
+
+    renderChat();
+    markMessagesAsSeen();
+    setInterval(markMessagesAsSeen, 5000);
+
+    // ==== Sondages multiples (limite 10 + suppression) ====
+    const POLLS_KEY = "bureau_polls_v1";
+    const POLLS_MAX = 10;
+    const POLL_VOTE_PREFIX = "bureau_poll_vote_";
+
+    const pollQuestionInput = document.getElementById("pollQuestion");
+    const pollOptionsInputs = document.getElementById("pollOptionsInputs");
+    const addOptionBtn = document.getElementById("addOptionBtn");
+    const createPollBtn = document.getElementById("createPollBtn");
+    const pollDisplay = document.getElementById("pollDisplay");
+
+    function daysSince(dateIso) {
+      const d1 = new Date(dateIso);
+      const d2 = new Date();
+      const diffMs = d2 - d1;
+      return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    }
+
+    function addOptionInput(value = "") {
+      if (pollOptionsInputs.children.length >= 5) return;
+      const wrap = document.createElement("div");
+      wrap.className = "poll-option-input";
+
+      const inp = document.createElement("input");
+      inp.type = "text";
+      inp.placeholder = "Option de réponse";
+      inp.value = value;
+
+      const del = document.createElement("button");
+      del.type = "button";
+      del.textContent = "X";
+      del.className = "btn-primary";
+      del.style.padding = "2px 6px";
+      del.addEventListener("click", () => {
+        pollOptionsInputs.removeChild(wrap);
+      });
+
+      wrap.appendChild(inp);
+      wrap.appendChild(del);
+      pollOptionsInputs.appendChild(wrap);
+    }
+
+    addOptionBtn.addEventListener("click", () => addOptionInput());
+
+    function loadPolls() {
+      try { return JSON.parse(localStorage.getItem(POLLS_KEY) || "[]"); }
+      catch(e){ return []; }
+    }
+    function savePolls(polls) {
+      if (polls.length > POLLS_MAX) {
+        polls = polls.slice(0, POLLS_MAX);
+      }
+      localStorage.setItem(POLLS_KEY, JSON.stringify(polls));
+    }
+
+    createPollBtn.addEventListener("click", () => {
+      const q = pollQuestionInput.value.trim();
+      if (!q) { alert("Merci de saisir une question."); return; }
+
+      const optionTexts = Array.from(
+        pollOptionsInputs.querySelectorAll("input[type='text']")
+      )
+        .map(i => i.value.trim())
+        .filter(v => v !== "");
+
+      if (optionTexts.length < 2) {
+        alert("Merci de saisir au moins deux options.");
+        return;
+      }
+
+      let polls = loadPolls();
+      const poll = {
+        id: Date.now(),
+        author: currentUser.username,
+        question: q,
+        options: optionTexts.map((t, idx) => ({
+          id: idx + 1,
+          text: t,
+          votes: 0
+        })),
+        createdAt: new Date().toISOString()
+      };
+
+      polls.unshift(poll);
+      savePolls(polls);
+
+      pollQuestionInput.value = "";
+      pollOptionsInputs.innerHTML = "";
+      addOptionInput();
+      addOptionInput();
+
+      renderPolls();
+    });
+
+    function renderPolls() {
+      const polls = loadPolls();
+      pollDisplay.innerHTML = "";
+
+      if (polls.length === 0) {
+        pollDisplay.textContent = "Aucun sondage en cours.";
+        return;
+      }
+
+      const userVoteKeyBase = POLL_VOTE_PREFIX + currentUser.username + "_";
+
+      polls.forEach(poll => {
+        const wrapper = document.createElement("div");
+        wrapper.style.borderTop = "1px solid #1f2937";
+        wrapper.style.paddingTop = "6px";
+        wrapper.style.marginTop = "6px";
+
+        const header = document.createElement("div");
+        header.style.display = "flex";
+        header.style.alignItems = "center";
+        header.style.justifyContent = "space-between";
+        header.style.cursor = "pointer";
+
+        const left = document.createElement("div");
+        left.style.display = "flex";
+        left.style.flexDirection = "column";
+        left.style.gap = "2px";
+
+        const title = document.createElement("span");
+        title.style.fontWeight = "600";
+        title.textContent = poll.question;
+
+        const meta = document.createElement("span");
+        meta.style.fontSize = "0.7rem";
+        meta.style.color = "#9ca3af";
+        meta.textContent = "par " + poll.author + " • " +
+          new Date(poll.createdAt).toLocaleDateString();
+
+        left.appendChild(title);
+        left.appendChild(meta);
+
+        const right = document.createElement("div");
+        right.style.display = "flex";
+        right.style.alignItems = "center";
+        right.style.gap = "6px";
+
+        const userVoteKey = userVoteKeyBase + poll.id;
+        const userVote = localStorage.getItem(userVoteKey);
+
+        if (!userVote && daysSince(poll.createdAt) >= 3) {
+          const alertIcon = document.createElement("span");
+          alertIcon.textContent = "⚠️";
+          alertIcon.title = "Vous n'avez pas encore voté sur ce sondage.";
+          right.appendChild(alertIcon);
+        }
+
+        const delPollBtn = document.createElement("button");
+        delPollBtn.type = "button";
+        delPollBtn.textContent = "🗑";
+        delPollBtn.title = "Supprimer ce sondage";
+        delPollBtn.className = "btn-primary";
+        delPollBtn.style.padding = "2px 6px";
+        delPollBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          let all = loadPolls();
+          all = all.filter(p => p.id !== poll.id);
+          savePolls(all);
+          localStorage.removeItem(userVoteKeyBase + poll.id);
+          renderPolls();
+        });
+        right.appendChild(delPollBtn);
+
+        const toggleIcon = document.createElement("span");
+        toggleIcon.textContent = "▼";
+        toggleIcon.style.fontSize = "0.7rem";
+        right.appendChild(toggleIcon);
+
+        header.appendChild(left);
+        header.appendChild(right);
+
+        const panel = document.createElement("div");
+        panel.style.maxHeight = "0";
+        panel.style.overflow = "hidden";
+        panel.style.transition = "max-height 0.2s ease-out";
+        panel.style.marginTop = "4px";
+
+        const inner = document.createElement("div");
+        inner.style.padding = "4px 0";
+
+        let total = 0;
+        poll.options.forEach(o => { total += o.votes; });
+
+        poll.options.forEach(o => {
+          const line = document.createElement("div");
+          line.style.marginBottom = "4px";
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "btn-primary";
+          btn.style.padding = "2px 6px";
+          btn.style.marginRight = "6px";
+          btn.textContent = "Voter";
+
+          if (userVote && Number(userVote) === o.id) {
+            btn.disabled = true;
+            btn.textContent = "Votre vote";
+          }
+
+          btn.addEventListener("click", () => {
+            let pollsAll = loadPolls();
+            const p = pollsAll.find(x => x.id === poll.id);
+            if (!p) return;
+
+            const uvKey = userVoteKeyBase + p.id;
+            const prev = localStorage.getItem(uvKey);
+
+            if (prev && Number(prev) === o.id) return;
+
+            if (prev) {
+              const oldOpt = p.options.find(x => x.id === Number(prev));
+              if (oldOpt) oldOpt.votes = Math.max(0, oldOpt.votes - 1);
+            }
+            const curOpt = p.options.find(x => x.id === o.id);
+            if (curOpt) curOpt.votes += 1;
+
+            localStorage.setItem(uvKey, String(o.id));
+            savePolls(pollsAll);
+            renderPolls();
+          });
+
+          const label = document.createElement("span");
+          label.textContent = o.text;
+
+          const percent = total > 0 ? Math.round((o.votes / total) * 100) : 0;
+
+          const barWrap = document.createElement("div");
+          barWrap.className = "poll-bar-wrap";
+          const bar = document.createElement("div");
+          bar.className = "poll-bar";
+          bar.style.width = percent + "%";
+          barWrap.appendChild(bar);
+
+          const info = document.createElement("div");
+          info.style.fontSize = "0.75rem";
+          info.style.color = "#9ca3af";
+          info.textContent = o.votes + " vote(s) – " + percent + " %";
+
+          line.appendChild(btn);
+          line.appendChild(label);
+          inner.appendChild(line);
+          inner.appendChild(barWrap);
+          inner.appendChild(info);
+        });
+
+        panel.appendChild(inner);
+
+        header.addEventListener("click", () => {
+          const isOpen = panel.style.maxHeight && panel.style.maxHeight !== "0px";
+          if (isOpen) {
+            panel.style.maxHeight = "0";
+            toggleIcon.textContent = "▼";
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            toggleIcon.textContent = "▲";
+          }
+        });
+
+        wrapper.appendChild(header);
+        wrapper.appendChild(panel);
+        pollDisplay.appendChild(wrapper);
+      });
+    }
+
+    (function initPollForm() {
+      pollOptionsInputs.innerHTML = "";
+      addOptionInput();
+      addOptionInput();
+      renderPolls();
+    })();
+
+    // ==== Agenda calendrier (inchangé) ====
+    const AGENDA_KEY = "bureau_agenda_v2";
+    const calendarGrid = document.getElementById("calendarGrid");
+    const calendarTitle = document.getElementById("calendarTitle");
+    const prevMonthBtn = document.getElementById("prevMonthBtn");
+    const nextMonthBtn = document.getElementById("nextMonthBtn");
+    const agendaDateInput = document.getElementById("agendaDate");
+    const agendaTitreInput = document.getElementById("agendaTitre");
+    const agendaDetailsInput = document.getElementById("agendaDetails");
+    const agendaAddBtn = document.getElementById("agendaAddBtn");
+
+    const daysLabels = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+
+    let currentYear, currentMonth;
+
+    function todayYMD() {
+      const d = new Date();
+      return d.toISOString().slice(0,10);
+    }
+
+    function loadAgenda() {
+      try { return JSON.parse(localStorage.getItem(AGENDA_KEY) || "[]"); }
+      catch(e){ return []; }
+    }
+    function saveAgenda(items) {
+      const today = todayYMD();
+      items = items.filter(ev => ev.date >= today);
+      items.sort((a, b) => a.date.localeCompare(b.date));
+      localStorage.setItem(AGENDA_KEY, JSON.stringify(items));
+    }
+
+    function setCurrentMonthToToday() {
+      const d = new Date();
+      currentYear = d.getFullYear();
+      currentMonth = d.getMonth();
+    }
+
+    function changeMonth(delta) {
+      currentMonth += delta;
+      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const firstDay = new Date(currentYear, currentMonth, 1);
+      const lastDay = new Date(currentYear, currentMonth + 1, 0);
+      const monthNames = [
+        "Janvier","Février","Mars","Avril","Mai","Juin",
+        "Juillet","Août","Septembre","Octobre","Novembre","Décembre"
+      ];
+      calendarTitle.textContent = monthNames[currentMonth] + " " + currentYear;
+
+      calendarGrid.innerHTML = "";
+      daysLabels.forEach(d => {
+        const h = document.createElement("div");
+        h.className = "calendar-cell-header";
+        h.textContent = d;
+        calendarGrid.appendChild(h);
+      });
+
+      const startWeekday = (firstDay.getDay() + 6) % 7;
+      const totalDays = lastDay.getDate();
+
+      const events = loadAgenda();
+      const todayStr = todayYMD();
+
+      const totalCells = 42;
+      for (let i = 0; i < totalCells; i++) {
+        const cell = document.createElement("div");
+        cell.className = "calendar-cell";
+
+        const dayNum = i - startWeekday + 1;
+        if (dayNum >= 1 && dayNum <= totalDays) {
+          const dateStr = `${currentYear}-${String(currentMonth+1).padStart(2,"0")}-${String(dayNum).padStart(2,"0")}`;
+
+          const dateLabel = document.createElement("div");
+          dateLabel.className = "calendar-date";
+          dateLabel.textContent = dayNum;
+          cell.appendChild(dateLabel);
+
+          if (dateStr === todayStr) {
+            cell.classList.add("today");
+          }
+
+          events
+            .filter(ev => ev.date === dateStr)
+            .forEach(ev => {
+              const evDiv = document.createElement("div");
+              evDiv.className = "calendar-event";
+              evDiv.textContent = ev.titre;
+              evDiv.title = ev.details || "";
+              cell.appendChild(evDiv);
+            });
+
+          cell.addEventListener("click", () => {
+            agendaDateInput.value = dateStr;
+          });
+        } else {
+          cell.style.background = "#020617";
+        }
+
+        calendarGrid.appendChild(cell);
+      }
+    }
+
+    prevMonthBtn.addEventListener("click", () => changeMonth(-1));
+    nextMonthBtn.addEventListener("click", () => changeMonth(1));
+
+    agendaAddBtn.addEventListener("click", () => {
+      const d = agendaDateInput.value;
+      const t = agendaTitreInput.value.trim();
+      const det = agendaDetailsInput.value.trim();
+      if (!d || !t) {
+        alert("Merci de saisir au minimum une date et un titre.");
+        return;
+      }
+      const items = loadAgenda();
+      items.push({
+        id: Date.now(),
+        date: d,
+        titre: t,
+        details: det
+      });
+      saveAgenda(items);
+      agendaTitreInput.value = "";
+      agendaDetailsInput.value = "";
+      renderCalendar();
+    });
+
+    (function initAgenda(){
+      const items = loadAgenda();
+      saveAgenda(items);
+      setCurrentMonthToToday();
+      agendaDateInput.value = todayYMD();
+      renderCalendar();
+    })();
+  </script>
+</body>
+</html>

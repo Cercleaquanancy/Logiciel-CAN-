@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Échange</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="especes.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 56px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .navbar-user {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: none;
+      background: transparent;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn span.icon { font-size: 1rem; }
+
+    .nav-btn.active {
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    .nav-btn:hover { background: #111827; }
+
+    .navbar-logout {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .navbar-logout:hover { background: #1f2937; }
+
+    .page {
+      padding-top: 72px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .card h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 12px;
+    }
+
+    .exchange-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .exchange-tab-btn {
+      border: none;
+      background: #0f172a;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .exchange-tab-btn span.icon { font-size: 1rem; }
+
+    .exchange-tab-btn.active {
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    .exchange-tab-btn:hover { background: #111827; }
+
+    .exchange-section {
+      display: none;
+      margin-top: 8px;
+    }
+
+    .exchange-section.active { display: block; }
+
+    .filters-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .filters-row label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .filters-row select {
+      background: #020617;
+      border: 1px solid #374151;
+      color: #e5e7eb;
+      border-radius: 6px;
+      padding: 4px 6px;
+      font-size: 0.8rem;
+    }
+
+    .btn-small {
+      border: 1px solid #374151;
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .btn-small:hover { background: #1f2937; }
+
+    .btn-primary {
+      border: none;
+      background: #1d4ed8;
+      color: #e5e7eb;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: #2563eb; }
+
+    .annonce-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .annonce-item {
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+    }
+
+    .annonce-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .annonce-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .annonce-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge-type {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      text-transform: capitalize;
+      background: #0f172a;
+      border: 1px solid #1f2937;
+    }
+
+    .badge-private {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: #7c2d12;
+      color: #fee2e2;
+    }
+
+    .badge-public {
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: #065f46;
+      color: #a7f3d0;
+    }
+
+    .annonce-desc {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      white-space: pre-wrap;
+    }
+
+    .annonce-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .btn-fav {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-fav.favori {
+      background: #facc15;
+      color: #1f2937;
+      border-color: #fbbf24;
+    }
+
+    .btn-fav span.icon { font-size: 0.9rem; }
+
+    .form-annonce {
+      border-top: 1px solid #1f2937;
+      padding-top: 10px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-row label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      background: #020617;
+      border: 1px solid #374151;
+      color: #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+
+    .form-row textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      margin-top: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .empty-text {
+      font-size: 0.8rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .page { padding-top: 90px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Échange</h1>
+      <p class="subtitle">
+        Espace d’annonces entre adhérents : offres, recherches et mon espace.
+      </p>
+
+      <div class="exchange-tabs">
+        <button class="exchange-tab-btn active" data-tab="offres">
+          <span class="icon">📦</span><span>Offres</span>
+        </button>
+        <button class="exchange-tab-btn" data-tab="recherche">
+          <span class="icon">🔍</span><span>Recherche</span>
+        </button>
+        <button class="exchange-tab-btn" data-tab="mon-espace">
+          <span class="icon">👤</span><span>Mon espace</span>
+        </button>
+      </div>
+
+      <section id="tab-offres" class="exchange-section active">
+        <h2>Offres des adhérents</h2>
+        <p class="section-subtitle">
+          Consulte les offres publiques publiées par les adhérents.
+        </p>
+
+        <div class="filters-row">
+          <label for="offres-sort">Trier par :</label>
+          <select id="offres-sort">
+            <option value="nom">Nom de l’offre (A → Z)</option>
+            <option value="favoris">Préférées en premier</option>
+            <option value="type">Type</option>
+          </select>
+
+          <label for="offres-type">Type :</label>
+          <select id="offres-type">
+            <option value="tous">Tous les types</option>
+            <option value="poisson">Poisson</option>
+            <option value="plante">Plante</option>
+            <option value="aquarium">Aquarium</option>
+            <option value="materiel">Matériel</option>
+          </select>
+        </div>
+
+        <div id="offres-list" class="annonce-list"></div>
+      </section>
+
+      <section id="tab-recherche" class="exchange-section">
+        <h2>Recherches des adhérents</h2>
+        <p class="section-subtitle">
+          Consulte les recherches publiques des adhérents.
+        </p>
+
+        <div class="filters-row">
+          <label for="recherche-sort">Trier par :</label>
+          <select id="recherche-sort">
+            <option value="nom">Nom de l’annonce (A → Z)</option>
+            <option value="favoris">Préférées en premier</option>
+            <option value="type">Type</option>
+          </select>
+
+          <label for="recherche-type">Type :</label>
+          <select id="recherche-type">
+            <option value="tous">Tous les types</option>
+            <option value="poisson">Poisson</option>
+            <option value="plante">Plante</option>
+            <option value="aquarium">Aquarium</option>
+            <option value="materiel">Matériel</option>
+          </select>
+        </div>
+
+        <div id="recherche-list" class="annonce-list"></div>
+      </section>
+
+      <section id="tab-mon-espace" class="exchange-section">
+        <h2>Mon espace</h2>
+        <p class="section-subtitle">
+          Crée et gère tes offres et tes recherches (privé/public, favoris, etc.).
+        </p>
+
+        <div class="section-title">Tes offres</div>
+        <p class="section-subtitle">
+          Ces offres sont rattachées à ton compte. Tu peux les passer en public ou en privé.
+        </p>
+        <div id="mes-offres-list" class="annonce-list"></div>
+
+        <div class="section-title">Tes recherches</div>
+        <p class="section-subtitle">
+          Ces annonces décrivent ce que tu recherches auprès des autres adhérents.
+        </p>
+        <div id="mes-recherches-list" class="annonce-list"></div>
+
+        <div class="section-title">Créer une offre</div>
+        <form id="form-offre" class="form-annonce">
+          <div class="form-row">
+            <label for="offre-nom">Nom de l’annonce *</label>
+            <input type="text" id="offre-nom" required>
+          </div>
+          <div class="form-row">
+            <label for="offre-type">Type *</label>
+            <select id="offre-type" required>
+              <option value="">Sélectionner un type</option>
+              <option value="poisson">Poisson</option>
+              <option value="plante">Plante</option>
+              <option value="aquarium">Aquarium</option>
+              <option value="materiel">Matériel</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="offre-desc">Description</label>
+            <textarea id="offre-desc" placeholder="Détails de ce que tu proposes (espèce, quantité, état du matériel, conditions, etc.)."></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-primary">Créer l’offre (par défaut privée)</button>
+          </div>
+        </form>
+
+        <div class="section-title">Créer une recherche</div>
+        <form id="form-recherche" class="form-annonce">
+          <div class="form-row">
+            <label for="recherche-nom">Nom de l’annonce *</label>
+            <input type="text" id="recherche-nom" required>
+          </div>
+          <div class="form-row">
+            <label for="recherche-type-input">Type *</label>
+            <select id="recherche-type-input" required>
+              <option value="">Sélectionner un type</option>
+              <option value="poisson">Poisson</option>
+              <option value="plante">Plante</option>
+              <option value="aquarium">Aquarium</option>
+              <option value="materiel">Matériel</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="recherche-desc">Description</label>
+            <textarea id="recherche-desc" placeholder="Détails de ce que tu recherches (espèce, matériel, quantité, etc.)."></textarea>
+          </div>
+          <div>
+            <button type="submit" class="btn-primary">Créer la recherche (par défaut privée)</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Auth locale
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    const navbarUser = document.getElementById('navbarUser');
+    const roleLabel =
+      currentUser.role === "admin" ? "Admin" :
+      currentUser.role === "membre_bureau" ? "Membre de bureau" :
+      "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+    const CURRENT_PAGE = "echange.html";
+    const navbarMenu = document.getElementById('navbarMenu');
+    const navButtons = document.querySelectorAll('.nav-btn[data-link]');
+    navButtons.forEach(btn => {
+      const link = btn.dataset.link;
+      if (link === CURRENT_PAGE) { btn.classList.add('active'); }
+      btn.addEventListener('click', () => { window.location.href = link; });
+    });
+
+    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
+      const bureauBtn = document.createElement("button");
+      bureauBtn.className = "nav-btn";
+      bureauBtn.dataset.link = "bureau.html";
+      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
+      const logoutBtnElem = document.getElementById("logoutBtn");
+      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
+      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
+      if (CURRENT_PAGE === "bureau.html") { bureauBtn.classList.add('active'); }
+    }
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // ========= API ANNONCES (via serveur) =========
+
+    async function apiGetAnnonces() {
+      const res = await fetch('/api/annonces');
+      if (!res.ok) throw new Error('Erreur chargement annonces');
+      return res.json();
+    }
+
+    async function apiCreateAnnonce({ titre, type, description, categorie }) {
+      const res = await fetch('/api/annonces', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          titre,
+          type,
+          description,
+          categorie,
+          auteur: currentUser.username
+        })
+      });
+      if (!res.ok) throw new Error('Erreur création annonce');
+      return res.json();
+    }
+
+    async function apiTogglePrivate(id) {
+      const res = await fetch(`/api/annonces/${encodeURIComponent(id)}/togglePrivate`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: currentUser.username })
+      });
+      if (!res.ok) throw new Error('Erreur bascule privé/public');
+      return res.json();
+    }
+
+    async function apiToggleFavori(id) {
+      const res = await fetch(`/api/annonces/${encodeURIComponent(id)}/toggleFavori`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: currentUser.username })
+      });
+      if (!res.ok) throw new Error('Erreur favoris');
+      return res.json();
+    }
+
+    async function apiDeleteAnnonce(id) {
+      const res = await fetch(`/api/annonces/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: currentUser.username, role: currentUser.role })
+      });
+      if (!res.ok) throw new Error('Erreur suppression');
+      return res.json();
+    }
+
+    // ========= UI & logique =========
+
+    const tabButtons = document.querySelectorAll('.exchange-tab-btn');
+    const tabSections = {
+      offres: document.getElementById('tab-offres'),
+      recherche: document.getElementById('tab-recherche'),
+      "mon-espace": document.getElementById('tab-mon-espace')
+    };
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        Object.keys(tabSections).forEach(key => {
+          tabSections[key].classList.toggle('active', key === tab);
+        });
+      });
+    });
+
+    const offresSortSelect = document.getElementById('offres-sort');
+    const offresTypeSelect = document.getElementById('offres-type');
+    const offresListElem = document.getElementById('offres-list');
+
+    const rechercheSortSelect = document.getElementById('recherche-sort');
+    const rechercheTypeSelect = document.getElementById('recherche-type');
+    const rechercheListElem = document.getElementById('recherche-list');
+
+    const mesOffresListElem = document.getElementById('mes-offres-list');
+    const mesRecherchesListElem = document.getElementById('mes-recherches-list');
+
+    let cachedAnnonces = [];
+
+    function renderAnnonceList(container, annonces, { showAuteur = true, isMineSection = false } = {}) {
+      container.innerHTML = "";
+      if (!annonces.length) {
+        const p = document.createElement('p');
+        p.className = "empty-text";
+        p.textContent = "Aucune annonce pour le moment.";
+        container.appendChild(p);
+        return;
+      }
+
+      annonces.forEach(a => {
+        const div = document.createElement('div');
+        div.className = "annonce-item";
+
+        const header = document.createElement('div');
+        header.className = "annonce-header";
+
+        const title = document.createElement('div');
+        title.className = "annonce-title";
+        title.textContent = a.titre;
+
+        const favBtn = document.createElement('button');
+        favBtn.className = "btn-fav";
+        if (Array.isArray(a.favoriPar) && a.favoriPar.includes(currentUser.username)) {
+          favBtn.classList.add('favori');
+          favBtn.innerHTML = '<span class="icon">⭐</span><span>Marquée</span>';
+        } else {
+          favBtn.innerHTML = '<span class="icon">☆</span><span>Marquer</span>';
+        }
+        favBtn.addEventListener('click', async () => {
+          try {
+            await apiToggleFavori(a.id);
+            await refreshAll();
+          } catch (e) {
+            alert(e.message);
+          }
+        });
+
+        header.appendChild(title);
+        header.appendChild(favBtn);
+
+        const meta = document.createElement('div');
+        meta.className = "annonce-meta";
+
+        const typeSpan = document.createElement('span');
+        typeSpan.className = "badge-type";
+        typeSpan.textContent = a.type;
+        meta.appendChild(typeSpan);
+
+        if (showAuteur) {
+          const auteurSpan = document.createElement('span');
+          auteurSpan.textContent = "Par " + a.auteur;
+          meta.appendChild(auteurSpan);
+        }
+
+        const visSpan = document.createElement('span');
+        visSpan.className = a.prive ? "badge-private" : "badge-public";
+        visSpan.textContent = a.prive ? "Privé" : "Public";
+        meta.appendChild(visSpan);
+
+        const desc = document.createElement('div');
+        desc.className = "annonce-desc";
+        desc.textContent = a.description || "Aucune description.";
+
+        const actions = document.createElement('div');
+        actions.className = "annonce-actions";
+
+        const isOwner = a.auteur === currentUser.username;
+        const isAdminLike = currentUser.role === "admin" || currentUser.role === "membre_bureau";
+
+        if (isMineSection && isOwner) {
+          const toggleBtn = document.createElement('button');
+          toggleBtn.className = "btn-small";
+          toggleBtn.textContent = a.prive ? "Passer en public" : "Passer en privé";
+          toggleBtn.addEventListener('click', async () => {
+            try {
+              await apiTogglePrivate(a.id);
+              await refreshAll();
+            } catch (e) {
+              alert(e.message);
+            }
+          });
+          actions.appendChild(toggleBtn);
+        }
+
+        if (isOwner || isAdminLike) {
+          const delBtn = document.createElement('button');
+          delBtn.className = "btn-small";
+          delBtn.textContent = "Supprimer";
+          delBtn.style.background = "#b91c1c";
+          delBtn.style.borderColor = "#7f1d1d";
+          delBtn.addEventListener('click', async () => {
+            const confirmMsg = isAdminLike && !isOwner
+              ? "Supprimer cette annonce d’un autre adhérent ?"
+              : "Supprimer définitivement cette annonce ?";
+            if (!confirm(confirmMsg)) return;
+            try {
+              await apiDeleteAnnonce(a.id);
+              await refreshAll();
+            } catch (e) {
+              alert(e.message);
+            }
+          });
+          actions.appendChild(delBtn);
+        }
+
+        div.appendChild(header);
+        div.appendChild(meta);
+        div.appendChild(desc);
+        if (actions.children.length > 0) {
+          div.appendChild(actions);
+        }
+
+        container.appendChild(div);
+      });
+    }
+
+    function sortAndFilter(annonces, { tri, type, categorie }) {
+      let list = annonces.filter(a => a.categorie === categorie);
+
+      if (type && type !== "tous") {
+        list = list.filter(a => a.type === type);
+      }
+
+      if (tri === "nom") {
+        list.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
+      } else if (tri === "type") {
+        list.sort((a, b) => {
+          const t = a.type.localeCompare(b.type, 'fr', { sensitivity: 'base' });
+          if (t !== 0) return t;
+          return a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
+        });
+      } else if (tri === "favoris") {
+        list.sort((a, b) => {
+          const aFav = Array.isArray(a.favoriPar) && a.favoriPar.includes(currentUser.username);
+          const bFav = Array.isArray(b.favoriPar) && b.favoriPar.includes(currentUser.username);
+          if (aFav === bFav) {
+            return a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
+          }
+          return bFav - aFav;
+        });
+      }
+
+      return list;
+    }
+
+    function refreshOffres() {
+      const annonces = cachedAnnonces;
+      const tri = offresSortSelect.value;
+      const type = offresTypeSelect.value;
+
+      const triees = sortAndFilter(annonces, { tri, type, categorie: "offre" });
+      // Offres : uniquement annonces publiques
+      const visibles = triees.filter(a => !a.prive);
+      renderAnnonceList(offresListElem, visibles, { showAuteur: true, isMineSection: false });
+    }
+
+    function refreshRecherches() {
+      const annonces = cachedAnnonces;
+      const tri = rechercheSortSelect.value;
+      const type = rechercheTypeSelect.value;
+
+      const triees = sortAndFilter(annonces, { tri, type, categorie: "recherche" });
+      // Recherches : uniquement annonces publiques
+      const visibles = triees.filter(a => !a.prive);
+      renderAnnonceList(rechercheListElem, visibles, { showAuteur: true, isMineSection: false });
+    }
+
+    function refreshMonEspace() {
+      const annonces = cachedAnnonces;
+
+      const mesOffres = annonces.filter(a => a.categorie === "offre" && a.auteur === currentUser.username);
+      mesOffres.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
+      renderAnnonceList(mesOffresListElem, mesOffres, { showAuteur: false, isMineSection: true });
+
+      const mesRech = annonces.filter(a => a.categorie === "recherche" && a.auteur === currentUser.username);
+      mesRech.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
+      renderAnnonceList(mesRecherchesListElem, mesRech, { showAuteur: false, isMineSection: true });
+    }
+
+    async function refreshAll() {
+      try {
+        cachedAnnonces = await apiGetAnnonces();
+        refreshOffres();
+        refreshRecherches();
+        refreshMonEspace();
+      } catch (e) {
+        alert("Erreur de chargement des annonces : " + e.message);
+      }
+    }
+
+    const formOffre = document.getElementById('form-offre');
+    const inputOffreNom = document.getElementById('offre-nom');
+    const inputOffreType = document.getElementById('offre-type');
+    const inputOffreDesc = document.getElementById('offre-desc');
+
+    formOffre.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const titre = inputOffreNom.value.trim();
+      const type = inputOffreType.value;
+      const desc = inputOffreDesc.value;
+
+      if (!titre || !type) {
+        alert("Merci de remplir au minimum le nom de l’annonce et le type.");
+        return;
+      }
+
+      try {
+        await apiCreateAnnonce({ titre, type, description: desc, categorie: "offre" });
+        formOffre.reset();
+        await refreshAll();
+      } catch (err) {
+        alert("Erreur lors de la création de l’offre : " + err.message);
+      }
+    });
+
+    const formRecherche = document.getElementById('form-recherche');
+    const inputRechercheNom = document.getElementById('recherche-nom');
+    const inputRechercheType = document.getElementById('recherche-type-input');
+    const inputRechercheDesc = document.getElementById('recherche-desc');
+
+    formRecherche.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const titre = inputRechercheNom.value.trim();
+      const type = inputRechercheType.value;
+      const desc = inputRechercheDesc.value;
+
+      if (!titre || !type) {
+        alert("Merci de remplir au minimum le nom de l’annonce et le type.");
+        return;
+      }
+
+      try {
+        await apiCreateAnnonce({ titre, type, description: desc, categorie: "recherche" });
+        formRecherche.reset();
+        await refreshAll();
+      } catch (err) {
+        alert("Erreur lors de la création de la recherche : " + err.message);
+      }
+    });
+
+    offresSortSelect.addEventListener('change', refreshOffres);
+    offresTypeSelect.addEventListener('change', refreshOffres);
+    rechercheSortSelect.addEventListener('change', refreshRecherches);
+    rechercheTypeSelect.addEventListener('change', refreshRecherches);
+
+    // Premier chargement
+    refreshAll();
+  </script>
+</body>
+</html>

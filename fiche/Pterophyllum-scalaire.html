@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pterophyllum scalare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Pterophyllum scalare</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Sous-famille :</span> Cichlinae</li>
+              <li><span class="sys-label">Genre :</span> <em>Pterophyllum</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Pterophyllum scalare</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Pterophyllum-scalaire/Pterophyllum-scalaire.jpeg" alt="Pterophyllum scalare">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Pterophyllum scalare</strong> est un cichlidé emblématique de l’Amazonie, apprécié pour sa silhouette haute et triangulaire et son comportement de banc lâche.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent environ 15&nbsp;cm de longueur corporelle pour 18 à 20&nbsp;cm de hauteur totale, ce qui impose un bac suffisamment haut.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en groupe hiérarchisé, occupant surtout la zone médiane, où elle se déplace lentement entre les racines et les feuilles verticales.
+          </p>
+          <p class="section-text">
+            Relativement paisible pour un cichlidé, elle devient toutefois territoriale en période de reproduction et peut prédater les très petits poissons et alevins.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur sur support vertical (feuilles larges, racines, cônes, vitres), le couple nettoie soigneusement la surface choisie avant d’y déposer les œufs.
+          </p>
+          <p class="section-text">
+            Les parents ventilent et protègent œufs et larves, puis rassemblent les alevins en nuage compact ; un bac spécifique augmente nettement les chances de succès.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué ; le mâle peut être légèrement plus massif, avec parfois une bosse nuptiale discrète et une papille génitale plus pointue en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement 8 à 10&nbsp;ans en aquarium, parfois davantage avec une maintenance soignée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Pterophyllum scalare fréquente les zones calmes et lentes de l’Amazone et de ses affluents, souvent inondées, très plantées, avec de nombreuses racines et branches immergées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Pterophyllum-scalaire/mapsPterophyllum-scalare.PNG"
+              alt="Répartition de Pterophyllum scalare"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassin de l’Amazone en Amérique du Sud (Brésil, Pérou, Colombie).</li>
+              <li>Bras morts, zones inondées, forêts inondées et lagunes calmes fortement structurées.</li>
+            </ul>
+            <p>
+              L’espèce vit dans des eaux plutôt calmes, légèrement acides et souvent ambrées, avec une végétation et des racines denses servant de repères et de zones de ponte.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,0.</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH, eau douce à très douce.</p>
+            <p><strong>Courant :</strong> faible, avec filtration efficace mais sortie de rejet adoucie.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 300–350&nbsp;L pour un groupe de 5–6 individus, avec au moins 50&nbsp;cm de hauteur d’eau.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance carnivore, acceptant granulés pour cichlidés, nourriture congelée (artémias, krill, vers) et un complément végétal occasionnel.
+            </p>
+            <p>
+              Une alimentation variée, distribuée en portions modérées, favorise une bonne croissance, des formes harmonieuses et limite les problèmes de surpoids.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

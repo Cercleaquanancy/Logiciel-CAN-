@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyrtocara moorii (Dauphin bleu)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Ligne du haut : systématique + photo */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Cyrtocara moorii</h1>
+        <h2>Dauphin bleu</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Cyrtocara</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Cyrtocara moorii</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Cyrtocara-moorii/imgCyrtocaramoorii.jpeg" alt="Cyrtocara moorii">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Cyrtocara moorii</strong>, souvent appelé dauphin bleu, est un grand cichlidé du lac Malawi reconnaissable à son front bombé et à sa robe bleue uniforme, plus ou moins intense selon l’humeur.
+          </p>
+          <p class="section-text">
+            Relativement placide pour un cichlidé du Malawi, il atteint couramment 20&nbsp;cm, voire 23–25&nbsp;cm pour les vieux mâles en aquarium, ce qui impose un bac très spacieux et une maintenance en groupe structuré.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Dans le lac, Cyrtocara moorii fréquente les étendues sableuses peu profondes et suit souvent des espèces fouisseuses, récupérant les petits invertébrés mis au jour par leur activité de fouille.
+          </p>
+          <p class="section-text">
+            En aquarium, il se montre généralement calme, mais un mâle adulte peut devenir dominant et intimider des congénères si le volume ou le nombre de refuges est insuffisant; une cohabitation avec d’autres Haps ou Aulonocara tranquilles de taille comparable est idéale.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> incubateur buccal maternel; après la ponte sur le substrat et la fécondation, la femelle recueille les œufs dans sa bouche où ils incubent environ trois semaines.
+          </p>
+          <p class="section-text">
+            La femelle cesse alors de s’alimenter et garde les alevins jusqu’à la nage libre; elle peut continuer à les abriter en cas de danger les premiers jours, ce qui demande un environnement peu stressant.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles sont plus grands, plus intensément bleus et développent avec l’âge une bosse frontale très marquée; les femelles restent plus petites et moins colorées.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 8 à 10&nbsp;ans, voire davantage, dans un grand volume avec une eau stable et une alimentation adaptée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce occupe principalement les zones sableuses ouvertes du lac Malawi et du lac Malombé, entre quelques mètres et une quinzaine de mètres de profondeur, parfois à proximité de pentes rocheuses.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Cyrtocara-moorii/imgmapsCytocaramoorii.png"
+              alt="Répartition de Cyrtocara moorii"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Lac Malawi et lac Malombé, en Afrique de l’Est.</li>
+              <li>Zones sableuses littorales et sublittorales, parfois biotopes de transition sable/roche.</li>
+            </ul>
+            <p>
+              On le rencontre isolé ou en petits groupes au‑dessus des substrats meubles, où il profite des nuages de sable soulevés par les cichlidés fouisseurs pour se nourrir.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,5 à 8,5, eau nettement alcaline.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH, eau dure à très dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une forte filtration et une excellente oxygénation.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 500–600&nbsp;L pour un groupe (un mâle et plusieurs femelles), avec une large façade de nage et un épais substrat sableux.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance micro‑prédateur; dans la nature, il consomme principalement de petits invertébrés et des micro‑organismes débusqués dans le sable, ainsi qu’un peu d’algues.
+            </p>
+            <p>
+              En aquarium, une base de granulés ou sticks pour cichlidés du Malawi est complétée par des proies congelées ou vivantes (daphnies, mysis, krill, artémias) et quelques apports végétaux; éviter les nourritures trop grasses ou riches en protéines animales terrestres.
+            </p>
+            <p>
+              Des repas variés mais modérés, associés à une bonne hygiène de l’eau, limitent les risques de surcroissance et de problèmes digestifs chez ce grand cichlidé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

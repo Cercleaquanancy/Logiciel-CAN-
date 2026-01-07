@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Xiphophorus pygmaeus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Xiphophorus pygmaeus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Xiphophorus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Xiphophorus pygmaeus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Xiphophorus-pygmaeus/Xiphophorus-pygmaeus.jpeg"
+                 alt="Xiphophorus pygmaeus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Xiphophorus pygmaeus</strong> est un xipho de très petite taille, originaire des cours d’eau du bassin du Río Pánuco, au Mexique.
+          </p>
+          <p class="section-text">
+            Les mâles, élancés et dotés d’une épée courte, dépassent rarement 3&nbsp;cm, tandis que les femelles restent un peu plus massives sans devenir vraiment grandes.
+          </p>
+          <p class="section-text">
+            L’espèce forme des groupes mobiles au‑dessus de la végétation et du décor, avec un comportement de vivipare plus discret que celui des xiphos d’élevage classiques.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            En milieu naturel, Xiphophorus pygmaeus fréquente surtout les zones calmes ou faiblement courantes, en petites troupes proches des plantes et des abris.
+          </p>
+          <p class="section-text">
+            En aquarium, les mâles paradent et se poursuivent, mais les conflits restent généralement limités si l’espace et le nombre de femelles sont suffisants.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare, avec de petites portées fréquentes de jeunes déjà bien formés.
+          </p>
+          <p class="section-text">
+            Les adultes peuvent consommer une partie des alevins si le bac manque de refuges ; un bon couvert végétal ou un bac d’élevage séparé améliore le taux de survie.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, plus coloré et pourvu d’un gonopodium et d’une épée caudale courte ; femelle plus ronde, sans épée.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> autour de 2 à 3&nbsp;ans en aquarium, parfois un peu plus dans de bonnes conditions.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Le biotope typique comprend de petits cours d’eau, canaux et zones calmes légèrement plantées ou bordées de végétation, souvent en eau dure et alcaline, bien éclairée et peu profonde.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+            <img src="../img/Xiphophorus-pygmaeus/maps-Xiphophorus-pygmaeus.png"
+                 alt="Répartition de Xiphophorus pygmaeus"
+                 class="carte-img">
+            <p><strong>Origine :</strong></p>
+            <ul>
+              <li>Nord‑est du Mexique, principalement dans le bassin du Río Pánuco.</li>
+              <li>Ruisseaux peu profonds, canaux d’irrigation et marges végétalisées de petits cours d’eau.</li>
+            </ul>
+            <p>
+              Les populations occupent des eaux bien éclairées, souvent lentes, avec substrat sableux ou limoneux et végétation aquatique éparse ou en bordure.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,2, eau neutre à clairement alcaline.</p>
+            <p><strong>GH :</strong> 8 à 20&nbsp;°dGH, eau bien minéralisée.</p>
+            <p><strong>Courant :</strong> léger, avec bonne oxygénation et changements d’eau réguliers.</p>
+            <p><strong>Volume :</strong> dès 60&nbsp;L pour un groupe, plus confortable pour maintenir plusieurs lignées ou combinaisons de sexes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore, acceptant facilement paillettes, micro‑granulés, compléments végétaux et petites proies vivantes ou congelées (nauplies d’artémias, daphnies, microvers).
+            </p>
+            <p>
+              Un décor planté, avec quelques plantes flottantes et des zones dégagées pour la nage, limite le stress, favorise la reproduction et aide à éviter une surpopulation trop rapide.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

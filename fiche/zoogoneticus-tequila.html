@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Zoogoneticus tequila</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Zoogoneticus tequila</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Zoogoneticus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Zoogoneticus tequila</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Zoogoneticus-tequila/Zoogoneticustequila.jpeg"
+                 alt="Zoogoneticus tequila">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Zoogoneticus tequila</strong>, le poisson téquila ou Tequila splitfin, est un petit goodeidé vivipare mexicain emblématique des programmes de conservation des poissons d’eau douce.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent environ 3&nbsp;cm et se distinguent par une base de queue orangée, alors que les femelles, plus massives et atteignant 4–5&nbsp;cm, présentent des couleurs plus discrètes.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Espèce vive et assez remuante, Zoogoneticus tequila est à maintenir en groupe, avec plusieurs femelles pour quelques mâles, dans un bac spacieux bien structuré avec cachettes et zones dégagées.
+          </p>
+          <p class="section-text">
+            Les mâles peuvent se montrer insistants envers les femelles et un peu territoriaux entre eux ; une bonne surface au sol, une végétation dense et des lignes de vue brisées limitent les conflits.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare ; la femelle donne naissance à des alevins pleinement formés après une gestation d’environ 6 à 8&nbsp;semaines, avec des portées souvent comprises entre 10 et 25 jeunes.
+          </p>
+          <p class="section-text">
+            Les adultes peuvent manger une partie des alevins, même si ce comportement est moins marqué que chez certains vivipares classiques ; un bac bien planté ou un aquarium d’élevage séparé augmente le taux de survie.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, plus coloré, présentant une zone orangée à la base de la caudale et un andropodium (nageoire anale modifiée) ; femelle plus grande, au ventre plus rond, sans coloration vive de la queue.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en général 3 à 5&nbsp;ans en aquarium, avec une eau propre, bien oxygénée et une alimentation adaptée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Le biotope naturel correspond à des sources, ruisseaux et petites lagunes du bassin du Rio Ameca / Rio Teuchitlán, peu profonds, à courant faible, avec fonds sableux ou vaseux, roches, racines et végétation aquatique abondante.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Zoogoneticus-tequila/imgmapsZoogoneticustequila.png"
+              alt="Répartition de Zoogoneticus tequila"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Endémique de l’État de Jalisco, ouest du Mexique, dans le bassin du Rio Ameca, notamment la région de Teuchitlán.</li>
+              <li>Population relictuelle connue dans une petite source et ses extensions, avec réintroductions en cours dans le bassin naturel.</li>
+            </ul>
+            <p>
+              L’espèce est classée en danger et fait l’objet de programmes d’élevage conservatoire et de réintroduction pour restaurer des populations sauvages viables.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 24&nbsp;°C, avec une certaine tolérance aux variations saisonnières modérées.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, eau neutre à légèrement alcaline.</p>
+            <p><strong>GH :</strong> 8 à 15&nbsp;°dGH, eau bien minéralisée.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une bonne oxygénation et des changements d’eau réguliers pour maintenir une excellente qualité d’eau.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 80&nbsp;L pour un petit groupe, davantage pour maintenir plusieurs lignées et limiter la consanguinité.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore ; se nourrit d’algues, de biofilm, de petits invertébrés et de matières végétales.
+            </p>
+            <p>
+              En aquarium, il accepte bien paillettes, granulés, compléments végétaux (spiruline, légumes pochés) et petites proies vivantes ou congelées ; une alimentation variée favorise la santé, les couleurs et la reproduction régulière.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

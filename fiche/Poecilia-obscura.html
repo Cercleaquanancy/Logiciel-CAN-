@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia obscura</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia obscura</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia obscura</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-obscura/Poecilia-obscura.PNG" alt="Poecilia obscura">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia obscura</strong> est un très petit vivipare proche du guppy commun, originaire de Trinidad, présentant des mâles polymorphes aux motifs variables.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent environ 2&nbsp;cm, les femelles jusqu’à 3&nbsp;cm, ce qui en fait une espèce particulièrement adaptée aux petits bacs spécifiques bien plantés.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en groupes et occupe surtout les zones médianes et superficielles, où les mâles paradent fréquemment devant les femelles.
+          </p>
+          <p class="section-text">
+            La petite taille et le tempérament vif imposent un décor dense en plantes fines et mousses, offrant des refuges permanents pour les alevins et limitant le stress.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare ; les femelles donnent naissance à de très petits alevins déjà formés, généralement moins nombreux que chez le guppy d’élevage mais de façon régulière.
+          </p>
+          <p class="section-text">
+            Les jeunes restent volontiers près du fond et dans les mousses, et peuvent être nourris avec des infusoires, poudres pour alevins et nauplies d’artémias fraîches.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus petit, coloré, avec gonopodium ; femelle plus grande, corps plus trapu et coloration grisâtre discrète.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en général 2 à 3&nbsp;ans en aquarium, parfois un peu plus dans une eau stable et bien oxygénée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce est inféodée aux rivières et ruisseaux du système de l’Oropuche à Trinidad, aux eaux claires à légèrement teintées, peu profondes et richement végétalisées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-obscura/img-Poecilia-obscura.PNG"
+              alt="Répartition de Poecilia obscura"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Île de Trinidad (Trinité-et-Tobago), bassin de l’Oropuche.</li>
+              <li>Ruisseaux et petites rivières lentes, souvent ombragés et bordés de végétation dense.</li>
+            </ul>
+            <p>
+              L’espèce apprécie les zones calmes peu profondes avec beaucoup de plantes aquatiques et de feuilles mortes, qui servent de refuge aux alevins.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,5 à 7,5.</p>
+            <p><strong>GH :</strong> 3 à 12&nbsp;°dGH, eau douce à légèrement minéralisée.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration douce pour ne pas fatiguer ces petits poissons.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 30–40&nbsp;L pour un groupe spécifique, bien planté avec mousses et plantes fines.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore microphage, se nourrissant de micro-invertébrés, algues et biofilm ; accepte flocons fins, micro-granulés, nauplies d’artémias et poudres pour alevins.
+            </p>
+            <p>
+              Des apports réguliers de petites proies vivantes ou congelées améliorent la coloration des mâles et conditionnent bien les adultes à la reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

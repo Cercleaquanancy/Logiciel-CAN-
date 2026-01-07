@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Geophagus brasiliensis (Geophagus du Brésil)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Geophagus brasiliensis</h1>
+        <h2>Geophagus du Brésil</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Geophagus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Geophagus brasiliensis</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Geophagus-brasilensis/Geophagus-brasilensis.PNG"
+                 alt="Geophagus brasiliensis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Geophagus brasiliensis</strong>, souvent appelé géophage perlé du Brésil, est un grand cichlidé sud‑américain fouilleur qui passe une grande partie de son temps à tamiser le substrat à la recherche de nourriture.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent couramment 20–25&nbsp;cm, parfois un peu plus pour les mâles, ce qui impose un volume conséquent et un sol sableux fin non coupant pour permettre le fouissage sans risque de blessure.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit principalement près du fond, où elle fouille le sable et déplace activement le décor; en aquarium, elle creuse des cuvettes et remue en permanence le substrat, ce qui demande un sable fin et non coupant.
+          </p>
+          <p class="section-text">
+            Le tempérament est territorial, surtout en période de reproduction, mais la cohabitation est possible avec d’autres grands cichlidés calmes et poissons robustes occupant d’autres niveaux, dans un volume suffisamment spacieux et bien structuré.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare avec forte protection parentale; selon les souches, le couple adopte un comportement de pondeur sur substrat (avec soins benthiques) ou une incubation buccale, souvent maternelle, après la ponte.
+          </p>
+          <p class="section-text">
+            Les parents défendent activement le territoire de reproduction et encadrent les alevins; un bac spécifique ou très spacieux est recommandé pendant cette période pour limiter le stress et les conflits.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles sont plus grands, plus colorés, avec des nageoires impaires plus développées et parfois une bosse nucale marquée; les femelles restent plus petites et plus rondes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> généralement de 8 à 10&nbsp;ans en bonnes conditions, avec un volume adapté et une eau de qualité stable.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce fréquente des rivières, lagunes et zones calmes de bassins côtiers, sur substrat sableux ou sablo‑vaseux, souvent à proximité de zones boisées offrant racines, branches et blocs rocheux comme refuges.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Geophagus-brasilensis/Map-Geophagus-brasilensis.png"
+              alt="Répartition de Geophagus brasiliensis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassins côtiers de l’est et du sud du Brésil, dans des rivières se jetant dans l’océan Atlantique.</li>
+              <li>Présent également en Uruguay et jusqu’au Río de la Plata en Argentine, avec des populations introduites ailleurs.</li>
+            </ul>
+            <p>
+              On le rencontre dans les tronçons inférieurs de rivières, lagunes et canaux, dans des eaux à courant variable, de lentes à modérées, et à turbidité changeante.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 21 à 26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5, de légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration dimensionnée pour retenir les particules remises en suspension par le fouissage.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 350–400&nbsp;L pour un couple ou un petit groupe, avec une grande surface au sol et plusieurs centimètres de sable fin.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance carnivore; se nourrit surtout d’invertébrés aquatiques, de micro‑organismes et de matière organique filtrés en avalant puis recrachant le sable.
+            </p>
+            <p>
+              En captivité, il accepte volontiers granulés ou sticks coulants de qualité, complétés par des proies vivantes ou congelées (artémias, vers de vase, daphnies) et une part végétale (légumes pochés, aliments riches en fibres).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

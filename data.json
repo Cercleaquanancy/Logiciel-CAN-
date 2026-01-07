@@ -1,0 +1,156 @@
+{
+  "members": [
+    {
+      "login": "axel.filhol-maitre",
+      "pass": "29081623",
+      "role": "membre_bureau",
+      "serre": true
+    },
+    {
+      "login": "maman",
+      "pass": "loulou54",
+      "role": "adhérent",
+      "serre": false
+    }
+  ],
+  "loginHistory": [
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-01T21:30:51.165Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:01:41.336Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:05:22.385Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:05:35.876Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:16:31.000Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:16:58.068Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T11:18:44.652Z"
+    },
+    {
+      "username": "axel.filhol-maitre",
+      "role": "membre_bureau",
+      "date": "2026-01-03T11:19:29.625Z"
+    },
+    {
+      "username": "maman",
+      "role": "adhérent",
+      "date": "2026-01-03T11:19:37.555Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T12:19:25.914Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-03T23:50:11.907Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-04T00:03:29.441Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-04T00:11:37.813Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-04T00:11:42.980Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-05T21:58:33.120Z"
+    },
+    {
+      "username": "axel.filhol-maitre",
+      "role": "membre_bureau",
+      "date": "2026-01-05T21:59:18.507Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-06T22:09:05.699Z"
+    },
+    {
+      "username": "axel.filhol-maitre",
+      "role": "membre_bureau",
+      "date": "2026-01-06T22:09:25.704Z"
+    },
+    {
+      "username": "can",
+      "role": "admin",
+      "date": "2026-01-06T22:27:43.553Z"
+    }
+  ],
+  "population": [
+    {
+      "memberUsername": "maman",
+      "speciesName": "Limia perugiae",
+      "source": "",
+      "totalCount": 0
+    },
+    {
+      "memberUsername": "maman",
+      "speciesName": "Poecilia reticulata",
+      "source": "",
+      "totalCount": 0
+    },
+    {
+      "memberUsername": "maman",
+      "speciesName": "Bedotia geayi",
+      "source": "",
+      "totalCount": 0
+    },
+    {
+      "memberUsername": "axel.filhol-maitre",
+      "speciesName": "Astronotus ocellatus",
+      "source": "",
+      "totalCount": 3
+    },
+    {
+      "memberUsername": "axel.filhol-maitre",
+      "speciesName": "Heros efasciatus",
+      "source": "Rio tapajos",
+      "totalCount": 16
+    }
+  ],
+  "annonces": [],
+  "serre": {
+    "notes": "",
+    "bacs": [],
+    "assignments": {},
+    "feed": {
+      "lastUpdate": null,
+      "items": [],
+      "monthlyUseKg": 0
+    }
+  }
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rocio octofasciata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Rocio octofasciata</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Sous-famille :</span> Cichlasomatinae</li>
+              <li><span class="sys-label">Genre :</span> <em>Rocio</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Rocio octofasciata</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Rocio-octofasciata/imgRociooctofasciata.jpeg" alt="Rocio octofasciata">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Rocio octofasciata</strong> est un cichlidé américain de taille moyenne à grande, très coloré et au tempérament marqué.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent généralement 20 à 25&nbsp;cm, les femelles un peu moins, avec une robe parsemée de points irisés bleus et verts sur fond brun à noir.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce est fortement territoriale, en particulier à l’âge adulte et en période de reproduction, et occupe surtout la zone de fond et mi‑fond.
+          </p>
+          <p class="section-text">
+            Elle creuse volontiers et remanie le décor, ce qui impose des aménagements stables et une cohabitation réservée à des poissons de taille et de caractère comparables.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur sur substrat découvert ; le couple creuse et nettoie une zone plane (pierre, sol dégagé) avant d’y déposer les œufs.
+          </p>
+          <p class="section-text">
+            Les parents gardent et défendent œufs et alevins de façon très agressive, rassemblant la progéniture en banc compact et la déplaçant si nécessaire.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus grand et plus coloré, aux nageoires plus pointues ; femelle plus petite et plus ronde, avec souvent des taches sombres marquées sur les flancs.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en moyenne 8 à 10&nbsp;ans en aquarium, davantage avec un volume adapté et une eau de bonne qualité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, l’espèce fréquente rivières lentes, marécages, fossés et lagunes peu profondes d’Amérique centrale, aux eaux souvent turbides avec substrat de sable ou de vase et abondance de bois, roches et végétation marginale.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Rocio-octofasciata/imgmapsRociooctofasciata.png"
+              alt="Répartition de Rocio octofasciata"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Côte atlantique de l’Amérique centrale, du sud du Mexique au Honduras.</li>
+              <li>Rivières lentes, marécages et fossés peu profonds, souvent à végétation marginale abondante.</li>
+            </ul>
+            <p>
+              L’espèce occupe principalement les zones inférieures des cours d’eau, où elle trouve abris et substrats propices pour creuser et se reproduire.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 30&nbsp;°C, idéalement 24–27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 9 à 20&nbsp;°dGH, eau moyenne à dure.</p>
+            <p><strong>Courant :</strong> modéré, avec bonne filtration et renouvellements d’eau réguliers.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 300&nbsp;L pour un couple, davantage en cohabitation avec d’autres grands cichlidés.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore opportuniste ; accepte granulés pour cichlidés, proies congelées (moules, crevettes, poissons entiers préparés), vers de terre, etc.
+            </p>
+            <p>
+              Une alimentation variée mais distribuée avec parcimonie limite les problèmes de surpoids et la pollution organique importante générée par ce type de poisson.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

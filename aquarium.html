@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Aquarium adhérents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:#020617;
+      color:#e5e7eb;
+      min-height:100vh;
+    }
+
+    .navbar {
+      position:fixed; top:0; left:0; width:100%;
+      min-height:56px;
+      background:rgba(15,23,42,0.98);
+      border-bottom:1px solid #1f2937;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:4px 16px;
+      z-index:50;
+      flex-wrap:wrap; gap:4px;
+    }
+    .navbar-left { display:flex; align-items:center; gap:10px; }
+    .navbar-title { font-size:0.95rem; font-weight:600; }
+    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+
+    .navbar-menu {
+      display:flex; gap:8px; align-items:center;
+      flex-wrap:wrap; justify-content:flex-end;
+    }
+    .nav-btn {
+      border:none; background:transparent; color:#cbd5f5;
+      font-size:0.8rem; padding:6px 8px; border-radius:999px;
+      cursor:pointer; display:flex; align-items:center; gap:4px;
+    }
+    .nav-btn span.icon { font-size:1rem; }
+    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
+    .nav-btn:hover { background:#111827; }
+
+    .navbar-logout {
+      border-radius:999px; border:1px solid #374151;
+      background:#111827; color:#e5e7eb;
+      padding:5px 10px; font-size:0.8rem; cursor:pointer;
+    }
+    .navbar-logout:hover { background:#1f2937; }
+
+    .page {
+      padding-top:72px;
+      padding:0 12px 20px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .card {
+      background:#020617;
+      border-radius:10px;
+      border:1px solid #1f2937;
+      padding:14px 16px;
+      margin-bottom:14px;
+    }
+
+    .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
+    .card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
+    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+
+    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+    textarea {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem; min-height:120px; resize:vertical;
+    }
+    textarea:focus {
+      outline:none; border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+
+    .btn-primary {
+      background:#38bdf8; color:#0f172a;
+      border:none; border-radius:7px;
+      padding:7px 10px; font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-primary:hover { filter:brightness(1.05); }
+
+    .note-info { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+    .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+
+    .aquarium-grid {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:10px;
+    }
+
+    .aquarium-tag {
+      width:260px;
+      border-radius:14px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      padding:10px 12px 12px;
+      font-size:0.85rem;
+      position:relative;
+      box-shadow:0 6px 16px rgba(15,23,42,0.7);
+    }
+
+    .aquarium-tag-header {
+      text-align:center;
+      font-weight:600;
+      font-size:0.9rem;
+      border-bottom:1px solid #1f2937;
+      padding-bottom:4px;
+      margin-bottom:6px;
+    }
+
+    .aquarium-tag-header input {
+      border:none;
+      background:transparent;
+      text-align:center;
+      width:100%;
+      font-size:0.9rem;
+      color:#e5e7eb;
+      outline:none;
+    }
+
+    .aquarium-tag-delete {
+      position:absolute;
+      top:6px;
+      right:6px;
+      width:20px;
+      height:20px;
+      border-radius:999px;
+      border:none;
+      background:#dc2626;
+      color:#fff;
+      cursor:pointer;
+      font-size:12px;
+      line-height:20px;
+      text-align:center;
+    }
+
+    .aquarium-tag-green-btn {
+      display:block;
+      width:140px;
+      margin:4px auto 4px;
+      background:#22c55e;
+      color:#0b1120;
+      border:none;
+      border-radius:999px;
+      padding:5px 0;
+      font-size:0.8rem;
+      cursor:pointer;
+      font-weight:500;
+    }
+    .aquarium-tag-green-btn:hover { filter:brightness(1.05); }
+
+    .aquarium-tag-block {
+      margin-top:8px;
+      text-align:center;
+      font-size:0.8rem;
+    }
+
+    .aquarium-tag-block-title {
+      font-weight:600;
+      margin-bottom:3px;
+    }
+
+    .aquarium-tag-date-btn {
+      width:95px;
+      height:28px;
+      border-radius:999px;
+      border:1px solid #1f2937;
+      background:#111827;
+      cursor:pointer;
+      font-size:0.78rem;
+    }
+
+    .status-ok   { background:#16a34a; color:#f9fafb; }
+    .status-warn { background:#facc15; color:#111827; }
+    .status-bad  { background:#dc2626; color:#f9fafb; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn active" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Gestion des bacs aquarium</h1>
+      <p class="subtitle">
+        Étiquettes de bacs d’aquarium, avec notes, suivi des dates d’entretien et accès au suivi détaillé de chaque bac.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Bloc‑notes aquarium</h2>
+      <p class="subtitle">
+        Notes globales sur la fishroom / les bacs d’exposition (projets, matériel, remarques générales).
+      </p>
+
+      <div class="field">
+        <label for="notesAquarium">Notes générales aquarium</label>
+        <textarea id="notesAquarium" placeholder="Ex : Prévoir changement de sol, vérifier les tests NO2, organisation prochaine maintenance collective…"></textarea>
+      </div>
+      <button class="btn-primary" id="saveAquaNotesBtn">Sauvegarder les notes</button>
+      <div class="note-info" id="aquaNotesInfo"></div>
+    </div>
+
+    <div class="card">
+      <h2>Étiquettes des bacs aquarium</h2>
+      <p class="subtitle">
+        Un clic ajoute une étiquette de bac. Tu peux renommer, suivre les dates de changement d’eau et de nettoyage du filtre, et ouvrir le détail du bac.
+      </p>
+
+      <button class="btn-primary" id="addBacBtn">Ajouter un bac aquarium</button>
+
+      <p class="small-note">
+        Couleurs : changement d’eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
+      </p>
+
+      <div id="bacList" class="aquarium-grid"></div>
+    </div>
+  </main>
+
+  <script>
+    // --- Auth de base ---
+    const storedUser = localStorage.getItem("user");
+    if (!storedUser) { window.location.href = "login.html"; }
+    let currentUser;
+    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
+
+    document.getElementById("navbarUser").textContent = currentUser.username;
+
+    // Récupérer les membres définis en admin
+    function getLocalUsers() {
+      const data = localStorage.getItem("members");
+      if (!data) return [];
+      try { return JSON.parse(data); } catch { return []; }
+    }
+
+    const allMembers = getLocalUsers();
+    const me = allMembers.find(u => u.login === currentUser.username) || { role: "adhérent", serre: false };
+
+    // Navigation
+    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
+      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+
+    // Masquer Serre si pas d'accès serre
+    document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
+      if (me.serre !== true) {
+        btn.style.display = "none";
+      }
+    });
+
+    // Masquer Bureau si pas rôle bureau/admin
+    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+      if (me.role !== "bureau" && me.role !== "admin" && me.role !== "membre_bureau") {
+        btn.style.display = "none";
+      }
+    });
+
+    // --- Notes aquarium ---
+    const AQUA_NOTES_KEY = "aquarium_notes_global_v1_" + currentUser.username;
+    const notesAquariumTextArea = document.getElementById("notesAquarium");
+    const saveAquaNotesBtn = document.getElementById("saveAquaNotesBtn");
+    const aquaNotesInfo = document.getElementById("aquaNotesInfo");
+
+    function loadAquaNotes() {
+      try { return localStorage.getItem(AQUA_NOTES_KEY) || ""; }
+      catch(e) { return ""; }
+    }
+    function saveAquaNotes(text) {
+      localStorage.setItem(AQUA_NOTES_KEY, text);
+    }
+
+    notesAquariumTextArea.value = loadAquaNotes();
+    aquaNotesInfo.textContent = notesAquariumTextArea.value ? "Notes aquarium chargées." : "";
+
+    saveAquaNotesBtn.addEventListener("click", () => {
+      saveAquaNotes(notesAquariumTextArea.value);
+      aquaNotesInfo.textContent = "Notes aquarium sauvegardées le " + new Date().toLocaleString() + ".";
+    });
+
+    // --- Bacs aquarium ---
+    const AQUA_BAC_KEY = "aquarium_bac_list_v1_" + currentUser.username;
+    const addBacBtn    = document.getElementById("addBacBtn");
+    const bacListDiv   = document.getElementById("bacList");
+
+    function loadBacs() {
+      try { return JSON.parse(localStorage.getItem(AQUA_BAC_KEY) || "[]"); }
+      catch(e) { return []; }
+    }
+    function saveBacs(list) {
+      localStorage.setItem(AQUA_BAC_KEY, JSON.stringify(list));
+    }
+
+    function formatDateSimple(iso) {
+      if (!iso) return "Jamais";
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return "Jamais";
+      return d.toLocaleDateString();
+    }
+
+    function monthDiff(fromIso, toIso) {
+      if (!fromIso) return Infinity;
+      const d1 = new Date(fromIso);
+      const d2 = new Date(toIso);
+      if (isNaN(d1.getTime()) || isNaN(d2.getTime())) return Infinity;
+      const years = d2.getFullYear() - d1.getFullYear();
+      const months = d2.getMonth() - d1.getMonth();
+      let diff = years * 12 + months;
+      if (d2.getDate() < d1.getDate()) diff -= 1;
+      return diff < 0 ? 0 : diff;
+    }
+
+    function getStatusClass(lastIso, warnMonths, badMonths) {
+      if (!lastIso) return "status-bad";
+      const nowIso = new Date().toISOString();
+      const m = monthDiff(lastIso, nowIso);
+      if (m >= badMonths) return "status-bad";
+      if (m >= warnMonths) return "status-warn";
+      return "status-ok";
+    }
+
+    function renderBacs() {
+      const list = loadBacs();
+      bacListDiv.innerHTML = "";
+
+      if (list.length === 0) {
+        const p = document.createElement("p");
+        p.className = "small-note";
+        p.textContent = "Aucune étiquette de bac d’aquarium pour le moment.";
+        bacListDiv.appendChild(p);
+        return;
+      }
+
+      list.forEach(bac => {
+        const tag = document.createElement("div");
+        tag.className = "aquarium-tag";
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "aquarium-tag-delete";
+        delBtn.textContent = "×";
+        delBtn.title = "Supprimer ce bac";
+        delBtn.addEventListener("click", () => {
+          let arr = loadBacs();
+          arr = arr.filter(x => x.id !== bac.id);
+          saveBacs(arr);
+          renderBacs();
+        });
+        tag.appendChild(delBtn);
+
+        const header = document.createElement("div");
+        header.className = "aquarium-tag-header";
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.value = bac.name;
+        titleInput.addEventListener("change", () => {
+          let arr = loadBacs();
+          const idx = arr.findIndex(x => x.id === bac.id);
+          if (idx !== -1) {
+            const newVal = titleInput.value.trim();
+            if (newVal) {
+              arr[idx].name = newVal;
+              saveBacs(arr);
+              renderBacs();
+            } else {
+              titleInput.value = arr[idx].name;
+            }
+          }
+        });
+        header.appendChild(titleInput);
+        tag.appendChild(header);
+
+        const viewBtn = document.createElement("button");
+        viewBtn.className = "aquarium-tag-green-btn";
+        viewBtn.textContent = "Voir le bac";
+        viewBtn.addEventListener("click", () => {
+          window.location.href = "bac.html?id=" + encodeURIComponent(bac.id);
+        });
+        tag.appendChild(viewBtn);
+
+        const waterBlock = document.createElement("div");
+        waterBlock.className = "aquarium-tag-block";
+        const waterTitle = document.createElement("div");
+        waterTitle.className = "aquarium-tag-block-title";
+        waterTitle.textContent = "Changement d'eau";
+        const waterBtn = document.createElement("button");
+        waterBtn.className = "aquarium-tag-date-btn " +
+          getStatusClass(bac.lastWaterChange, 1, 2);
+        waterBtn.textContent = formatDateSimple(bac.lastWaterChange);
+        waterBtn.addEventListener("click", () => {
+          let arr = loadBacs();
+          const idx = arr.findIndex(x => x.id === bac.id);
+          if (idx === -1) return;
+          arr[idx].lastWaterChange = new Date().toISOString();
+          saveBacs(arr);
+          renderBacs();
+        });
+        waterBlock.appendChild(waterTitle);
+        waterBlock.appendChild(waterBtn);
+        tag.appendChild(waterBlock);
+
+        const filterBlock = document.createElement("div");
+        filterBlock.className = "aquarium-tag-block";
+        const filterTitle = document.createElement("div");
+        filterTitle.className = "aquarium-tag-block-title";
+        filterTitle.textContent = "Nettoyage des filtres";
+        const filterBtn = document.createElement("button");
+        filterBtn.className = "aquarium-tag-date-btn " +
+          getStatusClass(bac.lastFilterClean, 3, 6);
+        filterBtn.textContent = formatDateSimple(bac.lastFilterClean);
+        filterBtn.addEventListener("click", () => {
+          let arr = loadBacs();
+          const idx = arr.findIndex(x => x.id === bac.id);
+          if (idx === -1) return;
+          arr[idx].lastFilterClean = new Date().toISOString();
+          saveBacs(arr);
+          renderBacs();
+        });
+        filterBlock.appendChild(filterTitle);
+        filterBlock.appendChild(filterBtn);
+        tag.appendChild(filterBlock);
+
+        bacListDiv.appendChild(tag);
+      });
+    }
+
+    addBacBtn.addEventListener("click", () => {
+      let list = loadBacs();
+      const defaultName = "Bac " + (list.length + 1);
+      list.push({
+        id: Date.now(),
+        name: defaultName,
+        lastWaterChange: null,
+        lastFilterClean: null
+      });
+      saveBacs(list);
+      renderBacs();
+    });
+
+    renderBacs();
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Heterandria formosa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page { max-width: 1000px; margin: 16px auto 20px auto; padding: 0 12px 20px 12px; }
+    .fiche-wrapper {
+      background: #020617; border-radius: 12px;
+      border: 1px solid #1f2937; overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a; color: #f9fafb;
+      padding: 12px 16px; text-align: center;
+    }
+    .fiche-header-bar h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 2px; }
+
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%; max-height: 260px;
+      border-radius: 10px; border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600; font-size: 0.95rem;
+      margin-top: 10px; margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem; color: #e5e7eb;
+      line-height: 1.45; margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+    }
+    .bloc h3 { font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8; }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem; color: #e5e7eb; line-height: 1.45;
+    }
+    .bloc ul { padding-left: 16px; }
+    .carte-img {
+      width: 100%; height: 120px; border-radius: 8px;
+      border: 1px solid #4b5563; object-fit: cover;
+      margin-bottom: 6px; display: block;
+    }
+    .note-retour {
+      font-size: 0.8rem; color: #9ca3af;
+      margin-top: 10px; text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Heterandria formosa</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Heterandria</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Heterandria formosa</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Heterandria-formosa/Heterandria-formosa.jpeg"
+                 alt="Heterandria formosa">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+
+          <p class="section-text">
+            <strong>Heterandria formosa</strong> est l’un des plus petits poissons vivipares connus, au corps très fin et allongé, avec une silhouette de micro‑poisson de surface.
+          </p>
+          <p class="section-text">
+            Les femelles atteignent environ 2–3&nbsp;cm, les mâles restant un peu plus petits; l’espèce est donc particulièrement adaptée aux nano‑bacs plantés bien stabilisés.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Les poissons forment de petits groupes lâches qui se tiennent dans la végétation fine, en zone superficielle et médiane, explorant calmement le décor; leur très petite taille les rend vulnérables face à des colocataires plus grands ou vifs.
+          </p>
+          <p class="section-text">
+            C’est une espèce paisible mais discrète, qui s’épanouit dans des bacs très plantés, riches en mousses, plantes flottantes et microfaune; elle ne doit être associée qu’à des espèces extrêmement calmes et de gabarit comparable.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Reproduction :</strong> vivipare; la femelle produit de très petites portées mais en quasi continu, ce qui donne une présence fréquente d’alevins de tailles variées dans le bac.
+          </p>
+          <p class="section-text">
+            Dans un aquarium bien planté sans gros prédateurs, une partie des jeunes survit facilement sans intervention, grâce aux refuges offerts par les mousses et les plantes denses.
+          </p>
+
+          <div class="section-title">Dimorphisme & biotope</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> femelles plus grandes et plus rondes; mâles plus fins, munis d’un gonopodium bien visible, parfois légèrement plus contrastés.
+          </p>
+          <p class="section-text">
+            <strong>Biotope :</strong> fossés, marais, ruisseaux et petites rivières très plantées ou bordées de végétation rivulaire, avec faible courant et abondance de microfaune.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Heterandria-formosa/maps-heterandria-formosa.PNG"
+              alt="Répartition de Heterandria formosa"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Sud‑Est des États‑Unis, de la Caroline du Sud à la Floride et jusqu’à la Louisiane, avec quelques populations plus à l’ouest.</li>
+              <li>Fossés, marécages, bras morts, bords de ruisseaux et lacs peu profonds fortement végétalisés.</li>
+            </ul>
+            <p>
+              Les eaux sont lentes à quasi stagnantes, souvent un peu teintées et riches en matière organique, avec de fortes variations saisonnières de niveau et de température.
+            </p>
+            <p>
+              En aquarium, un décor très planté, des feuilles mortes et des refuges fins, combinés à un courant quasi nul, reproduisent bien ce type de milieu.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 26&nbsp;°C, avec une préférence pour 20–24&nbsp;°C en maintenance longue durée.</p>
+            <p><strong>pH :</strong> 6,5 à 7,8, de légèrement acide à légèrement basique.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH, supporte une dureté modérée adaptée à la plupart des eaux du robinet légèrement minéralisées.</p>
+            <p><strong>Courant :</strong> très faible; un simple mouvement de surface suffit, l’espèce étant adaptée aux eaux calmes voire stagnantes.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 30–40&nbsp;L pour un bon groupe, un volume supérieur apportant plus de stabilité et de microfaune.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> micro‑omnivore à forte tendance insectivore; consomme de très petites proies (microvers, nauplies d’artémias, micro‑plancton, larves de moustiques) ainsi que des aliments secs finement broyés.
+            </p>
+            <p>
+              Des distributions fréquentes de petites quantités de nourriture vivante ou congelée de petite taille, combinées à des aliments secs adaptés, favorisent une bonne croissance et une reproduction continue.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

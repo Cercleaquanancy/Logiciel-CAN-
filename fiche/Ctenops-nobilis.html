@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ctenops nobilis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fiche-body { padding: 16px 18px 18px 18px; }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo { text-align: center; }
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Ctenops nobilis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Ctenops</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Ctenops nobilis</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Ctenops-nobilis/Ctenops-nobilis.jpg"
+                 alt="Ctenops nobilis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Ctenops nobilis</strong>, parfois appelé gourami noble ou gourami fragile, est un anabantoïde asiatique discret, capable de respirer l’air grâce à son organe labyrinthe et vivant dans des eaux calmes, souvent ombragées.
+          </p>
+          <p class="section-text">
+            Les adultes atteignent en général 8–10&nbsp;cm, parfois un peu plus, avec un corps allongé, une coloration brunâtre à beige mouchetée et des reflets plus clairs qui s’intensifient lors des interactions sociales.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Ctenops nobilis est réputé très sensible au stress; les individus vivent naturellement en colonies structurées autour d’une hiérarchie, avec des rapports parfois vifs entre congénères.
+          </p>
+          <p class="section-text">
+            En aquarium, il se montre timide mais territorial, peut devenir agressif envers d’autres espèces territoriales ou trop vives, et nécessite un environnement très calme avec de nombreuses cachettes pour réduire les tensions.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare à incubation buccale; après la ponte et la fécondation, les œufs sont ramassés dans la bouche d’un des parents, généralement la femelle, où ils incubent plusieurs jours.
+          </p>
+          <p class="section-text">
+            La reproduction en captivité reste délicate, l’espèce étant très sensible aux dérangements et aux maladies; l’isolement du couple, un bac très calme et une qualité d’eau irréprochable sont indispensables pour mener l’incubation à terme.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> discret; les mâles sont souvent légèrement plus grands, plus élancés et un peu plus contrastés, avec des nageoires parfois plus effilées, tandis que les femelles paraissent plus robustes, surtout en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en bonnes conditions, la longévité peut approcher 6 à 8&nbsp;ans, mais elle est souvent réduite si l’acclimatation ou la qualité de l’eau sont insuffisantes.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce fréquente des fossés, mares, marécages et zones calmes de petits cours d’eau, aux eaux douces, acides et pauvres en minéraux, souvent chargées en tanins et en matière organique en décomposition.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Ctenops-nobilis/mapsctenops-nobilis.png"
+              alt="Répartition de Ctenops nobilis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Nord‑est du sous‑continent indien : Inde (Assam, Bengale‑Occidental) et Bangladesh.</li>
+              <li>Lacs, étangs, marécages, fossés et bras morts de rivières à courant faible ou quasi stagnant, riches en végétation aquatique et en débris végétaux.</li>
+            </ul>
+            <p>
+              Ces milieux sont souvent faiblement éclairés, avec une eau brunâtre à cause des tanins; un éclairage doux et une forte couverture végétale sont recommandés en aquarium.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C, en évitant les variations rapides.</p>
+            <p><strong>pH :</strong> environ 5,5 à 7,0, avec une préférence pour une eau douce légèrement acide.</p>
+            <p><strong>GH :</strong> 1 à 8&nbsp;°dGH, eau douce à peu minéralisée.</p>
+            <p><strong>Courant :</strong> très faible; privilégier une filtration douce et une large surface d’échange plutôt qu’un fort brassage.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 100&nbsp;L pour un petit groupe, avec de nombreuses cachettes (plantes, racines, feuilles) afin de limiter les confrontations directes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à tendance insectivore; dans la nature, l’espèce consomme principalement de petites proies aquatiques, larves et invertébrés.
+            </p>
+            <p>
+              En aquarium, elle accepte les nourritures vivantes et congelées (petites larves, artémias, daphnies) ainsi que certains aliments secs de bonne qualité, à condition de varier les apports et de distribuer des rations modérées.
+            </p>
+            <p>
+              Une alimentation adaptée, associée à une eau propre et stable, est essentielle pour limiter les problèmes de santé fréquents chez ce gourami réputé fragile.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

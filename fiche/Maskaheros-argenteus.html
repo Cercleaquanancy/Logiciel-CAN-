@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Maskaheros argenteus (Cichlidé argent)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    /* Systématique + photo en haut */
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .sys-block {
+      border-radius: 10px; border: 1px solid #1f2937;
+      padding: 10px 12px; background: #020617;
+      font-size: 0.8rem;
+    }
+    .sys-block h2 {
+      font-size: 0.9rem; margin-bottom: 6px; color: #38bdf8;
+    }
+    .sys-list { list-style: none; }
+    .sys-list li { margin-bottom: 3px; }
+    .sys-label { font-weight: 600; color: #fbbf24; }
+
+    .fiche-photo {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Maskaheros argenteus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <!-- SYSTÉMATIQUE À GAUCHE / IMAGE À DROITE -->
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Sous-famille :</span> Cichlinae</li>
+              <li><span class="sys-label">Tribu :</span> Heroini</li>
+              <li><span class="sys-label">Genre :</span> <em>Maskaheros</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Maskaheros argenteus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Maskaheros-argenteuse/Maskaheros-argenteus.jpeg" alt="Maskaheros argenteus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Maskaheros argenteus</strong> est un grand cichlidé d’Amérique centrale, massif, au corps clair ponctué de taches sombres, souvent appelé cichlidé argent.
+          </p>
+          <p class="section-text">
+            Les adultes peuvent dépasser 25&nbsp;cm, les mâles étant plus grands et plus robustes que les femelles, avec parfois une bosse frontale marquée.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Ce cichlidé vit surtout à mi‑profondeur et près du fond, où il occupe et défend un territoire; il peut se montrer très territorial, surtout en période de reproduction, vis‑à‑vis des congénères ou d’autres grands cichlidés occupant la même zone.
+          </p>
+          <p class="section-text">
+            La cohabitation n’est possible qu’avec d’autres poissons robustes et de grande taille, dans de très grands volumes offrant de nombreuses caches minérales et des lignes de vue brisées afin de limiter les confrontations directes.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Reproduction :</strong> cichlidé pondeur sur substrat découvert; le couple nettoie une pierre ou une zone du décor, y dépose les œufs puis assure une garde vigilante des œufs et des alevins.
+          </p>
+          <p class="section-text">
+            En aquarium, la reproduction reste exigeante et nécessite généralement un couple bien formé, un bac très spacieux, une eau de bonne qualité et un décor offrant un territoire clairement définissable pour le couple.
+          </p>
+
+          <div class="section-title">Dimorphisme & biotope</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> mâle plus grand, plus massif, avec couleurs plus marquées et nageoires dorsale et anale plus pointues; femelle plus trapue, au ventre plus rebondi en période de ponte.
+          </p>
+          <p class="section-text">
+            <strong>Biotope :</strong> rivières lentes et zones calmes du bassin de l’Usumacinta au Mexique, sur fonds sableux ou boueux, avec pierres, rochers et bois immergés.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Maskaheros-argenteuse/Mapsmaskaherosargenteus.PNG"
+              alt="Répartition de Maskaheros argenteus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique centrale, endémique du bassin de la rivière Usumacinta, sur le versant atlantique des côtes mexicaines.</li>
+              <li>Zones calmes, bras morts et secteurs à courant faible à modéré, riches en roches, branches et refuges.</li>
+            </ul>
+            <p>
+              L’espèce affectionne des eaux relativement claires à légèrement troubles, avec une bonne oxygénation et de larges surfaces au sol.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, eau neutre à légèrement alcaline.</p>
+            <p><strong>GH :</strong> 8 à 20&nbsp;°dGH, eau moyenne à dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration puissante et stable pour gérer la charge organique d’un grand cichlidé.</p>
+            <p><strong>Volume conseillé :</strong> ≥ 600&nbsp;L pour un couple, davantage en cas de cohabitation avec d’autres grands cichlidés.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore opportuniste; accepte granulés et sticks pour grands cichlidés, complétés par des nourritures congelées ou fraîches (crevettes, moules, morceaux de poisson), avec quelques apports végétaux.
+            </p>
+            <p>
+              Une alimentation variée distribuée avec modération, associée à de gros changements d’eau réguliers, est indispensable pour maintenir ce poisson massif en bonne santé et limiter la pollution du bac.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
