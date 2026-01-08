@@ -667,7 +667,7 @@ const server = http.createServer((req, res) => {
   let filePath = url;
 
   if (filePath === '/' || filePath === '/index' || filePath === '/index.html') {
-    filePath = '/index.html';
+    filePath = '/Index.html';
   }
 
   filePath = path.normalize(filePath).replace(/^(\.\.(\/|\\|$))+/, '');
