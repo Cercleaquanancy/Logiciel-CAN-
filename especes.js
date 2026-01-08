@@ -321,7 +321,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Mexique"],
     page: "fiche/Ilyodon-furcidens.html",
-    image: "img/Ilyodon-furcidens/Ilyodon-furcidens.png"
+    image: "img/Ilyodon-furcidens/Ilyodon-furcidens.PNG"
   },
   {
     id: "xiphophorus-variatus",
@@ -596,7 +596,7 @@ window.FICHES = [
     genre: "Malpulutta",
     continent: "Asie",
     pays: ["Sri Lanka"],
-    page: "fiche/Malpulutta-kretseri.html",
+    page: "fiche/malpulutta-kretseri.html",
     image: "img/Malpulutta-kretseri/imgMalpuluttakretseri.jpeg"
   },
   {
@@ -632,7 +632,7 @@ window.FICHES = [
     genre: "Zoogoneticus",
     continent: "Amérique du Nord",
     pays: ["Mexique"],
-    page: "fiche/Zoogoneticus-tequila.html",
+    page: "fiche/zoogoneticus-tequila.html",
     image: "img/Zoogoneticus-tequila/Zoogoneticustequila.jpeg"
   },
   {
