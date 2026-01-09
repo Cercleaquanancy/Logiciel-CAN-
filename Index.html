@@ -24,7 +24,7 @@
       border-bottom: 1px solid #1f2937;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content:space-between;
       padding: 4px 16px;
       z-index: 50;
       flex-wrap: wrap;
@@ -237,21 +237,22 @@
         Voir tous les événements &gt;
       </a>
       <p class="small-note">
-        Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur. [web:151][web:160]
+        Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur.
       </p>
     </div>
 
-    <!-- Bloc dernier post Facebook -->
+    <!-- Bloc derniers posts Facebook -->
     <div class="card">
       <h2>Dernières nouvelles Facebook</h2>
       <p class="subtitle">
-        Affichage automatique des dernières publications Facebook du cercle (lecture seule).
+        Dernières publications de la page du Cercle et de Fish In The News.
       </p>
 
+      <!-- Dernière publication du Cercle Aqua Nancy -->
+      <h3 style="font-size:0.95rem; margin-bottom:4px;">Cercle Aqua Nancy</h3>
       <div class="fb-page-wrapper">
-        <!-- Remplace l’URL ci-dessous par l’URL de la page Facebook du cercle -->
         <div class="fb-page"
-             data-href="https://www.facebook.com/facebook"
+             data-href="https://www.facebook.com/cerclaquanancy"
              data-tabs="timeline"
              data-width="500"
              data-height=""
@@ -259,13 +260,32 @@
              data-adapt-container-width="true"
              data-hide-cover="false"
              data-show-facepile="true">
-          <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/facebook">Notre page Facebook</a>
+          <blockquote cite="https://www.facebook.com/cerclaquanancy" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/cerclaquanancy">Cercle Aqua Nancy</a>
           </blockquote>
         </div>
       </div>
+
+      <!-- Dernière publication de Fish In The News -->
+      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:4px;">Fish In The News</h3>
+      <div class="fb-page-wrapper">
+        <div class="fb-page"
+             data-href="https://www.facebook.com/FishInTheNews"
+             data-tabs="timeline"
+             data-width="500"
+             data-height=""
+             data-small-header="false"
+             data-adapt-container-width="true"
+             data-hide-cover="false"
+             data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/FishInTheNews" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/FishInTheNews">Fish In The News</a>
+          </blockquote>
+        </div>
+      </div>
+
       <p class="small-note">
-        Le widget Facebook charge la timeline de la page publique, et affiche les posts récents automatiquement. [web:37][web:40]
+        Le plugin Page Facebook affiche automatiquement les publications récentes de chaque page publique.
       </p>
     </div>
   </main>
@@ -350,7 +370,7 @@
       const today = new Date();
       const upcoming = all
         .filter(ev => new Date(ev.dateIso) >= today)
-        .sort((a, b) => new Date(a.dateIso) - new Date(b.dateIso)); // mêmes règles que page événements [web:157][web:159]
+        .sort((a, b) => new Date(a.dateIso) - new Date(b.dateIso));
       return upcoming.slice(0, limit);
     }
 

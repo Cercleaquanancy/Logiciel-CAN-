@@ -681,7 +681,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil", "Pérou", "Colombie"],
     page: "fiche/Apistogramma-agassizii.html",
-    image: "img/Apistogramma-agassizii/Apistogramma-agassizii.jpeg"
+    image: "img/Apistogramma-agassizii/Apistogramma-agassizii.PNG"
   },
   {
     id: "apistogramma-gossei",
@@ -693,7 +693,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Guyane française", "Brésil"],
     page: "fiche/Apistogramma-gossei.html",
-    image: "img/Apistogramma-gossei/Apistogramma-gossei.jpeg"
+    image: "img/Apistogramma-gossei/Apistogramma-gossei.PNG"
   },
   {
     id: "apistogramma-allpahuayo",
@@ -705,7 +705,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Pérou"],
     page: "fiche/Apistogramma-allpahuayo.html",
-    image: "img/Apistogramma-allpahuayo/Apistogramma-allpahuayo.jpeg"
+    image: "img/Apistogramma-allpahuayo/Apistogramma-allpahuayo.PNG"
   },
   {
     id: "apistogramma-bitaeniata",
@@ -717,7 +717,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil", "Pérou", "Colombie"],
     page: "fiche/Apistogramma-bitaeniata.html",
-    image: "img/Apistogramma-bitaeniata/Apistogramma-bitaeniata.jpeg"
+    image: "img/Apistogramma-bitaeniata/Apistogramma-bitaeniata.PNG"
   },
   {
     id: "apistogramma-cacatuoides",
@@ -729,7 +729,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Pérou", "Brésil", "Bolivie"],
     page: "fiche/Apistogramma-cacatuoides.html",
-    image: "img/Apistogramma-cacatuoides/Apistogramma-cacatuoides.jpeg"
+    image: "img/Apistogramma-cacatueides/Apistogramma-cacatueides.PNG"
   },
   {
     id: "apistogramma-borellii",
@@ -741,7 +741,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Paraguay", "Brésil", "Argentine"],
     page: "fiche/Apistogramma-borellii.html",
-    image: "img/Apistogramma-borellii/Apistogramma-borellii.jpeg"
+    image: "img/Apistrogramma-borellii/Apistrogramma-borellii.PNG"
   },
   {
     id: "apteronotus-albifrons",
@@ -753,7 +753,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil", "Pérou", "Colombie", "Venezuela", "Équateur", "Argentine", "Paraguay"],
     page: "fiche/Apteronotus-albifrons.html",
-    image: "img/Apteronotus-albifrons/Apteronotus-albifrons.jpeg"
+    image: "img/Apteronotus-albifrons/Apteronotus-albifrons.PNG"
   },
   {
     id: "biotodoma-cupido",
@@ -765,7 +765,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil", "Pérou", "Bolivie", "Colombie", "Guyana"],
     page: "fiche/Biotodoma-cupido.html",
-    image: "img/Biotodoma-cupido/Biotodoma-cupido.jpeg"
+    image: "img/Biotodoma-cupido/Biotodoma-cupido.PNG"
   },
   {
     id: "biotoecus-opercularis",
@@ -777,7 +777,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil"],
     page: "fiche/Biotoecus-opercularis.html",
-    image: "img/Biotoecus-opercularis/Biotoecus-opercularis.jpeg"
+    image: "img/Biotoecus-opercularis/Biotoecus-opercularis.PNG"
   },
   {
     id: "alfaro-cultratus",
@@ -789,7 +789,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Costa Rica", "Nicaragua", "Panama"],
     page: "fiche/Alfaro-cultratus.html",
-    image: "img/Alfaro-cultratus/Alfaro-cultratus.jpeg"
+    image: "img/Alfaro-cultratus/Alfaro-cultratus.PNG"
   },
   {
     id: "ameca-splendens",
@@ -801,7 +801,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Mexique"],
     page: "fiche/Ameca-splendens.html",
-    image: "img/Ameca-splendens/Ameca-splendens.jpeg"
+    image: "img/Ameca-splendens/Ameca-splendens.PNG"
   },
   {
     id: "anableps-anableps",
@@ -813,7 +813,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Trinité-et-Tobago", "Venezuela", "Guyane", "Suriname", "Guyane française", "Brésil"],
     page: "fiche/Anableps-anableps.html",
-    image: "img/Anableps-anableps/Anableps-anableps.jpeg"
+    image: "img/Anableps-anableps/Anableps-anableps.PNG"
   },
   {
     id: "electrophorus-electricus",
@@ -825,7 +825,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Guyane", "Suriname", "Guyane française", "Venezuela", "Brésil"],
     page: "fiche/Electrophorus-electricus.html",
-    image: "img/Electrophorus-electricus/Electrophorus-electricus.jpeg"
+    image: "img/Electrophorus-electricus/Electrophorus-electricus.PNG"
   },
   {
     id: "dicrossus-maculatus",
@@ -837,7 +837,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil"],
     page: "fiche/Dicrossus-maculatus.html",
-    image: "img/Dicrossus-maculatus/Dicrossus-maculatus.jpeg"
+    image: "img/Dicrossus-maculatus/Dicrossus-maculatus.PNG"
   },
   {
     id: "otocinclus-affinis",
@@ -849,19 +849,19 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil"],
     page: "fiche/Otocinclus-affinis.html",
-    image: "img/Otocinclus-affinis/Otocinclus-affinis.jpeg"
+    image: "img/Otocinclus-affinis/Otocinclus-affinis.PNG"
   },
   {
     id: "protomelas-namalenje",
-    nomScientifique: "Protomelas sp. 'namalenje'",
+    nomScientifique: "Protomelas namelange tenialatus",
     nomCommun: "",
     ordre: "Cichliformes",
     famille: "Cichlidae",
     genre: "Protomelas",
     continent: "Afrique",
     pays: ["Malawi"],
-    page: "fiche/Protomelas-namalenje.html",
-    image: "img/Protomelas-namalenje/Protomelas-namalenje.jpeg"
+    page: "fiche/Protomelas-taeniolatus.html",
+    image: "img/Aulonocara-hansbaenschi/Aulonocara-hansbaenschi.PNG"
   },
   {
     id: "aulonocara-hansbaenschi",
@@ -885,7 +885,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Guatemala", "Honduras", "El Salvador", "Nicaragua"],
     page: "fiche/Amatitlania-nigrofasciata.html",
-    image: "img/Amatitlania-nigrofasciata/Amatitlania-nigrofasciata.jpeg"
+    image: "img/Amatitlania-nigrofasciata/Amatitlania-nigrofasciata.PNG"
   },
   {
     id: "amatitlania-sajica",
@@ -897,7 +897,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Costa Rica"],
     page: "fiche/Amatitlania-sajica.html",
-    image: "img/Amatitlania-sajica/Amatitlania-sajica.jpeg"
+    image: "img/Amatitlania-sajica/Amatitlania-sajica.PNG"
   },
   {
     id: "danakilia-shukoray",
@@ -908,8 +908,8 @@ window.FICHES = [
     genre: "Danakilia",
     continent: "Afrique",
     pays: ["Éthiopie"],
-    page: "fiche/Danakilia-sp-shukoray.html",
-    image: "img/Danakilia-shukoray/Danakilia-shukoray.jpeg"
+    page: "fiche/Danakilia-sp-Shukoray.html",
+    image: "img/Danakilia-sp-Shukoray/Danakilia-sp-Shukoray.PNG"
   },
   {
     id: "microctenopoma-ansorgii",
@@ -921,7 +921,7 @@ window.FICHES = [
     continent: "Afrique",
     pays: ["Angola", "Congo", "Gabon"],
     page: "fiche/Microctenopoma-ansorgii.html",
-    image: "img/Microctenopoma-ansorgii/Microctenopoma-ansorgii.jpeg"
+    image: "img/Microctenopoma-ansorgii/Microctenopoma-ansorgii.PNG"
   },
   {
     id: "microctenopoma-fasciolatum",
@@ -933,7 +933,7 @@ window.FICHES = [
     continent: "Afrique",
     pays: ["Cameroun", "République centrafricaine", "Congo"],
     page: "fiche/Microctenopoma-fasciolatum.html",
-    image: "img/Microctenopoma-fasciolatum/Microctenopoma-fasciolatum.jpeg"
+    image: "img/Microctenopoma-fasciolatum/Microctenopoma-fasciolatum.PNG"
   },
   {
     id: "cichlasoma-salvini",
@@ -944,8 +944,8 @@ window.FICHES = [
     genre: "Cichlasoma",
     continent: "Amérique du Nord",
     pays: ["Mexique", "Guatemala", "Belize", "Honduras"],
-    page: "fiche/Cichlasoma-salvini.html",
-    image: "img/Cichlasoma-salvini/Cichlasoma-salvini.jpeg"
+    page: "fiche/Trichromis-salvini.html",
+    image: "img/Trichromis-salvini/Trichromis-salvini.PNG"
   },
   {
     id: "sewellia-lineolata",
@@ -957,7 +957,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Vietnam"],
     page: "fiche/Sewellia-lineolata.html",
-    image: "img/Sewellia-lineolata/Sewellia-lineolata.jpeg"
+    image: "img/Sewellia-lineolata/Sewellia-lineolata.PNG"
   },
   {
     id: "amphilophus-citrinellus",
@@ -969,7 +969,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Nicaragua", "Costa Rica"],
     page: "fiche/Amphilophus-citrinellus.html",
-    image: "img/Amphilophus-citrinellus/Amphilophus-citrinellus.jpeg"
+    image: "img/Amphilophus-citrinellus/Amphilophus-citrinellus.PNG"
   },
   {
     id: "ivanacara-adoketa",
@@ -981,6 +981,6 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil"],
     page: "fiche/Ivanacara-adoketa.html",
-    image: "img/Ivanacara-adoketa/Ivanacara-adoketa.jpeg"
+    image: "img/Ivanacara-adoketa/Ivanacara-adoketa.PNG"
   }
 ];
