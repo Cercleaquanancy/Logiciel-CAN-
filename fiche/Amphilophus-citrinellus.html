@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Amphilophus citrinellus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Amphilophus citrinellus</h1>
+        <h2></h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Amphilophus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Amphilophus citrinellus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Amphilophus-citrinellus/Amphilophus-citrinellus.PNG" alt="Amphilophus citrinellus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Amphilophus citrinellus</strong> est un grand cichlidé d’Amérique centrale, massif et puissant, souvent connu en aquariophilie pour ses formes sélectionnées au corps orangé. [web:96][web:99]
+          </p>
+          <p class="section-text">
+            En aquarium, les mâles peuvent dépasser 25&nbsp;cm, parfois 30&nbsp;cm, et nécessitent des bacs très spacieux et solidement aménagés. [web:93][web:102]
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C’est une espèce très territoriale et agressive, surtout en période de reproduction; tout poisson plus petit ou moins robuste risque d’être attaqué et considéré comme une proie. [web:99][web:93]
+          </p>
+          <p class="section-text">
+            La maintenance spécifique est souvent recommandée, ou la cohabitation avec un seul partenaire de taille comparable, dans un décor composé de grosses pierres et de racines bien calées. [web:99][web:102]
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur sur substrat découvert; le couple nettoie une grande pierre plate ou une surface dure, où la femelle dépose plusieurs centaines d’œufs. [web:99][web:102]
+          </p>
+          <p class="section-text">
+            Les deux parents assurent une garde très agressive de la ponte, des larves et des alevins, qui peuvent rester longtemps sous leur protection; la reproduction est réputée facile une fois un couple formé. [web:99][web:102]
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles sont plus grands, plus massifs et développent souvent une bosse nucale marquée, tandis que les femelles restent plus petites et plus trapues. [web:96][web:102]
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Amphilophus citrinellus peut vivre 15 à 20 ans en captivité, ce qui en fait un poisson de long terme nécessitant un engagement important. [web:102][web:96]
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L’espèce est originaire du bassin du río San Juan et de lacs du Nicaragua et du Costa Rica, où elle fréquente des eaux variées, depuis les zones rocheuses jusqu’aux secteurs plus vaseux. [web:96][web:102]
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Amphilophus-citrinellus/Maps-Amphilophus-citrinellus.png"
+              alt="Répartition d'Amphilophus citrinellus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Lacs et rivières du Nicaragua.</li>
+              <li>Bassin du río San Juan et plans d’eau voisins au Costa Rica.</li>
+            </ul>
+            <p>
+              Amphilophus citrinellus est endémique de cette région d’Amérique centrale, où il occupe divers habitats littoraux. [web:96][web:102]
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C, avec une tolérance jusqu’à environ 30&nbsp;°C. [web:93][web:99][web:102]</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, eau neutre à alcaline. [web:93][web:102]</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH, voire plus, eau dure. [web:93][web:102]</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration très puissante et des changements d’eau réguliers pour un grand cichlidé pollueur. [web:93][web:102]</p>
+            <p><strong>Volume conseillé :</strong> au minimum 600&nbsp;L pour un couple, avec une façade de 200&nbsp;cm ou plus. [web:93][web:99][web:102]</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte tendance carnivore; il consomme végétaux, mollusques, invertébrés et petits poissons. [web:96][web:99]
+            </p>
+            <p>
+              En aquarium, il accepte granulés, sticks pour grands cichlidés, morceaux de crevettes, de poisson et aliments végétaux (légumes, granulés riches en fibres). [web:93][web:99]
+            </p>
+            <p>
+              Des rations variées mais modérées sont essentielles pour limiter l’obésité et la pollution organique importante générée par ce grand cichlidé vorace. [web:93][web:102]
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

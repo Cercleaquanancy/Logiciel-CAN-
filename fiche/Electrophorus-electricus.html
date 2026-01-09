@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Electrophorus electricus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Electrophorus electricus</h1>
+        <h2></h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Gymnotiformes</li>
+              <li><span class="sys-label">Famille :</span> Gymnotidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Electrophorus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Electrophorus electricus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Electrophorus-electricus/Electrophorus-electricus.PNG" alt="Electrophorus electricus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Electrophorus electricus</strong> est un poisson électrique géant d'Amérique du Sud, capable de générer des décharges électriques atteignant 600 à 860 volts, ce qui en fait le plus puissant bioélectrogénérateur vivant.
+          </p>
+          <p class="section-text">
+            Il atteint couramment 2 mètres de longueur et peut dépasser 20&nbsp;kg, avec un corps serpentiforme brun‑verdâtre dépourvu d'écailles, de nageoire dorsale, caudale et pelvienne.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L'espèce est solitaire et principalement nocturne, passant la journée cachée dans des zones ombragées et devenant active au crépuscule pour chasser poissons, amphibiens et invertébrés.
+          </p>
+          <p class="section-text">
+            Elle est obligée de respirer de l'air atmosphérique toutes les 10 à 15 minutes en raison de la pauvreté en oxygène de son milieu; une maintenance en aquarium nécessite un volume exceptionnel et des précautions extrêmes en raison de ses décharges électriques potentiellement mortelles.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare avec soins paternels; en saison sèche, le mâle construit un nid de mucus dans la boue le long des berges, où la femelle dépose 10 000 à 17 000 œufs.
+          </p>
+          <p class="section-text">
+            Le mâle garde ensuite les œufs et les larves jusqu'aux premières pluies de janvier, moment où les jeunes d'environ 10&nbsp;cm sont dispersés par les courants; les premières larves éclosent pratiquent le cannibalisme, réduisant la couvée à environ 1 000 survivants.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> inconnu ou non documenté en aquariophilie, la taille étant le seul critère fiable.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> au moins 10 ans en captivité pour des spécimens subadultes ou adultes maintenus dans des conditions exceptionnelles, probablement davantage dans la nature.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Electrophorus electricus occupe les zones peu profondes, calmes et souvent hypoxiques des plaines inondables, marécages, bras morts et criques forestières, où il évolue sur fonds boueux riches en matière organique.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Electrophorus-electricus/Maps-Electrophorus-electricus.png"
+              alt="Répartition d'Electrophorus electricus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bouclier guyanais : Guyane, Suriname, Guyane française, Venezuela (bassin de l'Orénoque) et nord du Brésil (états de l'Amapá, Roraima).</li>
+              <li>Bassins de l'Essequibo, du Corantijn et du Maroni.</li>
+              <li>Cours moyen et inférieur de l'Orénoque et affluents guyanais du bas Amazone.</li>
+            </ul>
+            <p>
+              L'espèce est endémique du bouclier guyanais dans les systèmes fluviaux à faible conductivité, où elle est séparée des autres espèces du genre Electrophorus récemment décrites dans le bassin amazonien central et le bouclier brésilien.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,5 à 7,0, eau douce à légèrement acide.</p>
+            <p><strong>GH :</strong> 1 à 12&nbsp;°dGH, eau douce.</p>
+            <p><strong>Courant :</strong> très faible, avec une surface calme et un accès obligatoire à l'air atmosphérique.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 600 à 800&nbsp;L pour des spécimen juvénile, avec une augmentation rapide vers 2 000&nbsp;L </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore vorace; dans la nature, il se nourrit de poissons, d'amphibiens, de petits mammifères et d'invertébrés aquatiques qu'il immobilise par des décharges électriques.
+            </p>
+            <p>
+              En aquarium, il accepte poissons entiers morts, filets de poisson, gros vers de terre et autres nourritures carnées distribuées avec de longues pinces pour éviter tout contact.
+            </p>
+            <p>
+              La manipulation de cette espèce nécessite des protocoles de sécurité stricts; ses décharges électriques répétées peuvent tuer un humain adulte, et l'aquarium doit être équipé d'un couvercle lourd et parfaitement hermétique.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

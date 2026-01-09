@@ -10,3 +10,16 @@ node server.js
 lt --port 5500
 
 curl ipv4.icanhazip.com
+
+git init
+git add .
+git commit -m "Initial commit CAN app"
+``` [8][9]
+
+git config --global user.name "Filhol-Maitre Axel"
+git config --global user.email "filholaxel03@gmail.com"
+
+mis a jour 
+git add .
+git commit -m 
+git push

@@ -443,12 +443,6 @@
     try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
-    // --- Restriction accès CAN (admin) ---
-    if (!currentUser || currentUser.username !== "can") {
-      alert("Accès réservé au compte CAN (admin).");
-      window.location.href = "index.html";
-    }  // [web:21][web:33]
-
     document.getElementById("navbarUser").textContent = currentUser.username;
 
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {

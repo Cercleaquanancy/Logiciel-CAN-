@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Apteronotus albifrons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Apteronotus albifrons</h1>
+        <h2></h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Gymnotiformes</li>
+              <li><span class="sys-label">Famille :</span> Apteronotidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Apteronotus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Apteronotus albifrons</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Apteronotus-albifrons/Apteronotus-albifrons.PNG" alt="Apteronotus albifrons">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Apteronotus albifrons</strong> est un poisson-couteau électrique sud‑américain au corps noir allongé, atteignant 40 à 50&nbsp;cm en aquarium, parfois davantage dans la nature.
+          </p>
+          <p class="section-text">
+            Son corps comprimé latéralement et sa nageoire anale ondulante continue lui permettent de se déplacer avec élégance vers l'avant et l'arrière, principalement la nuit.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est une espèce nocturne et timide qui se cache sous les racines et dans les grottes durant la journée, devenant active après l'extinction de l'éclairage.
+          </p>
+          <p class="section-text">
+            Bien que généralement pacifique avec les poissons de grande taille, il peut se montrer territorial avec ses congénères et prédateur envers les petits poissons qu'il peut avaler; un bac spacieux et bien structuré est indispensable.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> la reproduction en aquarium est très rare et peu documentée; dans la nature, l'espèce pond probablement en eau libre, les œufs et larves dérivant avec le courant.
+          </p>
+          <p class="section-text">
+            Aucun protocole de reproduction fiable n'est connu pour l'aquariophilie amateur, et l'espèce reste essentiellement capturée dans la nature.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très peu marqué en aquarium; les différences entre mâles et femelles ne sont pas facilement observables sans dissection.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 10 ans ou plus en captivité dans de bonnes conditions, avec un aquarium de grand volume et une nourriture adaptée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce fréquente les eaux calmes et ombragées des rivières, bras morts et zones inondées, où elle se cache parmi les racines, branches immergées et végétation dense durant le jour.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Apteronotus-albifrons/Maps-Apteronotus-albifrons.png"
+              alt="Répartition d'Apteronotus albifrons"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassin de l'Amazone au Pérou, au Brésil, en Colombie, au Venezuela et en Équateur.</li>
+              <li>Bassin du Paraná en Argentine et au Paraguay.</li>
+              <li>Affluents des grands fleuves et zones inondées de forêts tropicales.</li>
+            </ul>
+            <p>
+              L'espèce est largement distribuée en Amérique du Sud tropicale, dans une grande variété de systèmes fluviaux, des eaux noires aux eaux blanches.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5, de légèrement acide à neutre.</p>
+            <p><strong>GH :</strong> 2 à 15&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec de nombreuses cachettes sous racines, grottes et zones sombres.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 500 à 800&nbsp;L pour un individu adulte, avec une longueur de bac importante pour permettre ses déplacements.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore; dans la nature, il se nourrit de petits poissons, larves d'insectes, vers et autres invertébrés aquatiques.
+            </p>
+            <p>
+              En aquarium, il accepte les nourritures vivantes et congelées (vers de vase, artémias, crevettes, petits poissons), avec une transition possible vers des granulés carnés de qualité.
+            </p>
+            <p>
+              Des repas réguliers distribués le soir ou la nuit, lorsqu'il est actif, favorisent sa santé et limitent la prédation sur les petits colocataires durant ses heures d'activité.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

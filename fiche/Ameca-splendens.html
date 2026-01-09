@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ameca splendens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Ameca splendens</h1>
+        <h2></h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Ameca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Ameca splendens</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Ameca-splendens/Ameca-splendens.PNG" alt="Ameca splendens">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Ameca splendens</strong> est un goodéidé vivipare mexicain au corps argenté marqué d'une bande noire sur le bord de la nageoire caudale, considéré comme éteint ou au bord de l'extinction dans la nature.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent environ 8 à 9&nbsp;cm, les femelles un peu moins, avec des couleurs variables selon les souches d'élevage et une grande robustesse en aquarium.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L'espèce est active, grégaire et vorace, vivant en groupes importants dans des eaux claires, bien oxygénées et riches en végétation aquatique.
+          </p>
+          <p class="section-text">
+            Les mâles peuvent se montrer territoriaux entre eux, surtout en petit volume; un aquarium spacieux avec de nombreuses plantes et des zones de nage dégagées est recommandé.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare avec trophotaenies; les femelles ne stockent pas le sperme et doivent être fécondées séparément pour chaque portée.
+          </p>
+          <p class="section-text">
+            Après une gestation de 55 à 60 jours, la femelle donne naissance à 5 à 30 alevins très grands, jusqu'à 2&nbsp;cm, qui naissent parfois avec un cordon ombilical se résorbant en 2 à 3 jours.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles possèdent un andropodium moins développé que chez les poeciliidés, avec des nageoires plus colorées; la différence de taille est moins marquée que chez les vivipares classiques.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 3 à 5 ans en captivité, avec de fortes populations d'élevage maintenues par les amateurs.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce vivait dans des sources claires et chaudes, où proliféraient les plantes aquatiques, formant un habitat unique maintenant transformé en bassins de baignade.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Ameca-splendens/Maps-Ameca-splendens.PNG"
+              alt="Répartition d'Ameca splendens"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique central, état de Jalisco.</li>
+              <li>Bassin du río Ameca et son affluent le río Teuchitlán.</li>
+              <li>Sources naturelles chaudes près du village de Teuchitlán.</li>
+            </ul>
+            <p>
+              L'espèce était endémique d'un habitat très restreint, aujourd'hui considéré comme disparu à l'état sauvage; elle ne survit plus que dans quelques bassins aménagés et en captivité.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C, avec une tolérance pour des températures légèrement plus élevées.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0, eau neutre à légèrement alcaline.</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH, eau moyennement dure à dure.</p>
+            <p><strong>Courant :</strong> modéré, avec une bonne oxygénation et une filtration efficace pour gérer la pollution importante générée.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 100 à 150&nbsp;L pour un groupe, très bien planté avec des zones de nage dégagées.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte tendance herbivore; l'espèce consomme de grandes quantités d'algues et de matière végétale dans son habitat naturel.
+            </p>
+            <p>
+              En aquarium, il accepte flocons, granulés, spiruline, légumes pochés (épinards, courgettes) et nourritures congelées distribuées avec modération.
+            </p>
+            <p>
+              Des apports végétaux réguliers sont indispensables pour maintenir la santé digestive et limiter la prédation sur les plantes tendres du bac.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

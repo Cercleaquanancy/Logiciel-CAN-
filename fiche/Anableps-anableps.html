@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anableps anableps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Anableps anableps</h1>
+        <h2></h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Anablepidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Anableps</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Anableps anableps</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Anableps-anableps/Anableps-anableps.PNG" alt="Anableps anableps">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Anableps anableps</strong> est un poisson vivipare extraordinaire dont chaque œil est divisé horizontalement en deux lobes, lui permettant de voir simultanément au‑dessus et en dessous de la surface de l'eau.
+          </p>
+          <p class="section-text">
+            Les femelles atteignent 18 à 24&nbsp;cm, les mâles 14 à 15&nbsp;cm, avec un corps allongé, cylindrique et brun, adapté à la vie en milieu saumâtre et inter‑tidal.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L'espèce est grégaire, vivant en groupes importants pouvant compter plusieurs centaines d'individus, qui se rassemblent dans les canaux principaux à marée basse et migrent vers les zones inondées à marée haute.
+          </p>
+          <p class="section-text">
+            Elle se maintient constamment à la surface, scrutant l'environnement aérien pour détecter proies et prédateurs; en aquarium, elle nécessite un très grand volume avec une grande surface et un couvercle obligatoire.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare; les mâles possèdent un gonopodium orienté à gauche ou à droite, et les femelles une ouverture génitale correspondante, ce qui nécessite un appariement directionnel.
+          </p>
+          <p class="section-text">
+            La gestation dure plusieurs semaines, après quoi la femelle donne naissance à quelques jeunes déjà grands et complètement formés, capables de nager et de se nourrir immédiatement.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué; les femelles sont nettement plus grandes et massives que les mâles, qui possèdent un gonopodium visible.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> plusieurs années en captivité, dans un aquarium public ou un très grand aquaterrarium saumâtre bien entretenu.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Anableps anableps habite les zones inter‑tidales des mangroves à Rhizophora, où il évolue à la surface des canaux et des zones inondées lors des marées, se nourrissant d'insectes et de petits invertébrés.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Anableps-anableps/Maps-Anableps-anableps.png"
+              alt="Répartition d'Anableps anableps"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Côtes nord‑est de l'Amérique du Sud, du golfe de Paria (Venezuela/Trinidad‑et‑Tobago) jusqu'au Brésil.</li>
+              <li>Guyane, Suriname, Guyane française, embouchure de l'Amazone et côtes jusqu'à l'estuaire du río Parnaíba (Maranhão/Piauí).</li>
+              <li>Mangroves et zones estuariennes saumâtres soumises aux marées.</li>
+            </ul>
+            <p>
+              L'espèce est largement distribuée le long des côtes atlantiques tropicales d'Amérique du Sud, dans les forêts de mangroves et les zones inter‑tidales.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,5, eau neutre à alcaline.</p>
+            <p><strong>Salinité :</strong> eau saumâtre, environ 5 à 15 g/L de sel marin, avec des variations selon les marées.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une bonne oxygénation et un niveau d'eau permettant le comportement de surface.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 500 à 800&nbsp;L pour un petit groupe, idéalement en aquarium public ou aquaterrarium avec grande surface.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore; il se nourrit principalement d'insectes tombés à la surface, de petits crustacés et d'invertébrés aquatiques.
+            </p>
+            <p>
+              En aquarium, il accepte les nourritures flottantes (granulés, insectes séchés, vers, crevettes), distribuées en surface pour reproduire son comportement naturel de chasse.
+            </p>
+            <p>
+              Des repas réguliers et variés, associés à une eau saumâtre de qualité et bien oxygénée, sont essentiels pour maintenir cette espèce spectaculaire mais exigeante.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
