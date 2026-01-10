@@ -1,23 +1,24 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const pool = require('./db'); // <--- connexion Neon
 
 // IMPORTANT pour Render : utiliser process.env.PORT
 const port = process.env.PORT || 5500;
 
-// Fichier de stockage central
+// Fichier de stockage central (pour le reste : loginHistory, population, annonces, serre, etc.)
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Admin "fixe"
 const ADMIN_LOGIN = 'can';
 const ADMIN_PASS = '29081623';
 
-// Charger les données du fichier
+// Charger les données du fichier (pour le reste)
 function loadData() {
   try {
     if (!fs.existsSync(DATA_FILE)) {
       return {
-        members: [],
+        members: [],          // plus utilisé pour les membres, mais on laisse pour compatibilité
         loginHistory: [],
         population: [],
         annonces: [],
@@ -39,7 +40,7 @@ function loadData() {
     const serreParsed = parsed.serre && typeof parsed.serre === 'object' ? parsed.serre : {};
 
     return {
-      members: Array.isArray(parsed.members) ? parsed.members : [],
+      members: Array.isArray(parsed.members) ? parsed.members : [], // plus utilisé
       loginHistory: Array.isArray(parsed.loginHistory) ? parsed.loginHistory : [],
       population: Array.isArray(parsed.population) ? parsed.population : [],
       annonces: Array.isArray(parsed.annonces) ? parsed.annonces : [],
@@ -85,7 +86,7 @@ function loadData() {
   }
 }
 
-// Sauvegarder les données dans le fichier
+// Sauvegarder les données dans le fichier (pour le reste)
 function saveData(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
@@ -158,17 +159,23 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API MEMBRES
+  //        API MEMBRES (Neon)
   // =======================
 
-  // GET /api/members : liste des adhérents
+  // GET /api/members : liste des adhérents (Neon)
   if (method === 'GET' && url === '/api/members') {
-    const data = loadData();
-    sendJson(res, 200, data.members);
+    pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
+      .then(result => {
+        sendJson(res, 200, result.rows);
+      })
+      .catch(err => {
+        console.error('Erreur SELECT members :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
-  // POST /api/members : ajouter / modifier un adhérent
+  // POST /api/members : ajouter / modifier un adhérent (Neon)
   // body: { login, pass, role, serre }
   if (method === 'POST' && url === '/api/members') {
     parseJsonBody(req, (err, body) => {
@@ -181,41 +188,50 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'login et pass obligatoires');
         return;
       }
-      const data = loadData();
-      let users = data.members;
 
-      const existingIndex = users.findIndex(u => u.login === login);
-      if (existingIndex >= 0) {
-        users[existingIndex].pass = pass;
-        users[existingIndex].role = role || 'adhérent';
-        users[existingIndex].serre = !!serre;
-      } else {
-        users.push({
-          login,
-          pass,
-          role: role || 'adhérent',
-          serre: !!serre
+      const finalRole = role || 'adhérent';
+      const serreBool = !!serre;
+
+      const query = `
+        INSERT INTO members (login, pass, role, serre)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (login)
+        DO UPDATE SET pass = EXCLUDED.pass,
+                      role = EXCLUDED.role,
+                      serre = EXCLUDED.serre
+      `;
+      const params = [login, pass, finalRole, serreBool];
+
+      pool.query(query, params)
+        .then(() => {
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT/UPDATE member :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
         });
-      }
-      data.members = users;
-      saveData(data);
-      sendJson(res, 200, { success: true });
     });
     return;
   }
 
-  // DELETE /api/members/:login
+  // DELETE /api/members/:login (Neon)
   if (method === 'DELETE' && url.startsWith('/api/members/')) {
     const login = decodeURIComponent(url.replace('/api/members/', ''));
-    const data = loadData();
-    let users = data.members;
-    const before = users.length;
-    users = users.filter(u => u.login !== login);
-    data.members = users;
-    saveData(data);
-    sendJson(res, 200, { success: true, removed: before - users.length });
+
+    pool.query('DELETE FROM members WHERE login = $1', [login])
+      .then(result => {
+        sendJson(res, 200, { success: true, removed: result.rowCount });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE member :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
+
+  // =======================
+  //        API LOGIN (Neon + loginHistory en fichier)
+  // =======================
 
   // POST /api/login : vérification identifiants
   // body: { username, password }
@@ -231,7 +247,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
+      const data = loadData(); // utilisé pour l'historique
 
       // Admin fixe
       if (username === ADMIN_LOGIN && password === ADMIN_PASS) {
@@ -250,46 +266,56 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      // Adhérent
-      const members = data.members || [];
-      const found = members.find(m => m.login === username);
-      if (!found) {
-        sendJson(res, 401, { success: false, error: 'unknown_user' });
-        return;
-      }
-      if (found.pass !== password) {
-        sendJson(res, 401, { success: false, error: 'bad_password' });
-        return;
-      }
+      // Adhérent en base Neon
+      pool.query(
+        'SELECT login, pass, role, serre FROM members WHERE login = $1',
+        [username]
+      )
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendJson(res, 401, { success: false, error: 'unknown_user' });
+            return;
+          }
 
-      const role = found.role || 'adhérent';
-      const serre = !!found.serre;
-      const userObj = { username, role, serre };
+          const found = result.rows[0];
+          if (found.pass !== password) {
+            sendJson(res, 401, { success: false, error: 'bad_password' });
+            return;
+          }
 
-      data.loginHistory = data.loginHistory || [];
-      data.loginHistory.push({
-        username,
-        role,
-        date: new Date().toISOString()
-      });
-      saveData(data);
+          const role = found.role || 'adhérent';
+          const serre = !!found.serre;
+          const userObj = { username: found.login, role, serre };
 
-      sendJson(res, 200, {
-        success: true,
-        user: userObj
-      });
+          data.loginHistory = data.loginHistory || [];
+          data.loginHistory.push({
+            username: found.login,
+            role,
+            date: new Date().toISOString()
+          });
+          saveData(data);
+
+          sendJson(res, 200, {
+            success: true,
+            user: userObj
+          });
+        })
+        .catch(dbErr => {
+          console.error('Erreur SELECT member pour login :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
 
-  // GET /api/history : récupère l'historique
+  // GET /api/history : récupère l'historique (fichier)
   if (method === 'GET' && url === '/api/history') {
     const data = loadData();
     sendJson(res, 200, data.loginHistory || []);
     return;
   }
 
-  // POST /api/history/clear : vider l'historique
+  // POST /api/history/clear : vider l'historique (fichier)
   if (method === 'POST' && url === '/api/history/clear') {
     const data = loadData();
     data.loginHistory = [];
@@ -298,17 +324,21 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/members/clear : vider tous les adhérents
+  // POST /api/members/clear : vider tous les adhérents (Neon)
   if (method === 'POST' && url === '/api/members/clear') {
-    const data = loadData();
-    data.members = [];
-    saveData(data);
-    sendJson(res, 200, { success: true });
+    pool.query('DELETE FROM members')
+      .then(() => {
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE ALL members :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
   // =======================
-  //        API POPULATION
+  //        API POPULATION (fichier)
   // =======================
 
   // GET /api/population
@@ -356,7 +386,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API ANNONCES
+  //        API ANNONCES (fichier)
   // =======================
 
   // GET /api/annonces
@@ -507,7 +537,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API SERRE
+  //        API SERRE (fichier)
   // =======================
 
   // GET /api/serre : récupérer notes, bacs, assignments, feed
