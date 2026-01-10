@@ -1,24 +1,24 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const pool = require('./db'); // <--- connexion Neon
+const pool = require('./db'); // connexion Neon
 
 // IMPORTANT pour Render : utiliser process.env.PORT
 const port = process.env.PORT || 5500;
 
-// Fichier de stockage central (pour le reste : loginHistory, population, annonces, serre, etc.)
+// Fichier de stockage (pour loginHistory, serre, etc.)
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Admin "fixe"
 const ADMIN_LOGIN = 'can';
 const ADMIN_PASS = '29081623';
 
-// Charger les données du fichier (pour le reste)
+// Charger les données du fichier (reste)
 function loadData() {
   try {
     if (!fs.existsSync(DATA_FILE)) {
       return {
-        members: [],          // plus utilisé pour les membres, mais on laisse pour compatibilité
+        members: [],
         loginHistory: [],
         population: [],
         annonces: [],
@@ -40,7 +40,7 @@ function loadData() {
     const serreParsed = parsed.serre && typeof parsed.serre === 'object' ? parsed.serre : {};
 
     return {
-      members: Array.isArray(parsed.members) ? parsed.members : [], // plus utilisé
+      members: Array.isArray(parsed.members) ? parsed.members : [],
       loginHistory: Array.isArray(parsed.loginHistory) ? parsed.loginHistory : [],
       population: Array.isArray(parsed.population) ? parsed.population : [],
       annonces: Array.isArray(parsed.annonces) ? parsed.annonces : [],
@@ -86,7 +86,7 @@ function loadData() {
   }
 }
 
-// Sauvegarder les données dans le fichier (pour le reste)
+// Sauvegarder les données dans le fichier (reste)
 function saveData(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
@@ -118,7 +118,7 @@ function sendText(res, statusCode, text) {
   res.end(text);
 }
 
-// Lire le corps JSON d'une requête POST/PATCH
+// Lire le corps JSON
 function parseJsonBody(req, callback) {
   let body = '';
   req.on('data', chunk => {
@@ -162,7 +162,7 @@ const server = http.createServer((req, res) => {
   //        API MEMBRES (Neon)
   // =======================
 
-  // GET /api/members : liste des adhérents (Neon)
+  // GET /api/members
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
       .then(result => {
@@ -175,8 +175,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/members : ajouter / modifier un adhérent (Neon)
-  // body: { login, pass, role, serre }
+  // POST /api/members
   if (method === 'POST' && url === '/api/members') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -214,7 +213,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // DELETE /api/members/:login (Neon)
+  // DELETE /api/members/:login
   if (method === 'DELETE' && url.startsWith('/api/members/')) {
     const login = decodeURIComponent(url.replace('/api/members/', ''));
 
@@ -229,12 +228,24 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // POST /api/members/clear
+  if (method === 'POST' && url === '/api/members/clear') {
+    pool.query('DELETE FROM members')
+      .then(() => {
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE ALL members :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
   // =======================
-  //        API LOGIN (Neon + loginHistory en fichier)
+  //        API LOGIN (Neon + loginHistory fichier)
   // =======================
 
-  // POST /api/login : vérification identifiants
-  // body: { username, password }
+  // POST /api/login
   if (method === 'POST' && url === '/api/login') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -247,7 +258,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData(); // utilisé pour l'historique
+      const data = loadData(); // pour l'historique
 
       // Admin fixe
       if (username === ADMIN_LOGIN && password === ADMIN_PASS) {
@@ -308,14 +319,14 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // GET /api/history : récupère l'historique (fichier)
+  // GET /api/history
   if (method === 'GET' && url === '/api/history') {
     const data = loadData();
     sendJson(res, 200, data.loginHistory || []);
     return;
   }
 
-  // POST /api/history/clear : vider l'historique (fichier)
+  // POST /api/history/clear
   if (method === 'POST' && url === '/api/history/clear') {
     const data = loadData();
     data.loginHistory = [];
@@ -324,28 +335,29 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/members/clear : vider tous les adhérents (Neon)
-  if (method === 'POST' && url === '/api/members/clear') {
-    pool.query('DELETE FROM members')
-      .then(() => {
-        sendJson(res, 200, { success: true });
-      })
-      .catch(err => {
-        console.error('Erreur DELETE ALL members :', err);
-        sendText(res, 500, 'Erreur serveur');
-      });
-    return;
-  }
-
   // =======================
-  //        API POPULATION (fichier)
+  //        API POPULATION (Neon)
   // =======================
 
   // GET /api/population
   if (method === 'GET' && url === '/api/population') {
-    const data = loadData();
-    const population = Array.isArray(data.population) ? data.population : [];
-    sendJson(res, 200, population);
+    const query = `
+      SELECT
+        member_username AS "memberUsername",
+        species_name    AS "speciesName",
+        source,
+        total_count     AS "totalCount"
+      FROM population
+      ORDER BY member_username, species_name
+    `;
+    pool.query(query)
+      .then(result => {
+        sendJson(res, 200, result.rows);
+      })
+      .catch(err => {
+        console.error('Erreur SELECT population :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
@@ -363,12 +375,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
-      const currentPop = Array.isArray(data.population) ? data.population : [];
-
-      const filtered = currentPop.filter(e => e.memberUsername !== memberUsername);
-
-      const newEntries = entries
+      const cleanEntries = entries
         .filter(e => e && e.speciesName)
         .map(e => ({
           memberUsername,
@@ -377,28 +384,63 @@ const server = http.createServer((req, res) => {
           totalCount: Number(e.totalCount) > 0 ? Number(e.totalCount) : 0
         }));
 
-      data.population = filtered.concat(newEntries);
-      saveData(data);
+      const deleteQuery = 'DELETE FROM population WHERE member_username = $1';
 
-      sendJson(res, 200, { success: true, count: newEntries.length });
+      pool.query(deleteQuery, [memberUsername])
+        .then(() => {
+          if (cleanEntries.length === 0) {
+            sendJson(res, 200, { success: true, count: 0 });
+            return;
+          }
+
+          const insertQuery = `
+            INSERT INTO population (member_username, species_name, source, total_count)
+            VALUES ${cleanEntries.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+
+          const params = cleanEntries.flatMap(e => [
+            e.memberUsername,
+            e.speciesName,
+            e.source,
+            e.totalCount
+          ]);
+
+          return pool.query(insertQuery, params);
+        })
+        .then(insertResult => {
+          if (!insertResult) return;
+          sendJson(res, 200, { success: true, count: cleanEntries.length });
+        })
+        .catch(dbErr => {
+          console.error('Erreur sync population :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
 
   // =======================
-  //        API ANNONCES (fichier)
+  //        API ANNONCES (Neon)
   // =======================
 
   // GET /api/annonces
   if (method === 'GET' && url === '/api/annonces') {
-    const data = loadData();
-    const annonces = Array.isArray(data.annonces) ? data.annonces : [];
-    sendJson(res, 200, annonces);
+    pool.query(
+      'SELECT id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar" FROM annonces ORDER BY id DESC'
+    )
+      .then(result => {
+        sendJson(res, 200, result.rows);
+      })
+      .catch(err => {
+        console.error('Erreur SELECT annonces :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
-  // POST /api/annonces  (créer une annonce)
-  // body: { titre, type, description, categorie, auteur }
+  // POST /api/annonces
   if (method === 'POST' && url === '/api/annonces') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -411,26 +453,35 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
-      const annonces = Array.isArray(data.annonces) ? data.annonces : [];
-
       const id = "annonce_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
-      const annonce = {
+      const prive = true;
+      const favoriPar = [];
+
+      const query = `
+        INSERT INTO annonces (id, titre, type, description, categorie, auteur, prive, favori_par)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+      `;
+      const params = [
         id,
-        titre: String(titre).trim(),
-        type: String(type),
-        description: (description || '').toString().trim(),
-        auteur: String(auteur),
-        prive: true,
-        categorie: String(categorie),
-        favoriPar: []
-      };
+        String(titre).trim(),
+        String(type),
+        (description || '').toString().trim(),
+        String(categorie),
+        String(auteur),
+        prive,
+        favoriPar
+      ];
 
-      annonces.push(annonce);
-      data.annonces = annonces;
-      saveData(data);
-
-      sendJson(res, 200, { success: true, annonce });
+      pool.query(query, params)
+        .then(result => {
+          const annonce = result.rows[0];
+          sendJson(res, 200, { success: true, annonce });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT annonce :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -449,22 +500,25 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
-      const annonces = Array.isArray(data.annonces) ? data.annonces : [];
-      const a = annonces.find(x => x.id === id);
-      if (!a) {
-        sendText(res, 404, 'Annonce introuvable');
-        return;
-      }
-
-      if (a.auteur !== username) {
-        sendText(res, 403, 'Non autorisé');
-        return;
-      }
-
-      a.prive = !a.prive;
-      saveData(data);
-      sendJson(res, 200, { success: true, annonce: a });
+      const query = `
+        UPDATE annonces
+        SET prive = NOT prive
+        WHERE id = $1 AND auteur = $2
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+      `;
+      pool.query(query, [id, username])
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendText(res, 403, 'Non autorisé ou annonce introuvable');
+            return;
+          }
+          const annonce = result.rows[0];
+          sendJson(res, 200, { success: true, annonce });
+        })
+        .catch(dbErr => {
+          console.error('Erreur togglePrivate annonce :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -483,21 +537,34 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
-      const annonces = Array.isArray(data.annonces) ? data.annonces : [];
-      const a = annonces.find(x => x.id === id);
-      if (!a) {
-        sendText(res, 404, 'Annonce introuvable');
-        return;
-      }
+      pool.query('SELECT favori_par FROM annonces WHERE id = $1', [id])
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendText(res, 404, 'Annonce introuvable');
+            return;
+          }
+          let favoriPar = result.rows[0].favori_par || [];
+          const idx = favoriPar.indexOf(username);
+          if (idx === -1) favoriPar.push(username);
+          else favoriPar.splice(idx, 1);
 
-      if (!Array.isArray(a.favoriPar)) a.favoriPar = [];
-      const idx = a.favoriPar.indexOf(username);
-      if (idx === -1) a.favoriPar.push(username);
-      else a.favoriPar.splice(idx, 1);
-
-      saveData(data);
-      sendJson(res, 200, { success: true, annonce: a });
+          const updateQuery = `
+            UPDATE annonces
+            SET favori_par = $1
+            WHERE id = $2
+            RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+          `;
+          return pool.query(updateQuery, [favoriPar, id]);
+        })
+        .then(updateResult => {
+          if (!updateResult) return;
+          const annonce = updateResult.rows[0];
+          sendJson(res, 200, { success: true, annonce });
+        })
+        .catch(dbErr => {
+          console.error('Erreur toggleFavori annonce :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -512,26 +579,35 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData();
-      const annonces = Array.isArray(data.annonces) ? data.annonces : [];
-      const a = annonces.find(x => x.id === id);
-      if (!a) {
-        sendText(res, 404, 'Annonce introuvable');
-        return;
-      }
+      pool.query(
+        'SELECT auteur FROM annonces WHERE id = $1',
+        [id]
+      )
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendText(res, 404, 'Annonce introuvable');
+            return;
+          }
 
-      const isOwner = a.auteur === username;
-      const isAdminLike = role === 'admin' || role === 'membre_bureau';
-      if (!isOwner && !isAdminLike) {
-        sendText(res, 403, 'Non autorisé');
-        return;
-      }
+          const auteur = result.rows[0].auteur;
+          const isOwner = auteur === username;
+          const isAdminLike = role === 'admin' || role === 'membre_bureau';
 
-      const restantes = annonces.filter(x => x.id !== id);
-      data.annonces = restantes;
-      saveData(data);
+          if (!isOwner && !isAdminLike) {
+            sendText(res, 403, 'Non autorisé');
+            return;
+          }
 
-      sendJson(res, 200, { success: true });
+          return pool.query('DELETE FROM annonces WHERE id = $1', [id]);
+        })
+        .then(deleteResult => {
+          if (!deleteResult) return;
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur DELETE annonce :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -540,7 +616,7 @@ const server = http.createServer((req, res) => {
   //        API SERRE (fichier)
   // =======================
 
-  // GET /api/serre : récupérer notes, bacs, assignments, feed
+  // GET /api/serre
   if (method === 'GET' && url === '/api/serre') {
     const data = loadData();
     const serre = data.serre || {
@@ -570,8 +646,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/notes : sauvegarder les notes générales
-  // body: { notes }
+  // POST /api/serre/notes
   if (method === 'POST' && url === '/api/serre/notes') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -599,8 +674,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/bacs : sauvegarder la liste de bacs et les assignments
-  // body: { bacs, assignments }
+  // POST /api/serre/bacs
   if (method === 'POST' && url === '/api/serre/bacs') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -645,8 +719,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/feed : sauvegarder les stocks de nourriture
-  // body: { items, monthlyUseKg }
+  // POST /api/serre/feed
   if (method === 'POST' && url === '/api/serre/feed') {
     parseJsonBody(req, (err, body) => {
       if (err) {
