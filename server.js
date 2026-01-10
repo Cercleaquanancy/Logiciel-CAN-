@@ -6,14 +6,14 @@ const pool = require('./db'); // connexion Neon
 // IMPORTANT pour Render : utiliser process.env.PORT
 const port = process.env.PORT || 5500;
 
-// Fichier de stockage (pour loginHistory, serre, etc.)
+// Fichier de stockage (pour serre, etc. – plus pour l’historique)
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Admin "fixe"
-const ADMIN_LOGIN = 'can';
+const ADMIN_LOGIN = 'can';          // ou 'CAN.ansorgiinancy' si tu préfères
 const ADMIN_PASS = '29081623';
 
-// Charger les données du fichier (reste)
+// Charger les données du fichier (pour serre, population locale éventuelle, etc.)
 function loadData() {
   try {
     if (!fs.existsSync(DATA_FILE)) {
@@ -86,7 +86,7 @@ function loadData() {
   }
 }
 
-// Sauvegarder les données dans le fichier (reste)
+// Sauvegarder les données dans le fichier (pour serre, etc.)
 function saveData(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
@@ -242,7 +242,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API LOGIN (Neon + loginHistory fichier)
+  //        API LOGIN (Neon + historique en base)
   // =======================
 
   // POST /api/login
@@ -258,22 +258,26 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const data = loadData(); // pour l'historique
+      const nowIso = new Date().toISOString();
 
       // Admin fixe
       if (username === ADMIN_LOGIN && password === ADMIN_PASS) {
         const userObj = { username, role: 'admin', serre: true };
-        data.loginHistory = data.loginHistory || [];
-        data.loginHistory.push({
-          username,
-          role: 'admin',
-          date: new Date().toISOString()
-        });
-        saveData(data);
-        sendJson(res, 200, {
-          success: true,
-          user: userObj
-        });
+
+        pool.query(
+          'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
+          [username, 'admin', nowIso]
+        )
+          .then(() => {
+            sendJson(res, 200, {
+              success: true,
+              user: userObj
+            });
+          })
+          .catch(dbErr => {
+            console.error('Erreur INSERT login_history admin :', dbErr);
+            sendText(res, 500, 'Erreur serveur');
+          });
         return;
       }
 
@@ -298,21 +302,18 @@ const server = http.createServer((req, res) => {
           const serre = !!found.serre;
           const userObj = { username: found.login, role, serre };
 
-          data.loginHistory = data.loginHistory || [];
-          data.loginHistory.push({
-            username: found.login,
-            role,
-            date: new Date().toISOString()
-          });
-          saveData(data);
-
-          sendJson(res, 200, {
-            success: true,
-            user: userObj
+          return pool.query(
+            'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
+            [found.login, role, nowIso]
+          ).then(() => {
+            sendJson(res, 200, {
+              success: true,
+              user: userObj
+            });
           });
         })
         .catch(dbErr => {
-          console.error('Erreur SELECT member pour login :', dbErr);
+          console.error('Erreur SELECT/INSERT login_history :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -321,17 +322,29 @@ const server = http.createServer((req, res) => {
 
   // GET /api/history
   if (method === 'GET' && url === '/api/history') {
-    const data = loadData();
-    sendJson(res, 200, data.loginHistory || []);
+    pool.query(
+      'SELECT username, role, date FROM login_history ORDER BY date DESC'
+    )
+      .then(result => {
+        sendJson(res, 200, result.rows);
+      })
+      .catch(err => {
+        console.error('Erreur SELECT login_history :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
   // POST /api/history/clear
   if (method === 'POST' && url === '/api/history/clear') {
-    const data = loadData();
-    data.loginHistory = [];
-    saveData(data);
-    sendJson(res, 200, { success: true });
+    pool.query('DELETE FROM login_history')
+      .then(() => {
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE login_history :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
@@ -613,36 +626,68 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API SERRE (fichier)
+  //        API SERRE (Neon)
   // =======================
 
   // GET /api/serre
   if (method === 'GET' && url === '/api/serre') {
-    const data = loadData();
-    const serre = data.serre || {
-      notes: "",
-      bacs: [],
-      assignments: {},
-      feed: {
-        lastUpdate: null,
-        items: [],
-        monthlyUseKg: 0
-      }
-    };
-    sendJson(res, 200, {
-      notes: typeof serre.notes === 'string' ? serre.notes : "",
-      bacs: Array.isArray(serre.bacs) ? serre.bacs : [],
-      assignments: serre.assignments && typeof serre.assignments === 'object'
-        ? serre.assignments
-        : {},
-      feed: serre.feed && typeof serre.feed === 'object'
-        ? serre.feed
-        : {
-            lastUpdate: null,
-            items: [],
-            monthlyUseKg: 0
-          }
-    });
+    Promise.all([
+      pool.query('SELECT notes FROM serre_meta WHERE id = 1'),
+      pool.query('SELECT id, name, last_water_change, last_filter_clean FROM serre_bacs ORDER BY id'),
+      pool.query('SELECT member_username, bac_id FROM serre_assignments'),
+      pool.query('SELECT last_update, monthly_use_kg FROM serre_feed WHERE id = 1'),
+      pool.query('SELECT id, name, unit, quantity FROM serre_feed_items ORDER BY id')
+    ])
+      .then(([metaResult, bacsResult, assignResult, feedResult, feedItemsResult]) => {
+        let notes = "";
+        if (metaResult.rowCount > 0) {
+          notes = metaResult.rows[0].notes || "";
+        }
+
+        const bacs = bacsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          lastWaterChange: row.last_water_change,
+          lastFilterClean: row.last_filter_clean
+        }));
+
+        const assignments = {};
+        assignResult.rows.forEach(row => {
+          assignments[row.bac_id] = {
+            membreId: row.member_username,
+            nom: row.member_username
+          };
+        });
+
+        let feed = {
+          lastUpdate: null,
+          items: [],
+          monthlyUseKg: 0
+        };
+        if (feedResult.rowCount > 0) {
+          const fr = feedResult.rows[0];
+          feed.lastUpdate = fr.last_update || null;
+          feed.monthlyUseKg = Number(fr.monthly_use_kg) || 0;
+        }
+
+        feed.items = feedItemsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          unit: row.unit,
+          quantity: Number(row.quantity) || 0
+        }));
+
+        sendJson(res, 200, {
+          notes,
+          bacs,
+          assignments,
+          feed
+        });
+      })
+      .catch(err => {
+        console.error('Erreur GET /api/serre :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
@@ -654,22 +699,21 @@ const server = http.createServer((req, res) => {
         return;
       }
       const { notes } = body || {};
-      const data = loadData();
-      if (!data.serre || typeof data.serre !== 'object') {
-        data.serre = {
-          notes: "",
-          bacs: [],
-          assignments: {},
-          feed: {
-            lastUpdate: null,
-            items: [],
-            monthlyUseKg: 0
-          }
-        };
-      }
-      data.serre.notes = typeof notes === 'string' ? notes : "";
-      saveData(data);
-      sendJson(res, 200, { success: true });
+      const txt = typeof notes === 'string' ? notes : "";
+
+      const query = `
+        INSERT INTO serre_meta (id, notes)
+        VALUES (1, $1)
+        ON CONFLICT (id) DO UPDATE SET notes = EXCLUDED.notes
+      `;
+      pool.query(query, [txt])
+        .then(() => {
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/notes :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -688,33 +732,65 @@ const server = http.createServer((req, res) => {
       }
 
       const cleanedBacs = bacs.map(b => ({
-        id: b.id,
+        id: String(b.id),
         name: String(b.name || "Bac serre"),
         lastWaterChange: b.lastWaterChange || null,
         lastFilterClean: b.lastFilterClean || null
       }));
 
-      const assignObj =
-        assignments && typeof assignments === 'object' ? assignments : {};
+      const assignObj = assignments && typeof assignments === 'object' ? assignments : {};
 
-      const data = loadData();
-      if (!data.serre || typeof data.serre !== 'object') {
-        data.serre = {
-          notes: "",
-          bacs: [],
-          assignments: {},
-          feed: {
-            lastUpdate: null,
-            items: [],
-            monthlyUseKg: 0
+      const deleteBacs = 'DELETE FROM serre_bacs';
+      const deleteAssign = 'DELETE FROM serre_assignments';
+
+      pool.query(deleteBacs)
+        .then(() => pool.query(deleteAssign))
+        .then(() => {
+          if (!cleanedBacs.length) {
+            return null;
           }
-        };
-      }
-      data.serre.bacs = cleanedBacs;
-      data.serre.assignments = assignObj;
-      saveData(data);
+          const insertQuery = `
+            INSERT INTO serre_bacs (id, name, last_water_change, last_filter_clean)
+            VALUES ${cleanedBacs.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanedBacs.flatMap(b => [
+            b.id,
+            b.name,
+            b.lastWaterChange,
+            b.lastFilterClean
+          ]);
+          return pool.query(insertQuery, params);
+        })
+        .then(() => {
+          const assignEntries = Object.entries(assignObj);
+          if (!assignEntries.length) {
+            sendJson(res, 200, { success: true });
+            return null;
+          }
 
-      sendJson(res, 200, { success: true });
+          const insertAssignQuery = `
+            INSERT INTO serre_assignments (member_username, bac_id)
+            VALUES ${assignEntries.map((_, i) =>
+              `($${2 * i + 1}, $${2 * i + 2})`
+            ).join(', ')}
+          `;
+          const assignParams = assignEntries.flatMap(([bacId, val]) => [
+            String(val.membreId),
+            String(bacId)
+          ]);
+
+          return pool.query(insertAssignQuery, assignParams);
+        })
+        .then(result => {
+          if (result === null) return;
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/bacs :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
@@ -730,7 +806,7 @@ const server = http.createServer((req, res) => {
 
       const cleanItems = Array.isArray(items)
         ? items.map((it, idx) => ({
-            id: it.id || ("feed_" + Date.now() + "_" + idx),
+            id: String(it.id || ("feed_" + Date.now() + "_" + idx)),
             name: String(it.name || ""),
             unit: String(it.unit || "kg"),
             quantity: Number(it.quantity) || 0
@@ -738,33 +814,54 @@ const server = http.createServer((req, res) => {
         : [];
 
       const mUse = Number(monthlyUseKg);
-      const data = loadData();
-      if (!data.serre || typeof data.serre !== 'object') {
-        data.serre = {
-          notes: "",
-          bacs: [],
-          assignments: {},
-          feed: {
-            lastUpdate: null,
-            items: [],
-            monthlyUseKg: 0
-          }
-        };
-      }
-      data.serre.feed = {
-        lastUpdate: new Date().toISOString(),
-        items: cleanItems,
-        monthlyUseKg: isNaN(mUse) ? 0 : mUse
-      };
-      saveData(data);
+      const finalMonthly = isNaN(mUse) ? 0 : mUse;
+      const nowIso = new Date().toISOString();
 
-      sendJson(res, 200, { success: true });
+      const deleteItems = 'DELETE FROM serre_feed_items';
+      const upsertFeed = `
+        INSERT INTO serre_feed (id, last_update, monthly_use_kg)
+        VALUES (1, $1, $2)
+        ON CONFLICT (id) DO UPDATE SET last_update = EXCLUDED.last_update,
+                                      monthly_use_kg = EXCLUDED.monthly_use_kg
+      `;
+
+      pool.query(deleteItems)
+        .then(() => pool.query(upsertFeed, [nowIso, finalMonthly]))
+        .then(() => {
+          if (!cleanItems.length) {
+            sendJson(res, 200, { success: true });
+            return null;
+          }
+
+          const insertItemsQuery = `
+            INSERT INTO serre_feed_items (id, name, unit, quantity)
+            VALUES ${cleanItems.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanItems.flatMap(it => [
+            it.id,
+            it.name,
+            it.unit,
+            it.quantity
+          ]);
+
+          return pool.query(insertItemsQuery, params);
+        })
+        .then(result => {
+          if (result === null) return;
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/feed :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
     });
     return;
   }
 
   // =======================
-  //   SERVEUR DE FICHIERS
+  //    SERVEUR DE FICHIERS
   // =======================
 
   let filePath = url;
