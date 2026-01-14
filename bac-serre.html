@@ -352,30 +352,56 @@
       return res.json(); // { notes, bacs, assignments, feed }
     }
 
+    // --- API Neon mesures + population ---
+    async function apiGetMeasures(username, tankId) {
+      const url = `/api/bac/measures?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=serre`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Erreur GET /api/bac/measures");
+      return res.json(); // { history }
+    }
+
+    async function apiSaveMeasures(username, tankId, entries) {
+      const res = await fetch("/api/bac/measures", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          tankId,
+          type: "serre",
+          entries
+        })
+      });
+      if (!res.ok) throw new Error("Erreur POST /api/bac/measures");
+      return res.json();
+    }
+
+    async function apiGetPopulation(username, tankId) {
+      const url = `/api/bac/population?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=serre`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Erreur GET /api/bac/population");
+      return res.json(); // { ids }
+    }
+
+    async function apiSavePopulation(username, tankId, ids) {
+      const res = await fetch("/api/bac/population", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          tankId,
+          type: "serre",
+          ids
+        })
+      });
+      if (!res.ok) throw new Error("Erreur POST /api/bac/population");
+      return res.json();
+    }
+
     let currentTank = null;
-
-    // Clés locales (historiques + population) indexées par id string
-    const HISTORY_KEY = "serre_bac_history_" + currentUser.username + "_" + tankId;
-    const POP_KEY     = "serre_bac_population_" + currentUser.username + "_" + tankId;
-
-    function loadHistory() {
-      try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); }
-      catch(e) { return []; }
-    }
-    function saveHistory(list) {
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
-    }
 
     // --- Population ---
     const FICHES = window.FICHES || [];
-
-    function loadPopulation() {
-      try { return JSON.parse(localStorage.getItem(POP_KEY) || "[]"); }
-      catch(e) { return []; }
-    }
-    function savePopulation(arr) {
-      localStorage.setItem(POP_KEY, JSON.stringify(arr));
-    }
+    let populationIds = [];
 
     const popSearchInput      = document.getElementById("popSearch");
     const popSuggestionsDiv   = document.getElementById("popSuggestions");
@@ -383,10 +409,9 @@
     const clearPopBtn         = document.getElementById("clearPopBtn");
 
     function renderPopulation() {
-      const ids = loadPopulation();
       populationContainer.innerHTML = "";
 
-      if (!ids.length) {
+      if (!populationIds.length) {
         const p = document.createElement("p");
         p.className = "small-note";
         p.textContent = "Aucune espèce enregistrée pour ce bac.";
@@ -394,7 +419,7 @@
         return;
       }
 
-      ids.forEach(id => {
+      populationIds.forEach(id => {
         const fiche = FICHES.find(f => f.id === id);
 
         const card = document.createElement("div");
@@ -414,7 +439,7 @@
 
         const sub = document.createElement("div");
         sub.className = "species-card-sub";
-        sub.textContent = "";
+        sub.textContent = fiche && fiche.nomCommun ? fiche.nomCommun : "";
         card.appendChild(sub);
 
         const actions = document.createElement("div");
@@ -433,10 +458,14 @@
         delBtn.textContent = "X";
         delBtn.style.background = "#dc2626";
         delBtn.style.color = "#f9fafb";
-        delBtn.addEventListener("click", () => {
-          let arr = loadPopulation();
-          arr = arr.filter(v => v !== id);
-          savePopulation(arr);
+        delBtn.addEventListener("click", async () => {
+          populationIds = populationIds.filter(v => v !== id);
+          try {
+            await apiSavePopulation(currentUser.username, tankId, populationIds);
+          } catch (e) {
+            console.error(e);
+            alert("Erreur lors de l'enregistrement de la population.");
+          }
           renderPopulation();
         });
         actions.appendChild(delBtn);
@@ -477,11 +506,15 @@
         item.textContent = f.nomScientifique || f.nomCommun || "";
         item.addEventListener("mouseenter", () => item.style.background = "#111827");
         item.addEventListener("mouseleave", () => item.style.background = "transparent");
-        item.addEventListener("click", () => {
-          let ids = loadPopulation();
-          if (!ids.includes(f.id)) {
-            ids.push(f.id);
-            savePopulation(ids);
+        item.addEventListener("click", async () => {
+          if (!populationIds.includes(f.id)) {
+            populationIds.push(f.id);
+            try {
+              await apiSavePopulation(currentUser.username, tankId, populationIds);
+            } catch (e) {
+              console.error(e);
+              alert("Erreur lors de l'enregistrement de la population.");
+            }
             renderPopulation();
           }
           popSearchInput.value = "";
@@ -501,9 +534,15 @@
       setTimeout(() => { popSuggestionsDiv.style.display = "none"; }, 150);
     });
 
-    clearPopBtn.addEventListener("click", () => {
+    clearPopBtn.addEventListener("click", async () => {
       if (!confirm("Vider toute la population enregistrée pour ce bac de serre ?")) return;
-      localStorage.removeItem(POP_KEY);
+      populationIds = [];
+      try {
+        await apiSavePopulation(currentUser.username, tankId, populationIds);
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de l'enregistrement de la population.");
+      }
       renderPopulation();
     });
 
@@ -517,7 +556,15 @@
     const historyContainer = document.getElementById("historyContainer");
     const clearHistoryBtn  = document.getElementById("clearHistoryBtn");
 
-    function addMeasureEntry(isReproOnly) {
+    let historyEntries = [];
+
+    function sameDay(d1, d2) {
+      return d1.getFullYear() === d2.getFullYear() &&
+             d1.getMonth() === d2.getMonth() &&
+             d1.getDate() === d2.getDate();
+    }
+
+    async function addMeasureEntry(isReproOnly) {
       const now   = new Date();
       const tVal  = tempInput.value.trim();
       const phVal = phInput.value.trim();
@@ -534,7 +581,6 @@
       }
 
       const entry = {
-        id:   Date.now() + "-" + Math.random().toString(16).slice(2),
         date: now.toISOString(),
         temp: isReproOnly ? null : (tVal || null),
         ph:   isReproOnly ? null : (phVal || null),
@@ -543,9 +589,14 @@
         repro: !!isReproOnly
       };
 
-      const history = loadHistory();
-      history.push(entry);
-      saveHistory(history);
+      historyEntries.push(entry);
+
+      try {
+        await apiSaveMeasures(currentUser.username, tankId, historyEntries);
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de l'enregistrement des mesures.");
+      }
 
       if (!isReproOnly) {
         tempInput.value = "";
@@ -566,14 +617,8 @@
       addMeasureEntry(true);
     });
 
-    function sameDay(d1, d2) {
-      return d1.getFullYear() === d2.getFullYear() &&
-             d1.getMonth() === d2.getMonth() &&
-             d1.getDate() === d2.getDate();
-    }
-
     function renderHistory() {
-      const hist = loadHistory().slice().sort((a,b)=> new Date(b.date) - new Date(a.date));
+      const hist = historyEntries.slice().sort((a,b)=> new Date(b.date) - new Date(a.date));
       historyContainer.innerHTML = "";
       if (!hist.length) {
         const p = document.createElement("p");
@@ -615,12 +660,16 @@
         delDayBtn.textContent = "Suppr jour";
         delDayBtn.style.background = "#dc2626";
         delDayBtn.style.color = "#f9fafb";
-        delDayBtn.addEventListener("click", () => {
+        delDayBtn.addEventListener("click", async () => {
           if (!confirm("Supprimer toutes les mesures de ce jour ?")) return;
           const refDate = new Date(e.date);
-          let arr = loadHistory();
-          arr = arr.filter(x => !sameDay(new Date(x.date), refDate));
-          saveHistory(arr);
+          historyEntries = historyEntries.filter(x => !sameDay(new Date(x.date), refDate));
+          try {
+            await apiSaveMeasures(currentUser.username, tankId, historyEntries);
+          } catch (err) {
+            console.error(err);
+            alert("Erreur lors de l'enregistrement des mesures.");
+          }
           renderHistory();
           updateCharts();
         });
@@ -657,7 +706,7 @@
     });
 
     function updateCharts() {
-      const hist = loadHistory().slice().reverse();
+      const hist = historyEntries.slice().reverse();
       const labels = hist.map(e => new Date(e.date).toLocaleDateString());
       tempChart.data.labels = labels;
       phChart.data.labels   = labels;
@@ -672,9 +721,15 @@
       ghChart.update();
     }
 
-    clearHistoryBtn.addEventListener("click", () => {
+    clearHistoryBtn.addEventListener("click", async () => {
       if (!confirm("Supprimer toutes les mesures de ce bac de serre ?")) return;
-      localStorage.removeItem(HISTORY_KEY);
+      historyEntries = [];
+      try {
+        await apiSaveMeasures(currentUser.username, tankId, historyEntries);
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de l'enregistrement des mesures.");
+      }
       renderHistory();
       updateCharts();
     });
@@ -696,6 +751,24 @@
           "Bac de serre : " + (currentTank.name || "Sans nom");
         document.getElementById("tankMeta").textContent =
           "ID interne : " + currentTank.id;
+
+        // Charger historique depuis Neon
+        try {
+          const histRes = await apiGetMeasures(currentUser.username, tankId);
+          historyEntries = Array.isArray(histRes.history) ? histRes.history : [];
+        } catch (e) {
+          console.error(e);
+          historyEntries = [];
+        }
+
+        // Charger population depuis Neon
+        try {
+          const popRes = await apiGetPopulation(currentUser.username, tankId);
+          populationIds = Array.isArray(popRes.ids) ? popRes.ids : [];
+        } catch (e) {
+          console.error(e);
+          populationIds = [];
+        }
 
         renderHistory();
         updateCharts();

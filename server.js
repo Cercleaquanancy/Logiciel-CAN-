@@ -342,7 +342,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //     API POPULATION
+  //      API POPULATION
   // =======================
 
   if (method === 'GET' && url === '/api/population') {
@@ -426,7 +426,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //       API ANNONCES
+  //        API ANNONCES
   // =======================
 
   if (method === 'GET' && url === '/api/annonces') {
@@ -612,7 +612,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API SERRE
+  //         API SERRE
   // =======================
 
   if (method === 'GET' && url === '/api/serre') {
@@ -843,7 +843,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //       API AQUARIUM
+  //        API AQUARIUM
   // =======================
 
   // GET /api/aquarium?username=...
@@ -942,6 +942,190 @@ const server = http.createServer((req, res) => {
         .catch(dbErr => {
           console.error('Erreur POST /api/aquarium :', dbErr);
           pool.query('ROLLBACK').catch(() => {});
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  // =======================
+  //   API BAC: MESURES + POP
+  // =======================
+
+  // GET /api/bac/measures?username=...&tankId=...&type=...
+  if (method === 'GET' && url.startsWith('/api/bac/measures')) {
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
+    const tankId   = params.get('tankId');
+    const type     = params.get('type') || 'aquarium';
+
+    if (!username || !tankId) {
+      sendText(res, 400, 'username et tankId obligatoires');
+      return;
+    }
+
+    pool.query(
+      `SELECT id, date, temp, ph, gh, obs, repro
+       FROM bac_measures
+       WHERE username = $1 AND tank_id = $2 AND type = $3
+       ORDER BY date ASC`,
+      [username, String(tankId), type]
+    )
+      .then(result => {
+        sendJson(res, 200, { history: result.rows });
+      })
+      .catch(err => {
+        console.error('Erreur GET /api/bac/measures :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  // POST /api/bac/measures
+  // body: { username, tankId, type, entries: [ { date, temp, ph, gh, obs, repro } ] }
+  if (method === 'POST' && url === '/api/bac/measures') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { username, tankId, type, entries } = body || {};
+      if (!username || !tankId || !Array.isArray(entries)) {
+        sendText(res, 400, 'username, tankId et entries sont obligatoires');
+        return;
+      }
+
+      const t = type || 'aquarium';
+      const cleanEntries = entries.map(e => ({
+        date: e.date ? new Date(e.date).toISOString() : new Date().toISOString(),
+        temp: e.temp !== null && e.temp !== undefined && e.temp !== '' ? Number(e.temp) : null,
+        ph:   e.ph   !== null && e.ph   !== undefined && e.ph   !== '' ? Number(e.ph)   : null,
+        gh:   e.gh   !== null && e.gh   !== undefined && e.gh   !== '' ? Number(e.gh)   : null,
+        obs:  e.obs ? String(e.obs) : '',
+        repro: !!e.repro
+      }));
+
+      pool.query(
+        'DELETE FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3',
+        [username, String(tankId), t]
+      )
+        .then(() => {
+          if (!cleanEntries.length) {
+            sendJson(res, 200, { success: true, count: 0 });
+            return null;
+          }
+          const insertQuery = `
+            INSERT INTO bac_measures
+              (username, tank_id, type, date, temp, ph, gh, obs, repro)
+            VALUES ${cleanEntries.map((_, i) =>
+              `($${9 * i + 1}, $${9 * i + 2}, $${9 * i + 3}, $${9 * i + 4}, $${9 * i + 5}, $${9 * i + 6}, $${9 * i + 7}, $${9 * i + 8}, $${9 * i + 9})`
+            ).join(', ')}
+          `;
+          const params = cleanEntries.flatMap(e => [
+            username,
+            String(tankId),
+            t,
+            e.date,
+            e.temp,
+            e.ph,
+            e.gh,
+            e.obs,
+            e.repro
+          ]);
+          return pool.query(insertQuery, params);
+        })
+        .then(result => {
+          if (result === null) return;
+          sendJson(res, 200, { success: true, count: cleanEntries.length });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/bac/measures :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  // GET /api/bac/population?username=...&tankId=...&type=...
+  if (method === 'GET' && url.startsWith('/api/bac/population')) {
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
+    const tankId   = params.get('tankId');
+    const type     = params.get('type') || 'aquarium';
+
+    if (!username || !tankId) {
+      sendText(res, 400, 'username et tankId obligatoires');
+      return;
+    }
+
+    pool.query(
+      `SELECT fiche_id
+       FROM bac_population
+       WHERE username = $1 AND tank_id = $2 AND type = $3
+       ORDER BY id ASC`,
+      [username, String(tankId), type]
+    )
+      .then(result => {
+        const ids = result.rows.map(r => r.fiche_id);
+        sendJson(res, 200, { ids });
+      })
+      .catch(err => {
+        console.error('Erreur GET /api/bac/population :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  // POST /api/bac/population
+  // body: { username, tankId, type, ids: [ficheId, ...] }
+  if (method === 'POST' && url === '/api/bac/population') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { username, tankId, type, ids } = body || {};
+      if (!username || !tankId || !Array.isArray(ids)) {
+        sendText(res, 400, 'username, tankId et ids sont obligatoires');
+        return;
+      }
+
+      const t = type || 'aquarium';
+      const cleanIds = ids
+        .map(id => String(id))
+        .filter(id => id.trim().length > 0);
+
+      pool.query(
+        'DELETE FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3',
+        [username, String(tankId), t]
+      )
+        .then(() => {
+          if (!cleanIds.length) {
+            sendJson(res, 200, { success: true, count: 0 });
+            return null;
+          }
+          const insertQuery = `
+            INSERT INTO bac_population (username, tank_id, type, fiche_id)
+            VALUES ${cleanIds.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanIds.flatMap(id => [
+            username,
+            String(tankId),
+            t,
+            id
+          ]);
+          return pool.query(insertQuery, params);
+        })
+        .then(result => {
+          if (result === null) return;
+          sendJson(res, 200, { success: true, count: cleanIds.length });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/bac/population :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
