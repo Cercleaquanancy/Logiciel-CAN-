@@ -310,7 +310,7 @@
   <script src="especes.js"></script>
 
   <script>
-    // Auth / nav
+    // --- Auth / nav ---
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -333,29 +333,31 @@
       window.location.href = "serre.html";
     });
 
-    // id bac de serre
+    // --- Récup id bac (en STRING) ---
     function getTankIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
       const idStr = params.get("id");
-      if (!idStr) return null;
-      const n = Number(idStr);
-      return Number.isNaN(n) ? null : n;
+      return idStr ? String(idStr) : null;
     }
     const tankId = getTankIdFromUrl();
-    if (tankId === null) {
+    if (!tankId) {
       alert("Aucun bac de serre spécifié.");
       window.location.href = "serre.html";
     }
 
-    // Clés spécifiques SERRE
-    const SERRE_BAC_KEY = "serre_bac_list_v1_" + currentUser.username;
-    const HISTORY_KEY   = "serre_bac_history_" + currentUser.username + "_" + tankId;
-    const POP_KEY       = "serre_bac_population_" + currentUser.username + "_" + tankId;
-
-    function loadSerreBacs() {
-      try { return JSON.parse(localStorage.getItem(SERRE_BAC_KEY) || "[]"); }
-      catch(e) { return []; }
+    // --- API serre (Neon) ---
+    async function apiGetSerreData() {
+      const res = await fetch('/api/serre');
+      if (!res.ok) throw new Error('Erreur GET /api/serre');
+      return res.json(); // { notes, bacs, assignments, feed }
     }
+
+    let currentTank = null;
+
+    // Clés locales (historiques + population) indexées par id string
+    const HISTORY_KEY = "serre_bac_history_" + currentUser.username + "_" + tankId;
+    const POP_KEY     = "serre_bac_population_" + currentUser.username + "_" + tankId;
+
     function loadHistory() {
       try { return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); }
       catch(e) { return []; }
@@ -364,16 +366,7 @@
       localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
     }
 
-    const allTanks = loadSerreBacs();
-    const tank = allTanks.find(t => t.id === tankId);
-    if (!tank) {
-      alert("Bac de serre introuvable.");
-      window.location.href = "serre.html";
-    }
-    document.getElementById("tankTitle").textContent = "Bac de serre : " + (tank.name || "Sans nom");
-    document.getElementById("tankMeta").textContent = "ID interne : " + tank.id;
-
-    // Population
+    // --- Population ---
     const FICHES = window.FICHES || [];
 
     function loadPopulation() {
@@ -416,13 +409,11 @@
 
         const title = document.createElement("div");
         title.className = "species-card-title";
-        // nom scientifique uniquement
         title.textContent = fiche && fiche.nomScientifique ? fiche.nomScientifique : id;
         card.appendChild(title);
 
         const sub = document.createElement("div");
         sub.className = "species-card-sub";
-        // pas de nom commun affiché
         sub.textContent = "";
         card.appendChild(sub);
 
@@ -483,7 +474,6 @@
         item.style.padding = "4px 6px";
         item.style.cursor = "pointer";
         item.style.borderBottom = "1px solid #1f2937";
-        // suggestion en nom scientifique uniquement
         item.textContent = f.nomScientifique || f.nomCommun || "";
         item.addEventListener("mouseenter", () => item.style.background = "#111827");
         item.addEventListener("mouseleave", () => item.style.background = "transparent");
@@ -517,7 +507,7 @@
       renderPopulation();
     });
 
-    // Historique / mesures
+    // --- Historique / mesures ---
     const tempInput        = document.getElementById("tempInput");
     const phInput          = document.getElementById("phInput");
     const ghInput          = document.getElementById("ghInput");
@@ -645,7 +635,7 @@
       historyContainer.appendChild(table);
     }
 
-    // Graphs
+    // --- Graphes ---
     const tempCtx = document.getElementById("tempChart").getContext("2d");
     const phCtx   = document.getElementById("phChart").getContext("2d");
     const ghCtx   = document.getElementById("ghChart").getContext("2d");
@@ -689,9 +679,33 @@
       updateCharts();
     });
 
-    renderHistory();
-    updateCharts();
-    renderPopulation();
+    // --- Initialisation globale ---
+    (async function initBacSerre() {
+      try {
+        const data = await apiGetSerreData();
+        const bacs = Array.isArray(data.bacs) ? data.bacs : [];
+        currentTank = bacs.find(b => String(b.id) === String(tankId));
+
+        if (!currentTank) {
+          alert("Bac de serre introuvable.");
+          window.location.href = "serre.html";
+          return;
+        }
+
+        document.getElementById("tankTitle").textContent =
+          "Bac de serre : " + (currentTank.name || "Sans nom");
+        document.getElementById("tankMeta").textContent =
+          "ID interne : " + currentTank.id;
+
+        renderHistory();
+        updateCharts();
+        renderPopulation();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors du chargement des données de serre.");
+        window.location.href = "serre.html";
+      }
+    })();
   </script>
 </body>
 </html>
