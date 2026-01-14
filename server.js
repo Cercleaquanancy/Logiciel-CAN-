@@ -162,7 +162,6 @@ const server = http.createServer((req, res) => {
   //        API MEMBRES
   // =======================
 
-  // GET /api/members
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
       .then(result => {
@@ -175,7 +174,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/members
   if (method === 'POST' && url === '/api/members') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -213,7 +211,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // DELETE /api/members/:login
   if (method === 'DELETE' && url.startsWith('/api/members/')) {
     const login = decodeURIComponent(url.replace('/api/members/', ''));
 
@@ -228,7 +225,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/members/clear
   if (method === 'POST' && url === '/api/members/clear') {
     pool.query('DELETE FROM members')
       .then(() => {
@@ -245,7 +241,6 @@ const server = http.createServer((req, res) => {
   //        API LOGIN
   // =======================
 
-  // POST /api/login
   if (method === 'POST' && url === '/api/login') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -320,7 +315,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // GET /api/history
   if (method === 'GET' && url === '/api/history') {
     pool.query(
       'SELECT username, role, date FROM login_history ORDER BY date DESC'
@@ -335,7 +329,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/history/clear
   if (method === 'POST' && url === '/api/history/clear') {
     pool.query('DELETE FROM login_history')
       .then(() => {
@@ -352,7 +345,6 @@ const server = http.createServer((req, res) => {
   //     API POPULATION
   // =======================
 
-  // GET /api/population
   if (method === 'GET' && url === '/api/population') {
     const query = `
       SELECT
@@ -374,7 +366,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/population/sync
   if (method === 'POST' && url === '/api/population/sync') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -438,7 +429,6 @@ const server = http.createServer((req, res) => {
   //       API ANNONCES
   // =======================
 
-  // GET /api/annonces
   if (method === 'GET' && url === '/api/annonces') {
     pool.query(
       'SELECT id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar" FROM annonces ORDER BY id DESC'
@@ -453,7 +443,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/annonces
   if (method === 'POST' && url === '/api/annonces') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -499,7 +488,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // PATCH /api/annonces/:id/togglePrivate
   if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.endsWith('/togglePrivate')) {
     const id = decodeURIComponent(url.replace('/api/annonces/', '').replace('/togglePrivate', ''));
     parseJsonBody(req, (err, body) => {
@@ -536,7 +524,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // PATCH /api/annonces/:id/toggleFavori
   if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.endsWith('/toggleFavori')) {
     const id = decodeURIComponent(url.replace('/api/annonces/', '').replace('/toggleFavori', ''));
     parseJsonBody(req, (err, body) => {
@@ -582,7 +569,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // DELETE /api/annonces/:id
   if (method === 'DELETE' && url.startsWith('/api/annonces/')) {
     const id = decodeURIComponent(url.replace('/api/annonces/', ''));
     parseJsonBody(req, (err, body) => {
@@ -629,7 +615,6 @@ const server = http.createServer((req, res) => {
   //        API SERRE
   // =======================
 
-  // GET /api/serre
   if (method === 'GET' && url === '/api/serre') {
     Promise.all([
       pool.query('SELECT notes FROM serre_meta WHERE id = 1'),
@@ -691,7 +676,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/notes
   if (method === 'POST' && url === '/api/serre/notes') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -718,7 +702,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/bacs
   if (method === 'POST' && url === '/api/serre/bacs') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -795,7 +778,6 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /api/serre/feed
   if (method === 'POST' && url === '/api/serre/feed') {
     parseJsonBody(req, (err, body) => {
       if (err) {
