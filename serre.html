@@ -2,187 +2,284 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Aquarium adhérents</title>
+  <title>Serre du club</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * { box-sizing:border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:#020617;
-      color:#e5e7eb;
-      min-height:100vh;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
     }
 
     .navbar {
-      position:fixed; top:0; left:0; width:100%;
-      min-height:56px;
-      background:rgba(15,23,42,0.98);
-      border-bottom:1px solid #1f2937;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:4px 16px;
-      z-index:50;
-      flex-wrap:wrap; gap:4px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 56px;
+      background: rgba(15, 23, 42, 0.98);
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content:space-between;
+      padding: 4px 16px;
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 4px;
     }
-    .navbar-left { display:flex; align-items:center; gap:10px; }
-    .navbar-title { font-size:0.95rem; font-weight:600; }
-    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+
+    .navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .navbar-user {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
 
     .navbar-menu {
-      display:flex; gap:8px; align-items:center;
-      flex-wrap:wrap; justify-content:flex-end;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
+
     .nav-btn {
-      border:none; background:transparent; color:#cbd5f5;
-      font-size:0.8rem; padding:6px 8px; border-radius:999px;
-      cursor:pointer; display:flex; align-items:center; gap:4px;
+      border: none;
+      background: transparent;
+      color: #cbd5f5;
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .nav-btn span.icon { font-size:1rem; }
-    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
-    .nav-btn:hover { background:#111827; }
+
+    .nav-btn span.icon { font-size: 1rem; }
+
+    .nav-btn.active {
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    .nav-btn:hover { background: #111827; }
 
     .navbar-logout {
-      border-radius:999px; border:1px solid #374151;
-      background:#111827; color:#e5e7eb;
-      padding:5px 10px; font-size:0.8rem; cursor:pointer;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #111827;
+      color: #e5e7eb;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      cursor: pointer;
     }
-    .navbar-logout:hover { background:#1f2937; }
+
+    .navbar-logout:hover { background: #1f2937; }
 
     .page {
-      padding-top:72px;
-      padding:0 12px 20px;
-      max-width:1100px;
-      margin:0 auto;
+      padding-top: 72px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .card {
-      background:#020617;
-      border-radius:10px;
-      border:1px solid #1f2937;
-      padding:14px 16px;
-      margin-bottom:14px;
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px;
+      margin-bottom: 14px;
     }
 
-    .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
-    .card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
-    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+    .card h1 {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
 
-    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+    .card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: #e5e7eb;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      display: block;
+      margin-bottom: 2px;
+    }
+
     textarea {
-      width:100%; padding:7px 9px;
-      background:#020617; border-radius:7px;
-      border:1px solid #1f2937; color:#e5e7eb;
-      font-size:0.85rem; min-height:120px; resize:vertical;
+      width:100%;
+      padding:7px 9px;
+      background:#020617;
+      border-radius:7px;
+      border:1px solid #1f2937;
+      color:#e5e7eb;
+      font-size:0.85rem;
+      min-height:120px;
+      resize:vertical;
     }
     textarea:focus {
-      outline:none; border-color:#38bdf8;
+      outline:none;
+      border-color:#38bdf8;
       box-shadow:0 0 0 1px rgba(56,189,248,0.4);
     }
 
     .btn-primary {
-      background:#38bdf8; color:#0f172a;
-      border:none; border-radius:7px;
-      padding:7px 10px; font-size:0.8rem;
+      background:#38bdf8;
+      color:#0f172a;
+      border:none;
+      border-radius:7px;
+      padding:7px 10px;
+      font-size:0.8rem;
       cursor:pointer;
     }
     .btn-primary:hover { filter:brightness(1.05); }
 
-    .note-info { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
-    .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
-
-    .aquarium-grid {
-      display:flex;
-      flex-wrap:wrap;
-      gap:16px;
-      margin-top:10px;
-    }
-
-    .aquarium-tag {
-      width:260px;
-      border-radius:14px;
-      border:1px solid #1f2937;
-      background:#020617;
+    .btn-secondary {
+      background:#111827;
       color:#e5e7eb;
-      padding:10px 12px 12px;
+      border:1px solid #374151;
+      border-radius:7px;
+      padding:6px 9px;
+      font-size:0.8rem;
+      cursor:pointer;
+    }
+    .btn-secondary:hover { background:#1f2937; }
+
+    .grid-two {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 768px) {
+      .grid-two { grid-template-columns:1fr; }
+      .page { padding-top:90px; }
+    }
+
+    .bacs-list {
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .bac-item {
+      border-radius:8px;
+      border:1px solid #1f2937;
+      padding:8px 10px;
+      background:#020617;
       font-size:0.85rem;
-      position:relative;
-      box-shadow:0 6px 16px rgba(15,23,42,0.7);
     }
 
-    .aquarium-tag-header {
-      text-align:center;
-      font-weight:600;
-      font-size:0.9rem;
-      border-bottom:1px solid #1f2937;
-      padding-bottom:4px;
-      margin-bottom:6px;
+    .bac-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:6px;
+      margin-bottom:4px;
     }
 
-    .aquarium-tag-header input {
+    .bac-name-input {
+      flex:1 1 auto;
       border:none;
       background:transparent;
-      text-align:center;
-      width:100%;
-      font-size:0.9rem;
       color:#e5e7eb;
+      font-size:0.9rem;
+      font-weight:600;
       outline:none;
     }
 
-    .aquarium-tag-delete {
-      position:absolute;
-      top:6px;
-      right:6px;
-      width:20px;
-      height:20px;
-      border-radius:999px;
-      border:none;
-      background:#dc2626;
-      color:#fff;
-      cursor:pointer;
-      font-size:12px;
-      line-height:20px;
-      text-align:center;
-    }
-
-    .aquarium-tag-green-btn {
-      display:block;
-      width:140px;
-      margin:4px auto 4px;
-      background:#22c55e;
-      color:#0b1120;
-      border:none;
-      border-radius:999px;
-      padding:5px 0;
+    .bac-assign {
       font-size:0.8rem;
-      cursor:pointer;
-      font-weight:500;
+      color:#9ca3af;
     }
-    .aquarium-tag-green-btn:hover { filter:brightness(1.05); }
 
-    .aquarium-tag-block {
-      margin-top:8px;
-      text-align:center;
+    .bac-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:4px;
       font-size:0.8rem;
+      align-items:center;
     }
 
-    .aquarium-tag-block-title {
-      font-weight:600;
-      margin-bottom:3px;
-    }
-
-    .aquarium-tag-date-btn {
-      width:95px;
-      height:28px;
+    .date-btn {
       border-radius:999px;
       border:1px solid #1f2937;
       background:#111827;
+      padding:4px 8px;
       cursor:pointer;
-      font-size:0.78rem;
+      font-size:0.8rem;
+      min-width:120px;
+      text-align:center;
     }
 
     .status-ok   { background:#16a34a; color:#f9fafb; }
     .status-warn { background:#facc15; color:#111827; }
     .status-bad  { background:#dc2626; color:#f9fafb; }
+
+    .feed-list {
+      margin-top:8px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .feed-item {
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:0.8rem;
+    }
+
+    .feed-item input[type="text"],
+    .feed-item input[type="number"] {
+      border-radius:6px;
+      border:1px solid #1f2937;
+      background:#020617;
+      color:#e5e7eb;
+      padding:4px 6px;
+      font-size:0.8rem;
+    }
+
+    .feed-item input[type="text"] { flex:1 1 auto; }
+    .feed-item input[type="number"] { width:80px; }
+
+    .tag-small {
+      font-size:0.75rem;
+      color:#9ca3af;
+    }
   </style>
 </head>
 <body>
@@ -193,11 +290,12 @@
         <div class="navbar-user" id="navbarUser">Non connecté</div>
       </div>
     </div>
+
     <div class="navbar-menu" id="navbarMenu">
       <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
       <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
-      <button class="nav-btn active" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
-      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn active" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
@@ -208,110 +306,155 @@
 
   <main class="page">
     <div class="card">
-      <h1>Gestion des bacs aquarium</h1>
+      <h1>Serre du club</h1>
       <p class="subtitle">
-        Étiquettes de bacs d’aquarium, avec notes, suivi des dates d’entretien et accès au suivi détaillé de chaque bac.
+        Notes, bacs et stock de nourriture communs de la serre, partagés entre les adhérents autorisés.
       </p>
     </div>
 
     <div class="card">
-      <h2>Bloc‑notes aquarium</h2>
-      <p class="subtitle">
-        Notes globales sur la fishroom / les bacs d’exposition (projets, matériel, remarques générales).
-      </p>
+      <h2>Bloc‑notes de serre</h2>
+      <p class="subtitle">Infos générales, projets, remarques sur la serre.</p>
+      <label for="serreNotes">Notes générales serre</label>
+      <textarea id="serreNotes" placeholder="Ex : organisation nettoyage, répartition des tâches, remarques sur les reproductions…"></textarea>
+      <button class="btn-primary" id="saveSerreNotesBtn" style="margin-top:6px;">Sauvegarder les notes</button>
+      <p class="small-note" id="serreNotesInfo"></p>
+    </div>
 
-      <div class="field">
-        <label for="notesAquarium">Notes générales aquarium</label>
-        <textarea id="notesAquarium" placeholder="Ex : Prévoir changement de sol, vérifier les tests NO2, organisation prochaine maintenance collective…"></textarea>
+    <div class="grid-two">
+      <div class="card">
+        <h2>Bacs de serre</h2>
+        <p class="subtitle">
+          Liste des bacs présents dans la serre, avec suivi des dates d’entretien et attribution à un responsable.
+        </p>
+        <button class="btn-primary" id="addSerreBacBtn">Ajouter un bac de serre</button>
+        <p class="small-note">Couleurs : changement d’eau jaune après 1 mois, rouge après 2 mois ; filtre jaune après 3 mois, rouge après 6 mois.</p>
+        <div id="serreBacsList" class="bacs-list"></div>
+        <button class="btn-secondary" id="saveSerreBacsBtn" style="margin-top:8px;">Sauvegarder la liste des bacs</button>
       </div>
-      <button class="btn-primary" id="saveAquaNotesBtn">Sauvegarder les notes</button>
-      <div class="note-info" id="aquaNotesInfo"></div>
-    </div>
 
-    <div class="card">
-      <h2>Étiquettes des bacs aquarium</h2>
-      <p class="subtitle">
-        Un clic ajoute une étiquette de bac. Tu peux renommer, suivre les dates de changement d’eau et de nettoyage du filtre, et ouvrir le détail du bac.
-      </p>
+      <div class="card">
+        <h2>Stock de nourriture serre</h2>
+        <p class="subtitle">
+          Suivi du stock de nourritures utilisées en serre et de la consommation mensuelle.
+        </p>
 
-      <button class="btn-primary" id="addBacBtn">Ajouter un bac aquarium</button>
+        <div>
+          <label for="serreFeedMonthly">Consommation mensuelle (kg/mois)</label>
+          <input id="serreFeedMonthly" type="number" min="0" step="0.1"
+                 style="width:120px; border-radius:6px; border:1px solid #1f2937; background:#020617; color:#e5e7eb; padding:4px 6px; font-size:0.8rem;">
+          <span class="tag-small">Dernière mise à jour : <span id="serreFeedLastUpdate">–</span></span>
+        </div>
 
-      <p class="small-note">
-        Couleurs : changement d’eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
-      </p>
+        <div class="feed-list" id="serreFeedItems"></div>
 
-      <div id="bacList" class="aquarium-grid"></div>
+        <button class="btn-secondary" id="addFeedItemBtn" style="margin-top:8px;">Ajouter une nourriture</button>
+        <button class="btn-primary" id="saveFeedBtn" style="margin-top:4px;">Sauvegarder le stock de nourriture</button>
+      </div>
     </div>
   </main>
 
   <script>
-    // --- Auth ---
+    // --- Auth / nav / droits communs ---
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
-    try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
+    try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
-    document.getElementById("navbarUser").textContent = currentUser.username;
-
-    // Navigation
-    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
-    });
-
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      localStorage.removeItem("user");
-      window.location.href = "login.html";
-    });
-
-    // Rôles locaux pour afficher/masquer serre/bureau
-    function getLocalUsers() {
-      const data = localStorage.getItem("members");
-      if (!data) return [];
-      try { return JSON.parse(data); } catch { return []; }
+    const navbarUser = document.getElementById('navbarUser');
+    if (navbarUser) {
+      const roleLabel =
+        currentUser.role === "admin" ? "Admin" :
+        currentUser.role === "membre_bureau" ? "Membre de bureau" :
+        "Adhérent";
+      navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
     }
-    const allMembersLocal = getLocalUsers();
-    const meLocal = allMembersLocal.find(u => u.login === currentUser.username) || { role: "adhérent", serre: false };
+
+    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = btn.dataset.link;
+      });
+    });
 
     document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
-      if (meLocal.serre !== true) {
-        btn.style.display = "none";
-      }
-    });
-    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
-      if (meLocal.role !== "bureau" && meLocal.role !== "admin" && meLocal.role !== "membre_bureau") {
+      if (!(currentUser.role === "admin" || currentUser.serre === true)) {
         btn.style.display = "none";
       }
     });
 
-    // --- API aquarium (Neon) ---
-    async function apiGetAquarium(username) {
-      const res = await fetch('/api/aquarium?username=' + encodeURIComponent(username));
-      if (!res.ok) throw new Error('Erreur GET /api/aquarium');
-      return res.json(); // { notes, bacs }
+    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) {
+        btn.style.display = "none";
+      }
+    });
+
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+      });
     }
 
-    async function apiSaveAquarium(username, notes, bacs) {
-      const res = await fetch('/api/aquarium', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, notes, bacs })
-      });
-      if (!res.ok) throw new Error('Erreur POST /api/aquarium');
+    // --- API serre (Neon) ---
+    async function apiGetSerre() {
+      const res = await fetch('/api/serre');
+      if (!res.ok) throw new Error('Erreur GET /api/serre');
       return res.json();
     }
 
-    // --- État local (mais sauvegarde en base) ---
-    let aquariumNotes = "";
-    let aquariumBacs = [];
+    async function apiSaveSerreNotes(notes) {
+      const res = await fetch('/api/serre/notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ notes })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/notes');
+      return res.json();
+    }
 
-    const notesAquariumTextArea = document.getElementById("notesAquarium");
-    const saveAquaNotesBtn = document.getElementById("saveAquaNotesBtn");
-    const aquaNotesInfo = document.getElementById("aquaNotesInfo");
+    async function apiSaveSerreBacs(bacs, assignments) {
+      const res = await fetch('/api/serre/bacs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bacs, assignments })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/bacs');
+      return res.json();
+    }
 
-    const addBacBtn    = document.getElementById("addBacBtn");
-    const bacListDiv   = document.getElementById("bacList");
+    async function apiSaveSerreFeed(items, monthlyUseKg) {
+      const res = await fetch('/api/serre/feed', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items, monthlyUseKg })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/feed');
+      return res.json();
+    }
 
+    // --- État local serre ---
+    let serreNotes = "";
+    let serreBacs = [];
+    let serreAssignments = {};
+    let serreFeed = { items: [], monthlyUseKg: 0, lastUpdate: null };
+
+    const notesArea = document.getElementById("serreNotes");
+    const notesInfo = document.getElementById("serreNotesInfo");
+    const saveNotesBtn = document.getElementById("saveSerreNotesBtn");
+
+    const bacsListDiv = document.getElementById("serreBacsList");
+    const addBacBtn = document.getElementById("addSerreBacBtn");
+    const saveBacsBtn = document.getElementById("saveSerreBacsBtn");
+
+    const feedMonthlyInput = document.getElementById("serreFeedMonthly");
+    const feedLastUpdateSpan = document.getElementById("serreFeedLastUpdate");
+    const feedItemsDiv = document.getElementById("serreFeedItems");
+    const addFeedItemBtn = document.getElementById("addFeedItemBtn");
+    const saveFeedBtn = document.getElementById("saveFeedBtn");
+
+    // Helpers dates / status
     function formatDateSimple(iso) {
       if (!iso) return "Jamais";
       const d = new Date(iso);
@@ -340,166 +483,254 @@
       return "status-ok";
     }
 
+    // Rendu bacs
     function renderBacs() {
-      const list = aquariumBacs;
-      bacListDiv.innerHTML = "";
-
-      if (!list || list.length === 0) {
+      bacsListDiv.innerHTML = "";
+      if (!serreBacs || !serreBacs.length) {
         const p = document.createElement("p");
         p.className = "small-note";
-        p.textContent = "Aucune étiquette de bac d’aquarium pour le moment.";
-        bacListDiv.appendChild(p);
+        p.textContent = "Aucun bac de serre pour le moment.";
+        bacsListDiv.appendChild(p);
         return;
       }
 
-      list.forEach(bac => {
-        const tag = document.createElement("div");
-        tag.className = "aquarium-tag";
-
-        const delBtn = document.createElement("button");
-        delBtn.className = "aquarium-tag-delete";
-        delBtn.textContent = "×";
-        delBtn.title = "Supprimer ce bac";
-        delBtn.addEventListener("click", async () => {
-          aquariumBacs = aquariumBacs.filter(x => x.id !== bac.id);
-          try {
-            await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-            renderBacs();
-          } catch (e) {
-            console.error(e);
-            alert("Erreur lors de la suppression du bac.");
-          }
-        });
-        tag.appendChild(delBtn);
+      serreBacs.forEach(bac => {
+        const div = document.createElement("div");
+        div.className = "bac-item";
 
         const header = document.createElement("div");
-        header.className = "aquarium-tag-header";
-        const titleInput = document.createElement("input");
-        titleInput.type = "text";
-        titleInput.value = bac.name;
-        titleInput.addEventListener("change", async () => {
-          const newVal = titleInput.value.trim();
-          if (!newVal) {
-            titleInput.value = bac.name;
-            return;
-          }
-          bac.name = newVal;
-          try {
-            await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-            renderBacs();
-          } catch (e) {
-            console.error(e);
-            alert("Erreur lors de la modification du nom du bac.");
+        header.className = "bac-header";
+
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.className = "bac-name-input";
+        nameInput.value = bac.name || "Bac serre";
+        nameInput.addEventListener("change", () => {
+          const val = nameInput.value.trim() || "Bac serre";
+          bac.name = val;
+        });
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "btn-secondary";
+        deleteBtn.style.fontSize = "0.75rem";
+        deleteBtn.textContent = "Supprimer";
+        deleteBtn.addEventListener("click", () => {
+          serreBacs = serreBacs.filter(x => x.id !== bac.id);
+          delete serreAssignments[bac.id];
+          renderBacs();
+        });
+
+        header.appendChild(nameInput);
+        header.appendChild(deleteBtn);
+        div.appendChild(header);
+
+        const assignDiv = document.createElement("div");
+        assignDiv.className = "bac-assign";
+        const assignInput = document.createElement("input");
+        assignInput.type = "text";
+        assignInput.placeholder = "Responsable (login)";
+        assignInput.style.width = "100%";
+        assignInput.style.marginTop = "2px";
+        assignInput.style.borderRadius = "6px";
+        assignInput.style.border = "1px solid #1f2937";
+        assignInput.style.background = "#020617";
+        assignInput.style.color = "#e5e7eb";
+        assignInput.style.padding = "3px 6px";
+        assignInput.style.fontSize = "0.8rem";
+
+        const existingAssign = serreAssignments[bac.id];
+        if (existingAssign && existingAssign.membreId) {
+          assignInput.value = existingAssign.membreId;
+        }
+
+        assignInput.addEventListener("change", () => {
+          const val = assignInput.value.trim();
+          if (!val) {
+            delete serreAssignments[bac.id];
+          } else {
+            serreAssignments[bac.id] = { membreId: val, nom: val };
           }
         });
-        header.appendChild(titleInput);
-        tag.appendChild(header);
 
-        const viewBtn = document.createElement("button");
-        viewBtn.className = "aquarium-tag-green-btn";
-        viewBtn.textContent = "Voir le bac";
-        viewBtn.addEventListener("click", () => {
-          window.location.href = "Bac.html?id=" + encodeURIComponent(bac.id);
-        });
-        tag.appendChild(viewBtn);
+        assignDiv.textContent = "Responsable du bac :";
+        div.appendChild(assignDiv);
+        div.appendChild(assignInput);
 
-        const waterBlock = document.createElement("div");
-        waterBlock.className = "aquarium-tag-block";
-        const waterTitle = document.createElement("div");
-        waterTitle.className = "aquarium-tag-block-title";
-        waterTitle.textContent = "Changement d'eau";
+        const actions = document.createElement("div");
+        actions.className = "bac-actions";
+
         const waterBtn = document.createElement("button");
-        waterBtn.className = "aquarium-tag-date-btn " +
-          getStatusClass(bac.lastWaterChange, 1, 2);
-        waterBtn.textContent = formatDateSimple(bac.lastWaterChange);
-        waterBtn.addEventListener("click", async () => {
+        waterBtn.className = "date-btn " + getStatusClass(bac.lastWaterChange, 1, 2);
+        waterBtn.textContent = "Changement d'eau : " + formatDateSimple(bac.lastWaterChange);
+        waterBtn.addEventListener("click", () => {
           bac.lastWaterChange = new Date().toISOString();
-          try {
-            await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-            renderBacs();
-          } catch (e) {
-            console.error(e);
-            alert("Erreur lors de la mise à jour du changement d'eau.");
-          }
+          renderBacs();
         });
-        waterBlock.appendChild(waterTitle);
-        waterBlock.appendChild(waterBtn);
-        tag.appendChild(waterBlock);
 
-        const filterBlock = document.createElement("div");
-        filterBlock.className = "aquarium-tag-block";
-        const filterTitle = document.createElement("div");
-        filterTitle.className = "aquarium-tag-block-title";
-        filterTitle.textContent = "Nettoyage des filtres";
         const filterBtn = document.createElement("button");
-        filterBtn.className = "aquarium-tag-date-btn " +
-          getStatusClass(bac.lastFilterClean, 3, 6);
-        filterBtn.textContent = formatDateSimple(bac.lastFilterClean);
-        filterBtn.addEventListener("click", async () => {
+        filterBtn.className = "date-btn " + getStatusClass(bac.lastFilterClean, 3, 6);
+        filterBtn.textContent = "Filtre : " + formatDateSimple(bac.lastFilterClean);
+        filterBtn.addEventListener("click", () => {
           bac.lastFilterClean = new Date().toISOString();
-          try {
-            await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-            renderBacs();
-          } catch (e) {
-            console.error(e);
-            alert("Erreur lors de la mise à jour du nettoyage des filtres.");
-          }
+          renderBacs();
         });
-        filterBlock.appendChild(filterTitle);
-        filterBlock.appendChild(filterBtn);
-        tag.appendChild(filterBlock);
 
-        bacListDiv.appendChild(tag);
+        actions.appendChild(waterBtn);
+        actions.appendChild(filterBtn);
+        div.appendChild(actions);
+
+        bacsListDiv.appendChild(div);
       });
     }
 
-    // Sauvegarde des notes
-    saveAquaNotesBtn.addEventListener("click", async () => {
-      aquariumNotes = notesAquariumTextArea.value;
+    // Rendu nourrissage
+    function renderFeed() {
+      feedItemsDiv.innerHTML = "";
+
+      if (typeof serreFeed.monthlyUseKg === "number") {
+        feedMonthlyInput.value = serreFeed.monthlyUseKg;
+      } else {
+        feedMonthlyInput.value = "";
+      }
+
+      feedLastUpdateSpan.textContent = serreFeed.lastUpdate
+        ? new Date(serreFeed.lastUpdate).toLocaleString()
+        : "jamais";
+
+      if (!serreFeed.items || !serreFeed.items.length) {
+        const p = document.createElement("p");
+        p.className = "small-note";
+        p.textContent = "Aucune nourriture enregistrée.";
+        feedItemsDiv.appendChild(p);
+        return;
+      }
+
+      serreFeed.items.forEach(item => {
+        const row = document.createElement("div");
+        row.className = "feed-item";
+
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.value = item.name || "";
+        nameInput.placeholder = "Nom (ex: granulés Cichlidés)";
+        nameInput.addEventListener("change", () => {
+          item.name = nameInput.value.trim();
+        });
+
+        const unitInput = document.createElement("input");
+        unitInput.type = "text";
+        unitInput.value = item.unit || "kg";
+        unitInput.style.width = "60px";
+        unitInput.addEventListener("change", () => {
+          item.unit = unitInput.value.trim() || "kg";
+        });
+
+        const qtyInput = document.createElement("input");
+        qtyInput.type = "number";
+        qtyInput.min = "0";
+        qtyInput.step = "0.1";
+        qtyInput.value = item.quantity != null ? item.quantity : 0;
+        qtyInput.addEventListener("change", () => {
+          const val = Number(qtyInput.value);
+          item.quantity = isNaN(val) ? 0 : val;
+        });
+
+        const delBtn = document.createElement("button");
+        delBtn.className = "btn-secondary";
+        delBtn.style.fontSize = "0.75rem";
+        delBtn.textContent = "Supprimer";
+        delBtn.addEventListener("click", () => {
+          serreFeed.items = serreFeed.items.filter(x => x.id !== item.id);
+          renderFeed();
+        });
+
+        row.appendChild(nameInput);
+        row.appendChild(unitInput);
+        row.appendChild(qtyInput);
+        row.appendChild(delBtn);
+        feedItemsDiv.appendChild(row);
+      });
+    }
+
+    // Événements
+    saveNotesBtn.addEventListener("click", async () => {
+      serreNotes = notesArea.value;
       try {
-        await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-        aquaNotesInfo.textContent =
-          "Notes aquarium sauvegardées le " + new Date().toLocaleString() + ".";
+        await apiSaveSerreNotes(serreNotes);
+        notesInfo.textContent = "Notes de serre sauvegardées le " + new Date().toLocaleString() + ".";
       } catch (e) {
         console.error(e);
-        alert("Erreur lors de la sauvegarde des notes aquarium.");
+        alert("Erreur lors de la sauvegarde des notes de serre.");
       }
     });
 
-    // Ajout de bac
-    addBacBtn.addEventListener("click", async () => {
-      const defaultName = "Bac " + (aquariumBacs.length + 1);
-      aquariumBacs.push({
-        id: Date.now().toString(),
-        name: defaultName,
+    addBacBtn.addEventListener("click", () => {
+      const id = Date.now().toString();
+      serreBacs.push({
+        id,
+        name: "Bac serre " + (serreBacs.length + 1),
         lastWaterChange: null,
         lastFilterClean: null
       });
+      renderBacs();
+    });
+
+    saveBacsBtn.addEventListener("click", async () => {
       try {
-        await apiSaveAquarium(currentUser.username, aquariumNotes, aquariumBacs);
-        renderBacs();
+        await apiSaveSerreBacs(serreBacs, serreAssignments);
+        alert("Bacs de serre sauvegardés.");
       } catch (e) {
         console.error(e);
-        alert("Erreur lors de la création du bac aquarium.");
+        alert("Erreur lors de la sauvegarde des bacs de serre.");
       }
     });
 
-    // Initialisation : charger depuis Neon
-    async function initAquarium() {
+    addFeedItemBtn.addEventListener("click", () => {
+      const id = "feed_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      serreFeed.items.push({
+        id,
+        name: "",
+        unit: "kg",
+        quantity: 0
+      });
+      renderFeed();
+    });
+
+    saveFeedBtn.addEventListener("click", async () => {
+      const val = Number(feedMonthlyInput.value);
+      serreFeed.monthlyUseKg = isNaN(val) ? 0 : val;
       try {
-        const data = await apiGetAquarium(currentUser.username);
-        aquariumNotes = data.notes || "";
-        aquariumBacs = Array.isArray(data.bacs) ? data.bacs : [];
-        notesAquariumTextArea.value = aquariumNotes;
-        aquaNotesInfo.textContent = aquariumNotes ? "Notes aquarium chargées." : "";
-        renderBacs();
+        await apiSaveSerreFeed(serreFeed.items, serreFeed.monthlyUseKg);
+        alert("Stock de nourriture de serre sauvegardé.");
       } catch (e) {
         console.error(e);
-        alert("Erreur lors du chargement des données aquarium.");
+        alert("Erreur lors de la sauvegarde du stock de nourriture.");
+      }
+    });
+
+    // Initialisation : chargement depuis Neon
+    async function initSerre() {
+      try {
+        const data = await apiGetSerre();
+        serreNotes = data.notes || "";
+        notesArea.value = serreNotes;
+        notesInfo.textContent = serreNotes ? "Notes de serre chargées." : "";
+
+        serreBacs = Array.isArray(data.bacs) ? data.bacs : [];
+        serreAssignments = data.assignments && typeof data.assignments === "object"
+          ? data.assignments
+          : {};
+        renderBacs();
+
+        serreFeed = data.feed || { items: [], monthlyUseKg: 0, lastUpdate: null };
+        renderFeed();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors du chargement des données de serre.");
       }
     }
 
-    initAquarium();
+    initSerre();
   </script>
 </body>
 </html>

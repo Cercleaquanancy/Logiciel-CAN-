@@ -136,13 +136,13 @@
       margin-top: 4px;
     }
 
-    /* Liste petits événements sur l'accueil */
     .event-list-home {
       margin-top: 6px;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
+
     .event-home-item {
       font-size: 0.85rem;
       border-radius: 8px;
@@ -154,10 +154,12 @@
       align-items: center;
       gap: 6px;
     }
+
     .event-home-main {
       flex: 1 1 auto;
       min-width: 0;
     }
+
     .event-home-title {
       font-weight: 600;
       color: #e5e7eb;
@@ -166,6 +168,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .event-home-meta {
       font-size: 0.78rem;
       color: #9ca3af;
@@ -173,6 +176,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .event-home-date {
       font-size: 0.78rem;
       border-radius: 999px;
@@ -183,7 +187,6 @@
       color: #e5e7eb;
     }
 
-    /* Facebook bloc */
     .fb-page-wrapper {
       margin-top: 8px;
     }
@@ -203,12 +206,14 @@
     </div>
 
     <div class="navbar-menu" id="navbarMenu">
-      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
-      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
-      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
-      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
-      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
-      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="nav-btn active" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -224,7 +229,6 @@
       </p>
     </div>
 
-    <!-- Bloc Événements (aperçu des plus proches) -->
     <div class="card">
       <h2>Prochains événements</h2>
       <p class="subtitle">
@@ -241,14 +245,12 @@
       </p>
     </div>
 
-    <!-- Bloc derniers posts Facebook -->
     <div class="card">
       <h2>Dernières nouvelles Facebook</h2>
       <p class="subtitle">
         Dernières publications de la page du Cercle et de Fish In The News.
       </p>
 
-      <!-- Dernière publication du Cercle Aqua Nancy -->
       <h3 style="font-size:0.95rem; margin-bottom:4px;">Cercle Aqua Nancy</h3>
       <div class="fb-page-wrapper">
         <div class="fb-page"
@@ -266,7 +268,6 @@
         </div>
       </div>
 
-      <!-- Dernière publication de Fish In The News -->
       <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:4px;">Fish In The News</h3>
       <div class="fb-page-wrapper">
         <div class="fb-page"
@@ -290,69 +291,60 @@
     </div>
   </main>
 
-  <!-- SDK Facebook -->
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0"
     nonce="CANcercle"></script>
 
   <script>
-    // Vérif utilisateur (login obligatoire)
+    // Auth basique
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
     try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
+    // Affichage nom + rôle
     const navbarUser = document.getElementById('navbarUser');
-    const roleLabel =
-      currentUser.role === "admin" ? "Admin" :
-      currentUser.role === "membre_bureau" ? "Membre de bureau" :
-      "Adhérent";
-    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+    if (navbarUser) {
+      const roleLabel =
+        currentUser.role === "admin" ? "Admin" :
+        currentUser.role === "membre_bureau" ? "Membre de bureau" :
+        "Adhérent";
+      navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+    }
 
-    const CURRENT_PAGE = "index.html";
-    const navbarMenu = document.getElementById('navbarMenu');
-    const navButtons = document.querySelectorAll('.nav-btn[data-link]');
-
-    navButtons.forEach(btn => {
-      const link = btn.dataset.link;
-      if (link === CURRENT_PAGE) { btn.classList.add('active'); }
-      btn.addEventListener('click', () => { window.location.href = link; });
+    // Navigation simple
+    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = btn.dataset.link;
+      });
     });
 
-    // Onglet Bureau si rôle OK
-    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
-      const bureauBtn = document.createElement("button");
-      bureauBtn.className = "nav-btn";
-      bureauBtn.dataset.link = "Bureau.html";
-      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
-      const logoutBtnElem = document.getElementById("logoutBtn");
-      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
-      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
-      if (CURRENT_PAGE === "bureau.html") { bureauBtn.classList.add('active'); }
-    }
+    // Masquage des boutons selon droits
+    document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.serre === true)) {
+        btn.style.display = "none";
+      }
+    });
 
-    // Onglet Serre si admin ou serre activée
-    if (currentUser.role === "admin" || currentUser.serre === true) {
-      const serreBtn = document.createElement("button");
-      serreBtn.className = "nav-btn";
-      serreBtn.dataset.link = "serre.html";
-      serreBtn.innerHTML = '<span class="icon">🌿</span> <span>Serre</span>';
-      const logoutBtnElem2 = document.getElementById("logoutBtn");
-      navbarMenu.insertBefore(serreBtn, logoutBtnElem2);
-      serreBtn.addEventListener('click', () => { window.location.href = "serre.html"; });
-      if (CURRENT_PAGE === "serre.html") { serreBtn.classList.add('active'); }
-    }
+    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) {
+        btn.style.display = "none";
+      }
+    });
 
+    // Déconnexion
     const logoutBtn = document.getElementById('logoutBtn');
-    logoutBtn.addEventListener('click', () => {
-      localStorage.removeItem("user");
-      window.location.href = "login.html";
-    });
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+      });
+    }
 
     // --- Prochains événements (aperçu) ---
-    const EVENTS_KEY = "eventsData"; // même clé que dans evenement.html
+    const EVENTS_KEY = "eventsData";
 
     function loadEventsForHome() {
       const raw = localStorage.getItem(EVENTS_KEY);
@@ -378,7 +370,7 @@
 
     function renderHomeEvents() {
       if (!homeEventList) return;
-      const nextEvents = getNextEvents(3); // par exemple 3 plus proches
+      const nextEvents = getNextEvents(3);
 
       if (!nextEvents.length) {
         homeEventList.innerHTML = '<p class="small-note">Aucun événement à venir configuré dans la page Événements.</p>';
