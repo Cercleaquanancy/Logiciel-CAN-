@@ -6,14 +6,14 @@ const pool = require('./db'); // connexion Neon
 // IMPORTANT pour Render : utiliser process.env.PORT
 const port = process.env.PORT || 5500;
 
-// Fichier de stockage (pour serre, etc. – plus pour l’historique)
+// Fichier de stockage (encore là mais plus utile pour l’historique)
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Admin "fixe"
-const ADMIN_LOGIN = 'can';          // ou 'CAN.ansorgiinancy' si tu préfères
+const ADMIN_LOGIN = 'can';          // ou 'CAN.ansorgiinancy'
 const ADMIN_PASS = '29081623';
 
-// Charger les données du fichier (pour serre, population locale éventuelle, etc.)
+// Charger les données du fichier (plus vraiment utilisé)
 function loadData() {
   try {
     if (!fs.existsSync(DATA_FILE)) {
@@ -86,7 +86,7 @@ function loadData() {
   }
 }
 
-// Sauvegarder les données dans le fichier (pour serre, etc.)
+// Sauvegarde éventuelle dans data.json (peut servir de secours local)
 function saveData(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
@@ -159,7 +159,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API MEMBRES (Neon)
+  //        API MEMBRES
   // =======================
 
   // GET /api/members
@@ -242,7 +242,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API LOGIN (Neon + historique en base)
+  //        API LOGIN
   // =======================
 
   // POST /api/login
@@ -281,7 +281,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      // Adhérent en base Neon
+      // Adhérent en base
       pool.query(
         'SELECT login, pass, role, serre FROM members WHERE login = $1',
         [username]
@@ -349,7 +349,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API POPULATION (Neon)
+  //     API POPULATION
   // =======================
 
   // GET /api/population
@@ -435,7 +435,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API ANNONCES (Neon)
+  //       API ANNONCES
   // =======================
 
   // GET /api/annonces
@@ -626,7 +626,7 @@ const server = http.createServer((req, res) => {
   }
 
   // =======================
-  //        API SERRE (Neon)
+  //        API SERRE
   // =======================
 
   // GET /api/serre
@@ -854,6 +854,112 @@ const server = http.createServer((req, res) => {
         })
         .catch(dbErr => {
           console.error('Erreur POST /api/serre/feed :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  // =======================
+  //       API AQUARIUM
+  // =======================
+
+  // GET /api/aquarium?username=...
+  if (method === 'GET' && url.startsWith('/api/aquarium')) {
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
+    if (!username) {
+      sendText(res, 400, 'username obligatoire');
+      return;
+    }
+
+    Promise.all([
+      pool.query('SELECT notes FROM aquarium_notes WHERE username = $1', [username]),
+      pool.query(
+        'SELECT id, name, last_water_change, last_filter_clean FROM aquarium_bacs WHERE username = $1 ORDER BY id',
+        [username]
+      )
+    ])
+      .then(([notesResult, bacsResult]) => {
+        let notes = "";
+        if (notesResult.rowCount > 0) {
+          notes = notesResult.rows[0].notes || "";
+        }
+
+        const bacs = bacsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          lastWaterChange: row.last_water_change,
+          lastFilterClean: row.last_filter_clean
+        }));
+
+        sendJson(res, 200, { notes, bacs });
+      })
+      .catch(err => {
+        console.error('Erreur GET /api/aquarium :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  // POST /api/aquarium
+  if (method === 'POST' && url === '/api/aquarium') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { username, notes, bacs } = body || {};
+      if (!username) {
+        sendText(res, 400, 'username obligatoire');
+        return;
+      }
+
+      const txtNotes = typeof notes === 'string' ? notes : "";
+      const cleanBacs = Array.isArray(bacs)
+        ? bacs.map(b => ({
+            id: String(b.id),
+            name: String(b.name || 'Bac'),
+            lastWaterChange: b.lastWaterChange || null,
+            lastFilterClean: b.lastFilterClean || null
+          }))
+        : [];
+
+      const upsertNotes = `
+        INSERT INTO aquarium_notes (username, notes)
+        VALUES ($1, $2)
+        ON CONFLICT (username) DO UPDATE SET notes = EXCLUDED.notes
+      `;
+      const deleteBacs = 'DELETE FROM aquarium_bacs WHERE username = $1';
+
+      pool.query('BEGIN')
+        .then(() => pool.query(upsertNotes, [username, txtNotes]))
+        .then(() => pool.query(deleteBacs, [username]))
+        .then(() => {
+          if (!cleanBacs.length) return null;
+          const insertQuery = `
+            INSERT INTO aquarium_bacs (id, username, name, last_water_change, last_filter_clean)
+            VALUES ${cleanBacs.map((_, i) =>
+              `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`
+            ).join(', ')}
+          `;
+          const params = cleanBacs.flatMap(b => [
+            b.id,
+            username,
+            b.name,
+            b.lastWaterChange,
+            b.lastFilterClean
+          ]);
+          return pool.query(insertQuery, params);
+        })
+        .then(() => pool.query('COMMIT'))
+        .then(() => {
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/aquarium :', dbErr);
+          pool.query('ROLLBACK').catch(() => {});
           sendText(res, 500, 'Erreur serveur');
         });
     });
