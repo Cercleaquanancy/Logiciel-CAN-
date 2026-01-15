@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia velifera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia velifera</h1>
+        <h2>Molly voile du Yucatán</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia velifera</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-velifera/Poecilia-velifera.jpeg" alt="Poecilia velifera">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia velifera</strong>, le molly voile du Yucatán, est un grand vivipare dont les mâles peuvent dépasser 12&nbsp;cm et les femelles atteindre 15 à 18&nbsp;cm en bonnes conditions.
+          </p>
+          <p class="section-text">
+            La caractéristique la plus marquante est la très haute nageoire dorsale du mâle, en forme de voile largement déployé, souvent associée à un corps tacheté ou ponctué de reflets bleus, verts ou orangés selon les souches.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en groupes près de la surface et du milieu de la colonne d’eau, où elle passe une grande partie de la journée à brouter les algues et à filtrer les particules en suspension.
+          </p>
+          <p class="section-text">
+            Les mâles sont actifs et passent beaucoup de temps à parader devant les femelles en déployant leur voile, ce qui peut fatiguer les femelles si le groupe n’est pas assez grand ou le volume insuffisant.
+          </p>
+          <p class="section-text">
+            Globalement pacifique, le molly voile peut cependant impressionner par sa taille et sa vivacité; il est préférable de l’associer à des espèces calmes mais de gabarit comparable, dans un aquarium spacieux et bien filtré.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; le mâle féconde la femelle grâce à un gonopode, puis celle‑ci porte les œufs jusqu’à la naissance d’alevins entièrement formés et autonomes.
+          </p>
+          <p class="section-text">
+            La gestation dure en moyenne 4 semaines à température élevée; une femelle mature peut produire plusieurs dizaines de jeunes par portée, voire davantage pour les plus gros individus.
+          </p>
+          <p class="section-text">
+            Comme chez les autres mollys, les adultes ne protègent pas leur progéniture et peuvent manger une partie des alevins; la présence de nombreuses plantes, racines et zones calmes permet aux jeunes de se cacher et d’atteindre une taille plus sûre.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> le mâle est plus coloré, avec une nageoire dorsale très haute et un gonopode; la femelle est plus massive, plus longue et présente une dorsale nettement plus basse et arrondie.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en aquarium, les Poecilia velifera vivent en général 3 à 5&nbsp;ans, parfois un peu plus si le volume, la dureté de l’eau et l’hygiène du bac sont bien adaptés à leurs besoins.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, l’espèce est étroitement liée aux zones côtières peu profondes de la péninsule du Yucatán, où elle occupe lagunes, marais salés, canaux de mangrove, estuaires et cénotes côtiers.
+          </p>
+          <p class="section-text">
+            L’eau y est le plus souvent saumâtre à légèrement salée, avec un courant très faible, une forte luminosité et une végétation abondante (plantes aquatiques, plantes palustres, racines de mangrove, algues).
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-velifera/Maps-Poecilia-velifera.png"
+              alt="Répartition de Poecilia velifera"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Péninsule du Yucatán au Mexique, sur la côte caraïbe et le golfe du Mexique.</li>
+              <li>Présent dans diverses lagunes et zones côtières de faible altitude, souvent à proximité de mangroves.</li>
+            </ul>
+            <p>
+              L’espèce a été introduite dans plusieurs pays tropicaux ou subtropicaux où elle peut se maintenir dans les eaux chaudes, parfois en dehors de son biotope saumâtre d’origine.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 25 à 28&nbsp;°C, avec une préférence pour une eau stable et bien oxygénée.</p>
+            <p><strong>pH :</strong> 7,5 à 8,5, nettement alcalin.</p>
+            <p><strong>GH :</strong> 13 à 25&nbsp;°dGH, eau dure à très dure; une eau trop douce fragilise rapidement l’espèce.</p>
+            <p><strong>Salinité :</strong> l’ajout de sels spécifiques ou d’un peu de sel marin (eau légèrement saumâtre) est souvent bénéfique pour la santé et la longévité.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une filtration puissante capable de gérer une forte production de déchets, mais sans créer de remous excessifs en surface.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 300&nbsp;L pour un petit groupe (au moins un trio ou un harem), avec une façade d’au moins 120&nbsp;cm pour que les grands mâles puissent nager et déployer leur voile sans gêne.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à dominante herbivore; dans le milieu naturel, le molly voile broute les algues, le périphyton et la microfaune fixée sur les surfaces, complétés par de petits invertébrés.
+            </p>
+            <p>
+              En aquarium, il apprécie les aliments secs de qualité (paillettes, granulés) riches en végétaux, complétés par des apports de spiruline, légumes pochés finement coupés (courgette, épinard, concombre) et des proies vivantes ou congelées.
+            </p>
+            <p>
+              Un apport régulier en végétal fibreux limite les problèmes digestifs et d’embonpoint, fréquents chez les gros vivipares, et aide à maintenir de belles couleurs et une croissance harmonieuse.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

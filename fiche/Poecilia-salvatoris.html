@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia salvatoris</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia salvatoris</h1>
+        <h2>Molly de la liberté</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia salvatoris</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-salvatoris/Poecilia-salvatoris.jpeg" alt="Poecilia salvatoris">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia salvatoris</strong>, souvent appelé molly de la liberté ou liberty molly, est un vivipare d’Amérique centrale dont les adultes mesurent en général 6 à 8&nbsp;cm, avec des mâles légèrement plus petits que les femelles.
+          </p>
+          <p class="section-text">
+            Le corps est trapu, argenté à gris, orné de nageoires dorsale et caudale présentant des bandes rouge‑orangé et bleuâtres très vives chez les mâles dominants, ce qui en fait un molly particulièrement coloré.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en petits groupes proches de la surface et du milieu de la colonne d’eau, dans des rivières et canaux à courant faible ou modéré; c’est un poisson vif, constamment en mouvement.
+          </p>
+          <p class="section-text">
+            Les mâles établissent une hiérarchie et peuvent se montrer assez bagarreurs entre eux, surtout en petit volume; le dominant arbore généralement des couleurs plus contrastées que les autres mâles.
+          </p>
+          <p class="section-text">
+            Avec les autres espèces, Poecilia salvatoris est plutôt tolérant, mais son tempérament dynamique et parfois un peu nerveux demande des colocataires robustes et de taille comparable, dans un bac spacieux.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; comme les autres Poecilia, le mâle féconde la femelle grâce à un gonopode, puis celle‑ci “met bas” des alevins entièrement formés qui se dispersent aussitôt.
+          </p>
+          <p class="section-text">
+            La gestation dure environ 4&nbsp;semaines selon la température, et une femelle peut produire des portées de plusieurs dizaines de jeunes, avec un renouvellement régulier de la population en aquarium.
+          </p>
+          <p class="section-text">
+            Les adultes ne prodiguent aucun soin parental et peuvent consommer une partie des alevins; un décor bien planté, avec de nombreuses cachettes et des zones de végétation fine, augmente nettement le taux de survie des jeunes.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> le mâle est plus coloré, avec un gonopode et des nageoires dorsale et caudale plus développées et vivement pigmentées; la femelle est plus grande, plus massive, au ventre arrondi, avec une nageoire anale triangulaire classique.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en aquarium, le molly de la liberté vit en moyenne 3 à 5&nbsp;ans si la qualité de l’eau reste stable et si le bac offre suffisamment d’espace et de cachettes pour limiter le stress social.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Poecilia salvatoris occupe divers milieux d’eau douce en Amérique centrale: rivières lentes, affluents, canaux et étangs, souvent dans des zones peu profondes proches des berges, riches en végétation aquatique et palustre.
+          </p>
+          <p class="section-text">
+            Le substrat est généralement sableux ou graveleux, avec des zones de feuilles mortes et de racines; la colonne d’eau est bien oxygénée, mais le courant reste modéré, créant des secteurs calmes où les poissons peuvent se reposer et se reproduire.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-salvatoris/Maps-Poecilia-salvatoris.png"
+              alt="Répartition de Poecilia salvatoris"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassins versants atlantiques et pacifiques d’Amérique centrale, principalement au Salvador, au Guatemala, au Honduras et au Nicaragua.</li>
+            </ul>
+            <p>
+              L’espèce est considérée comme localement menacée dans certaines parties de son aire d’origine mais a également été introduite ponctuellement ailleurs, ce qui justifie de ne pas la relâcher dans la nature hors de sa distribution naturelle.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 25 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> environ 7,0 à 7,5, de neutre à légèrement alcalin.</p>
+            <p><strong>GH :</strong> 10 à 15&nbsp;°dGH, l’espèce se portant mieux en eau modérément dure.</p>
+            <p><strong>Courant :</strong> lent à modéré, avec une bonne oxygénation mais sans remous violents, sur un décor très planté offrant de multiples refuges.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 250 à 300&nbsp;L pour un groupe, avec une façade d’au moins 120 à 150&nbsp;cm, car ce sont de bons nageurs et les mâles ont besoin d’espace pour établir leur hiérarchie sans harceler en permanence les femelles.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à dominante carnivore; dans le milieu naturel, Poecilia salvatoris consomme principalement des insectes, larves, petits invertébrés aquatiques et, en complément, des algues et débris végétaux.
+            </p>
+            <p>
+              En aquarium, il accepte facilement les paillettes et granulés pour vivipares, mais doit recevoir régulièrement des proies vivantes ou congelées (artémias, daphnies, larves de moustiques) pour exprimer pleinement ses couleurs et son comportement.
+            </p>
+            <p>
+              L’ajout de végétaux (spiruline, légumes pochés comme courgette ou épinard) contribue à couvrir ses besoins en fibres et en pigments, tout en limitant les risques de surpoids et de troubles digestifs liés aux nourritures trop grasses.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

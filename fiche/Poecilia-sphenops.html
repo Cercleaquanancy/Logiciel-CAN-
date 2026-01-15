@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia sphenops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia sphenops</h1>
+        <h2>Molly commun</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia sphenops</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-sphenops/Poecilia-sphenops.jpeg" alt="Poecilia sphenops">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia sphenops</strong>, le molly commun, est un vivipare d’Amérique centrale de taille moyenne, atteignant 6 à 8&nbsp;cm pour les mâles et jusqu’à 10&nbsp;cm pour les plus grandes femelles.
+          </p>
+          <p class="section-text">
+            L’espèce présente de nombreuses sélections (noir, dalmatien, argenté, doré, lyre, etc.), mais conserve un corps fuselé, une nageoire dorsale modérément haute et une silhouette globalement robuste typique des mollys.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C’est un poisson actif de pleine eau qui vit en groupes lâches, souvent près de la surface et du milieu de la colonne d’eau, où il broute les algues et recherche de petites proies.
+          </p>
+          <p class="section-text">
+            Les mâles peuvent se montrer insistants envers les femelles et parfois querelleurs entre eux, surtout en petit volume; un groupe avec plus de femelles que de mâles et un bac suffisamment spacieux limite les tensions.
+          </p>
+          <p class="section-text">
+            L’espèce est tolérante et robuste, mais apprécie une eau bien oxygénée, propre et légèrement dure, ainsi qu’une légère salinité facultative qui améliore souvent sa résistance.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; le mâle féconde la femelle grâce à un gonopode, et celle‑ci donne naissance à des alevins entièrement formés, prêts à se nourrir dès la naissance.
+          </p>
+          <p class="section-text">
+            La gestation dure environ 4 semaines selon la température, et une femelle bien installée peut produire de 20 à plus de 100 alevins par portée, plusieurs fois dans l’année.
+          </p>
+          <p class="section-text">
+            Les adultes peuvent consommer leurs propres jeunes, mais un décor très planté, avec des plantes de surface et des cachettes, permet de conserver une partie des naissances sans dispositif particulier.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> le mâle est plus petit et plus svelte, avec un gonopode bien visible à la place de la nageoire anale; la femelle est plus grande, plus massive, avec une nageoire anale triangulaire et un abdomen souvent volumineux.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en aquarium, les mollys vivent généralement 3 à 5&nbsp;ans lorsque l’eau est suffisamment dure, propre et bien oxygénée, avec une alimentation variée.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, Poecilia sphenops fréquente les rivières lentes, lagunes côtières, étangs, canaux et fossés, souvent en eau peu profonde, riche en végétation, parfois légèrement saumâtre.
+          </p>
+          <p class="section-text">
+            Le substrat est en général vaseux ou sablo‑vaseux, parfois rocheux, avec une forte présence d’algues, de plantes aquatiques et de débris végétaux dont il exploite une partie comme ressource alimentaire.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-sphenops/Maps-Poecilia-sphenops.png"
+              alt="Répartition de Poecilia sphenops"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique centrale, principalement du Mexique au Honduras.</li>
+              <li>Présent dans divers systèmes d’eau douce et saumâtre de plaine.</li>
+            </ul>
+            <p>
+              L’espèce a été largement diffusée par l’aquariophilie et peut être rencontrée, localement, en dehors de son aire d’origine à la suite d’introductions.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,2, de neutre à alcalin.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH, eau dure à très dure, avec possibilité d’ajouter un peu de sel pour les souches fragiles.</p>
+            <p><strong>Courant :</strong> faible à modéré, avec une bonne oxygénation et une filtration efficace.</p>
+            <p><strong>Volume conseillé :</strong> au minimum 120&nbsp;L pour un groupe, afin d’offrir assez d’espace de nage et limiter le harcèlement des mâles sur les femelles.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance herbivore; dans la nature, il consomme algues filamenteuses, micro‑organismes, petits invertébrés, insectes et débris végétaux.
+            </p>
+            <p>
+              En aquarium, il accepte sans difficulté les paillettes, granulés, nourritures congelées et vivantes; une base de végétal (spiruline, légumes pochés finement) est importante pour éviter les problèmes digestifs.
+            </p>
+            <p>
+              Des repas variés et réguliers, sans excès, permettent d’obtenir des poissons robustes, bien colorés et une reproduction continue sans affaiblir les femelles.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gambusia holbrooki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Gambusia holbrooki</h1>
+        <h2>Gambusie de l’Est</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Gambusia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Gambusia holbrooki</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Gambusia-holbrooki/Gambusia-holbrooki.jpeg" alt="Gambusia holbrooki">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Gambusia holbrooki</strong> est un petit poisson vivipare originaire de la côte est des États‑Unis, long de 3 à 4&nbsp;cm chez le mâle et jusqu’à 6 à 8&nbsp;cm chez la femelle bien nourrie.
+          </p>
+          <p class="section-text">
+            Son corps est gris à brun translucide avec des reflets argentés, parfois ponctué de petites taches sombres; l’abdomen des femelles est souvent arrondi et laisse deviner les alevins avant la mise bas.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            La gambusie vit surtout en surface et dans les zones très peu profondes, où elle forme des groupes plus ou moins lâches qui explorent sans cesse la surface et les bords du plan d’eau.
+          </p>
+          <p class="section-text">
+            C’est une espèce vive, opportuniste et parfois agressive: elle peut harceler les poissons plus calmes, pincer les nageoires et monopoliser la nourriture, surtout dans les petits volumes surpeuplés.
+          </p>
+          <p class="section-text">
+            Très tolérante aux variations de température et de qualité d’eau, elle supporte des conditions que beaucoup d’autres poissons ne toléreraient pas, ce qui contribue à son caractère invasif dans la nature.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; la fécondation est interne et la femelle met au monde des alevins complètement formés, capables de nager et de se nourrir dès la naissance.
+          </p>
+          <p class="section-text">
+            La maturité sexuelle est très précoce, souvent en quelques semaines, et la gestation dure environ 3 à 4&nbsp;semaines; une femelle adulte peut produire plusieurs portées sur une même saison, avec de 10 à plus de 50 jeunes par portée selon sa taille.
+          </p>
+          <p class="section-text">
+            Les adultes, y compris la mère, n’hésitent pas à consommer une partie des alevins; une végétation dense, des plantes de surface ou des refuges permettent à davantage de jeunes de survivre si l’objectif est la reproduction.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> le mâle est plus petit et trapu, avec un gonopode bien visible en guise de nageoire anale, alors que la femelle est plus grande, au ventre volumineux, et montre une tache de gestation sombre près de l’anus.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en captivité, la plupart des individus vivent 2 à 3&nbsp;ans, parfois un peu plus si la densité, la qualité de l’eau et la nourriture restent adaptées, mais la population se renouvelle en continu grâce aux nombreuses naissances.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Dans la nature, l’espèce occupe les eaux lentes et peu profondes des rivières, marais, canaux d’irrigation, fossés et étangs, souvent proches de zones de végétation dense, de racines et de bordures vaseuses.
+          </p>
+          <p class="section-text">
+            Elle supporte aussi bien l’eau douce que légèrement saumâtre, une large gamme de températures et même des eaux enrichies en nutriments, ce qui lui permet de coloniser facilement les milieux modifiés par l’homme.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Gambusia-holbrooki/Maps-Gambusia-holbrooki.png"
+              alt="Répartition de Gambusia holbrooki"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassins côtiers de l’Atlantique et du golfe du Mexique, dans l’est et le sud‑est des États‑Unis.</li>
+            </ul>
+            <p><strong>Introductions :</strong></p>
+            <ul>
+              <li>De nombreuses introductions en Europe, Afrique, Asie et Océanie pour la lutte contre les moustiques.</li>
+            </ul>
+            <p>
+              Dans plusieurs régions, elle est aujourd’hui considérée comme une espèce invasive, capable de concurrencer et de faire reculer les petits poissons et amphibiens locaux.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> environ 18 à 28&nbsp;°C; l’espèce supporte ponctuellement des températures plus basses ou plus élevées si la variation est progressive.</p>
+            <p><strong>pH :</strong> 6,8 à 8,5, avec une préférence pour une eau neutre à alcaline.</p>
+            <p><strong>GH :</strong> 8 à 25&nbsp;°dGH, l’espèce se porte mieux en eau dure à très dure que la plupart des poissons tropicaux classiques.</p>
+            <p><strong>Courant :</strong> faible à modéré; elle apprécie surtout les zones calmes bien oxygénées, avec des plantes en surface et en bordure pour servir de refuge.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 80 à 100&nbsp;L pour un groupe, avec un ratio de femelles supérieur au nombre de mâles afin de limiter le harcèlement reproducteur.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à forte tendance carnivore; dans son milieu naturel, elle se nourrit de larves de moustiques, insectes tombés à la surface, petits crustacés, vers et zooplancton.
+            </p>
+            <p>
+              En aquarium, elle accepte sans difficulté les paillettes, granulés, nourritures congelées et vivantes; une base de nourriture sèche de qualité, complétée régulièrement par des proies vivantes ou congelées, la maintient en bonne santé.
+            </p>
+            <p>
+              Comme l’espèce est très gourmande, il est préférable de fractionner la ration quotidienne en plusieurs petits repas et d’éviter la suralimentation, surtout dans les bacs peu plantés.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

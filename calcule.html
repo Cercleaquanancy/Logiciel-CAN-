@@ -226,7 +226,7 @@
     <div class="card">
       <h1>Outils de calcul</h1>
       <p class="subtitle">
-        Convertisseurs rapides pour gérer la chimie de l’eau et les volumes. [web:1][web:200]
+        Convertisseurs rapides pour gérer la chimie de l’eau et les volumes.
       </p>
     </div>
 
@@ -234,7 +234,7 @@
     <div class="card">
       <h2>Conversion GH ↔ ppm ↔ µS/cm</h2>
       <p class="subtitle">
-        1 °GH ≈ 17,9 ppm CaCO₃. Approximation conductivité : 1 ppm ≈ 2 µS/cm. [web:1][web:9]
+        1 °GH ≈ 17,9 ppm CaCO₃. Approximation conductivité : 1 ppm ≈ 2 µS/cm.
       </p>
 
       <div class="field">
@@ -256,7 +256,7 @@
 
       <div class="result" id="ghResult"></div>
       <p class="note">
-        Conversion GH/ppm basée sur la définition °dGH ; ppm/µS/cm approximatif (1 ppm ≈ 2 µS/cm). [web:1][web:12]
+        Conversion GH/ppm basée sur la définition °dGH ; ppm/µS/cm approximatif (1 ppm ≈ 2 µS/cm).
       </p>
     </div>
 
@@ -264,7 +264,7 @@
     <div class="card">
       <h2>Calcul du volume du bac</h2>
       <p class="subtitle">
-        Volume d’un bac rectangulaire à partir des dimensions en cm. [web:200][web:207]
+        Volume d’un bac rectangulaire à partir des dimensions en cm.
       </p>
 
       <div class="field">
@@ -284,7 +284,7 @@
 
       <div class="result" id="volumeResult"></div>
       <p class="note">
-        Volume en litres ≈ (L × l × h) / 1000, sans retirer le décor ni le verre. [web:207][web:211]
+        Volume en litres ≈ (L × l × h) / 1000, sans retirer le décor ni le verre.
       </p>
     </div>
 
@@ -292,7 +292,7 @@
     <div class="card">
       <h2>Calcul de dose de sel</h2>
       <p class="subtitle">
-        Masse de sel à ajouter pour une salinité cible (g/L ou ppt). [web:202][web:204]
+        Masse de sel à ajouter pour une salinité cible (g/L ou ppt). 
       </p>
 
       <div class="field">
@@ -312,7 +312,7 @@
 
       <div class="result" id="selResult"></div>
       <p class="note">
-        Masse de sel (g) ≈ (cible − actuelle) × volume (L). 1 g/L = 1 ppt. [web:204][web:55]
+        Masse de sel (g) ≈ (cible − actuelle) × volume (L). 1 g/L = 1 ppt.
       </p>
     </div>
   </main>
@@ -380,8 +380,8 @@
     const usToPpmBtn = document.getElementById('usToPpmBtn');
     const ghResult = document.getElementById('ghResult');
 
-    const FACTEUR_GH_PPM = 17.9; // 1 °dGH ≈ 17.9 ppm CaCO3 [web:1][web:213]
-    const FACTEUR_PPM_US = 2.0;  // 1 ppm ≈ 2 µS/cm (approx) [web:9][web:12]
+    const FACTEUR_GH_PPM = 17.9; 
+    const FACTEUR_PPM_US = 2.0;  
 
     // GH -> ppm -> µS/cm
     ghToPpmBtn.addEventListener('click', () => {
@@ -479,7 +479,7 @@
           "La salinité cible doit être supérieure à la salinité actuelle pour ajouter du sel.";
         return;
       }
-      const masse = delta * vol; // g de sel à ajouter [web:202][web:204]
+      const masse = delta * vol; 
       selResult.textContent =
         "Il faut ajouter environ " + masse.toFixed(1) + " g de sel pour passer de " +
         actuelle.toFixed(1) + " g/L à " + cible.toFixed(1) + " g/L sur " +

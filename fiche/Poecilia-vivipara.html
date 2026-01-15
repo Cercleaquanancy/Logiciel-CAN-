@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Poecilia vivipara</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Poecilia vivipara</h1>
+        <h2>Vivipare de mangrove</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Poecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Poecilia vivipara</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Poecilia-vivipara/Poecilia-vivipara.jpeg" alt="Poecilia vivipara">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Poecilia vivipara</strong> est un petit vivipare euryhalin d’Amérique du Sud, dont la taille varie en général de 3 à 5&nbsp;cm, avec des femelles pouvant atteindre près de 7 à 8&nbsp;cm dans les milieux favorables.
+          </p>
+          <p class="section-text">
+            Le corps est élancé, argenté à brunâtre, parfois ponctué d’une petite tâche sombre vers la base de la nageoire caudale; les populations côtières, souvent en eau saumâtre, montrent parfois une croissance plus rapide et une taille légèrement supérieure.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            L’espèce vit en bancs ou en groupes diffus, principalement dans les eaux calmes de surface et de bordure, où elle explore sans cesse la végétation marginale, les racines et les zones peu profondes.
+          </p>
+          <p class="section-text">
+            Poecilia vivipara est un poisson paisible, assez vif, qui tolère bien la cohabitation avec d’autres espèces tranquilles de petite taille, à condition de maintenir un groupe et un volume suffisants pour éviter le stress et la compétition excessive.
+          </p>
+          <p class="section-text">
+            Son excellente tolérance à la salinité et aux variations de température lui permet d’occuper de nombreux habitats, du canal d’irrigation légèrement saumâtre aux lagunes côtières presque hypersalées.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; la femelle porte les œufs fécondés et donne naissance à de petits alevins autonomes, qui nagent et se nourrissent dès leur sortie.
+          </p>
+          <p class="section-text">
+            La gestation dure généralement 3 à 4&nbsp;semaines selon la température, et chaque portée peut compter plusieurs dizaines de jeunes, surtout chez les femelles les plus grandes.
+          </p>
+          <p class="section-text">
+            Comme chez la majorité des Poeciliidae, il n’existe pas de soins parentaux; les adultes peuvent consommer une partie des alevins, mais une végétation dense et des zones peu profondes permettent aux jeunes de trouver refuge.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> les mâles sont plus petits, plus sveltes, avec un gonopode à la place de la nageoire anale; les femelles sont plus volumineuses, avec une nageoire anale triangulaire et un abdomen souvent très arrondi en fin de gestation.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en aquarium, ces poissons vivent en moyenne 2 à 3&nbsp;ans, parfois davantage lorsque les conditions (salinité, dureté, nourriture) sont proches de leur biotope naturel de lagunes et canaux saumâtres.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Poecilia vivipara fréquente surtout les eaux stagnantes ou très faiblement courantes: canaux, fossés, lagunes, bordures de marécages et zones de mangrove, le plus souvent légèrement saumâtres et peu profondes.
+          </p>
+          <p class="section-text">
+            Les berges sont en général riches en végétation émergée et marginale, tandis que la colonne d’eau peut être pauvre en plantes submergées dans les secteurs les plus salés; l’espèce profite de ces habitats pour y chasser les larves de moustiques et autres petits invertébrés.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Poecilia-vivipara/Maps-Poecilia-vivipara.png"
+              alt="Répartition de Poecilia vivipara"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Côtes atlantiques d’Amérique du Sud, depuis le Venezuela et le delta de l’Orénoque jusqu’au sud du Brésil et à l’Uruguay, Argentine.</li>
+              <li>Présent dans de nombreuses lagunes côtières, estuaires, canaux et marécages littoraux.</li>
+            </ul>
+            <p>
+              L’espèce a aussi été introduite dans certaines régions pour la lutte contre les moustiques, ce qui explique sa présence ponctuelle en dehors de son aire d’origine sud‑américaine.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 26 à 30&nbsp;°C (peut tolérer un peu en dessous, mais préfère une eau chaude stable).</p>
+            <p><strong>pH :</strong> environ 6,5 à 7,5, de légèrement acide à neutre, avec une tendance naturelle vers le neutre en eau saumâtre.</p>
+            <p><strong>GH :</strong> 10 à 30&nbsp;°dGH, l’espèce supportant des eaux assez dures, voire très minéralisées, surtout en milieu côtier.</p>
+            <p><strong>Salinité :</strong> supporte de l’eau douce mais se maintient particulièrement bien en eau légèrement saumâtre, ce qui peut améliorer sa longévité et sa résistance.</p>
+            <p><strong>Courant :</strong> très faible, avec peu de remous; elle apprécie les bacs calmes, bien plantés en bordure, avec des zones peu profondes.</p>
+            <p><strong>Volume conseillé :</strong> à partir de 100&nbsp;L pour un petit groupe d’au moins 5 à 6 individus, afin de respecter son comportement grégaire.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore opportuniste; dans le milieu naturel, Poecilia vivipara consomme des larves de moustiques, petits invertébrés, micro‑crustacés, algues et débris organiques.
+            </p>
+            <p>
+              En aquarium, il accepte facilement les paillettes et granulés pour vivipares, complétés par des apports réguliers de nourritures vivantes ou congelées (daphnies, artémias, microvers) et un peu de végétal (spiruline, légumes pochés).
+            </p>
+            <p>
+              Une alimentation variée, avec une proportion correcte de végétaux, limite les problèmes digestifs et favorise une croissance régulière, des couleurs soutenues et des pontes fréquentes sans épuiser les femelles.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

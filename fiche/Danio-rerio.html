@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Danio rerio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Danio rerio</h1>
+        <h2>Zébra danio</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Cyprinidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Danio</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>Danio rerio</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Danio-rerio/Danio-rerio.jpeg" alt="Danio rerio">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Danio rerio</strong>, le zébra danio, est un petit cyprinidé asiatique au corps fuselé rayé de bandes horizontales bleues et argentées, atteignant 3 à 4&nbsp;cm en aquarium.[web:176][web:178]
+          </p>
+          <p class="section-text">
+            Espèce extrêmement répandue en aquariophilie et en recherche scientifique, il est réputé pour sa robustesse, sa grande activité et sa capacité à vivre en banc dans des aquariums communautaires bien dimensionnés.[web:175][web:185]
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Le zébra danio est un poisson très vif et grégaire qui passe la majeure partie de son temps à nager en groupe dans la partie supérieure du bac; il doit toujours être maintenu en banc de 8 à 10 individus au minimum pour limiter le stress.[web:178][web:187]
+          </p>
+          <p class="section-text">
+            Globalement pacifique, il peut toutefois intimider des poissons lents ou à longues nageoires s’il est maintenu en trop petit groupe ou dans un volume inadapté; un aquarium long avec de l’espace de nage est fortement recommandé.[web:178][web:188]
+          </p>
+          <p class="section-text">
+            L’espèce aime les courants modérés et une eau bien oxygénée, reproduisant les ruisseaux et canaux légèrement courants de son habitat d’origine.[web:182][web:175]
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> pondeur libre; la femelle disperse ses œufs sur le substrat et parmi les plantes, le mâle les féconde immédiatement, sans construction de nid ni soins parentaux.[web:176][web:188]
+          </p>
+          <p class="section-text">
+            En aquarium, la reproduction se fait facilement dans un bac spécifique peu profond, avec un fond de billes ou de grille pour protéger les œufs des parents qui les consomment volontiers; l’éclosion intervient en 48 à 72&nbsp;heures selon la température.[web:178][web:188]
+          </p>
+          <p class="section-text">
+            Les alevins, très petits, ont besoin d’infusoires, de rotifères ou de micro‑nourritures liquides les premiers jours, avant de passer aux microvers et nauplies d’artémias.[web:178][web:187]
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> la femelle est plus ronde, au ventre plus rebondi, avec des couleurs légèrement moins marquées; le mâle est plus mince, plus élancé, et ses bandes peuvent paraître plus contrastées.[web:176][web:178]
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> en captivité, Danio rerio vit en général 3 à 5&nbsp;ans dans un aquarium bien entretenu, avec une eau propre, une alimentation variée et un groupe suffisant pour limiter le stress.[web:175][web:188]
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            À l’état naturel, l’espèce fréquente les rivières peu profondes, ruisseaux, canaux d’irrigation, fossés et rizières d’Asie du Sud, souvent à faible courant, avec fond sableux, rocheux ou vaseux.[web:182][web:185]
+          </p>
+          <p class="section-text">
+            Ces milieux sont souvent bien éclairés, avec des berges végétalisées et une colonne d’eau peu profonde, ce qui explique la préférence de l’espèce pour les aquariums longs, peu chargés en décor au centre mais bien plantés en périphérie.[web:182][web:188]
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Danio-rerio/Maps-Danio-rerio.png"
+              alt="Répartition de Danio rerio"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassins du Gange et du Brahmapoutre en Inde, Bangladesh, Népal et Pakistan.[web:175][web:185]</li>
+              <li>Présence signalée dans certaines parties du Myanmar.[web:182]</li>
+            </ul>
+            <p>
+              L’espèce a été introduite ponctuellement ailleurs pour l’aquariophilie et la recherche, mais son aire d’origine reste concentrée en Asie du Sud.[web:175][web:188]
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 26&nbsp;°C, avec une préférence pour la zone 22–24&nbsp;°C.[web:176][web:178]</p>
+            <p><strong>pH :</strong> 6,0 à 8,0, de légèrement acide à légèrement alcalin.[web:176][web:182]</p>
+            <p><strong>GH :</strong> 5 à 19&nbsp;°dGH, eau douce à moyennement dure.[web:176][web:188]</p>
+            <p><strong>Courant :</strong> modéré, avec une bonne oxygénation et une filtration efficace, en laissant une grande zone de nage dégagée.[web:182][web:178]</p>
+            <p><strong>Volume conseillé :</strong> au minimum 80 à 100&nbsp;L pour un banc d’une dizaine de poissons, avec une façade d’au moins 80–100&nbsp;cm.[web:178][web:187]</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore; dans la nature, il consomme des insectes et leurs larves, du zooplancton, des petits crustacés et des algues ou débris végétaux.[web:176][web:188]
+            </p>
+            <p>
+              En aquarium, il accepte très facilement paillettes, granulés, nourritures congelées et vivantes (artémias, daphnies, vers de vase), à condition que la taille des particules soit adaptée à sa petite bouche.[web:178][web:187]
+            </p>
+            <p>
+              Une alimentation variée, distribuée en plusieurs petits repas quotidiens, permet de maintenir une bonne santé, une croissance régulière et une reproduction fréquente.[web:178][web:188]
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

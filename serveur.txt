@@ -1,15 +1,13 @@
-pc potable 
+
 cd "C:\Users\Elève\Desktop\Logiciel CAN 0.4 serveur"
 node server.js
 
-pc tour
 cd "C:\Users\filho\Desktop\Logiciel CAN 0.4 serveur"
 node server.js
 
 
 lt --port 5500
 
-curl ipv4.icanhazip.com
 
 git init
 git add .
@@ -19,7 +17,9 @@ git commit -m "Initial commit CAN app"
 git config --global user.name "Filhol-Maitre Axel"
 git config --global user.email "filholaxel03@gmail.com"
 
-mis a jour 
+
+cd "C:\Users\filho\Desktop\Logiciel CAN 0.4 serveur"
+git pull origin main       
 git add .
-git commit -m "mise à jour Render"
+git commit -m "maj accueil facebook"
 git push origin main
