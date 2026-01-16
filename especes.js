@@ -1065,7 +1065,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Mexique"],
     page: "fiche/Poecilia-velifera.html",
-    image: "img/Poecilia-velifera/Poecilia-velifera.jpeg"
+    image: "img/Poecilia-velifera/Poecilia-velifera.PNG"
   },
   {
     id: "poecilia-vivipara",
@@ -1077,7 +1077,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Venezuela", "Guyane", "Brésil", "Uruguay"],
     page: "fiche/Poecilia-vivipara.html",
-    image: "img/Poecilia-vivipara/Poecilia-vivipara.jpeg"
+    image: "img/Poecilia-vivipara/Poecilia-vivipara.PNG"
   },
   {
     id: "poecilia-salvatoris",
@@ -1089,7 +1089,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Salvador", "Guatemala", "Honduras", "Nicaragua"],
     page: "fiche/Poecilia-salvatoris.html",
-    image: "img/Poecilia-salvatoris/Poecilia-salvatoris.jpeg"
+    image: "img/Poecilia-salvatoris/Poecilia-salvatoris.PNG"
   },
   {
     id: "trichogaster-lalius",
@@ -1101,7 +1101,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Pakistan", "Inde", "Bangladesh"],
     page: "fiche/Trichogaster-lalius.html",
-    image: "img/Trichogaster-lalius/Trichogaster-lalius.jpeg"
+    image: "img/Trichogaster-lalieus/Trichogaster-lalieus.PNG"
   },
   {
     id: "trichogaster-chuna",
@@ -1113,7 +1113,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Inde", "Bangladesh", "Népal"],
     page: "fiche/Trichogaster-chuna.html",
-    image: "img/Trichogaster-chuna/Trichogaster-chuna.jpeg"
+    image: "img/Trichogaster-chuna/Trichogaster-chuna.PNG"
   },
   {
     id: "chromobotia-macracanthus",
