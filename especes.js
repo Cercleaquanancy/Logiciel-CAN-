@@ -1041,7 +1041,7 @@ window.FICHES = [
     continent: "Amérique du Sud",
     pays: ["Brésil"], 
     page: "fiche/Apistogramma-pulchra.html",
-    image: "img/Apistogramma-pulchra/Apistogramma-pulchra.jpg"
+    image: "img/Apistogramma-pulchra/Apistogramma-pulchra.PNG"
   },
   {
     id: "poecilia-sphenops",
@@ -1053,7 +1053,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["Mexique", "Honduras"],
     page: "fiche/Poecilia-sphenops.html",
-    image: "img/Poecilia-sphenops/Poecilia-sphenops.jpeg"
+    image: "img/Poecilia-sphenops/Poecilia-sphenops.PNG"
   },
   {
     id: "poecilia-velifera",
