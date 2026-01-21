@@ -1125,7 +1125,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Indonésie"],
     page: "fiche/Chromobotia-macracanthus.html",
-    image: "img/Chromobotia-macracanthus/Chromobotia-macracanthus.jpeg"
+    image: "img/Chromobotia-macranthus/Chromobotia-macranthus.PNG"
   },
   {
     id: "gambusia-holbrooki",
@@ -1137,7 +1137,7 @@ window.FICHES = [
     continent: "Amérique du Nord",
     pays: ["États-Unis"],
     page: "fiche/Gambusia-holbrooki.html",
-    image: "img/Gambusia-holbrooki/Gambusia-holbrooki.jpeg"
+    image: "img/Gambusia-holbrooki/Gambusia-holbrooki.PNG"
   }, 
   {
     id: "danio-rerio",
@@ -1149,7 +1149,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Inde", "Pakistan", "Bangladesh", "Népal", "Bhoutan"],
     page: "fiche/Danio-rerio.html",
-    image: "img/Danio-rerio/Danio-rerio.jpeg"
+    image: "img/Danio-rerio/Danio-rerio.PNG"
   },
   {
     id: "danio-aesculapii",
@@ -1161,7 +1161,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Myanmar"],
     page: "fiche/Danio-aesculapii.html",
-    image: "img/Danio-aesculapii/Danio-aesculapii.jpeg"
+    image: "img/Danio-aesculapii/Danio-aesculapii.PNG"
   },
   {
     id: "danio-margaritatus",
