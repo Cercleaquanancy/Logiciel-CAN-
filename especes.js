@@ -861,7 +861,7 @@ window.FICHES = [
     continent: "Afrique",
     pays: ["Malawi"],
     page: "fiche/Protomelas-taeniolatus.html",
-    image: "img/Aulonocara-hansbaenschi/Aulonocara-hansbaenschi.PNG"
+    image: "img/Protomelas-taeniolatus/Protomelas-taeniolatus.PNG"
   },
   {
     id: "aulonocara-hansbaenschi",
