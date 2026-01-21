@@ -1173,7 +1173,7 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Myanmar", "Thaïlande"],
     page: "fiche/Danio-margaritatus.html",
-    image: "img/Danio-margaritatus/Danio-margaritatus.jpeg"
+    image: "img/Danio-margaritatus/Danio-margaritatus.PNG"
   },
   {
     id: "danio-choprae",
@@ -1185,6 +1185,6 @@ window.FICHES = [
     continent: "Asie",
     pays: ["Myanmar"],
     page: "fiche/Danio-choprae.html",
-    image: "img/Danio-choprae/Danio-choprae.jpeg"
+    image: "img/Danio-choprae/Danio-choprae.PNG"
   }
 ];
