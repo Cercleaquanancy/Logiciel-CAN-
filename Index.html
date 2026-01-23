@@ -49,10 +49,32 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      position: relative;
     }
-    .nav-btn span.icon { font-size: 1rem; }
+    .nav-btn span.icon { font-size: 1rem; position: relative; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .nav-btn:hover { background: #111827; }
+    .notification-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #ff3b3b;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #020617;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); }
+      50% { box-shadow: 0 0 0 4px rgba(255, 59, 59, 0.2); }
+    }
     .navbar-logout {
       border-radius: 999px;
       border: 1px solid #374151;
@@ -119,7 +141,7 @@
       <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
       <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
-      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
       <button class="nav-btn" data-link="evenement.html"><span class="icon">📅</span><span>Événements</span></button>
       <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
@@ -246,8 +268,87 @@
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
         localStorage.removeItem("user");
+        localStorage.removeItem("notificationsSeen");
         window.location.href = "login.html";
       });
+    }
+
+    // --- SYSTÈME DE NOTIFICATIONS ANNONCES ---
+    const ANNONCES_KEY = "announcementsData";
+    const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
+    const navEchange = document.getElementById("navEchange");
+
+    async function loadAnnoncesFromServer() {
+      try {
+        const res = await fetch('/api/annonces');
+        if (!res.ok) throw new Error('Erreur GET /api/annonces');
+        const annonces = await res.json();
+        localStorage.setItem(ANNONCES_KEY, JSON.stringify(annonces));
+        return annonces;
+      } catch (e) {
+        console.error('Erreur chargement annonces :', e);
+        const raw = localStorage.getItem(ANNONCES_KEY);
+        try {
+          return JSON.parse(raw) || [];
+        } catch {
+          return [];
+        }
+      }
+    }
+
+    function updateNotificationBadge() {
+      if (!navEchange) return;
+
+      const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
+      const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
+
+      // Compter les annonces non vues
+      const unseenCount = annonces.filter(a => !seenIds[a.id]).length;
+
+      // Supprimer ancien badge s'il existe
+      const oldBadge = navEchange.querySelector('.notification-badge');
+      if (oldBadge) oldBadge.remove();
+
+      // Ajouter nouveau badge si annonces non vues
+      if (unseenCount > 0) {
+        const badge = document.createElement('span');
+        badge.className = 'notification-badge';
+        badge.textContent = unseenCount > 9 ? '9+' : unseenCount;
+        navEchange.querySelector('.icon').appendChild(badge);
+      }
+    }
+
+    // Bouton Échange - Marquer comme vu au clic
+    navEchange.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Charger et marquer toutes les annonces comme vues
+      const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
+      const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
+      
+      annonces.forEach(a => {
+        seenIds[a.id] = true;
+      });
+      
+      localStorage.setItem(NOTIFICATIONS_SEEN_KEY, JSON.stringify(seenIds));
+      
+      // Retirer le badge
+      updateNotificationBadge();
+      
+      // Aller à la page
+      window.location.href = navEchange.dataset.link;
+    });
+
+    // Charger et afficher badge au démarrage
+    async function initNotifications() {
+      await loadAnnoncesFromServer();
+      updateNotificationBadge();
+
+      // Vérifier les nouvelles annonces toutes les 30 secondes
+      setInterval(async () => {
+        await loadAnnoncesFromServer();
+        updateNotificationBadge();
+      }, 30000);
     }
 
     // --- Prochains événements (depuis l'API) ---
@@ -259,7 +360,6 @@
         const res = await fetch('/api/events');
         if (!res.ok) throw new Error('Erreur GET /api/events');
         const serverEvents = await res.json();
-        // Sauvegarde en localStorage pour compatibilité
         localStorage.setItem(EVENTS_KEY, JSON.stringify(serverEvents));
         return serverEvents;
       } catch (e) {
@@ -295,7 +395,6 @@
     async function renderHomeEvents() {
       if (!homeEventList) return;
       
-      // Charge d'abord depuis l'API
       await loadEventsFromServer();
       
       const nextEvents = getNextEvents(3);
@@ -323,7 +422,9 @@
       }).join("");
     }
 
+    // Initialiser
     renderHomeEvents();
+    initNotifications();
   </script>
 </body>
 </html>
