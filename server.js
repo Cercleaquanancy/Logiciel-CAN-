@@ -4,17 +4,99 @@ const path = require('path');
 const pool = require('./db');
 
 const port = process.env.PORT || 5500;
+const DATA_FILE = path.join(__dirname, 'data.json');
+
 const ADMIN_LOGIN = 'can';
 const ADMIN_PASS = '29081623';
 
+function loadData() {
+  try {
+    if (!fs.existsSync(DATA_FILE)) {
+      return {
+        members: [],
+        loginHistory: [],
+        population: [],
+        annonces: [],
+        serre: {
+          notes: "",
+          bacs: [],
+          assignments: {},
+          feed: {
+            lastUpdate: null,
+            items: [],
+            monthlyUseKg: 0
+          }
+        }
+      };
+    }
+    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+    const parsed = JSON.parse(raw);
+    const serreParsed = parsed.serre && typeof parsed.serre === 'object' ? parsed.serre : {};
+
+    return {
+      members: Array.isArray(parsed.members) ? parsed.members : [],
+      loginHistory: Array.isArray(parsed.loginHistory) ? parsed.loginHistory : [],
+      population: Array.isArray(parsed.population) ? parsed.population : [],
+      annonces: Array.isArray(parsed.annonces) ? parsed.annonces : [],
+      serre: {
+        notes: typeof serreParsed.notes === 'string' ? serreParsed.notes : "",
+        bacs: Array.isArray(serreParsed.bacs) ? serreParsed.bacs : [],
+        assignments: serreParsed.assignments && typeof serreParsed.assignments === 'object'
+          ? serreParsed.assignments
+          : {},
+        feed: serreParsed.feed && typeof serreParsed.feed === 'object'
+          ? {
+              lastUpdate: serreParsed.feed.lastUpdate || null,
+              items: Array.isArray(serreParsed.feed.items) ? serreParsed.feed.items : [],
+              monthlyUseKg: typeof serreParsed.feed.monthlyUseKg === 'number'
+                ? serreParsed.feed.monthlyUseKg
+                : 0
+            }
+          : {
+              lastUpdate: null,
+              items: [],
+              monthlyUseKg: 0
+            }
+      }
+    };
+  } catch (e) {
+    console.error('Erreur lecture data.json :', e);
+    return {
+      members: [],
+      loginHistory: [],
+      population: [],
+      annonces: [],
+      serre: {
+        notes: "",
+        bacs: [],
+        assignments: {},
+        feed: {
+          lastUpdate: null,
+          items: [],
+          monthlyUseKg: 0
+        }
+      }
+    };
+  }
+}
+
+function saveData(data) {
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Erreur écriture data.json :', e);
+  }
+}
+
 function sendJson(res, statusCode, obj) {
+  const json = JSON.stringify(obj);
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type'
   });
-  res.end(JSON.stringify(obj));
+  res.end(json);
 }
 
 function sendText(res, statusCode, text) {
@@ -31,11 +113,18 @@ function parseJsonBody(req, callback) {
   let body = '';
   req.on('data', chunk => {
     body += chunk;
-    if (body.length > 1e6) req.connection.destroy();
+    if (body.length > 1e6) {
+      req.connection.destroy();
+    }
   });
   req.on('end', () => {
+    if (!body) {
+      callback(null, {});
+      return;
+    }
     try {
-      callback(null, body ? JSON.parse(body) : {});
+      const json = JSON.parse(body);
+      callback(null, json);
     } catch (e) {
       callback(e);
     }
@@ -57,12 +146,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ============ API MEMBRES ============
+  // ==================== API MEMBRES ====================
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
-        console.error('Erreur SELECT members:', err);
+        console.error('Erreur SELECT members :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -79,13 +168,22 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'login et pass obligatoires');
         return;
       }
-      pool.query(
-        'INSERT INTO members (login, pass, role, serre) VALUES ($1, $2, $3, $4) ON CONFLICT (login) DO UPDATE SET pass = EXCLUDED.pass, role = EXCLUDED.role, serre = EXCLUDED.serre',
-        [login, pass, role || 'adhérent', !!serre]
-      )
+
+      const finalRole = role || 'adhérent';
+      const serreBool = !!serre;
+
+      const query = `
+        INSERT INTO members (login, pass, role, serre)
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (login)
+        DO UPDATE SET pass = EXCLUDED.pass, role = EXCLUDED.role, serre = EXCLUDED.serre
+      `;
+      const params = [login, pass, finalRole, serreBool];
+
+      pool.query(query, params)
         .then(() => sendJson(res, 200, { success: true }))
-        .catch(err => {
-          console.error('Erreur INSERT member:', err);
+        .catch(dbErr => {
+          console.error('Erreur INSERT/UPDATE member :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -97,7 +195,7 @@ const server = http.createServer((req, res) => {
     pool.query('DELETE FROM members WHERE login = $1', [login])
       .then(result => sendJson(res, 200, { success: true, removed: result.rowCount }))
       .catch(err => {
-        console.error('Erreur DELETE member:', err);
+        console.error('Erreur DELETE member :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -107,13 +205,13 @@ const server = http.createServer((req, res) => {
     pool.query('DELETE FROM members')
       .then(() => sendJson(res, 200, { success: true }))
       .catch(err => {
-        console.error('Erreur DELETE members:', err);
+        console.error('Erreur DELETE ALL members :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
   }
 
-  // ============ API LOGIN ============
+  // ==================== API LOGIN ====================
   if (method === 'POST' && url === '/api/login') {
     parseJsonBody(req, (err, body) => {
       if (err) {
@@ -125,13 +223,18 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'username et password obligatoires');
         return;
       }
+
       const nowIso = new Date().toISOString();
 
       if (username === ADMIN_LOGIN && password === ADMIN_PASS) {
-        pool.query('INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)', [username, 'admin', nowIso])
-          .then(() => sendJson(res, 200, { success: true, user: { username, role: 'admin', serre: true } }))
-          .catch(err => {
-            console.error('Erreur INSERT login_history admin:', err);
+        const userObj = { username, role: 'admin', serre: true };
+        pool.query(
+          'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
+          [username, 'admin', nowIso]
+        )
+          .then(() => sendJson(res, 200, { success: true, user: userObj }))
+          .catch(dbErr => {
+            console.error('Erreur INSERT login_history admin :', dbErr);
             sendText(res, 500, 'Erreur serveur');
           });
         return;
@@ -143,22 +246,24 @@ const server = http.createServer((req, res) => {
             sendJson(res, 401, { success: false, error: 'unknown_user' });
             return;
           }
+
           const found = result.rows[0];
           if (found.pass !== password) {
             sendJson(res, 401, { success: false, error: 'bad_password' });
             return;
           }
+
           const role = found.role || 'adhérent';
           const serre = !!found.serre;
-          pool.query('INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)', [found.login, role, nowIso])
-            .then(() => sendJson(res, 200, { success: true, user: { username: found.login, role, serre } }))
-            .catch(err => {
-              console.error('Erreur INSERT login_history:', err);
-              sendText(res, 500, 'Erreur serveur');
-            });
+          const userObj = { username: found.login, role, serre };
+
+          return pool.query(
+            'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
+            [found.login, role, nowIso]
+          ).then(() => sendJson(res, 200, { success: true, user: userObj }));
         })
-        .catch(err => {
-          console.error('Erreur SELECT member:', err);
+        .catch(dbErr => {
+          console.error('Erreur SELECT/INSERT login_history :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -169,7 +274,7 @@ const server = http.createServer((req, res) => {
     pool.query('SELECT username, role, date FROM login_history ORDER BY date DESC')
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
-        console.error('Erreur SELECT login_history:', err);
+        console.error('Erreur SELECT login_history :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -179,18 +284,28 @@ const server = http.createServer((req, res) => {
     pool.query('DELETE FROM login_history')
       .then(() => sendJson(res, 200, { success: true }))
       .catch(err => {
-        console.error('Erreur DELETE login_history:', err);
+        console.error('Erreur DELETE login_history :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
   }
 
-  // ============ API POPULATION ============
+  // ==================== API POPULATION ====================
   if (method === 'GET' && url === '/api/population') {
-    pool.query('SELECT member_username AS "memberUsername", species_name AS "speciesName", source, total_count AS "totalCount", published FROM population ORDER BY member_username, species_name')
+    const query = `
+      SELECT
+        member_username AS "memberUsername",
+        species_name AS "speciesName",
+        source,
+        total_count AS "totalCount",
+        published
+      FROM population
+      ORDER BY member_username, species_name
+    `;
+    pool.query(query)
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
-        console.error('Erreur SELECT population:', err);
+        console.error('Erreur SELECT population :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -202,11 +317,13 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { memberUsername, entries } = body;
+
+      const { memberUsername, entries } = body || {};
       if (!memberUsername || !Array.isArray(entries)) {
-        sendText(res, 400, 'memberUsername et entries obligatoires');
+        sendText(res, 400, 'memberUsername et entries (tableau) sont obligatoires');
         return;
       }
+
       const cleanEntries = entries
         .filter(e => e && e.speciesName)
         .map(e => ({
@@ -217,134 +334,52 @@ const server = http.createServer((req, res) => {
           published: !!e.published
         }));
 
-      pool.query('DELETE FROM population WHERE member_username = $1', [memberUsername])
+      const deleteQuery = 'DELETE FROM population WHERE member_username = $1';
+
+      pool.query(deleteQuery, [memberUsername])
         .then(() => {
-          if (!cleanEntries.length) {
+          if (cleanEntries.length === 0) {
             sendJson(res, 200, { success: true, count: 0 });
-            return null;
-          }
-          const insertQuery = `
-            INSERT INTO population (member_username, species_name, source, total_count, published)
-            VALUES ${cleanEntries.map((_, i) => `($${5*i+1}, $${5*i+2}, $${5*i+3}, $${5*i+4}, $${5*i+5})`).join(', ')}
-          `;
-          const params = cleanEntries.flatMap(e => [e.memberUsername, e.speciesName, e.source, e.totalCount, e.published]);
-          return pool.query(insertQuery, params);
-        })
-        .then(result => {
-          if (!result) return;
-          sendJson(res, 200, { success: true, count: cleanEntries.length });
-        })
-        .catch(err => {
-          console.error('Erreur sync population:', err);
-          sendText(res, 500, 'Erreur serveur');
-        });
-    });
-    return;
-  }
-
-  // ============ API EVENTS ============
-  if (method === 'GET' && url.startsWith('/api/events')) {
-    const queryString = req.url.split('?')[1] || '';
-    const params = new URLSearchParams(queryString);
-    const type = params.get('type') || 'all';
-    const sort = params.get('sort') || 'date-asc';
-
-    let query = 'SELECT id, titre, type, date_iso, heure, lieu, description, lien FROM events WHERE date_iso >= CURRENT_DATE';
-    const dbParams = [];
-
-    if (type && type !== 'all') {
-      query += ' AND type = $1';
-      dbParams.push(type);
-    }
-
-    if (sort === 'date-asc') query += ' ORDER BY date_iso ASC';
-    else if (sort === 'date-desc') query += ' ORDER BY date_iso DESC';
-    else if (sort === 'title-asc') query += ' ORDER BY titre ASC';
-    else if (sort === 'title-desc') query += ' ORDER BY titre DESC';
-    else query += ' ORDER BY date_iso ASC';
-
-    pool.query(query, dbParams)
-      .then(result => sendJson(res, 200, result.rows))
-      .catch(err => {
-        console.error('Erreur GET events:', err);
-        sendText(res, 500, 'Erreur serveur');
-      });
-    return;
-  }
-
-  if (method === 'POST' && url === '/api/events') {
-    parseJsonBody(req, (err, body) => {
-      if (err) {
-        sendText(res, 400, 'JSON invalide');
-        return;
-      }
-      const { titre, type, date_iso, heure, lieu, description, lien } = body;
-      if (!titre || !date_iso) {
-        sendText(res, 400, 'titre et date_iso obligatoires');
-        return;
-      }
-      const id = 'evt_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-      pool.query(
-        'INSERT INTO events (id, titre, type, date_iso, heure, lieu, description, lien) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, titre, type, date_iso, heure, lieu, description, lien',
-        [id, String(titre).trim(), String(type || 'autre'), String(date_iso), String(heure || ''), String(lieu || '').trim(), String(description || '').trim(), String(lien || '').trim()]
-      )
-        .then(result => sendJson(res, 200, { success: true, event: result.rows[0] }))
-        .catch(err => {
-          console.error('Erreur INSERT event:', err);
-          sendText(res, 500, 'Erreur serveur');
-        });
-    });
-    return;
-  }
-
-  if (method === 'PATCH' && url.startsWith('/api/events/')) {
-    const id = decodeURIComponent(url.replace('/api/events/', ''));
-    parseJsonBody(req, (err, body) => {
-      if (err) {
-        sendText(res, 400, 'JSON invalide');
-        return;
-      }
-      const { titre, type, date_iso, heure, lieu, description, lien } = body;
-      if (!titre || !date_iso) {
-        sendText(res, 400, 'titre et date_iso obligatoires');
-        return;
-      }
-      pool.query(
-        'UPDATE events SET titre = $1, type = $2, date_iso = $3, heure = $4, lieu = $5, description = $6, lien = $7 WHERE id = $8 RETURNING id, titre, type, date_iso, heure, lieu, description, lien',
-        [String(titre).trim(), String(type || 'autre'), String(date_iso), String(heure || ''), String(lieu || '').trim(), String(description || '').trim(), String(lien || '').trim(), id]
-      )
-        .then(result => {
-          if (result.rowCount === 0) {
-            sendText(res, 404, 'Événement introuvable');
             return;
           }
-          sendJson(res, 200, { success: true, event: result.rows[0] });
+
+          const insertQuery = `
+            INSERT INTO population (member_username, species_name, source, total_count, published)
+            VALUES ${cleanEntries.map((_, i) =>
+              `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`
+            ).join(', ')}
+          `;
+
+          const params = cleanEntries.flatMap(e => [
+            e.memberUsername,
+            e.speciesName,
+            e.source,
+            e.totalCount,
+            e.published
+          ]);
+
+          return pool.query(insertQuery, params);
         })
-        .catch(err => {
-          console.error('Erreur PATCH event:', err);
+        .then(insertResult => {
+          if (!insertResult) return;
+          sendJson(res, 200, { success: true, count: cleanEntries.length });
+        })
+        .catch(dbErr => {
+          console.error('Erreur sync population :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  if (method === 'DELETE' && url.startsWith('/api/events/')) {
-    const id = decodeURIComponent(url.replace('/api/events/', ''));
-    pool.query('DELETE FROM events WHERE id = $1', [id])
-      .then(result => sendJson(res, 200, { success: true, removed: result.rowCount }))
-      .catch(err => {
-        console.error('Erreur DELETE event:', err);
-        sendText(res, 500, 'Erreur serveur');
-      });
-    return;
-  }
-
-  // ============ API ANNONCES ============
+  // ==================== API ANNONCES ====================
   if (method === 'GET' && url === '/api/annonces') {
-    pool.query('SELECT id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar" FROM annonces ORDER BY id DESC')
+    pool.query(
+      'SELECT id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar" FROM annonces ORDER BY id DESC'
+    )
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
-        console.error('Erreur SELECT annonces:', err);
+        console.error('Erreur SELECT annonces :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -356,65 +391,94 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { titre, type, description, categorie, auteur } = body;
+      const { titre, type, description, categorie, auteur } = body || {};
       if (!titre || !type || !categorie || !auteur) {
-        sendText(res, 400, 'titre, type, categorie, auteur obligatoires');
+        sendText(res, 400, 'titre, type, categorie et auteur sont obligatoires');
         return;
       }
-      const id = 'annonce_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-      pool.query(
-        'INSERT INTO annonces (id, titre, type, description, categorie, auteur, prive, favori_par) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"',
-        [id, String(titre).trim(), String(type), String(description || '').trim(), String(categorie), String(auteur), true, []]
-      )
-        .then(result => sendJson(res, 200, { success: true, annonce: result.rows[0] }))
-        .catch(err => {
-          console.error('Erreur INSERT annonce:', err);
+
+      const id = "annonce_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const prive = true;
+      const favoriPar = [];
+
+      const query = `
+        INSERT INTO annonces (id, titre, type, description, categorie, auteur, prive, favori_par)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+      `;
+      const params = [
+        id,
+        String(titre).trim(),
+        String(type),
+        (description || '').toString().trim(),
+        String(categorie),
+        String(auteur),
+        prive,
+        favoriPar
+      ];
+
+      pool.query(query, params)
+        .then(result => {
+          const annonce = result.rows[0];
+          sendJson(res, 200, { success: true, annonce });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT annonce :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.includes('/togglePrivate')) {
-    const id = decodeURIComponent(url.split('/')[3]);
+  if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.endsWith('/togglePrivate')) {
+    const id = decodeURIComponent(url.replace('/api/annonces/', '').replace('/togglePrivate', ''));
     parseJsonBody(req, (err, body) => {
       if (err) {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username } = body;
+      const { username } = body || {};
       if (!username) {
         sendText(res, 400, 'username obligatoire');
         return;
       }
-      pool.query('UPDATE annonces SET prive = NOT prive WHERE id = $1 AND auteur = $2 RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"', [id, username])
+
+      const query = `
+        UPDATE annonces
+        SET prive = NOT prive
+        WHERE id = $1 AND auteur = $2
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+      `;
+      pool.query(query, [id, username])
         .then(result => {
           if (result.rowCount === 0) {
-            sendText(res, 403, 'Non autorisé');
+            sendText(res, 403, 'Non autorisé ou annonce introuvable');
             return;
           }
-          sendJson(res, 200, { success: true, annonce: result.rows[0] });
+          const annonce = result.rows[0];
+          sendJson(res, 200, { success: true, annonce });
         })
-        .catch(err => {
-          console.error('Erreur PATCH togglePrivate:', err);
+        .catch(dbErr => {
+          console.error('Erreur togglePrivate annonce :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.includes('/toggleFavori')) {
-    const id = decodeURIComponent(url.split('/')[3]);
+  if (method === 'PATCH' && url.startsWith('/api/annonces/') && url.endsWith('/toggleFavori')) {
+    const id = decodeURIComponent(url.replace('/api/annonces/', '').replace('/toggleFavori', ''));
     parseJsonBody(req, (err, body) => {
       if (err) {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username } = body;
+      const { username } = body || {};
       if (!username) {
         sendText(res, 400, 'username obligatoire');
         return;
       }
+
       pool.query('SELECT favori_par FROM annonces WHERE id = $1', [id])
         .then(result => {
           if (result.rowCount === 0) {
@@ -425,15 +489,22 @@ const server = http.createServer((req, res) => {
           const idx = favoriPar.indexOf(username);
           if (idx === -1) favoriPar.push(username);
           else favoriPar.splice(idx, 1);
-          pool.query('UPDATE annonces SET favori_par = $1 WHERE id = $2 RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"', [favoriPar, id])
-            .then(updateResult => sendJson(res, 200, { success: true, annonce: updateResult.rows[0] }))
-            .catch(err => {
-              console.error('Erreur PATCH toggleFavori:', err);
-              sendText(res, 500, 'Erreur serveur');
-            });
+
+          const updateQuery = `
+            UPDATE annonces
+            SET favori_par = $1
+            WHERE id = $2
+            RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+          `;
+          return pool.query(updateQuery, [favoriPar, id]);
         })
-        .catch(err => {
-          console.error('Erreur SELECT annonce favori:', err);
+        .then(updateResult => {
+          if (!updateResult) return;
+          const annonce = updateResult.rows[0];
+          sendJson(res, 200, { success: true, annonce });
+        })
+        .catch(dbErr => {
+          console.error('Erreur toggleFavori annonce :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -441,41 +512,45 @@ const server = http.createServer((req, res) => {
   }
 
   if (method === 'DELETE' && url.startsWith('/api/annonces/')) {
-    const id = decodeURIComponent(url.replace('/api/annonces/', '').split('/')[0]);
+    const id = decodeURIComponent(url.replace('/api/annonces/', ''));
     parseJsonBody(req, (err, body) => {
       const { username, role } = body || {};
       if (!username) {
         sendText(res, 400, 'username obligatoire');
         return;
       }
+
       pool.query('SELECT auteur FROM annonces WHERE id = $1', [id])
         .then(result => {
           if (result.rowCount === 0) {
             sendText(res, 404, 'Annonce introuvable');
-            return null;
+            return;
           }
+
           const auteur = result.rows[0].auteur;
           const isOwner = auteur === username;
-          const isAdmin = role === 'admin' || role === 'membre_bureau';
-          if (!isOwner && !isAdmin) {
+          const isAdminLike = role === 'admin' || role === 'membre_bureau';
+
+          if (!isOwner && !isAdminLike) {
             sendText(res, 403, 'Non autorisé');
-            return null;
+            return;
           }
+
           return pool.query('DELETE FROM annonces WHERE id = $1', [id]);
         })
-        .then(result => {
-          if (!result) return;
+        .then(deleteResult => {
+          if (!deleteResult) return;
           sendJson(res, 200, { success: true });
         })
-        .catch(err => {
-          console.error('Erreur DELETE annonce:', err);
+        .catch(dbErr => {
+          console.error('Erreur DELETE annonce :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  // ============ API SERRE ============
+  // ==================== API SERRE ====================
   if (method === 'GET' && url === '/api/serre') {
     Promise.all([
       pool.query('SELECT notes FROM serre_meta WHERE id = 1'),
@@ -484,33 +559,54 @@ const server = http.createServer((req, res) => {
       pool.query('SELECT last_update, monthly_use_kg FROM serre_feed WHERE id = 1'),
       pool.query('SELECT id, name, unit, quantity FROM serre_feed_items ORDER BY id')
     ])
-      .then(([metaRes, bacsRes, assignRes, feedRes, itemsRes]) => {
-        const notes = metaRes.rowCount > 0 ? metaRes.rows[0].notes || '' : '';
-        const bacs = bacsRes.rows.map(r => ({
-          id: r.id,
-          name: r.name,
-          lastWaterChange: r.last_water_change,
-          lastFilterClean: r.last_filter_clean
-        }));
-        const assignments = {};
-        assignRes.rows.forEach(r => {
-          assignments[r.bac_id] = { membreId: r.member_username, nom: r.member_username };
-        });
-        let feed = { lastUpdate: null, items: [], monthlyUseKg: 0 };
-        if (feedRes.rowCount > 0) {
-          feed.lastUpdate = feedRes.rows[0].last_update;
-          feed.monthlyUseKg = Number(feedRes.rows[0].monthly_use_kg) || 0;
+      .then(([metaResult, bacsResult, assignResult, feedResult, feedItemsResult]) => {
+        let notes = "";
+        if (metaResult.rowCount > 0) {
+          notes = metaResult.rows[0].notes || "";
         }
-        feed.items = itemsRes.rows.map(r => ({
-          id: r.id,
-          name: r.name,
-          unit: r.unit,
-          quantity: Number(r.quantity)
+
+        const bacs = bacsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          lastWaterChange: row.last_water_change,
+          lastFilterClean: row.last_filter_clean
         }));
-        sendJson(res, 200, { notes, bacs, assignments, feed });
+
+        const assignments = {};
+        assignResult.rows.forEach(row => {
+          assignments[row.bac_id] = {
+            membreId: row.member_username,
+            nom: row.member_username
+          };
+        });
+
+        let feed = {
+          lastUpdate: null,
+          items: [],
+          monthlyUseKg: 0
+        };
+        if (feedResult.rowCount > 0) {
+          const fr = feedResult.rows[0];
+          feed.lastUpdate = fr.last_update || null;
+          feed.monthlyUseKg = Number(fr.monthly_use_kg) || 0;
+        }
+
+        feed.items = feedItemsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          unit: row.unit,
+          quantity: Number(row.quantity) || 0
+        }));
+
+        sendJson(res, 200, {
+          notes,
+          bacs,
+          assignments,
+          feed
+        });
       })
       .catch(err => {
-        console.error('Erreur GET serre:', err);
+        console.error('Erreur GET /api/serre :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -522,12 +618,18 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { notes } = body;
-      const txt = typeof notes === 'string' ? notes : '';
-      pool.query('INSERT INTO serre_meta (id, notes) VALUES (1, $1) ON CONFLICT (id) DO UPDATE SET notes = EXCLUDED.notes', [txt])
+      const { notes } = body || {};
+      const txt = typeof notes === 'string' ? notes : "";
+
+      const query = `
+        INSERT INTO serre_meta (id, notes)
+        VALUES (1, $1)
+        ON CONFLICT (id) DO UPDATE SET notes = EXCLUDED.notes
+      `;
+      pool.query(query, [txt])
         .then(() => sendJson(res, 200, { success: true }))
-        .catch(err => {
-          console.error('Erreur POST serre notes:', err);
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/notes :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -540,43 +642,70 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { bacs, assignments } = body;
+      const { bacs, assignments } = body || {};
       if (!Array.isArray(bacs)) {
-        sendText(res, 400, 'bacs must be array');
+        sendText(res, 400, 'bacs doit être un tableau');
         return;
       }
-      const cleanBacs = bacs.map(b => ({
+
+      const cleanedBacs = bacs.map(b => ({
         id: String(b.id),
-        name: String(b.name || 'Bac'),
+        name: String(b.name || "Bac serre"),
         lastWaterChange: b.lastWaterChange || null,
         lastFilterClean: b.lastFilterClean || null
       }));
-      const assignObj = (assignments && typeof assignments === 'object') ? assignments : {};
 
-      pool.query('DELETE FROM serre_bacs')
-        .then(() => pool.query('DELETE FROM serre_assignments'))
+      const assignObj = assignments && typeof assignments === 'object' ? assignments : {};
+
+      const deleteBacs = 'DELETE FROM serre_bacs';
+      const deleteAssign = 'DELETE FROM serre_assignments';
+
+      pool.query(deleteBacs)
+        .then(() => pool.query(deleteAssign))
         .then(() => {
-          if (!cleanBacs.length) return null;
-          const query = `INSERT INTO serre_bacs (id, name, last_water_change, last_filter_clean) VALUES ${cleanBacs.map((_, i) => `($${4*i+1}, $${4*i+2}, $${4*i+3}, $${4*i+4})`).join(', ')}`;
-          const params = cleanBacs.flatMap(b => [b.id, b.name, b.lastWaterChange, b.lastFilterClean]);
-          return pool.query(query, params);
+          if (!cleanedBacs.length) {
+            return null;
+          }
+          const insertQuery = `
+            INSERT INTO serre_bacs (id, name, last_water_change, last_filter_clean)
+            VALUES ${cleanedBacs.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanedBacs.flatMap(b => [
+            b.id,
+            b.name,
+            b.lastWaterChange,
+            b.lastFilterClean
+          ]);
+          return pool.query(insertQuery, params);
         })
         .then(() => {
-          const entries = Object.entries(assignObj);
-          if (!entries.length) {
+          const assignEntries = Object.entries(assignObj);
+          if (!assignEntries.length) {
             sendJson(res, 200, { success: true });
             return null;
           }
-          const query = `INSERT INTO serre_assignments (member_username, bac_id) VALUES ${entries.map((_, i) => `($${2*i+1}, $${2*i+2})`).join(', ')}`;
-          const params = entries.flatMap(([bacId, val]) => [String(val.membreId), String(bacId)]);
-          return pool.query(query, params);
+
+          const insertAssignQuery = `
+            INSERT INTO serre_assignments (member_username, bac_id)
+            VALUES ${assignEntries.map((_, i) =>
+              `($${2 * i + 1}, $${2 * i + 2})`
+            ).join(', ')}
+          `;
+          const assignParams = assignEntries.flatMap(([bacId, val]) => [
+            String(val.membreId),
+            String(bacId)
+          ]);
+
+          return pool.query(insertAssignQuery, assignParams);
         })
         .then(result => {
-          if (!result) return;
+          if (result === null) return;
           sendJson(res, 200, { success: true });
         })
-        .catch(err => {
-          console.error('Erreur POST serre bacs:', err);
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/bacs :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -589,63 +718,98 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { items, monthlyUseKg } = body;
-      const cleanItems = Array.isArray(items) ? items.map((it, i) => ({
-        id: String(it.id || `feed_${Date.now()}_${i}`),
-        name: String(it.name || ''),
-        unit: String(it.unit || 'kg'),
-        quantity: Number(it.quantity) || 0
-      })) : [];
-      const finalMonthly = Number(monthlyUseKg) || 0;
+      const { items, monthlyUseKg } = body || {};
+
+      const cleanItems = Array.isArray(items)
+        ? items.map((it, idx) => ({
+            id: String(it.id || ("feed_" + Date.now() + "_" + idx)),
+            name: String(it.name || ""),
+            unit: String(it.unit || "kg"),
+            quantity: Number(it.quantity) || 0
+          }))
+        : [];
+
+      const mUse = Number(monthlyUseKg);
+      const finalMonthly = isNaN(mUse) ? 0 : mUse;
       const nowIso = new Date().toISOString();
 
-      pool.query('DELETE FROM serre_feed_items')
-        .then(() => pool.query('INSERT INTO serre_feed (id, last_update, monthly_use_kg) VALUES (1, $1, $2) ON CONFLICT (id) DO UPDATE SET last_update = EXCLUDED.last_update, monthly_use_kg = EXCLUDED.monthly_use_kg', [nowIso, finalMonthly]))
+      const deleteItems = 'DELETE FROM serre_feed_items';
+      const upsertFeed = `
+        INSERT INTO serre_feed (id, last_update, monthly_use_kg)
+        VALUES (1, $1, $2)
+        ON CONFLICT (id) DO UPDATE SET last_update = EXCLUDED.last_update,
+                                      monthly_use_kg = EXCLUDED.monthly_use_kg
+      `;
+
+      pool.query(deleteItems)
+        .then(() => pool.query(upsertFeed, [nowIso, finalMonthly]))
         .then(() => {
           if (!cleanItems.length) {
             sendJson(res, 200, { success: true });
             return null;
           }
-          const query = `INSERT INTO serre_feed_items (id, name, unit, quantity) VALUES ${cleanItems.map((_, i) => `($${4*i+1}, $${4*i+2}, $${4*i+3}, $${4*i+4})`).join(', ')}`;
-          const params = cleanItems.flatMap(it => [it.id, it.name, it.unit, it.quantity]);
-          return pool.query(query, params);
+
+          const insertItemsQuery = `
+            INSERT INTO serre_feed_items (id, name, unit, quantity)
+            VALUES ${cleanItems.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanItems.flatMap(it => [
+            it.id,
+            it.name,
+            it.unit,
+            it.quantity
+          ]);
+
+          return pool.query(insertItemsQuery, params);
         })
         .then(result => {
-          if (!result) return;
+          if (result === null) return;
           sendJson(res, 200, { success: true });
         })
-        .catch(err => {
-          console.error('Erreur POST serre feed:', err);
+        .catch(dbErr => {
+          console.error('Erreur POST /api/serre/feed :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  // ============ API AQUARIUM ============
+  // ==================== API AQUARIUM ====================
   if (method === 'GET' && url.startsWith('/api/aquarium')) {
-    const qs = new URLSearchParams(req.url.split('?')[1] || '');
-    const username = qs.get('username');
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
     if (!username) {
-      sendText(res, 400, 'username required');
+      sendText(res, 400, 'username obligatoire');
       return;
     }
+
     Promise.all([
       pool.query('SELECT notes FROM aquarium_notes WHERE username = $1', [username]),
-      pool.query('SELECT id, name, last_water_change, last_filter_clean FROM aquarium_bacs WHERE username = $1 ORDER BY id', [username])
+      pool.query(
+        'SELECT id, name, last_water_change, last_filter_clean FROM aquarium_bacs WHERE username = $1 ORDER BY id',
+        [username]
+      )
     ])
-      .then(([notesRes, bacsRes]) => {
-        const notes = notesRes.rowCount > 0 ? notesRes.rows[0].notes || '' : '';
-        const bacs = bacsRes.rows.map(r => ({
-          id: r.id,
-          name: r.name,
-          lastWaterChange: r.last_water_change,
-          lastFilterClean: r.last_filter_clean
+      .then(([notesResult, bacsResult]) => {
+        let notes = "";
+        if (notesResult.rowCount > 0) {
+          notes = notesResult.rows[0].notes || "";
+        }
+
+        const bacs = bacsResult.rows.map(row => ({
+          id: row.id,
+          name: row.name,
+          lastWaterChange: row.last_water_change,
+          lastFilterClean: row.last_filter_clean
         }));
+
         sendJson(res, 200, { notes, bacs });
       })
       .catch(err => {
-        console.error('Erreur GET aquarium:', err);
+        console.error('Erreur GET /api/aquarium :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -657,32 +821,55 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username, notes, bacs } = body;
+      const { username, notes, bacs } = body || {};
       if (!username) {
-        sendText(res, 400, 'username required');
+        sendText(res, 400, 'username obligatoire');
         return;
       }
-      const txtNotes = typeof notes === 'string' ? notes : '';
-      const cleanBacs = Array.isArray(bacs) ? bacs.map(b => ({
-        id: String(b.id),
-        name: String(b.name || 'Bac'),
-        lastWaterChange: b.lastWaterChange || null,
-        lastFilterClean: b.lastFilterClean || null
-      })) : [];
+
+      const txtNotes = typeof notes === 'string' ? notes : "";
+      const cleanBacs = Array.isArray(bacs)
+        ? bacs.map(b => ({
+            id: String(b.id),
+            name: String(b.name || 'Bac'),
+            lastWaterChange: b.lastWaterChange || null,
+            lastFilterClean: b.lastFilterClean || null
+          }))
+        : [];
+
+      const upsertNotes = `
+        INSERT INTO aquarium_notes (username, notes)
+        VALUES ($1, $2)
+        ON CONFLICT (username) DO UPDATE SET notes = EXCLUDED.notes
+      `;
+      const deleteBacs = 'DELETE FROM aquarium_bacs WHERE username = $1';
 
       pool.query('BEGIN')
-        .then(() => pool.query('INSERT INTO aquarium_notes (username, notes) VALUES ($1, $2) ON CONFLICT (username) DO UPDATE SET notes = EXCLUDED.notes', [username, txtNotes]))
-        .then(() => pool.query('DELETE FROM aquarium_bacs WHERE username = $1', [username]))
+        .then(() => pool.query(upsertNotes, [username, txtNotes]))
+        .then(() => pool.query(deleteBacs, [username]))
         .then(() => {
           if (!cleanBacs.length) return null;
-          const query = `INSERT INTO aquarium_bacs (id, username, name, last_water_change, last_filter_clean) VALUES ${cleanBacs.map((_, i) => `($${5*i+1}, $${5*i+2}, $${5*i+3}, $${5*i+4}, $${5*i+5})`).join(', ')}`;
-          const params = cleanBacs.flatMap(b => [b.id, username, b.name, b.lastWaterChange, b.lastFilterClean]);
-          return pool.query(query, params);
+          const insertQuery = `
+            INSERT INTO aquarium_bacs (id, username, name, last_water_change, last_filter_clean)
+            VALUES ${cleanBacs.map((_, i) =>
+              `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`
+            ).join(', ')}
+          `;
+          const params = cleanBacs.flatMap(b => [
+            b.id,
+            username,
+            b.name,
+            b.lastWaterChange,
+            b.lastFilterClean
+          ]);
+          return pool.query(insertQuery, params);
         })
         .then(() => pool.query('COMMIT'))
-        .then(() => sendJson(res, 200, { success: true }))
-        .catch(err => {
-          console.error('Erreur POST aquarium:', err);
+        .then(() => {
+          sendJson(res, 200, { success: true });
+        })
+        .catch(dbErr => {
+          console.error('Erreur POST /api/aquarium :', dbErr);
           pool.query('ROLLBACK').catch(() => {});
           sendText(res, 500, 'Erreur serveur');
         });
@@ -690,20 +877,31 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ============ API BAC MEASURES ============
+  // ==================== API BAC: MESURES ====================
   if (method === 'GET' && url.startsWith('/api/bac/measures')) {
-    const qs = new URLSearchParams(req.url.split('?')[1] || '');
-    const username = qs.get('username');
-    const tankId = qs.get('tankId');
-    const type = qs.get('type') || 'aquarium';
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
+    const tankId = params.get('tankId');
+    const type = params.get('type') || 'aquarium';
+
     if (!username || !tankId) {
-      sendText(res, 400, 'username et tankId required');
+      sendText(res, 400, 'username et tankId obligatoires');
       return;
     }
-    pool.query('SELECT id, date, temp, ph, gh, obs, repro FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3 ORDER BY date ASC', [username, String(tankId), type])
-      .then(result => sendJson(res, 200, { history: result.rows }))
+
+    pool.query(
+      `SELECT id, date, temp, ph, gh, obs, repro
+       FROM bac_measures
+       WHERE username = $1 AND tank_id = $2 AND type = $3
+       ORDER BY date ASC`,
+      [username, String(tankId), type]
+    )
+      .then(result => {
+        sendJson(res, 200, { history: result.rows });
+      })
       .catch(err => {
-        console.error('Erreur GET bac measures:', err);
+        console.error('Erreur GET /api/bac/measures :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -715,60 +913,89 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username, tankId, type, entries } = body;
+      const { username, tankId, type, entries } = body || {};
       if (!username || !tankId || !Array.isArray(entries)) {
-        sendText(res, 400, 'username, tankId, entries required');
+        sendText(res, 400, 'username, tankId et entries sont obligatoires');
         return;
       }
+
       const t = type || 'aquarium';
       const cleanEntries = entries.map(e => ({
         date: e.date ? new Date(e.date).toISOString() : new Date().toISOString(),
-        temp: (e.temp !== null && e.temp !== undefined && e.temp !== '') ? Number(e.temp) : null,
-        ph: (e.ph !== null && e.ph !== undefined && e.ph !== '') ? Number(e.ph) : null,
-        gh: (e.gh !== null && e.gh !== undefined && e.gh !== '') ? Number(e.gh) : null,
+        temp: e.temp !== null && e.temp !== undefined && e.temp !== '' ? Number(e.temp) : null,
+        ph: e.ph !== null && e.ph !== undefined && e.ph !== '' ? Number(e.ph) : null,
+        gh: e.gh !== null && e.gh !== undefined && e.gh !== '' ? Number(e.gh) : null,
         obs: e.obs ? String(e.obs) : '',
         repro: !!e.repro
       }));
 
-      pool.query('DELETE FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3', [username, String(tankId), t])
+      pool.query(
+        'DELETE FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3',
+        [username, String(tankId), t]
+      )
         .then(() => {
           if (!cleanEntries.length) {
             sendJson(res, 200, { success: true, count: 0 });
             return null;
           }
-          const query = `INSERT INTO bac_measures (username, tank_id, type, date, temp, ph, gh, obs, repro) VALUES ${cleanEntries.map((_, i) => `($${9*i+1}, $${9*i+2}, $${9*i+3}, $${9*i+4}, $${9*i+5}, $${9*i+6}, $${9*i+7}, $${9*i+8}, $${9*i+9})`).join(', ')}`;
-          const params = cleanEntries.flatMap(e => [username, String(tankId), t, e.date, e.temp, e.ph, e.gh, e.obs, e.repro]);
-          return pool.query(query, params);
+          const insertQuery = `
+            INSERT INTO bac_measures
+              (username, tank_id, type, date, temp, ph, gh, obs, repro)
+            VALUES ${cleanEntries.map((_, i) =>
+              `($${9 * i + 1}, $${9 * i + 2}, $${9 * i + 3}, $${9 * i + 4}, $${9 * i + 5}, $${9 * i + 6}, $${9 * i + 7}, $${9 * i + 8}, $${9 * i + 9})`
+            ).join(', ')}
+          `;
+          const params = cleanEntries.flatMap(e => [
+            username,
+            String(tankId),
+            t,
+            e.date,
+            e.temp,
+            e.ph,
+            e.gh,
+            e.obs,
+            e.repro
+          ]);
+          return pool.query(insertQuery, params);
         })
         .then(result => {
-          if (!result) return;
+          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanEntries.length });
         })
-        .catch(err => {
-          console.error('Erreur POST bac measures:', err);
+        .catch(dbErr => {
+          console.error('Erreur POST /api/bac/measures :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  // ============ API BAC POPULATION ============
+  // ==================== API BAC: POPULATION ====================
   if (method === 'GET' && url.startsWith('/api/bac/population')) {
-    const qs = new URLSearchParams(req.url.split('?')[1] || '');
-    const username = qs.get('username');
-    const tankId = qs.get('tankId');
-    const type = qs.get('type') || 'aquarium';
+    const queryString = req.url.split('?')[1] || '';
+    const params = new URLSearchParams(queryString);
+    const username = params.get('username');
+    const tankId = params.get('tankId');
+    const type = params.get('type') || 'aquarium';
+
     if (!username || !tankId) {
-      sendText(res, 400, 'username et tankId required');
+      sendText(res, 400, 'username et tankId obligatoires');
       return;
     }
-    pool.query('SELECT fiche_id FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3 ORDER BY id ASC', [username, String(tankId), type])
+
+    pool.query(
+      `SELECT fiche_id
+       FROM bac_population
+       WHERE username = $1 AND tank_id = $2 AND type = $3
+       ORDER BY id ASC`,
+      [username, String(tankId), type]
+    )
       .then(result => {
         const ids = result.rows.map(r => r.fiche_id);
         sendJson(res, 200, { ids });
       })
       .catch(err => {
-        console.error('Erreur GET bac population:', err);
+        console.error('Erreur GET /api/bac/population :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
@@ -780,58 +1007,85 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username, tankId, type, ids } = body;
+      const { username, tankId, type, ids } = body || {};
       if (!username || !tankId || !Array.isArray(ids)) {
-        sendText(res, 400, 'username, tankId, ids required');
+        sendText(res, 400, 'username, tankId et ids sont obligatoires');
         return;
       }
-      const t = type || 'aquarium';
-      const cleanIds = ids.map(id => String(id)).filter(id => id.trim().length > 0);
 
-      pool.query('DELETE FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3', [username, String(tankId), t])
+      const t = type || 'aquarium';
+      const cleanIds = ids
+        .map(id => String(id))
+        .filter(id => id.trim().length > 0);
+
+      pool.query(
+        'DELETE FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3',
+        [username, String(tankId), t]
+      )
         .then(() => {
           if (!cleanIds.length) {
             sendJson(res, 200, { success: true, count: 0 });
             return null;
           }
-          const query = `INSERT INTO bac_population (username, tank_id, type, fiche_id) VALUES ${cleanIds.map((_, i) => `($${4*i+1}, $${4*i+2}, $${4*i+3}, $${4*i+4})`).join(', ')}`;
-          const params = cleanIds.flatMap(id => [username, String(tankId), t, id]);
-          return pool.query(query, params);
+          const insertQuery = `
+            INSERT INTO bac_population (username, tank_id, type, fiche_id)
+            VALUES ${cleanIds.map((_, i) =>
+              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
+            ).join(', ')}
+          `;
+          const params = cleanIds.flatMap(id => [
+            username,
+            String(tankId),
+            t,
+            id
+          ]);
+          return pool.query(insertQuery, params);
         })
         .then(result => {
-          if (!result) return;
+          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanIds.length });
         })
-        .catch(err => {
-          console.error('Erreur POST bac population:', err);
+        .catch(dbErr => {
+          console.error('Erreur POST /api/bac/population :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
     return;
   }
 
-  // ============ FICHIERS STATIQUES ============
+  // ==================== SERVEUR DE FICHIERS ====================
   let filePath = url;
+
   if (filePath === '/' || filePath === '/index' || filePath === '/index.html') {
     filePath = '/Index.html';
   }
+
   filePath = path.normalize(filePath).replace(/^(\.\.(\/|\\|$))+/, '');
   const fullPath = path.join(__dirname, filePath);
+
   const extname = String(path.extname(fullPath)).toLowerCase();
   const mimeTypes = {
-    '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
-    '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpg',
-    '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon'
+    '.html': 'text/html',
+    '.js': 'text/javascript',
+    '.css': 'text/css',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon'
   };
   const contentType = mimeTypes[extname] || 'text/html';
+
   fs.readFile(fullPath, (error, content) => {
     if (error) {
       if (error.code === 'ENOENT') {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('404 Not Found');
+        res.end('Fichier non trouvé');
       } else {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('500 Server Error');
+        res.end('Erreur serveur');
       }
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
@@ -841,9 +1095,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`✅ Serveur lancé sur http://localhost:${port}/`);
-  console.log(`📦 Base de données: Neon (PostgreSQL)`);
-  console.log(`🔐 Admin: ${ADMIN_LOGIN} / ${ADMIN_PASS}`);
+  console.log(`Serveur Node lancé sur http://localhost:${port}/`);
 });
-
-module.exports = server;

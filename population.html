@@ -4,243 +4,55 @@
   <meta charset="UTF-8">
   <title>Population des adhérents</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <style>
     * { box-sizing:border-box; margin:0; padding:0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:#020617;
-      color:#e5e7eb;
-      min-height:100vh;
-    }
-
-    .navbar {
-      position:fixed; top:0; left:0; width:100%;
-      min-height:56px;
-      background:rgba(15,23,42,0.98);
-      border-bottom:1px solid #1f2937;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:4px 16px;
-      z-index:50;
-      flex-wrap:wrap; gap:4px;
-    }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#020617; color:#e5e7eb; min-height:100vh; }
+    .navbar { position:fixed; top:0; left:0; width:100%; min-height:56px; background:rgba(15,23,42,0.98); border-bottom:1px solid #1f2937; display:flex; align-items:center; justify-content:space-between; padding:4px 16px; z-index:50; flex-wrap:wrap; gap:4px; }
     .navbar-left { display:flex; align-items:center; gap:10px; }
     .navbar-title { font-size:0.95rem; font-weight:600; }
     .navbar-user { font-size:0.8rem; color:#9ca3af; }
-
-    .navbar-menu {
-      display:flex; gap:8px; align-items:center;
-      flex-wrap:wrap; justify-content:flex-end;
-    }
-    .nav-btn {
-      border:none; background:transparent; color:#cbd5f5;
-      font-size:0.8rem; padding:6px 8px; border-radius:999px;
-      cursor:pointer; display:flex; align-items:center; gap:4px;
-    }
+    .navbar-menu { display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .nav-btn { border:none; background:transparent; color:#cbd5f5; font-size:0.8rem; padding:6px 8px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:4px; }
     .nav-btn span.icon { font-size:1rem; }
     .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
     .nav-btn:hover { background:#111827; }
-
-    .navbar-logout {
-      border-radius:999px; border:1px solid #374151;
-      background:#111827; color:#e5e7eb;
-      padding:5px 10px; font-size:0.8rem; cursor:pointer;
-    }
+    .navbar-logout { border-radius:999px; border:1px solid #374151; background:#111827; color:#e5e7eb; padding:5px 10px; font-size:0.8rem; cursor:pointer; }
     .navbar-logout:hover { background:#1f2937; }
-
-    .page {
-      padding-top:72px;
-      padding:0 12px 20px;
-      max-width:1100px;
-      margin:0 auto;
-    }
-
-    .card {
-      background:#020617;
-      border-radius:10px;
-      border:1px solid #1f2937;
-      padding:14px 16px;
-      margin-bottom:14px;
-    }
-
+    .page { padding-top:72px; padding:0 12px 20px; max-width:1100px; margin:0 auto; }
+    .card { background:#020617; border-radius:10px; border:1px solid #1f2937; padding:14px 16px; margin-bottom:14px; }
     h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
     h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
     .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
-
     label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
-    input[type="number"],
-    input[type="text"] {
-      width:100%; padding:7px 9px;
-      background:#020617; border-radius:7px;
-      border:1px solid #1f2937; color:#e5e7eb;
-      font-size:0.85rem;
-    }
-    input:focus {
-      outline:none; border-color:#38bdf8;
-      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
-    }
-
-    .btn-primary {
-      background:#38bdf8; color:#0f172a;
-      border:none; border-radius:7px;
-      padding:7px 10px; font-size:0.8rem;
-      cursor:pointer; font-weight:600;
-    }
+    input[type="number"], input[type="text"] { width:100%; padding:7px 9px; background:#020617; border-radius:7px; border:1px solid #1f2937; color:#e5e7eb; font-size:0.85rem; }
+    input:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 1px rgba(56,189,248,0.4); }
+    .btn-primary { background:#38bdf8; color:#0f172a; border:none; border-radius:7px; padding:7px 10px; font-size:0.8rem; cursor:pointer; }
     .btn-primary:hover { filter:brightness(1.05); }
-    .btn-primary:disabled { opacity:0.5; cursor:not-allowed; }
-
-    .btn-xs {
-      border:none;
-      border-radius:999px;
-      padding:2px 6px;
-      font-size:0.7rem;
-      cursor:pointer;
-      background:#111827;
-      color:#e5e7eb;
-      border:1px solid #374151;
-    }
-    .btn-xs:hover { background:#1f2937; }
-
-    .row-2 {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap:12px;
-    }
-
+    .btn-xs { border:none; border-radius:999px; padding:2px 6px; font-size:0.7rem; cursor:pointer; background:#111827; color:#e5e7eb; border:1px solid #374151; }
+    .row-2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:12px; }
     .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
-
-    .search-input {
-      width:100%; padding:7px 9px;
-      background:#020617; border-radius:999px;
-      border:1px solid #1f2937; color:#e5e7eb;
-      font-size:0.85rem;
-    }
-
-    .tab-bar {
-      display:flex;
-      gap:6px;
-      border-bottom:1px solid #1f2937;
-      margin-bottom:8px;
-      flex-wrap:wrap;
-    }
-    .tab-btn {
-      border:none;
-      background:transparent;
-      color:#9ca3af;
-      font-size:0.8rem;
-      padding:6px 10px;
-      border-radius:999px 999px 0 0;
-      cursor:pointer;
-    }
-    .tab-btn.active {
-      color:#e5e7eb;
-      background:#020617;
-      border-bottom:2px solid #38bdf8;
-    }
+    .search-input { width:100%; padding:7px 9px; background:#020617; border-radius:999px; border:1px solid #1f2937; color:#e5e7eb; font-size:0.85rem; }
+    .tab-bar { display:flex; gap:6px; border-bottom:1px solid #1f2937; margin-bottom:8px; flex-wrap:wrap; }
+    .tab-btn { border:none; background:transparent; color:#9ca3af; font-size:0.8rem; padding:6px 10px; border-radius:999px 999px 0 0; cursor:pointer; }
+    .tab-btn.active { color:#e5e7eb; background:#020617; border-bottom:2px solid #38bdf8; }
     .tab-panel { display:none; }
     .tab-panel.active { display:block; }
-
-    .item-card {
-      border-radius:8px;
-      border:1px solid #1f2937;
-      padding:6px 8px;
-      background:#020617;
-      margin-bottom:6px;
-      font-size:0.8rem;
-    }
-    .item-head {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:6px;
-      margin-bottom:3px;
-    }
+    .item-card { border-radius:8px; border:1px solid #1f2937; padding:6px 8px; background:#020617; margin-bottom:6px; font-size:0.8rem; }
+    .item-head { display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:3px; }
     .item-name { font-weight:600; }
-    .badge {
-      border-radius:999px;
-      border:1px solid #374151;
-      padding:2px 7px;
-      font-size:0.7rem;
-      color:#9ca3af;
-    }
-    .badge.published {
-      border-color:#22c55e;
-      color:#bbf7d0;
-    }
-    .chips-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:4px;
-      margin-top:3px;
-    }
-    .chip {
-      border-radius:999px;
-      border:1px solid #374151;
-      padding:2px 6px;
-      font-size:0.7rem;
-      color:#9ca3af;
-    }
-    .no-result {
-      font-size:0.8rem;
-      color:#9ca3af;
-      margin-top:4px;
-    }
-
-    .suggestions {
-      position: relative;
-    }
-    .suggestions-list {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: #020617;
-      border: 1px solid #1f2937;
-      border-radius: 8px;
-      max-height: 200px;
-      overflow-y: auto;
-      z-index: 20;
-    }
-    .suggestion-item {
-      padding: 4px 8px;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-    .suggestion-item:hover {
-      background: #111827;
-    }
-
-    .select-input {
-      width:100%; padding:7px 9px;
-      background:#020617; border-radius:7px;
-      border:1px solid #1f2937; color:#e5e7eb;
-      font-size:0.85rem;
-    }
-    .select-input:focus {
-      outline:none; border-color:#38bdf8;
-      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
-    }
-
-    .loading { text-align:center; color:#9ca3af; font-size:0.9rem; padding:8px; }
-    .error { text-align:center; color:#f87171; font-size:0.85rem; padding:8px; background:rgba(220,38,38,0.1); border-radius:6px; margin:8px 0; }
-    .spinner {
-      display:inline-block;
-      width:12px; height:12px;
-      border:2px solid #374151;
-      border-top-color:#38bdf8;
-      border-radius:50%;
-      animation:spin 0.6s linear infinite;
-    }
-    @keyframes spin {
-      to { transform:rotate(360deg); }
-    }
-
-    @media (max-width:768px) {
-      .page { padding-top:90px; }
-    }
+    .badge { border-radius:999px; border:1px solid #374151; padding:2px 7px; font-size:0.7rem; color:#9ca3af; }
+    .badge.published { border-color:#22c55e; color:#bbf7d0; }
+    .chips-row { display:flex; flex-wrap:wrap; gap:4px; margin-top:3px; }
+    .chip { border-radius:999px; border:1px solid #374151; padding:2px 6px; font-size:0.7rem; color:#9ca3af; }
+    .no-result { font-size:0.8rem; color:#9ca3af; margin-top:4px; }
+    .suggestions { position: relative; }
+    .suggestions-list { position: absolute; top: 100%; left: 0; right: 0; background: #020617; border: 1px solid #1f2937; border-radius: 8px; max-height: 200px; overflow-y: auto; z-index: 20; }
+    .suggestion-item { padding: 4px 8px; font-size: 0.8rem; cursor: pointer; }
+    .suggestion-item:hover { background: #111827; }
+    .select-input { width:100%; padding:7px 9px; background:#020617; border-radius:7px; border:1px solid #1f2937; color:#e5e7eb; font-size:0.85rem; }
+    .select-input:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 1px rgba(56,189,248,0.4); }
+    @media (max-width:768px) { .page { padding-top:90px; } }
   </style>
-
   <script src="especes.js"></script>
 </head>
 <body>
@@ -257,7 +69,7 @@
       <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
-      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="nav-btn active" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -265,9 +77,7 @@
   <main class="page">
     <div class="card">
       <h1>Population des adhérents</h1>
-      <p class="subtitle">
-        Gère ta population en privé, publie ce que tu veux partager. Les onglets publics affichent les espèces publiées de tous les adhérents.
-      </p>
+      <p class="subtitle">Gère ta population en privé, publie ce que tu veux partager. Les onglets publics affichent les espèces publiées de tous les adhérents.</p>
     </div>
 
     <div class="card">
@@ -279,9 +89,7 @@
 
       <section id="tab-prive" class="tab-panel active">
         <h2>Ma population (privé)</h2>
-        <p class="subtitle">
-          Tes données privées sont stockées en Neon, les données publiées sont visibles à tous.
-        </p>
+        <p class="subtitle">Tes données privées sont stockées en Neon, les données publiées sont visibles à tous.</p>
 
         <div class="row-2" style="margin-bottom:10px;">
           <div>
@@ -300,23 +108,12 @@
               <input type="number" id="pop-count" min="1" placeholder="ex. 10">
             </div>
             <button class="btn-primary" id="addSpeciesBtn">Ajouter l'espèce + population</button>
-            <div id="addSpeciesError" class="error" style="display:none;"></div>
           </div>
 
           <div>
-            <h3 style="font-size:0.9rem; margin-bottom:6px;">
-              Mes espèces <span id="species-count" style="font-size:0.8rem; color:#9ca3af;"></span>
-            </h3>
-            <input
-              type="text"
-              id="search-input-private"
-              class="search-input"
-              placeholder="Filtrer (nom ou source)…"
-              style="margin-bottom:4px;"
-            />
-            <div id="search-summary-private" class="small-note">
-              <span class="spinner"></span> Chargement...
-            </div>
+            <h3 style="font-size:0.9rem; margin-bottom:6px;">Mes espèces <span id="species-count" style="font-size:0.8rem; color:#9ca3af;"></span></h3>
+            <input type="text" id="search-input-private" class="search-input" placeholder="Filtrer (nom ou source)…" style="margin-bottom:4px;" />
+            <div id="search-summary-private" class="small-note">Chargement...</div>
             <div id="species-list"></div>
           </div>
         </div>
@@ -324,45 +121,28 @@
 
       <section id="tab-especes" class="tab-panel">
         <h2>Espèces publiées</h2>
-        <p class="subtitle">
-          Vue publique regroupée par espèce (données de tous les adhérents).
-        </p>
-
-        <input
-          type="text"
-          id="search-input-public-species"
-          class="search-input"
-          placeholder="Rechercher une espèce publiée…"
-          style="margin-bottom:4px;"
-        />
-        <div id="search-summary-public-species" class="small-note">
-          <span class="spinner"></span> Chargement...
-        </div>
+        <p class="subtitle">Vue publique regroupée par espèce (données de tous les adhérents).</p>
+        <input type="text" id="search-input-public-species" class="search-input" placeholder="Rechercher une espèce publiée…" style="margin-bottom:4px;" />
+        <div id="search-summary-public-species" class="small-note">Chargement...</div>
         <div id="public-species-list"></div>
       </section>
 
       <section id="tab-adherents" class="tab-panel">
         <h2>Liste par adhérent</h2>
-        <p class="subtitle">
-          Sélectionne un adhérent pour voir ses espèces publiées.
-        </p>
-
+        <p class="subtitle">Sélectionne un adhérent pour voir ses espèces publiées.</p>
         <div class="field" style="margin-bottom:6px;">
           <label for="member-select">Adhérent</label>
           <select id="member-select" class="select-input">
             <option value="">-- Sélectionner un adhérent --</option>
           </select>
         </div>
-        <div id="search-summary-public-member" class="small-note">
-          Sélectionne un adhérent pour afficher sa liste.
-        </div>
+        <div id="search-summary-public-member" class="small-note">Sélectionne un adhérent pour afficher sa liste.</div>
         <div id="public-member-list"></div>
       </section>
     </div>
   </main>
 
   <script>
-    // ============ AUTHENTIFICATION ============
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -371,11 +151,8 @@
 
     document.getElementById("navbarUser").textContent = currentUser.username;
 
-    // ============ NAVIGATION ============
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        window.location.href = btn.getAttribute("data-link");
-      });
+      btn.addEventListener("click", () => { window.location.href = btn.getAttribute("data-link"); });
     });
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -383,7 +160,6 @@
       window.location.href = "login.html";
     });
 
-    // ============ TABS ============
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabPanels = document.querySelectorAll(".tab-panel");
     tabButtons.forEach(btn => {
@@ -396,16 +172,11 @@
       });
     });
 
-    // ============ STATE ============
     const CURRENT_MEMBER_USERNAME = currentUser.username;
-    let allPopulationData = [];
-
-    // ============ DOM ELEMENTS ============
     const speciesNameInput = document.getElementById("species-name");
     const speciesSourceInput = document.getElementById("species-source");
     const popCountInput = document.getElementById("pop-count");
     const addSpeciesBtn = document.getElementById("addSpeciesBtn");
-    const addSpeciesError = document.getElementById("addSpeciesError");
     const speciesListDiv = document.getElementById("species-list");
     const speciesCountSpan = document.getElementById("species-count");
     const privateSearchInput = document.getElementById("search-input-private");
@@ -418,131 +189,99 @@
     const publicMemberListDiv = document.getElementById("public-member-list");
     const suggestionsBox = document.getElementById("species-suggestions");
 
-    // ============ FONCTIONS UTILITAIRES ============
-    function showError(element, message) {
-      element.textContent = "❌ " + message;
-      element.style.display = "block";
-      setTimeout(() => { element.style.display = "none"; }, 4000);
-    }
+    let allPopulationData = [];
 
     function updateSpeciesCount() {
-      const mySpecies = allPopulationData.filter(e => e.member_username === CURRENT_MEMBER_USERNAME);
+      const mySpecies = allPopulationData.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
       const c = mySpecies.length;
       speciesCountSpan.textContent = c ? `(${c} espèce${c>1?"s":""})` : "";
     }
 
-    // ============ AJOUTER UNE ESPÈCE ============
     addSpeciesBtn.addEventListener("click", async () => {
       const name = speciesNameInput.value.trim();
       const source = speciesSourceInput.value.trim();
       const count = parseInt(popCountInput.value, 10);
 
-      if (!name) {
-        showError(addSpeciesError, "Le nom de l'espèce est obligatoire.");
-        return;
-      }
-
-      addSpeciesBtn.disabled = true;
+      if (!name) { alert("Le nom de l'espèce est obligatoire."); return; }
 
       const newEntry = {
-        member_username: CURRENT_MEMBER_USERNAME,
-        species_name: name,
+        memberUsername: CURRENT_MEMBER_USERNAME,
+        speciesName: name,
         source: source || "",
-        total_count: (!isNaN(count) && count > 0) ? count : 0,
+        totalCount: (!isNaN(count) && count > 0) ? count : 0,
         published: false
       };
 
       try {
-        const res = await fetch('/api/population', {
+        const res = await fetch('/api/population/sync', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newEntry)
+          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: [newEntry] })
         });
 
-        if (!res.ok) {
-          const error = await res.text();
-          throw new Error(error || 'Erreur lors de l\'ajout');
-        }
-
-        console.log("✅ Espèce ajoutée avec succès");
+        if (!res.ok) throw new Error('Erreur sync population');
         speciesNameInput.value = "";
         speciesSourceInput.value = "";
         popCountInput.value = "";
-        suggestionsBox.style.display = "none";
-
         await loadPopulationData();
       } catch (e) {
-        console.error("❌ Erreur:", e);
-        showError(addSpeciesError, e.message || "Erreur lors de l'ajout de l'espèce.");
-      } finally {
-        addSpeciesBtn.disabled = false;
+        console.error(e);
+        alert("Erreur lors de l'ajout de l'espèce.");
       }
     });
 
-    // ============ PUBLIER/DÉPUBLIER ============
     async function togglePublish(speciesName) {
-      const entry = allPopulationData.find(e =>
-        e.species_name === speciesName && e.member_username === CURRENT_MEMBER_USERNAME
-      );
+      const entry = allPopulationData.find(e => e.speciesName === speciesName && e.memberUsername === CURRENT_MEMBER_USERNAME);
       if (!entry) return;
 
-      const updated = { ...entry, published: !entry.published };
+      const updatedEntry = { ...entry, published: !entry.published };
 
       try {
-        const res = await fetch(`/api/population/${entry.id}`, {
-          method: 'PUT',
+        const res = await fetch('/api/population/sync', {
+          method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updated)
+          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: [updatedEntry] })
         });
 
-        if (!res.ok) throw new Error('Erreur lors de la mise à jour');
-        console.log(`✅ Espèce ${updated.published ? "publiée" : "dépubliée"}`);
+        if (!res.ok) throw new Error('Erreur update publication');
         await loadPopulationData();
       } catch (e) {
-        console.error("❌ Erreur:", e);
-        alert("Erreur lors de la mise à jour du statut de publication.");
+        console.error(e);
+        alert("Erreur lors de la mise à jour.");
       }
     }
 
-    // ============ SUPPRIMER UNE ESPÈCE ============
     async function deleteSpecies(speciesName) {
       if (!confirm("Supprimer cette espèce et toutes ses populations ?")) return;
 
-      const entry = allPopulationData.find(e =>
-        e.species_name === speciesName && e.member_username === CURRENT_MEMBER_USERNAME
-      );
-      if (!entry) return;
-
       try {
-        const res = await fetch(`/api/population/${entry.id}`, {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' }
+        const remaining = allPopulationData.filter(e => !(e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName === speciesName));
+        const myRemaining = remaining.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
+
+        const res = await fetch('/api/population/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: myRemaining })
         });
 
-        if (!res.ok) throw new Error('Erreur lors de la suppression');
-        console.log("✅ Espèce supprimée");
+        if (!res.ok) throw new Error('Erreur delete');
         await loadPopulationData();
       } catch (e) {
-        console.error("❌ Erreur:", e);
-        alert("Erreur lors de la suppression de l'espèce.");
+        console.error(e);
+        alert("Erreur lors de la suppression.");
       }
     }
 
-    // ============ RENDU: MA POPULATION (PRIVÉ) ============
     function renderPrivateSpecies(search = "") {
       speciesListDiv.innerHTML = "";
-      let list = allPopulationData.filter(e => e.member_username === CURRENT_MEMBER_USERNAME);
+      let list = allPopulationData.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
 
       if (search.trim()) {
         const t = search.toLowerCase();
-        list = list.filter(e =>
-          e.species_name.toLowerCase().includes(t) ||
-          (e.source && e.source.toLowerCase().includes(t))
-        );
-        privateSearchSummary.innerHTML =
-          `Filtre : "${search}". ${list.length} espèce(s) trouvée(s).`;
+        list = list.filter(e => e.speciesName.toLowerCase().includes(t) || (e.source && e.source.toLowerCase().includes(t)));
+        privateSearchSummary.textContent = `Filtre : "${search}". ${list.length} espèce(s) trouvée(s).`;
       } else {
-        privateSearchSummary.innerHTML = "Affichage de toutes tes espèces.";
+        privateSearchSummary.textContent = "Affichage de toutes tes espèces.";
       }
 
       updateSpeciesCount();
@@ -560,97 +299,72 @@
         div.innerHTML = `
           <div class="item-head">
             <div>
-              <div class="item-name">${e.species_name}</div>
-              <div style="font-size:0.75rem; color:#9ca3af;">
-                ${e.source || "Source non précisée"}
-              </div>
+              <div class="item-name">${e.speciesName}</div>
+              <div style="font-size:0.75rem; color:#9ca3af;">${e.source || "Source non précisée"}</div>
             </div>
             <div class="badge ${statusClass}">${statusText}</div>
           </div>
-          <div style="font-size:0.75rem; color:#9ca3af;">
-            Total : <strong>${e.total_count}</strong> individu(s)
-          </div>
+          <div style="font-size:0.75rem; color:#9ca3af;">Total : <strong>${e.totalCount}</strong> individu(s)</div>
           <div style="margin-top:4px; display:flex; gap:4px; justify-content:flex-end;">
-            <button class="btn-xs" onclick="togglePublish('${e.species_name}')">
-              ${e.published ? "Ne plus publier" : "Publier"}
-            </button>
-            <button class="btn-xs" style="background:#dc2626;color:#f9fafb;"
-              onclick="deleteSpecies('${e.species_name}')">X</button>
+            <button class="btn-xs" onclick="togglePublish('${e.speciesName}')">${e.published ? "Ne plus publier" : "Publier"}</button>
+            <button class="btn-xs" style="background:#dc2626;color:#f9fafb;" onclick="deleteSpecies('${e.speciesName}')">X</button>
           </div>
         `;
         speciesListDiv.appendChild(div);
       });
     }
 
-    privateSearchInput.addEventListener("input", () => {
-      renderPrivateSpecies(privateSearchInput.value);
-    });
+    privateSearchInput.addEventListener("input", () => { renderPrivateSpecies(privateSearchInput.value); });
 
-    // ============ CHARGEMENT DES DONNÉES ============
     async function loadPopulationData() {
       try {
         const res = await fetch('/api/population');
-        if (!res.ok) throw new Error('Erreur lors du chargement des données');
+        if (!res.ok) throw new Error('Erreur GET /api/population');
         allPopulationData = await res.json();
-        console.log("✅ Données chargées:", allPopulationData);
         renderPrivateSpecies();
         renderPublicBySpecies();
         renderPublicByMember();
       } catch (e) {
-        console.error("❌ Erreur:", e);
-        privateSearchSummary.innerHTML = '<span style="color:#f87171;">❌ Erreur lors du chargement.</span>';
+        console.error(e);
+        privateSearchSummary.textContent = "Erreur lors du chargement.";
       }
     }
 
-    // ============ GROUPEMENT DE DONNÉES ============
     function groupBySpecies(entries) {
       const map = {};
-      entries.filter(e => e.published).forEach(e => {
-        const k = e.species_name.toLowerCase();
-        if (!map[k]) map[k] = { speciesName: e.species_name, members: [] };
-        map[k].members.push({
-          memberUsername: e.member_username,
-          source: e.source,
-          totalCount: e.total_count
-        });
+      entries.forEach(e => {
+        if (!e.published) return;
+        const k = e.speciesName.toLowerCase();
+        if (!map[k]) map[k] = { speciesName: e.speciesName, members: [] };
+        map[k].members.push({ memberUsername: e.memberUsername, source: e.source, totalCount: e.totalCount });
       });
       return Object.values(map);
     }
 
     function groupByMember(entries) {
       const map = {};
-      entries.filter(e => e.published).forEach(e => {
-        if (!map[e.member_username]) map[e.member_username] = {
-          memberUsername: e.member_username,
-          species: []
-        };
-        map[e.member_username].species.push({
-          speciesName: e.species_name,
-          source: e.source,
-          totalCount: e.total_count
-        });
+      entries.forEach(e => {
+        if (!e.published) return;
+        if (!map[e.memberUsername]) map[e.memberUsername] = { memberUsername: e.memberUsername, species: [] };
+        map[e.memberUsername].species.push({ speciesName: e.speciesName, source: e.source, totalCount: e.totalCount });
       });
       return Object.values(map);
     }
 
-    // ============ RENDU: ESPÈCES PUBLIÉES ============
     function renderPublicBySpecies(search = "") {
       publicSpeciesListDiv.innerHTML = "";
       let list = allPopulationData.filter(e => e.published);
 
       if (search.trim()) {
         const t = search.toLowerCase();
-        list = list.filter(e => e.species_name.toLowerCase().includes(t));
+        list = list.filter(e => e.speciesName.toLowerCase().includes(t));
       }
 
       const grouped = groupBySpecies(list);
-      publicSpeciesSummary.innerHTML = search.trim()
-        ? `Filtre : "${search}". ${grouped.length} espèce(s) trouvée(s).`
-        : `Affichage de toutes les espèces publiées (${grouped.length}).`;
+      publicSpeciesSummary.textContent = search.trim() ? `Filtre : "${search}". ${grouped.length} espèce(s) trouvée(s).` : `Affichage de toutes les espèces publiées (${grouped.length}).`;
 
       if (!grouped.length) {
-        publicSpeciesListDiv.innerHTML =
-          '<div class="no-result">Aucune espèce publiée pour le moment.</div>';
+        publicSpeciesListDiv.innerHTML = '<div class="no-result">Aucune espèce publiée pour le moment.</div>';
         return;
       }
 
@@ -662,28 +376,20 @@
           <div class="item-head">
             <div>
               <div class="item-name">${g.speciesName}</div>
-              <div style="font-size:0.75rem; color:#9ca3af;">
-                ${g.members.length} adhérent(s) · ${total} individu(s)
-              </div>
+              <div style="font-size:0.75rem; color:#9ca3af;">${g.members.length} adhérent(s) · ${total} individu(s)</div>
             </div>
             <div class="badge published">Publique</div>
           </div>
           <div class="chips-row">
-            ${g.members.map(m => `
-              <span class="chip">
-                ${m.memberUsername} · ${m.totalCount} indiv. · ${m.source || "Source non précisée"}
-              </span>`).join("")}
+            ${g.members.map(m => `<span class="chip">${m.memberUsername} · ${m.totalCount} indiv. · ${m.source || "Source non précisée"}</span>`).join("")}
           </div>
         `;
         publicSpeciesListDiv.appendChild(div);
       });
     }
 
-    publicSpeciesSearch.addEventListener("input", () => {
-      renderPublicBySpecies(publicSpeciesSearch.value);
-    });
+    publicSpeciesSearch.addEventListener("input", () => { renderPublicBySpecies(publicSpeciesSearch.value); });
 
-    // ============ RENDU: PAR ADHÉRENT ============
     function renderPublicByMember() {
       const groups = groupByMember(allPopulationData);
       memberSelect.innerHTML = '<option value="">-- Sélectionner un adhérent --</option>';
@@ -702,8 +408,7 @@
       const groups = groupByMember(allPopulationData);
       const g = groups.find(x => x.memberUsername === memberUsername);
       if (!g) {
-        publicMemberListDiv.innerHTML =
-          '<div class="no-result">Aucune espèce publiée pour cet adhérent.</div>';
+        publicMemberListDiv.innerHTML = '<div class="no-result">Aucune espèce publiée pour cet adhérent.</div>';
         return;
       }
       publicMemberSummary.textContent = `Espèces publiées par ${g.memberUsername}`;
@@ -735,11 +440,8 @@
       renderSelectedMember(val);
     });
 
-    // ============ SUGGESTIONS D'ESPÈCES ============
     function getAllSpeciesFromFiches() {
-      if (!window.FICHES || !Array.isArray(window.FICHES)) {
-        return [];
-      }
+      if (!window.FICHES || !Array.isArray(window.FICHES)) return [];
       return window.FICHES.map(f => ({
         nomScientifique: f.nomScientifique || "",
         nomCommun: f.nomCommun || "",
@@ -757,12 +459,6 @@
       }
       const q = query.toLowerCase();
       const all = getAllSpeciesFromFiches();
-      if (!all.length) {
-        console.warn("⚠️  FICHES n'est pas chargé. Vérifier especes.js");
-        suggestionsBox.style.display = "none";
-        return;
-      }
-
       const matches = all.filter(s =>
         s.nomScientifique.toLowerCase().includes(q) ||
         s.nomCommun.toLowerCase().includes(q) ||
@@ -792,9 +488,7 @@
       suggestionsBox.style.display = "block";
     }
 
-    speciesNameInput.addEventListener("input", () => {
-      renderSuggestions(speciesNameInput.value);
-    });
+    speciesNameInput.addEventListener("input", () => { renderSuggestions(speciesNameInput.value); });
 
     document.addEventListener("click", (e) => {
       if (!e.target.closest(".suggestions")) {
@@ -802,8 +496,6 @@
       }
     });
 
-    // ============ INITIALISATION ============
-    console.log("🚀 Population page initialized. Current user:", CURRENT_MEMBER_USERNAME);
     loadPopulationData();
   </script>
 </body>
