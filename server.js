@@ -290,6 +290,123 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // ==================== API EVENTS ====================
+  if (method === 'GET' && url === '/api/events') {
+    pool.query('SELECT id, titre, type, date_iso, heure, lieu, description, lien FROM events ORDER BY date_iso ASC')
+      .then(result => sendJson(res, 200, result.rows))
+      .catch(err => {
+        console.error('Erreur SELECT events :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  if (method === 'POST' && url === '/api/events') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { titre, type, date_iso, heure, lieu, description, lien } = body || {};
+      if (!titre || !date_iso) {
+        sendText(res, 400, 'titre et date_iso obligatoires');
+        return;
+      }
+
+      const id = "event_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const query = `
+        INSERT INTO events (id, titre, type, date_iso, heure, lieu, description, lien)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id, titre, type, date_iso, heure, lieu, description, lien
+      `;
+      const params = [
+        id,
+        String(titre).trim(),
+        type || 'autre',
+        date_iso,
+        heure || null,
+        lieu ? String(lieu).trim() : '',
+        description ? String(description).trim() : '',
+        lien ? String(lien).trim() : ''
+      ];
+
+      pool.query(query, params)
+        .then(result => {
+          const event = result.rows[0];
+          sendJson(res, 200, { success: true, event });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT event :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  if (method === 'PATCH' && url.startsWith('/api/events/')) {
+    const id = decodeURIComponent(url.replace('/api/events/', ''));
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { titre, type, date_iso, heure, lieu, description, lien } = body || {};
+      if (!titre || !date_iso) {
+        sendText(res, 400, 'titre et date_iso obligatoires');
+        return;
+      }
+
+      const query = `
+        UPDATE events
+        SET titre = $1, type = $2, date_iso = $3, heure = $4, lieu = $5, description = $6, lien = $7
+        WHERE id = $8
+        RETURNING id, titre, type, date_iso, heure, lieu, description, lien
+      `;
+      const params = [
+        String(titre).trim(),
+        type || 'autre',
+        date_iso,
+        heure || null,
+        lieu ? String(lieu).trim() : '',
+        description ? String(description).trim() : '',
+        lien ? String(lien).trim() : '',
+        id
+      ];
+
+      pool.query(query, params)
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendText(res, 404, 'Événement introuvable');
+            return;
+          }
+          const event = result.rows[0];
+          sendJson(res, 200, { success: true, event });
+        })
+        .catch(dbErr => {
+          console.error('Erreur PATCH event :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  if (method === 'DELETE' && url.startsWith('/api/events/')) {
+    const id = decodeURIComponent(url.replace('/api/events/', ''));
+    pool.query('DELETE FROM events WHERE id = $1', [id])
+      .then(result => {
+        if (result.rowCount === 0) {
+          sendText(res, 404, 'Événement introuvable');
+          return;
+        }
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE event :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
   // ==================== API POPULATION ====================
   if (method === 'GET' && url === '/api/population') {
     const query = `
