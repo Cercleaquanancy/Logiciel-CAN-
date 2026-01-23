@@ -49,7 +49,6 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      transition: background 0.2s;
     }
     .nav-btn span.icon { font-size: 1rem; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
@@ -62,7 +61,6 @@
       padding: 5px 10px;
       font-size: 0.8rem;
       cursor: pointer;
-      transition: background 0.2s;
     }
     .navbar-logout:hover { background: #1f2937; }
     .page {
@@ -82,6 +80,7 @@
     }
     .card h1 { font-size: 1.4rem; margin-bottom: 6px; color: #38bdf8; }
     .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
+    .card h3 { font-size: 0.95rem; margin-bottom: 4px; color: #e5e7eb; }
     .card p { font-size: 0.85rem; color: #d1d5db; }
     .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
     .small-note { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; }
@@ -96,16 +95,13 @@
       justify-content: space-between;
       align-items: center;
       gap: 6px;
-      cursor: pointer;
-      transition: border-color 0.2s;
     }
-    .event-home-item:hover { border-color: #38bdf8; }
     .event-home-main { flex: 1 1 auto; min-width: 0; }
     .event-home-title { font-weight: 600; color: #e5e7eb; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-meta { font-size: 0.78rem; color: #9ca3af; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-date { font-size: 0.78rem; border-radius: 999px; padding: 3px 7px; border: 1px solid #1f2937; background: #111827; white-space: nowrap; color: #e5e7eb; }
+    .fb-page-wrapper { margin-top: 8px; }
     .loading-note { font-size: 0.75rem; color: #9ca3af; font-style: italic; }
-    .error-note { font-size: 0.75rem; color: #ff6b6b; }
     @media (max-width: 768px) { .page { padding-top: 90px; } }
   </style>
 </head>
@@ -133,76 +129,119 @@
 
   <main class="page">
     <div class="card">
-      <h1>🎉 Accueil</h1>
-      <p class="subtitle">Bienvenue dans ton espace adhérent !</p>
-      <p>Consulte les prochains événements, gère ton aquarium et ta serre, et reste connecté avec les autres passionnés.</p>
+      <h1>Accueil</h1>
+      <p class="subtitle">
+        Résumé rapide de ton espace personnel.
+      </p>
+      <p>
+        Cette page peut présenter ton projet, ton club, les dernières infos.
+      </p>
     </div>
 
     <div class="card">
-      <h2>📅 Prochains événements</h2>
-      <p class="subtitle">Les événements qui arrivent en premier.</p>
-      <div id="homeEventList" class="event-list-home">
-        <p class="loading-note">⏳ Chargement des événements...</p>
-      </div>
-      <a href="evenement.html" class="small-note" style="display: inline-block; margin-top: 8px; text-decoration: none; color: #38bdf8; font-weight: 500;">
-        → Voir tous les événements
+      <h2>Prochains événements</h2>
+      <p class="subtitle">
+        Les quelques événements les plus proches configurés dans la page Événements.
+      </p>
+      <div id="homeEventList" class="event-list-home"></div>
+      <a href="evenement.html" class="small-note" style="display:inline-block; margin-top:6px; text-decoration:none; color:#38bdf8;">
+        Voir tous les événements &gt;
       </a>
-      <p class="small-note">Les données proviennent de la base de données du serveur.</p>
+      <p class="small-note">
+        Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur.
+      </p>
     </div>
 
     <div class="card">
-      <h2>💡 Navigation rapide</h2>
-      <p class="subtitle">Accès direct aux principales sections :</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
-        <div style="padding: 8px; background: #111827; border-radius: 8px; cursor: pointer;" onclick="window.location.href='fiche.html'">
-          <div style="font-weight: 600; color: #38bdf8;">📄 Fiche</div>
-          <div style="font-size: 0.75rem; color: #9ca3af;">Espèces et poissons</div>
-        </div>
-        <div style="padding: 8px; background: #111827; border-radius: 8px; cursor: pointer;" onclick="window.location.href='aquarium.html'">
-          <div style="font-weight: 600; color: #38bdf8;">🐟 Aquarium</div>
-          <div style="font-size: 0.75rem; color: #9ca3af;">Gère tes bacs</div>
-        </div>
-        <div style="padding: 8px; background: #111827; border-radius: 8px; cursor: pointer;" onclick="window.location.href='population.html'">
-          <div style="font-weight: 600; color: #38bdf8;">👥 Population</div>
-          <div style="font-size: 0.75rem; color: #9ca3af;">Espèces du cercle</div>
-        </div>
-        <div style="padding: 8px; background: #111827; border-radius: 8px; cursor: pointer;" onclick="window.location.href='echange.html'">
-          <div style="font-weight: 600; color: #38bdf8;">💬 Échange</div>
-          <div style="font-size: 0.75rem; color: #9ca3af;">Annonces et partage</div>
+      <h2>Dernières nouvelles Facebook</h2>
+      <p class="subtitle">
+        Dernières publications de la page du Cercle et de Fish In The News.
+      </p>
+
+      <h3 style="font-size:0.95rem; margin-bottom:4px;">Cercle Aqua Nancy</h3>
+      <div class="fb-page-wrapper">
+        <div class="fb-page"
+             data-href="https://www.facebook.com/cerclaquanancy"
+             data-tabs="timeline"
+             data-width="500"
+             data-height=""
+             data-small-header="false"
+             data-adapt-container-width="true"
+             data-hide-cover="false"
+             data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/cerclaquanancy" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/cerclaquanancy">Cercle Aqua Nancy</a>
+          </blockquote>
         </div>
       </div>
+
+      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:4px;">Fish In The News</h3>
+      <div class="fb-page-wrapper">
+        <div class="fb-page"
+             data-href="https://www.facebook.com/FishInTheNews"
+             data-tabs="timeline"
+             data-width="500"
+             data-height=""
+             data-small-header="false"
+             data-adapt-container-width="true"
+             data-hide-cover="false"
+             data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/FishInTheNews" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/FishInTheNews">Fish In The News</a>
+          </blockquote>
+        </div>
+      </div>
+
+      <p class="small-note">
+        Le plugin Page Facebook affiche automatiquement les publications récentes de chaque page publique.
+      </p>
     </div>
   </main>
 
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0"
+    nonce="CANcercle"></script>
+
   <script>
-    // Auth
+    // Auth basique
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
     try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
-    // Navbar
+    // Affichage nom + rôle
     const navbarUser = document.getElementById('navbarUser');
     if (navbarUser) {
-      const roleLabel = currentUser.role === "admin" ? "👨‍💼 Admin" : currentUser.role === "membre_bureau" ? "👔 Membre de bureau" : "👤 Adhérent";
-      navbarUser.textContent = currentUser.username + " • " + roleLabel;
+      const roleLabel =
+        currentUser.role === "admin" ? "Admin" :
+        currentUser.role === "membre_bureau" ? "Membre de bureau" :
+        "Adhérent";
+      navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
     }
 
-    // Navigation
+    // Navigation simple
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
+      btn.addEventListener("click", () => {
+        window.location.href = btn.dataset.link;
+      });
     });
 
-    // Permissions
+    // Masquage des boutons selon droits
     document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
-      if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
-    });
-    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
-      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) { btn.style.display = "none"; }
+      if (!(currentUser.role === "admin" || currentUser.serre === true)) {
+        btn.style.display = "none";
+      }
     });
 
-    // Logout
+    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) {
+        btn.style.display = "none";
+      }
+    });
+
+    // Déconnexion
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
@@ -211,66 +250,77 @@
       });
     }
 
-    // ÉVÉNEMENTS
+    // --- Prochains événements (depuis l'API) ---
+    const EVENTS_KEY = "eventsData";
     const homeEventList = document.getElementById("homeEventList");
 
     async function loadEventsFromServer() {
       try {
         const res = await fetch('/api/events');
-        if (!res.ok) throw new Error('Erreur ' + res.status);
-        const data = await res.json();
-        return Array.isArray(data) ? data : [];
+        if (!res.ok) throw new Error('Erreur GET /api/events');
+        const serverEvents = await res.json();
+        // Sauvegarde en localStorage pour compatibilité
+        localStorage.setItem(EVENTS_KEY, JSON.stringify(serverEvents));
+        return serverEvents;
       } catch (e) {
-        console.error('Erreur événements :', e);
-        return [];
+        console.error('Erreur chargement serveur, utilise localStorage :', e);
+        const raw = localStorage.getItem(EVENTS_KEY);
+        try {
+          return JSON.parse(raw) || [];
+        } catch {
+          return [];
+        }
       }
     }
 
-    function getNextEvents(events, limit = 3) {
+    function getNextEvents(limit) {
+      const raw = localStorage.getItem(EVENTS_KEY);
+      let all = [];
+      try {
+        all = JSON.parse(raw) || [];
+      } catch {}
+      
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const upcoming = events.filter(ev => {
-        const evDate = new Date(ev.date_iso);
-        return !isNaN(evDate.getTime()) && evDate >= today;
-      }).sort((a, b) => new Date(a.date_iso) - new Date(b.date_iso));
+      
+      const upcoming = all
+        .filter(ev => {
+          const evDate = new Date(ev.date_iso || ev.dateIso);
+          return !isNaN(evDate.getTime()) && evDate >= today;
+        })
+        .sort((a, b) => new Date(a.date_iso || a.dateIso) - new Date(b.date_iso || b.dateIso));
       return upcoming.slice(0, limit);
-    }
-
-    function escapeHtml(text) {
-      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-      return text.replace(/[&<>"']/g, m => map[m]);
     }
 
     async function renderHomeEvents() {
       if (!homeEventList) return;
-      try {
-        const events = await loadEventsFromServer();
-        if (!Array.isArray(events) || events.length === 0) {
-          homeEventList.innerHTML = '<p class="small-note">📭 Aucun événement à venir. <a href="evenement.html" style="color: #38bdf8; text-decoration: none;">Créer →</a></p>';
-          return;
-        }
-        const nextEvents = getNextEvents(events, 3);
-        if (nextEvents.length === 0) {
-          homeEventList.innerHTML = '<p class="small-note">📭 Aucun événement à venir. <a href="evenement.html" style="color: #38bdf8; text-decoration: none;">Voir tous →</a></p>';
-          return;
-        }
-        homeEventList.innerHTML = nextEvents.map(ev => {
-          const d = new Date(ev.date_iso);
-          const dateStr = isNaN(d.getTime()) ? ev.date_iso : d.toLocaleDateString('fr-FR');
-          const hourStr = ev.heure ? (" à " + ev.heure) : "";
-          const lieu = ev.lieu ? ev.lieu : "Lieu non spécifié";
-          return `<div class="event-home-item" onclick="window.location.href='evenement.html'">
+      
+      // Charge d'abord depuis l'API
+      await loadEventsFromServer();
+      
+      const nextEvents = getNextEvents(3);
+
+      if (!nextEvents.length) {
+        homeEventList.innerHTML = '<p class="small-note">Aucun événement à venir configuré dans la page Événements.</p>';
+        return;
+      }
+
+      homeEventList.innerHTML = nextEvents.map(ev => {
+        const dateField = ev.date_iso || ev.dateIso;
+        const d = new Date(dateField);
+        const dateStr = isNaN(d.getTime()) ? dateField : d.toLocaleDateString();
+        const hourStr = (ev.heure || ev.hour) ? (" à " + (ev.heure || ev.hour)) : "";
+        const lieu = (ev.lieu || ev.location) || "";
+        return `
+          <div class="event-home-item">
             <div class="event-home-main">
-              <div class="event-home-title">${escapeHtml(ev.titre)}</div>
-              <div class="event-home-meta">${dateStr}${hourStr} • ${escapeHtml(lieu)}</div>
+              <div class="event-home-title">${ev.titre || ev.title || "Événement"}</div>
+              <div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div>
             </div>
             <div class="event-home-date">${dateStr}</div>
-          </div>`;
-        }).join("");
-      } catch (e) {
-        console.error('Erreur rendu :', e);
-        homeEventList.innerHTML = '<p class="error-note">⚠️ Erreur en chargeant les événements.</p>';
-      }
+          </div>
+        `;
+      }).join("");
     }
 
     renderHomeEvents();
