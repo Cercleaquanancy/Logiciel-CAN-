@@ -112,7 +112,6 @@
       margin-top: 4px;
     }
 
-    /* En-tête liste (tri+filtre) */
     .event-header-line {
       display: flex;
       justify-content: space-between;
@@ -141,7 +140,6 @@
       padding: 4px 8px;
     }
 
-    /* Liste / cartes */
     .event-list {
       margin-top: 6px;
       display: flex;
@@ -225,7 +223,6 @@
     }
     .btn-icon:hover { color: #f87171; }
 
-    /* Formulaire admin */
     .field { margin-bottom: 8px; }
     label {
       font-size: 0.8rem;
@@ -295,7 +292,6 @@
       margin-bottom: 6px;
     }
 
-    /* Modale détails */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -342,6 +338,8 @@
       text-decoration: none;
     }
     .modal-link:hover { text-decoration: underline; }
+
+    .loading { text-align: center; color: #9ca3af; font-size: 0.9rem; }
 
     @media (max-width: 768px) {
       .page { padding-top: 90px; }
@@ -412,17 +410,16 @@
         </div>
       </div>
 
-      <div id="eventList" class="event-list"></div>
+      <div id="eventList" class="event-list"><div class="loading">Chargement des événements...</div></div>
       <p class="small-note">
-        Les événements passés sont automatiquement masqués. Tu peux filtrer par type et modifier l’ordre d’affichage. [web:56][web:145]
+        Les événements passés sont automatiquement masqués. Tu peux filtrer par type et modifier l'ordre d'affichage.
       </p>
     </div>
 
-    <!-- Bloc admin, visible seulement pour can/admin -->
     <div class="card" id="adminEventCard" style="display:none;">
       <h2>Gestion des événements (admin)</h2>
       <p class="admin-only-info">
-        Zone réservée : seul l’admin (compte CAN / rôle admin) peut créer, modifier ou supprimer les événements.
+        Zone réservée : seul l'admin (compte CAN / rôle admin) peut créer, modifier ou supprimer les événements.
       </p>
 
       <form id="eventForm" onsubmit="return false;">
@@ -460,7 +457,7 @@
 
         <div class="field">
           <label for="eventDesc">Description</label>
-          <textarea id="eventDesc" placeholder="Détails de l’événement, programme, matériel à apporter, etc."></textarea>
+          <textarea id="eventDesc" placeholder="Détails de l'événement, programme, matériel à apporter, etc."></textarea>
         </div>
 
         <div class="field">
@@ -468,7 +465,7 @@
           <input id="eventLink" class="text-input" type="url" placeholder="Ex : lien Facebook ou Google Maps">
         </div>
 
-        <button id="saveEventBtn" class="btn-primary">Enregistrer l’événement</button>
+        <button id="saveEventBtn" class="btn-primary">Enregistrer l'événement</button>
         <button id="resetEventBtn" class="btn-primary" type="button">Nouveau</button>
         <button id="deleteEventBtn" class="btn-danger" type="button">Supprimer</button>
         <div id="eventFormInfo" class="small-note"></div>
@@ -476,11 +473,10 @@
     </div>
   </main>
 
-  <!-- Modale détails -->
   <div id="eventModalBackdrop" class="modal-backdrop">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title" id="modalTitle">Détail de l’événement</div>
+        <div class="modal-title" id="modalTitle">Détail de l'événement</div>
         <button class="modal-close" id="modalCloseBtn">&times;</button>
       </div>
       <div class="modal-body">
@@ -513,7 +509,6 @@
   </div>
 
   <script>
-    // --- Auth + navbar ---
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -565,61 +560,13 @@
       window.location.href = "login.html";
     });
 
-    // --- Données événements ---
-    const EVENTS_KEY = "eventsData";
-
-    function loadEvents() {
-      const raw = localStorage.getItem(EVENTS_KEY);
-      if (!raw) return [];
-      try {
-        const parsed = JSON.parse(raw);
-        return Array.isArray(parsed) ? parsed : [];
-      } catch(e) {
-        return [];
-      }
-    }
-
-    function saveEvents(events) {
-      localStorage.setItem(EVENTS_KEY, JSON.stringify(events));
-    }
-
-    let EVENTS = loadEvents();
-    if (!EVENTS.length) {
-      EVENTS = [
-        {
-          id: "evt1",
-          type: "bourse",
-          titre: "Bourse aux poissons du cercle",
-          dateIso: "2026-02-10",
-          heure: "10:00",
-          lieu: "Salle des fêtes de Nancy",
-          description: "Vente et échange de poissons, plantes et matériel aquariophile.",
-          lien: ""
-        },
-        {
-          id: "evt2",
-          type: "reunion",
-          titre: "Réunion mensuelle du club",
-          dateIso: "2026-01-25",
-          heure: "20:00",
-          lieu: "Local du cercle",
-          description: "Point sur les projets, organisation des prochaines bourses et ateliers.",
-          lien: ""
-        }
-      ];
-      saveEvents(EVENTS);
-    } else {
-      // migration simple si type manquant
-      EVENTS = EVENTS.map(ev => ev.type ? ev : { ...ev, type: "autre" });
-      saveEvents(EVENTS);
-    }
-
+    let EVENTS = [];
     const eventListDiv = document.getElementById("eventList");
     const eventSortSelect = document.getElementById("eventSortSelect");
     const eventFilterSelect = document.getElementById("eventFilterSelect");
 
     function isAdminUser() {
-      return currentUser.role === "admin" || currentUser.username === "can"; // [web:123]
+      return currentUser.role === "admin" || currentUser.username === "can";
     }
 
     function getTypeLabel(type) {
@@ -629,11 +576,24 @@
       return "Autre";
     }
 
+    async function loadEventsFromServer() {
+      try {
+        const res = await fetch('/api/events');
+        if (!res.ok) throw new Error('Erreur GET /api/events');
+        EVENTS = await res.json();
+        renderEvents();
+      } catch (e) {
+        console.error('Erreur chargement événements :', e);
+        eventListDiv.innerHTML = '<div class="small-note">Erreur lors du chargement des événements.</div>';
+      }
+    }
+
     function getSortedFilteredUpcomingEvents() {
       const today = new Date();
+      today.setHours(0, 0, 0, 0);
       const filterType = eventFilterSelect.value || "all";
 
-      let data = EVENTS.filter(ev => new Date(ev.dateIso) >= today);
+      let data = EVENTS.filter(ev => new Date(ev.date_iso) >= today);
 
       if (filterType !== "all") {
         data = data.filter(ev => (ev.type || "autre") === filterType);
@@ -642,10 +602,10 @@
       const mode = eventSortSelect.value || "date-asc";
 
       if (mode === "date-asc") {
-        return data.sort((a, b) => new Date(a.dateIso) - new Date(b.dateIso)); // [web:56][web:145]
+        return data.sort((a, b) => new Date(a.date_iso) - new Date(b.date_iso));
       }
       if (mode === "date-desc") {
-        return data.sort((a, b) => new Date(b.dateIso) - new Date(a.dateIso));
+        return data.sort((a, b) => new Date(b.date_iso) - new Date(a.date_iso));
       }
       if (mode === "title-asc") {
         return data.sort((a, b) => (a.titre || "").localeCompare(b.titre || "", "fr"));
@@ -667,8 +627,8 @@
       }
 
       eventListDiv.innerHTML = upcoming.map(ev => {
-        const d = new Date(ev.dateIso);
-        const dateStr = isNaN(d.getTime()) ? ev.dateIso : d.toLocaleDateString();
+        const d = new Date(ev.date_iso);
+        const dateStr = isNaN(d.getTime()) ? ev.date_iso : d.toLocaleDateString('fr-FR');
         const hourStr = ev.heure ? (" à " + ev.heure) : "";
         const typeLabel = getTypeLabel(ev.type || "autre");
         return `
@@ -681,14 +641,13 @@
               <div class="event-tag-type">${typeLabel}</div>
               <div class="event-tag-date">${dateStr}</div>
               <div class="event-admin-actions">
-                <button class="btn-icon" title="Supprimer l’événement" data-delete-id="${ev.id}">🗑️</button>
+                <button class="btn-icon" title="Supprimer l'événement" data-delete-id="${ev.id}">🗑️</button>
               </div>
             </div>
           </div>
         `;
       }).join("");
 
-      // Clic simple = détails
       document.querySelectorAll(".event-item").forEach(item => {
         item.addEventListener("click", (e) => {
           if (e.target.closest(".btn-icon")) return;
@@ -698,7 +657,6 @@
         });
       });
 
-      // Double‑clic admin = remplissage formulaire
       if (isAdminUser()) {
         document.querySelectorAll(".event-item").forEach(item => {
           item.addEventListener("dblclick", () => {
@@ -706,11 +664,10 @@
             const ev = EVENTS.find(e => e.id === id);
             if (!ev) return;
             fillFormFromEvent(ev);
-            eventFormInfo.textContent = "Édition de l’événement sélectionné.";
+            eventFormInfo.textContent = "Édition de l'événement sélectionné.";
           });
         });
 
-        // Icône poubelle = suppression avec confirm
         document.querySelectorAll("[data-delete-id]").forEach(btn => {
           btn.parentElement.parentElement.style.display = "flex";
           btn.addEventListener("click", (e) => {
@@ -720,23 +677,19 @@
           });
         });
 
-        // Afficher les actions admin sur les cartes
         document.querySelectorAll(".event-admin-actions").forEach(block => {
           block.style.display = "flex";
         });
       } else {
-        // cacher actions admin pour adhérents
         document.querySelectorAll(".event-admin-actions").forEach(block => {
           block.style.display = "none";
         });
       }
     }
 
-    // Tri + filtre réactifs
     eventSortSelect.addEventListener("change", renderEvents);
     eventFilterSelect.addEventListener("change", renderEvents);
 
-    // --- Modale ---
     const modalBackdrop = document.getElementById("eventModalBackdrop");
     const modalTitle = document.getElementById("modalTitle");
     const modalDate = document.getElementById("modalDate");
@@ -749,8 +702,8 @@
     const modalCloseBtn = document.getElementById("modalCloseBtn");
 
     function openEventModal(ev) {
-      const d = new Date(ev.dateIso);
-      const dateStr = isNaN(d.getTime()) ? ev.dateIso : d.toLocaleDateString();
+      const d = new Date(ev.date_iso);
+      const dateStr = isNaN(d.getTime()) ? ev.date_iso : d.toLocaleDateString('fr-FR');
 
       modalTitle.textContent = ev.titre;
       modalDate.textContent = dateStr;
@@ -779,7 +732,6 @@
       if (e.target === modalBackdrop) closeEventModal();
     });
 
-    // --- Bloc admin (création/modif/suppression) ---
     const adminEventCard = document.getElementById("adminEventCard");
     const eventIdInput = document.getElementById("eventId");
     const eventTitleInput = document.getElementById("eventTitle");
@@ -801,7 +753,7 @@
       }
       adminEventCard.style.display = "block";
 
-      saveEventBtn.addEventListener("click", () => {
+      saveEventBtn.addEventListener("click", async () => {
         const titre = (eventTitleInput.value || "").trim();
         const type = eventTypeInput.value || "autre";
         const dateIso = eventDateInput.value;
@@ -820,20 +772,31 @@
         }
 
         const existingId = eventIdInput.value;
-        if (existingId) {
-          const idx = EVENTS.findIndex(e => e.id === existingId);
-          if (idx >= 0) {
-            EVENTS[idx] = { id: existingId, type, titre, dateIso, heure, lieu, description, lien };
-          }
-        } else {
-          const newId = "evt_" + Date.now();
-          EVENTS.push({ id: newId, type, titre, dateIso, heure, lieu, description, lien });
-          eventIdInput.value = newId;
-        }
+        const payload = { titre, type, date_iso: dateIso, heure, lieu, description, lien };
 
-        saveEvents(EVENTS);
-        eventFormInfo.textContent = "Événement enregistré le " + new Date().toLocaleString() + ".";
-        renderEvents();
+        try {
+          if (existingId) {
+            const res = await fetch('/api/events/' + existingId, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error('Erreur PATCH /api/events');
+          } else {
+            const res = await fetch('/api/events', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error('Erreur POST /api/events');
+          }
+          eventFormInfo.textContent = "Événement enregistré.";
+          clearForm();
+          await loadEventsFromServer();
+        } catch (e) {
+          console.error(e);
+          eventFormInfo.textContent = "Erreur lors de l'enregistrement.";
+        }
       });
 
       resetEventBtn.addEventListener("click", () => {
@@ -866,29 +829,33 @@
       eventIdInput.value = ev.id;
       eventTitleInput.value = ev.titre || "";
       eventTypeInput.value = ev.type || "autre";
-      eventDateInput.value = ev.dateIso || "";
+      eventDateInput.value = ev.date_iso || "";
       eventTimeInput.value = ev.heure || "";
       eventPlaceInput.value = ev.lieu || "";
       eventDescInput.value = ev.description || "";
       eventLinkInput.value = ev.lien || "";
     }
 
-    function confirmAndDelete(id) {
+    async function confirmAndDelete(id) {
       const ev = EVENTS.find(e => e.id === id);
       const title = ev ? ev.titre : "cet événement";
       const ok = window.confirm('Supprimer "' + title + '" ? Cette action est définitive.');
       if (!ok) return;
-      EVENTS = EVENTS.filter(e => e.id !== id);
-      saveEvents(EVENTS);
-      if (eventIdInput.value === id) {
-        clearForm();
-        eventFormInfo.textContent = "Événement supprimé.";
+      try {
+        const res = await fetch('/api/events/' + id, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Erreur DELETE /api/events');
+        if (eventIdInput.value === id) {
+          clearForm();
+          eventFormInfo.textContent = "Événement supprimé.";
+        }
+        await loadEventsFromServer();
+      } catch (e) {
+        console.error(e);
+        eventFormInfo.textContent = "Erreur lors de la suppression.";
       }
-      renderEvents();
     }
 
-    // Init
-    renderEvents();
+    loadEventsFromServer();
     initAdminBlock();
   </script>
 </body>

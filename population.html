@@ -39,6 +39,7 @@
       cursor:pointer; display:flex; align-items:center; gap:4px;
     }
     .nav-btn span.icon { font-size:1rem; }
+    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
     .nav-btn:hover { background:#111827; }
 
     .navbar-logout {
@@ -207,6 +208,23 @@
     .suggestion-item:hover {
       background: #111827;
     }
+
+    .select-input {
+      width:100%; padding:7px 9px;
+      background:#020617; border-radius:7px;
+      border:1px solid #1f2937; color:#e5e7eb;
+      font-size:0.85rem;
+    }
+    .select-input:focus {
+      outline:none; border-color:#38bdf8;
+      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+    }
+
+    .loading { text-align:center; color:#9ca3af; font-size:0.9rem; }
+
+    @media (max-width:768px) {
+      .page { padding-top:90px; }
+    }
   </style>
 
   <script src="especes.js"></script>
@@ -248,7 +266,7 @@
       <section id="tab-prive" class="tab-panel active">
         <h2>Ma population (privé)</h2>
         <p class="subtitle">
-          Tes données privées sont stockées dans ce navigateur, les données publiées sont envoyées sur le serveur.
+          Tes données privées sont stockées en Neon, les données publiées sont visibles à tous.
         </p>
 
         <div class="row-2" style="margin-bottom:10px;">
@@ -282,7 +300,7 @@
               style="margin-bottom:4px;"
             />
             <div id="search-summary-private" class="small-note">
-              Affichage de toutes tes espèces.
+              Chargement...
             </div>
             <div id="species-list"></div>
           </div>
@@ -303,7 +321,7 @@
           style="margin-bottom:4px;"
         />
         <div id="search-summary-public-species" class="small-note">
-          Affichage de toutes les espèces publiées.
+          Chargement...
         </div>
         <div id="public-species-list"></div>
       </section>
@@ -316,7 +334,7 @@
 
         <div class="field" style="margin-bottom:6px;">
           <label for="member-select">Adhérent</label>
-          <select id="member-select">
+          <select id="member-select" class="select-input">
             <option value="">-- Sélectionner un adhérent --</option>
           </select>
         </div>
@@ -329,7 +347,6 @@
   </main>
 
   <script>
-    // --- Sécurité de session ---
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -349,7 +366,6 @@
       window.location.href = "login.html";
     });
 
-    // --- Onglets ---
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabPanels = document.querySelectorAll(".tab-panel");
     tabButtons.forEach(btn => {
@@ -364,30 +380,9 @@
 
     const CURRENT_MEMBER_USERNAME = currentUser.username;
 
-    // -----------------------
-    //  Données locales privées
-    // -----------------------
     let speciesList = [];
     let publicEntries = [];
 
-    function saveLocalPopulation() {
-      const key = "population_" + CURRENT_MEMBER_USERNAME;
-      localStorage.setItem(key, JSON.stringify({ speciesList }));
-    }
-
-    function loadLocalPopulation() {
-      const key = "population_" + CURRENT_MEMBER_USERNAME;
-      const raw = localStorage.getItem(key);
-      if (!raw) return;
-      try {
-        const parsed = JSON.parse(raw);
-        speciesList = Array.isArray(parsed.speciesList) ? parsed.speciesList : [];
-      } catch(e) {
-        speciesList = [];
-      }
-    }
-
-    // --- UI privé ---
     const speciesNameInput = document.getElementById("species-name");
     const speciesSourceInput = document.getElementById("species-source");
     const popCountInput = document.getElementById("pop-count");
@@ -412,65 +407,85 @@
         return;
       }
 
-      const populations = [];
-      if (!isNaN(count) && count > 0) {
-        populations.push({ id: Date.now()+1, count });
-      }
-
       const s = {
-        id: Date.now(),
-        memberUsername: CURRENT_MEMBER_USERNAME,
-        name,
-        source,
-        published:false,
-        populations
+        speciesName: name,
+        source: source || "",
+        totalCount: (!isNaN(count) && count > 0) ? count : 0,
+        published: false
       };
 
-      speciesList.push(s);
-      speciesNameInput.value = "";
-      speciesSourceInput.value = "";
-      popCountInput.value = "";
-      renderPrivateSpecies();
-      await syncOwnPublicToServer();
-      saveLocalPopulation();
+      try {
+        const res = await fetch('/api/population/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            memberUsername: CURRENT_MEMBER_USERNAME,
+            entries: [s]
+          })
+        });
+        if (!res.ok) throw new Error('Erreur sync population');
+        speciesNameInput.value = "";
+        speciesSourceInput.value = "";
+        popCountInput.value = "";
+        await loadMyPopulation();
+        await loadPublicEntriesFromServer();
+      } catch (e) {
+        console.error(e);
+        alert("Erreur lors de l'ajout de l'espèce.");
+      }
     });
 
-    async function addPopulation(speciesId) {
-      const val = prompt("Effectif de cette population ?");
-      if (!val || isNaN(val) || Number(val)<=0) return;
-      const s = speciesList.find(x => x.id === speciesId);
-      if (!s) return;
-      s.populations.push({ id: Date.now(), count:Number(val) });
-      renderPrivateSpecies();
-      await syncOwnPublicToServer();
-      saveLocalPopulation();
+    async function togglePublish(speciesName) {
+      const entry = publicEntries.find(e => e.speciesName === speciesName && e.memberUsername === CURRENT_MEMBER_USERNAME);
+      if (!entry) return;
+
+      const newEntry = {
+        ...entry,
+        published: !entry.published
+      };
+
+      try {
+        await fetch('/api/population/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            memberUsername: CURRENT_MEMBER_USERNAME,
+            entries: [newEntry]
+          })
+        });
+        await loadMyPopulation();
+        await loadPublicEntriesFromServer();
+      } catch (e) {
+        console.error(e);
+      }
     }
 
-    async function togglePublish(speciesId) {
-      const s = speciesList.find(x => x.id === speciesId);
-      if (!s) return;
-      s.published = !s.published;
-      renderPrivateSpecies();
-      await syncOwnPublicToServer();
-      saveLocalPopulation();
-    }
-
-    async function deleteSpecies(speciesId) {
+    async function deleteSpecies(speciesName) {
       if (!confirm("Supprimer cette espèce et toutes ses populations ?")) return;
-      speciesList = speciesList.filter(x => x.id !== speciesId);
-      renderPrivateSpecies();
-      await syncOwnPublicToServer();
-      saveLocalPopulation();
+      try {
+        await fetch('/api/population/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            memberUsername: CURRENT_MEMBER_USERNAME,
+            entries: publicEntries.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName !== speciesName)
+          })
+        });
+        await loadMyPopulation();
+        await loadPublicEntriesFromServer();
+      } catch (e) {
+        console.error(e);
+      }
     }
 
     function renderPrivateSpecies(search="") {
       speciesListDiv.innerHTML = "";
-      let list = speciesList;
+      let list = publicEntries.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
       if (search.trim()) {
         const t = search.toLowerCase();
-        list = list.filter(s =>
-          s.name.toLowerCase().includes(t) ||
-          (s.source && s.source.toLowerCase().includes(t))
+        list = list.filter(e =>
+          e.speciesName.toLowerCase().includes(t) ||
+          (e.source && e.source.toLowerCase().includes(t))
         );
         privateSearchSummary.textContent =
           `Filtre : "${search}". ${list.length} espèce(s) trouvée(s).`;
@@ -485,35 +500,30 @@
         return;
       }
 
-      list.forEach(s => {
-        const total = s.populations.reduce((sum,p)=>sum+(p.count||0),0);
+      list.forEach(e => {
         const div = document.createElement("div");
         div.className = "item-card";
-        const statusClass = s.published ? "published" : "";
-        const statusText = s.published ? "Publié" : "Privé";
+        const statusClass = e.published ? "published" : "";
+        const statusText = e.published ? "Publié" : "Privé";
         div.innerHTML = `
           <div class="item-head">
             <div>
-              <div class="item-name">${s.name}</div>
+              <div class="item-name">${e.speciesName}</div>
               <div style="font-size:0.75rem; color:#9ca3af;">
-                ${s.source || "Source non précisée"}
+                ${e.source || "Source non précisée"}
               </div>
             </div>
             <div class="badge ${statusClass}">${statusText}</div>
           </div>
           <div style="font-size:0.75rem; color:#9ca3af;">
-            Total : <strong>${total}</strong> individu(s) · ${s.populations.length} population(s)
-          </div>
-          <div class="chips-row">
-            ${s.populations.map(p=>`<span class="chip">${p.count} indiv.</span>`).join("")}
+            Total : <strong>${e.totalCount}</strong> individu(s)
           </div>
           <div style="margin-top:4px; display:flex; gap:4px; justify-content:flex-end;">
-            <button class="btn-xs" onclick="addPopulation(${s.id})">➕ Pop.</button>
-            <button class="btn-xs" onclick="togglePublish(${s.id})">
-              ${s.published ? "Ne plus publier" : "Publier"}
+            <button class="btn-xs" onclick="togglePublish('${e.speciesName}')">
+              ${e.published ? "Ne plus publier" : "Publier"}
             </button>
             <button class="btn-xs" style="background:#dc2626;color:#f9fafb;"
-              onclick="deleteSpecies(${s.id})">X</button>
+              onclick="deleteSpecies('${e.speciesName}')">X</button>
           </div>
         `;
         speciesListDiv.appendChild(div);
@@ -524,43 +534,23 @@
       renderPrivateSpecies(privateSearchInput.value);
     });
 
-    // --- API population serveur ---
-    async function apiGetPopulation() {
-      const res = await fetch('/api/population');
-      if (!res.ok) throw new Error('Erreur GET /api/population');
-      return res.json();
-    }
-
-    async function apiSyncPopulation(memberUsername, entries) {
-      const res = await fetch('/api/population/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ memberUsername, entries })
-      });
-      if (!res.ok) throw new Error('Erreur POST /api/population/sync');
-      return res.json();
-    }
-
-    async function syncOwnPublicToServer() {
-      const publishedEntries = speciesList
-        .filter(s => s.published)
-        .map(s => ({
-          speciesName: s.name,
-          source: s.source,
-          totalCount: s.populations.reduce((sum,p)=>sum+(p.count||0),0)
-        }));
-
+    async function loadMyPopulation() {
       try {
-        await apiSyncPopulation(CURRENT_MEMBER_USERNAME, publishedEntries);
-        await loadPublicEntriesFromServer();
+        const res = await fetch('/api/population');
+        if (!res.ok) throw new Error('Erreur GET /api/population');
+        publicEntries = await res.json();
+        renderPrivateSpecies();
       } catch (e) {
         console.error(e);
+        privateSearchSummary.textContent = "Erreur lors du chargement.";
       }
     }
 
     async function loadPublicEntriesFromServer() {
       try {
-        publicEntries = await apiGetPopulation();
+        const res = await fetch('/api/population');
+        if (!res.ok) throw new Error('Erreur GET /api/population');
+        publicEntries = await res.json();
         renderPublicBySpecies();
         renderPublicByMember();
       } catch (e) {
@@ -568,7 +558,6 @@
       }
     }
 
-    // --- Vue publique (tous adhérents) ---
     const publicSpeciesListDiv = document.getElementById("public-species-list");
     const publicSpeciesSearch = document.getElementById("search-input-public-species");
     const publicSpeciesSummary = document.getElementById("search-summary-public-species");
@@ -709,7 +698,6 @@
       renderSelectedMember(val);
     });
 
-    // --- Autocomplete espèces depuis especes.js ---
     const suggestionsBox = document.getElementById("species-suggestions");
     function getAllSpeciesFromFiches() {
       if (!window.FICHES || !Array.isArray(window.FICHES)) return [];
@@ -769,9 +757,7 @@
       }
     });
 
-    // --- Chargement initial ---
-    loadLocalPopulation();
-    renderPrivateSpecies();
+    loadMyPopulation();
     loadPublicEntriesFromServer();
   </script>
 </body>
