@@ -4,17 +4,14 @@
   <meta charset="UTF-8">
   <title>Échange</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="especes.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #020617;
       color: #e5e7eb;
       min-height: 100vh;
     }
-
     .navbar {
       position: fixed;
       top: 0;
@@ -31,24 +28,9 @@
       flex-wrap: wrap;
       gap: 4px;
     }
-
-    .navbar-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .navbar-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .navbar-user {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
+    .navbar-left { display: flex; align-items: center; gap: 10px; }
+    .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
+    .navbar-user { font-size: 0.8rem; color: #9ca3af; }
     .navbar-menu {
       display: flex;
       gap: 8px;
@@ -56,7 +38,6 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
     .nav-btn {
       border: none;
       background: transparent;
@@ -68,17 +49,32 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      position: relative;
     }
-
-    .nav-btn span.icon { font-size: 1rem; }
-
-    .nav-btn.active {
-      background: #1d4ed8;
-      color: #e5e7eb;
-    }
-
+    .nav-btn span.icon { font-size: 1rem; position: relative; }
+    .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .nav-btn:hover { background: #111827; }
-
+    .notification-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #ff3b3b;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #020617;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); }
+      50% { box-shadow: 0 0 0 4px rgba(255, 59, 59, 0.2); }
+    }
     .navbar-logout {
       border-radius: 999px;
       border: 1px solid #374151;
@@ -88,9 +84,7 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
-
     .navbar-logout:hover { background: #1f2937; }
-
     .page {
       padding-top: 72px;
       padding-left: 12px;
@@ -99,7 +93,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .card {
       background: #020617;
       border-radius: 10px;
@@ -107,30 +100,10 @@
       padding: 14px 16px;
       margin-bottom: 14px;
     }
-
-    .card h1 {
-      font-size: 1.4rem;
-      margin-bottom: 6px;
-      color: #38bdf8;
-    }
-
-    .card h2 {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-      color: #e5e7eb;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: #d1d5db;
-    }
-
-    .subtitle {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 12px;
-    }
-
+    .card h1 { font-size: 1.4rem; margin-bottom: 6px; color: #38bdf8; }
+    .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
+    .card p { font-size: 0.85rem; color: #d1d5db; }
+    .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
     .exchange-tabs {
       display: flex;
       gap: 8px;
@@ -139,7 +112,6 @@
       padding-bottom: 6px;
       flex-wrap: wrap;
     }
-
     .exchange-tab-btn {
       border: none;
       background: #0f172a;
@@ -152,23 +124,11 @@
       align-items: center;
       gap: 4px;
     }
-
     .exchange-tab-btn span.icon { font-size: 1rem; }
-
-    .exchange-tab-btn.active {
-      background: #1d4ed8;
-      color: #e5e7eb;
-    }
-
+    .exchange-tab-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .exchange-tab-btn:hover { background: #111827; }
-
-    .exchange-section {
-      display: none;
-      margin-top: 8px;
-    }
-
+    .exchange-section { display: none; margin-top: 8px; }
     .exchange-section.active { display: block; }
-
     .filters-row {
       display: flex;
       flex-wrap: wrap;
@@ -176,12 +136,7 @@
       margin-bottom: 10px;
       align-items: center;
     }
-
-    .filters-row label {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
+    .filters-row label { font-size: 0.8rem; color: #9ca3af; }
     .filters-row select {
       background: #020617;
       border: 1px solid #374151;
@@ -190,7 +145,6 @@
       padding: 4px 6px;
       font-size: 0.8rem;
     }
-
     .btn-small {
       border: 1px solid #374151;
       background: #0f172a;
@@ -200,9 +154,7 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
-
     .btn-small:hover { background: #1f2937; }
-
     .btn-primary {
       border: none;
       background: #1d4ed8;
@@ -212,16 +164,13 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
-
     .btn-primary:hover { background: #2563eb; }
-
     .annonce-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
       margin-bottom: 14px;
     }
-
     .annonce-item {
       border: 1px solid #1f2937;
       border-radius: 8px;
@@ -232,20 +181,25 @@
       gap: 4px;
       position: relative;
     }
-
+    .annonce-item.nouveau::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 12px;
+      height: 12px;
+      background: #ff3b3b;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      z-index: 10;
+    }
     .annonce-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
     }
-
-    .annonce-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
+    .annonce-title { font-size: 0.9rem; font-weight: 600; color: #e5e7eb; }
     .annonce-meta {
       font-size: 0.75rem;
       color: #9ca3af;
@@ -253,7 +207,6 @@
       gap: 6px;
       flex-wrap: wrap;
     }
-
     .badge-type {
       padding: 2px 6px;
       border-radius: 999px;
@@ -262,7 +215,6 @@
       background: #0f172a;
       border: 1px solid #1f2937;
     }
-
     .badge-private {
       padding: 2px 6px;
       border-radius: 999px;
@@ -270,7 +222,6 @@
       background: #7c2d12;
       color: #fee2e2;
     }
-
     .badge-public {
       padding: 2px 6px;
       border-radius: 999px;
@@ -279,20 +230,13 @@
       background: #065f46;
       color: #a7f3d0;
     }
-
-    .annonce-desc {
-      font-size: 0.8rem;
-      color: #d1d5db;
-      white-space: pre-wrap;
-    }
-
+    .annonce-desc { font-size: 0.8rem; color: #d1d5db; white-space: pre-wrap; }
     .annonce-actions {
       display: flex;
       gap: 6px;
       margin-top: 4px;
       flex-wrap: wrap;
     }
-
     .btn-fav {
       border-radius: 999px;
       border: 1px solid #374151;
@@ -305,15 +249,8 @@
       align-items: center;
       gap: 4px;
     }
-
-    .btn-fav.favori {
-      background: #facc15;
-      color: #1f2937;
-      border-color: #fbbf24;
-    }
-
+    .btn-fav.favori { background: #facc15; color: #1f2937; border-color: #fbbf24; }
     .btn-fav span.icon { font-size: 0.9rem; }
-
     .form-annonce {
       border-top: 1px solid #1f2937;
       padding-top: 10px;
@@ -322,18 +259,12 @@
       flex-direction: column;
       gap: 8px;
     }
-
     .form-row {
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
-
-    .form-row label {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
+    .form-row label { font-size: 0.8rem; color: #9ca3af; }
     .form-row input,
     .form-row select,
     .form-row textarea {
@@ -345,35 +276,11 @@
       font-size: 0.85rem;
       width: 100%;
     }
-
-    .form-row textarea {
-      min-height: 70px;
-      resize: vertical;
-    }
-
-    .section-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #e5e7eb;
-      margin-bottom: 4px;
-      margin-top: 8px;
-    }
-
-    .section-subtitle {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      margin-bottom: 6px;
-    }
-
-    .empty-text {
-      font-size: 0.8rem;
-      color: #6b7280;
-      font-style: italic;
-    }
-
-    @media (max-width: 768px) {
-      .page { padding-top: 90px; }
-    }
+    .form-row textarea { min-height: 70px; resize: vertical; }
+    .section-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; margin-bottom: 4px; margin-top: 8px; }
+    .section-subtitle { font-size: 0.78rem; color: #9ca3af; margin-bottom: 6px; }
+    .empty-text { font-size: 0.8rem; color: #6b7280; font-style: italic; }
+    @media (max-width: 768px) { .page { padding-top: 90px; } }
   </style>
 </head>
 <body>
@@ -385,12 +292,14 @@
       </div>
     </div>
     <div class="navbar-menu" id="navbarMenu">
-      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span> <span>Accueil</span></button>
-      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span> <span>Fiche</span></button>
-      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span> <span>Aquarium</span></button>
-      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span> <span>Calcule</span></button>
-      <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span> <span>Échange</span></button>
-      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span> <span>Population</span></button>
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn active" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -398,36 +307,24 @@
   <main class="page">
     <div class="card">
       <h1>Échange</h1>
-      <p class="subtitle">
-        Espace d’annonces entre adhérents : offres, recherches et mon espace.
-      </p>
+      <p class="subtitle">Espace d'annonces entre adhérents : offres, recherches et mon espace.</p>
 
       <div class="exchange-tabs">
-        <button class="exchange-tab-btn active" data-tab="offres">
-          <span class="icon">📦</span><span>Offres</span>
-        </button>
-        <button class="exchange-tab-btn" data-tab="recherche">
-          <span class="icon">🔍</span><span>Recherche</span>
-        </button>
-        <button class="exchange-tab-btn" data-tab="mon-espace">
-          <span class="icon">👤</span><span>Mon espace</span>
-        </button>
+        <button class="exchange-tab-btn active" data-tab="offres"><span class="icon">📦</span><span>Offres</span></button>
+        <button class="exchange-tab-btn" data-tab="recherche"><span class="icon">🔍</span><span>Recherche</span></button>
+        <button class="exchange-tab-btn" data-tab="mon-espace"><span class="icon">👤</span><span>Mon espace</span></button>
       </div>
 
       <section id="tab-offres" class="exchange-section active">
         <h2>Offres des adhérents</h2>
-        <p class="section-subtitle">
-          Consulte les offres publiques publiées par les adhérents.
-        </p>
-
+        <p class="section-subtitle">Consulte les offres publiques publiées par les adhérents.</p>
         <div class="filters-row">
           <label for="offres-sort">Trier par :</label>
           <select id="offres-sort">
-            <option value="nom">Nom de l’offre (A → Z)</option>
+            <option value="nom">Nom de l'offre (A → Z)</option>
             <option value="favoris">Préférées en premier</option>
             <option value="type">Type</option>
           </select>
-
           <label for="offres-type">Type :</label>
           <select id="offres-type">
             <option value="tous">Tous les types</option>
@@ -437,24 +334,19 @@
             <option value="materiel">Matériel</option>
           </select>
         </div>
-
         <div id="offres-list" class="annonce-list"></div>
       </section>
 
       <section id="tab-recherche" class="exchange-section">
         <h2>Recherches des adhérents</h2>
-        <p class="section-subtitle">
-          Consulte les recherches publiques des adhérents.
-        </p>
-
+        <p class="section-subtitle">Consulte les recherches publiques des adhérents.</p>
         <div class="filters-row">
           <label for="recherche-sort">Trier par :</label>
           <select id="recherche-sort">
-            <option value="nom">Nom de l’annonce (A → Z)</option>
+            <option value="nom">Nom de l'annonce (A → Z)</option>
             <option value="favoris">Préférées en premier</option>
             <option value="type">Type</option>
           </select>
-
           <label for="recherche-type">Type :</label>
           <select id="recherche-type">
             <option value="tous">Tous les types</option>
@@ -464,32 +356,25 @@
             <option value="materiel">Matériel</option>
           </select>
         </div>
-
         <div id="recherche-list" class="annonce-list"></div>
       </section>
 
       <section id="tab-mon-espace" class="exchange-section">
         <h2>Mon espace</h2>
-        <p class="section-subtitle">
-          Crée et gère tes offres et tes recherches (privé/public, favoris, etc.).
-        </p>
+        <p class="section-subtitle">Crée et gère tes offres et tes recherches (privé/public, favoris, etc.).</p>
 
         <div class="section-title">Tes offres</div>
-        <p class="section-subtitle">
-          Ces offres sont rattachées à ton compte. Tu peux les passer en public ou en privé.
-        </p>
+        <p class="section-subtitle">Ces offres sont rattachées à ton compte. Tu peux les passer en public ou en privé.</p>
         <div id="mes-offres-list" class="annonce-list"></div>
 
         <div class="section-title">Tes recherches</div>
-        <p class="section-subtitle">
-          Ces annonces décrivent ce que tu recherches auprès des autres adhérents.
-        </p>
+        <p class="section-subtitle">Ces annonces décrivent ce que tu recherches auprès des autres adhérents.</p>
         <div id="mes-recherches-list" class="annonce-list"></div>
 
         <div class="section-title">Créer une offre</div>
         <form id="form-offre" class="form-annonce">
           <div class="form-row">
-            <label for="offre-nom">Nom de l’annonce *</label>
+            <label for="offre-nom">Nom de l'annonce *</label>
             <input type="text" id="offre-nom" required>
           </div>
           <div class="form-row">
@@ -506,15 +391,13 @@
             <label for="offre-desc">Description</label>
             <textarea id="offre-desc" placeholder="Détails de ce que tu proposes (espèce, quantité, état du matériel, conditions, etc.)."></textarea>
           </div>
-          <div>
-            <button type="submit" class="btn-primary">Créer l’offre (par défaut privée)</button>
-          </div>
+          <button type="submit" class="btn-primary">Créer l'offre (par défaut privée)</button>
         </form>
 
         <div class="section-title">Créer une recherche</div>
         <form id="form-recherche" class="form-annonce">
           <div class="form-row">
-            <label for="recherche-nom">Nom de l’annonce *</label>
+            <label for="recherche-nom">Nom de l'annonce *</label>
             <input type="text" id="recherche-nom" required>
           </div>
           <div class="form-row">
@@ -531,9 +414,7 @@
             <label for="recherche-desc">Description</label>
             <textarea id="recherche-desc" placeholder="Détails de ce que tu recherches (espèce, matériel, quantité, etc.)."></textarea>
           </div>
-          <div>
-            <button type="submit" class="btn-primary">Créer la recherche (par défaut privée)</button>
-          </div>
+          <button type="submit" class="btn-primary">Créer la recherche (par défaut privée)</button>
         </form>
       </section>
     </div>
@@ -554,34 +435,67 @@
       "Adhérent";
     navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
 
-    const CURRENT_PAGE = "echange.html";
-    const navbarMenu = document.getElementById('navbarMenu');
+    // Navigation
     const navButtons = document.querySelectorAll('.nav-btn[data-link]');
     navButtons.forEach(btn => {
-      const link = btn.dataset.link;
-      if (link === CURRENT_PAGE) { btn.classList.add('active'); }
-      btn.addEventListener('click', () => { window.location.href = link; });
+      btn.addEventListener('click', () => { window.location.href = btn.dataset.link; });
     });
 
-    if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
-      const bureauBtn = document.createElement("button");
-      bureauBtn.className = "nav-btn";
-      bureauBtn.dataset.link = "bureau.html";
-      bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
-      const logoutBtnElem = document.getElementById("logoutBtn");
-      navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
-      bureauBtn.addEventListener('click', () => { window.location.href = "bureau.html"; });
-      if (CURRENT_PAGE === "bureau.html") { bureauBtn.classList.add('active'); }
-    }
+    // Permissions
+    document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.serre === true)) {
+        btn.style.display = "none";
+      }
+    });
 
+    document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) {
+        btn.style.display = "none";
+      }
+    });
+
+    // Déconnexion
     const logoutBtn = document.getElementById('logoutBtn');
     logoutBtn.addEventListener('click', () => {
       localStorage.removeItem("user");
+      localStorage.removeItem("notificationsSeen");
       window.location.href = "login.html";
     });
 
-    // ========= API ANNONCES (via serveur) =========
+    // --- SYSTÈME DE NOTIFICATIONS ---
+    const ANNONCES_KEY = "announcementsData";
+    const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
+    const navEchange = document.getElementById("navEchange");
 
+    async function loadAnnoncesFromServer() {
+      try {
+        const res = await fetch('/api/annonces');
+        if (!res.ok) throw new Error('Erreur GET /api/annonces');
+        const annonces = await res.json();
+        localStorage.setItem(ANNONCES_KEY, JSON.stringify(annonces));
+        return annonces;
+      } catch (e) {
+        const raw = localStorage.getItem(ANNONCES_KEY);
+        try { return JSON.parse(raw) || []; } catch { return []; }
+      }
+    }
+
+    function updateNotificationBadge() {
+      if (!navEchange) return;
+      const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
+      const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
+      const unseenCount = annonces.filter(a => !seenIds[a.id]).length;
+      const oldBadge = navEchange.querySelector('.notification-badge');
+      if (oldBadge) oldBadge.remove();
+      if (unseenCount > 0) {
+        const badge = document.createElement('span');
+        badge.className = 'notification-badge';
+        badge.textContent = unseenCount > 9 ? '9+' : unseenCount;
+        navEchange.querySelector('.icon').appendChild(badge);
+      }
+    }
+
+    // --- API ANNONCES ---
     async function apiGetAnnonces() {
       const res = await fetch('/api/annonces');
       if (!res.ok) throw new Error('Erreur chargement annonces');
@@ -592,13 +506,7 @@
       const res = await fetch('/api/annonces', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          titre,
-          type,
-          description,
-          categorie,
-          auteur: currentUser.username
-        })
+        body: JSON.stringify({ titre, type, description, categorie, auteur: currentUser.username })
       });
       if (!res.ok) throw new Error('Erreur création annonce');
       return res.json();
@@ -634,8 +542,7 @@
       return res.json();
     }
 
-    // ========= UI & logique =========
-
+    // --- UI & Logique ---
     const tabButtons = document.querySelectorAll('.exchange-tab-btn');
     const tabSections = {
       offres: document.getElementById('tab-offres'),
@@ -657,11 +564,9 @@
     const offresSortSelect = document.getElementById('offres-sort');
     const offresTypeSelect = document.getElementById('offres-type');
     const offresListElem = document.getElementById('offres-list');
-
     const rechercheSortSelect = document.getElementById('recherche-sort');
     const rechercheTypeSelect = document.getElementById('recherche-type');
     const rechercheListElem = document.getElementById('recherche-list');
-
     const mesOffresListElem = document.getElementById('mes-offres-list');
     const mesRecherchesListElem = document.getElementById('mes-recherches-list');
 
@@ -677,9 +582,16 @@
         return;
       }
 
+      const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
+
       annonces.forEach(a => {
         const div = document.createElement('div');
         div.className = "annonce-item";
+        
+        // Ajouter classe "nouveau" si pas vue
+        if (!seenIds[a.id]) {
+          div.classList.add('nouveau');
+        }
 
         const header = document.createElement('div');
         header.className = "annonce-header";
@@ -696,7 +608,8 @@
         } else {
           favBtn.innerHTML = '<span class="icon">☆</span><span>Marquer</span>';
         }
-        favBtn.addEventListener('click', async () => {
+        favBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
           try {
             await apiToggleFavori(a.id);
             await refreshAll();
@@ -759,9 +672,7 @@
           delBtn.style.background = "#b91c1c";
           delBtn.style.borderColor = "#7f1d1d";
           delBtn.addEventListener('click', async () => {
-            const confirmMsg = isAdminLike && !isOwner
-              ? "Supprimer cette annonce d’un autre adhérent ?"
-              : "Supprimer définitivement cette annonce ?";
+            const confirmMsg = isAdminLike && !isOwner ? "Supprimer cette annonce ?" : "Supprimer définitivement cette annonce ?";
             if (!confirm(confirmMsg)) return;
             try {
               await apiDeleteAnnonce(a.id);
@@ -776,73 +687,61 @@
         div.appendChild(header);
         div.appendChild(meta);
         div.appendChild(desc);
-        if (actions.children.length > 0) {
-          div.appendChild(actions);
-        }
+        if (actions.children.length > 0) { div.appendChild(actions); }
 
         container.appendChild(div);
       });
+
+      // Marquer les annonces affichées comme vues
+      const newSeenIds = { ...seenIds };
+      annonces.forEach(a => { newSeenIds[a.id] = true; });
+      localStorage.setItem(NOTIFICATIONS_SEEN_KEY, JSON.stringify(newSeenIds));
+      updateNotificationBadge();
     }
 
     function sortAndFilter(annonces, { tri, type, categorie }) {
       let list = annonces.filter(a => a.categorie === categorie);
-
-      if (type && type !== "tous") {
-        list = list.filter(a => a.type === type);
-      }
-
+      if (type && type !== "tous") { list = list.filter(a => a.type === type); }
       if (tri === "nom") {
         list.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
       } else if (tri === "type") {
         list.sort((a, b) => {
           const t = a.type.localeCompare(b.type, 'fr', { sensitivity: 'base' });
-          if (t !== 0) return t;
-          return a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
+          return t !== 0 ? t : a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
         });
       } else if (tri === "favoris") {
+        const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
         list.sort((a, b) => {
           const aFav = Array.isArray(a.favoriPar) && a.favoriPar.includes(currentUser.username);
           const bFav = Array.isArray(b.favoriPar) && b.favoriPar.includes(currentUser.username);
-          if (aFav === bFav) {
-            return a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
-          }
-          return bFav - aFav;
+          return aFav === bFav ? a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }) : bFav - aFav;
         });
       }
-
       return list;
     }
 
     function refreshOffres() {
-      const annonces = cachedAnnonces;
       const tri = offresSortSelect.value;
       const type = offresTypeSelect.value;
-
-      const triees = sortAndFilter(annonces, { tri, type, categorie: "offre" });
-      // Offres : uniquement annonces publiques
+      const triees = sortAndFilter(cachedAnnonces, { tri, type, categorie: "offre" });
       const visibles = triees.filter(a => !a.prive);
       renderAnnonceList(offresListElem, visibles, { showAuteur: true, isMineSection: false });
     }
 
     function refreshRecherches() {
-      const annonces = cachedAnnonces;
       const tri = rechercheSortSelect.value;
       const type = rechercheTypeSelect.value;
-
-      const triees = sortAndFilter(annonces, { tri, type, categorie: "recherche" });
-      // Recherches : uniquement annonces publiques
+      const triees = sortAndFilter(cachedAnnonces, { tri, type, categorie: "recherche" });
       const visibles = triees.filter(a => !a.prive);
       renderAnnonceList(rechercheListElem, visibles, { showAuteur: true, isMineSection: false });
     }
 
     function refreshMonEspace() {
-      const annonces = cachedAnnonces;
-
-      const mesOffres = annonces.filter(a => a.categorie === "offre" && a.auteur === currentUser.username);
+      const mesOffres = cachedAnnonces.filter(a => a.categorie === "offre" && a.auteur === currentUser.username);
       mesOffres.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
       renderAnnonceList(mesOffresListElem, mesOffres, { showAuteur: false, isMineSection: true });
 
-      const mesRech = annonces.filter(a => a.categorie === "recherche" && a.auteur === currentUser.username);
+      const mesRech = cachedAnnonces.filter(a => a.categorie === "recherche" && a.auteur === currentUser.username);
       mesRech.sort((a, b) => a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' }));
       renderAnnonceList(mesRecherchesListElem, mesRech, { showAuteur: false, isMineSection: true });
     }
@@ -853,58 +752,41 @@
         refreshOffres();
         refreshRecherches();
         refreshMonEspace();
+        updateNotificationBadge();
       } catch (e) {
         alert("Erreur de chargement des annonces : " + e.message);
       }
     }
 
     const formOffre = document.getElementById('form-offre');
-    const inputOffreNom = document.getElementById('offre-nom');
-    const inputOffreType = document.getElementById('offre-type');
-    const inputOffreDesc = document.getElementById('offre-desc');
-
     formOffre.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const titre = inputOffreNom.value.trim();
-      const type = inputOffreType.value;
-      const desc = inputOffreDesc.value;
-
-      if (!titre || !type) {
-        alert("Merci de remplir au minimum le nom de l’annonce et le type.");
-        return;
-      }
-
+      const titre = document.getElementById('offre-nom').value.trim();
+      const type = document.getElementById('offre-type').value;
+      const desc = document.getElementById('offre-desc').value;
+      if (!titre || !type) { alert("Merci de remplir au minimum le nom et le type."); return; }
       try {
         await apiCreateAnnonce({ titre, type, description: desc, categorie: "offre" });
         formOffre.reset();
         await refreshAll();
       } catch (err) {
-        alert("Erreur lors de la création de l’offre : " + err.message);
+        alert("Erreur : " + err.message);
       }
     });
 
     const formRecherche = document.getElementById('form-recherche');
-    const inputRechercheNom = document.getElementById('recherche-nom');
-    const inputRechercheType = document.getElementById('recherche-type-input');
-    const inputRechercheDesc = document.getElementById('recherche-desc');
-
     formRecherche.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const titre = inputRechercheNom.value.trim();
-      const type = inputRechercheType.value;
-      const desc = inputRechercheDesc.value;
-
-      if (!titre || !type) {
-        alert("Merci de remplir au minimum le nom de l’annonce et le type.");
-        return;
-      }
-
+      const titre = document.getElementById('recherche-nom').value.trim();
+      const type = document.getElementById('recherche-type-input').value;
+      const desc = document.getElementById('recherche-desc').value;
+      if (!titre || !type) { alert("Merci de remplir au minimum le nom et le type."); return; }
       try {
         await apiCreateAnnonce({ titre, type, description: desc, categorie: "recherche" });
         formRecherche.reset();
         await refreshAll();
       } catch (err) {
-        alert("Erreur lors de la création de la recherche : " + err.message);
+        alert("Erreur : " + err.message);
       }
     });
 
@@ -913,8 +795,9 @@
     rechercheSortSelect.addEventListener('change', refreshRecherches);
     rechercheTypeSelect.addEventListener('change', refreshRecherches);
 
-    // Premier chargement
+    // Initialiser
     refreshAll();
+    setInterval(refreshAll, 10000);
   </script>
 </body>
 </html>
