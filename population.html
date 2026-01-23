@@ -85,9 +85,10 @@
       background:#38bdf8; color:#0f172a;
       border:none; border-radius:7px;
       padding:7px 10px; font-size:0.8rem;
-      cursor:pointer;
+      cursor:pointer; font-weight:600;
     }
     .btn-primary:hover { filter:brightness(1.05); }
+    .btn-primary:disabled { opacity:0.5; cursor:not-allowed; }
 
     .btn-xs {
       border:none;
@@ -99,6 +100,7 @@
       color:#e5e7eb;
       border:1px solid #374151;
     }
+    .btn-xs:hover { background:#1f2937; }
 
     .row-2 {
       display:grid;
@@ -220,7 +222,19 @@
       box-shadow:0 0 0 1px rgba(56,189,248,0.4);
     }
 
-    .loading { text-align:center; color:#9ca3af; font-size:0.9rem; }
+    .loading { text-align:center; color:#9ca3af; font-size:0.9rem; padding:8px; }
+    .error { text-align:center; color:#f87171; font-size:0.85rem; padding:8px; background:rgba(220,38,38,0.1); border-radius:6px; margin:8px 0; }
+    .spinner {
+      display:inline-block;
+      width:12px; height:12px;
+      border:2px solid #374151;
+      border-top-color:#38bdf8;
+      border-radius:50%;
+      animation:spin 0.6s linear infinite;
+    }
+    @keyframes spin {
+      to { transform:rotate(360deg); }
+    }
 
     @media (max-width:768px) {
       .page { padding-top:90px; }
@@ -286,6 +300,7 @@
               <input type="number" id="pop-count" min="1" placeholder="ex. 10">
             </div>
             <button class="btn-primary" id="addSpeciesBtn">Ajouter l'espèce + population</button>
+            <div id="addSpeciesError" class="error" style="display:none;"></div>
           </div>
 
           <div>
@@ -300,7 +315,7 @@
               style="margin-bottom:4px;"
             />
             <div id="search-summary-private" class="small-note">
-              Chargement...
+              <span class="spinner"></span> Chargement...
             </div>
             <div id="species-list"></div>
           </div>
@@ -321,7 +336,7 @@
           style="margin-bottom:4px;"
         />
         <div id="search-summary-public-species" class="small-note">
-          Chargement...
+          <span class="spinner"></span> Chargement...
         </div>
         <div id="public-species-list"></div>
       </section>
@@ -347,6 +362,7 @@
   </main>
 
   <script>
+    // ============ AUTHENTIFICATION ============
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -355,6 +371,7 @@
 
     document.getElementById("navbarUser").textContent = currentUser.username;
 
+    // ============ NAVIGATION ============
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => {
         window.location.href = btn.getAttribute("data-link");
@@ -366,6 +383,7 @@
       window.location.href = "login.html";
     });
 
+    // ============ TABS ============
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabPanels = document.querySelectorAll(".tab-panel");
     tabButtons.forEach(btn => {
@@ -378,119 +396,153 @@
       });
     });
 
+    // ============ STATE ============
     const CURRENT_MEMBER_USERNAME = currentUser.username;
+    let allPopulationData = [];
 
-    let speciesList = [];
-    let publicEntries = [];
-
+    // ============ DOM ELEMENTS ============
     const speciesNameInput = document.getElementById("species-name");
     const speciesSourceInput = document.getElementById("species-source");
     const popCountInput = document.getElementById("pop-count");
     const addSpeciesBtn = document.getElementById("addSpeciesBtn");
+    const addSpeciesError = document.getElementById("addSpeciesError");
     const speciesListDiv = document.getElementById("species-list");
     const speciesCountSpan = document.getElementById("species-count");
     const privateSearchInput = document.getElementById("search-input-private");
     const privateSearchSummary = document.getElementById("search-summary-private");
+    const publicSpeciesListDiv = document.getElementById("public-species-list");
+    const publicSpeciesSearch = document.getElementById("search-input-public-species");
+    const publicSpeciesSummary = document.getElementById("search-summary-public-species");
+    const memberSelect = document.getElementById("member-select");
+    const publicMemberSummary = document.getElementById("search-summary-public-member");
+    const publicMemberListDiv = document.getElementById("public-member-list");
+    const suggestionsBox = document.getElementById("species-suggestions");
+
+    // ============ FONCTIONS UTILITAIRES ============
+    function showError(element, message) {
+      element.textContent = "❌ " + message;
+      element.style.display = "block";
+      setTimeout(() => { element.style.display = "none"; }, 4000);
+    }
 
     function updateSpeciesCount() {
-      const c = speciesList.length;
+      const mySpecies = allPopulationData.filter(e => e.member_username === CURRENT_MEMBER_USERNAME);
+      const c = mySpecies.length;
       speciesCountSpan.textContent = c ? `(${c} espèce${c>1?"s":""})` : "";
     }
 
+    // ============ AJOUTER UNE ESPÈCE ============
     addSpeciesBtn.addEventListener("click", async () => {
       const name = speciesNameInput.value.trim();
       const source = speciesSourceInput.value.trim();
       const count = parseInt(popCountInput.value, 10);
 
       if (!name) {
-        alert("Le nom de l'espèce est obligatoire.");
+        showError(addSpeciesError, "Le nom de l'espèce est obligatoire.");
         return;
       }
 
-      const s = {
-        speciesName: name,
+      addSpeciesBtn.disabled = true;
+
+      const newEntry = {
+        member_username: CURRENT_MEMBER_USERNAME,
+        species_name: name,
         source: source || "",
-        totalCount: (!isNaN(count) && count > 0) ? count : 0,
+        total_count: (!isNaN(count) && count > 0) ? count : 0,
         published: false
       };
 
       try {
-        const res = await fetch('/api/population/sync', {
+        const res = await fetch('/api/population', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            memberUsername: CURRENT_MEMBER_USERNAME,
-            entries: [s]
-          })
+          body: JSON.stringify(newEntry)
         });
-        if (!res.ok) throw new Error('Erreur sync population');
+
+        if (!res.ok) {
+          const error = await res.text();
+          throw new Error(error || 'Erreur lors de l\'ajout');
+        }
+
+        console.log("✅ Espèce ajoutée avec succès");
         speciesNameInput.value = "";
         speciesSourceInput.value = "";
         popCountInput.value = "";
-        await loadMyPopulation();
-        await loadPublicEntriesFromServer();
+        suggestionsBox.style.display = "none";
+
+        await loadPopulationData();
       } catch (e) {
-        console.error(e);
-        alert("Erreur lors de l'ajout de l'espèce.");
+        console.error("❌ Erreur:", e);
+        showError(addSpeciesError, e.message || "Erreur lors de l'ajout de l'espèce.");
+      } finally {
+        addSpeciesBtn.disabled = false;
       }
     });
 
+    // ============ PUBLIER/DÉPUBLIER ============
     async function togglePublish(speciesName) {
-      const entry = publicEntries.find(e => e.speciesName === speciesName && e.memberUsername === CURRENT_MEMBER_USERNAME);
+      const entry = allPopulationData.find(e =>
+        e.species_name === speciesName && e.member_username === CURRENT_MEMBER_USERNAME
+      );
       if (!entry) return;
 
-      const newEntry = {
-        ...entry,
-        published: !entry.published
-      };
+      const updated = { ...entry, published: !entry.published };
 
       try {
-        await fetch('/api/population/sync', {
-          method: 'POST',
+        const res = await fetch(`/api/population/${entry.id}`, {
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            memberUsername: CURRENT_MEMBER_USERNAME,
-            entries: [newEntry]
-          })
+          body: JSON.stringify(updated)
         });
-        await loadMyPopulation();
-        await loadPublicEntriesFromServer();
+
+        if (!res.ok) throw new Error('Erreur lors de la mise à jour');
+        console.log(`✅ Espèce ${updated.published ? "publiée" : "dépubliée"}`);
+        await loadPopulationData();
       } catch (e) {
-        console.error(e);
+        console.error("❌ Erreur:", e);
+        alert("Erreur lors de la mise à jour du statut de publication.");
       }
     }
 
+    // ============ SUPPRIMER UNE ESPÈCE ============
     async function deleteSpecies(speciesName) {
       if (!confirm("Supprimer cette espèce et toutes ses populations ?")) return;
+
+      const entry = allPopulationData.find(e =>
+        e.species_name === speciesName && e.member_username === CURRENT_MEMBER_USERNAME
+      );
+      if (!entry) return;
+
       try {
-        await fetch('/api/population/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            memberUsername: CURRENT_MEMBER_USERNAME,
-            entries: publicEntries.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName !== speciesName)
-          })
+        const res = await fetch(`/api/population/${entry.id}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' }
         });
-        await loadMyPopulation();
-        await loadPublicEntriesFromServer();
+
+        if (!res.ok) throw new Error('Erreur lors de la suppression');
+        console.log("✅ Espèce supprimée");
+        await loadPopulationData();
       } catch (e) {
-        console.error(e);
+        console.error("❌ Erreur:", e);
+        alert("Erreur lors de la suppression de l'espèce.");
       }
     }
 
-    function renderPrivateSpecies(search="") {
+    // ============ RENDU: MA POPULATION (PRIVÉ) ============
+    function renderPrivateSpecies(search = "") {
       speciesListDiv.innerHTML = "";
-      let list = publicEntries.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
+      let list = allPopulationData.filter(e => e.member_username === CURRENT_MEMBER_USERNAME);
+
       if (search.trim()) {
         const t = search.toLowerCase();
         list = list.filter(e =>
-          e.speciesName.toLowerCase().includes(t) ||
+          e.species_name.toLowerCase().includes(t) ||
           (e.source && e.source.toLowerCase().includes(t))
         );
-        privateSearchSummary.textContent =
+        privateSearchSummary.innerHTML =
           `Filtre : "${search}". ${list.length} espèce(s) trouvée(s).`;
       } else {
-        privateSearchSummary.textContent = "Affichage de toutes tes espèces.";
+        privateSearchSummary.innerHTML = "Affichage de toutes tes espèces.";
       }
 
       updateSpeciesCount();
@@ -508,7 +560,7 @@
         div.innerHTML = `
           <div class="item-head">
             <div>
-              <div class="item-name">${e.speciesName}</div>
+              <div class="item-name">${e.species_name}</div>
               <div style="font-size:0.75rem; color:#9ca3af;">
                 ${e.source || "Source non précisée"}
               </div>
@@ -516,14 +568,14 @@
             <div class="badge ${statusClass}">${statusText}</div>
           </div>
           <div style="font-size:0.75rem; color:#9ca3af;">
-            Total : <strong>${e.totalCount}</strong> individu(s)
+            Total : <strong>${e.total_count}</strong> individu(s)
           </div>
           <div style="margin-top:4px; display:flex; gap:4px; justify-content:flex-end;">
-            <button class="btn-xs" onclick="togglePublish('${e.speciesName}')">
+            <button class="btn-xs" onclick="togglePublish('${e.species_name}')">
               ${e.published ? "Ne plus publier" : "Publier"}
             </button>
             <button class="btn-xs" style="background:#dc2626;color:#f9fafb;"
-              onclick="deleteSpecies('${e.speciesName}')">X</button>
+              onclick="deleteSpecies('${e.species_name}')">X</button>
           </div>
         `;
         speciesListDiv.appendChild(div);
@@ -534,46 +586,32 @@
       renderPrivateSpecies(privateSearchInput.value);
     });
 
-    async function loadMyPopulation() {
+    // ============ CHARGEMENT DES DONNÉES ============
+    async function loadPopulationData() {
       try {
         const res = await fetch('/api/population');
-        if (!res.ok) throw new Error('Erreur GET /api/population');
-        publicEntries = await res.json();
+        if (!res.ok) throw new Error('Erreur lors du chargement des données');
+        allPopulationData = await res.json();
+        console.log("✅ Données chargées:", allPopulationData);
         renderPrivateSpecies();
-      } catch (e) {
-        console.error(e);
-        privateSearchSummary.textContent = "Erreur lors du chargement.";
-      }
-    }
-
-    async function loadPublicEntriesFromServer() {
-      try {
-        const res = await fetch('/api/population');
-        if (!res.ok) throw new Error('Erreur GET /api/population');
-        publicEntries = await res.json();
         renderPublicBySpecies();
         renderPublicByMember();
       } catch (e) {
-        console.error(e);
+        console.error("❌ Erreur:", e);
+        privateSearchSummary.innerHTML = '<span style="color:#f87171;">❌ Erreur lors du chargement.</span>';
       }
     }
 
-    const publicSpeciesListDiv = document.getElementById("public-species-list");
-    const publicSpeciesSearch = document.getElementById("search-input-public-species");
-    const publicSpeciesSummary = document.getElementById("search-summary-public-species");
-    const memberSelect = document.getElementById("member-select");
-    const publicMemberSummary = document.getElementById("search-summary-public-member");
-    const publicMemberListDiv = document.getElementById("public-member-list");
-
+    // ============ GROUPEMENT DE DONNÉES ============
     function groupBySpecies(entries) {
       const map = {};
-      entries.forEach(e => {
-        const k = e.speciesName.toLowerCase();
-        if (!map[k]) map[k] = { speciesName:e.speciesName, members:[] };
+      entries.filter(e => e.published).forEach(e => {
+        const k = e.species_name.toLowerCase();
+        if (!map[k]) map[k] = { speciesName: e.species_name, members: [] };
         map[k].members.push({
-          memberUsername:e.memberUsername,
-          source:e.source,
-          totalCount:e.totalCount
+          memberUsername: e.member_username,
+          source: e.source,
+          totalCount: e.total_count
         });
       });
       return Object.values(map);
@@ -581,31 +619,32 @@
 
     function groupByMember(entries) {
       const map = {};
-      entries.forEach(e => {
-        if (!map[e.memberUsername]) map[e.memberUsername] = {
-          memberUsername:e.memberUsername,
-          species:[]
+      entries.filter(e => e.published).forEach(e => {
+        if (!map[e.member_username]) map[e.member_username] = {
+          memberUsername: e.member_username,
+          species: []
         };
-        map[e.memberUsername].species.push({
-          speciesName:e.speciesName,
-          source:e.source,
-          totalCount:e.totalCount
+        map[e.member_username].species.push({
+          speciesName: e.species_name,
+          source: e.source,
+          totalCount: e.total_count
         });
       });
       return Object.values(map);
     }
 
-    function renderPublicBySpecies(search="") {
+    // ============ RENDU: ESPÈCES PUBLIÉES ============
+    function renderPublicBySpecies(search = "") {
       publicSpeciesListDiv.innerHTML = "";
-      let list = publicEntries;
+      let list = allPopulationData.filter(e => e.published);
+
       if (search.trim()) {
         const t = search.toLowerCase();
-        list = list.filter(e =>
-          e.speciesName.toLowerCase().includes(t)
-        );
+        list = list.filter(e => e.species_name.toLowerCase().includes(t));
       }
+
       const grouped = groupBySpecies(list);
-      publicSpeciesSummary.textContent = search.trim()
+      publicSpeciesSummary.innerHTML = search.trim()
         ? `Filtre : "${search}". ${grouped.length} espèce(s) trouvée(s).`
         : `Affichage de toutes les espèces publiées (${grouped.length}).`;
 
@@ -616,7 +655,7 @@
       }
 
       grouped.forEach(g => {
-        const total = g.members.reduce((s,m)=>s+(m.totalCount||0),0);
+        const total = g.members.reduce((s, m) => s + (m.totalCount || 0), 0);
         const div = document.createElement("div");
         div.className = "item-card";
         div.innerHTML = `
@@ -627,7 +666,7 @@
                 ${g.members.length} adhérent(s) · ${total} individu(s)
               </div>
             </div>
-            <div class="badge">Publique</div>
+            <div class="badge published">Publique</div>
           </div>
           <div class="chips-row">
             ${g.members.map(m => `
@@ -644,8 +683,9 @@
       renderPublicBySpecies(publicSpeciesSearch.value);
     });
 
+    // ============ RENDU: PAR ADHÉRENT ============
     function renderPublicByMember() {
-      const groups = groupByMember(publicEntries);
+      const groups = groupByMember(allPopulationData);
       memberSelect.innerHTML = '<option value="">-- Sélectionner un adhérent --</option>';
       groups.forEach(g => {
         const opt = document.createElement("option");
@@ -654,21 +694,19 @@
         memberSelect.appendChild(opt);
       });
       publicMemberListDiv.innerHTML = "";
-      publicMemberSummary.textContent =
-        "Sélectionne un adhérent pour afficher sa liste.";
+      publicMemberSummary.textContent = "Sélectionne un adhérent pour afficher sa liste.";
     }
 
     function renderSelectedMember(memberUsername) {
       publicMemberListDiv.innerHTML = "";
-      const groups = groupByMember(publicEntries);
+      const groups = groupByMember(allPopulationData);
       const g = groups.find(x => x.memberUsername === memberUsername);
       if (!g) {
         publicMemberListDiv.innerHTML =
           '<div class="no-result">Aucune espèce publiée pour cet adhérent.</div>';
         return;
       }
-      publicMemberSummary.textContent =
-        `Espèces publiées par ${g.memberUsername}`;
+      publicMemberSummary.textContent = `Espèces publiées par ${g.memberUsername}`;
       g.species.forEach(s => {
         const div = document.createElement("div");
         div.className = "item-card";
@@ -691,16 +729,17 @@
       const val = memberSelect.value;
       if (!val) {
         publicMemberListDiv.innerHTML = "";
-        publicMemberSummary.textContent =
-          "Sélectionne un adhérent pour afficher sa liste.";
+        publicMemberSummary.textContent = "Sélectionne un adhérent pour afficher sa liste.";
         return;
       }
       renderSelectedMember(val);
     });
 
-    const suggestionsBox = document.getElementById("species-suggestions");
+    // ============ SUGGESTIONS D'ESPÈCES ============
     function getAllSpeciesFromFiches() {
-      if (!window.FICHES || !Array.isArray(window.FICHES)) return [];
+      if (!window.FICHES || !Array.isArray(window.FICHES)) {
+        return [];
+      }
       return window.FICHES.map(f => ({
         nomScientifique: f.nomScientifique || "",
         nomCommun: f.nomCommun || "",
@@ -718,6 +757,12 @@
       }
       const q = query.toLowerCase();
       const all = getAllSpeciesFromFiches();
+      if (!all.length) {
+        console.warn("⚠️  FICHES n'est pas chargé. Vérifier especes.js");
+        suggestionsBox.style.display = "none";
+        return;
+      }
+
       const matches = all.filter(s =>
         s.nomScientifique.toLowerCase().includes(q) ||
         s.nomCommun.toLowerCase().includes(q) ||
@@ -757,8 +802,9 @@
       }
     });
 
-    loadMyPopulation();
-    loadPublicEntriesFromServer();
+    // ============ INITIALISATION ============
+    console.log("🚀 Population page initialized. Current user:", CURRENT_MEMBER_USERNAME);
+    loadPopulationData();
   </script>
 </body>
 </html>
