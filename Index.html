@@ -31,130 +31,32 @@
     .navbar-left { display: flex; align-items: center; gap: 10px; }
     .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
     .navbar-user { font-size: 0.8rem; color: #9ca3af; }
-    .navbar-menu {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .nav-btn {
-      border: none;
-      background: transparent;
-      color: #cbd5f5;
-      font-size: 0.8rem;
-      padding: 6px 8px;
-      border-radius: 999px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      position: relative;
-    }
+    .navbar-menu { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 4px; position: relative; }
     .nav-btn span.icon { font-size: 1rem; position: relative; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .nav-btn:hover { background: #111827; }
-    .notification-badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: #ff3b3b;
-      color: white;
-      border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #020617;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); }
-      50% { box-shadow: 0 0 0 4px rgba(255, 59, 59, 0.2); }
-    }
-    .navbar-logout {
-      border-radius: 999px;
-      border: 1px solid #374151;
-      background: #111827;
-      color: #e5e7eb;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
+    .notification-badge { position: absolute; top: -6px; right: -6px; background: #ff3b3b; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 2px solid #020617; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); } 50% { box-shadow: 0 0 0 4px rgba(255, 59, 59, 0.2); } }
+    .navbar-logout { border-radius: 999px; border: 1px solid #374151; background: #111827; color: #e5e7eb; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; }
     .navbar-logout:hover { background: #1f2937; }
-    .page {
-      padding-top: 72px;
-      padding-left: 12px;
-      padding-right: 12px;
-      padding-bottom: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .card {
-      background: #020617;
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-    }
+    .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 1000px; margin: 0 auto; }
+    .card { background: #020617; border-radius: 10px; border: 1px solid #1f2937; padding: 14px 16px; margin-bottom: 14px; }
     .card h1 { font-size: 1.4rem; margin-bottom: 6px; color: #38bdf8; }
     .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
-    .card h3 { font-size: 0.95rem; margin-bottom: 4px; color: #e5e7eb; }
     .card p { font-size: 0.85rem; color: #d1d5db; }
     .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
     .small-note { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; }
     .event-list-home { margin-top: 6px; display: flex; flex-direction: column; gap: 6px; }
-    .event-home-item {
-      font-size: 0.85rem;
-      border-radius: 8px;
-      border: 1px solid #1f2937;
-      padding: 6px 8px;
-      background: #020617;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
+    .event-home-item { font-size: 0.85rem; border-radius: 8px; border: 1px solid #1f2937; padding: 6px 8px; background: #020617; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
     .event-home-main { flex: 1 1 auto; min-width: 0; }
     .event-home-title { font-weight: 600; color: #e5e7eb; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-meta { font-size: 0.78rem; color: #9ca3af; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-date { font-size: 0.78rem; border-radius: 999px; padding: 3px 7px; border: 1px solid #1f2937; background: #111827; white-space: nowrap; color: #e5e7eb; }
     .fb-page-wrapper { margin-top: 8px; }
-    .loading-note { font-size: 0.75rem; color: #9ca3af; font-style: italic; }
-    .resource-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-    .resource-btn {
-      flex: 1;
-      min-width: 200px;
-      padding: 12px 16px;
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #38bdf8;
-      font-weight: 500;
-      text-align: center;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.9rem;
-    }
-    .resource-btn:hover {
-      background: #1d4ed8;
-      border-color: #1d4ed8;
-      color: #e5e7eb;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
-    }
+    .resource-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .resource-btn { flex: 1; min-width: 200px; padding: 12px 16px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; text-decoration: none; color: #38bdf8; font-weight: 500; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+    .resource-btn:hover { background: #1d4ed8; border-color: #1d4ed8; color: #e5e7eb; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3); }
     .resource-btn span.icon { font-size: 1.2rem; }
     @media (max-width: 768px) { .page { padding-top: 90px; } }
   </style>
@@ -253,59 +155,38 @@
   </main>
 
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0"
-    nonce="CANcercle"></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0" nonce="CANcercle"></script>
 
   <script>
-    // Auth basique
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
     try { currentUser = JSON.parse(storedUser); } catch (e) { window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
-    // Affichage nom + rôle
     const navbarUser = document.getElementById('navbarUser');
-    if (navbarUser) {
-      const roleLabel =
-        currentUser.role === "admin" ? "Admin" :
-        currentUser.role === "membre_bureau" ? "Membre de bureau" :
-        "Adhérent";
-      navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
-    }
+    const roleLabel = currentUser.role === "admin" ? "Admin" : currentUser.role === "membre_bureau" ? "Membre de bureau" : "Adhérent";
+    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
 
-    // Navigation simple
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        window.location.href = btn.dataset.link;
-      });
+      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
     });
 
-    // Masquage des boutons selon droits
     document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
-      if (!(currentUser.role === "admin" || currentUser.serre === true)) {
-        btn.style.display = "none";
-      }
+      if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
     });
 
     document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
-      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) {
-        btn.style.display = "none";
-      }
+      if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) { btn.style.display = "none"; }
     });
 
-    // Déconnexion
     const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem("user");
-        localStorage.removeItem("notificationsSeen");
-        window.location.href = "login.html";
-      });
-    }
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem("user");
+      localStorage.removeItem("notificationsSeen");
+      window.location.href = "login.html";
+    });
 
-    // --- SYSTÈME DE NOTIFICATIONS ANNONCES ---
     const ANNONCES_KEY = "announcementsData";
     const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
     const navEchange = document.getElementById("navEchange");
@@ -318,26 +199,18 @@
         localStorage.setItem(ANNONCES_KEY, JSON.stringify(annonces));
         return annonces;
       } catch (e) {
-        console.error('Erreur chargement annonces :', e);
         const raw = localStorage.getItem(ANNONCES_KEY);
-        try {
-          return JSON.parse(raw) || [];
-        } catch {
-          return [];
-        }
+        try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
 
     function updateNotificationBadge() {
       if (!navEchange) return;
-
       const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
       const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
-
       const unseenCount = annonces.filter(a => !seenIds[a.id]).length;
       const oldBadge = navEchange.querySelector('.notification-badge');
       if (oldBadge) oldBadge.remove();
-
       if (unseenCount > 0) {
         const badge = document.createElement('span');
         badge.className = 'notification-badge';
@@ -346,34 +219,23 @@
       }
     }
 
-    // Bouton Échange - Marquer comme vu au clic
     navEchange.addEventListener('click', (e) => {
-      e.preventDefault();
-      
       const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
       const seenIds = JSON.parse(localStorage.getItem(NOTIFICATIONS_SEEN_KEY) || '{}');
-      
-      annonces.forEach(a => {
-        seenIds[a.id] = true;
-      });
-      
+      annonces.forEach(a => { seenIds[a.id] = true; });
       localStorage.setItem(NOTIFICATIONS_SEEN_KEY, JSON.stringify(seenIds));
       updateNotificationBadge();
-      window.location.href = navEchange.dataset.link;
     });
 
-    // Charger et afficher badge au démarrage
     async function initNotifications() {
       await loadAnnoncesFromServer();
       updateNotificationBadge();
-
       setInterval(async () => {
         await loadAnnoncesFromServer();
         updateNotificationBadge();
       }, 30000);
     }
 
-    // --- Prochains événements (depuis l'API) ---
     const EVENTS_KEY = "eventsData";
     const homeEventList = document.getElementById("homeEventList");
 
@@ -385,62 +247,39 @@
         localStorage.setItem(EVENTS_KEY, JSON.stringify(serverEvents));
         return serverEvents;
       } catch (e) {
-        console.error('Erreur chargement serveur, utilise localStorage :', e);
         const raw = localStorage.getItem(EVENTS_KEY);
-        try {
-          return JSON.parse(raw) || [];
-        } catch {
-          return [];
-        }
+        try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
 
     function getNextEvents(limit) {
       const raw = localStorage.getItem(EVENTS_KEY);
       let all = [];
-      try {
-        all = JSON.parse(raw) || [];
-      } catch {}
-      
+      try { all = JSON.parse(raw) || []; } catch {}
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      
-      const upcoming = all
-        .filter(ev => {
-          const evDate = new Date(ev.date_iso || ev.dateIso);
-          return !isNaN(evDate.getTime()) && evDate >= today;
-        })
-        .sort((a, b) => new Date(a.date_iso || a.dateIso) - new Date(b.date_iso || b.dateIso));
+      const upcoming = all.filter(ev => {
+        const evDate = new Date(ev.date_iso || ev.dateIso);
+        return !isNaN(evDate.getTime()) && evDate >= today;
+      }).sort((a, b) => new Date(a.date_iso || a.dateIso) - new Date(b.date_iso || b.dateIso));
       return upcoming.slice(0, limit);
     }
 
     async function renderHomeEvents() {
       if (!homeEventList) return;
-      
       await loadEventsFromServer();
-      
       const nextEvents = getNextEvents(3);
-
       if (!nextEvents.length) {
         homeEventList.innerHTML = '<p class="small-note">Aucun événement à venir.</p>';
         return;
       }
-
       homeEventList.innerHTML = nextEvents.map(ev => {
         const dateField = ev.date_iso || ev.dateIso;
         const d = new Date(dateField);
         const dateStr = isNaN(d.getTime()) ? dateField : d.toLocaleDateString();
         const hourStr = (ev.heure || ev.hour) ? (" à " + (ev.heure || ev.hour)) : "";
         const lieu = (ev.lieu || ev.location) || "";
-        return `
-          <div class="event-home-item">
-            <div class="event-home-main">
-              <div class="event-home-title">${ev.titre || ev.title || "Événement"}</div>
-              <div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div>
-            </div>
-            <div class="event-home-date">${dateStr}</div>
-          </div>
-        `;
+        return `<div class="event-home-item"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
       }).join("");
     }
 
