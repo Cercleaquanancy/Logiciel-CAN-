@@ -145,13 +145,13 @@
     }
 
     /* Vue Semaine */
+    .month-view { display: block; }
+    .month-view.hidden { display: none; }
     .week-view {
       display: none;
       overflow-x: auto;
     }
     .week-view.active { display: block; }
-    .month-view { display: block; }
-    .month-view.hidden { display: none; }
     .week-table {
       width: 100%;
       border-collapse: collapse;
@@ -358,7 +358,7 @@
       </div>
 
       <!-- Vue Mois -->
-      <div id="monthView" class="active">
+      <div id="monthView" class="month-view active">
         <div class="month-nav">
           <button id="prevMonth">← Mois précédent</button>
           <div class="month-title" id="monthTitle">Janvier 2026</div>
@@ -640,10 +640,7 @@
       document.getElementById('slotTimeStart').value = selectedSlot.heure_debut;
       document.getElementById('slotTimeEnd').value = selectedSlot.heure_fin;
       
-      // Scroll to form
       document.getElementById('addSlotCard').scrollIntoView({ behavior: 'smooth' });
-      
-      // Sauvegarder l'ID du créneau à modifier
       document.getElementById('addSlotForm').dataset.editingSlotId = selectedSlot.id;
     };
 
@@ -662,7 +659,6 @@
             throw new Error('Erreur serveur');
           }
         } catch (e) {
-          // Mode local
           const slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
           const filtered = slots.filter(s => s.id !== selectedSlot.id);
           localStorage.setItem("serreSlots", JSON.stringify(filtered));
@@ -727,14 +723,12 @@
       try {
         let res;
         if (editingSlotId) {
-          // Modification
           res = await fetch(`/api/serre-slots/${editingSlotId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(slot)
           });
         } else {
-          // Création
           res = await fetch('/api/serre-slots', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -751,7 +745,6 @@
           throw new Error('Erreur serveur');
         }
       } catch (e) {
-        // Mode local
         slot.id = editingSlotId || ('slot_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9));
         let slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
         
@@ -770,7 +763,6 @@
       }
     });
 
-    // Charger les créneaux
     loadSlots();
   </script>
 </body>
