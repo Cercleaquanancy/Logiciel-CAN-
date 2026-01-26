@@ -150,6 +150,8 @@
       overflow-x: auto;
     }
     .week-view.active { display: block; }
+    .month-view { display: block; }
+    .month-view.hidden { display: none; }
     .week-table {
       width: 100%;
       border-collapse: collapse;
@@ -477,12 +479,14 @@
         const res = await fetch('/api/serre-slots');
         if (!res.ok) throw new Error('Erreur réseau');
         allSlots = await res.json();
+        console.log('✅ Créneaux du serveur:', allSlots);
         renderMonth();
         renderWeek();
       } catch (e) {
-        console.log("Mode hors ligne");
+        console.log("⚠️ Mode hors ligne:", e);
         const raw = localStorage.getItem("serreSlots");
         allSlots = raw ? JSON.parse(raw) : [];
+        console.log('Créneaux locaux:', allSlots);
         renderMonth();
         renderWeek();
       }
@@ -672,6 +676,7 @@
 
     // Contrôles vue
     document.getElementById('viewMonth').addEventListener('click', () => {
+      document.getElementById('monthView').classList.remove('hidden');
       document.getElementById('monthView').classList.add('active');
       document.getElementById('weekView').classList.remove('active');
       document.getElementById('viewMonth').classList.add('active');
@@ -679,6 +684,7 @@
     });
 
     document.getElementById('viewWeek').addEventListener('click', () => {
+      document.getElementById('monthView').classList.add('hidden');
       document.getElementById('monthView').classList.remove('active');
       document.getElementById('weekView').classList.add('active');
       document.getElementById('viewMonth').classList.remove('active');
