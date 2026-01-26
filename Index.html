@@ -48,7 +48,8 @@
     .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
     .small-note { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; }
     .event-list-home { margin-top: 6px; display: flex; flex-direction: column; gap: 6px; }
-    .event-home-item { font-size: 0.85rem; border-radius: 8px; border: 1px solid #1f2937; padding: 6px 8px; background: #020617; display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+    .event-home-item { font-size: 0.85rem; border-radius: 8px; border: 1px solid #1f2937; padding: 6px 8px; background: #020617; display: flex; justify-content: space-between; align-items: center; gap: 6px; cursor: pointer; transition: all 0.2s; }
+    .event-home-item:hover { background: #111827; border-color: #1d4ed8; }
     .event-home-main { flex: 1 1 auto; min-width: 0; }
     .event-home-title { font-weight: 600; color: #e5e7eb; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-meta { font-size: 0.78rem; color: #9ca3af; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -88,7 +89,7 @@
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
-      <button class="nav-btn" data-link="Bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -120,7 +121,7 @@
       <h2>Prochains événements</h2>
       <p class="subtitle">Les quelques événements les plus proches configurés dans la page Événements.</p>
       <div id="homeEventList" class="event-list-home"></div>
-      <p class="small-note">Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur.</p>
+      <p class="small-note">Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur. Clique sur un événement pour plus d'infos.</p>
     </div>
 
     <div class="card">
@@ -323,14 +324,20 @@
         homeEventList.innerHTML = '<p class="small-note">Aucun événement à venir.</p>';
         return;
       }
-      homeEventList.innerHTML = nextEvents.map(ev => {
+      homeEventList.innerHTML = nextEvents.map((ev, idx) => {
         const dateField = ev.date_iso || ev.dateIso;
         const d = new Date(dateField);
         const dateStr = isNaN(d.getTime()) ? dateField : d.toLocaleDateString();
         const hourStr = (ev.heure || ev.hour) ? (" à " + (ev.heure || ev.hour)) : "";
         const lieu = (ev.lieu || ev.location) || "";
-        return `<div class="event-home-item"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
+        return `<div class="event-home-item" data-event-index="${idx}"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
       }).join("");
+      
+      document.querySelectorAll('.event-home-item').forEach(item => {
+        item.addEventListener('click', () => {
+          window.location.href = 'evenement.html';
+        });
+      });
     }
 
     // Initialisation
