@@ -32,7 +32,7 @@
     .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
     .navbar-user { font-size: 0.8rem; color: #9ca3af; }
     .navbar-menu { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 4px; position: relative; }
+    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
     .nav-btn span.icon { font-size: 1rem; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .nav-btn:hover { background: #111827; }
@@ -44,279 +44,56 @@
     .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
     .card p { font-size: 0.85rem; color: #d1d5db; }
     .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
-    .small-note { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; }
-
-    /* Vue Contrôles */
-    .view-controls {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .view-btn {
-      padding: 6px 12px;
-      border: 1px solid #1f2937;
-      background: #111827;
-      color: #cbd5f5;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-    }
-    .view-btn.active {
-      background: #1d4ed8;
-      color: #e5e7eb;
-      border-color: #1d4ed8;
-    }
+    .view-controls { display: flex; gap: 8px; margin-bottom: 12px; }
+    .view-btn { padding: 6px 12px; border: 1px solid #1f2937; background: #111827; color: #cbd5f5; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+    .view-btn.active { background: #1d4ed8; color: #e5e7eb; border-color: #1d4ed8; }
     .view-btn:hover { background: #1f2937; }
-
-    /* Navigation Mois */
-    .month-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      background: #111827;
-      border-radius: 8px;
-      border: 1px solid #1f2937;
-    }
-    .month-nav button {
-      border: none;
-      background: #1d4ed8;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.8rem;
-    }
+    .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 8px 12px; background: #111827; border-radius: 8px; border: 1px solid #1f2937; }
+    .month-nav button { border: none; background: #1d4ed8; color: white; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
     .month-nav button:hover { background: #1e40af; }
     .month-title { font-weight: 600; color: #e5e7eb; }
-
-    /* Calendrier */
-    .calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .weekday {
-      font-weight: 600;
-      color: #38bdf8;
-      text-align: center;
-      padding: 8px;
-      font-size: 0.85rem;
-    }
-    .day-cell {
-      min-height: 80px;
-      padding: 8px;
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s;
-      position: relative;
-    }
+    .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 14px; }
+    .weekday { font-weight: 600; color: #38bdf8; text-align: center; padding: 8px; font-size: 0.85rem; }
+    .day-cell { min-height: 80px; padding: 8px; background: #111827; border: 1px solid #1f2937; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
     .day-cell:hover { border-color: #1d4ed8; background: #1a1f2e; }
     .day-cell.other-month { opacity: 0.3; }
     .day-cell.today { border: 2px solid #1d4ed8; }
-    .day-number {
-      font-weight: 600;
-      margin-bottom: 4px;
-      font-size: 0.9rem;
-    }
-    .day-slots {
-      font-size: 0.7rem;
-      color: #9ca3af;
-      max-height: 50px;
-      overflow: hidden;
-    }
-    .slot-badge {
-      display: inline-block;
-      background: #38bdf8;
-      color: #020617;
-      padding: 2px 4px;
-      border-radius: 3px;
-      margin: 2px 0;
-      font-size: 0.65rem;
-      max-width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Vue Semaine */
+    .day-number { font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; }
+    .day-slots { font-size: 0.7rem; color: #9ca3af; max-height: 50px; overflow: hidden; }
+    .slot-badge { display: inline-block; background: #38bdf8; color: #020617; padding: 2px 4px; border-radius: 3px; margin: 2px 0; font-size: 0.65rem; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .month-view { display: block; }
     .month-view.hidden { display: none; }
-    .week-view {
-      display: none;
-      overflow-x: auto;
-    }
+    .week-view { display: none; overflow-x: auto; }
     .week-view.active { display: block; }
-    .week-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .week-table thead {
-      background: #1a1f2e;
-    }
-    .week-table th {
-      padding: 8px;
-      text-align: center;
-      border: 1px solid #1f2937;
-      font-weight: 600;
-      color: #38bdf8;
-      font-size: 0.85rem;
-    }
-    .week-table td {
-      padding: 8px;
-      border: 1px solid #1f2937;
-      text-align: left;
-      font-size: 0.8rem;
-      vertical-align: top;
-      min-width: 120px;
-    }
+    .week-table { width: 100%; border-collapse: collapse; background: #111827; border: 1px solid #1f2937; border-radius: 8px; overflow: hidden; }
+    .week-table thead { background: #1a1f2e; }
+    .week-table th { padding: 8px; text-align: center; border: 1px solid #1f2937; font-weight: 600; color: #38bdf8; font-size: 0.85rem; }
+    .week-table td { padding: 8px; border: 1px solid #1f2937; text-align: left; font-size: 0.8rem; vertical-align: top; min-width: 120px; }
     .week-table tbody tr:hover { background: #1f2937; }
-    .slot-item {
-      background: #38bdf8;
-      color: #020617;
-      padding: 4px 6px;
-      border-radius: 4px;
-      margin: 2px 0;
-      font-weight: 500;
-      font-size: 0.75rem;
-      cursor: pointer;
-    }
+    .slot-item { background: #38bdf8; color: #020617; padding: 4px 6px; border-radius: 4px; margin: 2px 0; font-weight: 500; font-size: 0.75rem; cursor: pointer; }
     .slot-item:hover { background: #0ea5e9; }
-
-    /* Modale Créneau */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-    }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 100; justify-content: center; align-items: center; }
     .modal.active { display: flex; }
-    .modal-content {
-      background: #020617;
-      border: 1px solid #1f2937;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 500px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      position: relative;
-    }
-    .modal-header {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #38bdf8;
-      margin-bottom: 12px;
-    }
-    .modal-body {
-      color: #d1d5db;
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-    }
-    .modal-info {
-      background: #111827;
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin: 6px 0;
-      border-left: 3px solid #1d4ed8;
-    }
+    .modal-content { background: #020617; border: 1px solid #1f2937; border-radius: 10px; padding: 20px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
+    .modal-header { font-size: 1.2rem; font-weight: 600; color: #38bdf8; margin-bottom: 12px; }
+    .modal-body { color: #d1d5db; font-size: 0.85rem; margin-bottom: 12px; }
+    .modal-info { background: #111827; padding: 8px 12px; border-radius: 6px; margin: 6px 0; border-left: 3px solid #1d4ed8; }
     .modal-info strong { color: #38bdf8; }
-    .btn-group {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .btn {
-      flex: 1;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: #1d4ed8;
-      color: white;
-    }
+    .btn-group { display: flex; gap: 8px; margin-top: 12px; }
+    .btn { flex: 1; padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+    .btn-primary { background: #1d4ed8; color: white; }
     .btn-primary:hover { background: #1e40af; }
-    .btn-secondary {
-      background: #111827;
-      color: #cbd5f5;
-      border: 1px solid #1f2937;
-    }
+    .btn-secondary { background: #111827; color: #cbd5f5; border: 1px solid #1f2937; }
     .btn-secondary:hover { background: #1f2937; }
-    .btn-close {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: transparent;
-      color: #9ca3af;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
+    .btn-close { position: absolute; top: 12px; right: 12px; background: transparent; color: #9ca3af; border: none; font-size: 1.2rem; cursor: pointer; }
     .btn-close:hover { color: #e5e7eb; }
-
-    /* Formulaire */
-    .form-group {
-      margin-bottom: 12px;
-    }
-    .form-label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #cbd5f5;
-      margin-bottom: 4px;
-    }
-    .form-control {
-      width: 100%;
-      padding: 6px 8px;
-      border: 1px solid #1f2937;
-      background: #111827;
-      color: #e5e7eb;
-      border-radius: 4px;
-      font-size: 0.8rem;
-    }
-    .form-control:focus {
-      outline: none;
-      border-color: #1d4ed8;
-      box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2);
-    }
-
-    .alert {
-      padding: 12px 16px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      font-size: 0.85rem;
-    }
-    .alert-success {
-      background: rgba(34, 197, 94, 0.1);
-      color: #22c55e;
-      border: 1px solid #22c55e;
-    }
-    .alert-error {
-      background: rgba(239, 68, 68, 0.1);
-      color: #ef4444;
-      border: 1px solid #ef4444;
-    }
-
+    .form-group { margin-bottom: 12px; }
+    .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5f5; margin-bottom: 4px; }
+    .form-control { width: 100%; padding: 6px 8px; border: 1px solid #1f2937; background: #111827; color: #e5e7eb; border-radius: 4px; font-size: 0.8rem; }
+    .form-control:focus { outline: none; border-color: #1d4ed8; box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2); }
+    .alert { padding: 12px 16px; border-radius: 6px; margin-bottom: 12px; font-size: 0.85rem; }
+    .alert-success { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e; }
+    .alert-error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; }
     @media (max-width: 768px) {
       .page { padding-top: 90px; }
       .calendar { grid-template-columns: repeat(7, 1fr); }
@@ -357,7 +134,6 @@
         <button class="view-btn" id="viewWeek">📊 Semaine</button>
       </div>
 
-      <!-- Vue Mois -->
       <div id="monthView" class="month-view active">
         <div class="month-nav">
           <button id="prevMonth">← Mois précédent</button>
@@ -367,23 +143,19 @@
         <div class="calendar" id="monthCalendar"></div>
       </div>
 
-      <!-- Vue Semaine -->
       <div id="weekView" class="week-view">
         <div class="month-nav">
           <button id="prevWeek">← Semaine précédente</button>
-          <div class="month-title" id="weekTitle">Semaine du 27 janvier - 2 février</div>
+          <div class="month-title" id="weekTitle">Semaine</div>
           <button id="nextWeek">Semaine suivante →</button>
         </div>
         <table class="week-table">
-          <thead>
-            <tr id="weekHeader"></tr>
-          </thead>
+          <thead><tr id="weekHeader"></tr></thead>
           <tbody id="weekBody"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- Bouton Ajouter Créneau -->
     <div class="card" id="addSlotCard" style="display: none;">
       <h2>➕ Ajouter un Créneau</h2>
       <p class="subtitle">Enregistrez votre disponibilité</p>
@@ -407,7 +179,6 @@
     </div>
   </main>
 
-  <!-- Modale Détails Créneau -->
   <div class="modal" id="slotModal">
     <div class="modal-content">
       <button class="btn-close" onclick="closeSlotModal()">✕</button>
@@ -422,7 +193,6 @@
   </div>
 
   <script>
-    // ===== AUTHENTIFICATION =====
     const storedUser = localStorage.getItem("user");
     let currentUser = null;
     
@@ -438,11 +208,8 @@
       window.location.href = "index.html";
     }
 
-    const navbarUser = document.getElementById('navbarUser');
-    const roleLabel = currentUser.role === "admin" ? "Admin" : "Serre";
-    navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+    document.getElementById('navbarUser').textContent = currentUser.username + " (" + (currentUser.role === "admin" ? "Admin" : "Serre") + ")";
 
-    // Navigation
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => {
         window.location.href = btn.dataset.link;
@@ -454,16 +221,12 @@
       window.location.href = "index.html";
     });
 
-    // Afficher le formulaire ajout créneau
     document.getElementById("addSlotCard").style.display = "block";
 
-    // ===== VARIABLES GLOBALES =====
-    let currentDate = new Date();
     let currentViewDate = new Date();
     let allSlots = [];
     let selectedSlot = null;
 
-    // ===== FUNCTIONS =====
     function showAlert(message, type = 'success') {
       const container = document.getElementById('alertContainer');
       const alert = document.createElement('div');
@@ -479,14 +242,13 @@
         const res = await fetch('/api/serre-slots');
         if (!res.ok) throw new Error('Erreur réseau');
         allSlots = await res.json();
-        console.log('✅ Créneaux du serveur:', allSlots);
+        console.log('✅ Slots chargés:', allSlots);
         renderMonth();
         renderWeek();
       } catch (e) {
-        console.log("⚠️ Mode hors ligne:", e);
+        console.log("Mode local");
         const raw = localStorage.getItem("serreSlots");
         allSlots = raw ? JSON.parse(raw) : [];
-        console.log('Créneaux locaux:', allSlots);
         renderMonth();
         renderWeek();
       }
@@ -495,24 +257,20 @@
     function renderMonth() {
       const year = currentViewDate.getFullYear();
       const month = currentViewDate.getMonth();
-      
       const firstDay = new Date(year, month, 1);
       const lastDay = new Date(year, month + 1, 0);
       const daysInMonth = lastDay.getDate();
       const startingDayOfWeek = firstDay.getDay();
 
-      document.getElementById('monthTitle').textContent = 
-        currentViewDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+      document.getElementById('monthTitle').textContent = currentViewDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
 
       const weekdays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
       let html = weekdays.map(day => `<div class="weekday">${day}</div>`).join('');
 
-      // Jours du mois précédent
       for (let i = 0; i < startingDayOfWeek; i++) {
         html += '<div class="day-cell other-month"><div class="day-number">-</div></div>';
       }
 
-      // Jours du mois actuel
       const today = new Date();
       for (let day = 1; day <= daysInMonth; day++) {
         const date = new Date(year, month, day);
@@ -528,7 +286,6 @@
         </div>`;
       }
 
-      // Jours du mois suivant
       const totalCells = Math.ceil((daysInMonth + startingDayOfWeek) / 7) * 7;
       for (let day = 1; day <= totalCells - daysInMonth - startingDayOfWeek; day++) {
         html += '<div class="day-cell other-month"><div class="day-number">-</div></div>';
@@ -540,14 +297,11 @@
     function renderWeek() {
       const weekStart = new Date(currentViewDate);
       weekStart.setDate(currentViewDate.getDate() - currentViewDate.getDay());
-
       const weekEnd = new Date(weekStart);
       weekEnd.setDate(weekStart.getDate() + 6);
 
-      document.getElementById('weekTitle').textContent = 
-        `Semaine du ${weekStart.toLocaleDateString('fr-FR')} - ${weekEnd.toLocaleDateString('fr-FR')}`;
+      document.getElementById('weekTitle').textContent = `Semaine du ${weekStart.toLocaleDateString('fr-FR')} - ${weekEnd.toLocaleDateString('fr-FR')}`;
 
-      // En-tête
       let headerHtml = '<th>Heure</th>';
       for (let i = 0; i < 7; i++) {
         const date = new Date(weekStart);
@@ -557,7 +311,6 @@
       }
       document.getElementById('weekHeader').innerHTML = headerHtml;
 
-      // Grille horaire
       let bodyHtml = '';
       for (let hour = 6; hour < 22; hour++) {
         const timeStr = `${hour.toString().padStart(2, '0')}:00`;
@@ -567,13 +320,9 @@
           const date = new Date(weekStart);
           date.setDate(weekStart.getDate() + day);
           const dateStr = date.toISOString().split('T')[0];
-          const slotsForTime = allSlots.filter(s => 
-            s.date === dateStr && s.heure_debut <= timeStr && s.heure_fin > timeStr
-          );
+          const slotsForTime = allSlots.filter(s => s.date === dateStr && s.heure_debut <= timeStr && s.heure_fin > timeStr);
 
-          bodyHtml += `<td>
-            ${slotsForTime.map(s => `<div class="slot-item" onclick="showSlotDetails('${s.id}')">${s.membre}</div>`).join('')}
-          </td>`;
+          bodyHtml += `<td>${slotsForTime.map(s => `<div class="slot-item" onclick="showSlotDetails('${s.id}')">${s.membre}</div>`).join('')}</td>`;
         }
         bodyHtml += '</tr>';
       }
@@ -586,12 +335,7 @@
         showAlert('Aucun créneau ce jour-là', 'error');
         return;
       }
-      const body = slotsForDay.map(s => `
-        <div class="modal-info" onclick="showSlotDetails('${s.id}')">
-          <strong>${s.membre}</strong><br>
-          ${s.heure_debut} - ${s.heure_fin}
-        </div>
-      `).join('');
+      const body = slotsForDay.map(s => `<div class="modal-info" onclick="showSlotDetails('${s.id}')"><strong>${s.membre}</strong><br>${s.heure_debut} - ${s.heure_fin}</div>`).join('');
       document.getElementById('slotModalBody').innerHTML = body;
       document.getElementById('slotModal').classList.add('active');
     }
@@ -601,29 +345,13 @@
       if (!selectedSlot) return;
 
       const isOwner = selectedSlot.membre === currentUser.username;
-      const body = `
-        <div class="modal-info">
-          <strong>Membre:</strong> ${selectedSlot.membre}
-        </div>
-        <div class="modal-info">
-          <strong>Date:</strong> ${new Date(selectedSlot.date).toLocaleDateString('fr-FR')}
-        </div>
-        <div class="modal-info">
-          <strong>Horaires:</strong> ${selectedSlot.heure_debut} - ${selectedSlot.heure_fin}
-        </div>
+      document.getElementById('slotModalBody').innerHTML = `
+        <div class="modal-info"><strong>Membre:</strong> ${selectedSlot.membre}</div>
+        <div class="modal-info"><strong>Date:</strong> ${new Date(selectedSlot.date).toLocaleDateString('fr-FR')}</div>
+        <div class="modal-info"><strong>Horaires:</strong> ${selectedSlot.heure_debut} - ${selectedSlot.heure_fin}</div>
       `;
-      document.getElementById('slotModalBody').innerHTML = body;
-      
-      const editBtn = document.getElementById('editBtn');
-      const deleteBtn = document.getElementById('deleteBtn');
-      if (isOwner) {
-        editBtn.style.display = 'block';
-        deleteBtn.style.display = 'block';
-      } else {
-        editBtn.style.display = 'none';
-        deleteBtn.style.display = 'none';
-      }
-      
+      document.getElementById('editBtn').style.display = isOwner ? 'block' : 'none';
+      document.getElementById('deleteBtn').style.display = isOwner ? 'block' : 'none';
       document.getElementById('slotModal').classList.add('active');
     };
 
@@ -635,34 +363,28 @@
     window.editSlot = function() {
       if (!selectedSlot) return;
       closeSlotModal();
-      
       document.getElementById('slotDate').value = selectedSlot.date;
       document.getElementById('slotTimeStart').value = selectedSlot.heure_debut;
       document.getElementById('slotTimeEnd').value = selectedSlot.heure_fin;
-      
       document.getElementById('addSlotCard').scrollIntoView({ behavior: 'smooth' });
       document.getElementById('addSlotForm').dataset.editingSlotId = selectedSlot.id;
     };
 
     window.deleteSlot = function() {
-      if (!selectedSlot) return;
-      if (!confirm('Êtes-vous sûr de vouloir supprimer ce créneau ?')) return;
+      if (!selectedSlot || !confirm('Êtes-vous sûr ?')) return;
 
       const deleteAsync = async () => {
         try {
           const res = await fetch(`/api/serre-slots/${selectedSlot.id}`, { method: 'DELETE' });
           if (res.ok) {
-            showAlert('✅ Créneau supprimé!', 'success');
+            showAlert('✅ Supprimé !', 'success');
             closeSlotModal();
             loadSlots();
-          } else {
-            throw new Error('Erreur serveur');
-          }
+          } else throw new Error('Erreur');
         } catch (e) {
           const slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
-          const filtered = slots.filter(s => s.id !== selectedSlot.id);
-          localStorage.setItem("serreSlots", JSON.stringify(filtered));
-          showAlert('✅ Créneau supprimé (mode local)', 'success');
+          localStorage.setItem("serreSlots", JSON.stringify(slots.filter(s => s.id !== selectedSlot.id)));
+          showAlert('✅ Supprimé (local)', 'success');
           closeSlotModal();
           loadSlots();
         }
@@ -670,10 +392,8 @@
       deleteAsync();
     };
 
-    // Contrôles vue
     document.getElementById('viewMonth').addEventListener('click', () => {
       document.getElementById('monthView').classList.remove('hidden');
-      document.getElementById('monthView').classList.add('active');
       document.getElementById('weekView').classList.remove('active');
       document.getElementById('viewMonth').classList.add('active');
       document.getElementById('viewWeek').classList.remove('active');
@@ -681,7 +401,6 @@
 
     document.getElementById('viewWeek').addEventListener('click', () => {
       document.getElementById('monthView').classList.add('hidden');
-      document.getElementById('monthView').classList.remove('active');
       document.getElementById('weekView').classList.add('active');
       document.getElementById('viewMonth').classList.remove('active');
       document.getElementById('viewWeek').classList.add('active');
@@ -707,7 +426,6 @@
       renderWeek();
     });
 
-    // Formulaire ajout créneau
     document.getElementById('addSlotForm').addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -737,15 +455,13 @@
         }
 
         if (res.ok) {
-          showAlert(`✅ Créneau ${editingSlotId ? 'modifié' : 'ajouté'} avec succès!`, 'success');
+          showAlert(`✅ Créneau ${editingSlotId ? 'modifié' : 'ajouté'} !`, 'success');
           document.getElementById('addSlotForm').reset();
           delete document.getElementById('addSlotForm').dataset.editingSlotId;
           loadSlots();
-        } else {
-          throw new Error('Erreur serveur');
-        }
+        } else throw new Error('Erreur');
       } catch (e) {
-        slot.id = editingSlotId || ('slot_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9));
+        slot.id = editingSlotId || ('slot_' + Date.now());
         let slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
         
         if (editingSlotId) {
@@ -756,7 +472,7 @@
         }
         
         localStorage.setItem("serreSlots", JSON.stringify(slots));
-        showAlert(`✅ Créneau ${editingSlotId ? 'modifié' : 'ajouté'} (mode local)`, 'success');
+        showAlert(`✅ ${editingSlotId ? 'Modifié' : 'Ajouté'} (local)`, 'success');
         document.getElementById('addSlotForm').reset();
         delete document.getElementById('addSlotForm').dataset.editingSlotId;
         loadSlots();
