@@ -241,12 +241,20 @@
       try {
         const res = await fetch('/api/serre-slots');
         if (!res.ok) throw new Error('Erreur réseau');
-        allSlots = await res.json();
-        console.log('✅ Slots chargés:', allSlots);
+        let rawSlots = await res.json();
+        
+        allSlots = rawSlots.map(s => ({
+          ...s,
+          date: s.date.split('T')[0],
+          heure_debut: s.heure_debut.substring(0, 5),
+          heure_fin: s.heure_fin.substring(0, 5)
+        }));
+        
+        console.log('✅ Slots convertis:', allSlots);
         renderMonth();
         renderWeek();
       } catch (e) {
-        console.log("Mode local");
+        console.log("Mode local:", e);
         const raw = localStorage.getItem("serreSlots");
         allSlots = raw ? JSON.parse(raw) : [];
         renderMonth();
