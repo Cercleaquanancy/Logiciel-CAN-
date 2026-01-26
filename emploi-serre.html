@@ -243,14 +243,20 @@
         if (!res.ok) throw new Error('Erreur réseau');
         let rawSlots = await res.json();
         
-        allSlots = rawSlots.map(s => ({
-          ...s,
-          date: s.date.split('T')[0],
-          heure_debut: s.heure_debut.substring(0, 5),
-          heure_fin: s.heure_fin.substring(0, 5)
-        }));
+        allSlots = rawSlots.map(s => {
+          let dateStr = s.date;
+          if (dateStr.includes('T')) {
+            dateStr = dateStr.substring(0, 10);
+          }
+          return {
+            ...s,
+            date: dateStr,
+            heure_debut: typeof s.heure_debut === 'string' ? s.heure_debut.substring(0, 5) : s.heure_debut,
+            heure_fin: typeof s.heure_fin === 'string' ? s.heure_fin.substring(0, 5) : s.heure_fin
+          };
+        });
         
-        console.log('✅ Slots convertis:', allSlots);
+        console.log('✅ Créneaux chargés:', allSlots);
         renderMonth();
         renderWeek();
       } catch (e) {
