@@ -124,6 +124,13 @@
       <p class="small-note">Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur. Clique sur un événement pour plus d'infos.</p>
     </div>
 
+    <div class="card" id="serreCard" style="display: none;">
+      <h2>🌱 Emploi du temps Serre</h2>
+      <p class="subtitle">Disponibilités des membres de la serre.</p>
+      <div id="homeSerreList" class="event-list-home"></div>
+      <p class="small-note"><a href="emploi-serre.html" style="color: #38bdf8; text-decoration: none; font-weight: 500;">Voir l'emploi du temps complet →</a></p>
+    </div>
+
     <div class="card">
       <h2>📱 Dernières nouvelles Facebook</h2>
       <p class="subtitle">Suis les publications du Cercle et de Fish In The News.</p>
@@ -192,11 +199,10 @@
   <script>
     // Gestion authentification utilisateur
     const storedUser = localStorage.getItem("user");
+    let currentUser = null;
     if (!storedUser) { 
-      // Sans localStorage, on teste quand même
       console.log("Pas d'utilisateur stocké - mode démo");
     } else {
-      let currentUser;
       try { 
         currentUser = JSON.parse(storedUser); 
       } catch (e) { 
@@ -340,8 +346,61 @@
       });
     }
 
+    // Gestion Serre
+    const SERRE_SLOTS_KEY = "serreSlots";
+    const homeSerreList = document.getElementById("homeSerreList");
+    const serreCard = document.getElementById("serreCard");
+
+    async function loadSerreSlots() {
+      try {
+        const res = await fetch('/api/serre-slots');
+        if (!res.ok) throw new Error('Erreur GET /api/serre-slots');
+        const slots = await res.json();
+        localStorage.setItem(SERRE_SLOTS_KEY, JSON.stringify(slots));
+        return slots;
+      } catch (e) {
+        const raw = localStorage.getItem(SERRE_SLOTS_KEY);
+        try { return JSON.parse(raw) || []; } catch { return []; }
+      }
+    }
+
+    function getNextSerreSlots(limit) {
+      const raw = localStorage.getItem(SERRE_SLOTS_KEY);
+      let all = [];
+      try { all = JSON.parse(raw) || []; } catch {}
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const upcoming = all.filter(slot => {
+        const slotDate = new Date(slot.date);
+        return slotDate >= today;
+      }).sort((a, b) => new Date(a.date) - new Date(b.date));
+      return upcoming.slice(0, limit);
+    }
+
+    async function renderHomeSerreSlots() {
+      const isSerreUser = currentUser && (currentUser.role === "admin" || currentUser.serre === true);
+      if (!isSerreUser) {
+        if (serreCard) serreCard.style.display = "none";
+        return;
+      }
+      if (serreCard) serreCard.style.display = "block";
+      
+      await loadSerreSlots();
+      const nextSlots = getNextSerreSlots(3);
+      if (!nextSlots.length) {
+        homeSerreList.innerHTML = '<p class="small-note">Aucun créneau disponible.</p>';
+        return;
+      }
+      homeSerreList.innerHTML = nextSlots.map(slot => {
+        const d = new Date(slot.date);
+        const dateStr = d.toLocaleDateString('fr-FR');
+        return `<div class="event-home-item" onclick="window.location.href='emploi-serre.html'"><div class="event-home-main"><div class="event-home-title">${slot.membre}</div><div class="event-home-meta">${dateStr} · ${slot.heure_debut} à ${slot.heure_fin}</div></div><div class="event-home-date">${dateStr}</div></div>`;
+      }).join("");
+    }
+
     // Initialisation
     renderHomeEvents();
+    renderHomeSerreSlots();
     initNotifications();
   </script>
 </body>
