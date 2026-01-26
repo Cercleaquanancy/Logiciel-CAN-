@@ -93,7 +93,7 @@ function sendJson(res, statusCode, obj) {
   res.writeHead(statusCode, {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
+    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
     'Access-Control-Allow-Headers': 'Content-Type'
   });
   res.end(json);
@@ -103,7 +103,7 @@ function sendText(res, statusCode, text) {
   res.writeHead(statusCode, {
     'Content-Type': 'text/plain',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
+    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
     'Access-Control-Allow-Headers': 'Content-Type'
   });
   res.end(text);
@@ -139,10 +139,111 @@ const server = http.createServer((req, res) => {
   if (method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
+      'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS,PUT',
       'Access-Control-Allow-Headers': 'Content-Type'
     });
     res.end();
+    return;
+  }
+
+  // ==================== API SERRE SLOTS (EMPLOI DU TEMPS) ====================
+  if (method === 'GET' && url === '/api/serre-slots') {
+    pool.query(
+      'SELECT id, date, heure_debut, heure_fin, membre FROM serre_slots ORDER BY date ASC, heure_debut ASC'
+    )
+      .then(result => sendJson(res, 200, result.rows))
+      .catch(err => {
+        console.error('Erreur SELECT serre_slots :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  if (method === 'POST' && url === '/api/serre-slots') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { date, heure_debut, heure_fin, membre } = body || {};
+      if (!date || !heure_debut || !heure_fin || !membre) {
+        sendText(res, 400, 'date, heure_debut, heure_fin et membre obligatoires');
+        return;
+      }
+
+      const id = "slot_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const query = `
+        INSERT INTO serre_slots (id, date, heure_debut, heure_fin, membre)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING id, date, heure_debut, heure_fin, membre
+      `;
+      const params = [id, date, heure_debut, heure_fin, String(membre)];
+
+      pool.query(query, params)
+        .then(result => {
+          const slot = result.rows[0];
+          sendJson(res, 200, { success: true, slot });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT serre_slots :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  if (method === 'PUT' && url.startsWith('/api/serre-slots/')) {
+    const id = decodeURIComponent(url.replace('/api/serre-slots/', ''));
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { date, heure_debut, heure_fin, membre } = body || {};
+      if (!date || !heure_debut || !heure_fin || !membre) {
+        sendText(res, 400, 'date, heure_debut, heure_fin et membre obligatoires');
+        return;
+      }
+
+      const query = `
+        UPDATE serre_slots
+        SET date = $1, heure_debut = $2, heure_fin = $3, membre = $4
+        WHERE id = $5
+        RETURNING id, date, heure_debut, heure_fin, membre
+      `;
+      const params = [date, heure_debut, heure_fin, String(membre), id];
+
+      pool.query(query, params)
+        .then(result => {
+          if (result.rowCount === 0) {
+            sendText(res, 404, 'Créneau introuvable');
+            return;
+          }
+          const slot = result.rows[0];
+          sendJson(res, 200, { success: true, slot });
+        })
+        .catch(dbErr => {
+          console.error('Erreur UPDATE serre_slots :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  if (method === 'DELETE' && url.startsWith('/api/serre-slots/')) {
+    const id = decodeURIComponent(url.replace('/api/serre-slots/', ''));
+    pool.query('DELETE FROM serre_slots WHERE id = $1', [id])
+      .then(result => {
+        if (result.rowCount === 0) {
+          sendText(res, 404, 'Créneau introuvable');
+          return;
+        }
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE serre_slots :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
     return;
   }
 
