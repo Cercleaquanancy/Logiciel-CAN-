@@ -247,6 +247,107 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // ==================== API NOTIFICATIONS SERRE ====================
+  if (method === 'POST' && url === '/api/serre-participations') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { slot_id, participant, recipient, date, heure_debut, heure_fin } = body || {};
+      if (!slot_id || !participant || !recipient) {
+        sendText(res, 400, 'slot_id, participant et recipient obligatoires');
+        return;
+      }
+
+      const notificationId = 'notif_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+      const notification = {
+        id: notificationId,
+        type: 'serre_participation',
+        recipient: recipient,
+        participant: participant,
+        slot_id: slot_id,
+        date: date,
+        heure_debut: heure_debut,
+        heure_fin: heure_fin,
+        message: `${participant} souhaite participer à ton créneau du ${date} de ${heure_debut} à ${heure_fin}`,
+        read: false,
+        created_at: new Date().toISOString()
+      };
+
+      const notifQuery = `
+        INSERT INTO notifications (id, type, recipient, participant, slot_id, message, read, created_at)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id, type, recipient, participant, slot_id, message, read, created_at
+      `;
+      const notifParams = [
+        notificationId,
+        'serre_participation',
+        recipient,
+        participant,
+        slot_id,
+        notification.message,
+        false,
+        notification.created_at
+      ];
+
+      pool.query(notifQuery, notifParams)
+        .then(result => {
+          const createdNotif = result.rows[0];
+          sendJson(res, 200, { success: true, notification: createdNotif });
+        })
+        .catch(dbErr => {
+          console.log('Fallback localStorage pour notification:', dbErr.message);
+          const data = loadData();
+          if (!data.notifications) data.notifications = [];
+          data.notifications.push(notification);
+          saveData(data);
+          sendJson(res, 200, { success: true, notification: notification });
+        });
+    });
+    return;
+  }
+
+  // GET notifications pour un utilisateur
+  if (method === 'GET' && url.startsWith('/api/notifications/')) {
+    const username = decodeURIComponent(url.replace('/api/notifications/', ''));
+    
+    pool.query(
+      'SELECT id, type, recipient, participant, slot_id, message, read, created_at FROM notifications WHERE recipient = $1 ORDER BY created_at DESC',
+      [username]
+    )
+      .then(result => sendJson(res, 200, result.rows))
+      .catch(err => {
+        console.error('Erreur SELECT notifications :', err);
+        const data = loadData();
+        const userNotifs = (data.notifications || []).filter(n => n.recipient === username);
+        sendJson(res, 200, userNotifs);
+      });
+    return;
+  }
+
+  // Marquer notification comme lue
+  if (method === 'PATCH' && url.startsWith('/api/notifications/') && url.endsWith('/read')) {
+    const id = decodeURIComponent(url.replace('/api/notifications/', '').replace('/read', ''));
+    
+    pool.query(
+      'UPDATE notifications SET read = true WHERE id = $1 RETURNING id, type, recipient, participant, slot_id, message, read, created_at',
+      [id]
+    )
+      .then(result => {
+        if (result.rowCount === 0) {
+          sendText(res, 404, 'Notification introuvable');
+          return;
+        }
+        sendJson(res, 200, { success: true, notification: result.rows[0] });
+      })
+      .catch(err => {
+        console.error('Erreur UPDATE notification :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
   // ==================== API MEMBRES ====================
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
@@ -744,7 +845,6 @@ const server = http.createServer((req, res) => {
             sendText(res, 404, 'Annonce introuvable');
             return;
           }
-
           const auteur = result.rows[0].auteur;
           const isOwner = auteur === username;
           const isAdminLike = role === 'admin' || role === 'membre_bureau';
@@ -904,7 +1004,6 @@ const server = http.createServer((req, res) => {
             sendJson(res, 200, { success: true });
             return null;
           }
-
           const insertAssignQuery = `
             INSERT INTO serre_assignments (member_username, bac_id)
             VALUES ${assignEntries.map((_, i) =>
@@ -1154,7 +1253,7 @@ const server = http.createServer((req, res) => {
         .then(() => {
           if (!cleanEntries.length) {
             sendJson(res, 200, { success: true, count: 0 });
-            return null;
+            return;
           }
           const insertQuery = `
             INSERT INTO bac_measures
@@ -1177,7 +1276,6 @@ const server = http.createServer((req, res) => {
           return pool.query(insertQuery, params);
         })
         .then(result => {
-          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanEntries.length });
         })
         .catch(dbErr => {
@@ -1243,7 +1341,7 @@ const server = http.createServer((req, res) => {
         .then(() => {
           if (!cleanIds.length) {
             sendJson(res, 200, { success: true, count: 0 });
-            return null;
+            return;
           }
           const insertQuery = `
             INSERT INTO bac_population (username, tank_id, type, fiche_id)
@@ -1260,7 +1358,6 @@ const server = http.createServer((req, res) => {
           return pool.query(insertQuery, params);
         })
         .then(result => {
-          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanIds.length });
         })
         .catch(dbErr => {
@@ -1278,7 +1375,7 @@ const server = http.createServer((req, res) => {
     filePath = '/Index.html';
   }
 
-  filePath = path.normalize(filePath).replace(/^(\.\.(\/|\\|$))+/, '');
+  filePath = path.normalize(filePath).replace(/^(\.\.(\\/|\\|$))+/, '');
   const fullPath = path.join(__dirname, filePath);
 
   const extname = String(path.extname(fullPath)).toLowerCase();

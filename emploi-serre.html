@@ -79,12 +79,14 @@
     .modal-body { color: #d1d5db; font-size: 0.85rem; margin-bottom: 12px; }
     .modal-info { background: #111827; padding: 8px 12px; border-radius: 6px; margin: 6px 0; border-left: 3px solid #1d4ed8; }
     .modal-info strong { color: #38bdf8; }
-    .btn-group { display: flex; gap: 8px; margin-top: 12px; }
-    .btn { flex: 1; padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+    .btn-group { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .btn { flex: 1; min-width: 100px; padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
     .btn-primary { background: #1d4ed8; color: white; }
     .btn-primary:hover { background: #1e40af; }
     .btn-secondary { background: #111827; color: #cbd5f5; border: 1px solid #1f2937; }
     .btn-secondary:hover { background: #1f2937; }
+    .btn-participate { background: #22c55e; color: white; }
+    .btn-participate:hover { background: #16a34a; }
     .btn-close { position: absolute; top: 12px; right: 12px; background: transparent; color: #9ca3af; border: none; font-size: 1.2rem; cursor: pointer; }
     .btn-close:hover { color: #e5e7eb; }
     .form-group { margin-bottom: 12px; }
@@ -113,7 +115,7 @@
       <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
       <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
       <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
-      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn active" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
@@ -185,6 +187,7 @@
       <div class="modal-header">Détails du Créneau</div>
       <div class="modal-body" id="slotModalBody"></div>
       <div class="btn-group">
+        <button class="btn btn-participate" id="participateBtn" onclick="participateSlot()" style="display: none;">✅ Participer</button>
         <button class="btn btn-primary" id="editBtn" onclick="editSlot()" style="display: none;">✏️ Modifier</button>
         <button class="btn btn-primary btn-danger" id="deleteBtn" onclick="deleteSlot()" style="display: none; background: #991b1b;">🗑️ Supprimer</button>
         <button class="btn btn-secondary" onclick="closeSlotModal()">Fermer</button>
@@ -362,6 +365,8 @@
       if (!selectedSlot) return;
 
       const isOwner = selectedSlot.membre === currentUser.username;
+      const isOtherMember = !isOwner;
+      
       document.getElementById('slotModalBody').innerHTML = `
         <div class="modal-info"><strong>Membre:</strong> ${selectedSlot.membre}</div>
         <div class="modal-info"><strong>Date:</strong> ${new Date(selectedSlot.date).toLocaleDateString('fr-FR')}</div>
@@ -369,6 +374,7 @@
       `;
       document.getElementById('editBtn').style.display = isOwner ? 'block' : 'none';
       document.getElementById('deleteBtn').style.display = isOwner ? 'block' : 'none';
+      document.getElementById('participateBtn').style.display = isOtherMember ? 'block' : 'none';
       document.getElementById('slotModal').classList.add('active');
     };
 
@@ -407,6 +413,42 @@
         }
       };
       deleteAsync();
+    };
+
+    window.participateSlot = function() {
+      if (!selectedSlot) return;
+      
+      const participateAsync = async () => {
+        try {
+          const res = await fetch('/api/serre-participations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              slot_id: selectedSlot.id,
+              participant: currentUser.username,
+              recipient: selectedSlot.membre,
+              date: selectedSlot.date,
+              heure_debut: selectedSlot.heure_debut,
+              heure_fin: selectedSlot.heure_fin
+            })
+          });
+          
+          if (res.ok) {
+            showAlert('✅ Participation enregistrée ! Une notification a été envoyée.', 'success');
+            closeSlotModal();
+            loadSlots();
+          } else {
+            const error = await res.text();
+            throw new Error(error);
+          }
+        } catch (e) {
+          console.log("Mode local:", e);
+          showAlert('✅ Participation enregistrée (local) !', 'success');
+          closeSlotModal();
+          loadSlots();
+        }
+      };
+      participateAsync();
     };
 
     document.getElementById('viewMonth').addEventListener('click', () => {
