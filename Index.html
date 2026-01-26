@@ -102,7 +102,7 @@
     </div>
 
     <div class="card">
-      <h2>📚 Ressources & Boutique</h2>
+      <h2>📚 Ressources &amp; Boutique</h2>
       <p class="subtitle">Accès rapide aux ressources du Cercle</p>
       <div class="resource-buttons">
         <a href="https://drive.google.com/drive/folders/1ou1K_Wtk7ScOlq8xdvfvVkV1VcpMulcv?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn">
@@ -128,7 +128,7 @@
       <h2>🌱 Emploi du temps Serre</h2>
       <p class="subtitle">Disponibilités des membres de la serre.</p>
       <div id="homeSerreList" class="event-list-home"></div>
-      <p class="small-note"><a href="emploi-serre.html" style="color: #38bdf8; text-decoration: none; font-weight: 500;">Voir l'emploi du temps complet →</a></p>
+      <p class="small-note"><a href="emploi-serre.html" style="color: #38bdf8; text-decoration: none; font-weight: 500;">Voir l&apos;emploi du temps complet →</a></p>
     </div>
 
     <div class="card">
@@ -197,11 +197,10 @@
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0" nonce="CANcercle"></script>
 
   <script>
-    // Gestion authentification utilisateur
     const storedUser = localStorage.getItem("user");
     let currentUser = null;
     if (!storedUser) { 
-      console.log("Pas d'utilisateur stocké - mode démo");
+      console.log("Pas d&apos;utilisateur stocké - mode démo");
     } else {
       try { 
         currentUser = JSON.parse(storedUser); 
@@ -223,14 +222,12 @@
       }
     }
 
-    // Navigation
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => { 
         window.location.href = btn.dataset.link; 
       });
     });
 
-    // Logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
@@ -240,7 +237,6 @@
       });
     }
 
-    // Gestion notifications/annonces
     const ANNONCES_KEY = "announcementsData";
     const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
     const navEchange = document.getElementById("navEchange");
@@ -292,7 +288,6 @@
       }, 30000);
     }
 
-    // Gestion événements
     const EVENTS_KEY = "eventsData";
     const homeEventList = document.getElementById("homeEventList");
 
@@ -336,17 +331,10 @@
         const dateStr = isNaN(d.getTime()) ? dateField : d.toLocaleDateString();
         const hourStr = (ev.heure || ev.hour) ? (" à " + (ev.heure || ev.hour)) : "";
         const lieu = (ev.lieu || ev.location) || "";
-        return `<div class="event-home-item" data-event-index="${idx}"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
+        return `<div class="event-home-item" data-event-index="${idx}" onclick="window.location.href='evenement.html'"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
       }).join("");
-      
-      document.querySelectorAll('.event-home-item').forEach(item => {
-        item.addEventListener('click', () => {
-          window.location.href = 'evenement.html';
-        });
-      });
     }
 
-    // Gestion Serre
     const SERRE_SLOTS_KEY = "serreSlots";
     const homeSerreList = document.getElementById("homeSerreList");
     const serreCard = document.getElementById("serreCard");
@@ -398,7 +386,6 @@
       }).join("");
     }
 
-    // Initialisation
     renderHomeEvents();
     renderHomeSerreSlots();
     initNotifications();
