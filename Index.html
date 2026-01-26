@@ -88,7 +88,7 @@
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
-      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="nav-btn" data-link="Bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -138,7 +138,19 @@
             <a href="https://www.facebook.com/cerclaquanancy" target="_blank" rel="noopener noreferrer" class="facebook-link">Voir →</a>
           </div>
           <div class="fb-page-wrapper">
-            <div class="fb-loading">Le flux Facebook se charge...</div>
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/cerclaquanancy"
+                 data-tabs="timeline"
+                 data-width="100%"
+                 data-height="500"
+                 data-small-header="false"
+                 data-adapt-container-width="true"
+                 data-hide-cover="false"
+                 data-show-facepile="true">
+              <blockquote cite="https://www.facebook.com/cerclaquanancy" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/cerclaquanancy">Cercle Aqua Nancy</a>
+              </blockquote>
+            </div>
           </div>
         </div>
 
@@ -152,14 +164,29 @@
             <a href="https://www.facebook.com/FishInTheNews" target="_blank" rel="noopener noreferrer" class="facebook-link">Voir →</a>
           </div>
           <div class="fb-page-wrapper">
-            <div class="fb-loading">Le flux Facebook se charge...</div>
+            <div class="fb-page"
+                 data-href="https://www.facebook.com/FishInTheNews"
+                 data-tabs="timeline"
+                 data-width="100%"
+                 data-height="500"
+                 data-small-header="false"
+                 data-adapt-container-width="true"
+                 data-hide-cover="false"
+                 data-show-facepile="true">
+              <blockquote cite="https://www.facebook.com/FishInTheNews" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/FishInTheNews">Fish In The News</a>
+              </blockquote>
+            </div>
           </div>
         </div>
       </div>
 
-      <p class="small-note">⚠️ <strong>Si les publications n'apparaissent pas :</strong> Le plugin Facebook nécessite une connexion Facebook active et peut être bloqué par certains navigateurs ou extensions. Les liens "Voir →" te permettent d'accéder directement aux pages Facebook.</p>
+      <p class="small-note">Les publications sont chargées directement depuis Facebook. Actualisation automatique toutes les 10 minutes.</p>
     </div>
   </main>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0" nonce="CANcercle"></script>
 
   <script>
     // Gestion authentification utilisateur
