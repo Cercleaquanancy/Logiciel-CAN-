@@ -56,51 +56,49 @@
     .weekday { font-weight: 600; color: #38bdf8; text-align: center; padding: 8px; font-size: 0.85rem; }
     .day-cell { min-height: 80px; padding: 8px; background: #111827; border: 1px solid #1f2937; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
     .day-cell:hover { border-color: #1d4ed8; background: #1a1f2e; }
-    .day-cell.other-month { opacity: 0.3; }
     .day-cell.today { border: 2px solid #1d4ed8; }
     .day-number { font-weight: 600; margin-bottom: 4px; font-size: 0.9rem; }
     .day-slots { font-size: 0.7rem; color: #9ca3af; max-height: 50px; overflow: hidden; }
     .slot-badge { display: inline-block; background: #38bdf8; color: #020617; padding: 2px 4px; border-radius: 3px; margin: 2px 0; font-size: 0.65rem; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .month-view { display: block; }
     .month-view.hidden { display: none; }
-    .week-view { display: none; overflow-x: auto; }
-    .week-view.active { display: block; }
-    .week-table { width: 100%; border-collapse: collapse; background: #111827; border: 1px solid #1f2937; border-radius: 8px; overflow: hidden; }
-    .week-table thead { background: #1a1f2e; }
-    .week-table th { padding: 8px; text-align: center; border: 1px solid #1f2937; font-weight: 600; color: #38bdf8; font-size: 0.85rem; }
-    .week-table td { padding: 8px; border: 1px solid #1f2937; text-align: left; font-size: 0.8rem; vertical-align: top; min-width: 120px; }
-    .week-table tbody tr:hover { background: #1f2937; }
-    .slot-item { background: #38bdf8; color: #020617; padding: 4px 6px; border-radius: 4px; margin: 2px 0; font-weight: 500; font-size: 0.75rem; cursor: pointer; }
-    .slot-item:hover { background: #0ea5e9; }
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 100; justify-content: center; align-items: center; }
-    .modal.active { display: flex; }
-    .modal-content { background: #020617; border: 1px solid #1f2937; border-radius: 10px; padding: 20px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
-    .modal-header { font-size: 1.2rem; font-weight: 600; color: #38bdf8; margin-bottom: 12px; }
-    .modal-body { color: #d1d5db; font-size: 0.85rem; margin-bottom: 12px; }
-    .modal-info { background: #111827; padding: 8px 12px; border-radius: 6px; margin: 6px 0; border-left: 3px solid #1d4ed8; }
-    .modal-info strong { color: #38bdf8; }
-    .btn-group { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-    .btn { flex: 1; min-width: 100px; padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
-    .btn-primary { background: #1d4ed8; color: white; }
-    .btn-primary:hover { background: #1e40af; }
-    .btn-secondary { background: #111827; color: #cbd5f5; border: 1px solid #1f2937; }
-    .btn-secondary:hover { background: #1f2937; }
-    .btn-participate { background: #22c55e; color: white; }
-    .btn-participate:hover { background: #16a34a; }
-    .btn-close { position: absolute; top: 12px; right: 12px; background: transparent; color: #9ca3af; border: none; font-size: 1.2rem; cursor: pointer; }
-    .btn-close:hover { color: #e5e7eb; }
     .form-group { margin-bottom: 12px; }
     .form-label { display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5f5; margin-bottom: 4px; }
     .form-control { width: 100%; padding: 6px 8px; border: 1px solid #1f2937; background: #111827; color: #e5e7eb; border-radius: 4px; font-size: 0.8rem; }
     .form-control:focus { outline: none; border-color: #1d4ed8; box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.2); }
+    .btn { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; }
+    .btn-primary { background: #1d4ed8; color: white; }
+    .btn-primary:hover { background: #1e40af; }
     .alert { padding: 12px 16px; border-radius: 6px; margin-bottom: 12px; font-size: 0.85rem; }
     .alert-success { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e; }
     .alert-error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; }
-    @media (max-width: 768px) {
-      .page { padding-top: 90px; }
-      .calendar { grid-template-columns: repeat(7, 1fr); }
-      .day-cell { min-height: 60px; }
-    }
+    .tabs { display: flex; gap: 8px; margin-bottom: 12px; border-bottom: 1px solid #1f2937; }
+    .tab-btn { padding: 8px 12px; border: none; background: transparent; color: #9ca3af; cursor: pointer; font-weight: 500; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .tab-btn.active { color: #38bdf8; border-bottom-color: #38bdf8; }
+    .tab-btn:hover { color: #cbd5f5; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .notifications-list { display: flex; flex-direction: column; gap: 8px; }
+    .notification-item { background: #111827; border: 1px solid #1f2937; border-radius: 6px; padding: 10px 12px; }
+    .notification-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .notification-title { font-weight: 600; color: #e5e7eb; font-size: 0.9rem; }
+    .notification-date { font-size: 0.75rem; color: #9ca3af; }
+    .notification-meta { font-size: 0.8rem; color: #d1d5db; margin-bottom: 4px; }
+    .notification-badge { display: inline-block; background: #1d4ed8; color: white; padding: 2px 6px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .my-slots-list { display: flex; flex-direction: column; gap: 8px; }
+    .slot-card { background: #111827; border: 1px solid #1f2937; border-radius: 6px; padding: 12px; }
+    .slot-card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px; }
+    .slot-card-title { font-weight: 600; color: #e5e7eb; font-size: 0.95rem; }
+    .slot-card-actions { display: flex; gap: 4px; }
+    .slot-card-btn { padding: 4px 8px; border: none; background: #1d4ed8; color: white; border-radius: 4px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s; }
+    .slot-card-btn:hover { background: #1e40af; }
+    .slot-card-btn.danger { background: #991b1b; }
+    .slot-card-btn.danger:hover { background: #7f1d1d; }
+    .slot-card-info { font-size: 0.85rem; color: #d1d5db; margin-bottom: 8px; }
+    .participants-list { background: #020617; border-radius: 4px; padding: 8px; }
+    .participant-item { font-size: 0.8rem; color: #cbd5f5; padding: 4px 0; display: flex; align-items: center; gap: 6px; }
+    .participant-item:before { content: "✓"; color: #22c55e; font-weight: 600; }
+    @media (max-width: 768px) { .page { padding-top: 90px; } }
   </style>
 </head>
 <body>
@@ -128,36 +126,55 @@
     <div class="card">
       <h1>🌱 Emploi du Temps - Serre</h1>
       <p class="subtitle">Gère les créneaux horaires de la serre</p>
-      
       <div id="alertContainer"></div>
+    </div>
 
-      <div class="view-controls">
-        <button class="view-btn active" id="viewMonth">📅 Mois</button>
-        <button class="view-btn" id="viewWeek">📊 Semaine</button>
+    <!-- Onglets : Vue Calendrier vs Dashboard Créateur -->
+    <div class="card">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('calendar')">📅 Calendrier</button>
+        <button class="tab-btn" id="dashboardTabBtn" style="display: none;" onclick="switchTab('dashboard')">📊 Mon Dashboard</button>
       </div>
 
-      <div id="monthView" class="month-view active">
-        <div class="month-nav">
-          <button id="prevMonth">← Mois précédent</button>
-          <div class="month-title" id="monthTitle">Janvier 2026</div>
-          <button id="nextMonth">Mois suivant →</button>
+      <!-- TAB 1 : CALENDRIER -->
+      <div id="calendar" class="tab-content active">
+        <div class="view-controls">
+          <button class="view-btn active" id="viewMonth">📅 Mois</button>
         </div>
-        <div class="calendar" id="monthCalendar"></div>
+
+        <div id="monthView" class="month-view active">
+          <div class="month-nav">
+            <button id="prevMonth">← Mois précédent</button>
+            <div class="month-title" id="monthTitle">Janvier 2026</div>
+            <button id="nextMonth">Mois suivant →</button>
+          </div>
+          <div class="calendar" id="monthCalendar"></div>
+        </div>
       </div>
 
-      <div id="weekView" class="week-view">
-        <div class="month-nav">
-          <button id="prevWeek">← Semaine précédente</button>
-          <div class="month-title" id="weekTitle">Semaine</div>
-          <button id="nextWeek">Semaine suivante →</button>
+      <!-- TAB 2 : DASHBOARD CRÉATEUR -->
+      <div id="dashboard" class="tab-content">
+        <h2>Mes Créneaux et Participants</h2>
+        <p class="subtitle">Créneaux que vous avez créés et les participants</p>
+        
+        <div class="tabs" style="margin-top: 12px;">
+          <button class="tab-btn active" onclick="switchDashboardTab('my-slots')">Mes créneaux</button>
+          <button class="tab-btn" onclick="switchDashboardTab('notifications')">Notifications</button>
         </div>
-        <table class="week-table">
-          <thead><tr id="weekHeader"></tr></thead>
-          <tbody id="weekBody"></tbody>
-        </table>
+
+        <!-- DASHBOARD SUB-TAB 1 : MES CRÉNEAUX -->
+        <div id="my-slots" class="tab-content active">
+          <div id="mySlotsList" class="my-slots-list"></div>
+        </div>
+
+        <!-- DASHBOARD SUB-TAB 2 : NOTIFICATIONS -->
+        <div id="notifications" class="tab-content">
+          <div id="notificationsList" class="notifications-list"></div>
+        </div>
       </div>
     </div>
 
+    <!-- Formulaire d'ajout de créneau (visible seulement pour créateur) -->
     <div class="card" id="addSlotCard" style="display: none;">
       <h2>➕ Ajouter un Créneau</h2>
       <p class="subtitle">Enregistrez votre disponibilité</p>
@@ -180,20 +197,6 @@
       </form>
     </div>
   </main>
-
-  <div class="modal" id="slotModal">
-    <div class="modal-content">
-      <button class="btn-close" onclick="closeSlotModal()">✕</button>
-      <div class="modal-header">Détails du Créneau</div>
-      <div class="modal-body" id="slotModalBody"></div>
-      <div class="btn-group">
-        <button class="btn btn-participate" id="participateBtn" onclick="participateSlot()" style="display: none;">✅ Participer</button>
-        <button class="btn btn-primary" id="editBtn" onclick="editSlot()" style="display: none;">✏️ Modifier</button>
-        <button class="btn btn-primary btn-danger" id="deleteBtn" onclick="deleteSlot()" style="display: none; background: #991b1b;">🗑️ Supprimer</button>
-        <button class="btn btn-secondary" onclick="closeSlotModal()">Fermer</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     const storedUser = localStorage.getItem("user");
@@ -228,15 +231,18 @@
 
     let currentViewDate = new Date();
     let allSlots = [];
-    let selectedSlot = null;
+    let allParticipations = [];
+
+    const SERRE_SLOTS_KEY = "serreSlots";
+    const SERRE_PARTICIPATIONS_KEY = "serreParticipations";
+    const alertContainer = document.getElementById('alertContainer');
 
     function showAlert(message, type = 'success') {
-      const container = document.getElementById('alertContainer');
       const alert = document.createElement('div');
       alert.className = `alert alert-${type}`;
       alert.textContent = message;
-      container.innerHTML = '';
-      container.appendChild(alert);
+      alertContainer.innerHTML = '';
+      alertContainer.appendChild(alert);
       setTimeout(() => alert.remove(), 4000);
     }
 
@@ -261,13 +267,24 @@
         
         console.log('✅ Créneaux chargés:', allSlots);
         renderMonth();
-        renderWeek();
       } catch (e) {
         console.log("Mode local:", e);
-        const raw = localStorage.getItem("serreSlots");
+        const raw = localStorage.getItem(SERRE_SLOTS_KEY);
         allSlots = raw ? JSON.parse(raw) : [];
         renderMonth();
-        renderWeek();
+      }
+    }
+
+    async function loadParticipations() {
+      try {
+        const res = await fetch('/api/serre-participations');
+        if (!res.ok) throw new Error('Erreur réseau');
+        allParticipations = await res.json();
+        console.log('✅ Participations chargées:', allParticipations);
+      } catch (e) {
+        console.log("Mode local:", e);
+        const raw = localStorage.getItem(SERRE_PARTICIPATIONS_KEY);
+        allParticipations = raw ? JSON.parse(raw) : [];
       }
     }
 
@@ -285,7 +302,7 @@
       let html = weekdays.map(day => `<div class="weekday">${day}</div>`).join('');
 
       for (let i = 0; i < startingDayOfWeek; i++) {
-        html += '<div class="day-cell other-month"><div class="day-number">-</div></div>';
+        html += '<div class="day-cell" style="opacity: 0.3;"><div class="day-number">-</div></div>';
       }
 
       const today = new Date();
@@ -295,7 +312,7 @@
         const slotsForDay = allSlots.filter(s => s.date === dateStr);
         const isToday = date.toDateString() === today.toDateString();
 
-        html += `<div class="day-cell ${isToday ? 'today' : ''}" onclick="showDaySlots('${dateStr}')">
+        html += `<div class="day-cell ${isToday ? 'today' : ''}">
           <div class="day-number">${day}</div>
           <div class="day-slots">
             ${slotsForDay.map(s => `<div class="slot-badge">${s.membre}: ${s.heure_debut}</div>`).join('')}
@@ -305,165 +322,136 @@
 
       const totalCells = Math.ceil((daysInMonth + startingDayOfWeek) / 7) * 7;
       for (let day = 1; day <= totalCells - daysInMonth - startingDayOfWeek; day++) {
-        html += '<div class="day-cell other-month"><div class="day-number">-</div></div>';
+        html += '<div class="day-cell" style="opacity: 0.3;"><div class="day-number">-</div></div>';
       }
 
       document.getElementById('monthCalendar').innerHTML = html;
     }
 
-    function renderWeek() {
-      const weekStart = new Date(currentViewDate);
-      weekStart.setDate(currentViewDate.getDate() - currentViewDate.getDay());
-      const weekEnd = new Date(weekStart);
-      weekEnd.setDate(weekStart.getDate() + 6);
+    function renderMySlots() {
+      const mySlots = allSlots.filter(s => s.membre === currentUser.username);
+      const mySlotsList = document.getElementById('mySlotsList');
 
-      document.getElementById('weekTitle').textContent = `Semaine du ${weekStart.toLocaleDateString('fr-FR')} - ${weekEnd.toLocaleDateString('fr-FR')}`;
-
-      let headerHtml = '<th>Heure</th>';
-      for (let i = 0; i < 7; i++) {
-        const date = new Date(weekStart);
-        date.setDate(weekStart.getDate() + i);
-        const dayName = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'][date.getDay()];
-        headerHtml += `<th>${dayName}<br>${date.getDate()}/${date.getMonth() + 1}</th>`;
-      }
-      document.getElementById('weekHeader').innerHTML = headerHtml;
-
-      let bodyHtml = '';
-      for (let hour = 6; hour < 22; hour++) {
-        const timeStr = `${hour.toString().padStart(2, '0')}:00`;
-        bodyHtml += `<tr><td>${timeStr}</td>`;
-
-        for (let day = 0; day < 7; day++) {
-          const date = new Date(weekStart);
-          date.setDate(weekStart.getDate() + day);
-          const year = date.getFullYear();
-          const month = date.getMonth();
-          const dayNum = date.getDate();
-          const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
-          const slotsForTime = allSlots.filter(s => s.date === dateStr && s.heure_debut <= timeStr && s.heure_fin > timeStr);
-
-          bodyHtml += `<td>${slotsForTime.map(s => `<div class="slot-item" onclick="showSlotDetails('${s.id}')">${s.membre}</div>`).join('')}</td>`;
-        }
-        bodyHtml += '</tr>';
-      }
-      document.getElementById('weekBody').innerHTML = bodyHtml;
-    }
-
-    function showDaySlots(date) {
-      const slotsForDay = allSlots.filter(s => s.date === date);
-      if (slotsForDay.length === 0) {
-        showAlert('Aucun créneau ce jour-là', 'error');
+      if (!mySlots.length) {
+        mySlotsList.innerHTML = '<p style="color: #9ca3af; font-size: 0.85rem;">Aucun créneau créé.</p>';
         return;
       }
-      const body = slotsForDay.map(s => `<div class="modal-info" onclick="showSlotDetails('${s.id}')"><strong>${s.membre}</strong><br>${s.heure_debut} - ${s.heure_fin}</div>`).join('');
-      document.getElementById('slotModalBody').innerHTML = body;
-      document.getElementById('slotModal').classList.add('active');
+
+      mySlotsList.innerHTML = mySlots.map(slot => {
+        const slotParticipants = allParticipations.filter(p => p.slot_id === slot.id);
+        const d = new Date(slot.date);
+        const dateStr = d.toLocaleDateString('fr-FR');
+
+        return `<div class="slot-card">
+          <div class="slot-card-header">
+            <div class="slot-card-title">${dateStr} · ${slot.heure_debut} - ${slot.heure_fin}</div>
+            <div class="slot-card-actions">
+              <button class="slot-card-btn" onclick="editSlot('${slot.id}')">✏️ Modifier</button>
+              <button class="slot-card-btn danger" onclick="deleteSlot('${slot.id}')">🗑️ Supprimer</button>
+            </div>
+          </div>
+          <div class="slot-card-info">
+            <strong>${slotParticipants.length}</strong> participant(s)
+          </div>
+          ${slotParticipants.length > 0 ? `
+            <div class="participants-list">
+              <strong style="color: #cbd5f5; font-size: 0.8rem;">Participants:</strong>
+              ${slotParticipants.map(p => `<div class="participant-item">${p.participant_username}</div>`).join('')}
+            </div>
+          ` : ''}
+        </div>`;
+      }).join("");
     }
 
-    window.showSlotDetails = function(slotId) {
-      selectedSlot = allSlots.find(s => s.id === slotId);
-      if (!selectedSlot) return;
+    function renderNotifications() {
+      const mySlotIds = allSlots.filter(s => s.membre === currentUser.username).map(s => s.id);
+      const myNotifications = allParticipations.filter(p => mySlotIds.includes(p.slot_id));
+      const notificationsList = document.getElementById('notificationsList');
 
-      const isOwner = selectedSlot.membre === currentUser.username;
-      const isOtherMember = !isOwner;
+      if (!myNotifications.length) {
+        notificationsList.innerHTML = '<p style="color: #9ca3af; font-size: 0.85rem;">Aucune notification.</p>';
+        return;
+      }
+
+      notificationsList.innerHTML = myNotifications.map(notif => {
+        const slot = allSlots.find(s => s.id === notif.slot_id);
+        const d = new Date(notif.date);
+        const dateStr = d.toLocaleDateString('fr-FR');
+
+        return `<div class="notification-item">
+          <div class="notification-header">
+            <div class="notification-title">✅ ${notif.participant_username} participe</div>
+            <div class="notification-date">${dateStr}</div>
+          </div>
+          <div class="notification-meta">
+            Créneau: <strong>${slot?.heure_debut} - ${slot?.heure_fin}</strong>
+          </div>
+          <div style="margin-top: 6px;">
+            <span class="notification-badge">${notif.status || 'pending'}</span>
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       
-      document.getElementById('slotModalBody').innerHTML = `
-        <div class="modal-info"><strong>Membre:</strong> ${selectedSlot.membre}</div>
-        <div class="modal-info"><strong>Date:</strong> ${new Date(selectedSlot.date).toLocaleDateString('fr-FR')}</div>
-        <div class="modal-info"><strong>Horaires:</strong> ${selectedSlot.heure_debut} - ${selectedSlot.heure_fin}</div>
-      `;
-      document.getElementById('editBtn').style.display = isOwner ? 'block' : 'none';
-      document.getElementById('deleteBtn').style.display = isOwner ? 'block' : 'none';
-      document.getElementById('participateBtn').style.display = isOtherMember ? 'block' : 'none';
-      document.getElementById('slotModal').classList.add('active');
-    };
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
 
-    window.closeSlotModal = function() {
-      document.getElementById('slotModal').classList.remove('active');
-      selectedSlot = null;
-    };
+      if (tabName === 'dashboard') {
+        renderMySlots();
+        renderNotifications();
+      }
+    }
 
-    window.editSlot = function() {
-      if (!selectedSlot) return;
-      closeSlotModal();
-      document.getElementById('slotDate').value = selectedSlot.date;
-      document.getElementById('slotTimeStart').value = selectedSlot.heure_debut;
-      document.getElementById('slotTimeEnd').value = selectedSlot.heure_fin;
+    function switchDashboardTab(tabName) {
+      document.querySelectorAll('#dashboard .tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('#dashboard .tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+
+      if (tabName === 'my-slots') {
+        renderMySlots();
+      } else if (tabName === 'notifications') {
+        renderNotifications();
+      }
+    }
+
+    window.editSlot = function(slotId) {
+      const slot = allSlots.find(s => s.id === slotId);
+      if (!slot) return;
+      
+      document.getElementById('slotDate').value = slot.date;
+      document.getElementById('slotTimeStart').value = slot.heure_debut;
+      document.getElementById('slotTimeEnd').value = slot.heure_fin;
+      document.getElementById('addSlotForm').dataset.editingSlotId = slotId;
       document.getElementById('addSlotCard').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('addSlotForm').dataset.editingSlotId = selectedSlot.id;
     };
 
-    window.deleteSlot = function() {
-      if (!selectedSlot || !confirm('Êtes-vous sûr ?')) return;
+    window.deleteSlot = function(slotId) {
+      if (!confirm('Êtes-vous sûr ?')) return;
 
       const deleteAsync = async () => {
         try {
-          const res = await fetch(`/api/serre-slots/${selectedSlot.id}`, { method: 'DELETE' });
+          const res = await fetch(`/api/serre-slots/${slotId}`, { method: 'DELETE' });
           if (res.ok) {
             showAlert('✅ Supprimé !', 'success');
-            closeSlotModal();
             loadSlots();
+            renderMySlots();
           } else throw new Error('Erreur');
         } catch (e) {
-          const slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
-          localStorage.setItem("serreSlots", JSON.stringify(slots.filter(s => s.id !== selectedSlot.id)));
+          const slots = JSON.parse(localStorage.getItem(SERRE_SLOTS_KEY) || '[]');
+          localStorage.setItem(SERRE_SLOTS_KEY, JSON.stringify(slots.filter(s => s.id !== slotId)));
           showAlert('✅ Supprimé (local)', 'success');
-          closeSlotModal();
           loadSlots();
+          renderMySlots();
         }
       };
       deleteAsync();
     };
-
-    window.participateSlot = function() {
-      if (!selectedSlot) return;
-      
-      const participateAsync = async () => {
-        try {
-          const res = await fetch('/api/serre-participations', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              slot_id: selectedSlot.id,
-              participant: currentUser.username,
-              recipient: selectedSlot.membre,
-              date: selectedSlot.date,
-              heure_debut: selectedSlot.heure_debut,
-              heure_fin: selectedSlot.heure_fin
-            })
-          });
-          
-          if (res.ok) {
-            showAlert('✅ Participation enregistrée ! Une notification a été envoyée.', 'success');
-            closeSlotModal();
-            loadSlots();
-          } else {
-            const error = await res.text();
-            throw new Error(error);
-          }
-        } catch (e) {
-          console.log("Mode local:", e);
-          showAlert('✅ Participation enregistrée (local) !', 'success');
-          closeSlotModal();
-          loadSlots();
-        }
-      };
-      participateAsync();
-    };
-
-    document.getElementById('viewMonth').addEventListener('click', () => {
-      document.getElementById('monthView').classList.remove('hidden');
-      document.getElementById('weekView').classList.remove('active');
-      document.getElementById('viewMonth').classList.add('active');
-      document.getElementById('viewWeek').classList.remove('active');
-    });
-
-    document.getElementById('viewWeek').addEventListener('click', () => {
-      document.getElementById('monthView').classList.add('hidden');
-      document.getElementById('weekView').classList.add('active');
-      document.getElementById('viewMonth').classList.remove('active');
-      document.getElementById('viewWeek').classList.add('active');
-    });
 
     document.getElementById('prevMonth').addEventListener('click', () => {
       currentViewDate.setMonth(currentViewDate.getMonth() - 1);
@@ -473,16 +461,6 @@
     document.getElementById('nextMonth').addEventListener('click', () => {
       currentViewDate.setMonth(currentViewDate.getMonth() + 1);
       renderMonth();
-    });
-
-    document.getElementById('prevWeek').addEventListener('click', () => {
-      currentViewDate.setDate(currentViewDate.getDate() - 7);
-      renderWeek();
-    });
-
-    document.getElementById('nextWeek').addEventListener('click', () => {
-      currentViewDate.setDate(currentViewDate.getDate() + 7);
-      renderWeek();
     });
 
     document.getElementById('addSlotForm').addEventListener('submit', async (e) => {
@@ -518,10 +496,11 @@
           document.getElementById('addSlotForm').reset();
           delete document.getElementById('addSlotForm').dataset.editingSlotId;
           loadSlots();
+          renderMySlots();
         } else throw new Error('Erreur');
       } catch (e) {
         slot.id = editingSlotId || ('slot_' + Date.now());
-        let slots = JSON.parse(localStorage.getItem("serreSlots") || '[]');
+        let slots = JSON.parse(localStorage.getItem(SERRE_SLOTS_KEY) || '[]');
         
         if (editingSlotId) {
           const idx = slots.findIndex(s => s.id === editingSlotId);
@@ -530,15 +509,22 @@
           slots.push(slot);
         }
         
-        localStorage.setItem("serreSlots", JSON.stringify(slots));
+        localStorage.setItem(SERRE_SLOTS_KEY, JSON.stringify(slots));
         showAlert(`✅ ${editingSlotId ? 'Modifié' : 'Ajouté'} (local)`, 'success');
         document.getElementById('addSlotForm').reset();
         delete document.getElementById('addSlotForm').dataset.editingSlotId;
         loadSlots();
+        renderMySlots();
       }
     });
 
+    // Afficher le tab Dashboard si connecté et serre/admin
+    if (currentUser && (currentUser.role === "admin" || currentUser.serre === true)) {
+      document.getElementById('dashboardTabBtn').style.display = "inline-flex";
+    }
+
     loadSlots();
+    loadParticipations();
   </script>
 </body>
 </html>
