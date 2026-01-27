@@ -91,7 +91,7 @@
       <button class="nav-btn active" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
       <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
       <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
-      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="emploi-serre.html" data-requires-serre="1"><span class="icon">🌱</span><span>Serre</span></button>
       <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
       <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
@@ -100,12 +100,14 @@
     </div>
   </header>
 
+
   <main class="page">
     <div class="card">
       <h1>Accueil</h1>
       <p class="subtitle">Résumé rapide de ton espace personnel.</p>
       <p>Cette page peut présenter ton projet, ton club, les dernières infos.</p>
     </div>
+
 
     <div class="card">
       <h2>📚 Ressources &amp; Boutique</h2>
@@ -123,12 +125,14 @@
       <p class="small-note">Accès direct aux ressources partagées et à la boutique officielle du Cercle Aqua Nancy.</p>
     </div>
 
+
     <div class="card">
       <h2>Prochains événements</h2>
       <p class="subtitle">Les quelques événements les plus proches configurés dans la page Événements.</p>
       <div id="homeEventList" class="event-list-home"></div>
       <p class="small-note">Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur. Clique sur un événement pour plus d'infos.</p>
     </div>
+
 
     <div class="card" id="serreCard">
       <h2>🌱 Emploi du temps Serre</h2>
@@ -137,6 +141,7 @@
       <div id="homeSerreList" class="event-list-home"></div>
       <p class="small-note"><a href="emploi-serre.html" style="color: #38bdf8; text-decoration: none; font-weight: 500;">Voir l&apos;emploi du temps complet →</a></p>
     </div>
+
 
     <div class="card">
       <h2>📱 Dernières nouvelles Facebook</h2>
@@ -169,6 +174,7 @@
           </div>
         </div>
 
+
         <div class="facebook-card">
           <div class="facebook-header">
             <span class="facebook-icon">f</span>
@@ -196,12 +202,15 @@
         </div>
       </div>
 
+
       <p class="small-note">Les publications sont chargées directement depuis Facebook. Actualisation automatique toutes les 10 minutes.</p>
     </div>
   </main>
 
+
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0" nonce="CANcercle"></script>
+
 
   <script>
     const storedUser = localStorage.getItem("user");
@@ -219,9 +228,11 @@
         const roleLabel = currentUser.role === "admin" ? "Admin" : currentUser.role === "membre_bureau" ? "Membre de bureau" : "Adhérent";
         navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
 
+
         document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
           if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
         });
+
 
         document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
           if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) { btn.style.display = "none"; }
@@ -229,11 +240,13 @@
       }
     }
 
+
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => { 
         window.location.href = btn.dataset.link; 
       });
     });
+
 
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
@@ -244,9 +257,11 @@
       });
     }
 
+
     const ANNONCES_KEY = "announcementsData";
     const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
     const navEchange = document.getElementById("navEchange");
+
 
     async function loadAnnoncesFromServer() {
       try {
@@ -260,6 +275,7 @@
         try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
+
 
     function updateNotificationBadge() {
       if (!navEchange) return;
@@ -276,6 +292,7 @@
       }
     }
 
+
     if (navEchange) {
       navEchange.addEventListener('click', (e) => {
         const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
@@ -286,6 +303,7 @@
       });
     }
 
+
     async function initNotifications() {
       await loadAnnoncesFromServer();
       updateNotificationBadge();
@@ -295,8 +313,10 @@
       }, 30000);
     }
 
+
     const EVENTS_KEY = "eventsData";
     const homeEventList = document.getElementById("homeEventList");
+
 
     async function loadEventsFromServer() {
       try {
@@ -311,6 +331,7 @@
       }
     }
 
+
     function getNextEvents(limit) {
       const raw = localStorage.getItem(EVENTS_KEY);
       let all = [];
@@ -323,6 +344,7 @@
       }).sort((a, b) => new Date(a.date_iso || a.dateIso) - new Date(b.date_iso || b.dateIso));
       return upcoming.slice(0, limit);
     }
+
 
     async function renderHomeEvents() {
       if (!homeEventList) return;
@@ -342,11 +364,13 @@
       }).join("");
     }
 
+
     const SERRE_SLOTS_KEY = "serreSlots";
     const SERRE_PARTICIPATIONS_KEY = "serreParticipations";
     const homeSerreList = document.getElementById("homeSerreList");
     const serreCard = document.getElementById("serreCard");
     const alertContainer = document.getElementById("alertContainer");
+
 
     async function loadSerreSlots() {
       try {
@@ -361,6 +385,7 @@
       }
     }
 
+
     async function loadParticipations() {
       try {
         const res = await fetch('/api/serre-participations');
@@ -373,6 +398,7 @@
         try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
+
 
     function getNextSerreSlots(limit) {
       const raw = localStorage.getItem(SERRE_SLOTS_KEY);
@@ -387,6 +413,7 @@
       return upcoming.slice(0, limit);
     }
 
+
     function showAlert(message, type = 'success') {
       const alert = document.createElement('div');
       alert.className = `alert alert-${type}`;
@@ -396,15 +423,18 @@
       setTimeout(() => alert.remove(), 4000);
     }
 
+
     async function participateSlot(slotId) {
       if (!currentUser) {
         showAlert('❌ Vous devez être connecté pour participer', 'error');
         return;
       }
 
+
       const slots = JSON.parse(localStorage.getItem(SERRE_SLOTS_KEY) || '[]');
       const slot = slots.find(s => s.id === slotId);
       if (!slot) return;
+
 
       try {
         const res = await fetch('/api/serre-participations', {
@@ -419,6 +449,7 @@
             heure_fin: slot.heure_fin
           })
         });
+
 
         if (res.ok) {
           showAlert('✅ Participation enregistrée ! Notification envoyée au créateur.', 'success');
@@ -446,19 +477,23 @@
       }
     }
 
+
     async function renderHomeSerreSlots() {
       if (serreCard) serreCard.style.display = "block";
       
       await loadSerreSlots();
       await loadParticipations();
 
+
       const nextSlots = getNextSerreSlots(3);
       const participations = JSON.parse(localStorage.getItem(SERRE_PARTICIPATIONS_KEY) || '[]');
+
 
       if (!nextSlots.length) {
         homeSerreList.innerHTML = '<p class="small-note">Aucun créneau disponible.</p>';
         return;
       }
+
 
       homeSerreList.innerHTML = nextSlots.map(slot => {
         const d = new Date(slot.date);
@@ -466,6 +501,7 @@
         const isCreator = currentUser && currentUser.username === slot.membre;
         const alreadyParticipating = participations.some(p => p.slot_id === slot.id && p.participant_username === currentUser?.username);
         const btnDisabled = isCreator || alreadyParticipating;
+
 
         return `<div class="event-home-item">
           <div class="event-home-main" onclick="window.location.href='emploi-serre.html'">
@@ -481,6 +517,7 @@
         </div>`;
       }).join("");
     }
+
 
     renderHomeEvents();
     renderHomeSerreSlots();
