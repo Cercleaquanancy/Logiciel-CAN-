@@ -250,7 +250,7 @@ const server = http.createServer((req, res) => {
   // ==================== API SERRE PARTICIPATIONS ====================
   if (method === 'GET' && url === '/api/serre-participations') {
     pool.query(
-      'SELECT id, slot_id, participant_username, creator_username, date, status FROM serre_participations ORDER BY date DESC'
+      'SELECT id, slot_id, participant_username, creator_username, participation_date as date, status FROM serre_participations ORDER BY participation_date DESC'
     )
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
@@ -274,14 +274,13 @@ const server = http.createServer((req, res) => {
 
       const id = "part_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
       const status = 'pending';
-      const nowIso = new Date().toISOString();
 
       const query = `
-        INSERT INTO serre_participations (id, slot_id, participant_username, creator_username, date, status)
-        VALUES ($1, $2, $3, $4, $5, $6)
-        RETURNING id, slot_id, participant_username, creator_username, date, status
+        INSERT INTO serre_participations (id, slot_id, participant_username, creator_username, status)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING id, slot_id, participant_username, creator_username, participation_date as date, status
       `;
-      const params = [id, slot_id, String(participant_username), String(creator_username), nowIso, status];
+      const params = [id, slot_id, String(participant_username), String(creator_username), status];
 
       pool.query(query, params)
         .then(result => {
