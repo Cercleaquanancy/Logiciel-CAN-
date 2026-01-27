@@ -101,12 +101,14 @@
   </header>
 
 
+
   <main class="page">
     <div class="card">
       <h1>Accueil</h1>
       <p class="subtitle">Résumé rapide de ton espace personnel.</p>
       <p>Cette page peut présenter ton projet, ton club, les dernières infos.</p>
     </div>
+
 
 
     <div class="card">
@@ -126,12 +128,14 @@
     </div>
 
 
+
     <div class="card">
       <h2>Prochains événements</h2>
       <p class="subtitle">Les quelques événements les plus proches configurés dans la page Événements.</p>
       <div id="homeEventList" class="event-list-home"></div>
       <p class="small-note">Les données viennent de la même liste que la page Événements grâce au stockage local du navigateur. Clique sur un événement pour plus d'infos.</p>
     </div>
+
 
 
     <div class="card" id="serreCard">
@@ -141,6 +145,7 @@
       <div id="homeSerreList" class="event-list-home"></div>
       <p class="small-note"><a href="emploi-serre.html" style="color: #38bdf8; text-decoration: none; font-weight: 500;">Voir l&apos;emploi du temps complet →</a></p>
     </div>
+
 
 
     <div class="card">
@@ -175,6 +180,7 @@
         </div>
 
 
+
         <div class="facebook-card">
           <div class="facebook-header">
             <span class="facebook-icon">f</span>
@@ -203,13 +209,16 @@
       </div>
 
 
+
       <p class="small-note">Les publications sont chargées directement depuis Facebook. Actualisation automatique toutes les 10 minutes.</p>
     </div>
   </main>
 
 
+
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v20.0" nonce="CANcercle"></script>
+
 
 
   <script>
@@ -229,9 +238,11 @@
         navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
 
 
+
         document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
           if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
         });
+
 
 
         document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
@@ -241,11 +252,13 @@
     }
 
 
+
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => { 
         window.location.href = btn.dataset.link; 
       });
     });
+
 
 
     const logoutBtn = document.getElementById('logoutBtn');
@@ -258,9 +271,11 @@
     }
 
 
+
     const ANNONCES_KEY = "announcementsData";
     const NOTIFICATIONS_SEEN_KEY = "notificationsSeen";
     const navEchange = document.getElementById("navEchange");
+
 
 
     async function loadAnnoncesFromServer() {
@@ -275,6 +290,7 @@
         try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
+
 
 
     function updateNotificationBadge() {
@@ -293,6 +309,7 @@
     }
 
 
+
     if (navEchange) {
       navEchange.addEventListener('click', (e) => {
         const annonces = JSON.parse(localStorage.getItem(ANNONCES_KEY) || '[]');
@@ -302,6 +319,7 @@
         updateNotificationBadge();
       });
     }
+
 
 
     async function initNotifications() {
@@ -314,8 +332,10 @@
     }
 
 
+
     const EVENTS_KEY = "eventsData";
     const homeEventList = document.getElementById("homeEventList");
+
 
 
     async function loadEventsFromServer() {
@@ -332,6 +352,7 @@
     }
 
 
+
     function getNextEvents(limit) {
       const raw = localStorage.getItem(EVENTS_KEY);
       let all = [];
@@ -344,6 +365,7 @@
       }).sort((a, b) => new Date(a.date_iso || a.dateIso) - new Date(b.date_iso || b.dateIso));
       return upcoming.slice(0, limit);
     }
+
 
 
     async function renderHomeEvents() {
@@ -365,11 +387,13 @@
     }
 
 
+
     const SERRE_SLOTS_KEY = "serreSlots";
     const SERRE_PARTICIPATIONS_KEY = "serreParticipations";
     const homeSerreList = document.getElementById("homeSerreList");
     const serreCard = document.getElementById("serreCard");
     const alertContainer = document.getElementById("alertContainer");
+
 
 
     async function loadSerreSlots() {
@@ -386,6 +410,7 @@
     }
 
 
+
     async function loadParticipations() {
       try {
         const res = await fetch('/api/serre-participations');
@@ -398,6 +423,7 @@
         try { return JSON.parse(raw) || []; } catch { return []; }
       }
     }
+
 
 
     function getNextSerreSlots(limit) {
@@ -414,6 +440,7 @@
     }
 
 
+
     function showAlert(message, type = 'success') {
       const alert = document.createElement('div');
       alert.className = `alert alert-${type}`;
@@ -424,6 +451,7 @@
     }
 
 
+
     async function participateSlot(slotId) {
       if (!currentUser) {
         showAlert('❌ Vous devez être connecté pour participer', 'error');
@@ -431,9 +459,11 @@
       }
 
 
+
       const slots = JSON.parse(localStorage.getItem(SERRE_SLOTS_KEY) || '[]');
       const slot = slots.find(s => s.id === slotId);
       if (!slot) return;
+
 
 
       try {
@@ -449,6 +479,7 @@
             heure_fin: slot.heure_fin
           })
         });
+
 
 
         if (res.ok) {
@@ -478,6 +509,7 @@
     }
 
 
+
     async function renderHomeSerreSlots() {
       if (serreCard) serreCard.style.display = "block";
       
@@ -485,14 +517,17 @@
       await loadParticipations();
 
 
+
       const nextSlots = getNextSerreSlots(3);
       const participations = JSON.parse(localStorage.getItem(SERRE_PARTICIPATIONS_KEY) || '[]');
+
 
 
       if (!nextSlots.length) {
         homeSerreList.innerHTML = '<p class="small-note">Aucun créneau disponible.</p>';
         return;
       }
+
 
 
       homeSerreList.innerHTML = nextSlots.map(slot => {
@@ -503,8 +538,9 @@
         const btnDisabled = isCreator || alreadyParticipating;
 
 
+
         return `<div class="event-home-item">
-          <div class="event-home-main" onclick="window.location.href='emploi-serre.html'">
+          <div class="event-home-main" style="cursor: pointer; flex: 1 1 auto; min-width: 0;" onclick="window.location.href='emploi-serre.html'">
             <div class="event-home-title">${slot.membre}</div>
             <div class="event-home-meta">${dateStr} · ${slot.heure_debut} à ${slot.heure_fin}</div>
           </div>
@@ -517,6 +553,7 @@
         </div>`;
       }).join("");
     }
+
 
 
     renderHomeEvents();
