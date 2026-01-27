@@ -6,8 +6,10 @@ const pool = require('./db');
 const port = process.env.PORT || 5500;
 const DATA_FILE = path.join(__dirname, 'data.json');
 
-const ADMIN_LOGIN = 'can';
+const ADMIN_LOGIN = 'peut';
 const ADMIN_PASS = '29081623';
+
+// ==================== UTILITAIRES ====================
 
 function loadData() {
   try {
@@ -18,7 +20,7 @@ function loadData() {
         population: [],
         annonces: [],
         serre: {
-          notes: "",
+          notes: '',
           bacs: [],
           assignments: {},
           feed: {
@@ -39,18 +41,14 @@ function loadData() {
       population: Array.isArray(parsed.population) ? parsed.population : [],
       annonces: Array.isArray(parsed.annonces) ? parsed.annonces : [],
       serre: {
-        notes: typeof serreParsed.notes === 'string' ? serreParsed.notes : "",
+        notes: typeof serreParsed.notes === 'string' ? serreParsed.notes : '',
         bacs: Array.isArray(serreParsed.bacs) ? serreParsed.bacs : [],
-        assignments: serreParsed.assignments && typeof serreParsed.assignments === 'object'
-          ? serreParsed.assignments
-          : {},
+        assignments: serreParsed.assignments && typeof serreParsed.assignments === 'object' ? serreParsed.assignments : {},
         feed: serreParsed.feed && typeof serreParsed.feed === 'object'
           ? {
               lastUpdate: serreParsed.feed.lastUpdate || null,
               items: Array.isArray(serreParsed.feed.items) ? serreParsed.feed.items : [],
-              monthlyUseKg: typeof serreParsed.feed.monthlyUseKg === 'number'
-                ? serreParsed.feed.monthlyUseKg
-                : 0
+              monthlyUseKg: typeof serreParsed.feed.monthlyUseKg === 'number' ? serreParsed.feed.monthlyUseKg : 0
             }
           : {
               lastUpdate: null,
@@ -67,7 +65,7 @@ function loadData() {
       population: [],
       annonces: [],
       serre: {
-        notes: "",
+        notes: '',
         bacs: [],
         assignments: {},
         feed: {
@@ -131,11 +129,14 @@ function parseJsonBody(req, callback) {
   });
 }
 
+// ==================== SERVEUR HTTP ====================
+
 const server = http.createServer((req, res) => {
   const [pathOnly] = req.url.split('?');
   const url = pathOnly;
   const method = req.method;
 
+  // CORS Préflight
   if (method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': '*',
@@ -146,11 +147,10 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ==================== API SERRE SLOTS (EMPLOI DU TEMPS) ====================
+  // ==================== API SERRE SLOTS ====================
+
   if (method === 'GET' && url === '/api/serre-slots') {
-    pool.query(
-      'SELECT id, date, heure_debut, heure_fin, membre FROM serre_slots ORDER BY date ASC, heure_debut ASC'
-    )
+    pool.query('SELECT id, date, heure_debut, heure_fin, membre FROM serre_slots ORDER BY date ASC, heure_debut ASC')
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
         console.error('Erreur SELECT serre_slots :', err);
@@ -171,7 +171,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const id = "slot_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const id = 'slot_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
       const query = `
         INSERT INTO serre_slots (id, date, heure_debut, heure_fin, membre)
         VALUES ($1, $2, $3, $4, $5)
@@ -247,108 +247,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ==================== API NOTIFICATIONS SERRE ====================
-  if (method === 'POST' && url === '/api/serre-participations') {
-    parseJsonBody(req, (err, body) => {
-      if (err) {
-        sendText(res, 400, 'JSON invalide');
-        return;
-      }
-      const { slot_id, participant, recipient, date, heure_debut, heure_fin } = body || {};
-      if (!slot_id || !participant || !recipient) {
-        sendText(res, 400, 'slot_id, participant et recipient obligatoires');
-        return;
-      }
+  // ==================== API MEMBERS ====================
 
-      const notificationId = 'notif_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
-      const notification = {
-        id: notificationId,
-        type: 'serre_participation',
-        recipient: recipient,
-        participant: participant,
-        slot_id: slot_id,
-        date: date,
-        heure_debut: heure_debut,
-        heure_fin: heure_fin,
-        message: `${participant} souhaite participer à ton créneau du ${date} de ${heure_debut} à ${heure_fin}`,
-        read: false,
-        created_at: new Date().toISOString()
-      };
-
-      const notifQuery = `
-        INSERT INTO notifications (id, type, recipient, participant, slot_id, message, read, created_at)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING id, type, recipient, participant, slot_id, message, read, created_at
-      `;
-      const notifParams = [
-        notificationId,
-        'serre_participation',
-        recipient,
-        participant,
-        slot_id,
-        notification.message,
-        false,
-        notification.created_at
-      ];
-
-      pool.query(notifQuery, notifParams)
-        .then(result => {
-          const createdNotif = result.rows[0];
-          sendJson(res, 200, { success: true, notification: createdNotif });
-        })
-        .catch(dbErr => {
-          console.log('Fallback localStorage pour notification:', dbErr.message);
-          const data = loadData();
-          if (!data.notifications) data.notifications = [];
-          data.notifications.push(notification);
-          saveData(data);
-          sendJson(res, 200, { success: true, notification: notification });
-        });
-    });
-    return;
-  }
-
-  // GET notifications pour un utilisateur
-  if (method === 'GET' && url.startsWith('/api/notifications/')) {
-    const username = decodeURIComponent(url.replace('/api/notifications/', ''));
-    
-    pool.query(
-      'SELECT id, type, recipient, participant, slot_id, message, read, created_at FROM notifications WHERE recipient = $1 ORDER BY created_at DESC',
-      [username]
-    )
-      .then(result => sendJson(res, 200, result.rows))
-      .catch(err => {
-        console.error('Erreur SELECT notifications :', err);
-        const data = loadData();
-        const userNotifs = (data.notifications || []).filter(n => n.recipient === username);
-        sendJson(res, 200, userNotifs);
-      });
-    return;
-  }
-
-  // Marquer notification comme lue
-  if (method === 'PATCH' && url.startsWith('/api/notifications/') && url.endsWith('/read')) {
-    const id = decodeURIComponent(url.replace('/api/notifications/', '').replace('/read', ''));
-    
-    pool.query(
-      'UPDATE notifications SET read = true WHERE id = $1 RETURNING id, type, recipient, participant, slot_id, message, read, created_at',
-      [id]
-    )
-      .then(result => {
-        if (result.rowCount === 0) {
-          sendText(res, 404, 'Notification introuvable');
-          return;
-        }
-        sendJson(res, 200, { success: true, notification: result.rows[0] });
-      })
-      .catch(err => {
-        console.error('Erreur UPDATE notification :', err);
-        sendText(res, 500, 'Erreur serveur');
-      });
-    return;
-  }
-
-  // ==================== API MEMBRES ====================
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
       .then(result => sendJson(res, 200, result.rows))
@@ -365,7 +265,7 @@ const server = http.createServer((req, res) => {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { login, pass, role, serre } = body;
+      const { login, pass, role, serre } = body || {};
       if (!login || !pass) {
         sendText(res, 400, 'login et pass obligatoires');
         return;
@@ -407,20 +307,21 @@ const server = http.createServer((req, res) => {
     pool.query('DELETE FROM members')
       .then(() => sendJson(res, 200, { success: true }))
       .catch(err => {
-        console.error('Erreur DELETE ALL members :', err);
+        console.error('Erreur DELETE all members :', err);
         sendText(res, 500, 'Erreur serveur');
       });
     return;
   }
 
   // ==================== API LOGIN ====================
+
   if (method === 'POST' && url === '/api/login') {
     parseJsonBody(req, (err, body) => {
       if (err) {
         sendText(res, 400, 'JSON invalide');
         return;
       }
-      const { username, password } = body;
+      const { username, password } = body || {};
       if (!username || !password) {
         sendText(res, 400, 'username et password obligatoires');
         return;
@@ -430,10 +331,7 @@ const server = http.createServer((req, res) => {
 
       if (username === ADMIN_LOGIN && password === ADMIN_PASS) {
         const userObj = { username, role: 'admin', serre: true };
-        pool.query(
-          'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
-          [username, 'admin', nowIso]
-        )
+        pool.query('INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)', [username, 'admin', nowIso])
           .then(() => sendJson(res, 200, { success: true, user: userObj }))
           .catch(dbErr => {
             console.error('Erreur INSERT login_history admin :', dbErr);
@@ -445,24 +343,22 @@ const server = http.createServer((req, res) => {
       pool.query('SELECT login, pass, role, serre FROM members WHERE login = $1', [username])
         .then(result => {
           if (result.rowCount === 0) {
-            sendJson(res, 401, { success: false, error: 'unknown_user' });
+            sendJson(res, 401, { success: false, error: 'utilisateur_inconnu' });
             return;
           }
 
           const found = result.rows[0];
           if (found.pass !== password) {
-            sendJson(res, 401, { success: false, error: 'bad_password' });
+            sendJson(res, 401, { success: false, error: 'mauvais_mot_de_passe' });
             return;
           }
 
           const role = found.role || 'adhérent';
-          const serre = !!found.serre;
-          const userObj = { username: found.login, role, serre };
+          const serreAccess = !!found.serre;
+          const userObj = { username: found.login, role, serre: serreAccess };
 
-          return pool.query(
-            'INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)',
-            [found.login, role, nowIso]
-          ).then(() => sendJson(res, 200, { success: true, user: userObj }));
+          return pool.query('INSERT INTO login_history (username, role, date) VALUES ($1, $2, $3)', [found.login, role, nowIso])
+            .then(() => sendJson(res, 200, { success: true, user: userObj }));
         })
         .catch(dbErr => {
           console.error('Erreur SELECT/INSERT login_history :', dbErr);
@@ -493,6 +389,7 @@ const server = http.createServer((req, res) => {
   }
 
   // ==================== API EVENTS ====================
+
   if (method === 'GET' && url === '/api/events') {
     pool.query('SELECT id, titre, type, date_iso, heure, lieu, description, lien FROM events ORDER BY date_iso ASC')
       .then(result => sendJson(res, 200, result.rows))
@@ -515,22 +412,13 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const id = "event_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const id = 'event_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
       const query = `
         INSERT INTO events (id, titre, type, date_iso, heure, lieu, description, lien)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING id, titre, type, date_iso, heure, lieu, description, lien
       `;
-      const params = [
-        id,
-        String(titre).trim(),
-        type || 'autre',
-        date_iso,
-        heure || null,
-        lieu ? String(lieu).trim() : '',
-        description ? String(description).trim() : '',
-        lien ? String(lien).trim() : ''
-      ];
+      const params = [id, String(titre).trim(), type || 'autre', date_iso, heure || null, lieu ? String(lieu).trim() : '', description ? String(description).trim() : '', lien ? String(lien).trim() : ''];
 
       pool.query(query, params)
         .then(result => {
@@ -564,16 +452,7 @@ const server = http.createServer((req, res) => {
         WHERE id = $8
         RETURNING id, titre, type, date_iso, heure, lieu, description, lien
       `;
-      const params = [
-        String(titre).trim(),
-        type || 'autre',
-        date_iso,
-        heure || null,
-        lieu ? String(lieu).trim() : '',
-        description ? String(description).trim() : '',
-        lien ? String(lien).trim() : '',
-        id
-      ];
+      const params = [String(titre).trim(), type || 'autre', date_iso, heure || null, lieu ? String(lieu).trim() : '', description ? String(description).trim() : '', lien ? String(lien).trim() : '', id];
 
       pool.query(query, params)
         .then(result => {
@@ -585,7 +464,7 @@ const server = http.createServer((req, res) => {
           sendJson(res, 200, { success: true, event });
         })
         .catch(dbErr => {
-          console.error('Erreur PATCH event :', dbErr);
+          console.error('Erreur UPDATE event :', dbErr);
           sendText(res, 500, 'Erreur serveur');
         });
     });
@@ -610,13 +489,14 @@ const server = http.createServer((req, res) => {
   }
 
   // ==================== API POPULATION ====================
+
   if (method === 'GET' && url === '/api/population') {
     const query = `
       SELECT
-        member_username AS "memberUsername",
-        species_name AS "speciesName",
+        member_username,
+        species_name,
         source,
-        total_count AS "totalCount",
+        total_count,
         published
       FROM population
       ORDER BY member_username, species_name
@@ -639,7 +519,7 @@ const server = http.createServer((req, res) => {
 
       const { memberUsername, entries } = body || {};
       if (!memberUsername || !Array.isArray(entries)) {
-        sendText(res, 400, 'memberUsername et entries (tableau) sont obligatoires');
+        sendText(res, 400, 'memberUsername et entries (array) sont obligatoires');
         return;
       }
 
@@ -664,18 +544,10 @@ const server = http.createServer((req, res) => {
 
           const insertQuery = `
             INSERT INTO population (member_username, species_name, source, total_count, published)
-            VALUES ${cleanEntries.map((_, i) =>
-              `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`
-            ).join(', ')}
+            VALUES ${cleanEntries.map((_, i) => `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`).join(', ')}
           `;
 
-          const params = cleanEntries.flatMap(e => [
-            e.memberUsername,
-            e.speciesName,
-            e.source,
-            e.totalCount,
-            e.published
-          ]);
+          const params = cleanEntries.flatMap(e => [e.memberUsername, e.speciesName, e.source, e.totalCount, e.published]);
 
           return pool.query(insertQuery, params);
         })
@@ -692,10 +564,9 @@ const server = http.createServer((req, res) => {
   }
 
   // ==================== API ANNONCES ====================
+
   if (method === 'GET' && url === '/api/annonces') {
-    pool.query(
-      'SELECT id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar" FROM annonces ORDER BY id DESC'
-    )
+    pool.query('SELECT id, titre, type, description, categorie, auteur, prive, favori_par FROM annonces ORDER BY id DESC')
       .then(result => sendJson(res, 200, result.rows))
       .catch(err => {
         console.error('Erreur SELECT annonces :', err);
@@ -716,25 +587,16 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const id = "annonce_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const id = 'annonce_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
       const prive = true;
       const favoriPar = [];
 
       const query = `
         INSERT INTO annonces (id, titre, type, description, categorie, auteur, prive, favori_par)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par
       `;
-      const params = [
-        id,
-        String(titre).trim(),
-        String(type),
-        (description || '').toString().trim(),
-        String(categorie),
-        String(auteur),
-        prive,
-        favoriPar
-      ];
+      const params = [id, String(titre).trim(), String(type), (description || '').toString().trim(), String(categorie), String(auteur), prive, favoriPar];
 
       pool.query(query, params)
         .then(result => {
@@ -766,7 +628,7 @@ const server = http.createServer((req, res) => {
         UPDATE annonces
         SET prive = NOT prive
         WHERE id = $1 AND auteur = $2
-        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+        RETURNING id, titre, type, description, categorie, auteur, prive, favori_par
       `;
       pool.query(query, [id, username])
         .then(result => {
@@ -813,7 +675,7 @@ const server = http.createServer((req, res) => {
             UPDATE annonces
             SET favori_par = $1
             WHERE id = $2
-            RETURNING id, titre, type, description, categorie, auteur, prive, favori_par AS "favoriPar"
+            RETURNING id, titre, type, description, categorie, auteur, prive, favori_par
           `;
           return pool.query(updateQuery, [favoriPar, id]);
         })
@@ -845,6 +707,7 @@ const server = http.createServer((req, res) => {
             sendText(res, 404, 'Annonce introuvable');
             return;
           }
+
           const auteur = result.rows[0].auteur;
           const isOwner = auteur === username;
           const isAdminLike = role === 'admin' || role === 'membre_bureau';
@@ -869,6 +732,7 @@ const server = http.createServer((req, res) => {
   }
 
   // ==================== API SERRE ====================
+
   if (method === 'GET' && url === '/api/serre') {
     Promise.all([
       pool.query('SELECT notes FROM serre_meta WHERE id = 1'),
@@ -878,9 +742,9 @@ const server = http.createServer((req, res) => {
       pool.query('SELECT id, name, unit, quantity FROM serre_feed_items ORDER BY id')
     ])
       .then(([metaResult, bacsResult, assignResult, feedResult, feedItemsResult]) => {
-        let notes = "";
+        let notes = '';
         if (metaResult.rowCount > 0) {
-          notes = metaResult.rows[0].notes || "";
+          notes = metaResult.rows[0].notes || '';
         }
 
         const bacs = bacsResult.rows.map(row => ({
@@ -893,8 +757,8 @@ const server = http.createServer((req, res) => {
         const assignments = {};
         assignResult.rows.forEach(row => {
           assignments[row.bac_id] = {
-            membreId: row.member_username,
-            nom: row.member_username
+            memberId: row.member_username,
+            name: row.member_username
           };
         });
 
@@ -937,7 +801,7 @@ const server = http.createServer((req, res) => {
         return;
       }
       const { notes } = body || {};
-      const txt = typeof notes === 'string' ? notes : "";
+      const txt = typeof notes === 'string' ? notes : '';
 
       const query = `
         INSERT INTO serre_meta (id, notes)
@@ -962,13 +826,13 @@ const server = http.createServer((req, res) => {
       }
       const { bacs, assignments } = body || {};
       if (!Array.isArray(bacs)) {
-        sendText(res, 400, 'bacs doit être un tableau');
+        sendText(res, 400, 'bacs must be an array');
         return;
       }
 
       const cleanedBacs = bacs.map(b => ({
         id: String(b.id),
-        name: String(b.name || "Bac serre"),
+        name: String(b.name || 'Bac serre'),
         lastWaterChange: b.lastWaterChange || null,
         lastFilterClean: b.lastFilterClean || null
       }));
@@ -986,16 +850,9 @@ const server = http.createServer((req, res) => {
           }
           const insertQuery = `
             INSERT INTO serre_bacs (id, name, last_water_change, last_filter_clean)
-            VALUES ${cleanedBacs.map((_, i) =>
-              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
-            ).join(', ')}
+            VALUES ${cleanedBacs.map((_, i) => `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`).join(', ')}
           `;
-          const params = cleanedBacs.flatMap(b => [
-            b.id,
-            b.name,
-            b.lastWaterChange,
-            b.lastFilterClean
-          ]);
+          const params = cleanedBacs.flatMap(b => [b.id, b.name, b.lastWaterChange, b.lastFilterClean]);
           return pool.query(insertQuery, params);
         })
         .then(() => {
@@ -1004,16 +861,12 @@ const server = http.createServer((req, res) => {
             sendJson(res, 200, { success: true });
             return null;
           }
+
           const insertAssignQuery = `
             INSERT INTO serre_assignments (member_username, bac_id)
-            VALUES ${assignEntries.map((_, i) =>
-              `($${2 * i + 1}, $${2 * i + 2})`
-            ).join(', ')}
+            VALUES ${assignEntries.map((_, i) => `($${2 * i + 1}, $${2 * i + 2})`).join(', ')}
           `;
-          const assignParams = assignEntries.flatMap(([bacId, val]) => [
-            String(val.membreId),
-            String(bacId)
-          ]);
+          const assignParams = assignEntries.flatMap(([bacId, val]) => [String(val.memberId), String(bacId)]);
 
           return pool.query(insertAssignQuery, assignParams);
         })
@@ -1039,9 +892,9 @@ const server = http.createServer((req, res) => {
 
       const cleanItems = Array.isArray(items)
         ? items.map((it, idx) => ({
-            id: String(it.id || ("feed_" + Date.now() + "_" + idx)),
-            name: String(it.name || ""),
-            unit: String(it.unit || "kg"),
+            id: String(it.id || 'feed_' + Date.now() + '_' + idx),
+            name: String(it.name || ''),
+            unit: String(it.unit || 'kg'),
             quantity: Number(it.quantity) || 0
           }))
         : [];
@@ -1068,16 +921,9 @@ const server = http.createServer((req, res) => {
 
           const insertItemsQuery = `
             INSERT INTO serre_feed_items (id, name, unit, quantity)
-            VALUES ${cleanItems.map((_, i) =>
-              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
-            ).join(', ')}
+            VALUES ${cleanItems.map((_, i) => `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`).join(', ')}
           `;
-          const params = cleanItems.flatMap(it => [
-            it.id,
-            it.name,
-            it.unit,
-            it.quantity
-          ]);
+          const params = cleanItems.flatMap(it => [it.id, it.name, it.unit, it.quantity]);
 
           return pool.query(insertItemsQuery, params);
         })
@@ -1094,6 +940,7 @@ const server = http.createServer((req, res) => {
   }
 
   // ==================== API AQUARIUM ====================
+
   if (method === 'GET' && url.startsWith('/api/aquarium')) {
     const queryString = req.url.split('?')[1] || '';
     const params = new URLSearchParams(queryString);
@@ -1105,15 +952,12 @@ const server = http.createServer((req, res) => {
 
     Promise.all([
       pool.query('SELECT notes FROM aquarium_notes WHERE username = $1', [username]),
-      pool.query(
-        'SELECT id, name, last_water_change, last_filter_clean FROM aquarium_bacs WHERE username = $1 ORDER BY id',
-        [username]
-      )
+      pool.query('SELECT id, name, last_water_change, last_filter_clean FROM aquarium_bacs WHERE username = $1 ORDER BY id', [username])
     ])
       .then(([notesResult, bacsResult]) => {
-        let notes = "";
+        let notes = '';
         if (notesResult.rowCount > 0) {
-          notes = notesResult.rows[0].notes || "";
+          notes = notesResult.rows[0].notes || '';
         }
 
         const bacs = bacsResult.rows.map(row => ({
@@ -1144,7 +988,7 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      const txtNotes = typeof notes === 'string' ? notes : "";
+      const txtNotes = typeof notes === 'string' ? notes : '';
       const cleanBacs = Array.isArray(bacs)
         ? bacs.map(b => ({
             id: String(b.id),
@@ -1168,17 +1012,9 @@ const server = http.createServer((req, res) => {
           if (!cleanBacs.length) return null;
           const insertQuery = `
             INSERT INTO aquarium_bacs (id, username, name, last_water_change, last_filter_clean)
-            VALUES ${cleanBacs.map((_, i) =>
-              `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`
-            ).join(', ')}
+            VALUES ${cleanBacs.map((_, i) => `($${5 * i + 1}, $${5 * i + 2}, $${5 * i + 3}, $${5 * i + 4}, $${5 * i + 5})`).join(', ')}
           `;
-          const params = cleanBacs.flatMap(b => [
-            b.id,
-            username,
-            b.name,
-            b.lastWaterChange,
-            b.lastFilterClean
-          ]);
+          const params = cleanBacs.flatMap(b => [b.id, username, b.name, b.lastWaterChange, b.lastFilterClean]);
           return pool.query(insertQuery, params);
         })
         .then(() => pool.query('COMMIT'))
@@ -1194,7 +1030,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ==================== API BAC: MESURES ====================
+  // ==================== API BAC MEASURES ====================
+
   if (method === 'GET' && url.startsWith('/api/bac/measures')) {
     const queryString = req.url.split('?')[1] || '';
     const params = new URLSearchParams(queryString);
@@ -1246,36 +1083,22 @@ const server = http.createServer((req, res) => {
         repro: !!e.repro
       }));
 
-      pool.query(
-        'DELETE FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3',
-        [username, String(tankId), t]
-      )
+      pool.query('DELETE FROM bac_measures WHERE username = $1 AND tank_id = $2 AND type = $3', [username, String(tankId), t])
         .then(() => {
           if (!cleanEntries.length) {
             sendJson(res, 200, { success: true, count: 0 });
-            return;
+            return null;
           }
           const insertQuery = `
             INSERT INTO bac_measures
               (username, tank_id, type, date, temp, ph, gh, obs, repro)
-            VALUES ${cleanEntries.map((_, i) =>
-              `($${9 * i + 1}, $${9 * i + 2}, $${9 * i + 3}, $${9 * i + 4}, $${9 * i + 5}, $${9 * i + 6}, $${9 * i + 7}, $${9 * i + 8}, $${9 * i + 9})`
-            ).join(', ')}
+            VALUES ${cleanEntries.map((_, i) => `($${9 * i + 1}, $${9 * i + 2}, $${9 * i + 3}, $${9 * i + 4}, $${9 * i + 5}, $${9 * i + 6}, $${9 * i + 7}, $${9 * i + 8}, $${9 * i + 9})`).join(', ')}
           `;
-          const params = cleanEntries.flatMap(e => [
-            username,
-            String(tankId),
-            t,
-            e.date,
-            e.temp,
-            e.ph,
-            e.gh,
-            e.obs,
-            e.repro
-          ]);
+          const params = cleanEntries.flatMap(e => [username, String(tankId), t, e.date, e.temp, e.ph, e.gh, e.obs, e.repro]);
           return pool.query(insertQuery, params);
         })
         .then(result => {
+          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanEntries.length });
         })
         .catch(dbErr => {
@@ -1286,7 +1109,8 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ==================== API BAC: POPULATION ====================
+  // ==================== API BAC POPULATION ====================
+
   if (method === 'GET' && url.startsWith('/api/bac/population')) {
     const queryString = req.url.split('?')[1] || '';
     const params = new URLSearchParams(queryString);
@@ -1300,14 +1124,14 @@ const server = http.createServer((req, res) => {
     }
 
     pool.query(
-      `SELECT fiche_id
+      `SELECT sheet_id
        FROM bac_population
        WHERE username = $1 AND tank_id = $2 AND type = $3
        ORDER BY id ASC`,
       [username, String(tankId), type]
     )
       .then(result => {
-        const ids = result.rows.map(r => r.fiche_id);
+        const ids = result.rows.map(r => r.sheet_id);
         sendJson(res, 200, { ids });
       })
       .catch(err => {
@@ -1330,34 +1154,23 @@ const server = http.createServer((req, res) => {
       }
 
       const t = type || 'aquarium';
-      const cleanIds = ids
-        .map(id => String(id))
-        .filter(id => id.trim().length > 0);
+      const cleanIds = ids.map(id => String(id)).filter(id => id.trim().length > 0);
 
-      pool.query(
-        'DELETE FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3',
-        [username, String(tankId), t]
-      )
+      pool.query('DELETE FROM bac_population WHERE username = $1 AND tank_id = $2 AND type = $3', [username, String(tankId), t])
         .then(() => {
           if (!cleanIds.length) {
             sendJson(res, 200, { success: true, count: 0 });
-            return;
+            return null;
           }
           const insertQuery = `
-            INSERT INTO bac_population (username, tank_id, type, fiche_id)
-            VALUES ${cleanIds.map((_, i) =>
-              `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`
-            ).join(', ')}
+            INSERT INTO bac_population (username, tank_id, type, sheet_id)
+            VALUES ${cleanIds.map((_, i) => `($${4 * i + 1}, $${4 * i + 2}, $${4 * i + 3}, $${4 * i + 4})`).join(', ')}
           `;
-          const params = cleanIds.flatMap(id => [
-            username,
-            String(tankId),
-            t,
-            id
-          ]);
+          const params = cleanIds.flatMap(id => [username, String(tankId), t, id]);
           return pool.query(insertQuery, params);
         })
         .then(result => {
+          if (result === null) return;
           sendJson(res, 200, { success: true, count: cleanIds.length });
         })
         .catch(dbErr => {
@@ -1368,14 +1181,15 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // ==================== SERVEUR DE FICHIERS ====================
+  // ==================== STATIC FILES ====================
+
   let filePath = url;
 
   if (filePath === '/' || filePath === '/index' || filePath === '/index.html') {
-    filePath = '/Index.html';
+    filePath = '/index.html';
   }
 
-  filePath = path.normalize(filePath).replace(/^(\.\.(\\/|\\|$))+/, '');
+  filePath = path.normalize(filePath).replace(/^(\.\.(\/|\\|$))+/, '');
   const fullPath = path.join(__dirname, filePath);
 
   const extname = String(path.extname(fullPath)).toLowerCase();
