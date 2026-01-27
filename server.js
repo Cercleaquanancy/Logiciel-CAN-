@@ -247,6 +247,72 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // ==================== API SERRE PARTICIPATIONS ====================
+  if (method === 'GET' && url === '/api/serre-participations') {
+    pool.query(
+      'SELECT id, slot_id, participant_username, creator_username, date, status FROM serre_participations ORDER BY date DESC'
+    )
+      .then(result => sendJson(res, 200, result.rows))
+      .catch(err => {
+        console.error('Erreur SELECT serre_participations :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
+  if (method === 'POST' && url === '/api/serre-participations') {
+    parseJsonBody(req, (err, body) => {
+      if (err) {
+        sendText(res, 400, 'JSON invalide');
+        return;
+      }
+      const { slot_id, participant_username, creator_username, date, heure_debut, heure_fin } = body || {};
+      if (!slot_id || !participant_username || !creator_username) {
+        sendText(res, 400, 'slot_id, participant_username et creator_username obligatoires');
+        return;
+      }
+
+      const id = "part_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const status = 'pending';
+      const nowIso = new Date().toISOString();
+
+      const query = `
+        INSERT INTO serre_participations (id, slot_id, participant_username, creator_username, date, status)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING id, slot_id, participant_username, creator_username, date, status
+      `;
+      const params = [id, slot_id, String(participant_username), String(creator_username), nowIso, status];
+
+      pool.query(query, params)
+        .then(result => {
+          const participation = result.rows[0];
+          sendJson(res, 200, { success: true, participation });
+        })
+        .catch(dbErr => {
+          console.error('Erreur INSERT serre_participations :', dbErr);
+          sendText(res, 500, 'Erreur serveur');
+        });
+    });
+    return;
+  }
+
+  if (method === 'DELETE' && url.startsWith('/api/serre-participations/')) {
+    const id = decodeURIComponent(url.replace('/api/serre-participations/', ''));
+    pool.query('DELETE FROM serre_participations WHERE id = $1', [id])
+      .then(result => {
+        if (result.rowCount === 0) {
+          sendText(res, 404, 'Participation introuvable');
+          return;
+        }
+        sendJson(res, 200, { success: true });
+      })
+      .catch(err => {
+        console.error('Erreur DELETE serre_participations :', err);
+        sendText(res, 500, 'Erreur serveur');
+      });
+    return;
+  }
+
   // ==================== API MEMBRES ====================
   if (method === 'GET' && url === '/api/members') {
     pool.query('SELECT login, pass, role, serre FROM members ORDER BY login ASC')
@@ -744,7 +810,6 @@ const server = http.createServer((req, res) => {
             sendText(res, 404, 'Annonce introuvable');
             return;
           }
-
           const auteur = result.rows[0].auteur;
           const isOwner = auteur === username;
           const isAdminLike = role === 'admin' || role === 'membre_bureau';
@@ -904,7 +969,6 @@ const server = http.createServer((req, res) => {
             sendJson(res, 200, { success: true });
             return null;
           }
-
           const insertAssignQuery = `
             INSERT INTO serre_assignments (member_username, bac_id)
             VALUES ${assignEntries.map((_, i) =>
