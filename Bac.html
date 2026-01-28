@@ -5,11 +5,14 @@
   <title>Suivi du bac</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
   <!-- Chart.js simple -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 
+
   <style>
     * { box-sizing:border-box; margin:0; padding:0; }
+
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -17,6 +20,7 @@
       color:#e5e7eb;
       min-height:100vh;
     }
+
 
     .navbar {
       position:fixed; top:0; left:0; width:100%;
@@ -32,6 +36,7 @@
     .navbar-title { font-size:0.95rem; font-weight:600; }
     .navbar-user { font-size:0.8rem; color:#9ca3af; }
 
+
     .navbar-menu {
       display:flex; gap:8px; align-items:center;
       flex-wrap:wrap; justify-content:flex-end;
@@ -44,6 +49,7 @@
     .nav-btn span.icon { font-size:1rem; }
     .nav-btn:hover { background:#111827; }
 
+
     .navbar-logout {
       border-radius:999px; border:1px solid #374151;
       background:#111827; color:#e5e7eb;
@@ -51,12 +57,14 @@
     }
     .navbar-logout:hover { background:#1f2937; }
 
+
     .page {
       padding-top:72px;
       padding:0 12px 20px;
       max-width:1100px;
       margin:0 auto;
     }
+
 
     .card {
       background:#020617;
@@ -66,9 +74,11 @@
       margin-bottom:14px;
     }
 
+
     h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
     h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
     .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+
 
     label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
     input[type="number"],
@@ -89,6 +99,7 @@
       font-size:0.85rem; min-height:70px; resize:vertical;
     }
 
+
     .btn-primary {
       background:#38bdf8; color:#0f172a;
       border:none; border-radius:7px;
@@ -96,6 +107,7 @@
       cursor:pointer;
     }
     .btn-primary:hover { filter:brightness(1.05); }
+
 
     .btn-secondary {
       background:#111827; color:#e5e7eb;
@@ -106,6 +118,7 @@
     }
     .btn-secondary:hover { background:#1f2937; }
 
+
     .btn-danger {
       background:#b91c1c; color:#fee2e2;
       border:none; border-radius:7px;
@@ -113,6 +126,7 @@
       cursor:pointer;
     }
     .btn-danger:hover { background:#991b1b; }
+
 
     .btn-xs {
       border:none;
@@ -125,6 +139,7 @@
       border:1px solid #374151;
     }
 
+
     .back-link {
       font-size:0.8rem;
       color:#93c5fd;
@@ -133,15 +148,19 @@
       display:inline-block;
     }
 
+
     .row-3 {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap:12px;
     }
 
+
     .field { margin-bottom:8px; }
 
+
     .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+
 
     .chart-wrapper {
       width:100%;
@@ -151,6 +170,30 @@
       width:100%;
       height:100%;
     }
+
+    .chart-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+
+    .chart-header h3 {
+      font-size:0.9rem;
+      margin:0;
+    }
+
+    .unit-toggle {
+      background:#111827;
+      border:1px solid #374151;
+      color:#e5e7eb;
+      border-radius:999px;
+      padding:3px 8px;
+      font-size:0.75rem;
+      cursor:pointer;
+    }
+    .unit-toggle:hover { background:#1f2937; }
+
 
     table {
       width:100%;
@@ -168,6 +211,7 @@
     }
     tbody tr:nth-child(even) { background:#020617; }
     tbody tr:nth-child(odd) { background:#020617; }
+
 
     .species-card {
       background:#020617;
@@ -217,8 +261,10 @@
     </div>
   </header>
 
+
   <main class="page">
     <span class="back-link" id="backLink">← Retour aux aquariums</span>
+
 
     <div class="card">
       <h1 id="tankTitle">Bac</h1>
@@ -227,10 +273,12 @@
       </p>
       <div id="tankMeta" class="small-note"></div>
 
+
       <div style="margin-top:8px;">
         <button class="btn-secondary" id="backAquariumBtn">Retour à la liste des aquariums</button>
       </div>
     </div>
+
 
     <div class="card">
       <h2>Paramètres du jour</h2>
@@ -244,8 +292,8 @@
           <input type="number" step="0.01" id="phInput">
         </div>
         <div class="field">
-          <label for="ghInput">GH (°dGH)</label>
-          <input type="number" step="0.5" id="ghInput">
+          <label for="condInput">Conductométrie (PPM)</label>
+          <input type="number" step="1" id="condInput">
         </div>
       </div>
       <div class="field">
@@ -257,6 +305,7 @@
         <button class="btn-secondary" id="reproBtn">Reproduction (marquer cette date)</button>
       </div>
     </div>
+
 
     <div class="card">
       <h2>Graphiques</h2>
@@ -270,11 +319,15 @@
           <div class="chart-wrapper"><canvas id="phChart"></canvas></div>
         </div>
         <div>
-          <h3 style="font-size:0.9rem; margin-bottom:4px;">GH</h3>
-          <div class="chart-wrapper"><canvas id="ghChart"></canvas></div>
+          <div class="chart-header">
+            <h3>Conductométrie</h3>
+            <button class="unit-toggle" id="condUnitToggle">μS</button>
+          </div>
+          <div class="chart-wrapper"><canvas id="condChart"></canvas></div>
         </div>
       </div>
     </div>
+
 
     <div class="card">
       <h2>Historique</h2>
@@ -284,9 +337,11 @@
       <div id="historyContainer"></div>
     </div>
 
+
     <div class="card">
       <h2>Population du bac</h2>
-      <p class="subtitle">Tape le nom et clique sur la proposition pour l’ajouter depuis les fiches.</p>
+      <p class="subtitle">Tape le nom et clique sur la proposition pour l'ajouter depuis les fiches.</p>
+
 
       <div class="field" style="position:relative;">
         <label for="popSearch">Nom de l'espèce</label>
@@ -299,15 +354,19 @@
         "></div>
       </div>
 
+
       <div style="margin:6px 0;">
         <button class="btn-secondary" id="clearPopBtn">Vider la population</button>
       </div>
+
 
       <div id="populationContainer" style="margin-top:8px; display:flex; flex-wrap:wrap; gap:12px;"></div>
     </div>
   </main>
 
+
   <script src="especes.js"></script>
+
 
   <script>
     // ===== Auth / nav =====
@@ -317,10 +376,13 @@
     try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
     if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
 
+
     document.getElementById("navbarUser").textContent = currentUser.username;
+
 
     document.querySelector(".nav-btn[data-link='aquarium.html']")
       .addEventListener("click", () => { window.location.href = "aquarium.html"; });
+
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
       localStorage.removeItem("user");
@@ -330,12 +392,14 @@
       window.location.href = "aquarium.html";
     });
 
+
     const backAquariumBtn = document.getElementById("backAquariumBtn");
     if (backAquariumBtn) {
       backAquariumBtn.addEventListener("click", () => {
         window.location.href = "aquarium.html";
       });
     }
+
 
     // ===== id bac (STRING) =====
     function getTankIdFromUrl() {
@@ -349,12 +413,14 @@
       window.location.href = "aquarium.html";
     }
 
+
     // ===== API aquarium =====
     async function apiGetAquariumData(username) {
       const res = await fetch("/api/aquarium?username=" + encodeURIComponent(username));
       if (!res.ok) throw new Error("Erreur GET /api/aquarium");
       return res.json(); // { notes, bacs }
     }
+
 
     // ===== API Neon mesures + population =====
     async function apiGetMeasures(username, tankId) {
@@ -363,6 +429,7 @@
       if (!res.ok) throw new Error("Erreur GET /api/bac/measures");
       return res.json(); // { history }
     }
+
 
     async function apiSaveMeasures(username, tankId, entries) {
       const res = await fetch("/api/bac/measures", {
@@ -379,12 +446,14 @@
       return res.json();
     }
 
+
     async function apiGetPopulation(username, tankId) {
       const url = `/api/bac/population?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=aquarium`;
       const res = await fetch(url);
       if (!res.ok) throw new Error("Erreur GET /api/bac/population");
       return res.json(); // { ids }
     }
+
 
     async function apiSavePopulation(username, tankId, ids) {
       const res = await fetch("/api/bac/population", {
@@ -401,19 +470,24 @@
       return res.json();
     }
 
+
     let currentTank = null;
+
 
     // ===== Population (FICHES commune) =====
     const FICHES = window.FICHES || [];
     let populationIds = [];
+
 
     const popSearchInput      = document.getElementById("popSearch");
     const popSuggestionsDiv   = document.getElementById("popSuggestions");
     const populationContainer = document.getElementById("populationContainer");
     const clearPopBtn         = document.getElementById("clearPopBtn");
 
+
     function renderPopulation() {
       populationContainer.innerHTML = "";
+
 
       if (!populationIds.length) {
         const p = document.createElement("p");
@@ -423,11 +497,14 @@
         return;
       }
 
+
       populationIds.forEach(id => {
         const fiche = FICHES.find(f => f.id === id);
 
+
         const card = document.createElement("div");
         card.className = "species-card";
+
 
         if (fiche && fiche.image) {
           const img = document.createElement("img");
@@ -436,18 +513,22 @@
           card.appendChild(img);
         }
 
+
         const title = document.createElement("div");
         title.className = "species-card-title";
         title.textContent = fiche && fiche.nomScientifique ? fiche.nomScientifique : id;
         card.appendChild(title);
+
 
         const sub = document.createElement("div");
         sub.className = "species-card-sub";
         sub.textContent = fiche && fiche.nomCommun ? fiche.nomCommun : "";
         card.appendChild(sub);
 
+
         const actions = document.createElement("div");
         actions.className = "species-card-actions";
+
 
         const ficheBtn = document.createElement("button");
         ficheBtn.className = "btn-xs";
@@ -456,6 +537,7 @@
           if (fiche && fiche.page) window.location.href = fiche.page;
         });
         actions.appendChild(ficheBtn);
+
 
         const delBtn = document.createElement("button");
         delBtn.className = "btn-xs";
@@ -474,10 +556,12 @@
         });
         actions.appendChild(delBtn);
 
+
         card.appendChild(actions);
         populationContainer.appendChild(card);
       });
     }
+
 
     function buildPopSuggestions(text) {
       popSuggestionsDiv.innerHTML = "";
@@ -497,10 +581,12 @@
         return hay.includes(q);
       }).slice(0, 20);
 
+
       if (!matches.length) {
         popSuggestionsDiv.style.display = "none";
         return;
       }
+
 
       matches.forEach(f => {
         const item = document.createElement("div");
@@ -528,8 +614,10 @@
         popSuggestionsDiv.appendChild(item);
       });
 
+
       popSuggestionsDiv.style.display = "block";
     }
+
 
     popSearchInput.addEventListener("input", () => {
       buildPopSuggestions(popSearchInput.value);
@@ -537,6 +625,7 @@
     popSearchInput.addEventListener("blur", () => {
       setTimeout(() => { popSuggestionsDiv.style.display = "none"; }, 150);
     });
+
 
     clearPopBtn.addEventListener("click", async () => {
       if (!confirm("Vider toute la population enregistrée pour ce bac ?")) return;
@@ -550,17 +639,30 @@
       renderPopulation();
     });
 
+
     // ===== Historique / mesures =====
     const tempInput        = document.getElementById("tempInput");
     const phInput          = document.getElementById("phInput");
-    const ghInput          = document.getElementById("ghInput");
+    const condInput        = document.getElementById("condInput");
     const obsInput         = document.getElementById("obsInput");
     const saveMeasureBtn   = document.getElementById("saveMeasureBtn");
     const reproBtn         = document.getElementById("reproBtn");
     const historyContainer = document.getElementById("historyContainer");
     const clearHistoryBtn  = document.getElementById("clearHistoryBtn");
 
+
     let historyEntries = [];
+    let condUnitIsPPM = true; // true = PPM, false = μS
+
+
+    // Conversion PPM <-> microsiemens (approximation 2:1)
+    function ppmToMicrosiemens(ppm) {
+      return ppm * 2;
+    }
+    function microsiemensToPPM(us) {
+      return us / 2;
+    }
+
 
     function sameDay(d1, d2) {
       return d1.getFullYear() === d2.getFullYear() &&
@@ -568,15 +670,17 @@
              d1.getDate() === d2.getDate();
     }
 
+
     async function addMeasureEntry(isReproOnly) {
       const now   = new Date();
       const tVal  = tempInput.value.trim();
       const phVal = phInput.value.trim();
-      const ghVal = ghInput.value.trim();
+      const condVal = condInput.value.trim();
       const obsVal= obsInput.value.trim();
 
+
       if (!isReproOnly) {
-        if (!tVal && !phVal && !ghVal && !obsVal) {
+        if (!tVal && !phVal && !condVal && !obsVal) {
           alert("Saisis au moins un paramètre ou une note.");
           return;
         }
@@ -584,16 +688,19 @@
         if (!confirm("Marquer une reproduction à cette date (sans modifier les valeurs) ?")) return;
       }
 
+
       const entry = {
         date: now.toISOString(),
         temp: isReproOnly ? null : (tVal || null),
         ph:   isReproOnly ? null : (phVal || null),
-        gh:   isReproOnly ? null : (ghVal || null),
+        cond: isReproOnly ? null : (condVal || null),
         obs:  isReproOnly ? ""   : (obsVal || ""),
         repro: !!isReproOnly
       };
 
+
       historyEntries.push(entry);
+
 
       try {
         await apiSaveMeasures(currentUser.username, tankId, historyEntries);
@@ -602,24 +709,29 @@
         alert("Erreur lors de l'enregistrement des mesures.");
       }
 
+
       if (!isReproOnly) {
         tempInput.value = "";
         phInput.value   = "";
-        ghInput.value   = "";
+        condInput.value = "";
         obsInput.value  = "";
       }
+
 
       renderHistory();
       updateCharts();
     }
 
+
     saveMeasureBtn.addEventListener("click", () => {
       addMeasureEntry(false);
     });
 
+
     reproBtn.addEventListener("click", () => {
       addMeasureEntry(true);
     });
+
 
     function renderHistory() {
       const hist = historyEntries.slice().sort((a,b)=> new Date(b.date) - new Date(a.date));
@@ -634,7 +746,8 @@
       const table = document.createElement("table");
       const thead = document.createElement("thead");
       const trh = document.createElement("tr");
-      ["Date / heure","Temp (°C)","pH","GH","Repro","Note",""].forEach(h => {
+      const condUnit = condUnitIsPPM ? "PPM" : "μS";
+      ["Date / heure","Temp (°C)","pH",`Cond (${condUnit})`,`Repro`,"Note",""].forEach(h => {
         const th = document.createElement("th");
         th.textContent = h;
         trh.appendChild(th);
@@ -651,12 +764,19 @@
         t.textContent = e.temp ?? "-";
         const p = document.createElement("td");
         p.textContent = e.ph ?? "-";
-        const g = document.createElement("td");
-        g.textContent = e.gh ?? "-";
+        const c = document.createElement("td");
+        if (e.cond) {
+          const condVal = Number(e.cond);
+          const displayed = condUnitIsPPM ? condVal : ppmToMicrosiemens(condVal);
+          c.textContent = displayed.toFixed(0);
+        } else {
+          c.textContent = "-";
+        }
         const r = document.createElement("td");
         r.textContent = e.repro ? "Oui" : "Non";
         const o = document.createElement("td");
         o.textContent = e.obs || "";
+
 
         const actionTd = document.createElement("td");
         const delDayBtn = document.createElement("button");
@@ -679,8 +799,9 @@
         });
         actionTd.appendChild(delDayBtn);
 
+
         tr.appendChild(dCell); tr.appendChild(t); tr.appendChild(p);
-        tr.appendChild(g); tr.appendChild(r); tr.appendChild(o);
+        tr.appendChild(c); tr.appendChild(r); tr.appendChild(o);
         tr.appendChild(actionTd);
         tbody.appendChild(tr);
       });
@@ -688,10 +809,12 @@
       historyContainer.appendChild(table);
     }
 
+
     // ===== Graphs Chart.js =====
     const tempCtx = document.getElementById("tempChart").getContext("2d");
     const phCtx   = document.getElementById("phChart").getContext("2d");
-    const ghCtx   = document.getElementById("ghChart").getContext("2d");
+    const condCtx = document.getElementById("condChart").getContext("2d");
+
 
     const tempChart = new Chart(tempCtx, {
       type: "line",
@@ -703,27 +826,48 @@
       data: { labels: [], datasets: [{ label:"pH", data: [], borderColor:"rgba(56,189,248,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
-    const ghChart = new Chart(ghCtx, {
+    const condChart = new Chart(condCtx, {
       type: "line",
-      data: { labels: [], datasets: [{ label:"GH (°dGH)", data: [], borderColor:"rgba(34,197,94,1)", tension:0 }] },
+      data: { labels: [], datasets: [{ label:"Conductométrie (PPM)", data: [], borderColor:"rgba(168,85,247,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
+
 
     function updateCharts() {
       const hist = historyEntries.slice().reverse();
       const labels = hist.map(e => new Date(e.date).toLocaleDateString());
       tempChart.data.labels = labels;
       phChart.data.labels   = labels;
-      ghChart.data.labels   = labels;
+      condChart.data.labels = labels;
+
 
       tempChart.data.datasets[0].data = hist.map(e => e.temp !== null ? Number(e.temp) : null);
       phChart.data.datasets[0].data   = hist.map(e => e.ph   !== null ? Number(e.ph)   : null);
-      ghChart.data.datasets[0].data   = hist.map(e => e.gh   !== null ? Number(e.gh)   : null);
+      
+      if (condUnitIsPPM) {
+        condChart.data.datasets[0].label = "Conductométrie (PPM)";
+        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? Number(e.cond) : null);
+      } else {
+        condChart.data.datasets[0].label = "Conductométrie (μS)";
+        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? ppmToMicrosiemens(Number(e.cond)) : null);
+      }
+
 
       tempChart.update();
       phChart.update();
-      ghChart.update();
+      condChart.update();
     }
+
+
+    // Toggle unité conductométrie
+    const condUnitToggle = document.getElementById("condUnitToggle");
+    condUnitToggle.addEventListener("click", () => {
+      condUnitIsPPM = !condUnitIsPPM;
+      condUnitToggle.textContent = condUnitIsPPM ? "μS" : "PPM";
+      updateCharts();
+      renderHistory();
+    });
+
 
     clearHistoryBtn.addEventListener("click", async () => {
       if (!confirm("Supprimer toutes les mesures de ce bac ?")) return;
@@ -738,6 +882,7 @@
       updateCharts();
     });
 
+
     // ===== Initialisation =====
     (async function initBacAquarium() {
       try {
@@ -750,10 +895,12 @@
           return;
         }
 
+
         document.getElementById("tankTitle").textContent =
           "Bac : " + (currentTank.name || "Sans nom");
         document.getElementById("tankMeta").textContent =
           "ID interne : " + currentTank.id;
+
 
         // Charger historique depuis Neon
         try {
@@ -764,6 +911,7 @@
           historyEntries = [];
         }
 
+
         // Charger population depuis Neon
         try {
           const popRes = await apiGetPopulation(currentUser.username, tankId);
@@ -772,6 +920,7 @@
           console.error(e);
           populationIds = [];
         }
+
 
         renderHistory();
         updateCharts();

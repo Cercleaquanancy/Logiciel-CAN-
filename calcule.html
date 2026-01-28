@@ -230,36 +230,6 @@
       </p>
     </div>
 
-    <!-- Bloc 1 : GH / ppm / µS/cm -->
-    <div class="card">
-      <h2>Conversion GH ↔ ppm ↔ µS/cm</h2>
-      <p class="subtitle">
-        1 °GH ≈ 17,9 ppm CaCO₃. Approximation conductivité : 1 ppm ≈ 2 µS/cm.
-      </p>
-
-      <div class="field">
-        <label for="ghInput">GH (°dGH)</label>
-        <input type="number" id="ghInput" step="0.1" min="0" placeholder="Ex : 6">
-      </div>
-      <div class="field">
-        <label for="ppmInput">ppm (mg/L)</label>
-        <input type="number" id="ppmInput" step="1" min="0" placeholder="Ex : 100">
-      </div>
-      <div class="field">
-        <label for="usInput">Conductivité (µS/cm)</label>
-        <input type="number" id="usInput" step="1" min="0" placeholder="Ex : 200">
-      </div>
-
-      <button class="btn-primary" id="ghToPpmBtn">GH → ppm / µS</button>
-      <button class="btn-primary" id="ppmToGhBtn" style="margin-left:6px;">ppm → GH / µS</button>
-      <button class="btn-primary" id="usToPpmBtn" style="margin-left:6px;">µS → ppm / GH</button>
-
-      <div class="result" id="ghResult"></div>
-      <p class="note">
-        Conversion GH/ppm basée sur la définition °dGH ; ppm/µS/cm approximatif (1 ppm ≈ 2 µS/cm).
-      </p>
-    </div>
-
     <!-- Bloc 2 : volume du bac -->
     <div class="card">
       <h2>Calcul du volume du bac</h2>
