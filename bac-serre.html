@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Suivi du bac</title>
+  <title>Suivi du bac de serre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <!-- Chart.js simple -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 
 
@@ -171,52 +171,6 @@
       height:100%;
     }
 
-    .chart-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:8px;
-    }
-
-    .chart-header h3 {
-      font-size:0.9rem;
-      margin:0;
-    }
-
-    .unit-toggle {
-      background:#111827;
-      border:1px solid #374151;
-      color:#e5e7eb;
-      border-radius:999px;
-      padding:3px 8px;
-      font-size:0.75rem;
-      cursor:pointer;
-    }
-    .unit-toggle:hover { background:#1f2937; }
-
-    .chart-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:8px;
-    }
-
-    .chart-header h3 {
-      font-size:0.9rem;
-      margin:0;
-    }
-
-    .unit-toggle {
-      background:#111827;
-      border:1px solid #374151;
-      color:#e5e7eb;
-      border-radius:999px;
-      padding:3px 8px;
-      font-size:0.75rem;
-      cursor:pointer;
-    }
-    .unit-toggle:hover { background:#1f2937; }
-
 
     table {
       width:100%;
@@ -268,6 +222,47 @@
       gap:4px;
       margin-top:4px;
     }
+
+    .chart-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+
+    .chart-header h3 {
+      font-size:0.9rem;
+      margin:0;
+    }
+
+    .unit-toggle {
+      display:flex;
+      gap:4px;
+    }
+
+    .unit-toggle button {
+      padding:3px 6px;
+      font-size:0.7rem;
+      border:1px solid #374151;
+      background:#111827;
+      color:#e5e7eb;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    .unit-toggle button.active {
+      background:#38bdf8;
+      color:#0f172a;
+      border-color:#38bdf8;
+    }
+
+    .unit-toggle button:hover {
+      background:#1f2937;
+    }
+
+    .unit-toggle button.active:hover {
+      background:#38bdf8;
+    }
   </style>
 </head>
 <body>
@@ -279,26 +274,26 @@
       </div>
     </div>
     <div class="navbar-menu">
-      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquariums</span></button>
+      <button class="nav-btn" data-link="serre.html"><span class="icon">🌱</span><span>Serre</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
 
 
   <main class="page">
-    <span class="back-link" id="backLink">← Retour aux aquariums</span>
+    <span class="back-link" id="backLink">← Retour aux bacs de serre</span>
 
 
     <div class="card">
-      <h1 id="tankTitle">Bac</h1>
+      <h1 id="tankTitle">Bac de serre</h1>
       <p class="subtitle">
-        Suivi des paramètres, des reproductions et de la population pour ce bac.
+        Suivi des paramètres, des reproductions et de la population pour ce bac de serre.
       </p>
       <div id="tankMeta" class="small-note"></div>
 
 
       <div style="margin-top:8px;">
-        <button class="btn-secondary" id="backAquariumBtn">Retour à la liste des aquariums</button>
+        <button class="btn-secondary" id="backSerreBtn">Retour à la liste des bacs de serre</button>
       </div>
     </div>
 
@@ -315,8 +310,8 @@
           <input type="number" step="0.01" id="phInput">
         </div>
         <div class="field">
-          <label for="condInput">Conductométrie (PPM)</label>
-          <input type="number" step="1" id="condInput">
+          <label for="conductInput">Conductométrie (µS/cm)</label>
+          <input type="number" step="10" id="conductInput">
         </div>
       </div>
       <div class="field">
@@ -334,19 +329,26 @@
       <h2>Graphiques</h2>
       <div class="row-3">
         <div>
-          <h3 style="font-size:0.9rem; margin-bottom:4px;">Température</h3>
+          <div class="chart-header">
+            <h3>Température</h3>
+          </div>
           <div class="chart-wrapper"><canvas id="tempChart"></canvas></div>
         </div>
         <div>
-          <h3 style="font-size:0.9rem; margin-bottom:4px;">pH</h3>
+          <div class="chart-header">
+            <h3>pH</h3>
+          </div>
           <div class="chart-wrapper"><canvas id="phChart"></canvas></div>
         </div>
         <div>
           <div class="chart-header">
             <h3>Conductométrie</h3>
-            <button class="unit-toggle" id="condUnitToggle">μS</button>
+            <div class="unit-toggle">
+              <button class="conduct-unit active" data-unit="µS/cm">µS/cm</button>
+              <button class="conduct-unit" data-unit="ppm">PPM</button>
+            </div>
           </div>
-          <div class="chart-wrapper"><canvas id="condChart"></canvas></div>
+          <div class="chart-wrapper"><canvas id="conductChart"></canvas></div>
         </div>
       </div>
     </div>
@@ -362,8 +364,8 @@
 
 
     <div class="card">
-      <h2>Population du bac</h2>
-      <p class="subtitle">Tape le nom et clique sur la proposition pour l'ajouter depuis les fiches.</p>
+      <h2>Population du bac de serre</h2>
+      <p class="subtitle">Tape le nom (latin ou commun) et clique sur la proposition pour l'ajouter depuis les fiches.</p>
 
 
       <div class="field" style="position:relative;">
@@ -392,7 +394,7 @@
 
 
   <script>
-    // ===== Auth / nav =====
+    // --- Auth / nav ---
     const storedUser = localStorage.getItem("user");
     if (!storedUser) { window.location.href = "login.html"; }
     let currentUser;
@@ -403,8 +405,8 @@
     document.getElementById("navbarUser").textContent = currentUser.username;
 
 
-    document.querySelector(".nav-btn[data-link='aquarium.html']")
-      .addEventListener("click", () => { window.location.href = "aquarium.html"; });
+    document.querySelector(".nav-btn[data-link='serre.html']")
+      .addEventListener("click", () => { window.location.href = "serre.html"; });
 
 
     document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -412,19 +414,14 @@
       window.location.href = "login.html";
     });
     document.getElementById("backLink").addEventListener("click", () => {
-      window.location.href = "aquarium.html";
+      window.location.href = "serre.html";
+    });
+    document.getElementById("backSerreBtn").addEventListener("click", () => {
+      window.location.href = "serre.html";
     });
 
 
-    const backAquariumBtn = document.getElementById("backAquariumBtn");
-    if (backAquariumBtn) {
-      backAquariumBtn.addEventListener("click", () => {
-        window.location.href = "aquarium.html";
-      });
-    }
-
-
-    // ===== id bac (STRING) =====
+    // --- Récup id bac (en STRING) ---
     function getTankIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
       const idStr = params.get("id");
@@ -432,22 +429,22 @@
     }
     const tankId = getTankIdFromUrl();
     if (!tankId) {
-      alert("Aucun bac spécifié.");
-      window.location.href = "aquarium.html";
+      alert("Aucun bac de serre spécifié.");
+      window.location.href = "serre.html";
     }
 
 
-    // ===== API aquarium =====
-    async function apiGetAquariumData(username) {
-      const res = await fetch("/api/aquarium?username=" + encodeURIComponent(username));
-      if (!res.ok) throw new Error("Erreur GET /api/aquarium");
-      return res.json(); // { notes, bacs }
+    // --- API serre (Neon) ---
+    async function apiGetSerreData() {
+      const res = await fetch('/api/serre');
+      if (!res.ok) throw new Error('Erreur GET /api/serre');
+      return res.json(); // { notes, bacs, assignments, feed }
     }
 
 
-    // ===== API Neon mesures + population =====
+    // --- API Neon mesures + population ---
     async function apiGetMeasures(username, tankId) {
-      const url = `/api/bac/measures?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=aquarium`;
+      const url = `/api/bac/measures?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=serre`;
       const res = await fetch(url);
       if (!res.ok) throw new Error("Erreur GET /api/bac/measures");
       return res.json(); // { history }
@@ -461,7 +458,7 @@
         body: JSON.stringify({
           username,
           tankId,
-          type: "aquarium",
+          type: "serre",
           entries
         })
       });
@@ -471,7 +468,7 @@
 
 
     async function apiGetPopulation(username, tankId) {
-      const url = `/api/bac/population?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=aquarium`;
+      const url = `/api/bac/population?username=${encodeURIComponent(username)}&tankId=${encodeURIComponent(tankId)}&type=serre`;
       const res = await fetch(url);
       if (!res.ok) throw new Error("Erreur GET /api/bac/population");
       return res.json(); // { ids }
@@ -485,7 +482,7 @@
         body: JSON.stringify({
           username,
           tankId,
-          type: "aquarium",
+          type: "serre",
           ids
         })
       });
@@ -497,7 +494,7 @@
     let currentTank = null;
 
 
-    // ===== Population (FICHES commune) =====
+    // --- Population ---
     const FICHES = window.FICHES || [];
     let populationIds = [];
 
@@ -651,7 +648,7 @@
 
 
     clearPopBtn.addEventListener("click", async () => {
-      if (!confirm("Vider toute la population enregistrée pour ce bac ?")) return;
+      if (!confirm("Vider toute la population enregistrée pour ce bac de serre ?")) return;
       populationIds = [];
       try {
         await apiSavePopulation(currentUser.username, tankId, populationIds);
@@ -663,10 +660,10 @@
     });
 
 
-    // ===== Historique / mesures =====
+    // --- Historique / mesures ---
     const tempInput        = document.getElementById("tempInput");
     const phInput          = document.getElementById("phInput");
-    const condInput        = document.getElementById("condInput");
+    const conductInput     = document.getElementById("conductInput");
     const obsInput         = document.getElementById("obsInput");
     const saveMeasureBtn   = document.getElementById("saveMeasureBtn");
     const reproBtn         = document.getElementById("reproBtn");
@@ -675,16 +672,7 @@
 
 
     let historyEntries = [];
-    let condUnitIsPPM = true; // true = PPM, false = μS
-
-
-    // Conversion PPM <-> microsiemens (approximation 2:1)
-    function ppmToMicrosiemens(ppm) {
-      return ppm * 2;
-    }
-    function microsiemensToPPM(us) {
-      return us / 2;
-    }
+    let conductUnit = "µS/cm"; // Unité courante pour le graphique
 
 
     function sameDay(d1, d2) {
@@ -694,16 +682,31 @@
     }
 
 
+    // Conversion µS/cm <-> PPM (facteur approximatif 0.5 pour la plupart des eaux)
+    function convertConductivity(value, fromUnit, toUnit) {
+      if (!value) return null;
+      const num = Number(value);
+      if (fromUnit === toUnit) return num;
+      if (fromUnit === "µS/cm" && toUnit === "ppm") {
+        return num * 0.5;
+      }
+      if (fromUnit === "ppm" && toUnit === "µS/cm") {
+        return num * 2;
+      }
+      return num;
+    }
+
+
     async function addMeasureEntry(isReproOnly) {
       const now   = new Date();
       const tVal  = tempInput.value.trim();
       const phVal = phInput.value.trim();
-      const condVal = condInput.value.trim();
+      const conductVal = conductInput.value.trim();
       const obsVal= obsInput.value.trim();
 
 
       if (!isReproOnly) {
-        if (!tVal && !phVal && !condVal && !obsVal) {
+        if (!tVal && !phVal && !conductVal && !obsVal) {
           alert("Saisis au moins un paramètre ou une note.");
           return;
         }
@@ -716,7 +719,7 @@
         date: now.toISOString(),
         temp: isReproOnly ? null : (tVal || null),
         ph:   isReproOnly ? null : (phVal || null),
-        cond: isReproOnly ? null : (condVal || null),
+        gh:   isReproOnly ? null : (conductVal || null), // Stocké comme "gh" pour compatibilité
         obs:  isReproOnly ? ""   : (obsVal || ""),
         repro: !!isReproOnly
       };
@@ -736,7 +739,7 @@
       if (!isReproOnly) {
         tempInput.value = "";
         phInput.value   = "";
-        condInput.value = "";
+        conductInput.value = "";
         obsInput.value  = "";
       }
 
@@ -762,15 +765,14 @@
       if (!hist.length) {
         const p = document.createElement("p");
         p.className = "small-note";
-        p.textContent = "Aucune mesure pour ce bac.";
+        p.textContent = "Aucune mesure pour ce bac de serre.";
         historyContainer.appendChild(p);
         return;
       }
       const table = document.createElement("table");
       const thead = document.createElement("thead");
       const trh = document.createElement("tr");
-      const condUnit = condUnitIsPPM ? "PPM" : "μS";
-      ["Date / heure","Temp (°C)","pH",`Cond (${condUnit})`,`Repro`,"Note",""].forEach(h => {
+      ["Date / heure","Temp (°C)","pH","Conductométrie (µS/cm)","Repro","Note",""].forEach(h => {
         const th = document.createElement("th");
         th.textContent = h;
         trh.appendChild(th);
@@ -788,13 +790,7 @@
         const p = document.createElement("td");
         p.textContent = e.ph ?? "-";
         const c = document.createElement("td");
-        if (e.cond) {
-          const condVal = Number(e.cond);
-          const displayed = condUnitIsPPM ? condVal : ppmToMicrosiemens(condVal);
-          c.textContent = displayed.toFixed(0);
-        } else {
-          c.textContent = "-";
-        }
+        c.textContent = e.gh ?? "-";
         const r = document.createElement("td");
         r.textContent = e.repro ? "Oui" : "Non";
         const o = document.createElement("td");
@@ -833,10 +829,10 @@
     }
 
 
-    // ===== Graphs Chart.js =====
+    // --- Graphes ---
     const tempCtx = document.getElementById("tempChart").getContext("2d");
     const phCtx   = document.getElementById("phChart").getContext("2d");
-    const condCtx = document.getElementById("condChart").getContext("2d");
+    const conductCtx   = document.getElementById("conductChart").getContext("2d");
 
 
     const tempChart = new Chart(tempCtx, {
@@ -849,9 +845,9 @@
       data: { labels: [], datasets: [{ label:"pH", data: [], borderColor:"rgba(56,189,248,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
-    const condChart = new Chart(condCtx, {
+    const conductChart = new Chart(conductCtx, {
       type: "line",
-      data: { labels: [], datasets: [{ label:"Conductométrie (PPM)", data: [], borderColor:"rgba(168,85,247,1)", tension:0 }] },
+      data: { labels: [], datasets: [{ label:"Conductométrie (µS/cm)", data: [], borderColor:"rgba(34,197,94,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
 
@@ -861,39 +857,41 @@
       const labels = hist.map(e => new Date(e.date).toLocaleDateString());
       tempChart.data.labels = labels;
       phChart.data.labels   = labels;
-      condChart.data.labels = labels;
+      conductChart.data.labels   = labels;
 
 
       tempChart.data.datasets[0].data = hist.map(e => e.temp !== null ? Number(e.temp) : null);
       phChart.data.datasets[0].data   = hist.map(e => e.ph   !== null ? Number(e.ph)   : null);
       
-      if (condUnitIsPPM) {
-        condChart.data.datasets[0].label = "Conductométrie (PPM)";
-        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? Number(e.cond) : null);
-      } else {
-        condChart.data.datasets[0].label = "Conductométrie (μS)";
-        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? ppmToMicrosiemens(Number(e.cond)) : null);
-      }
+      // Conversion pour la conductométrie selon l'unité sélectionnée
+      const conductData = hist.map(e => {
+        if (e.gh === null) return null;
+        const usValue = Number(e.gh);
+        return convertConductivity(usValue, "µS/cm", conductUnit);
+      });
+      conductChart.data.datasets[0].data = conductData;
+      conductChart.data.datasets[0].label = `Conductométrie (${conductUnit})`;
 
 
       tempChart.update();
       phChart.update();
-      condChart.update();
+      conductChart.update();
     }
 
 
-    // Toggle unité conductométrie
-    const condUnitToggle = document.getElementById("condUnitToggle");
-    condUnitToggle.addEventListener("click", () => {
-      condUnitIsPPM = !condUnitIsPPM;
-      condUnitToggle.textContent = condUnitIsPPM ? "μS" : "PPM";
-      updateCharts();
-      renderHistory();
+    // Gestion du changement d'unité
+    document.querySelectorAll(".conduct-unit").forEach(btn => {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".conduct-unit").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        conductUnit = this.dataset.unit;
+        updateCharts();
+      });
     });
 
 
     clearHistoryBtn.addEventListener("click", async () => {
-      if (!confirm("Supprimer toutes les mesures de ce bac ?")) return;
+      if (!confirm("Supprimer toutes les mesures de ce bac de serre ?")) return;
       historyEntries = [];
       try {
         await apiSaveMeasures(currentUser.username, tankId, historyEntries);
@@ -906,21 +904,23 @@
     });
 
 
-    // ===== Initialisation =====
-    (async function initBacAquarium() {
+    // --- Initialisation globale ---
+    (async function initBacSerre() {
       try {
-        const data = await apiGetAquariumData(currentUser.username);
+        const data = await apiGetSerreData();
         const bacs = Array.isArray(data.bacs) ? data.bacs : [];
         currentTank = bacs.find(b => String(b.id) === String(tankId));
+
+
         if (!currentTank) {
-          alert("Bac introuvable.");
-          window.location.href = "aquarium.html";
+          alert("Bac de serre introuvable.");
+          window.location.href = "serre.html";
           return;
         }
 
 
         document.getElementById("tankTitle").textContent =
-          "Bac : " + (currentTank.name || "Sans nom");
+          "Bac de serre : " + (currentTank.name || "Sans nom");
         document.getElementById("tankMeta").textContent =
           "ID interne : " + currentTank.id;
 
@@ -950,8 +950,8 @@
         renderPopulation();
       } catch (e) {
         console.error(e);
-        alert("Erreur lors du chargement des données d'aquarium.");
-        window.location.href = "aquarium.html";
+        alert("Erreur lors du chargement des données de serre.");
+        window.location.href = "serre.html";
       }
     })();
   </script>

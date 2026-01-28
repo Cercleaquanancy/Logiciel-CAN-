@@ -171,29 +171,6 @@
       height:100%;
     }
 
-    .chart-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:8px;
-    }
-
-    .chart-header h3 {
-      font-size:0.9rem;
-      margin:0;
-    }
-
-    .unit-toggle {
-      background:#111827;
-      border:1px solid #374151;
-      color:#e5e7eb;
-      border-radius:999px;
-      padding:3px 8px;
-      font-size:0.75rem;
-      cursor:pointer;
-    }
-    .unit-toggle:hover { background:#1f2937; }
-
 
     table {
       width:100%;
@@ -245,6 +222,47 @@
       gap:4px;
       margin-top:4px;
     }
+
+    .chart-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:8px;
+    }
+
+    .chart-header h3 {
+      font-size:0.9rem;
+      margin:0;
+    }
+
+    .unit-toggle {
+      display:flex;
+      gap:4px;
+    }
+
+    .unit-toggle button {
+      padding:3px 6px;
+      font-size:0.7rem;
+      border:1px solid #374151;
+      background:#111827;
+      color:#e5e7eb;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    .unit-toggle button.active {
+      background:#38bdf8;
+      color:#0f172a;
+      border-color:#38bdf8;
+    }
+
+    .unit-toggle button:hover {
+      background:#1f2937;
+    }
+
+    .unit-toggle button.active:hover {
+      background:#38bdf8;
+    }
   </style>
 </head>
 <body>
@@ -292,8 +310,8 @@
           <input type="number" step="0.01" id="phInput">
         </div>
         <div class="field">
-          <label for="condInput">Conductométrie (PPM)</label>
-          <input type="number" step="1" id="condInput">
+          <label for="conductInput">Conductométrie (µS/cm)</label>
+          <input type="number" step="10" id="conductInput">
         </div>
       </div>
       <div class="field">
@@ -311,19 +329,26 @@
       <h2>Graphiques</h2>
       <div class="row-3">
         <div>
-          <h3 style="font-size:0.9rem; margin-bottom:4px;">Température</h3>
+          <div class="chart-header">
+            <h3>Température</h3>
+          </div>
           <div class="chart-wrapper"><canvas id="tempChart"></canvas></div>
         </div>
         <div>
-          <h3 style="font-size:0.9rem; margin-bottom:4px;">pH</h3>
+          <div class="chart-header">
+            <h3>pH</h3>
+          </div>
           <div class="chart-wrapper"><canvas id="phChart"></canvas></div>
         </div>
         <div>
           <div class="chart-header">
             <h3>Conductométrie</h3>
-            <button class="unit-toggle" id="condUnitToggle">μS</button>
+            <div class="unit-toggle">
+              <button class="conduct-unit active" data-unit="µS/cm">µS/cm</button>
+              <button class="conduct-unit" data-unit="ppm">PPM</button>
+            </div>
           </div>
-          <div class="chart-wrapper"><canvas id="condChart"></canvas></div>
+          <div class="chart-wrapper"><canvas id="conductChart"></canvas></div>
         </div>
       </div>
     </div>
@@ -643,7 +668,7 @@
     // ===== Historique / mesures =====
     const tempInput        = document.getElementById("tempInput");
     const phInput          = document.getElementById("phInput");
-    const condInput        = document.getElementById("condInput");
+    const conductInput     = document.getElementById("conductInput");
     const obsInput         = document.getElementById("obsInput");
     const saveMeasureBtn   = document.getElementById("saveMeasureBtn");
     const reproBtn         = document.getElementById("reproBtn");
@@ -652,16 +677,7 @@
 
 
     let historyEntries = [];
-    let condUnitIsPPM = true; // true = PPM, false = μS
-
-
-    // Conversion PPM <-> microsiemens (approximation 2:1)
-    function ppmToMicrosiemens(ppm) {
-      return ppm * 2;
-    }
-    function microsiemensToPPM(us) {
-      return us / 2;
-    }
+    let conductUnit = "µS/cm"; // Unité courante pour le graphique
 
 
     function sameDay(d1, d2) {
@@ -671,16 +687,31 @@
     }
 
 
+    // Conversion µS/cm <-> PPM (facteur approximatif 0.5 pour la plupart des eaux)
+    function convertConductivity(value, fromUnit, toUnit) {
+      if (!value) return null;
+      const num = Number(value);
+      if (fromUnit === toUnit) return num;
+      if (fromUnit === "µS/cm" && toUnit === "ppm") {
+        return num * 0.5;
+      }
+      if (fromUnit === "ppm" && toUnit === "µS/cm") {
+        return num * 2;
+      }
+      return num;
+    }
+
+
     async function addMeasureEntry(isReproOnly) {
       const now   = new Date();
       const tVal  = tempInput.value.trim();
       const phVal = phInput.value.trim();
-      const condVal = condInput.value.trim();
+      const conductVal = conductInput.value.trim();
       const obsVal= obsInput.value.trim();
 
 
       if (!isReproOnly) {
-        if (!tVal && !phVal && !condVal && !obsVal) {
+        if (!tVal && !phVal && !conductVal && !obsVal) {
           alert("Saisis au moins un paramètre ou une note.");
           return;
         }
@@ -693,7 +724,7 @@
         date: now.toISOString(),
         temp: isReproOnly ? null : (tVal || null),
         ph:   isReproOnly ? null : (phVal || null),
-        cond: isReproOnly ? null : (condVal || null),
+        gh:   isReproOnly ? null : (conductVal || null), // Stocké comme "gh" pour compatibilité
         obs:  isReproOnly ? ""   : (obsVal || ""),
         repro: !!isReproOnly
       };
@@ -713,7 +744,7 @@
       if (!isReproOnly) {
         tempInput.value = "";
         phInput.value   = "";
-        condInput.value = "";
+        conductInput.value = "";
         obsInput.value  = "";
       }
 
@@ -746,8 +777,7 @@
       const table = document.createElement("table");
       const thead = document.createElement("thead");
       const trh = document.createElement("tr");
-      const condUnit = condUnitIsPPM ? "PPM" : "μS";
-      ["Date / heure","Temp (°C)","pH",`Cond (${condUnit})`,`Repro`,"Note",""].forEach(h => {
+      ["Date / heure","Temp (°C)","pH","Conductométrie (µS/cm)","Repro","Note",""].forEach(h => {
         const th = document.createElement("th");
         th.textContent = h;
         trh.appendChild(th);
@@ -765,13 +795,7 @@
         const p = document.createElement("td");
         p.textContent = e.ph ?? "-";
         const c = document.createElement("td");
-        if (e.cond) {
-          const condVal = Number(e.cond);
-          const displayed = condUnitIsPPM ? condVal : ppmToMicrosiemens(condVal);
-          c.textContent = displayed.toFixed(0);
-        } else {
-          c.textContent = "-";
-        }
+        c.textContent = e.gh ?? "-";
         const r = document.createElement("td");
         r.textContent = e.repro ? "Oui" : "Non";
         const o = document.createElement("td");
@@ -813,7 +837,7 @@
     // ===== Graphs Chart.js =====
     const tempCtx = document.getElementById("tempChart").getContext("2d");
     const phCtx   = document.getElementById("phChart").getContext("2d");
-    const condCtx = document.getElementById("condChart").getContext("2d");
+    const conductCtx   = document.getElementById("conductChart").getContext("2d");
 
 
     const tempChart = new Chart(tempCtx, {
@@ -826,9 +850,9 @@
       data: { labels: [], datasets: [{ label:"pH", data: [], borderColor:"rgba(56,189,248,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
-    const condChart = new Chart(condCtx, {
+    const conductChart = new Chart(conductCtx, {
       type: "line",
-      data: { labels: [], datasets: [{ label:"Conductométrie (PPM)", data: [], borderColor:"rgba(168,85,247,1)", tension:0 }] },
+      data: { labels: [], datasets: [{ label:"Conductométrie (µS/cm)", data: [], borderColor:"rgba(34,197,94,1)", tension:0 }] },
       options: { responsive:true, maintainAspectRatio:false }
     });
 
@@ -838,34 +862,36 @@
       const labels = hist.map(e => new Date(e.date).toLocaleDateString());
       tempChart.data.labels = labels;
       phChart.data.labels   = labels;
-      condChart.data.labels = labels;
+      conductChart.data.labels   = labels;
 
 
       tempChart.data.datasets[0].data = hist.map(e => e.temp !== null ? Number(e.temp) : null);
       phChart.data.datasets[0].data   = hist.map(e => e.ph   !== null ? Number(e.ph)   : null);
       
-      if (condUnitIsPPM) {
-        condChart.data.datasets[0].label = "Conductométrie (PPM)";
-        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? Number(e.cond) : null);
-      } else {
-        condChart.data.datasets[0].label = "Conductométrie (μS)";
-        condChart.data.datasets[0].data = hist.map(e => e.cond !== null ? ppmToMicrosiemens(Number(e.cond)) : null);
-      }
+      // Conversion pour la conductométrie selon l'unité sélectionnée
+      const conductData = hist.map(e => {
+        if (e.gh === null) return null;
+        const usValue = Number(e.gh);
+        return convertConductivity(usValue, "µS/cm", conductUnit);
+      });
+      conductChart.data.datasets[0].data = conductData;
+      conductChart.data.datasets[0].label = `Conductométrie (${conductUnit})`;
 
 
       tempChart.update();
       phChart.update();
-      condChart.update();
+      conductChart.update();
     }
 
 
-    // Toggle unité conductométrie
-    const condUnitToggle = document.getElementById("condUnitToggle");
-    condUnitToggle.addEventListener("click", () => {
-      condUnitIsPPM = !condUnitIsPPM;
-      condUnitToggle.textContent = condUnitIsPPM ? "μS" : "PPM";
-      updateCharts();
-      renderHistory();
+    // Gestion du changement d'unité
+    document.querySelectorAll(".conduct-unit").forEach(btn => {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".conduct-unit").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        conductUnit = this.dataset.unit;
+        updateCharts();
+      });
     });
 
 
