@@ -460,23 +460,20 @@
       }).join("");
     }
 
-    // Facebook Posts Loader
     const FB_POSTS_CACHE = "fbPostsCache";
     const FB_POSTS_TIMESTAMP = "fbPostsTimestamp";
-    const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
+    const CACHE_DURATION = 10 * 60 * 1000;
 
     async function fetchFacebookPosts(pageId, pageName) {
       const now = Date.now();
       const cached = JSON.parse(localStorage.getItem(FB_POSTS_CACHE) || '{}');
       const timestamp = localStorage.getItem(FB_POSTS_TIMESTAMP) || 0;
 
-      // Use cache if not expired
       if (cached[pageId] && now - timestamp < CACHE_DURATION) {
         return cached[pageId];
       }
 
       try {
-        // Fallback: Fetch from your own API endpoint if available
         const res = await fetch(`/api/facebook-posts?page=${pageId}`);
         if (res.ok) {
           const posts = await res.json();
@@ -489,7 +486,6 @@
         console.log("Erreur fetch posts:", e);
       }
 
-      // Mock data fallback
       const mockPosts = [
         {
           id: "mock_1",
@@ -560,16 +556,13 @@
       }).join('');
     }
 
-    // Initialize
     renderHomeEvents();
     renderHomeSerreSlots();
     initNotifications();
 
-    // Load Facebook Posts
     renderFacebookPosts('cerclaquanancy', 'fbPostsCAN');
     renderFacebookPosts('FishInTheNews', 'fbPostsFITN');
 
-    // Refresh Facebook posts every 10 minutes
     setInterval(() => {
       renderFacebookPosts('cerclaquanancy', 'fbPostsCAN');
       renderFacebookPosts('FishInTheNews', 'fbPostsFITN');
