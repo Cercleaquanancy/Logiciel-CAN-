@@ -315,7 +315,7 @@
     if (currentUser.role === "membre_bureau" || currentUser.role === "admin") {
       const bureauBtn = document.createElement("button");
       bureauBtn.className = "nav-btn";
-      bureauBtn.dataset.link = "bureau.html";
+      bureauBtn.dataset.link = "Bureau.html";
       bureauBtn.innerHTML = '<span class="icon">🏛️</span> <span>Bureau</span>';
       const logoutBtnElem = document.getElementById("logoutBtn");
       navbarMenu.insertBefore(bureauBtn, logoutBtnElem);
