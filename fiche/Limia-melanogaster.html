@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Limia melanogaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Limia melanogaster</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Limia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>L. melanogaster</em></li>
+              <li><span class="sys-label">Auteur :</span> Günther, 1866</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Limia-melanogaster/Limia-melanogaster.PNG" alt="Limia melanogaster">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Limia melanogaster</strong>, la limia à ventre noir ou limia bleu, est un petit poéciliidé vivipare endémique de la Jamaïque, peu fréquent en aquariophilie. C'est l'une des plus anciennes espèces du genre Limia et aussi l'une des plus basales, s'étant séparée des autres espèces du genre il y a environ 22,8 millions d'années.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 4&nbsp;cm de longueur standard, tandis que la femelle mesure 5&nbsp;cm. C'est la deuxième espèce la plus élancée du genre après Limia zonata. Le corps est fusiforme et comprimé latéralement. Le coloris de base est gris-vert ou gris-bleuâtre avec un éclat métallique acier intense, particulièrement visible sur le mâle en situation d'approche courtoise. Présence de 7 bandes verticales transversales discrètes sur la partie arrière du corps.
+          </p>
+          <p class="section-text">
+            Le mâle affiche une coloration très caractéristique : le pédoncule caudal et la nageoire dorsale sont noirs, tandis que la nageoire caudale est jaune vif rehaussée d'une bordure noire. Des taches noires et jaune soufre irradient la tête, les nageoires et les flancs, particulièrement lors du combat ou de la parade nuptiale. La femelle est moins colorée, gris-vert terne, dépourvue de la tache caudrale caractéristique des mâles. Spécificité unique : la femelle sexuellement mature affiche une large zone pigmentée bleu-noir autour de la papille génitale (gravid spot), trait unique au genre Limia.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Limia melanogaster est une espèce grégaire et active, occupant naturellement les zones de surface et médiane des cours d'eau rapides. Elle vit en bancs sans hiérarchie marquée, mais les mâles montrent une agression territoriale envers les congénères.
+          </p>
+          <p class="section-text">
+            L'espèce demande impérativement un ratio de 2–3 femelles minimum par mâle pour limiter le harcèlement reproducteur persistant des mâles. Elle apprécie une végétation dense en surface et des zones ouvertes de nage. Contrairement à d'autres limias, elle affiche une activité essentiellement diurne. Elle se nourrit avidement d'aufwuchs (biofilm d'algues et micro-organismes) dans son habitat d'origine. L'espèce peut sauter hors de l'eau et le bac doit être couvert.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; le mâle possède un gonopodium bien visible permettant la fécondation directe. Les mâles dominants sont polygames et se reproduisent chaque saison avec plusieurs femelles.
+          </p>
+          <p class="section-text">
+            La gestation dure 4 à 6 semaines selon la température. Les femelles donnent naissance à 20 à 50 alevins par portée, bien que certaines sources rapportent jusqu'à 100 jeunes selon l'âge et la condition de la femelle. Une seule fécondation permet à la femelle de produire plusieurs portées consécutives sans nouveau mâle.
+          </p>
+          <p class="section-text">
+            Les alevins naissent grands (environ 1&nbsp;cm) et autonomes, acceptant immédiatement les nauplii d'artémia nouvellement éclos ou les poudres de flocons. La croissance est modérée et la coloration juvénile diffère des adultes. Les jeunes atteignent la maturité sexuelle vers 2–3 mois en conditions optimales.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué et distinctif; le mâle est notablement plus petit, plus coloré et plus élancé que la femelle. Le mâle affiche le pédoncule caudal noir et les taches de couleur jaune soufre tandis que la femelle reste gris-vert terne. La femelle présente un ventre plus arrondi et la zone distinctive bleu-noir autour de la papille génitale lors de la maturation.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> données incomplètes, probablement 3 à 5 ans en captivité en conditions optimales. L'espèce demeure peu étudiée en élevage.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Limia melanogaster fréquente les ruisseaux rapides et peu profonds (environ 50&nbsp;cm de profondeur typiquement) des régions sud et ouest de la Jamaïque, principalement dans les bassins des rivières Black River et Blue Hole River. L'habitat affiche une grande variabilité : petits ruisseaux de 10–20&nbsp;cm de profondeur à substrat vaseux, ou sections rocheuses plus grandes. La végétation aquatique naturelle est rare ou absente, mais l'aufwuchs (algues biofilm) est abondant et constitue l'essentiel de la nourriture.
+          </p>
+          <p class="section-text">
+            L'eau est très dure, alcaline (pH supérieur à 7,5), riche en minéraux dissous. L'espèce affectionne les zones temporairement inondées et occupe les eaux bien oxygénées avec courant modéré à rapide.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Limia-melanogaster/Maps-Limia-melanogaster.PNG"
+              alt="Répartition de Limia melanogaster"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Jamaïque, endémique des régions sud et ouest de l'île.</li>
+              <li>Localités principales : bassins hydrographiques de la rivière Black River et Blue Hole River.</li>
+              <li>Habitats fragmentés et discontinus dans les ruisseaux côtiers des versants sud et ouest.</li>
+            </ul>
+            <p>
+              L'espèce reste extrêmement rare en aquariophilie commerciale et n'a pratiquement jamais été importée massivement. Elle reste une espèce de collection pour aquariophiles confirmés. Pas d'introduction signalée en dehors de l'aire d'origine.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 28&nbsp;°C, idéalement 26–27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,5, fortement alcalin à neutre; l'espèce préfère pH supérieur à 7,5 comme en nature.</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH minimum, eau très dure à dure; obligatoire pour maintenir les paramètres naturels.</p>
+            <p><strong>Courant :</strong> modéré à rapide; essentiellement requis pour reproduire l'habitat naturel et la circulation de l'oxygène.</p>
+            <p><strong>Volume conseillé :</strong> minimum 60–80&nbsp;L pour un petit groupe malgré la petite taille; une bonne longueur de bac (100 cm minimum) est préférée à la profondeur pour offrir des zones de nage continue.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> insectivore omnivore à tendance algivore; se nourrit d'aufwuchs, petits vers, crustacés, insectes aquatiques et matière végétale en nature.
+            </p>
+            <p>
+              En aquarium, accepte flocons fins, granulés, nourritures congelées (daphnies, artémias, vers de vase), paillettes et nourriture vivante. L'espèce grignote volontiers les algues naturelles et l'aufwuchs se développant aux parois du bac. Une alimentation variée avec accent sur les petits insectes vivants et l'algivore maintient la vivacité et les couleurs.
+            </p>
+            <p>
+              Distribution 2 à 3 fois par jour en petites quantités. L'introduction d'additifs algivores (spiruline, paillettes à base de végétal) améliore la condition générale et la longévité.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

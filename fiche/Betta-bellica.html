@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta bellica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta bellica</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. bellica</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-bellica/Betta-bellica.PNG" alt="Betta bellica">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta bellica</strong>, le combattant belliqueux, malgré son épithète spécifique, n'est pas notablement plus agressif que d'autres espèces de Betta. C'est un petit poisson labyrinthidé d'Asie du Sud-Est, caractérisé par un corps élancé et fusiforme.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 8 à 10&nbsp;cm de longueur avec des nageoires anale et caudale nettement effilées et allongées, présentant des colorations intenses de vert, bleu et noir, avec parfois des taches rouges selon les populations. La femelle est plus petite et moins colorée, avec des nageoires plus courtes.
+          </p>
+          <p class="section-text">
+            L'espèce peut se décliner en plusieurs populations locales selon la région d'origine (Selangor, Perak, Pahang, Johor), chacune ayant des caractéristiques chromatiques légèrement différentes.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Contrairement au combattant du Siam, Betta bellica peut être maintenu en groupe dans un aquarium de grande taille ou en couple dans un volume plus modéré. Cependant, il garde une certaine agressivité territoriale, particulièrement entre mâles lors de la reproduction.
+          </p>
+          <p class="section-text">
+            L'espèce doit impérativement être maintenue seule ou en couple, et en aucun cas avec des espèces agressives. Une végétation abondante, des cachettes et un habitat riche réduisent le stress et favorisent le bien-être. L'espèce fréquente naturellement les eaux noires tourbouses, acides et peu minéralisées, avec une préférence pour des environnements stagnants ou à très faible courant.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare avec construction de nid de bulles; le mâle construit un nid en rassemblant des bulles d'air à la surface ou sous la végétation flottante.
+          </p>
+          <p class="section-text">
+            À la reproduction, la femelle libère de 5 à 20 ovules que le mâle fertilise. Les œufs sont transférés dans le nid de bulles où le mâle les garde jalousement. La femelle peut récupérer les œufs tombés et les remonter au nid. L'éclosion intervient après 24 à 36 heures selon la température. Les alevins absorbent leur sac vitellin après 3 à 4 jours et deviennent autonomes.
+          </p>
+          <p class="section-text">
+            La surface de l'eau doit être sans courant d'air pour éviter le dessèchement du nid de bulles, élément critique pour la réussite reproductrice.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué; le mâle est notablement plus grand et plus coloré que la femelle, avec des nageoires anale et caudale franchement allongées et pointues, tandis que la femelle a une nageoire caudale arrondie et des nageoires plus courtes. La femelle présente un ventre plus arrondi en période de maturation ovariennes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 5 à 8 ans en captivité, ce qui en fait une espèce plus robuste et longévive que Betta splendens.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta bellica fréquente les marécages tourbeux des forêts humides, les eaux noires peu minéralisées des tourbières, et les petits trous d'eau en forêts marécageuses. L'habitat naturel affiche une eau très acide (pH inférieur à 6, souvent 4–5), peu minéralisée (GH inférieur à 2), riche en matières organiques en décomposition et densément végétalisée. Cette espèce vit souvent en sympatrie avec d'autres bettas comme B. tussyae, B. livida, B. imbellis et B. persephone selon les localités.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-bellica/Maps-Betta-bellica.PNG"
+              alt="Répartition de Betta bellica"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Sumatra occidental, Indonésie et Malaisie péninsulaire (nord de Selangor).</li>
+              <li>Localités principales : forêts tourbouses de la région de Selangor, Perak, Pahang et Johor en Malaisie, ainsi que Sumatra en Indonésie.</li>
+              <li>Introduction accidentelle signalée en République dominicaine (Caraïbes) après l'ouragan David en 1979, suite à l'échappée d'élevages privés.</li>
+            </ul>
+            <p>
+              L'espèce n'a pas bénéficié de la même popularité que B. splendens en aquariophilie, restant rare et réservée aux aquariophiles confirmés.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 30&nbsp;°C, avec un optimum reproducteur autour de 28–29&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,0 à 6,0, préférablement entre 5,0 et 5,8; l'espèce se maintient mieux en eau acide comme dans son habitat naturel.</p>
+            <p><strong>GH :</strong> 1 à 5&nbsp;°dGH, eau très douce à douce; l'espèce dépérit en eau dure.</p>
+            <p><strong>Courant :</strong> nul à très faible; préférer les eaux stagnantes.</p>
+            <p><strong>Volume conseillé :</strong> un couple occupe un minimum de 80&nbsp;L; un groupe demanderait au moins 400&nbsp;L. Un mâle seul se contente de 50&nbsp;L avec un bac très planté.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> insectivore carnivore; le combattant belliqueux préfère les petits arthropodes et insectes aquatiques.
+            </p>
+            <p>
+              En aquarium, accepte facilement une alimentation variée : petits flocons, granulés fins, nourriture congelée (daphnies, artémias, vers de vase) et nourriture vivante. Les daphnies et artémias vivantes conditionnent l'espèce pour la reproduction.
+            </p>
+            <p>
+              Distribuer une à deux fois par jour en petites quantités. Les proies vivantes sont fortement recommandées pour optimiser les couleurs et la mise en condition reproductrice.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

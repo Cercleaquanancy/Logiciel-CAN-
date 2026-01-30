@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta rubra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta rubra</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. rubra</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Groupe Rubra</em></li>
+              <li><span class="sys-label">Auteur :</span> Perugia, 1893</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-rubra/Betta-rubra.PNG" alt="Betta rubra">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta rubra</strong>, le combattant rouge ou betta Toba, est l'une des plus petites espèces du genre Betta et une espèce extrêmement rare et précieuse en aquariophilie moderne, endémique des tourbières de Sumatra du nord-ouest.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 2,8 à 3,5&nbsp;cm de longueur standard, tandis que la femelle mesure environ 3 à 4&nbsp;cm. Le corps est excessivement petit et fusiforme. La coloration de base diffère marquablement entre les sexes : le mâle arbore une splendide robe rouge-cerise à rose cuivré intense, particulièrement visible lors de la reproduction, tandis que la femelle demeure gris-brun terne et discrète. Les nageoires du mâle sont ornées de taches iridescentes bleu-vert à crème, les nageoires dorsale, anale et caudale étant marginées de rouge ou orange. Les opercules et la région post-orbitale présentent un reflet doré-bleu caractéristique. La femelle affiche une nageoire caudale arrondie, moins colorée, avec parfois un léger reflet bleu-vert.
+          </p>
+          <p class="section-text">
+            Cette espèce appartient au groupe Rubra, distinct et basique, avec un mode reproducteur ancien : incubation buccale paternelle. L'épithète spécifique « rubra » (rouge) fait directement référence à la magnifique coloration du mâle.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta rubra est une espèce très timide et recluse, drastiquement moins agressive que Betta splendens. Les mâles tolèrent la présence les uns des autres, particulièrement en aquarium spacieux densément planté, où chacun établit son propre territorialité discrète. L'espèce peut être maintenue en petit groupe (harems) mais affiche une préférence pour la tranquillité absolue. Elle se cache la majorité du temps sous les feuilles mortes, branches et végétation dense, émergeant brièvement pour respirer à la surface via son labyrinthe.
+          </p>
+          <p class="section-text">
+            L'espèce est très sensible au stress et demande une eau extrêmement acide, peu minéralisée et riche en tannins. Elle se reproduit naturellement dans les plantes flottantes et la surface submergée peu profonde. Elle possède un labyrinthe primitif bien développé, lui permettant de respirer l'air atmosphérique et de survivre temporairement dans des eaux désoxygénées, trait primordial dans ses habitats marécageux stagnants. Elle peut sauter hors de l'eau et le bac doit être couvert. La cohabitation avec d'autres espèces est délicate; seules des espèces très calmes et paisibles (petites crevettes, escargots) sont tolérables.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare incubateur buccal paternel; reproduction très primitive, semblable à celle de Betta picta.
+          </p>
+          <p class="section-text">
+            Après une parade nuptiale prolongée, les deux parents se courtisent intensivement durant plusieurs heures. L'accouplement débute lorsque la femelle affiche des barres verticales de réceptivité. Le mâle s'enroule progressivement autour du corps de la femelle, tous deux vibrant en synchrone. Les œufs sont émis lentement par la femelle; le mâle les recueille immédiatement en bouche et les retient. Ce processus d'enlacement et d'émission d'œufs peut durer plusieurs heures, les deux parents effectuant plusieurs passages au-devant du nid/substrat.
+          </p>
+          <p class="section-text">
+            Après le frai, le mâle entre en phase d'incubation buccale, les œufs sont retenus en permanence dans sa bouche pendant environ 14 à 21 jours. Durant ce laps de temps, le mâle jeûne quasi-complètement, ses nageoires dépérissent et son état de santé se détériore visiblement. À l'éclosion (après 36–48 heures), les alevins demeurent aussi en bouche du père, qui produit des mouvements de branchies spéciaux les maintenaient en eau oxygénée. Après libération (14–21 jours post-fertilisation), les jeunes demeurent 3–5 jours en développement libre avant la nage autonome. Les parents ne prédatent généralement pas les jeunes et les couples peuvent se reproduire en succession rapide en harem.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> extrêmement marqué et distinctif. Le mâle est franchement plus coloré que la femelle, arborant la splendide robe rouge-cerise intense, tandis que la femelle demeure gris-brun terne. Le mâle affiche les nageoires ornées de taches iridescentes bleu-vert, absentes chez la femelle. À maturité, la papille génitale blanche de la femelle devient visible. Lors de la parade, la femelle se pare de barres verticales transversales foncées.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> données limitées en captivité, probablement 3 à 5 ans en conditions très strictes et optimales. L'extrême fragilité de l'espèce en captivité réduit généralement la longévité effective.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta rubra fréquente les tourbières stagnantes, fossés, petits étangs et zones marécageuses hypoxiques du nord-ouest de Sumatra (Aceh, Sibolga). L'habitat naturel affiche une eau extrêmement acide (pH 5,0–5,5 typiquement), très peu minéralisée (GH inférieur à 2 dGH), enrichie en tannins créant une coloration brun foncé ("blackwater"). Le substrat est composé de tourbe, litière de feuilles mortes, racines et branches immergées. La végétation est dense : Cryptocoryne, plantes flottantes, hyacinthes d'eau créant une couverture ombragée quasi-complète.
+          </p>
+          <p class="section-text">
+            L'oxygénation est extrêmement réduite, particulièrement en périodes sèches lorsque les habitats se fragmente en petits trous d'eau isolés. L'espèce survit à ces conditions hypoxiques grâce à son labyrinthe primitif lui permettant de respirer l'air atmosphérique. La température naturelle avoisine 23–26°C. La densité de population est ultra-faible, l'espèce occupant territorialité très restreinte.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-rubra/Maps-Betta-rubra.PNG"
+              alt="Répartition de Betta rubra"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Indonésie : nord-ouest de Sumatra, région côtière Atlantique.</li>
+              <li>Localités principales : tourbières de Singkil à Sibolga (Aceh et Nord-Sumatra, Sumatera Utara).</li>
+              <li>Répartition très fragmentée, hautement endémique et menacée; localité type historique Lago Toba (probablement erronée; cette espèce n'y fréquente pas).</li>
+              <li>Hybridation naturelle possible avec B. dennisyongi signalée.</li>
+            </ul>
+            <p>
+              Espèce extrêmement menacée : destruction massive des tourbières pour plantation d'huile de palme, drainage des zones humides, pollution agricole. Les habitats naturels connus ont été presque entièrement détruits depuis 2009. Aucune introduction connue en dehors de l'aire d'origine.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C, idéalement 23–25&nbsp;°C; l'espèce dépérit au-delà de 27°C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,0, fortement acide à neutre; pH 5,5–6,5 optimal; l'espèce ne tolère pas l'eau alcaline.</p>
+            <p><strong>GH :</strong> 1 à 4&nbsp;°dGH maximum, eau extrêmement douce; l'ajustement à la baisse des minéraux est essentiel.</p>
+            <p><strong>Courant :</strong> nul à très faible; eaux stagnantes obligatoires.</p>
+            <p><strong>Volume conseillé :</strong> minimum 30–40&nbsp;L pour un couple ou petit harem (1M : 2–3F); 50–60&nbsp;L recommandé. Très planté, lumière tamisée par plantes flottantes, substrat de tourbe ou feuilles mortes, nombreux refuges.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore strict; proies vivantes largement préférées.
+            </p>
+            <p>
+              En aquarium, accepte paillettes avec extrême difficulté (digestibilité faible), nourriture congelée (daphnies, vers de vase, larves de moustiques). Proies vivantes essentielles : micro-vers, petites daphnies, micro-crustacés. L'espèce a tendance à la gourmandise et demande peu de nourriture (faible appétit comparé à B. splendens).
+            </p>
+            <p>
+              Distribution 1 seule fois par jour en très petites quantités. Jeûne occasionnel (1 jour par semaine) est extrêmement bénéfique. Alimentation variée optimise la santé fragile et les performances reproductives.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta simorum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta simorum</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. simorum</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Groupe Bellica</em></li>
+              <li><span class="sys-label">Auteur :</span> Tan & Ng, 1996</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-simorum/Betta-simorum.PNG" alt="Betta simorum">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta simorum</strong>, le combattant du Simor, est une petite espèce labyrinthidé d'Indonésie endémique des tourbières d'eaux noires, très proche morphologiquement de Betta bellica mais distincte et endemique de régions différentes. C'est une espèce sauvage peu sélectionnée restant relativement proche des formes ancestrales du genre.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 6 à 8&nbsp;cm de longueur standard (avec nageoire caudale jusqu'à 9&nbsp;cm), tandis que la femelle mesure environ 6 à 6,5&nbsp;cm. Le corps est long, élancé et fusiforme, légèrement comprimé latéralement avec une tête arrondie et bouche tournée vers le haut. La coloration de base affiche un brun-rougeâtre à brun-vert, avec des teintes jaune-vert iridescentes marquant les écailles. Le mâle arbore une gorge et des opercules teintés bleu-vert iridescent, les nageoires dorsale, anale et pectorales présentant des marbrures vert-brun; la nageoire ventrale vire au bleu. Le pédoncule caudal affiche des reflets jaune-vert. La femelle est plus terne, affichant un patron bleu-foncé plus subdué. Comme tous les bettas du groupe Bellica, le corps affiche un profil long et élancé à marges dorsale et ventrale presque parallèles.
+          </p>
+          <p class="section-text">
+            L'espèce a été nommée en hommage à Thomas G. K. Sim et Farah Sim, ichtyologistes contributeurs à la connaissance des bettas indonésiens.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta simorum est une espèce plutôt paisible et peu agressive contrairement à Betta splendens, bien que légèrement territoriale. Les mâles tolèrent la présence les uns des autres en aquarium densément planté; les confrontations se limitent à des parades et chasing sans séquelles graves. L'espèce peut être maintenue en couple ou en petit harem (un mâle avec 2–3 femelles minimum), voire en groupe de plusieurs mâles avec ratio femelles plus élevé. L'espèce demeure timide et se tient généralement sous la végétation dense, refuge et zone ombragée. Elle émerge brièvement pour respirer à la surface via son labyrinthe.
+          </p>
+          <p class="section-text">
+            Particularité remarquable : comme B. bellica, Betta simorum est un excellent sauteur et a été observé à sauter hors de l'eau pour capturer des proies sur des feuilles ou branches en surplomb. L'espèce possède un labyrinthe bien développé lui permettant de respirer l'air atmosphérique et de survivre temporairement en eaux stagnantes hypoxiques. Elle peut rester plusieurs semaines dans la litière humide de feuilles mortes durant les périodes de sécheresse en nature. Elle peut sauter hors de l'eau et le bac doit être couvert. Elle est sensible aux eaux alcalines ou dures, demandant un aquarium spécifique.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare constructeur de nid de bulles; le couple n'a pas besoin d'être séparé avant le frai.
+          </p>
+          <p class="section-text">
+            Après un courtage intensif, la femelle pâlit et des barres noires transversales apparaissent sur ses flancs, signaux de réceptivité. L'accouplement débute sous le nid de bulles : le mâle s'enroule progressivement autour du corps de la femelle, les deux corps vibrant en synchrone. Au moment du climax, la laitance et 5 à 20 œufs (généralement moins de 20, l'espèce n'étant pas excessivement prolifique) sont libérés. La femelle les attrape entre les nageoires pelviennes et son corps; le mâle les transfère ensuite dans son nid tandis que la femelle récupère ceux qui tombent. Ce cycle se répète jusqu'à épuisement des réserves ovariennes, processus qui peut durer plusieurs heures.
+          </p>
+          <p class="section-text">
+            Après le frai, la femelle doit être retirée car le mâle devient agressif. Il assume seule la garde et l'entretien du nid, soufflant des bulles pour renforcer la structure et replacer les jeunes qui chutent. Les œufs éclosent après 24 à 48 heures. Les alevins demeurent au nid 3 à 4 jours supplémentaires le temps que les sacs vitellines se résorbent. Une fois la nage libre commencée, le mâle peut être retiré (risque de prédation). Les alevins acceptent immédiatement le micro-vers et les nauplii d'artémias fraîchement éclos.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> modérément marqué. Le mâle est plus coloré que la femelle, arborant la gorge et opercules bleu-vert iridescent plus prononcées et les nageoires plus pointues et plus développées. La femelle demeure terne, bleu-foncé. À maturité, la papille génitale blanche devient visible chez la femelle.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 4 à 6 ans en captivité en conditions optimales. L'espèce sauvage peut atteindre une longévité comparable à B. bellica.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta simorum fréquente exclusivement les tourbières d'eaux noires, zones marécageuses peu profondes et cours d'eau lents associés aux forêts humides denses de Sumatra et Bornéo. L'habitat affiche une eau extrêmement acide (pH 3,0–4,0 naturellement) et très peu minéralisée, créant une coloration brun-foncé ("blackwater") due aux tannins et acides humiques libérés par la décomposition de matière organique. Le substrat est presque entièrement couvert par une épaisse litière de feuilles mortes, branches submergées, racines et débris végétaux. La végétation riveraine est abondante créant une couverture ombragée quasi-complète; peu de lumière directe pénètre la canopée forêstière.
+          </p>
+          <p class="section-text">
+            Durant les périodes de sécheresse prononcée (saisons sèches), les habitats permanents se fragmentent en petites poches d'eau isolées où l'oxygénation devient critique. L'espèce survit à ces conditions hypoxiques en respirant l'air atmosphérique grâce à son labyrinthe, se réfugiant souvent au cœur de la litière humide pour plusieurs semaines jusqu'au retour des pluies. La température naturelle avoisine 23–26°C en surface; les zones profondes peuvent être plus fraîches. Cette adaptation écologique contraste nettement avec l'habitat stagnant chaud d'autres bettas.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-simorum/Maps-Betta-simorum.PNG"
+              alt="Répartition de Betta simorum"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Indonésie : Sumatra (provinces de Jambi et Riau) et Bornéo (province de Kalimantan Barat, bassin de la rivière Kapuas).</li>
+              <li>Localité type : marais près de Rantau Panjang, province de Jambi, Sumatra.</li>
+              <li>Distribution limitée et fragmentée : bassin de la rivière Indragiri (Riau) et zones côtières associées.</li>
+              <li>Très proche morphologiquement de B. bellica (Sumatra nord, Malaisie), mais géographiquement distincte et séparée.</li>
+            </ul>
+            <p>
+              Espèce rare mais plus disponible que B. bellica ou B. simplex en aquariophilie. Importée régulièrement depuis les années 1990 en petites quantités. Populations naturelles menacées par destruction des tourbières pour plantation d'huile de palme et drainage des zones humides.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 25 à 30&nbsp;°C, idéalement 26–28&nbsp;°C; l'espèce dépérit au-delà de 30°C.</p>
+            <p><strong>pH :</strong> 3,0 à 6,0, fortement acide; pH 5,0–6,0 optimal; l'ajout de tourbe ou de feuilles mortes diminue naturellement pH.</p>
+            <p><strong>GH :</strong> 1 à 2&nbsp;°dGH (18–90 ppm selon source alternative), eau extrêmement douce; filtration sur tourbe fortement recommandée.</p>
+            <p><strong>Courant :</strong> nul à très faible; filtration douce, filtre spongieux pneumatique si nécessaire.</p>
+            <p><strong>Volume conseillé :</strong> minimum 50–90&nbsp;L pour un couple ou petit harem; 80–100 cm de base recommandé. Substrat de sable fin recouvert d'une litière épaisse de feuilles mortes (chêne, hêtre, alder cones), bois flotté, racines, très planté, lumière tamisée, végétation dense.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore; études de 1994 révèlent préférence pour nymphes d'odonates (libellules et demoiselles aquatiques).
+            </p>
+            <p>
+              En aquarium, accepte aliments séchés une fois reconnus comme comestibles, mais demande régulièrement petites proies vivantes ou congelées : daphnies, artémias, vers de sang, vers de vase, petits insectes. Comme B. bellica, excellent sauteur capable de capturer proies sur branches en surplomb.
+            </p>
+            <p>
+              Distribution 1 à 2 fois par jour en petites quantités prudentes. L'espèce semble sensible aux excès alimentaires et à l'obésité. Jeûne occasionnel recommandé. Alimentation variée optimise santé, couleurs et performances reproductives.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

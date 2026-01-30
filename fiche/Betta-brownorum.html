@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta brownorum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta brownorum</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. brownorum</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Complexe coccina</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-brownorum/Betta-brownorum.PNG" alt="Betta brownorum">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta brownorum</strong> est une espèce minuscule de combattant labyrinthidé, endémique des tourbières forestières de Bornéo. C'est l'une des plus petites espèces de Betta, mesurant à peine 2,5 à 3&nbsp;cm de long à l'état adulte.
+          </p>
+          <p class="section-text">
+            Le mâle arbore une coloration de rouge brique à violet foncé selon la population d'origine (variétés Sibu et Matang), avec un imposant point latéral iridescent bleu-vert au milieu du corps. La femelle est plus brune avec la même tache, mais nettement moins intense. Le corps est fusiforme et légèrement comprimé.
+          </p>
+          <p class="section-text">
+            Cette espèce appartient au groupe coccina, distinct du groupe splendens. Elle se différencie de Betta coccina par le bord terminal blanc des nageoires pelviennes, tandis que B. coccina les a noires.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta brownorum est une espèce timide et délicate, peu adaptée aux aquariums communautaires. Contrairement aux idées reçues liées à son épithète spécifique, elle n'est pas exceptionnellement agressive, mais reste très territoriale, particulièrement lors de la reproduction.
+          </p>
+          <p class="section-text">
+            L'espèce peut être maintenue en couple ou en petit groupe (un mâle avec plusieurs femelles) dans un aquarium très planté offrant de nombreuses cachettes. Cependant, certains aquariophiles recommandent la maintenance en couples isolés après avoir observé des agressions soutenues entre dominants. L'espèce demeure réservée à l'aquariophile confirmé, exigeant une attention particulière aux paramètres d'eau et à la composition de l'habitat.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> constructeur de nid de bulles; le mâle érige son nid à la surface ou sous la végétation flottante.
+          </p>
+          <p class="section-text">
+            Le couple n'a pas besoin d'être séparé avant le frai. Il est particulièrement important de fournir une abondante végétation aquatique de surface et des cachettes (tuyaux en plastique, anciens boîtiers de pellicule photo) où la femelle peut se réfugier, notamment après le frai. La ponte comprend généralement moins de 20 œufs, bien que des portées jusqu'à 50 ne sont pas rares.
+          </p>
+          <p class="section-text">
+            L'éclosion intervient après 24 à 48 heures, et les alevins absorbent leur sac vitellin après 3 à 4 jours. Le mâle garde jalousement le nid et récupère tout alevin tombé. Les mâles peuvent enchaîner plusieurs incubations et s'amaigrissent rapidement; il faut surveiller l'état du reproducteur.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué; le mâle est plus coloré que la femelle avec des nageoires plus allongées. La femelle est plus terne, brun-clair, avec un ventre arrondi en période de maturation ovariennes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> données limitées, probablement 3 à 5 ans en captivité dans les conditions optimales. L'espèce est peu élevée et fragile.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta brownorum fréquente les forêts marécageuses tourbouses de très faible profondeur (5–10&nbsp;cm localement) avec un substrat épais de litière organique non décomposée. Le peuplement végétal comprend Cryptocoryne pallidinervia et Barclaya motleyi. L'eau est extrêmement acide et peu minéralisée, teintée de noir par les humates.
+          </p>
+          <p class="section-text">
+            Les tourbières connaissent des cycles d'inondation saisonnière; durant les périodes sèches, l'espèce survit en se réfugiant dans la litière humide. Cette adaptation aux environnements extrêmes explique l'absolue nécessité de maintenir des paramètres d'eau spécifiques en captivité.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-brownorum/Maps-Betta-brownorum.PNG"
+              alt="Répartition de Betta brownorum"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Île de Bornéo, endémique des régions sud et ouest du Sarawak, Malaisie.</li>
+              <li>Populations limitées au Kalimantan Barat (Indonésie).</li>
+              <li>Localité type : petit marais tourbeux forestier à 2,55 km au sud de Batang Rejang, route Sibu–Kuching, Sarawak (2°08'N, 112°00'30″E).</li>
+              <li>Variétés de collection nommées : Sibu, Matang (tache latérale plus grande à Matang).</li>
+            </ul>
+            <p>
+              De nombreux habitats ont disparu avec l'urbanisation et la conversion des tourbières en projets immobiliers. L'espèce reste très rare en aquariophilie et hautement menacée à l'état sauvage.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 30&nbsp;°C, idéalement 26–28&nbsp;°C; attention au stress thermique.</p>
+            <p><strong>pH :</strong> 4,0 à 5,5, très acide; l'espèce dépérit en eau neutre ou alcaline.</p>
+            <p><strong>GH :</strong> 1 à 4&nbsp;°dGH maximum, eau extrêmement douce; l'ajustement des minéraux est indispensable.</p>
+            <p><strong>Courant :</strong> nul; eaux stagnantes obligatoires.</p>
+            <p><strong>Volume conseillé :</strong> minimum 50&nbsp;L pour un couple ou un groupe; priorité à la hauteur réduite (30 cm) et à la surface. Aquarium très planté et densément végétalisé.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> insectivore carnivore strict; l'espèce refuse toute nourriture sèche.
+            </p>
+            <p>
+              En aquarium, n'accepte que la nourriture vivante ou congelée : petites daphnies, artémias, vers de vase, larves de moustiques. Les insectes terrestres (fourmis, acariens) trouvés naturellement sont appréciés.
+            </p>
+            <p>
+              Les proies vivantes sont obligatoires pour maintenir la santé, les couleurs et la mise en condition reproductrice. Cette exigence est l'un des principaux défis de maintenance.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

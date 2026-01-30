@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Girardinus metallicus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Girardinus metallicus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Girardinus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>G. metallicus</em></li>
+              <li><span class="sys-label">Auteur :</span> Poey, 1854</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Girardinus-metallicus/Girardinus-metallicus.PNG" alt="Girardinus metallicus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Girardinus metallicus</strong>, le girardinus métallique, est un petit poéciliidé vivipare endémique de Cuba et présent à Costa Rica. Son épithète spécifique « metallicus » fait référence aux écailles bleu-métallique de la tête et du dos lorsque l'animal est vivant; cette teinte disparaît lors de la conservation en alcool.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 3 à 4&nbsp;cm, tandis que la femelle peut mesurer jusqu'à 8&nbsp;cm. Le corps affiche une coloration de base beige clair, argentée, dorée ou avec des reflets gris, verts ou bleus selon la lumière. Les barres verticales transversales sont nettement marquées, présentant un fort reflet métallique particulièrement visible sous les rayons du soleil, donnant l'impression que le poisson brille.
+          </p>
+          <p class="section-text">
+            L'espèce montre un polymorphisme de coloration avec trois morphes reconnus : un morph incolore (transparent), un morph jaune au ventre, et un morph noir au ventre (non présent à l'état sauvage, résultat de l'élevage en captivité). Le ventre est clair, presque blanc. L'œil est grand et cerclé de jaune doré. La bouche est dépourvue de barbillons et orientée vers le haut.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Girardinus metallicus est une espèce grégaire pacifique occupant naturellement les zones de surface et semi-pélagiques. Elle vit en bancs, sans hiérarchie marquée ni domination apparente. L'espèce se disperse dans tout l'aquarium avec des mouvements incessants, très actifs.
+          </p>
+          <p class="section-text">
+            Les mâles sont très entreprenants et poursuivent en permanence les femelles pour l'accouplement, d'où l'importance de maintenir plusieurs femelles pour un mâle afin de dissiper le harcèlement. Malgré cette agressivité reproductrice, l'espèce ne montre pas d'agression notable entre congénères. Elle apprécie les zones ombragées en l'absence d'éclairage intense. Un aquarium planté offre refuge et réconfort.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; la nageoire anale du mâle est transformée en organe génital (gonopodium). Cet organe n'apparaît que vers la sixième semaine de vie. Les 3ème, 4ème et 5ème rayons de la nageoire anale sont modifiés en une gouttière permettant l'introduction directe du sperme dans l'orifice génital des femelles lors du pseudo-accouplement.
+          </p>
+          <p class="section-text">
+            Les spermatozoïdes sont longuement stockés par la femelle dans les replis de l'oviducte. Elle peut donc produire 4 à 6 portées successives séparées par quelques semaines, sans rencontrer de nouveau mâle. À 26–28&nbsp;°C, les naissances peuvent se succéder tous les 24 à 28 jours.
+          </p>
+          <p class="section-text">
+            Les femelles mûres donnent naissance à 20 à 80 alevins (moyenne 40–60), parfois jusqu'à 100. Les jeunes naissent grands (environ 1&nbsp;cm) et autonomes. La croissance est rapide. Les alevins peuvent être différenciés sexuellement dès 7–8 semaines et sont sexuellement actifs à partir de 5 mois, d'où l'importance de séparer rapidement les jeunes mâles des femelles pour éviter une reproduction trop précoce.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué et aisément reconnaissable; le mâle est beaucoup plus petit et moins rond que la femelle. Il possède un gonopodium noir bien visible, dotés de 2 petits crochets. Le mâle présente une longue tache noire qui débute sous le museau et s'étend jusqu'au gonopodium, avec parfois des taches noires supplémentaires sur l'arrière de la tête et la nageoire dorsale. La femelle est plus trapue avec un ventre plus arrondi en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 5 ans en captivité, ce qui en fait une espèce robuste et longévive relativement aux autres petits poéciliidés.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Girardinus metallicus fréquente les marais lowland, lagunes, savanes inondées, ruisseaux et fossés à eau claire et stagnante ou très lentement courante. L'habitat naturel affiche une forte présence de végétation aquatique et palustre, avec des accumulations de matières organiques en décomposition et des branches. L'espèce préfère les zones ensoleillées où les algues se développent, ce qui reflète son régime d'eau saumâtre toléré mais non obligatoire.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Girardinus-metallicus/Maps-Girardinus-metallicus.PNG"
+              alt="Répartition de Girardinus metallicus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Cuba, île principale et Isla de la Juventud.</li>
+              <li>Costa Rica, Amérique centrale (selon certaines sources, bien que Cuba soit l'endémisme principal).</li>
+              <li>Eaux douces et saumâtres du pourtour de l'île cubaine, principalement les zones côtières et les systèmes fluviaux.</li>
+              <li>Localités importantes : lagunes côtières, marécages de Ciénaga de Zapata, zones inondées des savanes.</li>
+            </ul>
+            <p>
+              L'espèce a été importée en Allemagne en 1906 et s'est établie rapidement en aquariophilie. Elle n'est plus collectée à l'état sauvage, exclusivement reproduite en captivité depuis plusieurs générations.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C, idéalement 26&nbsp;°C; l'espèce tolère bien les variations.</p>
+            <p><strong>pH :</strong> 6,5 à 7,5, de légèrement acide à neutre; elle supporte une gamme étroite mais bien définie.</p>
+            <p><strong>GH :</strong> 9 à 19&nbsp;°dGH, eau moyennement dure; l'espèce n'aime pas les eaux trop douces.</p>
+            <p><strong>Courant :</strong> nul à très faible; préférer les eaux stagnantes.</p>
+            <p><strong>Volume conseillé :</strong> un groupe de 8 individus minimum occupe 40–50&nbsp;L avec une bonne longueur de façade. Ajouter 10–20&nbsp;L par individu supplémentaire. Une abondante végétation est fortement recommandée.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore; l'espèce se nourrit principalement de diatomées, algues, détritus, larves d'insectes et végétation aquatique dans la nature.
+            </p>
+            <p>
+              En aquarium, accepte toutes sortes de nourritures : flocons, granulés, paillettes, avec une prédilection pour les petits insectes vivants, larves de moustiques, petits crustacés d'eau. Aliments congelés facilement acceptés (daphnies, artémias, vers de vase). L'espèce grignote volontiers les algues présentes dans l'aquarium.
+            </p>
+            <p>
+              Une alimentation variée et régulière distribuée en petites quantités une à deux fois par jour maintient la vivacité et favorise les reproductions. L'introduction de fournitures naturelles (feuilles de chêne, tourbe) améliore la condition générale.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

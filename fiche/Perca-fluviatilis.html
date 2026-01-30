@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Perca fluviatilis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Perca fluviatilis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Perciformes</li>
+              <li><span class="sys-label">Famille :</span> Percidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Perca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. fluviatilis</em></li>
+              <li><span class="sys-label">Auteur :</span> Linnaeus, 1758</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Perca-fluviatilis/Perca-fluviatilis.PNG" alt="Perca fluviatilis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Perca fluviatilis</strong>, la perche commune ou perche européenne, est un poisson d'eau douce tempérée de grande taille, robuste et carnassier, très populaire en aquaculture et aquariophilie de bassin.
+          </p>
+          <p class="section-text">
+            Le corps est fusiforme et assez trapu, plus épais au niveau de la nageoire dorsale antérieure. La tête est petite et conique, la bouche terminale se finissant avant l'œil, dotée de petites dents pointues. L'opercule porte une forte épine biseautée sur son bord postérieur. Les yeux sont proportionnellement gros et mobiles, reflétant une excellente vision.
+          </p>
+          <p class="section-text">
+            La coloration de base est verdâtre à brune selon les conditions d'habitat, avec 5 à 8 larges bandes verticales noires ou grises sur les flancs. Le dos est verdâtre foncé, le ventre blanc argenté. Les nageoires pelviennes, pectorales, anale et la partie inférieure de la caudale sont d'un rouge vif à orangé intense. Les deux nageoires dorsales sont juxtaposées, la première présentant des rayons épineux acérés, la seconde des rayons mous.
+          </p>
+          <p class="section-text">
+            La taille moyenne en aquarium oscille entre 12 et 25&nbsp;cm, mais elle peut atteindre 40–50&nbsp;cm voire 70&nbsp;cm en conditions optimales en bassin.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            La perche commune est un poisson carnassier piscivore très vorace et une redoutable prédatrice. À l'état juvénile, elle chasse en bancs, encerclant les petits poissons blancs et les forçant à s'échapper en bondissant hors de l'eau. À l'âge adulte, elle devient solitaire ou semi-grégaire, chassant plutôt à l'affût, notamment à l'aube et au crépuscule lorsque les proies sont moins méfiantes.
+          </p>
+          <p class="section-text">
+            L'espèce demeure très active le jour (diurne) et se repose sur le substrat la nuit. Elle affectionne les eaux oxygénées et fuit les milieux trop chauds. Le cannibalisme est extrêmement fréquent, particulièrement entre les adultes vis-à-vis des juvéniles. Elle peut tolérer de brèves immersions en eau saumâtre (mer Baltique) mais préfère les eaux douces.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare; la perche pond sur substrat découvert, sans construction de nid. La reproduction débute au printemps (avril–mai en Europe tempérée) lorsque la température de l'eau atteint 7–12&nbsp;°C. Une période hivernale de froid (4–10&nbsp;°C) est indispensable pour la maturation des gonades.
+          </p>
+          <p class="section-text">
+            Le processus est spectaculaire : la femelle, suivie d'un ou plusieurs mâles, se cambre en forme de U et se déplace en spirale (sens des aiguilles d'une montre) en libérant ses œufs en un unique ruban gélatineux de 1 à 2 mètres de longueur. Les mâles fécondent immédiatement les œufs. Ce ruban peut contenir de 4 000 à 300 000 œufs selon la taille et l'âge de la femelle.
+          </p>
+          <p class="section-text">
+            Le ruban est généralement déposé sur des branches, racines, plantes aquatiques ou débris en zone peu profonde. Les œufs sont bien oxygénés par le courant et peu prédatés. L'éclosion intervient après 1 à 3 semaines selon la température. Les larves mesurent 5&nbsp;mm à la naissance et vivent d'abord sur leurs réserves vitellines. Après 10–12 jours, elles commencent à se nourrir de zooplancton fin (rotifères, daphnies, copépodes). Au bout d'un an, les alevins mesurent 4–6&nbsp;cm.
+          </p>
+          <p class="section-text">
+            La maturité sexuelle intervient vers 2–3 ans pour les mâles et 2–4 ans pour les femelles, lorsqu'elles atteignent 15–25&nbsp;cm.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué et difficile à discerner. Les femelles semblent généralement plus trapues et rondes, avec un ventre plus épais, tandis que les mâles sont légèrement plus colorés et affichent une morphologie plus élancée. Aucun caractère externe flagrant ne permet une distinction certaine avant la saison de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 10 à 15 ans en captivité en conditions optimales, avec un record de 22 ans en nature. La croissance ralentit après le 5ème–6ème année de vie.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Perca fluviatilis fréquente une grande variété de milieux d'eau douce tempérée : rivières à courant lent, ruisseaux, lacs, étangs, gravières et canaux. Elle occupait naturellement les zones littorales végétalisées ou rocheuses propres et bien oxygénées. Elle évite les eaux rapides et froides mais peut les coloniser. Elle affectionne particulièrement les abris offerts par les branches mortes immergées, les souches, les rochers et la végétation aquatique.
+          </p>
+          <p class="section-text">
+            L'espèce suit des mouvements saisonniers : en hiver, elle gagne les zones profondes pour réduire son activité; au printemps, elle remonte vers les berges et zones peu profondes pour la reproduction. La profondeur minimale recommandée est 80–120&nbsp;cm pour les bassins.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Perca-fluviatilis/Maps-Perca-fluviatilis.PNG"
+              alt="Répartition de Perca fluviatilis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Europe occidentale à Sibérie orientale, rivière Kolyma au nord-est.</li>
+              <li>Présente naturellement en France, Belgique, Pays-Bas, Allemagne, Scandinavie, Russie et Grande-Bretagne.</li>
+              <li>Absente des régions méditerranéennes (Espagne, Italie du sud, Grèce) et du pourtour méditerranéen sud.</li>
+              <li>Largement introduite en Australie, Nouvelle-Zélande, Afrique du Sud, Chine, Maroc, Corse (après 1970), causant des impacts écologiques importants (espèce invasive).</li>
+            </ul>
+            <p>
+              L'espèce a été disséminée par les pêcheurs dans les eaux de barrages, gravières, canaux et cours de grandes rivières. Elle s'est établie aussi en eaux saumâtres de la mer Baltique.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 4 à 28&nbsp;°C (tolérance large); optimum 15–20&nbsp;°C. Besoin obligatoire d'une période hivernale froide (4–10&nbsp;°C) pour la reproduction.</p>
+            <p><strong>pH :</strong> 7,0 à 7,5 (neutre à légèrement alcalin); l'espèce tolérant des variations.</p>
+            <p><strong>GH :</strong> 8 à 12&nbsp;°dGH, eau moyennement dure; adaptable.</p>
+            <p><strong>Courant :</strong> modéré à lent; préférence pour les eaux stagnantes à courant faible.</p>
+            <p><strong>Volume conseillé :</strong> minimum 500&nbsp;L pour un individu adulte; 80–120&nbsp;cm de profondeur obligatoire pour l'hivernation. Une bonne oxygénation est critique. Substrat de sable fin avec abris rocheux ou branches mortes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnassier piscivore; nourriture vivante, et granulés obligatoire.
+            </p>
+            <p>
+              En aquarium ou bassin, accepte poissons blancs, petites carpes, alevins, écrevisses, larves d'insectes aquatiques. Nourriture congelée (poissons entiers ou portions, larves de moustiques, vers de vase) largement acceptée mais moins recommandée que les proies vivantes.
+            </p>
+            <p>
+              Une alimentation variée en proies vivantes ou congelées, distribuée 2–3 fois par semaine en quantités modérées, maintient la condition générale. Attention au suralimentation qui pollue l'eau rapidement.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

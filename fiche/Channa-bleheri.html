@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Channa bleheri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Channa bleheri</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Channiformes</li>
+              <li><span class="sys-label">Famille :</span> Channidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Channa</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>C. bleheri</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Groupe gachua</em></li>
+              <li><span class="sys-label">Auteur :</span> Britz & Kottelat, 2000</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Channa-bleheri/Channa-bleheri.PNG" alt="Channa bleheri">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Channa bleheri</strong>, la tête de serpent arc-en-ciel ou rainbow snakehead, est la plus petite et la plus colorée espèce du genre Channa, atteignant 18 à 20&nbsp;cm de longueur standard à l'état adulte. C'est un petit prédateur carnivore d'Inde du nord-est très apprécié pour ses couleurs spectaculaires et son comportement fascinant.
+          </p>
+          <p class="section-text">
+            Le corps est rond et allongé, légèrement comprimé latéralement. L'espèce se distingue de tous les autres Channa par l'absence complète de nageoires pelviennes. La coloration de base est remarquablement colorée : dos brunâtre, flancs et ventre marbrés de bleu, vert, brun et rouge. La tête inférieure et les flancs arborent des reflets lumineux iridescents avec de grandes taches rougeâtres. La nageoire dorsale est brun-orangée marquée à son extrémité par deux taches noires, bordée d'un liseré clair. La nageoire anale est bleu avec bord noir puis liseré clair. Les nageoires pectorales sont orange-transparentes avec bandes verticales noires. Le pédoncule caudal arbore une bande brune puis une bande orange; la nageoire caudale est arrondie, noire avec grandes taches irrégulières oranges. Les colorations exactes varient selon les populations naturelles : certaines affichent teintes plus bleutées, d'autres brunâtres ou rougeâtres.
+          </p>
+          <p class="section-text">
+            Trait distinctif remarquable du genre Channa : larges écailles céphaliques rappelant les plaques épidermiques des serpents, justifiant le nom anglais "snakehead". Découverte en 1987 par l'ichtyologiste Heiko Bleher, qui lui donna son nom.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Channa bleheri est un poisson paisible et peu agressif en conditions normales, qui occupe naturellement le fond et zones mi-profondes. C'est un chasseur à l'affût qui capture ses proies lentement en s'approchant discrètement. L'espèce peut être maintenue seule ou en couple, occasionnellement en petit groupe (4–5 jeunes) si l'aquarium est vaste. La majorité des individus s'entendent bien une fois adults formant un couple stable.
+          </p>
+          <p class="section-text">
+            Cependant, Channa bleheri devient terriblement agressif et territorial en période de reproduction. Le couple défend férocement son nid et sa progéniture contre tout intrus. L'espèce possède un organe supra-branchial (organe labyrinthien des Channidae), lui permettant de respirer l'air atmosphérique et de survivre temporairement hors de l'eau dans un environnement humide. En conditions naturelles, elle peut migrer sur terre en déplacements en S rapides pour atteindre d'autres étendues d'eau. C'est un excellent sauteur et le bac doit être couvert. L'espèce reste peu active excepté lors des périodes d'alimentation ou de défense territoriale.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare creuseur de terrier; reproduction biparentale.
+          </p>
+          <p class="section-text">
+            Contrairement à la majorité des Channa qui sont incubateurs buccaux, C. bleheri creuse un terrier dans le substrat (préférentiellement près de souches d'arbres en nature) où elle pond ses œufs. La femelle initie la parade nuptiale tandis que le mâle sélectionne le site du nid et le prépare. À l'accouplement, le couple étreint à la manière des Anabantiformes, corps vibrant en synchrone. La femelle pond 100 à 150 œufs (rarement plusieurs centaines comme d'autres Channa) qui flottent initialement à la surface, formant un tapis dense. Les deux parents transfèrent ensuite les œufs dans la cavité (nid) où ils flottent jusqu'au plafond.
+          </p>
+          <p class="section-text">
+            Les parents ventilent les œufs en alternance. Particularité unique : la femelle pond régulièrement des œufs stériles ("œufs de nourrissage") non fertilisés qui servent de nourriture pour les alevins une fois éclos, ou alternativement les parents produisent un mucus nutritif. L'éclosion intervient après 24 à 48 heures à 26–28°C. Les alevins atteignent la nage libre après 2 semaines. Le couple continue de protéger sa progéniture durant plusieurs semaines, formant un groupe cohérent.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué. La femelle tend à croître légèrement plus grande et affiche un corps plus profond, particulièrement lors de la maturation ovarienne et de la gravidité. Hors période reproductrice, la distinction est extrêmement difficile. Aucun caractère externe flagrant ne permet une identification certaine.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 8 à 12 ans en captivité en conditions optimales. L'espèce demeure robuste une fois bien acclimatée, montrant une excellente adaptation à la vie en aquarium.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Channa bleheri fréquente naturellement les cours d'eau lents, fossés temporaires, zones inondées de rivières et marais du bassin de la rivière Brahmaputra, Assam et Arunachal Pradesh, Inde du nord-est. L'habitat affiche un climat tropical de mousson avec fortes précipitations, forte humidité et températures élevées en été. L'espèce creuse des terriers à proximité de souches d'arbres en zones forestières temporairement inondées; ces terriers servent de refuges durant les mois secs hivernaux.
+          </p>
+          <p class="section-text">
+            L'eau affiche une température de 12°C en hiver (période critique) à 28°C en été. L'espèce supporte des variations saisonnières marquées, l'eau pouvant chuter drastiquement après les pluies de mousson d'été. La qualité chimique varie : pH neutre à légèrement alcalin (6–8), dureté modérée (5–12 °dGH). L'oxygénation peut être faible, compensée par l'organe supra-branchial. L'espèce est peu nombreuse naturellement et affiche une préférence pour des microhabitats très spécifiques, d'où son statut de conservation menacé.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Channa-bleheri/Maps-Channa-bleheri.PNG"
+              alt="Répartition de Channa bleheri"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassin de la rivière Brahmaputra, Inde du nord-est (Assam et Arunachal Pradesh).</li>
+              <li>Localité type : Upper Diburu près de Guijam, Assam, Inde.</li>
+              <li>Distribution extrêmement restreinte : nord de l'Assam et Dikrong River drainage (Arunachal Pradesh, région Doimukh).</li>
+              <li>Aire d'occupation très limitée, endémique de cette région.</li>
+            </ul>
+            <p>
+              Espèce largement disponible en aquariophilie commerciale malgré sa rareté naturelle. Malheureusement « rampamment exploitée » pour le commerce alimentaire et ornemental selon les chercheurs (Goswami et al., 2006). Statut IUCN : Vulnerable (VU). Populations naturelles menacées par perte d'habitat, pollution et surexploitation.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 12 à 25°C naturellement; en captivité 20–28°C, idéalement 24–26°C; ne pas dépasser 30°C longues périodes.</p>
+            <p><strong>pH :</strong> 5,5 à 7,5 (gamme large); pH 6–6,5 optimal pour reproduction.</p>
+            <p><strong>GH :</strong> 5 à 12 °dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</span> lent à nul; eaux stagnantes ou très lentes naturellement.</p>
+            <p><strong>Volume conseillé :</strong> minimum 200–250&nbsp;L pour un couple ou individu; 120 cm façade minimum. Très planté avec nombreuses cachettes (roches, branches, racines), substrat épais de sable (au moins 10 cm) pour permettre creusage de terrier, éclairage faible, couvercle obligatoire.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore prédateur strict; se nourrit essentiellement de proies vivantes en nature.
+            </p>
+            <p>
+              En aquarium, accepte proies vivantes (petits poissons, artémias, vers de vase), aliments congelés (vers de sang, moules, crevettes décortiquées, chair de poisson) mais refuse catégoriquement la nourriture sèche ou en poudre. L'espèce chasse à l'affût, approchant lentement les proies avant capture rapide de la bouche en succion.
+            </p>
+            <p>
+              Distribution modérée : 1 fois par jour en petites portions. Arrêt de l'alimentation possible durant 1–2 mois en hiver pour simuler les conditions naturelles de saison sèche, favorisant la reproduction. Attention : espèce dévore tout ce qui entre dans sa bouche (petits poissons, crevettes).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

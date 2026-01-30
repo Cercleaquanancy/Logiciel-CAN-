@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Xiphophorus maculatus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Xiphophorus maculatus</h1>
+        <h2>Platy</h2>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Xiphophorus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>X. maculatus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Xiphophorus-maculatus/Xiphophorus-maculatus.PNG" alt="Xiphophorus maculatus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Xiphophorus maculatus</strong>, communément appelé platy, est un petit poéciliidé vivipare d'Amérique centrale, très populaire en aquariophilie pour sa facilité d'élevage et sa reproductivité.
+          </p>
+          <p class="section-text">
+            À l'état sauvage, l'espèce affiche une coloration argentée brun-vert avec des taches noires discrètes, parfois bleutées sur la tête. Cependant, l'élevage en captivité a permis de développer de nombreuses variétés de couleurs : rouge, jaune, orange, bleu, noir, blanc, et des morphes nommées sunset, tuxedo, corail, wagtail, hawaï, panda, abeille, dalmatien, et bien d'autres.
+          </p>
+          <p class="section-text">
+            Les mâles atteignent 4 à 5&nbsp;cm, tandis que les femelles peuvent mesurer jusqu'à 7&nbsp;cm. Le corps est fusiforme, avec des yeux proportionnellement grands et une nageoire caudale arrondie.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Le platy est un poisson pacifique, actif et grégaire, qui doit impérativement être maintenu en groupe. Il faut toujours conserver plusieurs femelles (au minimum deux, idéalement trois ou plus) pour un seul mâle, afin de dissiper le harcèlement du mâle qui courtise constamment les femelles.
+          </p>
+          <p class="section-text">
+            L'espèce apprécie les eaux plantées et les zones de végétation abondante pour se sentir en sécurité. Elle nage principalement à la surface et en zone médiane, occupant les eaux à débit lent à modéré. Elle se montre très compatible avec les autres espèces d'aquarium communautaire acceptant les mêmes paramètres d'eau et demeure calme sans montrer de signes d'agression.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; le platy est un poisson vivipare avec fécondation interne. La gestation dure environ 24 jours à 26&nbsp;°C, mais peut s'étendre à 4–6 semaines en conditions plus froides.
+          </p>
+          <p class="section-text">
+            Les femelles donnent naissance à 10 à 80 alevins par portée, les plus grandes femelles pouvant produire jusqu'à 100 jeunes. Particularité remarquable : une seule fécondation permet à la femelle de produire plusieurs portées successives (jusqu'à 3–4 portées) sur plusieurs mois, sans qu'un nouveau mâle n'intervienne.
+          </p>
+          <p class="section-text">
+            Les alevins naissent grands et autonomes, capables de nager et de se nourrir immédiatement d'aliments fins. Les parents peuvent les prédater s'ils ne trouvent pas refuge dans la végétation dense. La maturité sexuelle est atteinte en 3–4 mois seulement.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très visible; le mâle est plus petit, plus mince et plus coloré que la femelle. Il possède un gonopodium (organe reproducteur en forme de bâton, issue de la transformation de la nageoire anale) bien développé et pointu. La femelle est plus grande, plus trapue, avec un ventre plus rond et arrondi lorsqu'elle est gestante, et sa nageoire anale est en forme d'éventail ou triangulaire.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 2 à 3 ans en captivité, avec quelques individus pouvant atteindre 5 ans dans des conditions optimales. L'espèce a été fragilisée par l'élevage intensif et les reproductions consanguines.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Le platy fréquente naturellement les canaux, fossés, sources d'eau chaude lentiques et ruisseaux à débit lent de la région côtière du Mexique, au-dessus des fonds de limon avec une végétation abondante offrant des zones ombragées et de refuge.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Xiphophorus-maculatus/Maps-Xiphophorus-maculatus.PNG"
+              alt="Répartition d'Xiphophorus maculatus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique, Amérique centrale, Belize et Nicaragua.</li>
+              <li>Localités principales : bassins des rivières Río Papaloapan et Río Coatzacoalcos, région côtière de Ciudad de Veracruz au Mexique.</li>
+              <li>Introduction accidentelle dans au moins 18 pays et territoires, dont l'Australie, avec impacts écologiques rapportés.</li>
+            </ul>
+            <p>
+              L'espèce a été importée en Europe via l'Allemagne pour la première fois en 1907 par l'écloserie berlinoise de Conrad.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 28&nbsp;°C, idéalement 24–26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,5, eaux neutres à légèrement alcalines; l'espèce ne se développe pas bien en eau trop douce et peut mourir en eau acide.</p>
+            <p><strong>GH :</strong> 8 à 20&nbsp;°dGH minimum, eau moyennement dure; pH doit rester au-dessus du neutre.</p>
+            <p><strong>Courant :</strong> lent à modéré; l'espèce préfère les eaux lentiques.</p>
+            <p><strong>Volume conseillé :</strong> minimum 80–120&nbsp;L pour un petit groupe, avec un aquarium de 80&nbsp;cm de longueur de façade recommandé. Éviter les nano-aquariums.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance végétarienne; algivore très actif, le platy n'est pas difficile à nourrir.
+            </p>
+            <p>
+              En aquarium, l'espèce accepte facilement flocons, granulés, nourriture congelée (vers de vase, daphnies, artémias) et nourriture vivante. Il apprécie également les végétaux : salade, épinards, algues et plantes en décomposition.
+            </p>
+            <p>
+              Une alimentation variée distribuée plusieurs fois par jour en petite quantité maintient la vivacité de l'espèce et favorise les reproductions naturelles. Attention de ne pas surcharger l'eau en nourriture non consommée.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

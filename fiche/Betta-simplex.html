@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta simplex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta simplex</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. simplex</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Groupe Picta</em></li>
+              <li><span class="sys-label">Auteur :</span> Kottelat, 1994</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-simplex/Betta-simplex.PNG" alt="Betta simplex">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta simplex</strong>, le betta de Krabi ou betta à incubation buccale de Krabi, est une petite espèce labyrinthidé endémique de Thaïlande du sud, extrêmement rare et précieuse en aquariophilie, appartenant au groupe Picta au mode reproducteur primitif.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 4 à 6&nbsp;cm de longueur standard, tandis que la femelle mesure environ 4 à 5&nbsp;cm. Le corps est petit, oblong et peu coloré comparé à Betta splendens. La coloration de base affiche un beige clair à brun-gris jaunâtre avec trois rayures longitudinales sombres discrètes ou parfois invisibles selon la population. Le mâle arbore une gorge et des opercules bleu-vert iridescents, les écailles corporelles restant crème ou rougeâtre clair sans iridescence significative. Les nageoires pelviennes sont marginées d'un liseré blanc. La nageoire anale et caudale présentent une double bande marginale : bande bleue claire externe, bande bleu-foncé interne. La tête du mâle est plus rougeâtre que le reste du corps. La femelle demeure généralement plus terne.
+          </p>
+          <p class="section-text">
+            Cette espèce est unique par plusieurs populations géographiquement distinctes dans sa région d'origine : le groupe « type » provenant du secteur de Tham Sra Kaew et les « neuf ponds », et le groupe « type 2 » du secteur d'Ao Luek, présentant des différences morphologiques légères (tête plus aplatie, colorations variables).
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Contrairement à Betta splendens, Betta simplex est une espèce très peu agressive et paisible. Les mâles tolèrent la présence les uns des autres, particulièrement en aquarium densément planté; les affrontements se limitent à des parades sans conséquence grave, quelques morceaux de nageoires arrachés au pire. Les mâles ne montrent pas de comportement suicidaire lors des combats contrairement à B. splendens. L'espèce peut aussi être maintenue en couple ou petit harem. Cependant, elle demeure timide et réservée, passant la majorité du temps cachée sous les roches et derrière la végétation, émergeant brièvement pour respirer à la surface.
+          </p>
+          <p class="section-text">
+            L'espèce vit naturellement à mi-profondeur en zones de courant modéré, habitat fondamentalement différent du bassin d'eau stagnante typique des bettas. Elle est sensible aux paramètres de l'eau, aux changements brutaux chimiques et physiques. Elle ne tolère pas bien les eaux chaudes (au-delà de 28°C) et demande une eau fraîche et bien oxygénée. Elle possède un labyrinthe développé lui permettant de respirer l'air atmosphérique et de survivre temporairement en eaux désoxygénées. Elle peut sauter hors de l'eau et le bac doit être couvert. La teneur en nitrates doit rester inférieure à 25 mg/L pour optimiser la santé de l'espèce.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare incubateur buccal paternel; reproduction très primitive, similaire à Betta picta et B. rubra.
+          </p>
+          <p class="section-text">
+            La reproduction en captivité est considérée comme très difficile. Après un courtage protégé et soutenu, les deux parents se courtisent intensivement. L'accouplement débute lorsque la femelle affiche des barres verticales ou des bandes sombres transversales, signaux de réceptivité. Le mâle s'enroule progressivement autour du corps de la femelle, les deux corps vibrant en synchrone. Les œufs sont émis lentement; le mâle les recueille sur sa nageoire anale puis en bouche. Ce processus peut durer plusieurs heures, les enlacements se succédant.
+          </p>
+          <p class="section-text">
+            Une fois tous les œufs collectés, débute l'incubation buccale paternelle où le mâle retient les œufs en permanence dans sa bouche. Après 36 à 48 heures, les œufs éclosent. Les alevins demeurent aussi en bouche du père durant 14 à 21 jours, le mâle jeûnant presque totalement et ses nageoires dépérissant visiblement. À libération, les alevins demeurent 3–5 jours en développement libre. Le mâle couvre généralement jusqu'à ce que les alevins atteignent la nage libre complète, sans prédation notable. Les couples peuvent se reproduire en succession rapide si maintenus ensemble.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué mais discernable. Le mâle est légèrement plus coloré que la femelle, arborant la gorge et opercules bleu-vert iridescents plus prononcées. La femelle demeure terne. À maturité, la papille génitale blanche de la femelle devient visible. Lors de la parade, la femelle se pare de barres verticales transversales sombres ou d'une teinte plus foncée généralisée.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 4 à 6 ans en captivité en conditions optimales, bien que peu d'individus atteignent cet âge en pratique. L'espèce demeure peu documentée sur la longévité réelle.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta simplex fréquente les sources calcaires de bassins karstiques, petits lacs, fossés d'écoulement et cours d'eau lents du nord-ouest de la province de Krabi, Thaïlande méridionale. L'habitat affiche une eau exceptionnellement claire, neutre à légèrement alcaline (pH 7,0–7,4), enrichie en carbonates de calcium créant une teinte bleu-vert distinctive. L'eau est bien oxygénée et le courant est modéré à lent, contrastant radicalement avec l'habitat stagnant d'autres bettas. Le substrat est composé de roches calcaires, graviers et sable.
+          </p>
+          <p class="section-text">
+            La végétation est dense et très importante : des lits importants de Cryptocoryne cordata dans les pools, dense végétation marginale le long des berges (surplomb dense). L'espèce occupe surtout les petits fossés drainant les pools, zones souvent soumises à des périodes de sécheresse marquée où l'eau se retire à quelques centimètres. La densité de population est très faible, l'espèce occupant territorialité restreinte. La température naturelle avoisine 22–25°C. Les espèces sympatriques incluent Barbodes lateristriga, Trigonostigma espei (type locality), Channa lucius, Danio sp. (population Ao Luek).
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-simplex/Maps-Betta-simplex.PNG"
+              alt="Répartition de Betta simplex"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Thaïlande : province de Krabi, Thaïlande méridionale (péninsule).</li>
+              <li>Localité type : sources calcaires (petit lac) de Tham Sra Kaew et Nine Ponds, fossé arrière du village Ban Nai Sra, 2,2 km de la route nationale 4034, 1 800 m derrière le Centre de Santé publique, nord-ouest de Krabi, Krabi Province.</li>
+              <li>Plusieurs populations distinctes : groupe « type » (Tham Sra Kaew / Nine Ponds) et groupe « type 2 » (Ao Luek), présentant variations morphologiques mineures.</li>
+              <li>Surface totale d'occupation inférieure à 10 km².</li>
+            </ul>
+            <p>
+              Espèce critiquement menacée (EN - « Critically Endangered ») par surexploitation pour l'aquariophilie et dégradation des habitats par pollution et développement agricole. Importée en captivité depuis les années 1990 mais demeurant extrêmement rare. Aucune introduction signalée en dehors de l'aire d'origine.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 25&nbsp;°C, idéalement 22–24&nbsp;°C; l'espèce dépérit au-delà de 28°C sur de longues périodes.</p>
+            <p><strong>pH :</strong> 4,0 à 6,0 selon Fishipedia (eau acide); alternativement, 7,0–7,4 selon habitat naturel karstique alcalin; pH 5,8–6,5 est un compromis stable.</p>
+            <p><strong>GH :</strong> 10 à 11&nbsp;°dGH selon habitat naturel (eau minéralisée); ou 3–12&nbsp;°dGH pour adaptation à l'acide.</p>
+            <p><strong>Courant :</strong> modéré à lent; bonne oxygénation et filtration douce obligatoires.</p>
+            <p><strong>Volume conseillé :</strong> minimum 60&nbsp;L pour un couple ou petit groupe en bac spécifique; 60 cm × 30 cm de base minimum. Très planté, lumière tamisée, nombreux refuges rocheux et végétaux, substrat stérile, changements d'eau mensuels 20–30%.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore; se nourrit d'insectes aquatiques et micro-crustacés.
+            </p>
+            <p>
+              En aquarium, accepte paillettes avec difficulté (apétence faible), nourriture congelée (daphnies, vers de vase, larves de moustiques), proies vivantes (micro-vers, daphnies). L'espèce affiche faible appétit comparée à B. splendens et demande peu de nourriture.
+            </p>
+            <p>
+              Alimentation variée avec accent sur les micro-crustacés vivants optimise la santé fragile et les performances reproductives.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

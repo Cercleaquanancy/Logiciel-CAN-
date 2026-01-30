@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta imbellis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta imbellis</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. imbellis</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Complexe splendens</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-imbellis/Betta-imbellis.PNG" alt="Betta imbellis">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta imbellis</strong>, le combattant paisible, est une espèce labyrinthidé d'Asie du Sud-Est beaucoup moins agressive que le célèbre combattant du Siam, d'où son épithète spécifique « imbellis » (inoffensif, doux). Elle appartient au complexe splendens, groupe d'espèces très voisines partageant de nombreux traits morphologiques.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 6 à 7&nbsp;cm, tandis que la femelle mesure 4,5 à 5&nbsp;cm. Le corps est fusiforme, légèrement comprimé latéralement, avec une tête petite et conique. Les yeux sont grands et mobiles avec un iris irisé bleu-vert. La nageoire caudale est caractéristiquement arrondie à croissant, très différente de la caudale lancéolée du combattant du Siam.
+          </p>
+          <p class="section-text">
+            La coloration de base est vert-métallique à gris-bleu avec un éclat irisé intense. Le mâle arbore des barres verticales noires, particulièrement visibles lors du combat, les nageoires dorsales et anales sont orangées à rougeâtres striées de noir. Des sélections ornementales ont produit des formes rouge solide, bleu solide, jaune, noir (melano), blanc (platinum) et d'autres morphes colorés. La femelle est généralement plus terne, gris-vert clair, sans les teintes rouges du mâle.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Contrairement à Betta splendens, Betta imbellis peut être maintenu en groupe pacifique avec un ratio mâle/femelle équilibré (1 mâle dominant pour 2–3 femelles). Les mâles montrent une agressivité réduite et généralement tolèrent la présence les uns des autres à condition qu'une abondante végétation offre des territoires distincts. Un seul mâle domine et arbore ses plus belles couleurs tandis que les autres restent discrets et non colorés.
+          </p>
+          <p class="section-text">
+            L'espèce est diurne, active le jour, se reposant sur le substrat la nuit. Elle occupe principalement les zones médiane et supérieure, se tenant souvent sous les plantes flottantes. L'espèce possède un labyrinthe, lui permettant de respirer l'air atmosphérique et lui conférant une grande adaptabilité aux eaux peu oxygénées. Elle peut sauter hors de l'eau et demande un aquarium couvert. Une décoration très plantée avec zones ombragées est essentielle au bien-être de cette espèce timide.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare avec construction de nid de bulles; le mâle construit un nid volumineux (6–8 cm de diamètre) rassemblant de petites bulles d'air liées par sa salive, généralement situé sous une feuille large, dans la végétation flottante ou parfois adossé à la paroi de l'aquarium.
+          </p>
+          <p class="section-text">
+            Une parade nuptiale rapide précède l'accouplement. Le mâle danse sous son nid et la femelle s'approche progressivement. L'enlacement reproducteur dure quelques secondes, le mâle s'enroulant autour de la femelle qui se laisse coincer au niveau des flancs. Les deux corps vibrent et les œufs s'écoulent lentement de la femelle. Le mâle les récupère rapidement avant qu'ils ne touchent le fond et les crache dans le nid. Ce processus se répète durant 1 à 2 heures, émettant généralement 25 à 50 œufs.
+          </p>
+          <p class="section-text">
+            L'éclosion intervient après 24 à 36 heures à 26–28&nbsp;°C. Le mâle garde jalousement le nid et les alevins, soufflant des bulles pour renforcer sa structure et replacer les jeunes qui tombent. Les alevins absorbent leur sac vitellin en 3 à 4 jours, puis deviennent libres. Le développement du labyrinthe intervient vers 3–4 semaines; à ce stade, la surface de l'eau doit rester bien humide (pas de courant d'air direct) pour que les jeunes puissent respirer un air chaud et humide.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué; le mâle est plus grand et franchement plus coloré que la femelle, avec des nageoires dorsales et caudales plus développées. La femelle est plus petite, terne gris-vert, et affiche à maturité une papille génitale blanche nette visible à l'avant de la nageoire anale. Lors de la parade, la femelle arbore des barres verticales sombres transversales sur les flancs, signal de réceptivité.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 2 à 3 ans en captivité en conditions optimales, bien que certains spécimens en bac planté soigneusement maîtrisé dépassent occasionnellement 4–5 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta imbellis fréquente les eaux stagnantes ou à très faible courant des rizières, marécages, fossés en bordure de route, ruisseaux lents et étangs des zones côtières du sud de la Thaïlande péninsulaire et de la Malaisie, ainsi que du nord de Sumatra. Ces habitats affichent une forte végétation submergée, marginale ou en canopée, créant un environnement très ombragé. Le taux d'oxygène dissous est souvent très faible, surtout en période sèche lorsque les habitats se réduisent à des petits trous d'eau où l'espèce survit en respirant l'air atmosphérique.
+          </p>
+          <p class="section-text">
+            L'eau est douce à moyennement dure, très acide à légèrement alcaline selon la saison et les apports monssunaux. Pendant les fortes pluies, les flux changent la composition chimique de l'eau rapidement. L'habitat affiche une accumulation importante de matière organique en décomposition (feuilles, branches mortes, racines), créant un environnement très minéralisé en tannins.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-imbellis/Maps-Betta-imbellis.PNG"
+              alt="Répartition de Betta imbellis"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Thaïlande méridionale (péninsule), Malaisie péninsulaire et nord de Sumatra, Indonésie.</li>
+              <li>Localité type : zones humides autour de Kuala Lumpur, Malaisie.</li>
+              <li>Introduction accidentelle à Singapour et dans d'autres régions avec établissement de populations sauvages.</li>
+              <li>Hybridation possible et documentée avec B. splendens dans les régions où ce dernier a été introduit, avec impacts génétiques sur les populations sauvages.</li>
+            </ul>
+            <p>
+              L'espèce demeure plus rare en aquariophilie commerciale que B. splendens mais gagne en popularité chez les éleveurs spécialisés. Très peu de collecte à l'état sauvage; majorité des stocks en captivité depuis plusieurs générations.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 29&nbsp;°C; maintien optimal 24–28&nbsp;°C, avec 28–29&nbsp;°C pour la reproduction.</p>
+            <p><strong>pH :</strong> 5,0 à 7,5, préférablement 6,0 à 7,0 (légèrement acide); l'espèce tolère une variation saisonnière marquée.</p>
+            <p><strong>GH :</strong> 1 à 12&nbsp;°dGH, eau douce à moyennement dure; pas d'exigence stricte.</p>
+            <p><strong>Courant :</strong> nul à très faible; eaux stagnantes obligatoires.</p>
+            <p><strong>Volume conseillé :</strong> 40–50&nbsp;L minimum pour un couple ou un petit groupe (1M + 2–3F); 96&nbsp;L minimum pour un bac communautaire régional. Très planté, lumière tamisée, nombreux refuges.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> insectivore carnivore; se nourrit d'invertébrés aquatiques et terrestres tombés à la surface en nature.
+            </p>
+            <p>
+              En aquarium, accepte flocons fins, granulés, nourritures congelées (daphnies, artémias, vers de vase, larves de moustiques) et nourriture vivante. Proies vivantes fortement recommandées pour optimiser les couleurs, particulièrement avant la reproduction.
+            </p>
+            <p>
+              Distribution 1 à 2 fois par jour en petites quantités; attention à l'obésité, risque important chez cette espèce. Jeûne occasionnel (1 jour par semaine) est bénéfique. Alimentation variée maintient la santé et la vivacité de l'espèce.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Betta splendens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta splendens</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. splendens</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Complexe splendens</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Betta-splendens/Betta-splendens.PNG" alt="Betta splendens">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta splendens</strong>, le combattant du Siam, est le deuxième poisson d'eau douce le plus populaire en aquariophilie après le poisson rouge, grâce à ses colorations flamboyantes, son comportement territorial fascinant et sa facilité d'élevage.
+          </p>
+          <p class="section-text">
+            À l'état sauvage, le mâle atteint 5 à 6,5&nbsp;cm; en captivité, avec sélection pour nageoires voilées, il peut dépassser 8–10&nbsp;cm. La femelle mesure 4 à 5&nbsp;cm. Le corps est fusiforme, légèrement comprimé latéralement, avec une tête petite et conique. La bouche est légèrement tournée vers le haut, facilitant l'alimentation en surface. L'œil est grand et mobile avec un iris irisé bleu-vert à doré.
+          </p>
+          <p class="section-text">
+            La coloration naturelle du mâle affiche un dégradé fondamental vert, rouge, bleu et noir, parsemé de motifs verticaux et longitudinaux. En captivité, des sélections ornementales massives ont produit des formes aux nageoires hypertrophiées (voilées) : rouge solide, bleu solide, jaune, blanc (platinum), noir (melano), doré, marbre, dalmatien, koi, et d'autres morphes complexes. La femelle est nettement moins colorée, gris-brun terne, avec des nageoires courtes. Les nageoires dorsales, anales et caudales sont les plus développées, formant souvent une voilure spectaculaire chez le mâle.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta splendens est une espèce solaire hautement territoriale, le mâle adulte ne tolérant aucun congénère mâle dans son environnement. Le comportement agressif est le fondement de sa biologie reproductive : les mâles rivaux se battent violemment, déployant leurs nageoires en éventail et gonflant leurs opercules pour impressionner l'adversaire. En nature, ces combats réduisent les populations de mâles, réduisant ainsi la compétition sexuelle.
+          </p>
+          <p class="section-text">
+            En aquarium, un mâle doit être maintenu obligatoirement seul, sauf durant la brève période de reproduction. L'espèce tolère généralement bien les autres poissons, restant pacifique en dehors des périodes de frai. Cependant, elle affiche une agressivité extrême lors de la défense de sa ponte. L'espèce possède un labyrinthe, lui permettant de respirer l'air atmosphérique et justifiant sa capacité à vivre dans des eaux stagnantes peu oxygénées. Elle peut respirer hors de l'eau pendant 2 à 3 heures, survivant même à l'asphyxie temporaire. L'espèce peut sauter hors de l'eau et le bac doit être couvert. Elle occupe naturellement la zone semi-pélagique et la surface, se tenant souvent sous la végétation flottante.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare constructeur de nid de bulles; l'une des reproductions les plus spectaculaires à observer en aquariophilie.
+          </p>
+          <p class="section-text">
+            Le mâle construit un nid flottant rassemblant de petites bulles d'air enrobées de mucus salivaire, créant une structure adhésive d'environ 8&nbsp;cm de diamètre et 2&nbsp;cm d'épaisseur. Le mâle alterne entre la séduction (nageoires déployées) et la construction. La femelle prête à pondre affiche des bandes verticales transversales (stries) et se maintient la tête vers le bas. Le mâle exécute des allers-retours incessants entre la femelle et le nid, l'invitant à le rejoindre.
+          </p>
+          <p class="section-text">
+            L'enlacement reproducteur dure quelques secondes : le mâle s'enroule autour de la femelle, leur deux corps vibrent et les œufs s'écoulent lentement. Généralement 50 à 500 œufs sont pondus en une à quelques heures. Après chaque enlacement, la femelle reste inerte quelques secondes; le mâle récupère rapidement les œufs avant qu'ils ne touchent le fond et les place dans le nid. À son réveil, la femelle se précipite aussi sur les œufs, les mangeant souvent. Après la ponte, le mâle devient violemment agressif envers la femelle et doit être retiré pour la préserver.
+          </p>
+          <p class="section-text">
+            L'éclosion intervient après 24 à 36 heures à 26–28&nbsp;°C. Le mâle soigne jalousement le nid, gonflant des bulles pour renforcer la structure et replacer les jeunes qui tombent. Les alevins absorbent leur sac vitellin en 3 à 4 jours, puis deviennent libres. Le développement du labyrinthe commence vers 3–4 semaines; la surface de l'eau doit rester très humide (pas de courant d'air direct, couvercle partiel) pour que les jeunes respirent un air chaud et humide, primordial au développement sain de cet organe.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué et très visible. Le mâle est franchement plus coloré et arbore des nageoires bien plus développées que la femelle, formant souvent une voilure spectaculaire en captivité. La femelle est gris-brun terne avec une papille génitale blanche bien visible à l'avant de la nageoire anale à maturité. Lors de la parade, la femelle se strie de bandes noires verticales (sauf chez les femelles très claires), signal de réceptivité reproductrice.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 5 ans en captivité en conditions optimales. Quelques spécimens bien soignés, en eau très propre et changée régulièrement, dépassent occasionnellement 6–7 ans. L'élevage intensif en captivité a fragilisé l'espèce, réduisant la robustesse et la longévité par rapport aux populations sauvages.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta splendens fréquente naturellement les rizières peu profondes, les ruisseaux lents, les étangs et marécages d'Asie du Sud-Est, depuis la péninsule malaise jusqu'au Laos, Vietnam, Myanmar, Thaïlande et Cambodge. L'habitat affiche une eau peu profonde (moins de 50&nbsp;cm typiquement), stagnante ou à courant très lent, avec une forte densité de végétation aquatique et palustre. La végétation submergée inclut Vallisneria, Cryptocoryne, racines et branches mortes. En période sèche, l'espèce se retrouve isolée dans de petits trous d'eau peu oxygénés où sa capacité labyrinthienne la maintient en vie.
+          </p>
+          <p class="section-text">
+            L'eau affiche une légère acidité (pH 6,5–7,5), une minéralisation faible à modérée (GH 5–20). La temperature avoisine 24–28&nbsp;°C naturellement. L'espèce tolère bien les variations saisonnières du climat tropical à mousson. Le substrat est généralement composé de sable et d'humus. L'eau peut être teintée de tannins lors de la décomposition de matière organique.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Betta-splendens/Maps-Betta-splendens.PNG"
+              alt="Répartition de Betta splendens"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est : Thaïlande, Laos, Cambodge, Vietnam, Myanmar, Malaisie péninsulaire, Sumatra et Bornéo, Indonésie.</li>
+              <li>Distribution principale le long des cours d'eau stagnants du bassin du Mékong et des zones côtières.</li>
+              <li>Localité type : bassins d'eau douce de Thaïlande centrale et du sud.</li>
+              <li>Introduction accidentelle signalée au Brésil, Colombie, Philippines, Singapour, États-Unis, Canada et République dominicaine avec établissement de petites colonies sauvages.</li>
+            </ul>
+            <p>
+              L'espèce figure sur la liste rouge IUCN comme « Vulnérable » (VU). Les populations naturelles sont menacées par la destruction des rizières, la pollution agricole, l'exploitation pétrolière et le changement climatique. Cependant, l'élevage massif en captivité (millions d'individus annuels) en Thaïlande et d'autres pays asiathiques assure la pérennité de l'espèce en tant que telle.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 19 à 30&nbsp;°C, optimum 24–28&nbsp;°C; les températures inférieures à 20°C ralentissent le métabolisme; la reproduction est optimale à 26–28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5, légèrement acide à neutre; pH 6,8–7,2 est idéal. L'espèce tolère bien une large gamme.</p>
+            <p><strong>GH :</strong> 3 à 12&nbsp;°dGH, eau douce à moyennement dure; pas d'exigence stricte.</p>
+            <p><strong>Courant :</strong> nul à très faible; la filtration doit être très douce, sans turbulence en surface.</p>
+            <p><strong>Volume conseillé :</strong> minimum 15–20&nbsp;L pour un mâle seul en bac entretenu; 30&nbsp;L recommandé pour plus de confort. Très planté, lumière tamisée par des plantes flottantes, nombreux refuges. Couvercle obligatoire.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore; se nourrit principalement d'insectes aquatiques en nature.
+            </p>
+            <p>
+              En aquarium, accepte flocons fins, granulés, paillettes et nourriture congelée (daphnies, artémias, vers de vase, larves de moustiques). Les proies vivantes sont fortement recommandées pour optimiser les couleurs, maintenir la santé et préparer la reproduction.
+            </p>
+            <p>
+              Distribution 1 à 2 fois par jour en petites quantités. L'espèce est sensible à l'obésité, risque important chez cette espèce peu active. Jeûne occasionnel (1 jour par semaine) est très bénéfique. Alimentation variée maintient la vivacité, les couleurs et les performances reproductives.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

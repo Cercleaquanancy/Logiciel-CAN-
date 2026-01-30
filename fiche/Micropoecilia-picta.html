@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Micropoecilia picta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Micropoecilia picta</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Micropoecilia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>M. picta</em></li>
+              <li><span class="sys-label">Syn. :</span> <em>Poecilia picta</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Micropoecilia-picta/Micropoecilia-picta.PNG" alt="Micropoecilia picta">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Micropoecilia picta</strong>, le guppy des marais ou guppy des marécages, est un petit poéciliidé vivipare d'Amérique du Sud et des Caraïbes, très proche du guppy commun mais préférant les environnements saumâtres ou très minéralisés.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 3&nbsp;cm, tandis que la femelle mesure 5&nbsp;cm maximum. Le corps est fusiforme et élancé, légèrement comprimé latéralement. La coloration de base est gris-vert à argentée avec des taches orange à jaune vif, des marques noires et parfois bleues selon la population d'origine. Le mâle arbore des dorsales oranges striées de noir, tandis que la femelle est plus terne et discrètement marquée. Les nageoires pectorales et pelviennes sont transparentes à légèrement teintées d'orange ou jaune. La femelle affiche une tache noire caractéristique à l'arrière du ventre lorsqu'elle est gravide (gravid spot).
+          </p>
+          <p class="section-text">
+            Contrairement aux guppies communs, les femelles de cette espèce ne montrent pas de préférence pour les mâles au coloris rouge ou orange prononcé, ce qui différencie nettement l'écologie comportementale de cette espèce.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Micropoecilia picta est une espèce très grégaire demandant la maintenance en groupe cohérent d'au moins 8–10 individus pour optimiser le bien-être. Elle occupe naturellement la surface et la zone médiane, très active lors du jour et se reposant le soir. L'espèce préfère les zones densément plantées offrant nombreuses cachettes.
+          </p>
+          <p class="section-text">
+            Les mâles sont extrêmement oppressants envers les femelles, les poursuivant sans cesse pour l'accouplement. Ce comportement peut fatiguer les femelles à tel point qu'elles meurent d'épuisement. Un ratio strict de 2–3 femelles minimum par mâle est obligatoire, et une abondante végétation offrant des refuges aux femelles s'impose. L'espèce peut être maintenue en aquarium légèrement saumâtre ou en eau douce très dure et minéralisée. Elle fuit les eaux douces pures où elle dépérit rapidement.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovovivipare; le mâle possède un gonopodium permettant l'insémination directe des femelles. Les mâles dominants sont polygames et se reproduisent chaque saison avec plusieurs femelles.
+          </p>
+          <p class="section-text">
+            La gestation dure 21 à 28 jours à température optimale (autour de 24°C). Les femelles donnent naissance à 11 à 25 alevins par portée, les plus grandes femelles pouvant atteindre 25 jeunes. Particularité remarquable comme chez tous les guppies : une seule fécondation permet à la femelle de produire 3 à 4 portées consécutives sur plusieurs mois sans que ne s'ajoute un nouveau mâle.
+          </p>
+          <p class="section-text">
+            Les alevins naissent grands (environ 0,8–1&nbsp;cm) et autonomes, capables de nager et de se nourrir immédiatement. Ils acceptent les nauplii d'artémia fraîchement éclos ou les poudres fines. Les parents peuvent les prédater, d'où l'importance d'une végétation très dense. La croissance est modérée et la maturité sexuelle intervient vers 2–3 mois.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> très marqué et visuel; le mâle est plus petit et plus coloré que la femelle, avec des nageoires dorsales striées d'orange et noir. Il possède le gonopodium bien visible pointu. La femelle est plus grande, plus trapue, avec un ventre plus arrondi en période de gestation, et affiche la tache noire caractéristique lors de la maturation ovarienne.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> environ 2 à 5 ans en captivité en conditions optimales, généralement 2–3 ans en pratique. L'espèce demeure peu documentée sur la longévité en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Micropoecilia picta fréquente naturellement les eaux saumâtres ou très minéralisées des embouchures de rivières, des lagunes côtières, des marais côtiers et des zones inondées des swamps d'Amérique du Sud. L'habitat affiche une forte végétation marginale et aquatique, des zones vastes densément plantées offrant de nombreux refuges. Contrairement au guppy commun (Poecilia reticulata), cette espèce évite les eaux douces pures et de faible minéralisation, disparaissant graduellement en amont des fleuves où la compétition avec P. reticulata s'intensifie.
+          </p>
+          <p class="section-text">
+            L'eau est très dure, alcaline (pH supérieur à 7,5), riche en minéraux dissous et en matière organique. L'espèce tolère une gamme étendue de salinité mais préfère franchement les milieux légèrement à moyennement saumâtres.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Micropoecilia-picta/Maps-Micropoecilia-picta.PNG"
+              alt="Répartition de Micropoecilia picta"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud et Caraïbes : Brésil, Guyana, Guyane française, Suriname, Venezuela, Trinité-et-Tobago.</li>
+              <li>Distribution particulièrement dense dans le delta de l'Orénoque et le delta de l'Amazone.</li>
+              <li>Habitats fragmentés et côtiers, rarement en amont des fleuves en eau douce pure.</li>
+            </ul>
+            <p>
+              L'espèce s'hybride rarement avec P. reticulata et P. parae mais peut le faire en aquarium si cohabitation prolongée. Très peu importée en aquariophilie commerciale comparée à P. reticulata.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C; optimum reproducteur 24–26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,5 à 8,5, fortement alcalin; l'espèce dépérit en eau acide ou neutre.</p>
+            <p><strong>GH :</span> 20 à 40&nbsp;°dGH minimum, eau extrêmement dure; l'ajout de sels minéraux est très recommandé.</p>
+            <p><strong>Salinité :</strong> tolère jusqu'à 5–15 PSU (eau saumâtre légère); préfère franchement les eaux minéralisées.</p>
+            <p><strong>Courant :</strong> nul à très faible; eaux lentiques.</p>
+            <p><strong>Volume conseillé :</strong> minimum 50&nbsp;L pour un groupe de 10 individus (ratio 1M : 2–3F); 100&nbsp;L recommandé pour plusieurs couples sans risque d'épuisement des femelles. Très planté.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore carnivore; se nourrit de petits invertébrés, insectes aquatiques, cyanobactéries et algues en nature.
+            </p>
+            <p>
+              En aquarium, accepte flocons fins, granulés, paillettes et nourriture congelée (daphnies, artémias, vers de vase, larves de moustiques). Les proies vivantes sont fortement recommandées pour optimiser les couleurs et la mise en condition reproductrice. L'espèce grignote les algues naturelles se formant aux parois du bac.
+            </p>
+            <p>
+              Distribution 2 à 3 fois par jour en petites quantités. Une alimentation variée avec accent sur les petits insectes aquatiques et les algivores maintient la vivacité, la coloration et favorise les reproductions naturelles.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
