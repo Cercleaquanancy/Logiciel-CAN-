@@ -2,182 +2,151 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Attestation de Cession Officielle</title>
+  <title>Attestation de Cession - Correction Finale</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; padding-bottom: 40px; }
+    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; }
     .navbar { position: fixed; top: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; padding: 0 16px; z-index: 50; }
-    .page { padding: 80px 12px 20px; max-width: 900px; margin: 0 auto; }
+    .page { padding: 80px 12px 40px; max-width: 900px; margin: 0 auto; }
     .card { background: #020617; border-radius: 10px; border: 1px solid #1f2937; padding: 20px; margin-bottom: 16px; }
     .card h2 { font-size: 1rem; color: #fbbf24; margin-bottom: 15px; border-bottom: 1px solid #1f2937; padding-bottom: 5px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 10px; }
     label { font-size: 0.75rem; color: #cbd5f5; display: block; margin-bottom: 4px; }
     input { width: 100%; padding: 8px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; font-size: 0.85rem; }
-    
-    /* Signatures */
     .sig-container { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
-    .sig-box { flex: 1; min-width: 280px; }
-    .canvas-wrapper { background: white; border-radius: 6px; height: 150px; position: relative; margin: 5px 0; }
+    .sig-box { flex: 1; min-width: 250px; }
+    .canvas-wrapper { background: white; border-radius: 6px; height: 140px; position: relative; margin: 5px 0; }
     canvas { position: absolute; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
-    
     .btn { border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; transition: 0.2s; }
-    .btn-main { background: #38bdf8; color: #020617; margin-top: 20px; font-size: 1rem; }
-    .btn-clear { background: #4b5563; color: white; padding: 6px; font-size: 0.75rem; }
+    .btn-main { background: #38bdf8; color: #020617; margin-top: 20px; }
+    .btn-clear { background: #4b5563; color: white; padding: 5px; font-size: 0.7rem; }
   </style>
 </head>
 <body>
 
-<header class="navbar"><div class="navbar-title">Remplissage Cerfa 14367*01</div></header>
+<header class="navbar"><div class="navbar-title">Générateur Cerfa 14367*01 - Aquariophilie</div></header>
 
 <main class="page">
-  <div class="card">
-    <h2>A - Description des spécimens [cite: 11]</h2>
-    <div class="grid">
-      <div class="field"><label>Nom scientifique </label><input type="text" id="nomSci"></div>
-      <div class="field"><label>Nom commun </label><input type="text" id="nomCom"></div>
-    </div>
-    <div class="grid">
-      <div class="field"><label>Quantité </label><input type="text" id="qty"></div>
-      <div class="field"><label>Statut juridique </label><input type="text" id="statut"></div>
-    </div>
-    <div class="field"><label>Description (Sexe, ID, signes particuliers) [cite: 12, 13]</label><input type="text" id="desc"></div>
-  </div>
-
-  <div class="card">
-    <h2>B - Identification du cédant [cite: 15]</h2>
-    <div class="field"><label>Nom, Prénom ou Raison sociale [cite: 19]</label><input type="text" id="cNom"></div>
-    <div class="grid">
-      <div class="field" style="flex:0.5"><label>N° [cite: 20]</label><input type="text" id="cNum"></div>
-      <div class="field" style="flex:0.5"><label>Ext. [cite: 21]</label><input type="text" id="cExt"></div>
-      <div class="field" style="flex:2"><label>Voie [cite: 22]</label><input type="text" id="cVoie"></div>
-    </div>
-    <div class="grid">
-      <div class="field"><label>Code Postal [cite: 23]</label><input type="text" id="cCP"></div>
-      <div class="field"><label>Commune [cite: 24]</label><input type="text" id="cVille"></div>
-      <div class="field"><label>Pays [cite: 25]</label><input type="text" id="cPays" value="FRANCE"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>C - Identification du cessionnaire [cite: 26]</h2>
-    <div class="field"><label>Nom, Prénom ou Raison sociale [cite: 28]</label><input type="text" id="aNom"></div>
-    <div class="grid">
-      <div class="field" style="flex:0.5"><label>N° [cite: 29]</label><input type="text" id="aNum"></div>
-      <div class="field" style="flex:0.5"><label>Ext. [cite: 31]</label><input type="text" id="aExt"></div>
-      <div class="field" style="flex:2"><label>Voie [cite: 32]</label><input type="text" id="aVoie"></div>
-    </div>
-    <div class="grid">
-      <div class="field"><label>Code Postal [cite: 30]</label><input type="text" id="aCP"></div>
-      <div class="field"><label>Commune [cite: 33]</label><input type="text" id="aVille"></div>
-      <div class="field"><label>Pays [cite: 34]</label><input type="text" id="aPays" value="FRANCE"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>D - Signature de l'attestation [cite: 35]</h2>
-    <div class="grid">
-      <div class="field"><label>Fait à : [cite: 36]</label><input type="text" id="lieu"></div>
-      <div class="field"><label>Le : </label><input type="text" id="dateActuelle"></div>
-    </div>
-    
-    <div class="sig-container">
-      <div class="sig-box">
-        <label>Signature du Cédant [cite: 41]</label>
-        <div class="canvas-wrapper"><canvas id="canvasCedant"></canvas></div>
-        <button type="button" class="btn btn-clear" id="clearCedant">Effacer</button>
+  <form id="cerfaForm">
+    <div class="card">
+      <h2>A - Description du spécimen</h2>
+      <div class="grid">
+        <div class="field"><label>Nom scientifique</label><input type="text" id="nomSci" value="Pterophyllum scalare"></div>
+        <div class="field"><label>Nom commun</label><input type="text" id="nomCom" value="Scalaire"></div>
       </div>
-      <div class="sig-box">
-        <label>Signature du Cessionnaire [cite: 42]</label>
-        <div class="canvas-wrapper"><canvas id="canvasAcheteur"></canvas></div>
-        <button type="button" class="btn btn-clear" id="clearAcheteur">Effacer</button>
+      <div class="grid">
+        <div class="field"><label>Quantité</label><input type="text" id="qty" value="2"></div>
+        <div class="field"><label>Statut juridique</label><input type="text" id="statut" value="X"></div>
+      </div>
+      <div class="field"><label>Description (ID, Sexe...)</label><input type="text" id="desc" value="N/A"></div>
+    </div>
+
+    <div class="card">
+      <h2>B - Identification du cédant</h2>
+      <div class="field"><label>Nom, Prénom</label><input type="text" id="cNom" value="Georges Filhol"></div>
+      <div class="grid">
+        <div class="field"><label>N° / Rue</label><input type="text" id="cAddr" value="15 Rue de la Paix"></div>
+        <div class="field"><label>CP</label><input type="text" id="cCP" value="54000"></div>
+        <div class="field"><label>Commune / Pays</label><input type="text" id="cVille" value="Nancy - FRANCE"></div>
       </div>
     </div>
-    <button type="button" class="btn btn-main" id="generate">GÉNÉRER LE PDF REMPLI</button>
-  </div>
+
+    <div class="card">
+      <h2>C - Identification du cessionnaire</h2>
+      <div class="field"><label>Nom, Prénom</label><input type="text" id="aNom" value="Axel Filhol-Maitre"></div>
+      <div class="grid">
+        <div class="field"><label>N° / Rue</label><input type="text" id="aAddr"></div>
+        <div class="field"><label>CP</label><input type="text" id="aCP"></div>
+        <div class="field"><label>Commune / Pays</label><input type="text" id="aVille" value="FRANCE"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>D - Signature et Validation</h2>
+      <div class="grid">
+        <div class="field"><label>Fait à :</label><input type="text" id="lieu" value="Nancy"></div>
+        <div class="field"><label>Date :</label><input type="text" id="date" value="01/02/2026"></div>
+      </div>
+      <div class="sig-container">
+        <div class="sig-box">
+          <label>Cédant</label>
+          <div class="canvas-wrapper"><canvas id="canvasC"></canvas></div>
+          <button type="button" class="btn btn-clear" id="clearC">Effacer</button>
+        </div>
+        <div class="sig-box">
+          <label>Cessionnaire</label>
+          <div class="canvas-wrapper"><canvas id="canvasA"></canvas></div>
+          <button type="button" class="btn btn-clear" id="clearA">Effacer</button>
+        </div>
+      </div>
+      <button type="button" class="btn btn-main" id="generate">GÉNÉRER LE PDF</button>
+    </div>
+  </form>
 </main>
 
 <script>
-  // Initialisation des pads de signature
-  const initPad = (id) => {
-    const canvas = document.getElementById(id);
-    const pad = new SignaturePad(canvas);
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    canvas.width = canvas.offsetWidth * ratio;
-    canvas.height = canvas.offsetHeight * ratio;
-    canvas.getContext("2d").scale(ratio, ratio);
-    return pad;
+  const init = (id) => {
+    const c = document.getElementById(id);
+    const p = new SignaturePad(c);
+    const r = Math.max(window.devicePixelRatio || 1, 1);
+    c.width = c.offsetWidth * r; c.height = c.offsetHeight * r;
+    c.getContext("2d").scale(r, r);
+    return p;
   };
 
-  const padCedant = initPad('canvasCedant');
-  const padAcheteur = initPad('canvasAcheteur');
-  
-  document.getElementById('clearCedant').onclick = () => padCedant.clear();
-  document.getElementById('clearAcheteur').onclick = () => padAcheteur.clear();
-  document.getElementById('dateActuelle').value = new Date().toLocaleDateString('fr-FR');
+  const pC = init('canvasC'), pA = init('canvasA');
+  document.getElementById('clearC').onclick = () => pC.clear();
+  document.getElementById('clearA').onclick = () => pA.clear();
 
   document.getElementById('generate').onclick = async () => {
     const { PDFDocument, rgb } = PDFLib;
-    const url = 'cerfa-14367-01.pdf';
-    const bytes = await fetch(url).then(res => res.arrayBuffer());
-    const pdfDoc = await PDFDocument.load(bytes);
-    const page = pdfDoc.getPages()[0];
-
+    const bytes = await fetch('cerfa-14367-01.pdf').then(res => res.arrayBuffer());
+    const pdf = await PDFDocument.load(bytes);
+    const page = pdf.getPages()[0];
     const val = (id) => document.getElementById(id).value;
 
-    // --- RÉGLAGES DES ALIGNEMENTS (Ajustez les chiffres Y pour monter/descendre) ---
-    const draw = (text, x, y, size = 9) => {
-      if (!text) return;
-      page.drawText(text, { x, y, size, color: rgb(0, 0, 0) });
+    const draw = (t, x, y, s = 9) => { if(t) page.drawText(t, { x, y, size: s, color: rgb(0,0,0) }); };
+
+    // --- ALIGNEMENT CORRIGÉ (Vérifié sur Cerfa 14367*01) ---
+    draw(val('nomSci'), 48, 642);  // Nom scientifique ligne A1 
+    draw(val('nomCom'), 48, 626);  // Nom commun ligne A1 
+    draw(val('qty'), 238, 634, 10); // Quantité 
+    draw(val('desc'), 295, 634, 8); // Description 
+    draw(val('statut'), 485, 634, 8); // Statut juridique [cite: 56, 60]
+
+    // Cédant [cite: 61, 65]
+    draw(val('cNom'), 178, 526); 
+    draw(val('cAddr'), 100, 496);
+    draw(val('cCP'), 105, 466);
+    draw(val('cVille'), 225, 466);
+
+    // Cessionnaire [cite: 72, 75]
+    draw(val('aNom'), 178, 386);
+    draw(val('aAddr'), 100, 356);
+    draw(val('aCP'), 105, 326);
+    draw(val('aVille'), 225, 326);
+
+    // Date et Lieu [cite: 83, 85, 89]
+    draw(val('lieu'), 235, 155);
+    draw(val('date'), 105, 131);
+
+    // Signatures 
+    const sig = async (pad, x, y) => {
+      if(!pad.isEmpty()){
+        const img = await pdf.embedPng(pad.toDataURL());
+        page.drawImage(img, { x, y, width: 130, height: 50 });
+      }
     };
+    await sig(pC, 65, 75);  // Cédant
+    await sig(pA, 320, 75); // Cessionnaire
 
-    // Section A (Tableau)
-    draw(val('nomSci'), 45, 642);
-    draw(val('nomCom'), 45, 631);
-    draw(val('qty'), 235, 638, 10);
-    draw(val('desc'), 290, 638, 8);
-    draw(val('statut'), 480, 638, 8);
-
-    // Section B (Cédant)
-    draw(val('cNom'), 175, 528);
-    draw(val('cNum'), 100, 498);
-    draw(val('cExt'), 185, 498);
-    draw(val('cVoie'), 265, 498);
-    draw(val('cCP'), 105, 468);
-    draw(val('cVille'), 225, 468);
-    draw(val('cPays'), 430, 468);
-
-    // Section C (Cessionnaire)
-    draw(val('aNom'), 175, 388);
-    draw(val('aNum'), 100, 358);
-    draw(val('aExt'), 185, 358);
-    draw(val('aVoie'), 265, 358);
-    draw(val('aCP'), 105, 328);
-    draw(val('aVille'), 225, 328);
-    draw(val('aPays'), 430, 328);
-
-    // Section D (Lieu et Date)
-    draw(val('lieu'), 235, 153);
-    draw(val('dateActuelle'), 100, 131);
-
-    // Signatures
-    const addSig = async (pad, x, y) => {
-      if (pad.isEmpty()) return;
-      const img = await pdfDoc.embedPng(pad.toDataURL());
-      page.drawImage(img, { x, y, width: 120, height: 45 });
-    };
-
-    await addSig(padCedant, 60, 65); // Signature Cédant [cite: 41]
-    await addSig(padAcheteur, 320, 65); // Signature Cessionnaire [cite: 42]
-
-    const pdfData = await pdfDoc.save();
-    const blob = new Blob([pdfData], { type: "application/pdf" });
+    const data = await pdf.save();
     const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `Cession_${val('nomSci') || 'Animal'}.pdf`;
-    link.click();
+    link.href = URL.createObjectURL(new Blob([data], {type:'application/pdf'}));
+    link.download = `Cession_${val('nomSci')}.pdf`; link.click();
   };
 </script>
 </body>
