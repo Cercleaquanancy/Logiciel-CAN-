@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Danio quagga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Danio quagga</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Danio</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>D. quagga</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Danio-quagga/Danio-quagga.PNG" alt="Danio quagga">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Danio quagga</strong> est une espèce décrite scientifiquement en 2009 (Kullander, Liao & Fang). Il tire son nom du Quagga (<em>Equus quagga quagga</em>), une sous-espèce de zèbre aujourd'hui éteinte, en référence à son motif de coloration particulier.
+          </p>
+          <p class="section-text">
+            Il mesure adulte entre <strong>4 et 5 cm</strong>. Morphologiquement très proche de <em>Danio kyathit</em> et <em>Danio nigrofasciatus</em>, il s'en distingue par son patron de coloration. Il arbore une série de barres verticales sombres et bleutées sur le tiers antérieur du corps, qui se transforment en une bande longitudinale vers le pédoncule caudal, le tout sur un fond clair argenté à doré.
+          </p>
+          <p class="section-text">
+            Souvent importé accidentellement avec d'autres Danios birmans, il reste moins fréquent dans le commerce aquariophile spécialisé.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire, vif et dynamique. Il doit être maintenu en banc d'au moins 8 individus pour limiter le stress.
+          </p>
+          <p class="section-text">
+            Très actif, il nage principalement dans la partie supérieure et médiane de l'aquarium. Il est pacifique avec les autres espèces, mais sa vivacité peut déranger les poissons trop calmes ou à longs voiles. C'est un excellent sauteur qui nécessite un aquarium bien couvert.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            La reproduction suit le modèle classique des Danios : c'est un diffuseur d'œufs. Les œufs non adhésifs sont dispersés au-dessus du substrat ou des plantes. Il n'y a pas de soins parentaux, et les adultes mangent leurs propres œufs. La reproduction est stimulée par un apport de nourriture vivante et une eau légèrement plus fraîche.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les femelles sont sensiblement plus rondes au niveau de l'abdomen, surtout lorsqu'elles sont gravides. Les mâles sont plus élancés et peuvent présenter des couleurs un peu plus soutenues.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Estimée entre 3 et 5 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire du Myanmar (Birmanie), spécifiquement du bassin de la rivière Chindwin, principal affluent de l'Irrawaddy. Il fréquente les cours d'eau à courant modéré à rapide, souvent avec un fond rocheux ou graveleux, typique des zones de collines.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Danio-quagga/Maps-Danio-quagga.PNG"
+              alt="Répartition de Danio quagga"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Myanmar (Birmanie).</li>
+              <li>Bassin de la rivière Chindwin.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 26&nbsp;°C (préfère les eaux légèrement fraîches).</p>
+            <p><strong>pH :</strong> 6,5 à 7,5.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Modéré à fort. Une bonne oxygénation est requise.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80 à 100&nbsp;L. Il a besoin d'une bonne longueur de nage (80 cm de façade minimum) pour s'exprimer.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance insectivore.
+            </p>
+            <p>
+              Dans la nature, il capture de petits insectes et larves portés par le courant.
+            </p>
+            <p>
+              En aquarium, il accepte les paillettes et granulés, mais une alimentation variée incluant du vivant ou du congelé (daphnies, artémias, larves de moustiques) est essentielle pour sa santé et ses couleurs.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

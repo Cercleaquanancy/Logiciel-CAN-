@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Parachromis loisellei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Parachromis loisellei</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Parachromis</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. loisellei</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Parachromis-loisellei/Parachromis-loisellei.PNG" alt="Parachromis loisellei">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Parachromis loisellei</strong> est un cichlidé d'Amérique centrale qui a longtemps été confondu avec <em>P. friedrichsthalii</em> en raison de leur grande ressemblance. Il a été décrit scientifiquement assez récemment (1989) par rapport aux autres espèces du genre.
+          </p>
+          <p class="section-text">
+            C'est l'un des "petits" représentants du genre, bien que cela reste relatif. Les mâles atteignent généralement <strong>20 à 25 cm</strong> (parfois jusqu'à 30 cm en aquarium), tandis que les femelles sont plus petites (15 à 20 cm). Sa coloration de fond est jaune doré, ornée d'une bande latérale noire souvent continue ou fragmentée en gros blocs, et de marques noires sur la partie supérieure du dos.
+          </p>
+          <p class="section-text">
+            Il se distingue de <em>P. friedrichsthalii</em> par une répartition géographique différente et des motifs de coloration généralement plus réguliers sur la ligne latérale.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un prédateur carnivore au tempérament territorial. Bien que considéré comme légèrement moins agressif que ses cousins géants (<em>P. dovii</em> ou <em>P. managuensis</em>), il reste un poisson virulent, surtout en période de reproduction.
+          </p>
+          <p class="section-text">
+            Il doit être maintenu en spécifique (couple) ou avec d'autres cichlidés robustes de taille équivalente dans de grands volumes. Il creuse le substrat, particulièrement avant la ponte, ce qui rend la maintenance de plantes enracinées difficile.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            La reproduction est biparentale et suit le schéma classique des grands cichlidés : nettoyage d'un site de ponte (pierre plate, ardoise), dépose de centaines d'œufs adhésifs, et garde féroce du périmètre. La femelle ventile les œufs tandis que le mâle patrouille.
+          </p>
+          <p class="section-text">
+            L'éclosion a lieu après 3 jours environ (à 26°C), et la nage libre intervient quelques jours plus tard. Les alevins grandissent vite avec une nourriture adaptée (nauplies d'artémias).
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les mâles sont plus grands, avec des nageoires impaires (dorsale et anale) plus longues et effilées. Les femelles, plus petites, présentent souvent une coloration jaune plus intense et contrastée lorsqu'elles sont en période de reproduction ou de garde parentale.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 8 à 12 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il habite les rivières et les lacs du versant Atlantique de l'Amérique centrale. Il préfère les zones où le courant est lent à modéré, avec une eau assez trouble et une structure complexe (bois mort, roches) pour se cacher et chasser à l'affût.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Parachromis-loisellei/Maps-Parachromis-loisellei.PNG"
+              alt="Répartition de Parachromis loisellei"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique centrale (versant Atlantique).</li>
+              <li>Honduras (rivière Ulua).</li>
+              <li>Nicaragua (bassins des grands lacs et rivières).</li>
+              <li>Costa Rica (bassin de la rivière Parismina).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0 (neutre à alcalin).</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH (eau dure).</p>
+            <p><strong>Courant :</strong> Modéré, avec une filtration efficace et une bonne oxygénation.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 450&nbsp;L pour un couple adulte. Pour une communauté avec d'autres cichlidés, prévoir au minimum 800 à 1000&nbsp;L.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / piscivore.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de petits poissons et d'invertébrés.
+            </p>
+            <p>
+              En aquarium, il accepte les granulés de bonne taille, mais doit recevoir régulièrement de la nourriture fraîche ou congelée : crevettes, moules, vers de terre, chair de poisson.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

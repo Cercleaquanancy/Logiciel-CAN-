@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Rasbora kalochroma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Rasbora kalochroma</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Rasbora</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>R. kalochroma</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Rasbora-kalochroma/Rasbora-kalochroma.PNG" alt="Rasbora kalochroma">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Rasbora kalochroma</strong>, communément appelé Rasbora clown, est un cyprinidé de taille moyenne originaire d'Asie du Sud-Est, décrit par Bleeker en 1851.
+          </p>
+          <p class="section-text">
+            Il mesure adulte entre <strong>8 et 10 cm</strong>, ce qui en fait l'un des plus grands représentants communs du genre <em>Rasbora</em> en aquarium. Il se distingue par sa robe rouge orangé intense (chez les sujets bien acclimatés) ornée de deux taches noires caractéristiques : une au milieu du flanc et une autre juste au-dessus de la nageoire anale.
+          </p>
+          <p class="section-text">
+            C'est une espèce spectaculaire mais réputée délicate, car elle provient de milieux très spécifiques (eaux noires acides) et supporte mal les variations brutales de paramètres.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire, vif et nerveux, qui doit être maintenu en banc d'au moins <strong>8 à 10 individus</strong>. En raison de sa taille et de sa vivacité, il nécessite un grand espace de nage.
+          </p>
+          <p class="section-text">
+            Bien que pacifique, sa taille et sa rapidité peuvent intimider les espèces trop petites ou timides (comme les petits Boraras ou crevettes juvéniles). Il occupe la zone médiane et supérieure de l'aquarium. Il est un excellent sauteur, le bac doit donc être hermétiquement couvert.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (diffuseur d'œufs).
+          </p>
+          <p class="section-text">
+            La reproduction est considérée comme difficile en captivité. Elle nécessite une eau très douce (GH < 2) et très acide (pH 5.0 - 6.0), souvent filtrée sur tourbe pour simuler l'eau noire.
+          </p>
+          <p class="section-text">
+            Les parents dispersent leurs œufs parmi les plantes fines (mousse de Java) et n'en prennent pas soin. Ils sont même enclins à dévorer leur ponte immédiatement.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les mâles sont généralement plus petits, plus sveltes et arborent une coloration rouge beaucoup plus intense et lumineuse que les femelles. Les femelles sont plus ternes (souvent rose pâle ou orange) et présentent un abdomen plus rebondi.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire des grandes îles de la Sonde (Bornéo et Sumatra) et de la péninsule malaise.
+          </p>
+          <p class="section-text">
+            Il habite exclusivement les forêts inondées et les marais tourbeux d'eau noire ("blackwater"). L'eau y est teintée de brun foncé par les tanins, très acide et extrêmement douce, avec un sol couvert de feuilles mortes et de bois.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Rasbora-kalochroma/Maps-Rasbora-kalochroma.PNG"
+              alt="Répartition de Rasbora kalochroma"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Indonésie (Sumatra, Bornéo).</li>
+              <li>Malaisie (Péninsule).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,0 (préfère nettement l'eau acide, pH < 6.5 recommandé).</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH (eau très douce).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 150 à 200&nbsp;L. C'est un nageur rapide atteignant 10 cm, il a besoin d'une façade d'au moins 100 à 120 cm.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / insectivore.
+            </p>
+            <p>
+              Dans la nature, il chasse les insectes aquatiques et terrestres, ainsi que les larves.
+            </p>
+            <p>
+              En aquarium, il accepte les granulés et paillettes, mais pour obtenir sa fameuse coloration rouge, une alimentation riche en proies vivantes ou congelées (vers de vase, daphnies, artémias, larves de moustiques) est indispensable.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

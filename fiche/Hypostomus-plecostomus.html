@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hypostomus plecostomus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Hypostomus plecostomus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Siluriformes</li>
+              <li><span class="sys-label">Famille :</span> Loricariidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Hypostomus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>H. plecostomus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Hypostomus-plecostomus/Hypostomus-plecostomus.PNG" alt="Hypostomus plecostomus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Hypostomus plecostomus</strong>, le Pléco commun, est l'un des poissons les plus connus et pourtant les plus mal identifiés. Dans le commerce, le nom "Pléco" est souvent utilisé abusivement pour vendre d'autres genres (comme <em>Pterygoplichthys pardalis</em>), mais tous partagent les mêmes caractéristiques : ce sont des géants cuirassés.
+          </p>
+          <p class="section-text">
+            Ce poisson possède un corps recouvert de plaques osseuses et une bouche en forme de ventouse située sous la tête. S'il est mignon lorsqu'il mesure 5 cm en animalerie, il devient un monstre atteignant <strong>30 à 50 cm</strong> à l'âge adulte (parfois plus en milieu naturel). Sa croissance est rapide.
+          </p>
+          <p class="section-text">
+            C'est un poisson extrêmement résistant, capable de survivre dans des conditions difficiles, ce qui explique malheureusement sa présence fréquente dans des aquariums inadaptés.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Le Pléco est essentiellement nocturne. Il passe ses journées caché sous une racine ou collé à une surface sombre, et s'active la nuit pour se nourrir.
+          </p>
+          <p class="section-text">
+            En vieillissant, il devient territorial envers les autres poissons de fond. Sa taille et ses mouvements brusques peuvent déranger les espèces calmes et déraciner les plantes fragiles. Bien qu'il soit vendu comme "mangeur d'algues", un adulte préfère largement les granulés et peut devenir un opportuniste (mangeant parfois le mucus des poissons plats comme les Discus).
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            La reproduction est quasiment impossible en aquarium domestique standard. Dans la nature, il creuse de profonds terriers (plus d'un mètre) dans les berges argileuses des rivières pour y pondre.
+          </p>
+          <p class="section-text">
+            La plupart des spécimens du commerce proviennent d'élevages en grands bassins extérieurs en Asie ou de captures.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Difficile à observer. Les mâles matures peuvent avoir des nageoires pectorales plus épaisses et parfois une coloration rougeâtre, mais ce n'est pas un critère fiable. Le meilleur indicateur est la papille génitale, visible seulement en retournant le poisson.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Très longue, il dépasse facilement les 15 à 20 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce type <em>H. plecostomus</em> est originaire du nord de l'Amérique du Sud (Suriname, Guyana, Guyane française). Cependant, les espèces similaires vendues sous ce nom peuplent tout le bassin amazonien. Il vit dans les cours d'eau à courant rapide aussi bien que dans les eaux stagnantes et troubles.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Hypostomus-plecostomus/Maps-Hypostomus-plecostomus.PNG"
+              alt="Répartition de Hypostomus plecostomus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud (Nord-Est).</li>
+              <li>Suriname.</li>
+              <li>Guyana.</li>
+              <li>Introduit et invasif dans de nombreuses régions tropicales du monde.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 28&nbsp;°C (très tolérant).</p>
+            <p><strong>pH :</strong> 6,0 à 8,0.</p>
+            <p><strong>GH :</strong> 5 à 25&nbsp;°dGH.</p>
+            <p><strong>Volume conseillé :</strong> <strong>Minimum 400 à 600&nbsp;L</strong>. Ce n'est absolument pas un poisson pour petit aquarium. Il produit une quantité phénoménale de déchets, nécessitant une filtration surpuissante.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance végétarienne/détritivore.
+            </p>
+            <p>
+              Juvénile, il consomme beaucoup d'algues. Adulte, il a besoin d'apports conséquents : courgettes, concombres, épinards pochés, et pastilles de fond pour grands poissons de fond.
+            </p>
+            <p>
+              La présence de racines de bois dans l'aquarium est recommandée pour faciliter sa digestion (fibres de cellulose).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

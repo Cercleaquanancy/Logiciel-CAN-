@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Girardinus creolus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Girardinus creolus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Girardinus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>G. creolus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Girardinus-creolus/Girardinus-creolus.PNG" alt="Girardinus creolus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Girardinus creolus</strong> est un petit poisson vivipare endémique de l'île de Cuba, décrit par Garman en 1895. C'est une espèce relativement rare en aquariophilie, souvent éclipsée par son cousin plus commun, <em>Girardinus metallicus</em>.
+          </p>
+          <p class="section-text">
+            Il mesure généralement entre <strong>3 et 4 cm pour les mâles</strong> et jusqu'à <strong>6 cm pour les femelles</strong>. Son corps est allongé, de couleur brunâtre à olivâtre avec un ventre argenté. Contrairement à d'autres espèces du genre qui sont très brillantes, <em>G. creolus</em> présente une coloration plus sobre, souvent ponctuée de marques sombres diffuses sur les flancs.
+          </p>
+          <p class="section-text">
+            Il est particulièrement adapté aux environnements rocheux et calcaires typiques de certaines régions montagneuses de Cuba.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire et paisible, qui apprécie la vie en groupe. Il est actif et occupe toutes les strates de l'aquarium, avec une préférence pour la zone médiane.
+          </p>
+          <p class="section-text">
+            Dans la nature, il est parfois retrouvé dans des zones d'eau très calme, voire aux entrées de grottes ou de gouffres inondés (cénotes), ce qui suggère une adaptation à des environnements ombragés. En aquarium, il préfère une lumière tamisée et une végétation dense.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> vivipare.
+          </p>
+          <p class="section-text">
+            Comme tous les Poeciliidae, la fécondation est interne. Le mâle utilise son gonopode pour féconder la femelle.
+          </p>
+          <p class="section-text">
+            La gestation dure environ 24 à 30 jours. Les femelles libèrent des alevins entièrement formés (généralement entre 10 et 30 par portée). Les parents peuvent prédater leur progéniture si l'aquarium ne dispose pas de suffisamment de cachettes (mousse de Java, plantes flottantes).
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est nettement plus petit et svelte que la femelle. Il possède un gonopode (nageoire anale modifiée en tube) très long, qui atteint presque l'extrémité de la nageoire caudale, une caractéristique distinctive du genre.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 2 à 3 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est endémique de Cuba, spécifiquement de la région occidentale (Pinar del Río, Sierra de los Órganos). Il vit dans les ruisseaux de montagne aux eaux claires et fraîches, ainsi que dans les bassins rocheux calcaires. L'eau y est dure et alcaline.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Girardinus-creolus/Maps-Girardinus-creolus.PNG"
+              alt="Répartition de Girardinus creolus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique Centrale (Caraïbes).</li>
+              <li>Cuba (Endémique).</li>
+              <li>Sierra de los Órganos.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C (préfère les eaux pas trop chaudes).</p>
+            <p><strong>pH :</strong> 7,0 à 8,0 (eau basique).</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH (eau dure indispensable).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 50 à 60&nbsp;L pour un petit groupe ou un harem.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore.
+            </p>
+            <p>
+              Dans la nature, il se nourrit d'algues, de diatomées, de détritus et de petits invertébrés.
+            </p>
+            <p>
+              En aquarium, il n'est pas difficile mais nécessite une part végétale dans son alimentation (paillettes à la spiruline) en complément de nourritures vivantes ou congelées (daphnies, artémias).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

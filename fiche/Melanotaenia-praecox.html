@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Melanotaenia praecox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Melanotaenia praecox</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Atheriniformes</li>
+              <li><span class="sys-label">Famille :</span> Melanotaeniidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Melanotaenia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>M. praecox</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Melanotaenia-praecox/Melanotaenia-praecox.PNG" alt="Melanotaenia praecox">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Melanotaenia praecox</strong>, souvent appelé Arc-en-ciel nain, est l'un des représentants les plus populaires et les plus petits de sa famille. Originaire de Papouasie occidentale, il se distingue par son corps en forme de losange aux reflets bleu néon intenses.
+          </p>
+          <p class="section-text">
+            Il atteint une taille adulte comprise entre <strong>5 et 8 cm</strong>, ce qui est modeste comparé aux autres <em>Melanotaenia</em> qui dépassent souvent les 10-12 cm. Son nom d'espèce <em>praecox</em> ("précoce") fait d'ailleurs référence à sa petite taille apparente, donnant l'impression qu'il est encore juvénile même à l'âge adulte.
+          </p>
+          <p class="section-text">
+            Les mâles sont particulièrement spectaculaires avec leurs écailles irisées et leurs nageoires rouge vif, tandis que les femelles présentent des nageoires jaune-orangé.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire, très actif et pacifique. Il doit impérativement être maintenu en banc d'au moins 8 à 10 individus pour limiter sa timidité et observer des interactions sociales naturelles.
+          </p>
+          <p class="section-text">
+            C'est un nageur infatigable qui occupe la zone médiane de l'aquarium. Bien qu'il soit petit, son besoin de nage rapide nécessite un bac d'une certaine longueur. Il convient parfaitement aux bacs communautaires plantés avec d'autres espèces calmes mais actives.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            C'est un diffuseur d'œufs sur substrat. La reproduction se fait généralement le matin, le mâle parant devant la femelle avec une ligne frontale lumineuse. Les œufs adhésifs sont déposés dans des massifs de plantes fines (mousse de Java) ou sur des mops de laine synthétique.
+          </p>
+          <p class="section-text">
+            L'incubation dure environ une semaine. Les alevins sont très petits et nécessitent une nourriture microscopique (infusoires, poudre pour alevins) avant de pouvoir accepter les nauplies d'artémias.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très net au niveau de la coloration des nageoires. Les mâles possèdent des nageoires impaires (dorsales, anale, caudale) bordées de <strong>rouge</strong> vif, tandis que celles des femelles sont <strong>jaunes</strong> ou orangées. Les mâles sont aussi plus hauts de corps.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est endémique du bassin de la rivière Mamberamo en Papouasie occidentale (Indonésie). Il fréquente les petits affluents, les ruisseaux forestiers et les zones marécageuses à courant lent, souvent riches en végétation aquatique et en bois mort.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Melanotaenia-praecox/Maps-Melanotaenia-praecox.PNG"
+              alt="Répartition de Melanotaenia praecox"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Océanie / Asie du Sud-Est insulaire.</li>
+              <li>Indonésie (Papouasie occidentale).</li>
+              <li>Bassin du fleuve Mamberamo.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,5 à 8,0 (préfère une eau neutre à légèrement alcaline).</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH (eau moyennement dure).</p>
+            <p><strong>Courant :</strong> Modéré. Apprécie une eau claire et bien oxygénée.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80 à 100&nbsp;L. Une façade de 80 cm de long est un minimum pour permettre la nage de ce poisson très actif, malgré sa taille réduite.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance insectivore.
+            </p>
+            <p>
+              Dans la nature, il se nourrit d'insectes tombés à l'eau, de larves et d'algues.
+            </p>
+            <p>
+              En aquarium, il accepte tout (paillettes, granulés), mais une part végétale est recommandée. Pour intensifier ses couleurs, les nourritures vivantes ou congelées (vers de vase, daphnies, artémias) sont indispensables.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

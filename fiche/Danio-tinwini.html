@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Danio tinwini</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Danio tinwini</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Danio</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>D. tinwini</em></li>
+
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Danio-tinwini/Danio-tinwini.PNG" alt="Danio tinwini">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Danio tinwini</strong>, parfois appelé Danio à anneaux dorés, est une petite espèce décrite scientifiquement en 2009. C'est l'un des plus petits représentants du genre <em>Danio</em>, ce qui en fait un poisson de choix pour les petits aquariums (nano-aquariophilie).
+          </p>
+          <p class="section-text">
+            Il mesure adulte seulement <strong>2 à 3 cm</strong>. Son corps est légèrement translucide, parsemé de taches sombres dont beaucoup présentent un centre clair ou doré, donnant l'impression d'anneaux. Les nageoires sont également tachetées, ce qui est assez rare chez les Danios.
+          </p>
+          <p class="section-text">
+            Délicat et paisible, c'est une espèce magnifique qui demande une eau de qualité et un environnement calme.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire qui doit vivre en groupe. En raison de sa très petite taille, un banc d'au moins 10 à 15 individus est recommandé pour qu'ils se sentent en sécurité.
+          </p>
+          <p class="section-text">
+            Il occupe principalement le tiers inférieur et médian de l'aquarium, nageant souvent près du substrat ou parmi les plantes. Très paisible, il ne doit pas être associé à des poissons trop grands ou trop vifs qui pourraient l'intimider ou le considérer comme une proie.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            C'est un diffuseur d'œufs. La reproduction est assez facile en bac spécifique tapissé de mousse de Java. Les œufs sont non adhésifs et tombent au fond.
+          </p>
+          <p class="section-text">
+            Les adultes ne s'occupent pas de la progéniture et mangent les œufs. Les alevins sont minuscules à l'éclosion et nécessitent des infusoires ou de la nourriture liquide très fine (type paramécies) avant d'accepter les nauplies d'artémias.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les femelles sont visiblement plus rebondies au niveau du ventre et souvent légèrement plus grandes. Les mâles sont plus sveltes et présentent des couleurs et des motifs plus contrastés, notamment des nageoires plus joliment tachetées.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 2 à 4 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est endémique du nord du Myanmar (État de Kachin). Il a été collecté dans de petits ruisseaux affluents de l'Irrawaddy. L'eau y est généralement claire, peu profonde, avec un fond composé de galets, de sable et de boue, souvent riche en végétation aquatique.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Danio-tinwini/Maps-Danio-tinwini.PNG"
+              alt="Répartition de Danio tinwini"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Myanmar (Birmanie).</li>
+              <li>État de Kachin (Nord), près de Myitkyina.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 26&nbsp;°C (préfère la fraîcheur, 22-24°C est idéal).</p>
+            <p><strong>pH :</strong> 6,5 à 7,5.</p>
+            <p><strong>GH :</strong> 2 à 10&nbsp;°dGH (eau douce à moyennement dure).</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 40 à 60&nbsp;L. Bien que petit, il a besoin d'un espace de nage (60 cm de façade minimum) pour vivre en banc.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore / micro-prédateur.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de larves d'insectes et de zooplancton minuscule.
+            </p>
+            <p>
+              En aquarium, il faut adapter la taille de la nourriture à sa petite bouche : paillettes écrasées, micro-granulés, et surtout nauplies d'artémias, cyclops ou micro-vers pour le garder en bonne santé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Thorichthys meeki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Thorichthys meeki</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Thorichthys</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>T. meeki</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Thorichthys-meeki/Thorichthys-meeki.PNG" alt="Thorichthys meeki">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Thorichthys meeki</strong>, connu sous le nom commun de "Cichlidé à gueule de feu", est une espèce emblématique d'Amérique Centrale. Il doit son nom à la coloration rouge écarlate intense qui couvre sa gorge, son ventre et le bas de ses opercules, particulièrement spectaculaire chez les mâles en parade.
+          </p>
+          <p class="section-text">
+            Il mesure adulte environ <strong>12 à 15 cm</strong>. Son corps est gris bleuté avec des reflets irisés, marqué par une tache noire caractéristique sur l'opercule (simulant un œil pour tromper les prédateurs) et une autre sur le flanc.
+          </p>
+          <p class="section-text">
+            Bien que territorial, c'est l'un des cichlidés d'Amérique Centrale les plus "pacifiques" et les plus adaptés aux aquariums communautaires de volume moyen.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson territorial qui vit en couple. Son comportement social est fascinant : pour intimider un rival ou défendre son territoire, il gonfle sa gorge rouge et écarte ses opercules, doublant ainsi le volume apparent de sa tête. Ces joutes d'intimidation remplacent souvent les combats physiques réels.
+          </p>
+          <p class="section-text">
+            Il occupe la zone inférieure de l'aquarium. Comme de nombreux cichlidés, il aime fouiller le substrat (comportement géophage modéré) pour chercher sa nourriture, il faut donc prévoir un sable non coupant.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            Le couple nettoie soigneusement une pierre plate ou une racine. La femelle y dépose plusieurs centaines d'œufs. Les deux parents participent activement à la garde du territoire et des œufs, puis des alevins.
+          </p>
+          <p class="section-text">
+            Pendant la période de reproduction, le couple devient beaucoup plus agressif envers les autres occupants de l'aquarium pour protéger sa progéniture.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est généralement plus grand, plus coloré (le rouge de la gorge est plus intense et étendu) et ses nageoires dorsale et anale se terminent en pointes effilées, formant de longs filaments. La femelle est plus terne et plus petite.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 8 à 10 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire de la péninsule du Yucatán (Mexique), du Belize et du Guatemala. Il fréquente les rivières à courant lent, les lagunes et les fameux "Cenotes" (gouffres remplis d'eau). Il préfère les eaux claires à fond sablonneux ou vaseux, souvent calcaires et dures.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Thorichthys-meeki/Maps-Thorichthys-meeki.PNG"
+              alt="Répartition de Thorichthys meeki"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique Centrale.</li>
+              <li>Mexique (Péninsule du Yucatán).</li>
+              <li>Belize.</li>
+              <li>Guatemala.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,5 à 8,0 (préfère une eau neutre à légèrement alcaline).</p>
+            <p><strong>GH :</strong> 8 à 20&nbsp;°dGH (apprécie l'eau dure).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 200 à 250&nbsp;L pour un couple. Un bac de 120 cm de façade est recommandé pour permettre l'établissement de territoires.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore.
+            </p>
+            <p>
+              Dans la nature, il consomme des invertébrés benthiques, des algues et des détritus.
+            </p>
+            <p>
+              En aquarium, il est vorace et peu difficile. Une base de granulés pour cichlidés, complétée par du vivant/congelé et un apport végétal (spiruline, épinard) est idéale pour sa santé et ses couleurs.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

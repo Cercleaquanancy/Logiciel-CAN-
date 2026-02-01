@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Microdevario kubotai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Microdevario kubotai</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Microdevario</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>M. kubotai</em></li>
+              <li><span class="sys-label">Syn. :</span> <em>Microrasbora kubotai</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Microdevario-kubotai/Microdevario-kubotai.PNG" alt="Microdevario kubotai">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Microdevario kubotai</strong>, communément appelé Rasbora émeraude ou Rasbora néon vert, est une espèce de cyprinidé miniature décrite récemment (1999) par Kottelat et Witte. Initialement classé dans le genre <em>Microrasbora</em>, il a été transféré dans le nouveau genre <em>Microdevario</em> en 2009.
+          </p>
+          <p class="section-text">
+            C'est un poisson de très petite taille, mesurant entre <strong>1,5 et 2,0 cm</strong>. Il possède un corps translucide traversé par une ligne latérale d'un vert jaune métallique intense et brillant, qui lui donne une apparence lumineuse unique, rappelant un néon vert.
+          </p>
+          <p class="section-text">
+            C'est une espèce très prisée en aquascaping car sa couleur vive contraste magnifiquement avec les décors sombres et les plantes vertes.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire, vif et actif, qui doit impérativement être maintenu en banc d'au moins <strong>10 individus</strong>. En groupe, ils forment une nuée étincelante très esthétique.
+          </p>
+          <p class="section-text">
+            Il occupe principalement la zone médiane et supérieure de l'aquarium. Bien que petit, il apprécie le courant modéré et une eau bien oxygénée, contrairement à beaucoup d'autres "nanofish" qui préfèrent les eaux stagnantes. Il est totalement pacifique et cohabite bien avec les crevettes.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (diffuseur d'œufs).
+          </p>
+          <p class="section-text">
+            La reproduction est possible en captivité. Les poissons dispersent leurs œufs en pleine eau ou parmi la végétation fine (mousse de Java).
+          </p>
+          <p class="section-text">
+            Il n'y a aucun soin parental et les adultes mangent leurs propres œufs. Pour un élevage réussi, il est nécessaire d'isoler les reproducteurs ou de récupérer les œufs. Les alevins sont minuscules et nécessitent des infusoires ou de la nourriture liquide très fine au démarrage.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les femelles adultes sont sensiblement plus grandes et présentent un abdomen plus rond et rebondi que les mâles. Les mâles sont souvent d'un vert plus intense et doré.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 2 à 4 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire de la province de Ranong dans la péninsule thaïlandaise, ainsi que du bassin de la rivière Ataran au sud de la Birmanie (Myanmar).
+          </p>
+          <p class="section-text">
+            Il habite les petits ruisseaux côtiers et les rivières à courant lent à modéré, aux eaux claires et bien oxygénées, souvent riches en plantes aquatiques (comme <em>Cryptocoryne</em>) et en racines immergées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Microdevario-kubotai/Maps-Microdevario-kubotai.PNG"
+              alt="Répartition de Microdevario kubotai"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Thaïlande (Province de Ranong).</li>
+              <li>Birmanie (Myanmar, Bassin de l'Ataran).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,5 (préfère l'eau neutre à légèrement acide).</p>
+            <p><strong>GH :</strong> 2 à 12&nbsp;°dGH (eau douce à moyennement dure).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 40 à 50&nbsp;L. Bien que minuscule, c'est un nageur actif qui a besoin d'espace pour se déplacer en banc.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / insectivore (micro-prédateur).
+            </p>
+            <p>
+              Dans la nature, il se nourrit de zooplancton et de larves d'insectes dérivant dans le courant.
+            </p>
+            <p>
+              En aquarium, il accepte les nourritures sèches fines, mais pour maintenir sa couleur éclatante, des apports réguliers de nauplies d'artémias, de daphnies ou de cyclops sont recommandés.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

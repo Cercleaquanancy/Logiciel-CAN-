@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Myomyrus pharao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Myomyrus pharao</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Osteoglossiformes</li>
+              <li><span class="sys-label">Famille :</span> Mormyridae</li>
+              <li><span class="sys-label">Genre :</span> <em>Myomyrus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>M. pharao</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Myomyrus-pharao/Myomyrus-pharao.PNG" alt="Myomyrus pharao">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Myomyrus pharao</strong> est un poisson benthique rare appartenant à la famille des Mormyridae, endémique du bassin du fleuve Congo. Décrit par Poll en 1954, il se distingue par la structure particulière de sa tête et son mode de vie lié aux eaux profondes ou à courant soutenu. 
+          </p>
+          <p class="section-text">
+            Il peut atteindre une longueur totale d'environ 25 à 30 cm. Comme tous les Mormyridés, il possède un cervelet extrêmement développé et un organe électrique situé dans le pédoncule caudal qui lui permet de s'orienter et de communiquer dans l'obscurité ou les eaux turbides. Son corps est allongé et comprimé latéralement, avec une coloration généralement grisâtre à brun sombre, parfois ardoisée. 
+          </p>
+          <p class="section-text">
+            Sa morphologie buccale est adaptée à la recherche de nourriture dans le sédiment : sa bouche est petite, terminale, et située à l'extrémité d'un museau court mais robuste. Contrairement à d'autres genres de la famille, le genre <em>Myomyrus</em> possède une nageoire dorsale beaucoup plus courte que la nageoire anale.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Myomyrus pharao</em> est une espèce principalement nocturne et lucifuge. Durant la journée, il reste caché dans des anfractuosités, sous des racines ou dans des zones d'ombre profonde. C'est un poisson territorial envers ses congénères, utilisant ses décharges électriques (EOD - Electric Organ Discharge) pour délimiter son espace et interagir socialement.
+          </p>
+          <p class="section-text">
+            En raison de ses capacités d'électrolocalisation, il est capable de détecter de minuscules proies enfouies dans le substrat. C'est une espèce plutôt solitaire qui demande une eau particulièrement riche en oxygène et une faible teneur en nitrates. Son comportement en captivité reste très peu documenté car l'espèce est rarement importée.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Aucune information précise disponible sur les modalités de reproduction en milieu naturel ou en captivité.
+          </p>
+          <p class="section-text">
+            Comme la majorité des Mormyridés de rivière, on suppose qu'il s'agit d'un pondeur sur substrat ou dans les zones inondées durant la saison des pluies. Les signaux électriques jouent probablement un rôle crucial dans la parade nuptiale et la reconnaissance des partenaires. Aucun cas de reproduction en aquarium n'a été rapporté de manière fiable à ce jour.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Aucune information externe flagrante ne permet de distinguer les sexes, bien que chez certains Mormyridae, la forme de la nageoire anale ou la fréquence des décharges électriques puissent varier entre mâles et femelles matures.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Inconnue en milieu sauvage, probablement 5 à 10 ans pour des espèces de taille similaire en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Cette espèce fréquente les eaux du bassin moyen et supérieur du fleuve Congo. On la trouve préférentiellement dans les zones où le courant est présent et où le fond est composé d'un mélange de roches, de sable et de débris organiques. 
+          </p>
+          <p class="section-text">
+            L'eau dans son habitat naturel est généralement douce, légèrement acide à neutre, et présente une conductivité assez basse. Le biotope est caractérisé par des zones de forêts inondées ou des lits de rivières ombragés où la visibilité est souvent réduite.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Myomyrus-pharao/Maps-Myomyrus-pharao.PNG"
+              alt="Répartition de Myomyrus pharao"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Afrique : Bassin du fleuve Congo.</li>
+              <li>Localisation : République Démocratique du Congo (RDC).</li>
+              <li>Distribution restreinte aux zones fluviales du bassin central.</li>
+            </ul>
+            <p>
+              Espèce rare et peu capturée, ses populations ne sont pas considérées comme menacées dans l'immédiat du fait de l'immensité de son habitat, mais les données restent fragmentaires.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 27 °C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,2.</p>
+            <p><strong>GH :</strong> 3 à 10 °dGH.</p>
+            <p><strong>Courant :</strong> Modéré ; nécessite une filtration puissante et une eau très propre.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 400-500 litres en raison de sa taille adulte et de sa sensibilité. Substrat de sable fin obligatoire pour protéger ses organes sensoriels buccaux.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Carnivore insectivore et benthophage.
+            </p>
+            <p>
+              Se nourrit principalement de larves d'insectes, de petits vers (tubifex, vers de vase) et de petits crustacés aquatiques qu'il débusque dans le sol.
+            </p>
+            <p>
+              En aquarium, il peut être difficile à acclimater au sec ; les nourritures surgelées ou vivantes distribuées après extinction des feux sont préférables pour assurer une alimentation correcte.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

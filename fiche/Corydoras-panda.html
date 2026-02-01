@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Corydoras panda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Corydoras panda</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Siluriformes</li>
+              <li><span class="sys-label">Famille :</span> Callichthyidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Corydoras</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>C. panda</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Corydoras-panda/Corydoras-panda.PNG" alt="Corydoras panda">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Corydoras panda</strong> est l'une des espèces les plus populaires du genre <em>Corydoras</em>, décrite par Nijssen et Isbrücker en 1971. Ce petit poisson-chat cuirassé doit son nom à sa coloration caractéristique rappelant le panda géant : un corps beige clair ou blanc cassé, orné d'une tache noire couvrant l'œil, d'une autre sur la nageoire dorsale et d'une troisième sur le pédoncule caudal.
+          </p>
+          <p class="section-text">
+            C'est une espèce de taille modeste, les adultes mesurant généralement entre 4 et 5&nbsp;cm. Comme tous les membres de sa famille, il possède des plaques osseuses protectrices sur les flancs au lieu d'écailles, ainsi que des barbillons sensoriels autour de la bouche pour détecter la nourriture dans le substrat.
+          </p>
+          <p class="section-text">
+            Il est capable de respirer l'air atmosphérique grâce à un système vasculaire intestinal modifié, ce qui explique ses remontées rapides et occasionnelles vers la surface ("la pipe").
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson strictement grégaire et benthique (vivant au fond). Il est impératif de le maintenir en groupe d'au moins 6 à 8 individus, l'idéal étant un banc d'une dizaine de spécimens pour observer un comportement naturel. Plus le groupe est grand, plus les poissons sont actifs et confiants.
+          </p>
+          <p class="section-text">
+            Extrêmement pacifique, il ignore les autres espèces nageant dans les strates supérieures. Il passe la majeure partie de son temps à fouiller le sol avec ses barbillons. Un substrat de sable fin (type sable de Loire ou sable de quartz arrondi) est obligatoire pour ne pas user ou blesser ses barbillons fragiles, ce qui entraînerait des infections bactériennes.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            La reproduction suit le schéma classique des Corydoras avec la position en "T". Le mâle se place perpendiculairement à la femelle pour féconder les œufs qu'elle retient entre ses nageoires pelviennes.
+          </p>
+          <p class="section-text">
+            Les œufs, adhésifs, sont ensuite déposés par la femelle sur les vitres de l'aquarium ou sur des plantes à larges feuilles. L'incubation dure environ 4 à 5 jours selon la température. Les alevins de <em>C. panda</em> sont réputés un peu plus sensibles à la qualité de l'eau que ceux d'autres espèces comme <em>C. aeneus</em>.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le dimorphisme est visible chez les sujets adultes vus du dessus. La femelle est sensiblement plus large et plus ronde au niveau de l'abdomen, surtout en période de reproduction. Le mâle reste plus svelte et est souvent légèrement plus petit.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> En moyenne 5 à 10 ans dans de bonnes conditions de maintenance.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire du haut bassin amazonien au Pérou, plus précisément de la région de Huánuco (Rio Aquas Calientes, un affluent du Rio Pachitea qui rejoint le Rio Ucayali).
+          </p>
+          <p class="section-text">
+            Son habitat naturel est constitué de cours d'eau clairs ou d'eaux noires, souvent avec un courant modéré et un fond sablonneux. Provenant de zones proches des contreforts des Andes, les eaux qu'il fréquente sont souvent un peu plus fraîches que celles des grands fleuves amazoniens de plaine.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Corydoras-panda/Maps-Corydoras-panda.PNG"
+              alt="Répartition de Corydoras panda"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud.</li>
+              <li>Pérou (Bassin du Rio Ucayali).</li>
+              <li>Rio Aquas Calientes.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 25&nbsp;°C (préfère les eaux légèrement fraîches, éviter les températures > 26°C sur le long terme).</p>
+            <p><strong>pH :</strong> 6,0 à 7,5 (idéalement autour de la neutralité ou légèrement acide).</p>
+            <p><strong>GH :</strong> 2 à 12&nbsp;°dGH.</p>
+            <p><strong>Substrat :</strong> Sable fin non coupant impératif.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80&nbsp;L (environ 80cm de façade) pour offrir une surface au sol suffisante à un groupe.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore à tendance carnivore/insectivore benthique.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de vers, de larves d'insectes et de petits crustacés trouvés dans le sédiment.
+            </p>
+            <p>
+              En aquarium, il accepte les comprimés de fond (tabs), mais nécessite un apport régulier de nourriture vivante ou congelée (vers de vase, tubifex, daphnies) pour une santé optimale. Il ne se contente pas des "déchets" des autres poissons.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

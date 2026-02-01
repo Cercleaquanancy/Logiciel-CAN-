@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Myomyrus macrops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Myomyrus macrops</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Osteoglossiformes</li>
+              <li><span class="sys-label">Famille :</span> Mormyridae</li>
+              <li><span class="sys-label">Genre :</span> <em>Myomyrus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>M. macrops</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Myomyrus-macrops/Myomyrus-macrops.PNG" alt="Myomyrus macrops">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Myomyrus macrops</strong> est un poisson électrique de la famille des Mormyridae, originaire des bassins fluviaux d'Afrique centrale. Décrit par Boulenger en 1890, il se distingue des autres membres de son genre par la taille proportionnellement plus importante de ses globes oculaires, d'où son épithète spécifique <em>macrops</em> (grands yeux).
+          </p>
+          <p class="section-text">
+            Cette espèce atteint une taille moyenne comprise entre 15 et 20 cm. Son corps est allongé, comprimé latéralement, avec un profil dorsal légèrement convexe. La tête est caractérisée par un museau court et arrondi. Sa livrée est sobre, variant du gris argenté au brun violacé, avec des reflets métalliques selon l'incidence de la lumière. Comme ses congénères, il possède un organe électrique capable de générer des décharges de faible voltage pour l'électrolocalisation et la communication interspécifique.
+          </p>
+          <p class="section-text">
+            Bien que ses yeux soient plus développés que chez d'autres Mormyridés, sa vision reste secondaire par rapport à son sens électrique. La nageoire dorsale est courte et située très en arrière du corps, commençant bien après l'origine de la nageoire anale, qui est nettement plus longue.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Myomyrus macrops</em> est une espèce benthique au mode de vie essentiellement nocturne ou crépusculaire. Il passe la journée dissimulé dans les zones encombrées de racines ou de débris végétaux. En aquarium, il se montre timide et nécessite de nombreuses cachettes pour se sentir en sécurité.
+          </p>
+          <p class="section-text">
+            Il présente un comportement territorial envers les autres poissons électriques, les décharges de chaque individu pouvant interférer avec celles de ses voisins. En dehors de cette agressivité intraspécifique liée à la gestion de l'espace électrique, c'est un poisson pacifique qui ignore les autres colocataires non électriques. Il utilise son museau sensible pour fouiller continuellement le substrat à la recherche de nourriture.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Aucune information documentée sur la reproduction en captivité.
+          </p>
+          <p class="section-text">
+            En milieu naturel, la reproduction semble liée au cycle des crues saisonnières. Les décharges électriques jouent un rôle prépondérant dans la reconnaissance des sexes et les parades nuptiales. On suppose que l'espèce pond sur substrat caché dans les zones inondées, mais les données scientifiques précises sur le développement des œufs et des larves de cette espèce spécifique font actuellement défaut.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Non documenté par des caractères externes visibles. Chez les espèces proches, une légère différence dans la forme de la nageoire anale ou dans la signature électrique peut être observée chez les sujets matures, mais aucune étude n'a validé ces traits pour <em>M. macrops</em>.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Probablement de 5 à 8 ans en aquarium, sous réserve de maintenir une qualité d'eau irréprochable.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est principalement distribuée dans le bassin inférieur et moyen du fleuve Congo, ainsi que dans certains affluents comme le Kasaï. Elle affectionne les zones de rivières à courant modéré, où le fond est tapissé de sédiments fins, de sable et de matières organiques en décomposition.
+          </p>
+          <p class="section-text">
+            Elle évolue dans des eaux douces et souvent acides, typiques des régions forestières africaines. Le biotope est généralement sombre, avec une canopée dense limitant la pénétration de la lumière, ce qui favorise l'utilisation de ses capacités sensorielles électriques.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Myomyrus-macrops/Maps-Myomyrus-macrops.PNG"
+              alt="Répartition de Myomyrus macrops"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Afrique : Bassin du Congo.</li>
+              <li>Pays : République Démocratique du Congo, République du Congo.</li>
+              <li>Localisation : Fleuve Congo et ses principaux affluents.</li>
+            </ul>
+            <p>
+              Considérée comme "Préoccupation mineure" (LC) par l'UICN, bien que localement dépendante de la préservation de la qualité des eaux fluviales.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 26 °C.</p>
+            <p><strong>pH :</strong> 6,0 à 7,0.</p>
+            <p><strong>GH :</strong> 2 à 8 °dGH.</p>
+            <p><strong>Courant :</strong> Modéré ; oxygénation importante requise.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 300 litres pour un individu. Le bac doit posséder un substrat de sable doux (non abrasif) pour protéger les barbillons et les zones sensorielles buccales.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Carnivore insectivore.
+            </p>
+            <p>
+              Se nourrit de larves d'insectes aquatiques, de petits vers et de micro-crustacés fouisseurs.
+            </p>
+            <p>
+              En aquarium, il privilégie les nourritures vivantes ou congelées (vers de vase, artémias). Il est souvent nécessaire de le nourrir après l'extinction des lumières pour éviter que des poissons plus vifs ne consomment sa part.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

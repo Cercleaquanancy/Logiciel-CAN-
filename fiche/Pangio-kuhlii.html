@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pangio kuhlii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Pangio kuhlii</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Cobitidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Pangio</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. kuhlii</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Pangio-kuhlii/Pangio-kuhlii.PNG" alt="Pangio kuhlii">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Pangio kuhlii</strong>, communément appelé Loche coolie, est un petit poisson de fond serpentiforme originaire d'Asie du Sud-Est. Il appartient à la famille des Cobitidae (loches).
+          </p>
+          <p class="section-text">
+            Il mesure adulte entre <strong>8 et 10 cm</strong>, parfois jusqu'à 12 cm. Son corps est allongé et cylindrique, ressemblant à une petite anguille, avec une alternance de bandes verticales brun foncé à noires sur un fond jaune orangé ou saumoné. La bouche est entourée de barbillons sensibles.
+          </p>
+          <p class="section-text">
+            Il existe plusieurs espèces très similaires souvent vendues sous le nom de <em>P. kuhlii</em> (comme <em>P. semicincta</em> ou <em>P. myersi</em>), mais leurs besoins sont identiques. Une particularité anatomique est la présence d'une épine érectile sous l'œil, utilisée pour la défense.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson benthique (de fond) et principalement nocturne ou crépusculaire. C'est une espèce sociale et grégaire qui doit impérativement être maintenue en groupe d'au moins <strong>6 individus</strong>. Seul, il reste caché en permanence et dépérit.
+          </p>
+          <p class="section-text">
+            Il aime se faufiler dans les interstices, sous les racines et surtout s'enfouir dans le substrat. Un sol non coupant est donc obligatoire. Bien qu'il passe beaucoup de temps caché le jour, un groupe rassuré sortira lors des distributions de nourriture, créant un enchevêtrement de corps assez spectaculaire. Il est totalement pacifique.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            La reproduction est considérée comme très difficile, voire accidentelle en aquarium communautaire.
+          </p>
+          <p class="section-text">
+            Les œufs, de couleur verte, sont adhésifs et se fixent aux racines des plantes flottantes ou au décor. Pour réussir l'élevage, on utilise souvent des injections hormonales chez les professionnels. Cependant, des pontes spontanées surviennent parfois lors de changements de pression atmosphérique combinés à de gros changements d'eau.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Difficile à observer hors période de frai. Les femelles matures, chargées d'œufs, présentent un embonpoint très net au niveau de l'abdomen, laissant parfois entrevoir les œufs verts par transparence à travers la paroi abdominale. Les mâles peuvent avoir des nageoires pectorales légèrement plus grandes et épaissies (difficile à voir à l'œil nu).
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Longue pour un si petit poisson, souvent 10 ans et plus.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire d'Indonésie (Java, Sumatra, Bornéo) et de la péninsule malaise. Il vit dans les ruisseaux forestiers à courant lent et les zones marécageuses, où le fond est recouvert d'une épaisse couche de vase et de feuilles mortes (litière) dans laquelle il s'enfouit. L'eau y est souvent ambrée et acide.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Pangio-kuhlii/Maps-Pangio-kuhlii.PNG"
+              alt="Répartition de Pangio kuhlii"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Indonésie (Java, Sumatra, Bornéo).</li>
+              <li>Malaisie.</li>
+              <li>Thaïlande (Sud).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 30&nbsp;°C (aime la chaleur).</p>
+            <p><strong>pH :</strong> 5,5 à 7,0 (préfère l'eau acide).</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH.</p>
+            <p><strong>Substrat :</strong> Sable fin (type sable de Loire) OBLIGATOIRE. Le gravier coupant ou le quartz concassé blessent ses barbillons et empêchent son comportement fouisseur, entraînant des infections mortelles.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 60 à 80&nbsp;L pour un groupe.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore / détritivore.
+            </p>
+            <p>
+              Dans la nature, il tamise le sable pour trouver des larves d'insectes, des petits crustacés et des débris végétaux.
+            </p>
+            <p>
+              En aquarium, il mange tout ce qui tombe au fond. Il raffole des vers de vase (vivants ou congelés) qui l'incitent à sortir. Les pastilles de fond pour poissons fouisseurs sont une bonne base.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

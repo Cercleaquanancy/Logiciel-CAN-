@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Symphysodon aequifasciatus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Symphysodon aequifasciatus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Symphysodon</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>S. aequifasciatus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Symphysodon-aequifasciatus/Symphysodon-aequifasciatus.PNG" alt="Symphysodon aequifasciatus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Symphysodon aequifasciatus</strong>, universellement connu sous le nom de Discus, est souvent qualifié de "Roi de l'aquarium" en raison de sa majesté et de ses couleurs spectaculaires.
+          </p>
+          <p class="section-text">
+            C'est un grand cichlidé au corps discoïdal très compressé latéralement, atteignant <strong>15 à 20 cm</strong> de diamètre. À l'état sauvage, on distingue trois variétés principales basées sur la coloration (brun, bleu, vert). En captivité, des décennies de sélection ont produit des centaines de morphes aux couleurs éclatantes (Pigeon Blood, Marlboro Red, Blue Diamond, Snake Skin, etc.).
+          </p>
+          <p class="section-text">
+            C'est un poisson délicat qui ne pardonne pas les erreurs de maintenance, notamment concernant la qualité de l'eau et la température.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire et social qui a un besoin absolu de vivre en groupe (banc) d'au moins 5 à 6 individus. Une hiérarchie s'installe au sein du groupe, parfois avec quelques bousculades, mais sans violence excessive si l'espace est suffisant.
+          </p>
+          <p class="section-text">
+            Il est calme, lent et majestueux dans ses mouvements, mais peut se montrer très timide et stressé s'il n'y a pas assez de cachettes ou si l'agitation autour du bac est trop importante. Il ne supporte pas la cohabitation avec des poissons trop vifs ou agressifs.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            La reproduction du Discus est unique chez les poissons. Le couple nettoie un support vertical (racine, feuille, cône de ponte) et y dépose les œufs. Ils protègent la ponte farouchement.
+          </p>
+          <p class="section-text">
+            À l'éclosion, les alevins se nourrissent d'un mucus nutritif sécrété par la peau des deux parents (souvent appelé "lait de discus"). Sans ce premier nourrissage parental, les alevins ne survivent généralement pas, ce qui rend l'élevage artificiel extrêmement complexe.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très difficile à identifier en dehors de la période de reproduction. Lors de la ponte, la papille génitale de la femelle est plus large et arrondie, celle du mâle plus fine et pointue. Certains mâles âgés peuvent présenter un front légèrement plus bossu.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Longue, entre 10 et 15 ans dans de bonnes conditions.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire du bassin de l'Amazone (Brésil, Pérou, Colombie). Il fréquente les eaux calmes ("igarapés") et les zones de forêts inondées, au milieu des racines d'arbres immergés qui lui servent de refuge. L'eau y est généralement très chaude, très douce et acide.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Symphysodon-aequifasciatus/Maps-Symphysodon-aequifasciatus.PNG"
+              alt="Répartition de Symphysodon aequifasciatus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud (Bassin Amazonien).</li>
+              <li>Brésil (Rios Negro, Madeira, Tapajós, etc.).</li>
+              <li>Pérou (Rio Nanay).</li>
+              <li>Colombie.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 28 à 32&nbsp;°C (Impératif : c'est un poisson d'eau très chaude, son métabolisme ralentit dangereusement en dessous de 28°C).</p>
+            <p><strong>pH :</strong> 4,5 à 7,0 (4,5-6,0 pour les sauvages ; jusqu'à 7,0-7,2 pour les hybrides d'élevage).</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH (eau douce).</p>
+            <p><strong>Pollution :</strong> Tolérance zéro aux nitrates et aux nitrites. Changements d'eau fréquents obligatoires.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 350 à 450&nbsp;L pour un petit groupe. Une hauteur d'eau de 60 cm est recommandée.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à tendance omnivore.
+            </p>
+            <p>
+              Nécessite une alimentation riche et fréquente (plusieurs fois par jour).
+            </p>
+            <p>
+              La base de l'alimentation en captivité est souvent constituée de "pâtée pour discus" (mélange à base de cœur de bœuf ou de dinde, crevettes, épinards), complétée par des granulés de haute qualité et du congelé (artémias, vers de vase).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

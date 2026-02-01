@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Nannacara anomala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Nannacara anomala</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Nannacara</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>N. anomala</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Nannacara-anomala/Nannacara-anomala.PNG" alt="Nannacara anomala">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Nannacara anomala</strong>, souvent appelé Cichlidé nain à œil d'or, est une espèce robuste originaire du nord de l'Amérique du Sud.
+          </p>
+          <p class="section-text">
+            Il présente un fort dimorphisme sexuel, non seulement par la taille mais aussi par la couleur. Le mâle, qui atteint environ <strong>8 cm</strong>, arbore une magnifique robe aux reflets métalliques verts, bleus et dorés. La femelle, plus petite (environ 4 à 5 cm), reste généralement beige ou jaunâtre avec une bande latérale sombre.
+          </p>
+          <p class="section-text">
+            Sa caractéristique la plus frappante est la couleur de ses yeux : un iris doré très lumineux traversé par une barre noire, d'où son nom commun.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            En temps normal, c'est un poisson relativement paisible qui vit en couple ou en harem (un mâle pour plusieurs femelles). Il occupe la partie inférieure de l'aquarium.
+          </p>
+          <p class="section-text">
+            Cependant, le comportement change radicalement lors de la reproduction. La femelle devient <strong>extrêmement agressive</strong> pour protéger sa progéniture. Elle n'hésite pas à attaquer des poissons trois fois plus gros qu'elle et se retourne violemment contre le mâle, qu'elle peut tuer s'il ne peut pas se cacher ou fuir.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat caché ou découvert).
+          </p>
+          <p class="section-text">
+            La femelle dépose ses œufs dans une cachette (pot de fleur, noix de coco) ou sur une pierre plate abritée.
+          </p>
+          <p class="section-text">
+            Dès la ponte, la femelle change de couleur : elle prend un motif en damier noir et jaune très contrasté. Elle chasse alors le mâle impitoyablement. En aquarium de volume moyen (< 100L), il est souvent nécessaire de retirer le mâle après la ponte pour sa propre survie.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué. Le mâle est plus grand, avec des nageoires dorsale et anale longues et effilées, et une couleur métallique bleutée/verte. La femelle est plus petite, plus ronde, aux nageoires plus courtes et aux teintes beiges/marron.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire des plaines côtières du Guyana et du Suriname. Il fréquente les zones inondées, les criques de savane et les petits cours d'eau à courant lent, souvent encombrés de végétation.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Nannacara-anomala/Maps-Nannacara-anomala.PNG"
+              alt="Répartition de Nannacara anomala"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud (Nord-Est).</li>
+              <li>Guyana.</li>
+              <li>Suriname.</li>
+              <li>Guyane française (occasionnel).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C (assez tolérant).</p>
+            <p><strong>pH :</strong> 6,0 à 7,5 (préfère l'eau légèrement acide mais s'adapte).</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 60 à 80&nbsp;L pour un couple. Le bac doit être très structuré avec de nombreuses cachettes visuelles (racines, plantes touffues) pour permettre au mâle de se soustraire à la vue de la femelle en cas de reproduction.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore à tendance omnivore.
+            </p>
+            <p>
+              Dans la nature, il chasse de petits invertébrés benthiques.
+            </p>
+            <p>
+              En aquarium, il accepte les granulés, mais préfère nettement la nourriture vivante ou congelée (vers de vase, daphnies, artémias), indispensable pour déclencher la reproduction et maintenir de belles couleurs.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

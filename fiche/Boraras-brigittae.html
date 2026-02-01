@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Boraras brigittae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Boraras brigittae</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Boraras</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. brigittae</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Boraras-brigittae/Boraras-brigittae.PNG" alt="Boraras brigittae">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Boraras brigittae</strong>, communément appelé Rasbora moustique ou Chili Rasbora, est un poisson minuscule originaire du sud-ouest de Bornéo. Il a été décrit par Dieter Vogt en 1978.
+          </p>
+          <p class="section-text">
+            C'est l'un des plus petits poissons d'aquarium au monde, mesurant à peine <strong>1,5 à 2,0 cm</strong> à l'âge adulte. Il est très recherché pour sa coloration spectaculaire : les mâles dominants arborent un corps rouge rubis intense, traversé par une ligne latérale noire continue, elle-même surmontée d'un trait rouge vif très lumineux.
+          </p>
+          <p class="section-text">
+            Il est souvent confondu avec des espèces proches comme <em>Boraras merah</em> (qui possède une ligne noire discontinue et une tache ronde) ou <em>Boraras urophthalmoides</em> (qui est plus orange/brun avec une ligne noire plus fine).
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson de banc qui doit impérativement être maintenu en groupe d'au moins <strong>10 individus</strong> (l'idéal étant 15-20). Isolé, il est extrêmement timide, perd ses couleurs et reste caché.
+          </p>
+          <p class="section-text">
+            Très paisible, c'est le candidat parfait pour les nano-aquariums plantés et les bacs à crevettes (<em>Neocaridina</em> ou <em>Caridina</em>), car sa bouche est trop petite pour prédater les crevettes adultes ou juvéniles. Il ne doit pas être associé à des poissons vifs ou de grande taille qui le stresseraient ou le mangeraient.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (diffuseur d'œufs).
+          </p>
+          <p class="section-text">
+            La reproduction est continue : les mâles paradent quotidiennement. Les femelles pondent quelques œufs minuscules par jour parmi la végétation fine (mousse de Java). Il n'y a pas de soins parentaux.
+          </p>
+          <p class="section-text">
+            Bien que les adultes ne chassent pas activement leurs alevins s'ils sont bien nourris, le taux de survie en bac communautaire est faible. Les alevins sont microscopiques et nécessitent des infusoires ou des paramécies pour survivre les premiers jours.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué chez les adultes. Les mâles sont d'un rouge écarlate intense et sont plus sveltes. Les femelles sont plus rondes, plus grandes et présentent une coloration plus terne, tirant sur l'orange pâle ou le rose.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Étonnamment longue pour sa taille, entre 3 et 5 ans, voire plus dans des conditions optimales (eau acide).
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est endémique de la partie indonésienne de l'île de Bornéo (Kalimantan). Il vit exclusivement dans les marais tourbeux d'eau noire ("blackwater").
+          </p>
+          <p class="section-text">
+            L'eau de son habitat est très calme, teintée couleur thé par les tanins (feuilles en décomposition, tourbe), très douce et acide (pH pouvant descendre à 4.0). La lumière y est tamisée par la canopée forestière.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Boraras-brigittae/Maps-Boraras-brigittae.PNG"
+              alt="Répartition de Boraras brigittae"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Indonésie (Endémique de Bornéo).</li>
+              <li>Sud-Ouest de Kalimantan.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 4,0 à 7,0 (préfère l'eau acide, idéalement pH 5.0 - 6.5).</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH (eau douce recommandée).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 30 à 40&nbsp;L. Bien que minuscule, il a besoin de nager et la stabilité des paramètres est cruciale pour une si petite espèce.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / insectivore (micro-prédateur).
+            </p>
+            <p>
+              Dans la nature, il se nourrit de zooplancton et de minuscules insectes.
+            </p>
+            <p>
+              En aquarium, la taille de la nourriture est le facteur limitant. Il faut des paillettes réduites en poudre, des nauplies d'artémias, des micro-vers ou des daphnies très petites.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

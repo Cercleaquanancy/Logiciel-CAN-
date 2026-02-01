@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Parachromis dovii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Parachromis dovii</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Parachromis</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. dovii</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Parachromis-dovii/Parachromis-dovii.PNG" alt="Parachromis dovii">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Parachromis dovii</strong> est le géant des cichlidés d'Amérique centrale. C'est une espèce impressionnante, dotée d'un corps allongé et très musclé, d'une bouche immense et de dents caniniformes proéminentes.
+          </p>
+          <p class="section-text">
+            Les mâles peuvent atteindre une taille record de <strong>72 cm</strong> dans la nature, bien qu'ils mesurent plus souvent entre 50 et 60 cm en aquarium. Les femelles sont nettement plus petites, atteignant généralement 35 à 40 cm.
+          </p>
+          <p class="section-text">
+            La coloration varie selon l'âge et le sexe. Les mâles adultes arborent souvent une robe dorée, verdâtre ou argentée avec de nombreux points noirs et des reflets bleutés ou violets, tandis que les femelles sont majoritairement jaunes avec une ligne latérale noire très marquée.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un super-prédateur au sommet de la chaîne alimentaire dans son biotope. Son comportement est extrêmement territorial, agressif et intelligent.
+          </p>
+          <p class="section-text">
+            En aquarium, il est réputé pour son intolérance. Il est généralement impossible de le maintenir en bac communautaire, sauf dans des installations publiques immenses (plusieurs milliers de litres). Pour un amateur, la maintenance en couple spécifique (seul dans le bac) est la seule option viable, et même là, le mâle peut devenir dangereux pour la femelle si l'espace est insuffisant.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            La reproduction est spectaculaire mais nécessite de grandes précautions en raison de la violence potentielle du mâle. La femelle pond plusieurs milliers d'œufs (parfois plus de 3000) sur une roche plate nettoyée.
+          </p>
+          <p class="section-text">
+            Les deux parents participent activement à la garde. Ils défendent le nid avec une férocité absolue, n'hésitant pas à attaquer la main de l'aquariophile. Les alevins grandissent très vite.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué. Le mâle est beaucoup plus grand, plus massif, et possède une coloration plus complexe avec des reflets irisés. La femelle est plus petite et présente une coloration de fond jaune avec une bande noire horizontale bien définie.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Peut dépasser 15 ans, voire 20 ans dans des conditions optimales.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il habite les lacs et les grands fleuves d'Amérique centrale (versants Atlantique et Pacifique). Il fréquente diverses profondeurs, des zones côtières peu profondes aux eaux plus libres, utilisant sa vitesse pour chasser d'autres poissons.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Parachromis-dovii/Maps-Parachromis-dovii.PNG"
+              alt="Répartition de Parachromis dovii"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Honduras (rivière Aguan).</li>
+              <li>Nicaragua (Grands Lacs Nicaragua et Managua).</li>
+              <li>Costa Rica (versants Atlantique et Pacifique).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH (eau dure).</p>
+            <p><strong>Courant :</strong> Modéré à fort, avec une filtration surdimensionnée indispensable (poisson très salissant).</p>
+            <p><strong>Volume conseillé :</strong> Considérable. Un minimum absolu de <strong>800 à 1000&nbsp;L</strong> est requis pour un couple adulte, mais un volume de 1500 à 2000&nbsp;L est préférable pour leur bien-être à long terme.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> piscivore strict (prédateur).
+            </p>
+            <p>
+              Dans la nature, il se nourrit presque exclusivement de poissons.
+            </p>
+            <p>
+              En aquarium, il accepte les gros granulés, les poissons entiers (éperlans, truites portions), les crevettes et les vers de terre.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Puntigrus tetrazona</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Puntigrus tetrazona</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Cyprinidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Puntigrus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. tetrazona</em></li>
+              <li><span class="sys-label">Syn. :</span> <em>Puntius tetrazona</em>, <em>Barbus tetrazona</em></li>
+              <li><span class="sys-label">Groupe :</span> <em>Barbus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Puntigrus-tetrazona/Puntigrus-tetrazona.PNG" alt="Puntigrus tetrazona">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Puntigrus tetrazona</strong>, universellement connu sous le nom de Barbus de Sumatra ou Tétrazona, est l'un des poissons d'aquarium les plus populaires. Reclassé dans le genre <em>Puntigrus</em> en 2013, il se distingue par son corps haut, comprimé latéralement et ses quatre bandes verticales noires caractéristiques sur un fond jaune orangé à doré.
+          </p>
+          <p class="section-text">
+            C'est un poisson actif et robuste, atteignant généralement <strong>5 à 7 cm</strong>. Il existe de nombreuses variétés d'élevage (vert mousse, albinos, etc.), mais la forme sauvage reste la plus emblématique.
+          </p>
+          <p class="section-text">
+            C'est une espèce magnifique mais qui possède une réputation sulfureuse en bac communautaire en raison de sa tendance à mordiller les nageoires.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire très vif qui établit une hiérarchie de groupe complexe. Il doit impérativement être maintenu en banc d'au moins <strong>10 individus</strong>.
+          </p>
+          <p class="section-text">
+            S'il est maintenu en nombre insuffisant (moins de 6-8), il s'ennuie et devient agressif envers les autres habitants, pratiquant la "ptérygiophagie" (morsure des nageoires). Il harcèle alors les poissons lents ou à voiles (Scalaires, Guppys, Gouramis, Bettas).
+          </p>
+          <p class="section-text">
+            En revanche, dans un grand groupe, ils passent leur temps à se pourchasser et à parader entre eux, laissant généralement les autres espèces tranquilles. C'est un nageur infatigable qui occupe tout l'espace de nage.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            C'est un diffuseur d'œufs. Le couple fraie généralement le matin parmi les plantes fines. La femelle expulse les œufs qui sont immédiatement fécondés par le mâle. Les œufs sont adhésifs.
+          </p>
+          <p class="section-text">
+            Il n'y a pas de soins parentaux ; au contraire, les adultes sont de grands mangeurs d'œufs et doivent être retirés juste après la ponte pour espérer voir des alevins.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est plus svelte, plus coloré, avec un nez souvent rouge vif et des nageoires (dorsale et pelviennes) bordées de rouge intense. La femelle est plus ronde, plus grande au niveau de l'abdomen, et ses couleurs sont légèrement plus ternes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 5 à 7 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire des îles de Sumatra et de Bornéo (Indonésie). Il fréquente les eaux calmes ou à courant modéré des rivières forestières, ainsi que les marécages tourbeux. L'eau y est souvent claire ou légèrement teintée, avec un substrat de sable et de feuilles mortes.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Puntigrus-tetrazona/Maps-Puntigrus-tetrazona.PNG"
+              alt="Répartition de Puntigrus tetrazona"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Indonésie : Sumatra et Bornéo (Kalimantan).</li>
+              <li>Souvent confondu avec <em>Puntigrus anchisporus</em> (Bornéo).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 26&nbsp;°C (préfère une eau pas trop chaude).</p>
+            <p><strong>pH :</strong> 6,0 à 7,5.</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Modéré, apprécie une bonne oxygénation.</p>
+            <p><strong>Volume conseillé :</strong> Bien que de taille moyenne, c'est un nageur très actif. Un minimum de <strong>100 à 120&nbsp;L</strong> avec une façade d'au moins 80 cm à 100 cm est nécessaire pour un banc. Il ne convient pas aux petits volumes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore vorace.
+            </p>
+            <p>
+              Dans la nature, il consomme des vers, des crustacés et des matières végétales.
+            </p>
+            <p>
+              En aquarium, il mange tout avec frénésie. Il est important de lui fournir une part végétale (granulés à la spiruline, légumes pochés) en plus des proies carnées (vers de vase, artémias) pour éviter l'embonpoint et maintenir sa santé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

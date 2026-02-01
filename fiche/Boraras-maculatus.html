@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Boraras maculatus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Boraras maculatus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Boraras</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. maculatus</em></li>
+              <li><span class="sys-label">Syn. :</span> <em>Rasbora maculata</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Boraras-maculatus/Boraras-maculatus.PNG" alt="Boraras maculatus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Boraras maculatus</strong>, souvent appelé Rasbora nain ou Rasbora tacheté, est l'espèce type du genre <em>Boraras</em>, décrite par Duncker en 1904.
+          </p>
+          <p class="section-text">
+            C'est un poisson miniature mesurant à peine <strong>2,0 à 2,5 cm</strong>, ce qui le classe parmi les plus petits vertébrés. Il possède un corps rouge orangé (plus intense chez le mâle) marqué par <strong>trois taches noires distinctes</strong> : une grosse tache latérale derrière l'opercule, une plus petite à la base de la nageoire anale et une autre à la base de la queue.
+          </p>
+          <p class="section-text">
+            Il se distingue de <em>Boraras brigittae</em> par l'absence de ligne noire continue sur le flanc, et de <em>Boraras merah</em> par la netteté et la rondeur de ses taches (celles de <em>merah</em> sont souvent moins définies).
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson de banc grégaire et paisible, parfaitement adapté aux "nano-aquariums". Il est indispensable de le maintenir en groupe d'au moins <strong>10 à 12 individus</strong> pour observer un comportement naturel et des couleurs vives.
+          </p>
+          <p class="section-text">
+            Très timide s'il est associé à de gros poissons, il s'épanouit dans un bac spécifique ou avec des crevettes. Il apprécie la végétation dense et une lumière tamisée qui le rassure.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (diffuseur d'œufs).
+          </p>
+          <p class="section-text">
+            La reproduction est continue en aquarium si les paramètres sont bons (eau acide et douce). Les mâles paradent pour attirer les femelles vers des massifs de plantes fines (mousse de Java) où quelques œufs sont expulsés.
+          </p>
+          <p class="section-text">
+            Les parents ne s'occupent pas des œufs et peuvent les manger. Les alevins sont minuscules et nécessitent une micro-faune (infusoires) pour se nourrir les premiers jours.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est plus svelte et présente une coloration rouge beaucoup plus intense et uniforme que la femelle. La femelle est plus ronde, avec un ventre souvent argenté ou rose pâle, et ses couleurs sont plus ternes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire d'Asie du Sud-Est, présent dans la péninsule malaise (Malaisie, sud de la Thaïlande), à Singapour et sur l'île de Sumatra (Indonésie).
+          </p>
+          <p class="section-text">
+            Il habite les ruisseaux forestiers lents et les marais tourbeux d'eau noire ("blackwater"). L'eau y est acide (pH 4,5 à 6,5), très douce et teintée par les tanins des feuilles mortes et du bois en décomposition.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Boraras-maculatus/Maps-Boraras-maculatus.PNG"
+              alt="Répartition de Boraras maculatus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Malaisie (Péninsule).</li>
+              <li>Singapour.</li>
+              <li>Indonésie (Sumatra).</li>
+              <li>Thaïlande (Sud).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 4,5 à 6,5 (eau acide impérative pour le bien-être).</p>
+            <p><strong>GH :</strong> 1 à 10&nbsp;°dGH (eau très douce).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 20 à 30&nbsp;L. Idéal pour les petits volumes plantés, à condition que l'eau soit stable et mature.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / insectivore (micro-prédateur).
+            </p>
+            <p>
+              Dans la nature, il chasse de minuscules insectes et du zooplancton.
+            </p>
+            <p>
+              En aquarium, il nécessite une nourriture adaptée à sa petite bouche : nauplies d'artémias, micro-vers, daphnies, cyclops et paillettes réduites en poudre fine.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

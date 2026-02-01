@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hyphessobrycon eques</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Hyphessobrycon eques</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Characiformes</li>
+              <li><span class="sys-label">Famille :</span> Characidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Hyphessobrycon</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>H. eques</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Hyphessobrycon-eques/Hyphessobrycon-eques.PNG" alt="Hyphessobrycon eques">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Hyphessobrycon eques</strong>, très souvent commercialisé sous le nom de Tétra serpae ou Tétra sang, est l'un des characidés les plus colorés et populaires d'Amérique du Sud.
+          </p>
+          <p class="section-text">
+            Il mesure adulte entre <strong>3,5 et 4 cm</strong>. Son corps, assez haut et comprimé latéralement, affiche une coloration rouge brique à rouge sang intense, particulièrement chez les mâles dominants. Il se distingue par une tache noire en forme de virgule derrière l'opercule (parfois estompée) et une nageoire dorsale majoritairement noire, bordée de blanc à la pointe. La nageoire anale est rouge bordée de noir et de blanc.
+          </p>
+          <p class="section-text">
+            C'est un poisson magnifique mais qui possède une réputation de "mordilleur de nageoires" s'il est mal maintenu.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire qui établit une hiérarchie de groupe parfois houleuse. Il doit impérativement être maintenu en banc d'au moins <strong>10 individus</strong>.
+          </p>
+          <p class="section-text">
+            En petit groupe (moins de 6-8), il devient stressé et agressif envers les autres habitants, avec une fâcheuse tendance à la ptérygiophagie (morsure des nageoires), ciblant les poissons lents ou à voiles (Guppys, Scalaires, Bettas).
+          </p>
+          <p class="section-text">
+            Dans un groupe suffisamment grand et un bac spacieux, l'agressivité se disperse entre eux (parades d'intimidation) et ils laissent généralement les autres espèces tranquilles.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            C'est un diffuseur d'œufs. Le frai a lieu parmi les plantes fines. Les œufs sont non adhésifs et tombent au sol.
+          </p>
+          <p class="section-text">
+            Les parents sont de grands consommateurs d'œufs. Pour réussir l'élevage, il est nécessaire d'isoler le couple ou le groupe, de protéger le fond avec une grille ou des billes, et de retirer les adultes juste après la ponte.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est généralement plus svelte et d'un rouge plus intense et profond. La femelle est plus ronde (surtout au niveau du ventre), plus haute de corps et sa coloration rouge est souvent un peu plus pâle ou tirant sur l'orangé.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans, parfois plus.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il possède une vaste répartition en Amérique du Sud. On le trouve principalement dans le bassin amazonien (Rio Guaporé, Rio Madeira) et le bassin du Rio Paraguay. Il fréquente les eaux calmes, les bras morts (lagunes) et les zones inondées, souvent riches en végétation aquatique.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Hyphessobrycon-eques/Maps-Hyphessobrycon-eques.PNG"
+              alt="Répartition de Hyphessobrycon eques"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Brésil (Mato Grosso, Amazonie).</li>
+              <li>Paraguay.</li>
+              <li>Bolivie.</li>
+              <li>Argentine (Nord).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 27&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,5 (tolérant, mais préfère l'eau légèrement acide).</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80 à 100&nbsp;L. Bien que petit, son comportement actif et parfois turbulent nécessite de l'espace pour maintenir un banc suffisant et limiter l'agressivité.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore vorace.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de vers, de crustacés et de plantes.
+            </p>
+            <p>
+              En aquarium, il mange tout ce qui passe à sa portée. Pour maintenir sa couleur rouge éclatante, une alimentation variée incluant des proies vivantes ou congelées (vers de vase, daphnies, artémias) et des granulés riches en caroténoïdes est recommandée.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

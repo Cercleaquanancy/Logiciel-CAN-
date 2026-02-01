@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Parachromis friedrichsthalii</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Parachromis friedrichsthalii</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Parachromis</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>P. friedrichsthalii</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Parachromis-friedrichsthalii/Parachromis-friedrichsthalii.PNG" alt="Parachromis friedrichsthalii">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Parachromis friedrichsthalii</strong> est un grand cichlidé d'Amérique centrale, morphologiquement proche de <em>P. motaguensis</em> et <em>P. loisellei</em>. Il se distingue par une coloration de fond jaune à dorée, marquée de taches noires irrégulières formant souvent des ocelles ou des bandes verticales brisées sur les flancs.
+          </p>
+          <p class="section-text">
+            C'est un poisson robuste au corps comprimé latéralement, doté d'une mâchoire protractile puissante et d'une dentition adaptée à la prédation (dents caniniformes). Les mâles peuvent atteindre une longueur standard de <strong>28 à 30 cm</strong>, tandis que les femelles restent généralement plus petites, autour de 20 à 25 cm.
+          </p>
+          <p class="section-text">
+            Bien que populaire chez les amateurs de gros cichlidés pour sa coloration spectaculaire, c'est une espèce exigeante en termes d'espace et de gestion de l'agressivité intraspécifique.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un prédateur piscivore territorial et agressif, typique du genre <em>Parachromis</em>. Son tempérament est vif et il défend son territoire avec férocité, particulièrement en période de reproduction.
+          </p>
+          <p class="section-text">
+            Il ne convient pas aux aquariums communautaires classiques. Il doit être maintenu soit en couple formé (après une phase d'acclimatation délicate), soit avec d'autres cichlidés de taille et de tempérament similaires dans de très grands volumes. Il a tendance à creuser le substrat et peut déraciner les plantes.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            La reproduction est biparentale. Le couple nettoie une surface plane (pierre plate, racine) pour y déposer plusieurs centaines d'œufs. La femelle s'occupe de la ventilation des œufs tandis que le mâle défend le périmètre.
+          </p>
+          <p class="section-text">
+            Les alevins éclosent après 3 à 4 jours et nagent librement quelques jours plus tard. Les parents sont extrêmement protecteurs et agressifs envers tout intrus durant cette période.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les mâles sont plus grands et développent des extensions plus longues et effilées sur les nageoires dorsale et anale. Les femelles, bien que plus petites, arborent souvent des couleurs très contrastées et intenses (jaune vif et noir) spécifiquement en période de reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 10 à 12 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            On le trouve dans les rivières, les lacs et les lagunes d'Amérique centrale, préférant souvent les eaux calmes ou à courant modéré avec de nombreuses cachettes (racines immergées, rochers) où il chasse à l'affût.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Parachromis-friedrichsthalii/Maps-Parachromis-friedrichsthalii.PNG"
+              alt="Répartition de Parachromis friedrichsthalii"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique centrale (versant Atlantique).</li>
+              <li>Sud du Mexique (États de Chiapas, Quintana Roo).</li>
+              <li>Belize, Guatemala et Honduras.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0 (eau neutre à alcaline).</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH (eau dure).</p>
+            <p><strong>Courant :</strong> Modéré, avec une bonne oxygénation et une filtration très efficace (gros pollueur).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 450 à 600&nbsp;L pour un couple. Beaucoup plus pour une communauté de cichlidés.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / piscivore.
+            </p>
+            <p>
+              Dans la nature, il chasse les petits poissons et les invertébrés.
+            </p>
+            <p>
+              En aquarium, il accepte les granulés pour gros cichlidés, mais nécessite des apports réguliers de nourriture crue : crevettes, moules, vers de terre, morceaux de poisson.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

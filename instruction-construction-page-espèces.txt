@@ -1,330 +1,315 @@
 je veux que tu le fasse des fiches espèces qui suive le model que je te donne tu peux plus ou moins dévelloper les information en fonction du monbre d'information, voici le model <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Alfaro cultratus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <title>Betta picta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      min-height: 100vh;
-    }
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
 
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
 
-    .page {
-      max-width: 1000px;
-      margin: 16px auto 20px auto;
-      padding: 0 12px 20px 12px;
-    }
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
 
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
 
-    .fiche-wrapper {
-      background: #020617;
-      border-radius: 12px;
-      border: 1px solid #1f2937;
-      overflow: hidden;
-    }
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
 
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
 
-    .fiche-header-bar {
-      background: #16a34a;
-      color: #f9fafb;
-      padding: 12px 16px;
-      text-align: center;
-    }
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
 
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
 
-    .fiche-header-bar h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
 
+    .sys-list {
+      list-style: none;
+    }
 
-    .fiche-header-bar h2 {
-      font-size: 0.9rem;
-      font-weight: 400;
-      font-style: italic;
-      opacity: 0.95;
-    }
+    .sys-list li {
+      margin-bottom: 3px;
+    }
 
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
 
-    .fiche-body {
-      padding: 16px 18px 18px 18px;
-    }
+    .fiche-photo {
+      text-align: center;
+    }
 
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
 
-    .top-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 14px;
-    }
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
 
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
 
-    .sys-block {
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      padding: 10px 12px;
-      background: #020617;
-      font-size: 0.8rem;
-    }
+    .section-text strong { color: #fbbf24; }
 
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
 
-    .sys-block h2 {
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      color: #38bdf8;
-    }
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
 
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
 
-    .sys-list {
-      list-style: none;
-    }
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
 
+    .bloc ul { padding-left: 16px; }
 
-    .sys-list li {
-      margin-bottom: 3px;
-    }
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
 
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
 
-    .sys-label {
-      font-weight: 600;
-      color: #fbbf24;
-    }
+    .note-retour a { color: #38bdf8; }
 
-
-    .fiche-photo {
-      text-align: center;
-    }
-
-
-    .fiche-photo img {
-      max-width: 100%;
-      max-height: 260px;
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      object-fit: cover;
-    }
-
-
-    .section-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-top: 10px;
-      margin-bottom: 4px;
-      text-decoration: underline;
-    }
-
-
-    .section-text {
-      font-size: 0.85rem;
-      color: #e5e7eb;
-      line-height: 1.4;
-      margin-bottom: 4px;
-    }
-
-
-    .section-text strong { color: #fbbf24; }
-
-
-    .grid-bottom {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-
-    .bloc {
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      padding: 10px 12px;
-      background: #020617;
-    }
-
-
-    .bloc h3 {
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      color: #38bdf8;
-    }
-
-
-    .bloc p, .bloc ul {
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      line-height: 1.4;
-    }
-
-
-    .bloc ul { padding-left: 16px; }
-
-
-    .carte-img {
-      width: 100%;
-      height: 120px;
-      border-radius: 8px;
-      border: 1px solid #4b5563;
-      object-fit: cover;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-
-    .note-retour {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 10px;
-      text-align: right;
-    }
-
-
-    .note-retour a { color: #38bdf8; }
-
-
-    @media (max-width: 768px) {
-      .page { margin-top: 10px; }
-      .top-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="page">
-    <div class="fiche-wrapper">
-      <div class="fiche-header-bar">
-        <h1>Alfaro cultratus</h1>
-        <h2></h2>
-      </div>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Betta picta</h1>
+      </div>
 
+      <div class="fiche-body">
 
-      <div class="fiche-body">
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Anabantiformes</li>
+              <li><span class="sys-label">Famille :</span> Osphronemidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. picta</em></li>
+            </ul>
+          </div>
 
+          <div class="fiche-photo">
+            <img src="../img/Betta-picta/Betta-picta.PNG" alt="Betta picta">
+          </div>
+        </div>
 
-        <div class="top-row">
-          <div class="sys-block">
-            <h2>Systématique</h2>
-            <ul class="sys-list">
-              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
-              <li><span class="sys-label">Famille :</span> Poeciliidae</li>
-              <li><span class="sys-label">Genre :</span> <em>Alfaro</em></li>
-              <li><span class="sys-label">Espèce :</span> <em>Alfaro cultratus</em></li>
-            </ul>
-          </div>
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Betta picta</strong>, le combattant décoré ou combattant de Java, est une petite espèce labyrinthidé d'Indonésie et possiblement de Malaisie, appartenant au groupe Picta et représentant l'espèce type du genre Betta. C'est une espèce historiquement importante mais demeurant rare et peu connue en aquariophilie moderne.
+          </p>
+          <p class="section-text">
+            Le mâle atteint 5 à 6&nbsp;cm de longueur standard, tandis que la femelle mesure environ 5&nbsp;cm. Le corps est petit, fusiforme et peu coloré, contrairement aux autres bettas plus flamboyants. La coloration de base est beige clair à brun-gris avec une teinte générale peu remarquable. Le mâle arbore des barres pâles verticales ou transversales sur le dos (caractéristique unique du groupe Picta), absentes chez les autres Betta. Les nageoires impaires sont arrondies, de couleur grise-brune avec des bandes marginales foncées et un liseré bleu clair ou vert-bleu selon l'éclairage. Les opercules et la région post-orbitale sont irisés, arborant des reflets dorés, bleus ou verts. La femelle est généralement plus terne que le mâle.
+          </p>
+          <p class="section-text">
+            Cette espèce est morphologiquement distincte de Betta splendens par sa taille réduite, son absence de couleurs vives, ses nageoires arrondies et sa tête proportionnellement différente. Elle représente une forme ancestrale du genre Betta, conservant des traits primitifs à l'agressivité et au comportement reproducteur moins extrêmes.
+          </p>
 
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Betta picta est une espèce timide, discrète et très peu agressive, remarquablement calme comparée à Betta splendens. L'espèce peut être maintenue en petit groupe ou en couple dans un aquarium densément planté sans problèmes d'agression marquée. Contrairement à B. splendens, les mâles tolèrent la présence les uns des autres, restant passifs et se cachant plutôt que de combattre. L'espèce demeure extrêmement réservée et passe la majorité de son temps cachée sous les roches et derrière les plantes. Après une phase d'acclimatation de quelques jours, elle devient progressivement plus aventureuse si des refuges demeurent disponibles.
+          </p>
+          <p class="section-text">
+            L'espèce occupe naturellement les ruisseaux d'eau claire à courant rapide, demandant une excellente oxygénation. Elle ne tolère pas bien les aquariums chauds (au-dessus de 26–27&nbsp;°C sur de longues périodes) et préfère des températures réduites comparée à B. splendens. Elle possède un labyrinthe lui permettant de respirer l'air atmosphérique et survivant temporairement en eaux désoxygénées. Elle peut sauter hors de l'eau et le bac doit être couvert.
+          </p>
 
-          <div class="fiche-photo">
-            <img src="../img/Alfaro-cultratus/Alfaro-cultratus.PNG" alt="Alfaro cultratus">
-          </div>
-        </div>
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare incubateur buccal paternel; l'espèce type du genre Betta et du groupe Picta, représentant le mode reproducteur primitif du genre.
+          </p>
+          <p class="section-text">
+            Contrairement à la majorité des Betta qui construisent des nids de bulles, B. picta incube ses œufs en incubation buccale paternelle. Le couple se courtise durant une période protégée de plusieurs heures à plusieurs jours. L'accouplement s'effectue selon l'enlacement typique des Osphronemidae : le mâle s'enroule autour de la femelle qui libère ses œufs. Les œufs sont fertilisés par le mâle et immédiatement repris en bouche. Particularité remarquable : le processus d'incubation buccale s'effectue selon un cycle : les œufs sont retenus quelques minutes puis rejetés dans l'eau où la femelle peut les reprendre avant d'être à nouveau réincubés par le mâle. Ce ballet peut durer plusieurs heures à plusieurs jours.
+          </p>
+          <p class="section-text">
+            L'éclosion intervient après 24 à 36 heures à température optimale (22–24°C). Les alevins demeurent 2–3 jours en stade pélagique, absorbant leurs réserves vitellines. L'espèce se reproduit facilement et prolifiquement en captivité, produisant des alevins robustes et facilement élevables. Cette facilité reproductrice tranche avec la difficulté relative de maintenir l'espèce captive, qui demande une eau fraîche et très oxygénée.
+          </p>
 
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> peu marqué et discrètes. Le mâle est très légèrement plus coloré que la femelle avec une teinte irisée peut-être plus prononcée. La femelle est généralement légèrement plus petite. À maturité, la papille génitale blanche de la femelle devient visible. Aucun caractère externe distinctif flagrant ne permet une identification certaine en dehors des phénomènes liés à la reproduction.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> données limitées en captivité, probablement 3 à 5 ans en conditions optimales. L'espèce reste peu documentée sur la longévité réelle.
+          </p>
 
-        <div>
-          <div class="section-title">Présentation</div>
-          <p class="section-text">
-            <strong>Alfaro cultratus</strong> est un poeciliidé vivipare d'Amérique centrale, reconnaissable à ses deux rangées d'écailles modifiées en forme de lame de couteau sur le pédoncule caudal.
-          </p>
-          <p class="section-text">
-            Les mâles atteignent environ 7 à 7,5&nbsp;cm, les femelles 8&nbsp;cm, avec un corps translucide laissant entrevoir la colonne vertébrale et des reflets verts ou bleutés.
-          </p>
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Betta picta fréquente les ruisseaux d'eau claire, peu profonds (3–50&nbsp;cm typiquement) et à courant rapide ou modéré, des régions montagneuses et piémonts de Java, Sumatra et possiblement du sud de la Malaisie (données historiques incertaines depuis 1967). L'habitat affiche un substrat rocheux mélangé à des graviers et du sable, avec une abondance de feuilles mortes, branches et débris végétaux. La végétation aquatique est dense avec Cryptocoryne et espèces similaires. L'eau est claire, légèrement teintée de tannins, peu minéralisée et à pH neutre à légèrement acide.
+          </p>
+          <p class="section-text">
+            La température naturelle avoisine 22–24°C voire inférieure en haute montagne (altitude importante), avec une très forte oxygénation du fait du courant rapide. Cette espèce représente une adaptation à des eaux froides et très oxygénées, totalement opposée au labyrinthidé stagnant « classique ». L'espèce a aussi été rapportée dans des fossés routiers, des réservoirs d'eau bétonnés et des plans d'eau artificiels où les humains la trouvent et la collectent occasionnellement.
+          </p>
+        </div>
 
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
 
-          <div class="section-title">Comportement & mode de vie</div>
-          <p class="section-text">
-            L'espèce est active et vive, occupant surtout la surface et la zone médiane, où elle se déplace en petits groupes dans un courant modéré à rapide.
-          </p>
-          <p class="section-text">
-            Elle peut se montrer agressive envers ses congénères, particulièrement en petit volume; un aquarium spacieux avec un bon brassage et des zones plantées permet de limiter les tensions.
-          </p>
+            <img
+              src="../img/Betta-picta/Maps-Betta-picta.PNG"
+              alt="Répartition de Betta picta"
+              class="carte-img"
+            >
 
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Indonésie : Java (région ouest et centre), Sumatra (données historiques).</li>
+              <li>Malaisie : sud de la Malaisie péninsulaire (données historiques de 1967 sujettes à caution).</li>
+              <li>Localité type : « Buitenzorg, Sadingwetang », correspondant à la région de Bogor et environs proches, Java ouest, Indonésie.</li>
+              <li>Distribution très fragmentée et restreinte, possiblement endémique de Java centrale et ouest.</li>
+            </ul>
+            <p>
+              Très rare en aquariophilie commerciale. Importée dans les années 1930 en Occident mais jamais devenue populaire. Les populations naturelles demeurent peu documentées et potentiellement menacées par la dégradation des ruisseaux de montagne.
+            </p>
+          </div>
 
-          <div class="section-title">Reproduction</div>
-          <p class="section-text">
-            <strong>Mode :</strong> ovovivipare; la femelle donne naissance à 20 à 100 alevins après une gestation relativement courte d'environ 24 jours.
-          </p>
-          <p class="section-text">
-            Les alevins naissent grands et autonomes, capables de nager et de se nourrir immédiatement; les parents ne montrent pas de soins particuliers et peuvent prédater sur les jeunes s'ils ne trouvent pas refuge.
-          </p>
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 24&nbsp;°C optimalement; peut tolérer 20–27&nbsp;°C mais dépérit au-delà de 27&nbsp;°C sur de longues périodes.</p>
+            <p><strong>pH :</strong> 5,5 à 7,5, légèrement acide à neutre; pH 6,0–7,0 idéal.</p>
+            <p><strong>GH :</strong> 3 à 12&nbsp;°dGH, eau douce à moyennement dure.</p>
+            <p><strong>Courant :</strong> modéré à rapide; excellente oxygénation obligatoire (aérateur, filtration douce mais efficace).</p>
+            <p><strong>Volume conseillé :</strong> minimum 50–60&nbsp;L pour un couple ou petit groupe; 80&nbsp;cm × 30&nbsp;cm de base minimum. Très planté, lumière tamisée, nombreux refuges rocheux et végétaux.</p>
+          </div>
 
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore insectivore; se nourrit d'insectes aquatiques et micro-crustacés.
+            </p>
+            <p>
+              En aquarium, accepte flocons fins, granulés, paillettes et nourriture congelée (daphnies, artémias, vers de vase, larves de moustiques). Proies vivantes fortement recommandées pour optimiser les couleurs et la mise en condition reproductrice.
+            </p>
+            <p>
+              Alimentation variée avec accent sur les petits insectes aquatiques et micro-crustacés vivants maintient la santé, la vivacité et les performances reproductives optimales.
+            </p>
+          </div>
+        </div>
 
-          <div class="section-title">Dimorphisme & espérance de vie</div>
-          <p class="section-text">
-            <strong>Dimorphisme sexuel :</strong> le mâle possède un gonopodium et des nageoires ventrales allongées, tandis que la femelle est plus grande, plus trapue et présente un ventre arrondi.
-          </p>
-          <p class="section-text">
-            <strong>Espérance de vie :</strong> environ 2 à 3 ans en captivité, typique des petits vivipares.
-          </p>
-
-
-          <div class="section-title">Biotope</div>
-          <p class="section-text">
-            Alfaro cultratus fréquente les rivières claires, ruisseaux, fossés et zones côtières de rivières à courant lent à modéré, avec une végétation abondante et des zones ombragées.
-          </p>
-        </div>
-
-
-        <div class="grid-bottom">
-          <div class="bloc">
-            <h3>Répartition</h3>
-
-
-            <img
-              src="../img/Alfaro-cultratus/Maps-Alfaro-cultratus.PNG"
-              alt="Répartition d'Alfaro cultratus"
-              class="carte-img"
-            >
-
-
-            <p><strong>Origine naturelle :</strong></p>
-            <ul>
-              <li>Costa Rica, Panama et Nicaragua en Amérique centrale.</li>
-              <li>Rivières et ruisseaux des versants Atlantique et Pacifique.</li>
-              <li>Localité type : río Iroquois, Costa Rica.</li>
-            </ul>
-            <p>
-              L'espèce est largement distribuée dans les systèmes fluviaux côtiers d'Amérique centrale, occupant une grande variété d'habitats d'eau douce.
-            </p>
-          </div>
-
-
-          <div class="bloc">
-            <h3>Paramètres de maintenance</h3>
-            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
-            <p><strong>pH :</strong> 6,0 à 8,0, de légèrement acide à légèrement alcalin.</p>
-            <p><strong>GH :</strong> 5 à 20&nbsp;°dGH, eau douce à moyennement dure.</p>
-            <p><strong>Courant :</strong> modéré à fort, avec une bonne oxygénation et un brassage important.</p>
-            <p><strong>Volume conseillé :</strong> au minimum 100 à 120&nbsp;L pour un groupe, avec une bonne longueur de bac pour la nage.</p>
-          </div>
-
-
-          <div class="bloc">
-            <h3>Régime alimentaire</h3>
-            <p>
-              <strong>Régime :</strong> insectivore à omnivore; dans la nature, il se nourrit d'insectes aquatiques en tant que juvénile, puis principalement d'insectes terrestres tombés à la surface à l'âge adulte.
-            </p>
-            <p>
-              En aquarium, il accepte facilement flocons, granulés, nourritures congelées et vivantes (artémias, daphnies, vers, insectes).
-            </p>
-            <p>
-              Une alimentation variée, distribuée régulièrement en surface ou en zone médiane, maintient sa vivacité et favorise les reproductions naturelles.
-            </p>
-          </div>
-        </div>
-
-
-        <p class="note-retour">
-          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
-        </p>
-      </div>
-    </div>
-  </main>
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
 </body>
-</html> pour les source je veux que tu utilise https://www.aquaportail.com/, fishipedia.fr, https://www.fishfish.fr/, https://www.b-aqua.com/, https://www.fishbase.se/ et tu ne changera pas la forme et tu me donnera la page au complet. je te donnera juste le nom de l'espèces et toi tu fera la fiche. 
+</html>
+
+
+</html> pour les source je veux que tu utilise https://www.aquaportail.com/, fishipedia.fr, https://www.fishfish.fr/, https://www.b-aqua.com/, https://www.fishbase.se/ les fiche du https://www.killiclubdefrance.org/, https://www.goodeidworkinggroup.com/, https://www.francevivipares.fr comme source peincipale et les données scientifiques disponibles, si il y a, et tu ne changera pas la forme et tu me donnera la page au complet. je te donnera juste le nom de l'espèces et toi tu fera la fiche. je ne veux par de non commun dans la fiche ou meme de h2. si tu n'a pas l'information je veux que tu invente rien mais que tu explique alors léstimation ou bien si c'est pas possible tu mets aucune information. 
+et tu me donnera un block en lien avec l'espèces demander qui suis ceux model: 
+{
+  id: "corydoras-aeneus",
+  nomScientifique: "Corydoras aeneus",
+  nomCommun: "Corydoras bronze",
+  ordre: "Siluriformes",
+  famille: "Callichthyidae",
+  genre: "Corydoras",
+  continent: "Amérique du Sud",
+  pays: ["Brésil", "Pérou", "Venezuela", "Colombie", "Argentine"],
+  page: "fiche/Corydoras-aeneus.html",
+  image: "img/Corydoras-aeneus/Corydoras-aeneus.PNG"
+}

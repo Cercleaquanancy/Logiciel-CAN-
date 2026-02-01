@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Symphysodon discus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Symphysodon discus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Symphysodon</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>S. discus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Symphysodon-discus/Symphysodon-discus.PNG" alt="Symphysodon discus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Symphysodon discus</strong> est l'espèce type du genre, décrite par Johann Jakob Heckel en 1840. Ce cichlidé emblématique de l'Amazonie est biologiquement distinct des autres espèces par sa distribution géographique restreinte et son patron de coloration unique. Il est le représentant le plus "primitif" du genre.
+          </p>
+          <p class="section-text">
+            Le corps est parfaitement discoïde, très comprimé latéralement. Sa caractéristique diagnostique majeure est sa cinquième barre verticale sombre, appelée "barre Heckel", qui est nettement plus large, plus intense et plus sombre que les huit autres barres. La coloration de base est souvent brun-jaunâtre avec de fines stries longitudinales bleu ciel ou turquoise qui parcourent la tête et les nageoires.
+          </p>
+          <p class="section-text">
+            La taille adulte se situe généralement entre 12 et 15 cm de longueur standard, bien que certains spécimens puissent paraître plus imposants en raison de la hauteur de leur corps. Les nageoires dorsale et anale sont longues et suivent la courbure circulaire du corps, finissant par une forme arrondie.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Symphysodon discus</em> est une espèce extrêmement timide et grégaire. Elle vit en bancs soudés, souvent à l'abri de structures immergées denses (branches tombées, racines de palmiers). Sa survie dépend de la cohésion du groupe pour la détection des prédateurs.
+          </p>
+          <p class="section-text">
+            En aquarium, c'est l'espèce de Discus la plus exigeante et la plus sensible au stress. Elle nécessite un environnement calme, peu de passage, et une hiérarchie stable au sein du groupe. Les interactions sociales sont subtiles, basées sur des changements de posture et l'intensité de la coloration des barres verticales, qui servent de véritables indicateurs d'humeur.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Ovipare, pondeur sur substrat vertical avec production de mucus nutritif parental.
+          </p>
+          <p class="section-text">
+            Le cycle de reproduction est intimement lié à la qualité de l'eau. Le couple nettoie méticuleusement un support vertical avant que la femelle ne dépose ses œufs. Une fois les œufs éclos et les alevins parvenus au stade de nage libre, ils se regroupent sur les flancs des parents.
+          </p>
+          <p class="section-text">
+            Ces derniers sécrètent alors un mucus cutané riche en anticorps et nutriments dont les jeunes se nourrissent exclusivement durant les premiers jours. Sans ce contact direct avec l'épiderme parental, les alevins ne peuvent survivre. Les deux parents se relaient pour porter les jeunes, effectuant des mouvements brusques pour "transférer" le nuage d'alevins de l'un à l'autre.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Inexistant chez les juvéniles. Chez les adultes, le mâle présente parfois une taille légèrement supérieure et une courbure frontale plus prononcée. Les nageoires peuvent être plus effilées chez le mâle, mais seule l'observation des papilles génitales lors de la ponte permet une identification fiable à 100%.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 10 à 15 ans, moyennant une maintenance rigoureuse.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Cette espèce est endémique du Rio Negro, du Rio Abacaxis et du Rio Trombetas. Son habitat typique est constitué d'eaux noires (blackwater), extrêmement acides et dépourvues de minéraux. Ces eaux sont chargées en substances humiques et tanins, leur donnant une couleur thé caractéristique.
+          </p>
+          <p class="section-text">
+            La visibilité est faible et la température de l'eau est élevée, oscillant souvent entre 28 et 32°C. Les poissons se tiennent dans les zones d'ombres formées par les racines immergées (igapó), évitant le plein courant. Le substrat est composé de sable très fin et de litière de feuilles.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Symphysodon-discus/Maps-Symphysodon-discus.PNG"
+              alt="Répartition de Symphysodon discus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud : Brésil uniquement.</li>
+              <li>Bassins versants : Rio Negro, Rio Abacaxis, Rio Trombetas et Nhamundá.</li>
+              <li>Localisation restreinte aux affluents de la rive nord et sud du cours moyen de l'Amazone.</li>
+            </ul>
+            <p>
+              Les populations sont localisées et ne se mélangent pas naturellement avec les autres espèces de Discus.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 28 à 32 °C (températures élevées obligatoires).</p>
+            <p><strong>pH :</strong> 4,0 à 6,0 (eau extrêmement acide).</p>
+            <p><strong>GH :</strong> 0 à 3 °dGH (eau très douce, presque sans sels minéraux).</p>
+            <p><strong>Courant :</strong> Très faible ; nécessite une filtration lente mais surdimensionnée en volume.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 450-500 litres pour un groupe de 6 individus. Bac haut (60cm+) requis.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance carnivore.
+            </p>
+            <p>
+              En milieu naturel, il se nourrit de périphyton, de larves d'insectes, de petits crustacés et de détritus organiques riches en invertébrés.
+            </p>
+            <p>
+              En aquarium, l'alimentation doit être variée et riche en protéines : artémias, mysis, vers de vase (qualité irréprochable) et compléments végétaux sous forme de flocons ou granulés spécialisés.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Wallago attu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Wallago attu</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Siluriformes</li>
+              <li><span class="sys-label">Famille :</span> Siluridae</li>
+              <li><span class="sys-label">Genre :</span> <em>Wallago</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>W. attu</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Wallago-attu/Wallago-attu.PNG" alt="Wallago attu">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Wallago attu</strong> est un silure géant d'eau douce, largement répandu en Asie du Sud et du Sud-Est. Il est connu sous divers noms vernaculaires comme "Tapah" en Malaisie ou "Boal" au Bangladesh. C'est l'une des plus grandes espèces de la famille des Siluridae.
+          </p>
+          <p class="section-text">
+            Il peut atteindre des dimensions impressionnantes : les records historiques mentionnent des spécimens de <strong>2,40 mètres</strong>, bien que la plupart des individus observés de nos jours mesurent entre 1 mètre et 1,50 mètre. Son corps est très allongé, fortement comprimé latéralement, avec une nageoire anale extrêmement longue qui court jusqu'à la queue, tandis que la dorsale est minuscule.
+          </p>
+          <p class="section-text">
+            Sa gueule est immense, fendue jusqu'à l'arrière des yeux, et garnie de rangées de dents pointues et recourbées vers l'arrière, conçues pour saisir et ne plus lâcher ses proies. C'est un prédateur redoutable.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson pélagique et démersal, nageant activement à la recherche de proies. Il est solitaire et extrêmement territorial.
+          </p>
+          <p class="section-text">
+            D'une voracité légendaire, il est capable d'engloutir des proies de taille considérable. En aquarium (réservé aux installations publiques ou géantes), il est impossible de le faire cohabiter avec des poissons qu'il peut avaler ou blesser. Il est même agressif envers ses congénères. Il est principalement nocturne mais peut chasser le jour s'il est stimulé.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            C'est une espèce potamodrome (migratrice en eau douce). Dans la nature, la reproduction est saisonnière et liée à la mousson. Les adultes migrent vers les plaines inondables et les rivières peu profondes pour frayer pendant la saison des pluies.
+          </p>
+          <p class="section-text">
+            La reproduction n'est pas réalisable en aquarium domestique standard en raison de la taille des géniteurs et de la nécessité de migrations simulées. Elle est pratiquée en pisciculture en Asie pour l'alimentation.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Peu évident extérieurement. Les femelles matures sont généralement plus lourdes et plus larges au niveau de l'abdomen que les mâles.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Peut dépasser 10 à 15 ans, voire davantage dans la nature.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il occupe une vaste aire de répartition allant du Pakistan au Vietnam et à l'Indonésie. Il fréquente les grands fleuves, les lacs, les réservoirs et les canaux profonds.
+          </p>
+          <p class="section-text">
+            Il préfère les eaux boueuses ou limoneuses avec un fond mou, où il peut chasser à l'affût ou en patrouille. Il tolère des eaux faiblement oxygénées et des conditions environnementales assez variables.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Wallago-attu/Maps-Wallago-attu.PNG"
+              alt="Répartition de Wallago attu"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud (Inde, Pakistan, Bangladesh, Sri Lanka).</li>
+              <li>Asie du Sud-Est (Thaïlande, Laos, Cambodge, Vietnam).</li>
+              <li>Indonésie (Sumatra, Java, Bornéo).</li>
+              <li>Malaisie.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 30&nbsp;°C.</p>
+            <p><strong>pH :</strong> 6,0 à 8,0.</p>
+            <p><strong>GH :</strong> 5 à 25&nbsp;°dGH.</p>
+            <p><strong>Volume conseillé :</strong> Minimum <strong>5000 à 10 000 litres</strong> pour un spécimen adulte. Ce n'est pas un poisson pour l'aquariophilie domestique classique, mais pour les aquariums publics ou les étangs intérieurs chauffés.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / piscivore strict.
+            </p>
+            <p>
+              Dans la nature, il se nourrit principalement de poissons, mais aussi de crustacés, de grenouilles et d'oiseaux aquatiques.
+            </p>
+            <p>
+              En captivité, il nécessite des proies entières (poissons morts ou vivants, filets de poisson, calamars). Sa croissance est très rapide si la nourriture est abondante.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

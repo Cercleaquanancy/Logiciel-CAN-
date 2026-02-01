@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Laetacara curviceps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Laetacara curviceps</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Laetacara</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>L. curviceps</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Laetacara-curviceps/Laetacara-curviceps.PNG" alt="Laetacara curviceps">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Laetacara curviceps</strong>, souvent appelé Cichlidé drapeau ou Acara drapeau, est un cichlidé nain sud-américain très populaire. Son nom de genre <em>Laetacara</em> signifie "Acara souriant", en référence aux marques faciales autour de sa bouche qui lui donnent une expression sympathique.
+          </p>
+          <p class="section-text">
+            Il mesure adulte entre <strong>7 et 9 cm</strong> pour les mâles, les femelles restant légèrement plus petites (6-7 cm). Son corps est ovale et comprimé latéralement. Sa coloration de base est gris-vert à bleuâtre, avec des reflets métalliques. Une ligne sombre longitudinale traverse parfois le corps. La nageoire dorsale présente souvent une tache noire à sa base.
+          </p>
+          <p class="section-text">
+            C'est l'un des cichlidés les plus paisibles et timides, idéal pour débuter avec cette famille en aquarium communautaire calme.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson vivant en couple qui établit des liens solides. Contrairement à beaucoup de cichlidés, il est très peu agressif, sauf en période de reproduction où il défend son territoire (généralement une pierre ou une plante) avec détermination mais sans violence excessive.
+          </p>
+          <p class="section-text">
+            Il occupe la zone inférieure et médiane de l'aquarium. Il apprécie les bacs plantés offrant de nombreuses cachettes (racines, noix de coco) pour se rassurer. S'il est maintenu avec des espèces trop vives ou agressives, il restera caché et perdra ses couleurs.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (pondeur sur substrat découvert).
+          </p>
+          <p class="section-text">
+            Le couple nettoie soigneusement une surface plane (pierre plate, large feuille d'Anubias ou d'Echinodorus) pour y déposer ses œufs.
+          </p>
+          <p class="section-text">
+            C'est une espèce biparentale : les deux parents s'occupent de la ponte et ventilent les œufs à tour de rôle. Après l'éclosion, ils déplacent souvent les larves dans de petites cuvettes creusées dans le sable. Les alevins sont surveillés étroitement par les parents pendant plusieurs semaines.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Assez subtil. Le mâle est généralement un peu plus grand, plus coloré (davantage de reflets bleus/verts) et ses nageoires dorsale et anale sont plus effilées (pointues) à l'extrémité. La femelle est plus petite, plus ronde, et sa nageoire dorsale est souvent plus arrondie.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 4 à 5 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire du bassin inférieur de l'Amazone au Brésil. Il fréquente les eaux calmes, les criques ombragées, les zones marécageuses et les plaines inondables riches en végétation aquatique et en bois mort en décomposition.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Laetacara-curviceps/Maps-Laetacara-curviceps.PNG"
+              alt="Répartition de Laetacara curviceps"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud.</li>
+              <li>Brésil (Bassin inférieur de l'Amazone).</li>
+              <li>Bassin du Rio Tapajós.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,5 à 7,0 (préfère une eau légèrement acide et douce).</p>
+            <p><strong>GH :</strong> 3 à 12&nbsp;°dGH.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80 à 100&nbsp;L pour un couple. Un bac de 80 cm de façade est recommandé. Une cohabitation est possible avec des bancs de petits Characidés (tétras) qui serviront de poissons "rassurants" (dither fish).</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore / micro-prédateur.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de petits insectes, de larves et de crustacés.
+            </p>
+            <p>
+              En aquarium, il n'est pas difficile mais nécessite une nourriture de qualité. Granulés pour cichlidés nains, et apports réguliers de nourriture vivante ou congelée (artémias, daphnies, vers de vase) sont essentiels pour sa santé et ses couleurs.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

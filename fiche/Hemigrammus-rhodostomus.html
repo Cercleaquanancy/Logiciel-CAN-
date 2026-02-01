@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hemigrammus rhodostomus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Hemigrammus rhodostomus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Characiformes</li>
+              <li><span class="sys-label">Famille :</span> Characidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Hemigrammus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>H. rhodostomus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Hemigrammus-rhodostomus/Hemigrammus-rhodostomus.PNG" alt="Hemigrammus rhodostomus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Hemigrammus rhodostomus</strong>, le "vrai" Nez rouge, est un characidé emblématique des aquariums amazoniens. Il fait partie d'un complexe de trois espèces très similaires (avec <em>H. bleheri</em> et <em>Petitella georgiae</em>) que l'on confond souvent.
+          </p>
+          <p class="section-text">
+            Il mesure environ <strong>4 à 5 cm</strong>. Il possède un corps argenté fuselé, une nageoire caudale marquée d'un motif en damier noir et blanc, et surtout une tête rouge vif.
+            <br>La distinction se fait sur l'étendue du rouge : chez <em>H. rhodostomus</em>, le rouge couvre le museau et l'iris mais s'arrête généralement avant l'opercule (contrairement à <em>H. bleheri</em> où le rouge dépasse largement les branchies).
+          </p>
+          <p class="section-text">
+            C'est un excellent indicateur de la qualité de l'eau : si le poisson est stressé ou si les nitrates montent, son nez rouge pâlit presque instantanément.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est sans doute l'un des poissons les plus grégaires en aquarium d'eau douce. Il a un besoin impératif de vivre en banc serré (minimum 10 à 15 individus, idéalement plus).
+          </p>
+          <p class="section-text">
+            Contrairement à d'autres tétras qui s'éparpillent, les Nez rouges nagent presque toujours ensemble de manière synchronisée, parcourant inlassablement la longueur de l'aquarium. Très pacifique et actif, c'est le poisson de banc par excellence pour les grands bacs communautaires.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            La reproduction est réputée difficile et exigeante. Elle nécessite une eau très douce (GH < 2) et acide (pH 5,5 - 6,0), souvent filtrée sur tourbe.
+          </p>
+          <p class="section-text">
+            C'est un diffuseur d'œufs. Le couple pond parmi les plantes fines. Les œufs sont photosensibles (craignent la lumière). Les parents mangent les œufs s'ils ne sont pas retirés.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Peu marqué. Les femelles matures sont généralement plus rondes au niveau de l'abdomen que les mâles, qui restent plus sveltes.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 4 à 6 ans si les paramètres sont optimaux.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est originaire du bassin inférieur de l'Amazone et de l'Orénoque (Brésil et Venezuela). Il vit dans les eaux noires et claires, acides et peu minéralisées.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Hemigrammus-rhodostomus/Maps-Hemigrammus-rhodostomus.PNG"
+              alt="Répartition de Hemigrammus rhodostomus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Amérique du Sud.</li>
+              <li>Brésil (Bas Amazone, Rio Pará).</li>
+              <li>Venezuela (Bassin de l'Orénoque).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C (craint les chocs thermiques).</p>
+            <p><strong>pH :</strong> 5,5 à 7,0 (préfère une eau acide).</p>
+            <p><strong>GH :</strong> 2 à 10&nbsp;°dGH (eau douce requise).</p>
+            <p><strong>Pollution :</strong> Très sensible aux nitrates (> 20-25 mg/L).</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80 à 100&nbsp;L. En raison de sa nage active en banc, une façade d'au moins 100 cm est fortement recommandée pour apprécier son comportement.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> omnivore.
+            </p>
+            <p>
+              Dans la nature, il se nourrit de petits vers, crustacés et plantes.
+            </p>
+            <p>
+              En aquarium, il accepte tout (paillettes, granulés) mais possède une petite bouche. Une alimentation riche en proies vivantes ou congelées (daphnies, artémias, cyclops) renforce l'intensité du rouge de sa tête.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

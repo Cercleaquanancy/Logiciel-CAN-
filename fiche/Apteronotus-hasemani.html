@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Apteronotus hasemani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Apteronotus hasemani</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Gymnotiformes</li>
+              <li><span class="sys-label">Famille :</span> Apteronotidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Apteronotus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. hasemani</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Apteronotus-hasemani/Apteronotus-hasemani.PNG" alt="Apteronotus hasemani">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Apteronotus hasemani</strong> est un poisson électrique d'Amérique du Sud appartenant à la famille des Apteronotidae.
+          </p>
+          <p class="section-text">
+            Il se distingue par une taille importante pouvant atteindre <strong>38,1 cm</strong> (longueur totale). Son corps est très comprimé latéralement et, comme les autres membres de son genre, il ne possède ni nageoire dorsale, ni nageoires pelviennes, se propulsant grâce aux ondulations de sa longue nageoire anale.
+          </p>
+          <p class="section-text">
+            La coloration est sombre (brun à noir). Le museau présente souvent des marques claires ou blanches, tout comme le pédoncule caudal qui est généralement encerclé d'une bande blanche. Il possède un organe électrique de faible décharge utilisé pour l'électrolocation.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est une espèce benthopélagique qui fréquente les eaux profondes et courantes des grands fleuves. En raison de sa morphologie et de ses organes sensoriels, il est adapté à une vie nocturne ou dans des eaux turbides.
+          </p>
+          <p class="section-text">
+            Aucune information précise n'est disponible sur son comportement social spécifique en aquarium amateur (espèce très rare), mais par analogie avec les espèces proches (*A. albifrons*, *A. leptorhynchus*), il est considéré comme territorial envers ses congénères et les autres poissons électriques.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            Aucune information disponible sur la reproduction en captivité.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Les mâles adultes développent un museau extrêmement allongé par rapport aux femelles et aux juvéniles. Ce dimorphisme est si marqué que les mâles ont parfois été confondus avec une autre espèce (*Apteronotus anas*).
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Aucune donnée spécifique publiée, mais les grands Apteronotidae vivent généralement plusieurs années (souvent plus de 5 à 10 ans).
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il habite les bassins fluviaux de l'Amazone (Brésil, Pérou) et du Paraná-Paraguay. On le retrouve dans les lits principaux des rivières et les zones à courant.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Apteronotus-hasemani/Maps-Apteronotus-hasemani.PNG"
+              alt="Répartition de Apteronotus hasemani"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Bassin de l'Amazone (Brésil, Pérou).</li>
+              <li>Bassin du Paraná et du Paraguay.</li>
+              <li>Bassins du Tocantins et du Capim.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 28&nbsp;°C (plage tropicale standard).</p>
+            <p><strong>pH :</strong> Aucune donnée spécifique restreinte, probablement entre 6,0 et 7,5 comme la majorité des espèces de ces bassins.</p>
+            <p><strong>GH :</strong> Aucune donnée spécifique.</p>
+            <p><strong>Courant :</strong> Modéré à fort (espèce fluviatile).</p>
+            <p><strong>Volume conseillé :</strong> Au regard de sa taille adulte (38 cm), un volume très important (supérieur à 400-500 litres) est théoriquement nécessaire pour un maintien correct. </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore (prédateur d'invertébrés).
+            </p>
+            <p>
+              Il se nourrit de larves d'insectes et d'invertébrés benthiques dans la nature. En aquarium, l'alimentation doit être constituée de proies carnées (vers, crustacés).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

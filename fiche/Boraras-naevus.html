@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Boraras naevus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Boraras naevus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Danionidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Boraras</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>B. naevus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Boraras-naevus/Boraras-naevus.PNG" alt="Boraras naevus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Boraras naevus</strong>, connu dans le commerce sous le nom de "Rasbora fraise" (Strawberry Rasbora), est une espèce miniature décrite récemment en 2011 par Conway et Kottelat.
+          </p>
+          <p class="section-text">
+            Il mesure à peine <strong>1,5 à 2,0 cm</strong> à l'âge adulte. Son nom d'espèce <em>naevus</em> (signifiant "tache" ou "grain de beauté" en latin) fait référence à la grosse tache noire située sur le flanc, nettement plus large que chez <em>Boraras maculatus</em> ou <em>Boraras merah</em>.
+          </p>
+          <p class="section-text">
+            Les mâles arborent une coloration rouge très intense, parfois plus profonde que celle des autres espèces du genre, ce qui en fait un poisson très recherché pour les aquariums plantés de petit volume (nano-aquascaping).
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire qui doit vivre en banc d'au moins <strong>10 individus</strong>. Il est extrêmement paisible mais timide.
+          </p>
+          <p class="section-text">
+            Il nage en pleine eau, souvent en groupe serré, surtout s'il se sent menacé. Il convient parfaitement à la cohabitation avec des crevettes naines (<em>Neocaridina</em>), car il ne représente aucun danger pour elles. Il a besoin d'un bac bien planté avec des zones d'ombre pour révéler ses plus belles couleurs.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare (diffuseur d'œufs).
+          </p>
+          <p class="section-text">
+            La reproduction est similaire aux autres <em>Boraras</em>. Les mâles dominants défendent de minuscules territoires temporaires et attirent les femelles pour pondre parmi les plantes fines.
+          </p>
+          <p class="section-text">
+            Il n'y a pas de soin parental. Pour réussir l'élevage, il faut isoler un couple ou un petit groupe dans un bac spécifique avec de l'eau très douce et acide, et beaucoup de mousse de Java. Les alevins nécessitent une nourriture microscopique (infusoires) dès la nage libre.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est plus petit, plus svelte et surtout beaucoup plus rouge que la femelle. La femelle est plus grande, avec un ventre rebondi, et sa couleur tire davantage sur l'orange pâle ou le rose, avec une tache latérale noire souvent moins marquée.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 5 ans dans de bonnes conditions.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Il est endémique du sud de la Thaïlande (péninsule malaise), plus précisément dans la province de Surat Thani.
+          </p>
+          <p class="section-text">
+            Il vit dans les marais, les rizières et les fossés peu profonds riches en végétation aquatique et submergée. L'eau y est généralement claire ou légèrement teintée, douce et acide, mais il semble tolérer une gamme de paramètres un peu plus large que <em>B. brigittae</em>.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Boraras-naevus/Maps-Boraras-naevus.PNG"
+              alt="Répartition de Boraras naevus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est.</li>
+              <li>Thaïlande (Sud, Péninsule malaise).</li>
+              <li>Province de Surat Thani.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 24 à 28&nbsp;°C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,0 (préfère l'acidité).</p>
+            <p><strong>GH :</strong> 2 à 12&nbsp;°dGH.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 20 à 30&nbsp;L. Idéal pour les nano-aquariums de 30L (cube ou rectangulaire) densément plantés.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> carnivore / insectivore (micro-prédateur).
+            </p>
+            <p>
+              Dans la nature, il se nourrit de micro-organismes.
+            </p>
+            <p>
+              En aquarium, il accepte les nourritures sèches si elles sont réduites en poudre très fine. Il raffole des nauplies d'artémias vivantes, qui stimulent sa coloration rouge.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
