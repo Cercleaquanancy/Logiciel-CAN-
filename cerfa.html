@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Attestation de Cession - Cerfa 14367*01</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; }
+    .navbar { position: fixed; top: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; padding: 0 16px; z-index: 50; }
+    .page { padding: 80px 12px 40px; max-width: 900px; margin: 0 auto; }
+    .card { background: #020617; border-radius: 10px; border: 1px solid #1f2937; padding: 20px; margin-bottom: 16px; }
+    .card h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 10px; }
+    .card h2 { font-size: 1rem; color: #fbbf24; margin-bottom: 15px; border-bottom: 1px solid #1f2937; padding-bottom: 5px; }
+    .field { margin-bottom: 12px; }
+    label { font-size: 0.8rem; color: #cbd5f5; display: block; margin-bottom: 4px; }
+    input { width: 100%; padding: 8px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .sig-wrapper { background: white; border-radius: 6px; height: 180px; position: relative; margin: 10px 0; }
+    #sig-canvas { position: absolute; width: 100%; height: 100%; cursor: crosshair; }
+    .btn { border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; transition: 0.2s; }
+    .btn-main { background: #38bdf8; color: #020617; margin-top: 10px; }
+    .btn-clear { background: #4b5563; color: white; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<header class="navbar"><div class="navbar-title">Générateur Officiel Cerfa 14367*01</div></header>
+
+<main class="page">
+  <form id="cerfaForm">
+    <div class="card">
+      <h2>A - Description des spécimens</h2>
+      <div class="grid">
+        <div class="field"><label>Nom scientifique</label><input type="text" id="nomSci"></div>
+        <div class="field"><label>Nom commun</label><input type="text" id="nomCom"></div>
+      </div>
+      <div class="grid">
+        <div class="field"><label>Quantité</label><input type="text" id="qty"></div>
+        <div class="field"><label>Statut juridique (CITES...)</label><input type="text" id="statut"></div>
+      </div>
+      <div class="field"><label>Description (Sexe, Identification...)</label><input type="text" id="desc"></div>
+    </div>
+
+    <div class="card">
+      <h2>B - Identification du cédant</h2>
+      <div class="field"><label>Nom, Prénom ou Raison sociale</label><input type="text" id="cNom"></div>
+      <div class="field"><label>Adresse (N°, Voie)</label><input type="text" id="cAddr"></div>
+      <div class="grid">
+        <div class="field"><label>Code Postal</label><input type="text" id="cCP"></div>
+        <div class="field"><label>Commune</label><input type="text" id="cVille"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>C - Identification du cessionnaire</h2>
+      <div class="field"><label>Nom, Prénom ou Raison sociale</label><input type="text" id="aNom"></div>
+      <div class="field"><label>Adresse (N°, Voie)</label><input type="text" id="aAddr"></div>
+      <div class="grid">
+        <div class="field"><label>Code Postal</label><input type="text" id="aCP"></div>
+        <div class="field"><label>Commune</label><input type="text" id="aVille"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>D - Signature de l'attestation</h2>
+      <div class="field"><label>Fait à :</label><input type="text" id="lieu"></div>
+      <label>Signature (Cadre ci-dessous) :</label>
+      <div class="sig-wrapper"><canvas id="sig-canvas"></canvas></div>
+      <button type="button" class="btn btn-clear" id="clearSig">Effacer la signature</button>
+      <button type="button" class="btn btn-main" id="generate">Générer le PDF officiel</button>
+    </div>
+  </form>
+</main>
+
+<script>
+  const canvas = document.getElementById('sig-canvas');
+  const signaturePad = new SignaturePad(canvas);
+
+  function resize() {
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+  }
+  window.onresize = resize; resize();
+  document.getElementById('clearSig').onclick = () => signaturePad.clear();
+
+  document.getElementById('generate').onclick = async () => {
+    const { PDFDocument, rgb } = PDFLib;
+    const url = 'cerfa-14367-01.pdf';
+    const bytes = await fetch(url).then(res => res.arrayBuffer());
+    const pdfDoc = await PDFDocument.load(bytes);
+    const page = pdfDoc.getPages()[0];
+
+    const f = (id) => document.getElementById(id).value;
+
+    // --- COORDONNÉES PRÉCISES POUR CERFA 14367*01 ---
+    // Section A : Tableau 
+    page.drawText(f('nomSci'), { x: 45, y: 645, size: 9 });
+    page.drawText(f('nomCom'), { x: 45, y: 635, size: 9 });
+    page.drawText(f('qty'),    { x: 235, y: 640, size: 10 });
+    page.drawText(f('desc'),   { x: 290, y: 640, size: 9 });
+    page.drawText(f('statut'), { x: 480, y: 640, size: 9 });
+
+    // Section B : Cédant [cite: 19, 20, 24]
+    page.drawText(f('cNom'),   { x: 160, y: 528, size: 10 });
+    page.drawText(f('cAddr'),  { x: 100, y: 498, size: 10 });
+    page.drawText(f('cCP'),    { x: 100, y: 468, size: 10 });
+    page.drawText(f('cVille'), { x: 300, y: 468, size: 10 });
+
+    // Section C : Cessionnaire [cite: 28, 29, 33]
+    page.drawText(f('aNom'),   { x: 160, y: 388, size: 10 });
+    page.drawText(f('aAddr'),  { x: 100, y: 358, size: 10 });
+    page.drawText(f('aCP'),    { x: 100, y: 328, size: 10 });
+    page.drawText(f('aVille'), { x: 300, y: 328, size: 10 });
+
+    // Section D : Signature et Lieux [cite: 36, 38]
+    page.drawText(f('lieu'),   { x: 235, y: 155, size: 10 });
+    const today = new Date().toLocaleDateString('fr-FR');
+    page.drawText(today,       { x: 100, y: 130, size: 10 });
+
+    // Insertion de l'image de signature [cite: 41]
+    if (!signaturePad.isEmpty()) {
+      const sigImg = await pdfDoc.embedPng(signaturePad.toDataURL());
+      page.drawImage(sigImg, { x: 60, y: 60, width: 150, height: 50 });
+    }
+
+    const pdfData = await pdfDoc.save();
+    const blob = new Blob([pdfData], { type: "application/pdf" });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = "Cerfa_14367-01_Rempli.pdf";
+    link.click();
+  };
+</script>
+</body>
+</html>
