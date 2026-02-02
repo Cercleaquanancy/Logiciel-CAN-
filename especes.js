@@ -1281,7 +1281,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande", "Cambodge", "Laos", "Vietnam"],
   page: "fiche/Betta-splendens.html",
-  image: "img/Betta-splendens/Betta-splendens.jpeg"
+  image: "img/Betta-splendens/Betta-splendens.PNG"
 },
 {
   id: "betta-simplex",
@@ -1293,7 +1293,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande"],
   page: "fiche/Betta-simplex.html",
-  image: "img/Betta-simplex/Betta-simplex.jpeg"
+  image: "img/Betta-simplex/Betta-simplex.PNG"
 },
 {
   id: "betta-simorum",
@@ -1305,7 +1305,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-simorum.html",
-  image: "img/Betta-simorum/Betta-simorum.jpeg"
+  image: "img/Betta-simorum/Betta-simorum.PNG"
 },
 {
   id: "betta-rubra",
@@ -1317,7 +1317,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-rubra.html",
-  image: "img/Betta-rubra/Betta-rubra.jpeg"
+  image: "img/Betta-rubra/Betta-rubra.PNG"
 },
 {
   id: "betta-picta",
@@ -1329,7 +1329,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-picta.html",
-  image: "img/Betta-picta/Betta-picta.jpeg"
+  image: "img/Betta-picta/Betta-picta.PNG"
 },
 {
   id: "betta-imbellis",
@@ -1341,7 +1341,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande", "Malaisie"],
   page: "fiche/Betta-imbellis.html",
-  image: "img/Betta-imbellis/Betta-imbellis.jpeg"
+  image: "img/Betta-imbellis/Betta-imbellis.PNG"
 },
 {
   id: "betta-coccina",
