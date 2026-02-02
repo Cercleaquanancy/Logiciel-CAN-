@@ -1353,7 +1353,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-coccina.html",
-  image: "img/Betta-coccina/Betta-coccina.jpeg"
+  image: "img/Betta-coccina/Betta-coccina.PNG"
 },
 {
   id: "betta-channoides",
@@ -1365,7 +1365,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-channoides.html",
-  image: "img/Betta-channoides/Betta-channoides.jpeg"
+  image: "img/Betta-channoides/Betta-channoides.PNG"
 },
 {
   id: "betta-brownorum",
@@ -1377,7 +1377,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Malaisie", "Indonésie"],
   page: "fiche/Betta-brownorum.html",
-  image: "img/Betta-brownorum/Betta-brownorum.jpeg"
+  image: "img/Betta-brownorum/Betta-brownorum.PNG"
 },
 {
   id: "betta-bellica",
@@ -1389,7 +1389,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande", "Malaisie"],
   page: "fiche/Betta-bellica.html",
-  image: "img/Betta-bellica/Betta-bellica.jpeg"
+  image: "img/Betta-bellica/Betta-bellica.PNG"
 },
 {
   id: "betta-albimarginata",
@@ -1401,7 +1401,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Betta-albimarginata.html",
-  image: "img/Betta-albimarginata/Betta-albimarginata.jpeg"
+  image: "img/Betta-albimarginata/Betta-albimarginata.PNG"
 },
 {
   id: "channa-pulchra",
@@ -1413,7 +1413,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Birmanie", "Thaïlande"],
   page: "fiche/Channa-pulchra.html",
-  image: "img/Channa-pulchra/Channa-pulchra.jpeg"
+  image: "img/Channa-pulchra/Channa-pulchra.PNG"
 },
 {
   id: "channa-bleheri",
@@ -1425,7 +1425,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Inde", "Bangladesh"],
   page: "fiche/Channa-bleheri.html",
-  image: "img/Channa-bleheri/Channa-bleheri.jpeg"
+  image: "img/Channa-bleheri/Channa-bleheri.PNG"
 },
 {
   id: "pterophyllum-leopoldi",
@@ -1437,7 +1437,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou"],
   page: "fiche/Pterophyllum-leopoldi.html",
-  image: "img/Pterophyllum-leopoldi/Pterophyllum-leopoldi.jpeg"
+  image: "img/Pterophyllum-leopoldi/Pterophyllum-leopoldi.PNG"
 },
 {
   id: "pterophyllum-altum",
@@ -1449,7 +1449,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Colombie", "Venezuela"],
   page: "fiche/Pterophyllum-altum.html",
-  image: "img/Pterophyllum-altum/Pterophyllum-altum.jpeg"
+  image: "img/Pterophyllum-altum/Pterophyllum-altum.PNG"
 },
 {
   id: "iriatherina-werneri",
