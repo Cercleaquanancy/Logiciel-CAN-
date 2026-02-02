@@ -1209,7 +1209,7 @@ window.FICHES = [
   continent: "Amérique du Nord",
   pays: ["Mexique"],
   page: "fiche/Priapella-intermedia.html",
-  image: "img/Priapella-intermedia/Priapella-intermedia.jpeg"
+  image: "img/Priapella-intermedia/Priapella-intermedia.PNG"
 },
 {
   id: "perca-fluviatilis",
@@ -1221,7 +1221,7 @@ window.FICHES = [
   continent: "Europe",
   pays: ["France", "Allemagne", "Suisse", "Italie"],
   page: "fiche/Perca-fluviatilis.html",
-  image: "img/Perca-fluviatilis/Perca-fluviatilis.jpeg"
+  image: "img/Perca-fluviatilis/Perca-fluviatilis.PNG"
 },
 {
   id: "pelvicachromis-pulcher",
@@ -1233,7 +1233,7 @@ window.FICHES = [
   continent: "Afrique",
   pays: ["Nigeria", "Cameroun"],
   page: "fiche/Pelvicachromis-pulcher.html",
-  image: "img/Pelvicachromis-pulcher/Pelvicachromis-pulcher.jpeg"
+  image: "img/Pelvicachromis-pulcher/imgPelvicachromispulcher.jpeg"
 },
 {
   id: "micropoecilia-picta",
@@ -1245,7 +1245,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Venezuela", "Guyane", "Suriname", "Brésil"],
   page: "fiche/Micropoecilia-picta.html",
-  image: "img/Micropoecilia-picta/Micropoecilia-picta.jpeg"
+  image: "img/Micropoecilia-picta/Micropoecilia-picta.PNG"
 },
 {
   id: "limia-melanogaster",
@@ -1257,7 +1257,7 @@ window.FICHES = [
   continent: "Amérique du Nord",
   pays: ["Jamaïque"],
   page: "fiche/Limia-melanogaster.html",
-  image: "img/Limia-melanogaster/Limia-melanogaster.jpeg"
+  image: "img/Limia-melanogaster/Limia-melanogaster.PNG"
 },
 {
   id: "girardinus-metallicus",
