@@ -1497,7 +1497,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou"],
   page: "fiche/Apteronotus-hasemani.html",
-  image: "img/Apteronotus-hasemani/Apteronotus-hasemani.png"
+  image: "img/Apteronotus-hasemani/Apteronotus-hasemani.PNG"
 },
 {
   id: "apteronotus-anu",
@@ -1509,7 +1509,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Paraguay", "Argentine"],
   page: "fiche/Apteronotus-anu.html",
-  image: "img/Apteronotus-anu/Apteronotus-anu.png"
+  image: "img/Apteronotus-anu/Apteronotus-anu.PNG"
 },
 {
   id: "apteronotus-apurensis",
@@ -1521,7 +1521,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Venezuela"],
   page: "fiche/Apteronotus-apurensis.html",
-  image: "img/Apteronotus-apurensis/Apteronotus-apurensis.png"
+  image: "img/Apteronotus-apurensis/Apteronotus-apurensis.PNG"
 },
 {
   id: "apteronotus-bonapartii",
@@ -1533,7 +1533,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou", "Colombie", "Venezuela"],
   page: "fiche/Apteronotus-bonapartii.html",
-  image: "img/Apteronotus-bonapartii/Apteronotus-bonapartii.png"
+  image: "img/Apteronotus-bonapartii/Apteronotus-bonapartii.PNG"
 },
 {
   id: "parachromis-friedrichsthalii",
@@ -1545,7 +1545,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Mexique", "Belize", "Guatemala", "Honduras"],
   page: "fiche/Parachromis-friedrichsthalii.html",
-  image: "img/Parachromis-friedrichsthalii/Parachromis-friedrichsthalii.png"
+  image: "img/Parachromis-friedrichsthalii/Parachromis-friedrichsthalii.PNG"
 },
 {
   id: "parachromis-motaguensis",
@@ -1557,7 +1557,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Guatemala", "Honduras", "Salvador"],
   page: "fiche/Parachromis-motaguensis.html",
-  image: "img/Parachromis-motaguensis/Parachromis-motaguensis.png"
+  image: "img/Parachromis-motaguensis/Parachromis-motaguensis.PNG"
 },
 {
   id: "parachromis-loisellei",
@@ -1569,7 +1569,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Honduras", "Nicaragua", "Costa Rica"],
   page: "fiche/Parachromis-loisellei.html",
-  image: "img/Parachromis-loisellei/Parachromis-loisellei.png"
+  image: "img/Parachromis-loisellei/Parachromis-loisellei.PNG"
 },
 {
   id: "parachromis-dovii",
@@ -1581,7 +1581,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Honduras", "Nicaragua", "Costa Rica"],
   page: "fiche/Parachromis-dovii.html",
-  image: "img/Parachromis-dovii/Parachromis-dovii.png"
+  image: "img/Parachromis-dovii/Parachromis-dovii.PNG"
 },
 {
   id: "rocio-gemmata",
@@ -1593,7 +1593,7 @@ window.FICHES = [
   continent: "Amérique du Nord",
   pays: ["Mexique"],
   page: "fiche/Rocio-gemmata.html",
-  image: "img/Rocio-gemmata/Rocio-gemmata.png"
+  image: "img/Rocio-gemmata/Rocio-gemmata.PNG"
 },
 {
   id: "rocio-spinosissima",
@@ -1605,7 +1605,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Guatemala", "Belize"],
   page: "fiche/Rocio-spinosissima.html",
-  image: "img/Rocio-spinosissima/Rocio-spinosissima.png"
+  image: "img/Rocio-spinosissima/Rocio-spinosissima.PNG"
 },
 {
   id: "gnathonemus-petersii",
@@ -1617,7 +1617,7 @@ window.FICHES = [
   continent: "Afrique",
   pays: ["Nigeria", "Cameroun", "RDC", "Bénin"],
   page: "fiche/Gnathonemus-petersii.html",
-  image: "img/Gnathonemus-petersii/Gnathonemus-petersii.png"
+  image: "img/Gnathonemus-petersii/Gnathonemus-petersii.PNG"
 },{
   id: "pelvicachromis-humilis",
   nomScientifique: "Pelvicachromis humilis",
@@ -1628,7 +1628,7 @@ window.FICHES = [
   continent: "Afrique",
   pays: ["Guinée", "Sierra Leone", "Liberia"],
   page: "fiche/Pelvicachromis-humilis.html",
-  image: "img/Pelvicachromis-humilis/Pelvicachromis-humilis.png"
+  image: "img/Pelvicachromis-humilis/Pelvicachromis-humilis.PNG"
 },
 {
   id: "trigonostigma-heteromorpha",
@@ -1640,7 +1640,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande", "Malaisie", "Indonésie"],
   page: "fiche/Trigonostigma-heteromorpha.html",
-  image: "img/Trigonostigma-heteromorpha/Trigonostigma-heteromorpha.png"
+  image: "img/Trigonostigma-heteromorpha/Trigonostigma-heteromorpha.PNG"
 },
 {
   id: "hyphessobrycon-pulchripinnis",
@@ -1652,7 +1652,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil"],
   page: "fiche/Hyphessobrycon-pulchripinnis.html",
-  image: "img/Hyphessobrycon-pulchripinnis/Hyphessobrycon-pulchripinnis.png"
+  image: "img/Hyphessobrycon-pulchripinnis/Hyphessobrycon-pulchripinnis.PNG"
 },
 {
   id: "puntigrus-tetrazona",
@@ -1664,7 +1664,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Indonésie"],
   page: "fiche/Puntigrus-tetrazona.html",
-  image: "img/Puntigrus-tetrazona/Puntigrus-tetrazona.png"
+  image: "img/Puntigrus-tetrazona/Puntigrus-tetrazona.PNG"
 },
 {
   id: "puntius-titteya",
@@ -1676,7 +1676,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Sri Lanka"],
   page: "fiche/Puntius-titteya.html",
-  image: "img/Puntius-titteya/Puntius-titteya.png"
+  image: "img/Puntius-titteya/Puntius-titteya.PNG"
 },
 {
   id: "corydoras-aeneus",
@@ -1688,7 +1688,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou", "Venezuela", "Colombie", "Argentine"],
   page: "fiche/Corydoras-aeneus.html",
-  image: "img/Corydoras-aeneus/Corydoras-aeneus.png"
+  image: "img/Corydoras-aeneus/Corydoras-aeneus.PNG"
 },
 {
   id: "carassius-auratus",
@@ -1700,7 +1700,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Chine", "Japon"],
   page: "fiche/Carassius-auratus.html",
-  image: "img/Carassius-auratus/Carassius-auratus.png"
+  image: "img/Carassius-auratus/Carassius-auratus.PNG"
 },
 {
   id: "danio-meghalayensis",
@@ -1712,7 +1712,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Inde"],
   page: "fiche/Danio-meghalayensis.html",
-  image: "img/Danio-meghalayensis/Danio-meghalayensis.png"
+  image: "img/Danio-meghalayensis/Danio-meghalayensis.PNG"
 },
 {
   id: "danio-quagga",
@@ -1724,7 +1724,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Myanmar"],
   page: "fiche/Danio-quagga.html",
-  image: "img/Danio-quagga/Danio-quagga.png"
+  image: "img/Danio-quagga/Danio-quagga.PNG"
 },
 {
   id: "danio-roseus",
@@ -1736,7 +1736,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Thaïlande", "Laos", "Myanmar"],
   page: "fiche/Danio-roseus.html",
-  image: "img/Danio-roseus/Danio-roseus.png"
+  image: "img/Danio-roseus/Danio-roseus.PNG"
 },
 {
   id: "danio-tinwini",
@@ -1748,7 +1748,7 @@ window.FICHES = [
   continent: "Asie",
   pays: ["Myanmar"],
   page: "fiche/Danio-tinwini.html",
-  image: "img/Danio-tinwini/Danio-tinwini.png"
+  image: "img/Danio-tinwini/Danio-tinwini.PNG"
 },
 {
   id: "hyphessobrycon-herbertaxelrodi",
@@ -1760,7 +1760,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil"],
   page: "fiche/Hyphessobrycon-herbertaxelrodi.html",
-  image: "img/Hyphessobrycon-herbertaxelrodi/Hyphessobrycon-herbertaxelrodi.png"
+  image: "img/Hyphessobrycon-herbertaxelrodi/Hyphessobrycon-herbertaxelrodi.PNG"
 },
 {
   id: "hyphessobrycon-amandae",
@@ -1772,7 +1772,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil"],
   page: "fiche/Hyphessobrycon-amandae.html",
-  image: "img/Hyphessobrycon-amandae/Hyphessobrycon-amandae.png"
+  image: "img/Hyphessobrycon-amandae/Hyphessobrycon-amandae.PNG"
 },
 {
   id: "nematobrycon-palmeri",
@@ -1784,7 +1784,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Colombie"],
   page: "fiche/Nematobrycon-palmeri.html",
-  image: "img/Nematobrycon-palmeri/Nematobrycon-palmeri.png"
+  image: "img/Nematobrycon-palmeri/Nematobrycon-palmeri.PNG"
 },
 {
   id: "hemigrammus-rhodostomus",
@@ -1796,7 +1796,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Venezuela"],
   page: "fiche/Hemigrammus-rhodostomus.html",
-  image: "img/Hemigrammus-rhodostomus/Hemigrammus-rhodostomus.png"
+  image: "img/Hemigrammus-rhodostomus/Hemigrammus-rhodostomus.PNG"
 },
 {
   id: "hyphessobrycon-eques",
@@ -1808,7 +1808,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Paraguay", "Bolivie", "Argentine"],
   page: "fiche/Hyphessobrycon-eques.html",
-  image: "img/Hyphessobrycon-eques/Hyphessobrycon-eques.png"
+  image: "img/Hyphessobrycon-eques/Hyphessobrycon-eques.PNG"
 },
 {
   id: "mikrogeophagus-ramirezi",
@@ -1820,7 +1820,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Venezuela", "Colombie"],
   page: "fiche/Mikrogeophagus-ramirezi.html",
-  image: "img/Mikrogeophagus-ramirezi/Mikrogeophagus-ramirezi.png"
+  image: "img/Mikrogeophagus-ramirezi/Mikrogeophagus-ramirezi.PNG"
 },
 {
   id: "symphysodon-aequifasciatus",
@@ -1832,7 +1832,7 @@ window.FICHES = [
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou", "Colombie"],
   page: "fiche/Symphysodon-aequifasciatus.html",
-  image: "img/Symphysodon-aequifasciatus/Symphysodon-aequifasciatus.png"
+  image: "img/Symphysodon-aequifasciatus/Symphysodon-aequifasciatus.PNG"
 },
 {
   id: "thorichthys-meeki",
