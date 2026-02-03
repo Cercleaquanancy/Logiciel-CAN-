@@ -1436,7 +1436,7 @@ window.FICHES = [
   genre: "Pterophyllum",
   continent: "Amérique du Sud",
   pays: ["Brésil", "Pérou"],
-  page: "fiche/Pterophyllum-leopoldi.html",
+  page: "fiche/Pterophyllum-leopodi.html",
   image: "img/Pterophyllum-leopoldi/Pterophyllum-leopoldi.PNG"
 },
 {
