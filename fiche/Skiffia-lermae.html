@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Skiffia lermae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Skiffia lermae</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Skiffia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>S. lermae</em></li>
+              <li><span class="sys-label">Auteur :</span> Meek, 1902</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Skiffia-lermae/Skiffia-lermae.PNG" alt="Skiffia lermae">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Skiffia lermae</strong> est l'espèce type du genre <em>Skiffia</em>. Ce petit poisson vivipare matrotrophe est originaire du haut plateau mexicain. Il se caractérise par une morphologie typique des goodeidés de petite taille, avec un corps modérément haut et compressé latéralement.
+          </p>
+          <p class="section-text">
+            Le mâle atteint environ 4&nbsp;cm, tandis que la femelle peut mesurer jusqu'à 6&nbsp;cm. La coloration est sobre : un fond gris-olive à beige avec des reflets argentés. Le trait le plus distinctif, bien que subtil, est une tache sombre à la base de la nageoire caudale, souvent en forme de croissant ou de triangle. Les mâles en période de parade peuvent présenter des reflets plus sombres, presque noirs, sur les nageoires dorsale et anale.
+          </p>
+          <p class="section-text">
+            L'espèce est classée "En danger" (EN) par l'UICN. Bien que sa distribution soit un peu plus large que celle d'autres membres du genre, ses populations naturelles sont en déclin rapide à cause de la pollution industrielle, urbaine et de l'assèchement des zones humides du bassin du Rio Lerma.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Skiffia lermae</em> est une espèce paisible et grégaire. Elle apprécie la vie en colonie où les interactions sociales sont nombreuses. Les mâles sont vifs et passent une grande partie de la journée à parader ou à se poursuivre sans agressivité réelle.
+          </p>
+          <p class="section-text">
+            En aquarium, c'est un poisson qui reste proche de la végétation et du substrat. Il est moins "aventureux" en pleine eau que certains de ses cousins plus grands. Un aquarium bien planté est indispensable pour son bien-être, car il utilise les plantes comme zones de refuge et de recherche de micro-nourriture.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            Le processus de reproduction suit le schéma classique des Goodeinae. Les embryons sont nourris via des trophotaeniae à l'intérieur de l'ovaire. La gestation dure entre 55 et 60 jours en fonction de la température de l'eau.
+          </p>
+          <p class="section-text">
+            Les portées sont généralement comprises entre 10 et 25 alevins. Comme c'est souvent le cas chez les <em>Skiffia</em>, les petits naissent à un stade de développement très avancé, mesurant plus de 10&nbsp;mm. Ils sont immédiatement autonomes. Les parents délaissent généralement les alevins, ce qui permet de maintenir une population stable dans un bac spécifique bien planté sans intervention humaine majeure.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle possède un andropodium (encoche sur la nageoire anale) et une nageoire dorsale souvent plus large. La femelle est nettement plus grande et plus ronde à maturité.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 4 ans en aquarium.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique du bassin du Rio Lerma et des lacs associés comme le lac Pátzcuaro et le lac Zirahuén dans l'État de Michoacán. On la trouve également dans certains canaux et sources d'altitude. Son habitat privilégié est constitué d'eaux calmes, riches en détritus organiques et en végétation submergée.
+          </p>
+          <p class="section-text">
+            L'eau est généralement alcaline et moyennement dure. Les températures saisonnières fluctuent, mais l'espèce préfère des eaux fraîches entre 18 et 22&nbsp;°C. Elle est souvent trouvée en compagnie d'autres goodeidés comme <em>Goodea atripinnis</em> ou <em>Alloophorus robustus</em>.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Skiffia-lermae/Maps-Skiffia-lermae.png"
+              alt="Répartition de Skiffia lermae"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : Bassin du Rio Lerma (Michoacán, Jalisco, Guanajuato).</li>
+              <li>Lacs Pátzcuaro, Zirahuén et Cuitzeo.</li>
+              <li>Endémique du plateau central mexicain.</li>
+            </ul>
+            <p>
+              Bien que présente dans plusieurs lacs, la qualité de l'eau se dégrade partout, rendant les populations de plus en plus vulnérables.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 23&nbsp;°C. Éviter les chaleurs prolongées au-dessus de 25&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,2 à 8,2.</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Faible.</p>
+            <p><strong>Volume conseillé :</strong> 60–80&nbsp;L pour une petite colonie.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance herbivore / algivore.
+            </p>
+            <p>
+              Dans la nature, il consomme du périphyton, des diatomées et des petits invertébrés. En aquarium, il accepte les flocons de bonne qualité, mais il est vital de lui fournir des compléments végétaux (spiruline) et des proies congelées ou vivantes (daphnies, artémias).
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

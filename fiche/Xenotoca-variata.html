@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Xenotoca variata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Xenotoca variata</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Xenotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>X. variata</em></li>
+              <li><span class="sys-label">Auteur :</span> (Bean, 1887)</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Xenotoca-variata/Xenotoca-variata.PNG" alt="Xenotoca variata">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Xenotoca variata</strong> est une espèce robuste de goodeidé mexicain, souvent considérée comme l'espèce type de son genre. Elle est moins "flamboyante" que sa cousine <em>Xenotoca eiseni</em>, mais elle arbore une subtilité de couleurs irisées qui varie grandement selon les populations et l'éclairage, d'où son nom spécifique.
+          </p>
+          <p class="section-text">
+            Le mâle atteint environ 6&nbsp;cm, tandis que la femelle peut atteindre 8&nbsp;cm. Le corps est compact, haut et puissant. Les mâles se distinguent par des écailles aux reflets bleus, verts ou turquoise sur les flancs, avec une zone abdominale souvent plus claire. Contrairement à <em>X. eiseni</em>, ils ne possèdent pas la queue rouge vif, mais peuvent présenter des liserés jaunes ou orangés sur les nageoires impaires. La femelle est de couleur olive ou brune avec un patron de taches sombres irrégulières.
+          </p>
+          <p class="section-text">
+            L'espèce est actuellement classée "Préoccupation mineure" (LC) par l'UICN en raison de sa large répartition, mais elle reste sensible à la dégradation locale de son habitat, notamment dans les zones soumises à une forte activité agricole.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Xenotoca variata</em> est un poisson très actif et curieux. Bien qu'il soit moins agressif que <em>X. eiseni</em>, il conserve le tempérament vif des goodeidés. Il est conseillé de le maintenir en groupe pour observer son comportement social naturel, où les mâles paradent fréquemment pour établir une hiérarchie.
+          </p>
+          <p class="section-text">
+            C'est une espèce qui s'adapte à de nombreux types d'environnements aquatiques, des eaux claires aux zones plus troubles. En aquarium, il apprécie un espace de nage dégagé au centre, bordé d'une végétation dense permettant aux femelles de se reposer. Il est très vorace lors des distributions de nourriture.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction est typique des Goodeinae. Les embryons se développent dans l'ovaire de la femelle et sont nourris via des trophotaeniae. La gestation dure généralement entre 55 et 60 jours. 
+          </p>
+          <p class="section-text">
+            Les portées varient de 10 à 40 alevins selon la taille de la femelle. Les nouveau-nés sont robustes et mesurent environ 12 à 15&nbsp;mm à la naissance. Ils sont capables de consommer immédiatement des nauplies d'artémias ou de la nourriture fine. Le cannibalisme des adultes est limité, mais une bonne couverture végétale (mousse, plantes flottantes) assure un meilleur taux de survie.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle possède un andropodium (encoche sur la nageoire anale) et des reflets irisées bleus/verts sur les flancs. La femelle est plus grande, plus massive et présente un patron de coloration moucheté plus discret.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 5 ans en aquarium.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce possède l'une des aires de répartition les plus vastes parmi les goodeidés. On la trouve dans le bassin du Rio Lerma, le Rio Grande de Santiago, le Rio Pánuco et le Rio Ameca. Elle fréquente les lacs (comme le lac Cuitzeo), les sources, les canaux d'irrigation et les rivières à courant lent.
+          </p>
+          <p class="section-text">
+            L'eau y est généralement alcaline et moyennement dure. L'espèce tolère une large gamme de températures, ce qui lui a permis de coloniser des environnements variés du plateau central mexicain. Le substrat est souvent boueux ou composé de graviers fins, avec une présence notable de végétation aquatique et d'algues.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Xenotoca-variata/Maps-Xenotoca-variata.png"
+              alt="Répartition de Xenotoca variata"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : Bassins des Rios Lerma, Santiago, Pánuco et Ameca.</li>
+              <li>États de Guanajuato, Jalisco, Michoacán, Querétaro et San Luis Potosí.</li>
+              <li>L'un des goodeidés les plus répandus géographiquement.</li>
+            </ul>
+            <p>
+              Bien qu'adaptable, les populations du bassin du Rio Pánuco sont parfois considérées comme distinctes ou méritant une attention taxonomique particulière.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 25&nbsp;°C. Supporte bien les baisses nocturnes ou saisonnières.</p>
+            <p><strong>pH :</strong> 7,0 à 8,2.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> 80–100&nbsp;L pour un groupe, bac bien filtré et oxygéné.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance algivore.
+            </p>
+            <p>
+              En aquarium, il accepte tout type de nourriture, mais nécessite impérativement une part végétale importante (spiruline, algues) pour rester en bonne santé. Un apport de proies vivantes ou congelées est recommandé pour stimuler la reproduction.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

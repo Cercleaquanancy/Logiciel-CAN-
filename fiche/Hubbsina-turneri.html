@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hubbsina turneri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Hubbsina turneri</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Hubbsina</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>H. turneri</em></li>
+              <li><span class="sys-label">Auteur :</span> de Buen, 1940</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Hubbsina-turneri/Hubbsina-turneri.PNG" alt="Hubbsina turneri">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Hubbsina turneri</strong> est un petit poisson vivipare matrotrophe d'une importance scientifique majeure, étant le seul représentant de son genre. Longtemps discuté taxonomiquement, il appartient à la lignée des Goodeinae et présente des traits morphologiques primitifs qui le rapprochent des genres <em>Girardinichthys</em> et <em>Allotoca</em>.
+          </p>
+          <p class="section-text">
+            C'est une espèce de petite taille : les mâles mesurent environ 3 à 4&nbsp;cm, tandis que les femelles peuvent atteindre 5&nbsp;cm. Le corps est fusiforme et présente un patron de coloration subtil, composé d'une base gris-olive parsemée de petites taches noires irrégulières sur les flancs, formant parfois une ligne latérale discontinue. Les mâles adultes développent une pigmentation plus sombre sur les nageoires et le bas du corps lors des parades.
+          </p>
+          <p class="section-text">
+            Cette espèce est classée "En danger critique d'extinction" (CR) par l'UICN. Sa survie est extrêmement précaire car elle ne subsiste plus que dans quelques rares zones épargnées de son habitat d'origine. Elle est pratiquement absente du commerce aquariophile standard et n'est maintenue que par une poignée d'éleveurs spécialisés dans le cadre de programmes de sauvegarde.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            <em>Hubbsina turneri</em> est un poisson discret et pacifique. Dans la nature, il vit caché dans la végétation aquatique dense, ce qui lui permet d'échapper aux prédateurs. C'est une espèce benthopélagique qui apprécie les eaux calmes ou à courant très lent.
+          </p>
+          <p class="section-text">
+            En captivité, il montre un tempérament timide et nécessite un aquarium riche en plantes pour se sentir en sécurité. Les interactions entre mâles sont limitées à des parades d'intimidation sans agressivité physique marquée. Il est très sensible aux variations brusques de température et à la dégradation de la qualité de l'eau.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction est caractérisée par une gestation assez longue, environ 55 à 65 jours. Comme tous les Goodeinae, les embryons développent des trophotaeniae pour absorber les nutriments fournis par la mère. La fécondation est assurée par l'andropodium du mâle.
+          </p>
+          <p class="section-text">
+            Les portées sont de petite taille, produisant généralement entre 5 et 15 alevins. Les nouveau-nés naissent à une taille relativement grande par rapport aux parents et sont capables de consommer immédiatement des micro-nourritures. Le succès de l'élevage dépend de la stabilité absolue des paramètres et d'un environnement calme.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle possède un andropodium (encoche sur la nageoire anale) et présente des nageoires dorsale et anale légèrement plus développées que celles de la femelle. La femelle est plus massive et plus grande à maturité.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 4 ans en aquarium sous conditions optimales.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique de la Laguna de Zacapu et des systèmes de sources associés dans l'État de Michoacán, au Mexique. Son habitat typique est constitué d'eaux claires à légèrement troubles, très riches en végétation aquatique comme <em>Potamogeton</em>, <em>Ceratophyllum</em> et des algues de type <em>Chara</em>.
+          </p>
+          <p class="section-text">
+            L'eau de ces sources thermales reste relativement fraîche, oscillant entre 18 et 22&nbsp;°C, avec un pH neutre à légèrement alcalin. Le substrat est principalement composé de boue et de sédiments organiques. La survie de l'espèce est intimement liée à la qualité de ces sources, menacées par le pompage et les espèces invasives.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Hubbsina-turneri/Maps-Hubbsina-turneri.png"
+              alt="Répartition de Hubbsina turneri"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : État de Michoacán (Laguna de Zacapu et sources de la région).</li>
+              <li>Endémique strict de ce système de sources d'altitude.</li>
+              <li>Distribution extrêmement restreinte.</li>
+            </ul>
+            <p>
+              Considéré comme l'un des poissons les plus menacés du Mexique. Son maintien en captivité est crucial pour éviter l'extinction totale du genre.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 22&nbsp;°C. Très sensible au-delà de 25&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 7,8.</p>
+            <p><strong>GH :</strong> 8 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Nul à faible.</p>
+            <p><strong>Volume conseillé :</strong> 40–60&nbsp;L pour un petit groupe, dans un bac spécifique richement planté.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance insectivore.
+            </p>
+            <p>
+              En aquarium, il nécessite une alimentation variée et de petite taille : micro-granulés, mais surtout du vivant ou du congelé (daphnies, artémias, cyclops). Les proies vivantes sont essentielles pour déclencher le comportement reproducteur.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

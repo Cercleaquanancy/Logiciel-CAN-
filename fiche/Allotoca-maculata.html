@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Allotoca maculata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Allotoca maculata</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Allotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. maculata</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Allotoca-maculata/Allotoca-maculata.PNG" alt="Allotoca maculata">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Allotoca maculata</strong> est l'un des membres les plus menacés du genre Allotoca, originaire de l'État de Jalisco au Mexique. Cette espèce est actuellement classée comme étant en danger critique d'extinction (CR). Sa distribution est extrêmement limitée, se concentrant principalement dans la lagune de Magdalena et les bassins versants associés.
+          </p>
+          <p class="section-text">
+            C'est un petit poisson dont les mâles mesurent environ 3 à 4&nbsp;cm et les femelles jusqu'à 5,5&nbsp;cm. Le corps est relativement haut comparé aux autres espèces du genre. Le nom <em>maculata</em> fait référence aux taches sombres irrégulières qui parsèment les flancs, particulièrement visibles chez les femelles. La coloration de base est gris-vert à argentée. Chez le mâle, on observe des reflets bleutés sur les flancs et une bordure noire sur la nageoire dorsale et anale, tandis que la femelle présente une coloration plus terne mais des motifs tachetés plus contrastés le long de la ligne latérale.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Dans la nature, <em>Allotoca maculata</em> préfère les eaux stagnantes ou à courant très lent, souvent avec une forte présence de végétation aquatique et d'algues. C'est une espèce timide qui utilise les herbiers denses pour se cacher des prédateurs.
+          </p>
+          <p class="section-text">
+            En captivité, c'est un poisson pacifique qui doit être maintenu de préférence en bac spécifique pour garantir sa survie et sa reproduction. Il est particulièrement sensible à la qualité de l'eau et aux températures trop élevées. Le maintien d'un groupe social est recommandé pour observer son comportement naturel. L'espèce peut se montrer stressée en présence de compagnons de bac trop actifs ou agressifs.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare trophotaénial.
+          </p>
+          <p class="section-text">
+            Le cycle de reproduction est typique des Goodeinae. La gestation dure entre 50 et 60 jours. Les portées sont généralement modestes, avec 10 à 20 alevins par portée pour une femelle mature. Les nouveau-nés naissent avec des trophotaeniae (extensions ombilicales) visibles qui se résorbent rapidement. Les alevins sont grands à la naissance (environ 10-14&nbsp;mm) et peuvent consommer des nauplies d'artémias ou de la nourriture fine dès le premier jour. Le GWG souligne l'importance de températures fraîches pour assurer une fertilité constante.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué. Le mâle possède un andropode (premiers rayons de l'anale raccourcis et séparés). Les mâles sont plus petits, plus colorés avec des reflets métalliques et des nageoires bordées de noir. Les femelles sont plus corpulentes, présentent un abdomen plus rebondi et portent des taches sombres bien définies sur les flancs.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 4 ans en moyenne en aquarium, parfois plus dans des conditions optimales avec un repos hivernal thermique.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique de la Laguna de Magdalena et de quelques sources isolées dans la région du Volcán de Tequila au Jalisco. Son habitat naturel se compose d'eaux calmes, peu profondes (souvent moins de 1&nbsp;m), avec des fonds vaseux ou rocheux riches en sédiments organiques. La végétation aquatique y est historiquement dense (Ceratophyllum, Potamogeton).
+          </p>
+          <p class="section-text">
+            Ces milieux subissent de fortes pressions anthropiques : pollution agricole, assèchement des zones humides et introduction de carpes et de tilapias. Ces facteurs, combinés à la distribution naturellement restreinte de l'espèce, placent <em>A. maculata</em> dans une situation de survie critique.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+            <img
+              src="../img/Allotoca-maculata/Maps-Allotoca-maculata.PNG"
+              alt="Répartition de Allotoca maculata"
+              class="carte-img"
+            >
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : État de Jalisco.</li>
+              <li>Bassin : Bassins endoréiques de la région de Magdalena et Ameca.</li>
+              <li>Localité : Laguna de Magdalena et sources environnantes.</li>
+            </ul>
+            <p>
+              <strong>Statut :</strong> En danger critique d'extinction (CR). Les populations sauvages sont en déclin drastique.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 22&nbsp;°C (optimal). Une baisse nocturne et saisonnière est bénéfique.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 8 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Très faible ou absent.</p>
+            <p><strong>Volume conseillé :</strong> 80&nbsp;L pour un petit groupe. La présence de nombreuses plantes est impérative.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore.
+            </p>
+            <p>
+              Le GWG indique une préférence pour les petits invertébrés, les larves d'insectes et une part non négligeable d'algues (aufwuchs). En captivité, une alimentation variée incluant des granulés à base végétale et des proies vivantes ou congelées est nécessaire pour éviter les carences.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

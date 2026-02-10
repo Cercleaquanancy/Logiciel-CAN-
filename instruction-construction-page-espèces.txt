@@ -188,6 +188,7 @@ je veux que tu le fasse des fiches espèces qui suive le model que je te donne t
               <li><span class="sys-label">Famille :</span> Osphronemidae</li>
               <li><span class="sys-label">Genre :</span> <em>Betta</em></li>
               <li><span class="sys-label">Espèce :</span> <em>B. picta</em></li>
+              <li><span class="sys-label">Auteur :</span> Tan & Ng, 1996</li>
             </ul>
           </div>
 
@@ -299,7 +300,7 @@ je veux que tu le fasse des fiches espèces qui suive le model que je te donne t
 </html>
 
 
-</html> pour les source je veux que tu utilise https://www.aquaportail.com/, fishipedia.fr, https://www.fishfish.fr/, https://www.b-aqua.com/, https://www.fishbase.se/ les fiche du https://www.killiclubdefrance.org/, https://www.goodeidworkinggroup.com/, https://www.francevivipares.fr comme source peincipale et les données scientifiques disponibles, si il y a, et tu ne changera pas la forme et tu me donnera la page au complet. je te donnera juste le nom de l'espèces et toi tu fera la fiche. je ne veux par de non commun dans la fiche ou meme de h2. si tu n'a pas l'information je veux que tu invente rien mais que tu explique alors léstimation ou bien si c'est pas possible tu mets aucune information. 
+</html> pour les source je veux que tu utilise en prioriter absolut https://www.aquaportail.com/, fishipedia.fr, https://www.fishfish.fr/, https://www.b-aqua.com/, https://www.fishbase.se/ les fiche du https://www.killiclubdefrance.org/ pour les killie, https://www.goodeidworkinggroup.com/ pour les goodeids, https://www.francevivipares.fr comme source peincipale et les données scientifiques disponibles, si il y a, et tu ne changera pas la forme et tu me donnera la page au complet. je te donnera juste le nom de l'espèces et toi tu fera la fiche. je ne veux par de non commun dans la fiche ou meme de h2. si tu n'a pas l'information je veux que tu invente rien mais que tu explique alors léstimation ou bien si c'est pas possible tu mets aucune information. 
 et tu me donnera un block en lien avec l'espèces demander qui suis ceux model: 
 {
   id: "corydoras-aeneus",
@@ -313,3 +314,4 @@ et tu me donnera un block en lien avec l'espèces demander qui suis ceux model:
   page: "fiche/Corydoras-aeneus.html",
   image: "img/Corydoras-aeneus/Corydoras-aeneus.PNG"
 }
+en js je rapelle 

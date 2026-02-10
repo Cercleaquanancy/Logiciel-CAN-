@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Allotoca goslinei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Allotoca goslinei</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Allotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. goslinei</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Allotoca-goslinei/Allotoca-goslinei.PNG" alt="Allotoca goslinei">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Allotoca goslinei</strong> est une espèce de Goodeidae extrêmement rare, originaire du bassin du Río Ameca au Mexique. Elle appartient à la sous-famille des Goodeinae. Cette espèce est malheureusement considérée comme éteinte à l'état sauvage (EW) par l'UICN depuis les dernières études de terrain, ne subsistant plus qu'à travers des programmes d'élevage conservatoires.
+          </p>
+          <p class="section-text">
+            Il s'agit d'une espèce de petite taille, les mâles atteignant environ 3,5 à 4,5&nbsp;cm, tandis que les femelles sont légèrement plus grandes, pouvant atteindre 5&nbsp;cm. Le corps est relativement élancé pour un Goodeid. La coloration se compose d'une base grisâtre à olive avec des reflets argentés. Une caractéristique distinctive est la présence d'une série de barres verticales sombres sur les flancs, plus marquées chez les mâles, et d'une tache noire sur la nageoire dorsale des femelles (souvent entourée d'une zone plus claire). Les nageoires des mâles matures peuvent prendre des teintes jaunâtres ou orangées discrètes.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson discret qui occupait principalement les zones calmes des petits ruisseaux et des bassins de sources. Contrairement à d'autres Goodeids plus robustes comme <em>Goodea atripinnis</em>, <em>Allotoca goslinei</em> est une espèce sensible qui ne supporte pas la compétition avec des espèces invasives (comme <em>Pseudoxiphophorus bimaculatus</em>), ce qui a largement contribué à sa disparition.
+          </p>
+          <p class="section-text">
+            En captivité, elle montre un comportement calme mais peut se montrer nerveuse si les cachettes sont insuffisantes. Elle apprécie les zones d'eau claire avec peu de courant et une végétation dense. Elle est considérée comme plus difficile à maintenir sur le long terme que la moyenne des Goodeids en raison de sa sensibilité aux changements de paramètres et aux maladies.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare (viviparité trophotaéniale). Comme les autres membres de sa sous-famille, le transfert de nutriments entre la mère et l'embryon se fait via des structures appelées trophotaeniae.
+          </p>
+          <p class="section-text">
+            La gestation dure environ 55 à 60 jours selon la température. Les portées sont généralement petites, comptant entre 5 et 15 alevins par cycle, ce qui reflète la stratégie de reproduction de l'espèce. Les alevins naissent à une taille relativement grande (environ 10-12&nbsp;mm) et sont capables de se nourrir immédiatement après la résorption des trophotaeniae. Le cannibalisme envers les jeunes est moins prononcé que chez d'autres espèces, mais reste possible si l'espace est restreint.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Bien visible. Le mâle possède un andropode (nageoire anale modifiée dont les premiers rayons sont courts et séparés par une encoche) utilisé pour la fécondation interne. Le mâle est plus petit, plus svelte et présente des barres verticales plus contrastées. La femelle est plus ronde, plus grande et possède la tache caractéristique sur la nageoire dorsale.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 3 à 5 ans en captivité sous des conditions de maintenance rigoureuses.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'habitat historique d'<em>Allotoca goslinei</em> se limitait à un très petit affluent du Río Ameca, spécifiquement le Potrero Grande au Jalisco, Mexique. Il fréquentait des eaux peu profondes, claires à légèrement troubles, avec un courant faible. Le fond était composé de boue, de sable et de roches, souvent recouvert de racines et de débris végétaux.
+          </p>
+          <p class="section-text">
+            La température de l'eau dans son habitat d'origine oscillait généralement entre 18°C et 24°C, restant relativement fraîche par rapport aux plaines environnantes. La disparition de son biotope due à la pollution, au pompage de l'eau et à l'introduction d'espèces exotiques prédatrices a conduit à l'extinction de l'espèce dans la nature.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+            <img
+              src="../img/Allotoca-goslinei/Maps-Allotoca-goslinei.PNG"
+              alt="Répartition de Allotoca goslinei"
+              class="carte-img"
+            >
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : État de Jalisco.</li>
+              <li>Bassin versant : Río Ameca.</li>
+              <li>Localité : Arroyo Potrero Grande (localité type).</li>
+            </ul>
+            <p>
+              <strong>Statut :</strong> Éteint à l'état sauvage (EW). Les seules populations existantes sont maintenues par des aquariophiles spécialisés et des institutions comme l'Université de Morelia (MUMS).
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 22&nbsp;°C (idéal), tolère jusqu'à 24&nbsp;°C. Éviter les chaleurs prolongées.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 10 à 20&nbsp;°dGH (eau moyennement dure à dure).</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> 60 à 80&nbsp;L minimum pour un petit groupe de conservation. Bac spécifique fortement recommandé.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance carnivore (insectivore).
+            </p>
+            <p>
+              Le GWG rapporte que l'espèce se nourrit principalement de petits invertébrés aquatiques et de larves d'insectes. En aquarium, elle accepte les nourritures sèches de qualité, mais nécessite un apport régulier de proies vivantes ou congelées (daphnies, cyclops, artémias) pour maintenir sa santé et sa fertilité.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

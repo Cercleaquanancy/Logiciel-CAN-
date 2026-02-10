@@ -5,14 +5,10 @@
   <title>Suivi du bac</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-  <!-- Chart.js simple -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-
 
   <style>
     * { box-sizing:border-box; margin:0; padding:0; }
-
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -20,7 +16,6 @@
       color:#e5e7eb;
       min-height:100vh;
     }
-
 
     .navbar {
       position:fixed; top:0; left:0; width:100%;
@@ -36,7 +31,6 @@
     .navbar-title { font-size:0.95rem; font-weight:600; }
     .navbar-user { font-size:0.8rem; color:#9ca3af; }
 
-
     .navbar-menu {
       display:flex; gap:8px; align-items:center;
       flex-wrap:wrap; justify-content:flex-end;
@@ -49,7 +43,6 @@
     .nav-btn span.icon { font-size:1rem; }
     .nav-btn:hover { background:#111827; }
 
-
     .navbar-logout {
       border-radius:999px; border:1px solid #374151;
       background:#111827; color:#e5e7eb;
@@ -57,14 +50,12 @@
     }
     .navbar-logout:hover { background:#1f2937; }
 
-
     .page {
-      padding-top:72px;
-      padding:0 12px 20px;
-      max-width:1100px;
-      margin:0 auto;
+      /* La correction est ici : on assure le padding haut pour le menu fixe */
+      padding: 72px 12px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
-
 
     .card {
       background:#020617;
@@ -74,11 +65,9 @@
       margin-bottom:14px;
     }
 
-
     h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
     h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
     .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
-
 
     label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
     input[type="number"],
@@ -99,7 +88,6 @@
       font-size:0.85rem; min-height:70px; resize:vertical;
     }
 
-
     .btn-primary {
       background:#38bdf8; color:#0f172a;
       border:none; border-radius:7px;
@@ -107,7 +95,6 @@
       cursor:pointer;
     }
     .btn-primary:hover { filter:brightness(1.05); }
-
 
     .btn-secondary {
       background:#111827; color:#e5e7eb;
@@ -118,7 +105,6 @@
     }
     .btn-secondary:hover { background:#1f2937; }
 
-
     .btn-danger {
       background:#b91c1c; color:#fee2e2;
       border:none; border-radius:7px;
@@ -126,7 +112,6 @@
       cursor:pointer;
     }
     .btn-danger:hover { background:#991b1b; }
-
 
     .btn-xs {
       border:none;
@@ -139,7 +124,6 @@
       border:1px solid #374151;
     }
 
-
     .back-link {
       font-size:0.8rem;
       color:#93c5fd;
@@ -148,19 +132,15 @@
       display:inline-block;
     }
 
-
     .row-3 {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap:12px;
     }
 
-
     .field { margin-bottom:8px; }
 
-
     .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
-
 
     .chart-wrapper {
       width:100%;
@@ -170,7 +150,6 @@
       width:100%;
       height:100%;
     }
-
 
     table {
       width:100%;
@@ -188,7 +167,6 @@
     }
     tbody tr:nth-child(even) { background:#020617; }
     tbody tr:nth-child(odd) { background:#020617; }
-
 
     .species-card {
       background:#020617;
@@ -667,7 +645,7 @@
 
     // ===== Historique / mesures =====
     const tempInput        = document.getElementById("tempInput");
-    const phInput          = document.getElementById("phInput");
+    const phInput           = document.getElementById("phInput");
     const conductInput     = document.getElementById("conductInput");
     const obsInput         = document.getElementById("obsInput");
     const saveMeasureBtn   = document.getElementById("saveMeasureBtn");
