@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Heros notatus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Heros notatus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Heros</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>H. notatus</em></li>
+              <li><span class="sys-label">Auteur :</span> Jardine, 1843</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Heros-notatus/Heros-notatus.PNG" alt="Heros notatus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Heros notatus</strong> est un cichlidé sud-américain majestueux, souvent confondu avec <em>Heros severus</em>. Il se distingue par un corps haut, comprimé latéralement et de forme presque discoïde. Sa coloration est particulièrement attractive : un fond olive à argenté parsemé de nombreux points sombres (mouchetures) sur la partie inférieure du corps et les opercules.
+          </p>
+          <p class="section-text">
+            À l'âge adulte, il peut atteindre une taille de 20 à 25 cm. Il présente des barres verticales sombres qui s'estompent avec l'âge, à l'exception de la barre située à la base de la queue et celle passant par l'œil, qui restent souvent visibles. Les nageoires dorsale et anale sont longues et se terminent en pointe chez les sujets matures.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson territorial mais relativement paisible pour un cichlidé de cette taille, surtout en dehors des périodes de reproduction. <strong>Heros notatus</strong> gagne à être maintenu en couple ou en petit groupe dans un volume conséquent. Il occupe principalement les strates médianes de l'aquarium.
+          </p>
+          <p class="section-text">
+            En aquarium, il nécessite un décor composé de racines de tourbière et de grosses pierres créant des cachettes et des limites visuelles. Bien qu'il soit moins destructeur que certains autres grands cichlidés, il peut s'attaquer aux plantes tendres. Il est conseillé de privilégier des plantes robustes comme les <em>Anubias</em> ou les <em>Microsorum</em> fixées sur le décor.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Ovipare, pondeur sur substrat découvert.
+          </p>
+          <p class="section-text">
+            Le couple nettoie soigneusement une surface plane (généralement une pierre ou une racine) pour y déposer les œufs. La ponte peut compter plusieurs centaines d'œufs. Les deux parents assurent la protection et la ventilation du site de ponte avec une grande détermination.
+          </p>
+          <p class="section-text">
+            L'éclosion survient après environ 3 jours. Les parents déplacent ensuite les larves dans de petites cuvettes creusées dans le sable jusqu'à la nage libre. Les alevins acceptent immédiatement les nauplies d'artémias. Une particularité du genre <em>Heros</em> est que certaines populations pratiquent l'incubation buccale larvaire, bien que cela soit moins systématique chez <em>H. notatus</em> que chez <em>H. severus</em>.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Difficile à établir chez les juvéniles. Chez les adultes, le mâle est généralement plus grand et possède des mouchetures sombres plus denses et plus étendues sur la tête et les opercules. Les nageoires dorsale et anale sont plus effilées chez le mâle.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 10 à 15 ans en aquarium.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Originaire du bassin de l'Amazone, on le trouve principalement dans le bassin du Rio Negro (Brésil) et du Rio Orénoque (Venezuela/Colombie). Il fréquente les zones d'eaux calmes, les bras morts et les forêts inondées (igapós).
+          </p>
+          <p class="section-text">
+            Son habitat naturel est souvent caractérisé par des "eaux noires" (blackwater), acides et très douces, chargées en tanins issus de la décomposition des matières organiques. Il s'abrite fréquemment parmi les racines et les branches d'arbres immergés.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Heros-notatus/Maps-Heros-notatus.png"
+              alt="Répartition de Heros notatus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Brésil : Bassin du Rio Negro.</li>
+              <li>Venezuela et Colombie : Bassin du Rio Orénoque.</li>
+              <li>Guyanes : Bassins fluviaux côtiers.</li>
+            </ul>
+            <p>
+              Statut UICN : Non évalué, mais l'espèce est largement répartie dans les réseaux hydrographiques sud-américains.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 26 à 30 °C.</p>
+            <p><strong>pH :</strong> 5,0 à 7,0 (Eau acide préférée).</p>
+            <p><strong>GH :</strong> 1 à 10 °dGH (Eau douce indispensable).</p>
+            <p><strong>Courant :</strong> Faible.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 400-500 L pour un couple formé.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore.
+            </p>
+            <p>
+              Dans la nature, il consomme des fruits, des graines, des insectes et de petits crustacés. 
+            </p>
+            <p>
+              En aquarium, il est peu exigeant et accepte les granulés de qualité, les nourritures surgelées (artémias, mysis, vers de vase) ainsi que des apports végétaux (épinards pochés, pois, spiruline) qui sont essentiels à son équilibre.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

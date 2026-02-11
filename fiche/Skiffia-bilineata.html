@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Skiffia bilineata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Skiffia bilineata</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Skiffia</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>S. bilineata</em></li>
+              <li><span class="sys-label">Auteur :</span> Bean, 1887</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Skiffia-bilineata/Skiffia-bilineata.PNG" alt="Skiffia bilineata">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Skiffia bilineata</strong> est un petit goodeidé au corps haut et comprimé, originaire du plateau central du Mexique. Son nom spécifique <em>bilineata</em> fait référence aux deux lignes horizontales sombres que l'on retrouve souvent sur les flancs des femelles et des juvéniles. C'est un poisson discret mais fascinant par ses comportements sociaux.
+          </p>
+          <p class="section-text">
+            Les femelles sont les plus grandes, atteignant 5 à 6 cm, tandis que les mâles sont plus petits, mesurant environ 4 cm. Ces derniers développent une coloration plus contrastée, avec des nageoires souvent bordées de noir ou d'un liseré clair selon les populations. Comme les autres membres du genre <em>Skiffia</em>, ils possèdent une morphologie typique des poissons vivant dans des eaux calmes et riches en végétation.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire et paisible, idéal pour un aquarium communautaire de goodeidés. Bien que les mâles puissent parader entre eux, les interactions sont rarement agressives. Ils apprécient particulièrement de "picorer" sur les plantes et le décor à la recherche de micro-organismes et d'algues.
+          </p>
+          <p class="section-text">
+            En aquarium, <strong>Skiffia bilineata</strong> demande un bac bien planté avec des zones d'ombre, car il peut être timide s'il est maintenu en trop petit nombre ou dans un environnement trop exposé. Il est moyennement actif et occupe généralement la zone médiane du bac. Il est sensible aux variations brusques de température et à l'accumulation de nitrates.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction est caractéristique des Goodeinae. Le mâle utilise son andropode pour la fécondation interne. La gestation dure entre 50 et 60 jours. Les alevins sont nourris <em>in utero</em> par des trophotaeniae.
+          </p>
+          <p class="section-text">
+            Les portées sont petites, comptant généralement entre 10 et 20 alevins. Les jeunes naissent à une taille de 8 à 10 mm. Une particularité notable de ce genre est que les alevins naissent souvent avec des trophotaeniae encore attachées, qui se résorbent en quelques heures. Les adultes ne sont généralement pas prédateurs de leurs propres alevins si le bac offre suffisamment de mousses (Java) pour que les petits puissent se cacher initialement.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué. Le mâle possède un andropode (encoche sur la nageoire anale). Il est plus petit et sa nageoire dorsale est souvent plus développée et colorée. La femelle est plus grande, plus terne, avec les deux lignes latérales sombres bien visibles et une nageoire anale normale.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 4 ans en aquarium.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            On le trouve dans le bassin du Rio Lerma, ainsi que dans le Rio Grande de Santiago. Il fréquente les eaux calmes, les étangs, les fossés et les zones littorales des lacs où la végétation aquatique (souvent des algues filamenteuses et des plantes flottantes) est dense.
+          </p>
+          <p class="section-text">
+            Le substrat est souvent boueux ou sablonneux. Malheureusement, son habitat est gravement menacé par l'assèchement des zones humides, la pollution urbaine et l'introduction d'espèces exotiques comme les tilapias et les carpes, qui dégradent la végétation nécessaire à sa survie.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Skiffia-bilineata/Maps-Skiffia-bilineata.png"
+              alt="Répartition de Skiffia bilineata"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : Bassin du Rio Lerma et Rio Grande de Santiago.</li>
+              <li>Localité type : Rio Lerma, Guanajuato, Mexique.</li>
+            </ul>
+            <p>
+              Statut UICN : En danger (Endangered). L'espèce a disparu de nombreuses localités historiques et est très sensible aux changements de son écosystème.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 23 °C (Supporte mal les chaleurs prolongées au-dessus de 25 °C).</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 10 à 25 °dGH.</p>
+            <p><strong>Courant :</strong> Faible.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 60-80 L pour un groupe de 6 à 10 individus.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance alguivore.
+            </p>
+            <p>
+              Dans la nature, il consomme des algues, du périphyton et de petits invertébrés. En aquarium, il accepte les paillettes et granulés, mais une part végétale (spiruline) est indispensable. Des distributions régulières de nourriture vivante ou congelée (daphnies, cyclops) assurent une croissance optimale et une bonne fécondité.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

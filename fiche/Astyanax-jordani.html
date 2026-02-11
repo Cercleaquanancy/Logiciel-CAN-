@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Astyanax jordani</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Astyanax jordani</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Characiformes</li>
+              <li><span class="sys-label">Famille :</span> Characidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Astyanax</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. jordani</em></li>
+              <li><span class="sys-label">Auteur :</span> Hubbs & Innes, 1936</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Astyanax-jordani/Astyanax-jordani.PNG" alt="Astyanax jordani">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Astyanax jordani</strong>, célèbre sous l'appellation de Tétras aveugle, est une espèce troglobie (cavernicole) emblématique. Il s'agit d'une forme évoluée à partir d'ancêtres vivant en surface, ayant subi des adaptations drastiques à l'obscurité totale. Le corps est de couleur rose chair à blanc laiteux en raison d'une absence totale de pigmentation (albinisme naturel).
+          </p>
+          <p class="section-text">
+            Le trait le plus distinctif est l'atrophie oculaire : chez l'adulte, les yeux sont absents ou recouverts par une membrane de peau. À la naissance, les alevins possèdent des yeux rudimentaires qui dégénèrent rapidement au cours de la croissance. Il mesure environ 8 à 10&nbsp;cm à l'âge adulte. Son corps est fusiforme et robuste, typique des tétras.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Malgré sa cécité, <strong>Astyanax jordani</strong> est un nageur extrêmement agile et actif. Il utilise un système de ligne latérale hyper-développé pour percevoir les moindres vibrations et changements de pression dans l'eau, lui permettant d'éviter les obstacles et de chasser avec une précision remarquable. Son sens de l'odorat est également très affiné.
+          </p>
+          <p class="section-text">
+            C'est un poisson grégaire qui doit être maintenu en groupe (minimum 6 individus). Son comportement peut parfois être nerveux, et il a tendance à mordiller les nageoires de ses colocataires s'il est maintenu dans un espace trop restreint ou avec des espèces trop calmes. Il ne nécessite aucun éclairage spécifique et peut même être stressé par une lumière trop vive, bien qu'il s'y accommode avec le temps.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Ovipare, diffuseur d'œufs en pleine eau.
+          </p>
+          <p class="section-text">
+            La reproduction est relativement simple en aquarium et ne nécessite pas d'obscurité totale, bien que cela soit son milieu naturel. La parade nuptiale est énergique, le mâle poursuivant la femelle à travers le bac. Les œufs sont expulsés au hasard, souvent parmi des plantes à feuilles fines ou de la mousse.
+          </p>
+          <p class="section-text">
+            Les parents n'apportent aucun soin et dévorent volontiers leur propre ponte. L'éclosion intervient après 24 à 48 heures. Les alevins sont d'abord nourris avec des infusoires, puis des nauplies d'artémias. Comme mentionné, les juvéniles naissent avec des yeux qui disparaissent progressivement.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Peu marqué. La femelle est généralement plus grande et présente un abdomen plus rebondi, surtout en période de frai. Le mâle est plus svelte et souvent légèrement plus petit.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 5 à 8 ans en aquarium dans des conditions de maintenance appropriées.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            Cette espèce est endémique des réseaux de grottes calcaires du Mexique, notamment dans la région de San Luis Potosí (système de la Cueva Chica). L'eau y est d'une stabilité physico-chimique remarquable, avec une température constante.
+          </p>
+          <p class="section-text">
+            L'habitat naturel est totalement dépourvu de flore aquatique en raison de l'absence de lumière. Le substrat est composé de roches, de sable et de limon. La nourriture naturelle provient principalement des déjections de chauves-souris (guano) et des micro-organismes ou insectes tombant accidentellement dans les eaux souterraines.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Astyanax-jordani/Maps-Astyanax-jordani.png"
+              alt="Répartition de Astyanax jordani"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : San Luis Potosí (grottes calcaires).</li>
+              <li>Localité type : Cueva Chica, Mexique.</li>
+            </ul>
+            <p>
+              Statut : Bien que commun en aquariophilie grâce à l'élevage commercial, ses populations sauvages sont localisées et vulnérables aux changements de leur environnement souterrain.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 25&nbsp;°C (évitez les eaux trop chaudes).</p>
+            <p><strong>pH :</strong> 7,0 à 8,5 (préfère les eaux neutres à alcalines).</p>
+            <p><strong>GH :</strong> 10 à 30&nbsp;°dGH (eau moyennement dure à dure).</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 100-120&nbsp;L pour un petit groupe. Un décor minéral (pierres, ardoises) sans arêtes tranchantes est préférable.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore opportuniste.
+            </p>
+            <p>
+              En aquarium, il est peu exigeant et accepte tout : paillettes, granulés, nourriture congelée (vers de vase, daphnies, artémias). 
+            </p>
+            <p>
+              Sa recherche de nourriture est incessante ; il repère les particules alimentaires au sol ou en pleine eau grâce à sa sensibilité vibratoire bien avant de les toucher.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

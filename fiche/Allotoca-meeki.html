@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Allotoca meeki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Allotoca meeki</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Allotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. meeki</em></li>
+              <li><span class="sys-label">Auteur :</span> Alvarez, 1959</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Allotoca-meeki/Allotoca-meeki.PNG" alt="Allotoca meeki">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Allotoca meeki</strong> est un petit poisson vivipare de la famille des Goodeidae, originaire des zones humides du Mexique. Cette espèce est nommée en l'honneur de l'ichtyologiste Seth Eugene Meek. Elle se caractérise par un corps comprimé latéralement et une robe relativement sobre, typique du genre, avec des teintes gris-vert à olivâtres. Une série de barres verticales sombres, plus ou moins marquées selon l'humeur et le sexe, orne souvent les flancs.
+          </p>
+          <p class="section-text">
+            Les femelles atteignent une taille maximale de 5 à 6&nbsp;cm, tandis que les mâles sont plus petits, dépassant rarement 4,5&nbsp;cm. C'est l'un des membres les plus rares et les plus menacés du genre <em>Allotoca</em>, sa survie étant aujourd'hui très compromise dans son milieu d'origine.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            En aquarium, <strong>Allotoca meeki</strong> est une espèce discrète, voire timide. Elle nécessite un environnement calme et n'apprécie pas la cohabitation avec des espèces trop vives ou agressives. Entre mâles, des parades de dominance peuvent avoir lieu, mais les affrontements physiques graves sont rares si l'espace est suffisant.
+          </p>
+          <p class="section-text">
+            Il s'agit d'une espèce de "climat tempéré" qui ne tolère pas les eaux tropicales surchauffées. Dans la nature, elle fréquente les eaux calmes, les fossés et les zones marécageuses à la végétation dense. Sa maintenance requiert une eau très propre, car elle est particulièrement sensible aux polluants azotés et aux maladies fongiques en cas de mauvaise hygiène du bac.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction est typique des Goodeinae : fécondation interne via l'andropode. Le développement embryonnaire est assuré par l'apport nutritif de la mère via les trophotaeniae. La gestation dure environ 55 à 60 jours à une température de 20-22°C.
+          </p>
+          <p class="section-text">
+            Les portées sont généralement faibles, souvent comprises entre 5 et 15 alevins, ce qui rend la multiplication de l'espèce assez lente. Les jeunes naissent à une taille respectable (environ 10-12&nbsp;mm) et peuvent immédiatement consommer des proies fines. Comme chez d'autres <em>Allotoca</em>, les parents peuvent se montrer prédateurs envers les nouveau-nés ; une végétation dense (mousses) est impérative.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est plus petit, plus svelte et possède un andropode (nageoire anale modifiée). Ses couleurs peuvent être légèrement plus contrastées que celles de la femelle. La femelle est plus corpulente, avec une nageoire anale normale et un abdomen qui s'arrondit nettement lors de la gestation.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 4 ans. Le maintien d'une température fraîche et d'un repos hivernal est crucial pour atteindre cette longévité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            <strong>Allotoca meeki</strong> est endémique du bassin du lac Zirahuén et de la région d'Uruapan, dans l'État de Michoacán au Mexique. Son habitat naturel est constitué de sources, de petits étangs et de cours d'eau à courant très lent, souvent encombrés de végétation aquatique et de débris ligneux.
+          </p>
+          <p class="section-text">
+            Ce biotope est situé en altitude, ce qui explique les besoins de l'espèce en eaux fraîches. Malheureusement, l'introduction de poissons prédateurs (Achigan à grande bouche), la pollution agricole et le drainage des zones humides ont conduit à une disparition quasi totale de l'espèce dans de nombreuses localités historiques. Elle est considérée comme l'un des Goodeids les plus proches de l'extinction.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Allotoca-meeki/Maps-Allotoca-meeki.png"
+              alt="Répartition de Allotoca meeki"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : État de Michoacán (Bassin du Rio Cupatitzio et Lac Zirahuén).</li>
+              <li>Localité type : Zirahuén, Michoacán, Mexique.</li>
+            </ul>
+            <p>
+              Statut UICN : En danger critique (Critically Endangered). L'espèce est extrêmement rare en captivité et fait l'objet d'un suivi strict par les associations de sauvegarde.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 16 à 22&nbsp;°C (idéalement 18-20°C). Ne pas maintenir au-dessus de 24&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 8 à 15&nbsp;°dGH.</p>
+            <p><strong>Courant :</strong> Faible ou nul.</p>
+            <p><strong>Volume conseillé :</strong> 60 à 80&nbsp;L pour un petit groupe spécifique. Bac riche en plantes et cachettes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Insectivore et petit carnivore.
+            </p>
+            <p>
+              En aquarium, il privilégie les petites nourritures vivantes (daphnies, cyclops, artémias, micro-vers). Il peut accepter les aliments secs sous forme de paillettes ou micro-granulés s'il y est habitué, mais la nourriture vivante reste indispensable pour stimuler la reproduction et maintenir une bonne santé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

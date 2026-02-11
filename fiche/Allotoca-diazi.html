@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Allotoca diazi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Allotoca diazi</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Allotoca</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. diazi</em></li>
+              <li><span class="sys-label">Auteur :</span> Meek, 1902</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Allotoca-diazi/Allotoca-diazi.PNG" alt="Allotoca diazi">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Allotoca diazi</strong> est un poisson Goodeidé rare, originaire des systèmes lacustres du Mexique. Historiquement placé dans le genre <em>Neoophorus</em>, il est aujourd'hui classé au sein du genre <em>Allotoca</em>. Il présente un corps comprimé latéralement, plus haut que celui d'<em>A. dugesii</em>. Sa coloration est argentée avec des reflets bleutés ou verdâtres sur les flancs, parsemée de petites taches sombres irrégulières.
+          </p>
+          <p class="section-text">
+            C'est l'un des plus grands représentants du genre, les femelles pouvant atteindre 8 à 9&nbsp;cm, tandis que les mâles mesurent environ 6&nbsp;cm. Sa tête est relativement pointue et sa bouche est orientée vers le haut, typique des poissons se nourrissant près de la surface ou dans la colonne d'eau moyenne.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Comme la plupart des membres de sa famille, <strong>Allotoca diazi</strong> est une espèce active mais au tempérament parfois ombrageux. Les mâles peuvent montrer une agressivité intra-spécifique marquée pour la domination et l'accès aux femelles. Il est préférable de les maintenir en groupe dans un volume conséquent pour diluer l'agressivité.
+          </p>
+          <p class="section-text">
+            L'espèce est particulièrement sensible à la qualité de l'eau et ne tolère pas les environnements pollués ou excessivement chauds. En aquarium, il apprécie les zones de nage libre combinées à une végétation périphérique dense qui sécurise les individus dominés et les femelles gravides.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction suit le schéma classique des Goodeinae : fécondation interne via l'andropode du mâle. La période de gestation est de 7 à 9 semaines. Les alevins naissent avec des trophotaeniae (extensions nutritives) qui tombent peu après la naissance.
+          </p>
+          <p class="section-text">
+            Les portées sont proportionnelles à la taille de la femelle, pouvant aller de 20 à 50 alevins pour les spécimens matures. Les jeunes sont très grands à la naissance (environ 15&nbsp;mm) et capables de consommer immédiatement des nauplies d'artémias ou de la nourriture fine. L'espèce est connue pour son cannibalisme envers les alevins, une séparation ou une plantation extrêmement dense est nécessaire pour assurer la survie du frai.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Le mâle est plus petit et possède un andropode (nageoire anale modifiée). Ses nageoires dorsale et anale sont souvent plus développées et colorées que celles de la femelle. La femelle est nettement plus massive, plus terne, et possède une nageoire anale normale de forme triangulaire.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 5 ans en aquarium, sous réserve d'un hivernage adéquat.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            <strong>Allotoca diazi</strong> est endémique du bassin du lac Pátzcuaro, au Michoacán (Mexique). Il a également été recensé dans des sources et canaux adjacents. Son habitat est constitué d'eaux stagnantes ou à courant très lent, souvent riches en sédiments mais avec une chimie de l'eau stable.
+          </p>
+          <p class="section-text">
+            Le milieu naturel est caractérisé par une eau tempérée-fraîche, variant selon l'altitude et la saison. La pollution urbaine et l'introduction d'espèces exotiques prédatrices (Achigan) ont provoqué un déclin dramatique de ses populations naturelles, rendant l'espèce extrêmement rare, voire éteinte dans certaines localités d'origine.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Allotoca-diazi/Maps-Allotoca-diazi.png"
+              alt="Répartition de Allotoca diazi"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : Endémique du Lac Pátzcuaro (État de Michoacán).</li>
+              <li>Localité type : Lac Pátzcuaro, Michoacán, Mexique.</li>
+            </ul>
+            <p>
+              Considérée comme "En danger critique" par l'UICN. Les programmes de conservation ex-situ sont vitaux pour la survie de l'espèce.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 16 à 22&nbsp;°C (Éviter impérativement les températures supérieures à 24&nbsp;°C sur le long terme).</p>
+            <p><strong>pH :</strong> 7,0 à 8,2 (eau alcaline).</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH (eau dure).</p>
+            <p><strong>Courant :</strong> Faible.</p>
+            <p><strong>Volume conseillé :</strong> 100 à 120&nbsp;L pour maintenir un groupe de manière stable.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Carnivore/Insectivore prédominant.
+            </p>
+            <p>
+              En aquarium, il montre une préférence marquée pour les proies vivantes ou surgelées (vers de vase, daphnies, larves de moustiques). Il accepte les aliments secs (granulés/paillettes) une fois acclimaté, mais un apport carné régulier est indispensable pour la reproduction et la santé.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Characodon audax</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Characodon audax</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cyprinodontiformes</li>
+              <li><span class="sys-label">Famille :</span> Goodeidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Characodon</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>C. audax</em></li>
+              <li><span class="sys-label">Auteur :</span> Smith & Miller, 1986</li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Characodon-audax/Characodon-audax.PNG" alt="Characodon audax">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Characodon audax</strong> est l'une des espèces les plus emblématiques et les plus menacées de la famille des Goodeidae. Originaire de l'État de Durango au Mexique, elle se distingue par sa coloration vive, notamment chez les mâles de certaines populations (comme celle d'El Toboso), qui arborent un rouge intense sur la partie inférieure du corps et les nageoires.
+          </p>
+          <p class="section-text">
+            C'est un petit poisson au corps trapu et robuste. Les femelles atteignent environ 5&nbsp;cm, tandis que les mâles sont plus petits, mesurant généralement entre 3,5 et 4,5&nbsp;cm. Le genre <em>Characodon</em> est considéré comme l'un des plus primitifs au sein de la sous-famille des Goodeinae, représentant un chaînon évolutif important.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Le nom d'espèce <em>audax</em> (audacieux) reflète le tempérament de ce poisson. Les mâles sont particulièrement territoriaux et agressifs entre eux, surtout en période de reproduction. Ils passent une grande partie de leur temps à défendre un petit territoire contre les rivaux.
+          </p>
+          <p class="section-text">
+            En aquarium, cette agressivité intra-spécifique impose de fournir de nombreuses cachettes et un volume suffisant pour un groupe. C'est une espèce qui vit dans des sources d'eau claire et calme, souvent à proximité de zones riches en végétation. Elle est sensible à la dégradation de la qualité de l'eau et nécessite une maintenance rigoureuse pour prospérer en captivité.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Vivipare matrotrophe.
+          </p>
+          <p class="section-text">
+            La reproduction suit le cycle classique des goodeids avec une fertilisation interne via l'andropode. La gestation est plus courte que chez d'autres genres, durant environ 40 à 50 jours selon la température. Les alevins sont nourris par la mère via des trophotaeniae.
+          </p>
+          <p class="section-text">
+            Les portées sont modestes, comptant généralement entre 5 et 20 alevins. Les jeunes naissent à une taille d'environ 10&nbsp;mm. Le cannibalisme des parents envers les jeunes est fréquent chez cette espèce ; il est donc crucial d'offrir un bac très densément planté (mousses, <em>Ceratophyllum</em>) ou d'isoler les femelles proches du terme pour sauvegarder la descendance.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Très marqué. Le mâle est plus petit, possède un andropode et affiche des couleurs rouges ou orangées intenses sur le ventre et les nageoires anale et caudale. La femelle est plus grande, plus terne (teinte grisâtre/olivâtre) avec des taches sombres irrégulières sur les flancs et une nageoire anale normale.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 3 à 5 ans en aquarium. Une période de repos hivernal avec des températures plus basses est nécessaire pour garantir une longévité maximale.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique d'une zone très restreinte dans le bassin du Rio Mezquital, au Durango. Elle peuple principalement des sources isolées (ojos de agua) et des petits étangs alimentés par ces sources, comme à El Toboso. L'eau y est cristalline, riche en oxygène et souvent saturée en minéraux.
+          </p>
+          <p class="section-text">
+            Le substrat est composé de roches, de sable et de dépôts organiques. La végétation aquatique y est souvent dense. Malheureusement, ces sources sont menacées par le pompage pour l'agriculture, la pollution et l'introduction d'espèces envahissantes. L'espèce est considérée comme extrêmement vulnérable dans son milieu naturel.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Characodon-audax/Maps-Characodon-audax.png"
+              alt="Répartition de Characodon audax"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Mexique : État de Durango (localités isolées dans le bassin du Rio Mezquital).</li>
+              <li>Localité type : Ojo de Agua de El Toboso, Durango, Mexique.</li>
+            </ul>
+            <p>
+              Statut UICN : En danger critique (Critically Endangered). Plusieurs populations ont déjà disparu. La survie de l'espèce dépend de l'aquariophilie spécialisée (Goodeid Working Group).
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 18 à 23&nbsp;°C (Une chute hivernale vers 15-16&nbsp;°C est recommandée).</p>
+            <p><strong>pH :</strong> 7,0 à 8,0.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH (eau dure).</p>
+            <p><strong>Courant :</strong> Faible.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 60-80&nbsp;L pour un petit harem (1 mâle / 2-3 femelles).</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance insectivore.
+            </p>
+            <p>
+              En aquarium, il nécessite une alimentation variée. Il apprécie particulièrement les petites proies vivantes ou congelées (daphnies, artémias, vers de vase). Il accepte les nourritures sèches de qualité, mais une part végétale (spiruline) doit être intégrée pour maintenir l'éclat des couleurs des mâles et la santé générale.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
