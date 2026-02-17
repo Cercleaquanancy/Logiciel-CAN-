@@ -48,9 +48,9 @@
     .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
     .small-note { font-size: 0.75rem; color: #9ca3af; margin-top: 4px; }
     .event-list-home { margin-top: 6px; display: flex; flex-direction: column; gap: 6px; }
-    .event-home-item { font-size: 0.85rem; border-radius: 8px; border: 1px solid #1f2937; padding: 8px; background: #020617; display: flex; justify-content: space-between; align-items: center; gap: 6px; transition: all 0.2s; }
+    .event-home-item { font-size: 0.85rem; border-radius: 8px; border: 1px solid #1f2937; padding: 8px; background: #020617; display: flex; justify-content: space-between; align-items: center; gap: 6px; transition: all 0.2s; cursor: pointer;}
     .event-home-item:hover { background: #111827; border-color: #1d4ed8; }
-    .event-home-main { flex: 1 1 auto; min-width: 0; cursor: pointer; }
+    .event-home-main { flex: 1 1 auto; min-width: 0; }
     .event-home-title { font-weight: 600; color: #e5e7eb; margin-bottom: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-meta { font-size: 0.78rem; color: #9ca3af; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .event-home-date { font-size: 0.78rem; border-radius: 999px; padding: 3px 7px; border: 1px solid #1f2937; background: #111827; white-space: nowrap; color: #e5e7eb; }
@@ -67,7 +67,7 @@
     .facebook-info p { font-size: 0.75rem; color: #9ca3af; }
     .facebook-link { font-size: 0.8rem; color: #38bdf8; text-decoration: none; font-weight: 500; transition: color 0.2s; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
     .facebook-link:hover { color: #0ea5e9; }
-    .facebook-posts { margin-top: 8px; border-radius: 8px; overflow: hidden; background: #111827; border: 1px solid #1f2937; }
+    .facebook-posts { margin-top: 0; border-radius: 0; overflow: hidden; background: #111827; border-top: 1px solid #1f2937; }
     .facebook-post { padding: 12px; border-bottom: 1px solid #1f2937; transition: all 0.2s; cursor: pointer; }
     .facebook-post:last-child { border-bottom: none; }
     .facebook-post:hover { background: #0f172a; }
@@ -98,11 +98,11 @@
       <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
       <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
       <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌿</span><span>Serre</span></button>
-      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcul</span></button>
       <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
       <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
-      <button class="nav-btn" data-link="cerfa.html" ><span class="icon"></span><span>Crefa</span></button>
+      <button class="nav-btn" data-link="cerfa.html" ><span class="icon">📋</span><span>Cerfa</span></button>
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -114,7 +114,7 @@
     </div>
 
     <div class="card">
-      <h2>📚 Ressources &amp; Boutique</h2>
+      <h2>📚 Ressources & Boutique</h2>
       <p class="subtitle">Accès rapide aux ressources du Cercle</p>
       <div class="resource-buttons">
         <a href="https://drive.google.com/drive/folders/1ou1K_Wtk7ScOlq8xdvfvVkV1VcpMulcv?usp=sharing" target="_blank" rel="noopener noreferrer" class="resource-btn">
@@ -130,7 +130,10 @@
     </div>
 
     <div class="card">
-      <h2>Prochains événements</h2>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <h2>Prochains événements</h2>
+        <a href="evenement.html" style="color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 500;">Voir tout →</a>
+      </div>
       <p class="subtitle">Les quelques événements les plus proches.</p>
       <div id="homeEventList" class="event-list-home"></div>
       <p class="small-note">Clique sur un événement pour plus d'infos.</p>
@@ -148,41 +151,35 @@
       <h2>📱 Dernières nouvelles Facebook</h2>
       <p class="subtitle">Suis les publications du Cercle et de Fish In The News.</p>
       
-<div class="facebook-container">
-  <div class="facebook-card">
-    <div class="facebook-header">
-      <span class="facebook-icon">f</span>
-      <div class="facebook-info">
-        <h3>Cercle Aqua Nancy</h3>
-        <p>Actualités du Cercle Aquariophile</p>
-      </div>
-      <a onclick="window.open('https://www.facebook.com/CercleAquariophileNancy', '_blank')" class="facebook-link">Voir →</a>
-    </div>
-    <div class="facebook-posts">
-      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCercleAquariophileNancy&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-        width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  </div>
+      <div class="facebook-container">
+        <div class="facebook-card">
+          <div class="facebook-header">
+            <span class="facebook-icon">f</span>
+            <div class="facebook-info">
+              <h3>Cercle Aqua Nancy</h3>
+              <p>Actualités du Cercle</p>
+            </div>
+            <a onclick="window.open('https://www.facebook.com/CercleAquariophileNancy', '_blank')" class="facebook-link">Voir →</a>
+          </div>
+          <div id="fbPostsCAN" class="facebook-posts">
+            <div class="fb-loading">Chargement des posts...</div>
+          </div>
+        </div>
 
-  <div class="facebook-card">
-    <div class="facebook-header">
-      <span class="facebook-icon">f</span>
-      <div class="facebook-info">
-        <h3>Fish In The News</h3>
-        <p>Actualités aquariophiles mondiale</p>
+        <div class="facebook-card">
+          <div class="facebook-header">
+            <span class="facebook-icon">f</span>
+            <div class="facebook-info">
+              <h3>Fish In The News</h3>
+              <p>Actualités mondiales</p>
+            </div>
+            <a onclick="window.open('https://www.facebook.com/FishInTheNews', '_blank')" class="facebook-link">Voir →</a>
+          </div>
+          <div id="fbPostsFITN" class="facebook-posts">
+            <div class="fb-loading">Chargement des posts...</div>
+          </div>
+        </div>
       </div>
-      <a onclick="window.open('https://www.facebook.com/FishInTheNews', '_blank')" class="facebook-link">Voir →</a>
-    </div>
-    <div class="facebook-posts">
-      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFishInTheNews&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" 
-        width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-      </iframe>
-    </div>
-  </div>
-</div>
-
-      <p class="small-note"></p>
     </div>
   </main>
 
@@ -190,12 +187,12 @@
     const storedUser = localStorage.getItem("user");
     let currentUser = null;
     if (!storedUser) { 
-      console.log("Pas d'utilisateur stocké - mode démo");
+      window.location.href = "login.html";
     } else {
       try { 
         currentUser = JSON.parse(storedUser); 
       } catch (e) { 
-        console.log("Erreur parsing utilisateur");
+        window.location.href = "login.html";
       }
       if (currentUser && currentUser.username) {
         const navbarUser = document.getElementById('navbarUser');
@@ -213,9 +210,7 @@
     }
 
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-      btn.addEventListener("click", () => { 
-        window.location.href = btn.dataset.link; 
-      });
+      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
     });
 
     const logoutBtn = document.getElementById('logoutBtn');
@@ -315,13 +310,13 @@
         homeEventList.innerHTML = '<p class="small-note">Aucun événement à venir.</p>';
         return;
       }
-      homeEventList.innerHTML = nextEvents.map((ev, idx) => {
+      homeEventList.innerHTML = nextEvents.map((ev) => {
         const dateField = ev.date_iso || ev.dateIso;
         const d = new Date(dateField);
         const dateStr = isNaN(d.getTime()) ? dateField : d.toLocaleDateString();
         const hourStr = (ev.heure || ev.hour) ? (" à " + (ev.heure || ev.hour)) : "";
         const lieu = (ev.lieu || ev.location) || "";
-        return `<div class="event-home-item" data-event-index="${idx}" onclick="window.location.href='evenement.html'"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
+        return `<div class="event-home-item" onclick="window.location.href='evenement.html'"><div class="event-home-main"><div class="event-home-title">${ev.titre || ev.title || "Événement"}</div><div class="event-home-meta">${dateStr}${hourStr} – ${lieu}</div></div><div class="event-home-date">${dateStr}</div></div>`;
       }).join("");
     }
 
@@ -380,15 +375,10 @@
     }
 
     async function participateSlot(slotId) {
-      if (!currentUser) {
-        showAlert('❌ Vous devez être connecté pour participer', 'error');
-        return;
-      }
-
+      if (!currentUser) return;
       const slots = JSON.parse(localStorage.getItem(SERRE_SLOTS_KEY) || '[]');
       const slot = slots.find(s => s.id === slotId);
       if (!slot) return;
-
       try {
         const res = await fetch('/api/serre-participations', {
           method: 'POST',
@@ -402,54 +392,30 @@
             heure_fin: slot.heure_fin
           })
         });
-
         if (res.ok) {
-          showAlert('✅ Participation enregistrée ! Notification envoyée au créateur.', 'success');
+          showAlert('✅ Participation enregistrée !', 'success');
           await loadParticipations();
           renderHomeSerreSlots();
-        } else {
-          const error = await res.text();
-          throw new Error(error);
         }
-      } catch (e) {
-        console.log("Mode local:", e);
-        const participations = JSON.parse(localStorage.getItem(SERRE_PARTICIPATIONS_KEY) || '[]');
-        const newParticipation = {
-          id: "part_" + Date.now() + "_" + Math.floor(Math.random() * 100000),
-          slot_id: slotId,
-          participant_username: currentUser.username,
-          creator_username: slot.membre,
-          date: new Date().toISOString(),
-          status: 'pending'
-        };
-        participations.push(newParticipation);
-        localStorage.setItem(SERRE_PARTICIPATIONS_KEY, JSON.stringify(participations));
-        showAlert('✅ Participation enregistrée (mode local) !', 'success');
-        renderHomeSerreSlots();
-      }
+      } catch (e) { showAlert('Erreur participation', 'error'); }
     }
 
     async function renderHomeSerreSlots() {
       if (serreCard) serreCard.style.display = "block";
-      
       await loadSerreSlots();
       await loadParticipations();
-
       const nextSlots = getNextSerreSlots(3);
       const participations = JSON.parse(localStorage.getItem(SERRE_PARTICIPATIONS_KEY) || '[]');
-
       if (!nextSlots.length) {
         homeSerreList.innerHTML = '<p class="small-note">Aucun créneau disponible.</p>';
         return;
       }
-
       homeSerreList.innerHTML = nextSlots.map(slot => {
         const d = new Date(slot.date);
         const dateStr = d.toLocaleDateString('fr-FR');
         const isCreator = currentUser && currentUser.username === slot.membre;
         const alreadyParticipating = participations.some(p => p.slot_id === slot.id && p.participant_username === currentUser?.username);
         const btnDisabled = isCreator || alreadyParticipating;
-
         return `<div class="event-home-item">
           <div class="event-home-main" style="cursor: pointer; flex: 1 1 auto; min-width: 0;" onclick="window.location.href='emploi-serre.html'">
             <div class="event-home-title">${slot.membre}</div>
@@ -457,8 +423,8 @@
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
             <div class="event-home-date">${dateStr}</div>
-            ${currentUser ? `<button class="event-home-btn" ${btnDisabled ? 'disabled' : ''} onclick="participateSlot('${slot.id}')" title="${isCreator ? 'Vous êtes le créateur' : alreadyParticipating ? 'Vous participez déjà' : 'Participer à ce créneau'}">
-              ${isCreator ? '👤 Créateur' : alreadyParticipating ? '✅ Participant' : '➕ Participer'}
+            ${currentUser ? `<button class="event-home-btn" ${btnDisabled ? 'disabled' : ''} onclick="participateSlot('${slot.id}')">
+              ${isCreator ? '👤 Créateur' : alreadyParticipating ? '✅ OK' : '➕ Participer'}
             </button>` : ''}
           </div>
         </div>`;
@@ -469,15 +435,11 @@
     const FB_POSTS_TIMESTAMP = "fbPostsTimestamp";
     const CACHE_DURATION = 10 * 60 * 1000;
 
-    async function fetchFacebookPosts(pageId, pageName) {
+    async function fetchFacebookPosts(pageId) {
       const now = Date.now();
       const cached = JSON.parse(localStorage.getItem(FB_POSTS_CACHE) || '{}');
       const timestamp = localStorage.getItem(FB_POSTS_TIMESTAMP) || 0;
-
-      if (cached[pageId] && now - timestamp < CACHE_DURATION) {
-        return cached[pageId];
-      }
-
+      if (cached[pageId] && now - timestamp < CACHE_DURATION) return cached[pageId];
       try {
         const res = await fetch(`/api/facebook-posts?page=${pageId}`);
         if (res.ok) {
@@ -487,91 +449,32 @@
           localStorage.setItem(FB_POSTS_TIMESTAMP, now.toString());
           return posts;
         }
-      } catch (e) {
-        console.log("Erreur fetch posts:", e);
-      }
-
-      const mockPosts = [
-        {
-          id: "mock_1",
-          text: "Bienvenue sur notre page Facebook ! Découvrez les dernières actualités de notre communauté.",
-          image: null,
-          link: `https://www.facebook.com/${pageId}`,
-          date: new Date().toISOString()
-        },
-        {
-          id: "mock_2",
-          text: "Merci de nous suivre ! Cliquez sur le lien pour voir nos posts complets.",
-          image: null,
-          link: `https://www.facebook.com/${pageId}`,
-          date: new Date(Date.now() - 86400000).toISOString()
-        },
-        {
-          id: "mock_3",
-          text: "Retrouvez notre contenu exclusif sur Facebook.",
-          image: null,
-          link: `https://www.facebook.com/${pageId}`,
-          date: new Date(Date.now() - 172800000).toISOString()
-        }
-      ];
-
-      cached[pageId] = mockPosts;
-      localStorage.setItem(FB_POSTS_CACHE, JSON.stringify(cached));
-      localStorage.setItem(FB_POSTS_TIMESTAMP, now.toString());
-      return mockPosts;
-    }
-
-    function formatDate(dateStr) {
-      const date = new Date(dateStr);
-      const now = new Date();
-      const diffMs = now - date;
-      const diffMins = Math.floor(diffMs / 60000);
-      const diffHours = Math.floor(diffMs / 3600000);
-      const diffDays = Math.floor(diffMs / 86400000);
-
-      if (diffMins < 1) return "À l'instant";
-      if (diffMins < 60) return `Il y a ${diffMins}min`;
-      if (diffHours < 24) return `Il y a ${diffHours}h`;
-      if (diffDays < 7) return `Il y a ${diffDays}j`;
-      return date.toLocaleDateString('fr-FR');
+      } catch (e) { console.log("Erreur FB fetch", e); }
+      return [];
     }
 
     async function renderFacebookPosts(pageId, containerId) {
       const container = document.getElementById(containerId);
       if (!container) return;
-
-      const posts = await fetchFacebookPosts(pageId, pageId);
-      
+      const posts = await fetchFacebookPosts(pageId);
       if (!posts || posts.length === 0) {
-        container.innerHTML = '<div class="fb-loading">📭 Aucun post trouvé</div>';
+        container.innerHTML = '<div class="fb-loading">📭 Pas de publications récentes.</div>';
         return;
       }
-
-      container.innerHTML = posts.slice(0, 3).map(post => {
-        const imageHtml = post.image ? `<img src="${post.image}" alt="Post image" class="post-image" onerror="this.style.display='none'">` : '';
-        const postText = post.text ? post.text.substring(0, 150) + (post.text.length > 150 ? '...' : '') : 'Voir le post';
-        
-        return `
+      container.innerHTML = posts.slice(0, 3).map(post => `
           <div class="facebook-post" onclick="window.open('${post.link}', '_blank')">
-            ${imageHtml}
-            <div class="post-text">${postText}</div>
-            <div class="post-meta">${formatDate(post.date)}</div>
+            <div class="post-text">${post.text || 'Voir le post...'}</div>
+            <div class="post-meta">${new Date(post.date).toLocaleDateString('fr-FR')}</div>
           </div>
-        `;
-      }).join('');
+      `).join('');
     }
 
+    // Lancement
     renderHomeEvents();
     renderHomeSerreSlots();
     initNotifications();
-
-    renderFacebookPosts('cerclaquanancy', 'fbPostsCAN');
+    renderFacebookPosts('CercleAquariophileNancy', 'fbPostsCAN');
     renderFacebookPosts('FishInTheNews', 'fbPostsFITN');
-
-    setInterval(() => {
-      renderFacebookPosts('cerclaquanancy', 'fbPostsCAN');
-      renderFacebookPosts('FishInTheNews', 'fbPostsFITN');
-    }, 10 * 60 * 1000);
   </script>
 </body>
 </html>
