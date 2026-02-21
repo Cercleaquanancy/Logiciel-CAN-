@@ -45,6 +45,9 @@
 
     #victory { display: none; margin-top: 15px; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; border-radius: 8px; text-align: center; }
   </style>
+
+  <script src="especes.js"></script>
+
 </head>
 <body>
 
@@ -69,6 +72,7 @@
       <div id="victory">
         <h2 style="color: #4ade80; border: none;">🎉 Espèce trouvée !</h2>
         <p id="victory-text"></p>
+        <img id="victory-img" src="" alt="Poisson trouvé" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none;">
       </div>
     </div>
 
@@ -76,7 +80,7 @@
       <h2>Arbre taxinomique révélé</h2>
       <div id="arbre-dynamique">
         <div style="color: #38bdf8; font-weight: bold;">Actinopterygii (Poissons)</div>
-        </div>
+      </div>
     </div>
 
     <div class="card">
@@ -89,23 +93,21 @@
   </main>
 
   <script>
-    // --- 1. TA BASE DE DONNÉES (À COLLER ICI) ---
-    window.FICHES = [
-      // /!\ COLLE TON TABLEAU ICI /!\
-      { id: "pterophyllum-scalare", nomScientifique: "Pterophyllum scalare", ordre: "Cichliformes", famille: "Cichlidae", genre: "Pterophyllum" },
-      { id: "astronotus-ocellatus", nomScientifique: "Astronotus ocellatus", ordre: "Cichliformes", famille: "Cichlidae", genre: "Astronotus" },
-      { id: "poecilia-reticulata", nomScientifique: "Poecilia reticulata", ordre: "Cyprinodontiformes", famille: "Poeciliidae", genre: "Poecilia" }
-    ];
-
     // Variables globales
     let mystere = null;
     let niveauArbre = 0; // 0=rien, 1=Ordre, 2=Famille, 3=Genre
 
     // Initialisation
     window.onload = () => {
+      // Vérification : est-ce que le fichier especes.js a bien été chargé ?
+      if (typeof window.FICHES === "undefined" || window.FICHES.length === 0) {
+        document.getElementById("error-msg").innerText = "Erreur : Le fichier especes.js n'a pas pu être chargé. Vérifie le chemin (src) dans la balise script.";
+        return;
+      }
+
       // Choix du poisson mystère
       mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
-      console.log("Cheat : " + mystere.nomScientifique);
+      console.log("Anti-triche : " + mystere.nomScientifique);
 
       // Remplissage auto-complétion avec UNIQUEMENT les noms latins
       const datalist = document.getElementById("liste-poissons");
@@ -118,6 +120,7 @@
 
     // --- ALGORITHME DE CORRECTION ORTHOGRAPHIQUE ---
     function nettoyer(str) {
+      if (!str) return "";
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     }
 
@@ -144,6 +147,8 @@
 
     // --- LOGIQUE PRINCIPALE ---
     function jouer() {
+      if (!window.FICHES) return; // Sécurité si le fichier n'est pas chargé
+      
       const input = document.getElementById("guess-input");
       const errBox = document.getElementById("error-msg");
       let val = input.value.trim();
@@ -172,7 +177,6 @@
         return;
       }
 
-      // Si valide, vider l'input et cacher le message "Aucun essai"
       input.value = "";
       document.getElementById("no-history").style.display = "none";
 
@@ -217,6 +221,15 @@
       if (victoire) {
         document.getElementById("victory").style.display = "block";
         document.getElementById("victory-text").innerText = `Bravo ! C'était bien ${mystere.nomScientifique}.`;
+        
+        // Affichage de l'image si elle existe dans la base de données
+        if (mystere.image) {
+          const imgElement = document.getElementById("victory-img");
+          // Si ton fichier html n'est pas à la racine avec les images, il faudra peut-être ajouter "../" avant mystere.image
+          imgElement.src = mystere.image; 
+          imgElement.style.display = "block";
+        }
+
         input.disabled = true;
         document.getElementById("btn-submit").disabled = true;
       }
