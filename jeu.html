@@ -1,7 +1,143 @@
-<script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Meta-Aqua - Le Jeu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* --- TON CSS ORIGINAL --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; min-height: 56px;
+      background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 16px; z-index: 50; flex-wrap: wrap; gap: 4px;
+    }
+    .navbar-left { display: flex; align-items: center; gap: 10px; }
+    .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
+    .navbar-user { font-size: 0.8rem; color: #9ca3af; }
+    .navbar-menu { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 4px; }
+    .nav-btn span.icon { font-size: 1rem; }
+    .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
+    .nav-btn:hover { background: #111827; }
+    .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 1000px; margin: 0 auto; }
+    .card { background: #020617; border-radius: 10px; border: 1px solid #1f2937; padding: 14px 16px; margin-bottom: 14px; }
+    .card h1 { font-size: 1.4rem; margin-bottom: 6px; color: #38bdf8; }
+    .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
+    .card p { font-size: 0.85rem; color: #d1d5db; }
+    .subtitle { font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px; }
+
+    /* --- CSS SPÉCIFIQUE AU JEU META-AQUA --- */
+    .game-input-group { display: flex; gap: 10px; margin-top: 15px; }
+    .game-input { flex: 1; padding: 10px 14px; background: #111827; border: 1px solid #374151; border-radius: 8px; color: #e5e7eb; font-size: 1rem; outline: none; }
+    .game-input:focus { border-color: #38bdf8; }
+    .btn-action { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: #38bdf8; color: #020617; }
+    .btn-primary:hover { background: #0ea5e9; }
+    .btn-hint { background: #f59e0b; color: #020617; margin-top: 10px; width: 100%; }
+    .btn-hint:hover { background: #d97706; }
+    
+    /* L'Arbre Taxonomique */
+    .tree-container { margin-top: 10px; font-family: monospace; font-size: 1.1rem; }
+    .tree-node { padding-left: 20px; position: relative; margin-bottom: 8px; }
+    .tree-node::before { content: '└─'; position: absolute; left: 0; color: #374151; }
+    .tree-root { font-weight: bold; color: #38bdf8; margin-bottom: 8px; }
+    .rank-label { color: #9ca3af; font-size: 0.85rem; text-transform: uppercase; }
+    .rank-value { color: #e5e7eb; font-weight: bold; }
+    .rank-value.hidden { color: #374151; }
+    .rank-value.revealed { color: #22c55e; }
+
+    /* Historique des essais */
+    .history-list { display: flex; flex-direction: column; gap: 8px; margin-top: 15px; }
+    .history-item { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; }
+    .history-title { font-weight: bold; color: #e5e7eb; font-size: 0.95rem; margin-bottom: 4px; }
+    .history-ranks { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge { padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.75rem; }
+    .badge-match { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; }
+    .badge-miss { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+
+    #hints-container p { background: #111827; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; }
+    #victory-msg { display: none; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; color: #4ade80; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px; font-weight: bold; }
+    #victory-img { max-width: 100%; border-radius: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Joueur</div>
+      </div>
+    </div>
+    <div class="navbar-menu">
+      <button class="nav-btn" onclick="window.location.href='index.html'"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn active"><span class="icon">🐟</span><span>Jeu</span></button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="card">
+      <h1>Meta-Aqua</h1>
+      <p class="subtitle">Devine le poisson mystère en te basant sur l'arbre taxinomique !</p>
+      
+      <div class="game-input-group">
+        <input list="liste-poissons" id="guess-input" class="game-input" placeholder="Tape un nom d'espèce (ex: Guppy...)">
+        <datalist id="liste-poissons"></datalist>
+        <button class="btn-action btn-primary" onclick="verifierReponse()" id="btn-submit">Deviner</button>
+      </div>
+      <div id="error-msg" style="color: #ef4444; font-size: 0.85rem; margin-top: 8px;"></div>
+      
+      <div id="victory-msg">
+        🎉 Félicitations ! Tu as trouvé l'espèce mystère !
+        <img id="victory-img" src="" alt="Poisson trouvé">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🌳 Arbre du Poisson Mystère</h2>
+      <p class="subtitle">La classification se dévoile quand tu trouves des correspondances.</p>
+      
+      <div class="tree-container">
+        <div class="tree-root">Actinopterygii (Poissons)</div>
+        <div class="tree-node" style="margin-left: 0px;">
+          <span class="rank-label">Ordre:</span> <span class="rank-value hidden" id="tree-ordre">???</span>
+        </div>
+        <div class="tree-node" style="margin-left: 20px;">
+          <span class="rank-label">Famille:</span> <span class="rank-value hidden" id="tree-famille">???</span>
+        </div>
+        <div class="tree-node" style="margin-left: 40px;">
+          <span class="rank-label">Genre:</span> <span class="rank-value hidden" id="tree-genre">???</span>
+        </div>
+        <div class="tree-node" style="margin-left: 60px;">
+          <span class="rank-label">Espèce:</span> <span class="rank-value hidden" id="tree-espece">???</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Besoin d'aide ?</h2>
+      <div id="hints-container"></div>
+      <button class="btn-action btn-hint" onclick="donnerIndice()" id="btn-hint">Obtenir un indice</button>
+    </div>
+
+    <div class="card">
+      <h2>📜 Tes essais</h2>
+      <div class="history-list" id="history-list">
+        </div>
+    </div>
+  </main>
+
+  <script>
     // === 1. COLLE TA LISTE window.FICHES ICI ===
     window.FICHES = [
-      // Colle ici tout ton tableau de données
+      // /!\ Attention : efface ce commentaire et colle tout ton tableau d'espèces ici /!\
     ];
 
     // Variables de jeu
@@ -9,15 +145,12 @@
     let nbIndices = 0;
     let highestMatch = 0;
 
-    // --- NOUVEAU : Outils de correction orthographique ---
-
-    // Fonction pour enlever les accents et mettre en minuscules
+    // --- Outils de correction orthographique ---
     function normaliser(str) {
       if (!str) return "";
       return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
     }
 
-    // Algorithme de Levenshtein : calcule le nombre d'erreurs entre deux mots
     function calculErreurs(a, b) {
       const matrice = [];
       for (let i = 0; i <= b.length; i++) { matrice[i] = [i]; }
@@ -28,16 +161,14 @@
             matrice[i][j] = matrice[i - 1][j - 1];
           } else {
             matrice[i][j] = Math.min(
-              matrice[i - 1][j - 1] + 1, // Remplacement
-              Math.min(matrice[i][j - 1] + 1, matrice[i - 1][j] + 1) // Insertion ou Suppression
+              matrice[i - 1][j - 1] + 1,
+              Math.min(matrice[i][j - 1] + 1, matrice[i - 1][j] + 1)
             );
           }
         }
       }
       return matrice[b.length][a.length];
     }
-
-    // ---------------------------------------------------
 
     function initGame() {
       if (!window.FICHES || window.FICHES.length === 0) return;
@@ -57,8 +188,8 @@
       });
     }
 
+    // Permet de valider la correction proposée par le jeu
     function appliquerCorrection(nomAcorriger) {
-      // Cette fonction est appelée si l'utilisateur clique sur "Vouliez-vous dire..."
       document.getElementById("guess-input").value = nomAcorriger;
       verifierReponse();
     }
@@ -71,14 +202,14 @@
 
       let valNorm = normaliser(val);
 
-      // 1. Chercher une correspondance exacte (sans se soucier des accents/majuscules)
+      // 1. Chercher une correspondance exacte (ignore majuscules/accents)
       let guess = window.FICHES.find(p => 
         normaliser(p.nomScientifique) === valNorm || 
         normaliser(p.nomCommun) === valNorm ||
         normaliser(`${p.nomScientifique} (${p.nomCommun})`) === valNorm
       );
 
-      // 2. Si pas trouvé, on cherche s'il y a une faute de frappe
+      // 2. Si pas trouvé, tolérance aux fautes (Levenshtein)
       if (!guess) {
         let bestMatch = null;
         let minimumErreurs = Infinity;
@@ -94,13 +225,11 @@
           }
         });
 
-        // Si l'erreur est minime (ex: max 3 lettres de différence)
         if (minimumErreurs <= 3 && bestMatch) {
           let nomAffiche = bestMatch.nomScientifique;
           if (bestMatch.nomCommun && bestMatch.nomCommun !== "Aucun" && bestMatch.nomCommun !== "Aucune information") {
             nomAffiche += ` (${bestMatch.nomCommun})`;
           }
-          // On propose le bon poisson avec un lien pour l'auto-valider
           errorMsg.innerHTML = `Espèce non reconnue. Vouliez-vous dire <a href="#" onclick="appliquerCorrection('${bestMatch.nomScientifique}'); return false;" style="color: #38bdf8; text-decoration: underline; font-weight: bold;">${nomAffiche}</a> ?`;
         } else {
           errorMsg.textContent = "Espèce introuvable. Vérifie l'orthographe ou utilise la liste déroulante !";
@@ -108,7 +237,7 @@
         return;
       }
       
-      // Si on arrive ici, le poisson est valide
+      // La réponse est valide, on traite le jeu
       errorMsg.textContent = "";
       inputField.value = "";
 
@@ -184,6 +313,7 @@
       container.appendChild(p);
     }
 
+    // Gère la touche "Entrée"
     document.getElementById("guess-input").addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -191,5 +321,8 @@
       }
     });
 
+    // Lancer l'initialisation au chargement de la page
     window.onload = initGame;
   </script>
+</body>
+</html>
