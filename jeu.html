@@ -112,9 +112,14 @@
     .btn-hint:hover { background: #d97706; }
     .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
     #hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; animation: popIn 0.3s;}
+    
     .end-screen { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; }
     .victory { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; }
     .defeat { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; }
+    
+    /* Bouton Rejouer */
+    .btn-replay { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; transition: 0.2s; }
+    .btn-replay:hover { background: #2563eb; }
   </style>
 
   <script src="especes.js"></script>
@@ -146,6 +151,8 @@
         <h2 id="end-title" style="border: none;"></h2>
         <p id="end-text"></p>
         <img id="end-img" src="" alt="Espèce mystère" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
+        
+        <button class="btn-replay" onclick="resetGame()">🔄 Rejouer une partie</button>
       </div>
     </div>
 
@@ -171,7 +178,6 @@
     let nbIndices = 0;
     
     let historiques = []; 
-    // Niveau d'avancement (0 = Rien trouvé, 1 = Classe, 2 = Ordre, 3 = Famille, 4 = Genre, 5 = Espèce)
     let highestMatch = 0; 
     let treeData = {};
 
@@ -181,10 +187,7 @@
         return;
       }
 
-      mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
-      // (Optionnel : commente cette ligne pour ne pas tricher via la console)
-      // console.log("Anti-triche : " + mystere.nomScientifique);
-
+      // Initialiser l'auto-complétion une seule fois
       const datalist = document.getElementById("liste-poissons");
       window.FICHES.forEach(p => {
         let option = document.createElement("option");
@@ -192,15 +195,53 @@
         datalist.appendChild(option);
       });
 
-      renderTree();
+      // Lancer la première partie
+      resetGame();
     };
 
-    // --- RÉCUPÉRATION DU CHEMIN COMPLET D'UNE ESPÈCE ---
-    // Gère dynamiquement l'ajout futur des mollusques/crustacés
-    function getTaxonomyPath(poisson) {
-      // Si poisson.classe n'existe pas dans la BDD, on met "Actinopterygii" par défaut
-      let classe = poisson.classe ? poisson.classe : "Actinopterygii";
+    // --- FONCTION POUR RÉINITIALISER ET REJOUER ---
+    function resetGame() {
+      // 1. Tirer un nouveau poisson au sort
+      mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
+      // console.log("Anti-triche : " + mystere.nomScientifique); // Décommente pour tricher
+
+      // 2. Remettre les variables à zéro
+      tentatives = MAX_TENTATIVES;
+      nbIndices = 0;
+      historiques = [];
+      highestMatch = 0;
+      treeData = {};
+
+      // 3. Réinitialiser l'interface (Inputs, Boutons, Textes)
+      document.getElementById("essais-restants").innerText = tentatives;
       
+      const input = document.getElementById("guess-input");
+      input.value = "";
+      input.disabled = false;
+      
+      document.getElementById("btn-submit").disabled = false;
+      document.getElementById("error-msg").innerHTML = "";
+
+      // 4. Cacher l'écran de fin
+      const endScreen = document.getElementById("end-screen");
+      endScreen.style.display = "none";
+      endScreen.className = "end-screen"; // Enlève classes victory/defeat
+      document.getElementById("end-img").style.display = "none";
+      document.getElementById("end-img").src = "";
+
+      // 5. Réinitialiser la zone d'indices
+      const btnHint = document.getElementById("btn-hint");
+      btnHint.disabled = false;
+      btnHint.innerText = "Révéler un indice";
+      document.getElementById("hints-container").innerHTML = "";
+
+      // 6. Redessiner l'arbre vierge
+      renderTree();
+    }
+
+    // --- RÉCUPÉRATION DU CHEMIN COMPLET D'UNE ESPÈCE ---
+    function getTaxonomyPath(poisson) {
+      let classe = poisson.classe ? poisson.classe : "Actinopterygii";
       return [
         { rank: "Classe", name: classe },
         { rank: "Ordre", name: poisson.ordre },
@@ -212,12 +253,9 @@
 
     // --- MOTEUR DE RENDU HTML (Génère l'arbre) ---
     function renderTree() {
-      // 1. Initialisation de la racine globale (Règne Animal)
       treeData = { name: "Animalia", rank: "Règne", isTarget: true, isUnknown: false, isLeaf: false, children: {} };
-
       let targetPath = getTaxonomyPath(mystere);
 
-      // 2. On insère le chemin Cible (Le tronc principal) 
       let current = treeData;
       for (let i = 0; i < highestMatch; i++) {
         if (i === 5) break; 
@@ -226,12 +264,10 @@
         current = current.children[nName];
       }
       
-      // 3. La prochaine boîte cachée "???"
       if (highestMatch < 5) {
         current.children["???"] = { name: "???", rank: targetPath[highestMatch].rank, isTarget: true, isUnknown: true, isLeaf: true, children: {} };
       }
 
-      // 4. On insère toutes les erreurs (branches mortes)
       historiques.forEach(guess => {
         let gPath = getTaxonomyPath(guess);
         let curr = treeData;
@@ -241,26 +277,24 @@
              curr.children[nName] = { name: nName, rank: gPath[i].rank, isTarget: false, isUnknown: false, isLeaf: false, children: {} };
           }
           curr = curr.children[nName];
-          if (i === 4) curr.isLeaf = true; // Index 4 = Espèce
+          if (i === 4) curr.isLeaf = true; 
         }
       });
 
-      // 5. Génération du HTML
       let html = `<ul>` + generateHTML(treeData) + `</ul>`;
       document.getElementById("arbre-dynamique").innerHTML = html;
     }
 
-    // Fonction récursive pour transformer les données en boîtes visuelles
     function generateHTML(node) {
       let boxClass = "";
       if (node.isUnknown) {
         boxClass = "node-unknown"; 
       } else if (node.isLeaf) {
-        boxClass = "node-leaf"; // Espèce (blanc)
+        boxClass = "node-leaf"; 
       } else if (node.rank === "Règne" || node.rank === "Classe") {
-        boxClass = "node-root"; // Règne/Classe (rouge)
+        boxClass = "node-root"; 
       } else {
-        boxClass = "node-clade"; // Ordre/Fam/Genre (olive)
+        boxClass = "node-clade"; 
       }
 
       let html = `<li>
@@ -271,7 +305,6 @@
 
       let childrenKeys = Object.keys(node.children);
       if (childrenKeys.length > 0) {
-        // Triage : On force la branche Mystère à rester à droite pour un tronc visuellement droit
         childrenKeys.sort((a, b) => {
           let isTargetA = node.children[a].isTarget ? 1 : 0;
           let isTargetB = node.children[b].isTarget ? 1 : 0;
@@ -331,7 +364,6 @@
 
       let guess = window.FICHES.find(p => nettoyer(p.nomScientifique) === nettoyer(val));
 
-      // Correcteur orthographique
       if (!guess) {
         let best = null; let minErr = Infinity;
         window.FICHES.forEach(p => {
@@ -355,9 +387,7 @@
       let gPath = getTaxonomyPath(guess);
       let mPath = getTaxonomyPath(mystere);
       
-      let shared = 0; // Niveau atteint (Commence à 0 car "Animalia" est toujours bon)
-      
-      // On compare chaque niveau (0=Classe, 1=Ordre, 2=Famille, 3=Genre, 4=Espèce)
+      let shared = 0; 
       if (gPath[0].name === mPath[0].name) {
         shared = 1;
         if (gPath[1].name === mPath[1].name) {
@@ -394,7 +424,7 @@
           title.style.color = "#4ade80";
           txt.innerText = `C'était bien ${mystere.nomScientifique} (trouvé en ${MAX_TENTATIVES - tentatives} essai(s)).`;
         } else {
-          highestMatch = 5; // Révélation complète
+          highestMatch = 5; 
           renderTree(); 
           document.getElementById("end-screen").className = "end-screen defeat";
           title.innerText = "💀 Perdu...";
