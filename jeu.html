@@ -7,13 +7,13 @@
   <style>
     /* --- DESIGN GLOBAL DU SITE --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; overflow-y: scroll; }
+    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; overflow-y: auto; }
     .navbar { position: fixed; top: 0; left: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; justify-content: space-between; padding: 4px 16px; z-index: 50; }
     .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
     .navbar-menu { display: flex; gap: 8px; }
     .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
-    .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 1000px; margin: 0 auto; }
+    .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; }
     .card { background: #111827; border-radius: 10px; border: 1px solid #1f2937; padding: 16px; margin-bottom: 14px; }
     h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; }
 
@@ -29,12 +29,12 @@
     .correction-link { color: #38bdf8; text-decoration: underline; cursor: pointer; font-weight: bold; }
 
     /* =========================================
-       LE VRAI ARBRE PHYLOGÉNÉTIQUE (Graphe)
+       LE VÉRITABLE GRAPHE ARBORESCENT (STYLE METAZOOA)
        ========================================= */
     .tree-container {
       display: flex;
       justify-content: center;
-      overflow-x: auto; /* Permet de scroller si l'arbre devient très large */
+      overflow-x: auto; /* Scroll horizontal si l'arbre devient très grand */
       padding: 20px 20px 40px 20px;
     }
 
@@ -45,78 +45,76 @@
       justify-content: center;
       padding-left: 0;
       margin: 0;
-      transition: all 0.5s;
     }
 
     .tree li {
-      float: left;
-      text-align: center;
-      list-style-type: none;
-      position: relative;
-      padding: 20px 8px 0 8px;
-      transition: all 0.5s;
       display: flex;
       flex-direction: column;
       align-items: center;
+      list-style-type: none;
+      position: relative;
+      padding: 20px 6px 0 6px;
+      transition: all 0.5s;
     }
 
-    /* Lignes de connexion (Les branches) */
+    /* Les lignes horizontales (connecteurs) */
     .tree li::before, .tree li::after {
       content: '';
       position: absolute; top: 0; right: 50%;
-      border-top: 3px solid #4b5563; /* Couleur de base des branches */
+      border-top: 3px solid #8b7d6b; /* Couleur des branches */
       width: 50%; height: 20px;
-      transition: all 0.5s;
     }
     .tree li::after {
       right: auto; left: 50%;
-      border-left: 3px solid #4b5563;
+      border-left: 3px solid #8b7d6b;
     }
 
-    /* Ne pas dessiner les lignes s'il n'y a qu'un seul enfant */
+    /* Nettoyage des lignes pour les éléments uniques et les bords */
     .tree li:only-child::after, .tree li:only-child::before { display: none; }
     .tree li:only-child { padding-top: 0; }
     .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
     
-    /* Les courbes d'embranchement */
-    .tree li:last-child::before { border-right: 3px solid #4b5563; border-radius: 0 8px 0 0; }
-    .tree li:first-child::after { border-radius: 8px 0 0 0; }
+    /* Courbes (Arrondis) */
+    .tree li:last-child::before { border-right: 3px solid #8b7d6b; border-radius: 0 10px 0 0; }
+    .tree li:first-child::after { border-radius: 10px 0 0 0; }
 
-    /* Ligne verticale qui descend du parent */
+    /* La ligne verticale descendante */
     .tree ul ul::before {
       content: '';
       position: absolute; top: 0; left: 50%;
-      border-left: 3px solid #4b5563;
+      border-left: 3px solid #8b7d6b;
       width: 0; height: 20px;
       transform: translateX(-1.5px);
     }
 
-    /* =========================================
-       LE STYLE DES BOÎTES (Noeuds de l'arbre)
-       ========================================= */
+    /* --- STYLES DES BOÎTES (NŒUDS) --- */
     .node-box {
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 6px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
       position: relative;
       z-index: 2;
-      min-width: 130px;
+      min-width: 110px;
+      text-align: center;
       animation: popIn 0.3s ease-out;
-      display: inline-block;
     }
 
-    /* Style inspiré de l'image (adapté au thème sombre) */
-    .node-target-root { background: #7c1a1a; color: white; border: 1px solid #991b1b; } /* Rouge */
-    .node-target { background: #6b7316; color: white; border: 1px solid #848c20; } /* Vert Olive */
-    .node-unknown { background: #111827; color: #9ca3af; border: 2px dashed #4b5563; box-shadow: none; } /* ??? */
+    /* 1. Racine (Rouge foncé) */
+    .node-root { background: #690b0a; color: #fff; border: 2px solid #3a0808; }
     
-    /* Fausses réponses au bout des branches */
-    .node-wrong-root { background: #1f2937; color: #fca5a5; border: 1px solid #7c1a1a; }
-    .node-wrong { background: #1f2937; color: #d9f99d; border: 1px solid #6b7316; }
+    /* 2. Clades intermédiaires (Vert Olive) */
+    .node-clade { background: #6b7316; color: #fff; border: 2px solid #4a5010; }
+    
+    /* 3. Espèces proposées (Feuilles - Fond blanc / Texte Olive) */
+    .node-leaf { background: #fdfdfd; color: #4a5010; border: 2px solid #6b7316; }
+    
+    /* 4. Le prochain nœud inconnu */
+    .node-unknown { background: #1f2937; color: #9ca3af; border: 2px dashed #4b5563; box-shadow: none; }
 
-    .node-rank { font-size: 0.65rem; text-transform: uppercase; margin-bottom: 2px; opacity: 0.8;}
-    .node-name { font-size: 0.95rem; font-weight: bold; }
-    .node-wrong .node-name, .node-wrong-root .node-name { font-style: italic; font-weight: normal; font-size: 0.85rem;}
+    /* Typographie dans les boîtes */
+    .node-rank { font-size: 0.65rem; text-transform: uppercase; margin-bottom: 2px; opacity: 0.8; font-weight: bold;}
+    .node-name { font-size: 1rem; font-weight: bold; }
+    .node-leaf .node-name { font-style: italic; font-weight: 600; font-size: 0.9rem;} /* Nom latin en italique pour les espèces */
 
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
@@ -124,14 +122,13 @@
     .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.2s; }
     .btn-hint:hover { background: #d97706; }
     .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
-    #hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; }
+    #hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; animation: popIn 0.3s;}
     .end-screen { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; }
     .victory { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; }
     .defeat { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; }
   </style>
 
   <script src="especes.js"></script>
-
 </head>
 <body>
 
@@ -147,7 +144,7 @@
         <h1>Meta-Aqua</h1>
         <div class="compteur">Essais : <span id="essais-restants">30</span></div>
       </div>
-      <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Devine l'espèce mystère. L'arbre évoluera selon tes propositions.</p>
+      <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches sur l'arbre phylogénétique.</p>
       
       <div class="input-group">
         <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
@@ -184,23 +181,18 @@
     const MAX_TENTATIVES = 30;
     let nbIndices = 0;
     
-    // Le niveau d'avancement du joueur sur la branche principale
-    // 0 = Classe, 1 = Ordre, 2 = Famille, 3 = Genre, 4 = Espèce
-    let highestRevealedLevel = 0; 
-    
-    // L'arbre de données (Trie) qui stocke le chemin de l'espèce mystère ET toutes les erreurs du joueur
-    let treeData = {};
+    let historiques = []; 
+    // Niveau validé par le joueur (0=Classe, 1=Ordre, 2=Famille, 3=Genre, 4=Espèce)
+    let highestMatch = 0; 
 
     window.onload = () => {
       if (typeof window.FICHES === "undefined" || window.FICHES.length === 0) {
         document.getElementById("error-msg").innerText = "Erreur : Impossible de charger especes.js.";
         return;
       }
-
       mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
       console.log("Anti-triche : " + mystere.nomScientifique);
 
-      // Auto-complétion
       const datalist = document.getElementById("liste-poissons");
       window.FICHES.forEach(p => {
         let option = document.createElement("option");
@@ -208,112 +200,107 @@
         datalist.appendChild(option);
       });
 
-      // Initialiser l'arbre de données avec la réponse cible
-      initTreeData();
       renderTree();
     };
 
-    // --- CONSTRUCTION DES DONNÉES DE L'ARBRE (TRIE) ---
-    function initTreeData() {
-      treeData = { rank: "Classe", name: "Actinopterygii", isTarget: true, children: {} };
-      insertPathIntoTree(mystere, true);
-    }
+    // --- MOTEUR DE GÉNÉRATION DU DIAGRAMME ---
+    function renderTree() {
+      // Construction de la structure de données de l'arbre
+      let root = { name: "Actinopterygii", rank: "Classe", isTarget: true, isUnknown: false, isLeaf: false, children: {} };
 
-    function insertPathIntoTree(poisson, isTarget) {
-      let current = treeData;
-      const path = [
-        { rank: "Ordre", name: poisson.ordre },
-        { rank: "Famille", name: poisson.famille },
-        { rank: "Genre", name: poisson.genre },
-        { rank: "Espèce", name: poisson.nomScientifique }
+      // 1. On insère le chemin Cible (Le tronc principal) jusqu'au niveau découvert + 1 (le "???")
+      let targetPath = [
+        { rank: "Ordre", name: mystere.ordre },
+        { rank: "Famille", name: mystere.famille },
+        { rank: "Genre", name: mystere.genre },
+        { rank: "Espèce", name: mystere.nomScientifique }
       ];
 
-      for (let i = 0; i < path.length; i++) {
-        let key = path[i].rank + "_" + path[i].name;
-        if (!current.children[key]) {
-          current.children[key] = {
-            rank: path[i].rank,
-            name: path[i].name,
-            isTarget: isTarget,
-            children: {}
-          };
-        }
-        current = current.children[key];
+      let current = root;
+      for (let i = 0; i <= highestMatch; i++) {
+        if (i === 4) break; // Si gagné, on s'arrête avant le "???"
+        let nName = targetPath[i].name;
+        current.children[nName] = { name: nName, rank: targetPath[i].rank, isTarget: true, isUnknown: false, isLeaf: false, children: {} };
+        current = current.children[nName];
       }
-    }
+      // On ajoute la prochaine boîte cachée
+      if (highestMatch < 4) {
+        current.children["???"] = { name: "???", rank: targetPath[highestMatch].rank, isTarget: true, isUnknown: true, isLeaf: true, children: {} };
+      }
 
-    // --- MOTEUR DE RENDU HTML (Génère les UL / LI) ---
-    function renderTree() {
-      let html = `<ul>` + buildNodeHTML(treeData, 0, 0) + `</ul>`;
+      // 2. On insère toutes les propositions du joueur pour créer les branches latérales
+      historiques.forEach(guess => {
+        let gPath = [
+          { rank: "Ordre", name: guess.ordre },
+          { rank: "Famille", name: guess.famille },
+          { rank: "Genre", name: guess.genre },
+          { rank: "Espèce", name: guess.nomScientifique }
+        ];
+
+        let curr = root;
+        for (let i = 0; i < gPath.length; i++) {
+          let nName = gPath[i].name;
+          if (!curr.children[nName]) {
+             curr.children[nName] = { name: nName, rank: gPath[i].rank, isTarget: false, isUnknown: false, isLeaf: false, children: {} };
+          }
+          curr = curr.children[nName];
+          // Marque la fin de la branche
+          if (i === 3) curr.isLeaf = true; 
+        }
+      });
+
+      // 3. Génération du HTML
+      let html = `<ul>` + generateHTML(root) + `</ul>`;
       document.getElementById("arbre-dynamique").innerHTML = html;
     }
 
-    function buildNodeHTML(node, level, divergenceLevel) {
-      let isUnknown = false;
-      let displayName = node.name;
-
-      // Si c'est un nœud de la solution qu'on n'a pas encore découvert, on le masque avec "???"
-      if (node.isTarget && level > highestRevealedLevel) {
-        displayName = "???";
-        isUnknown = true;
-      }
-
-      // Attribution de la bonne classe CSS (couleurs selon ton image)
+    // Fonction récursive pour parser l'objet Tree et créer le code HTML
+    function generateHTML(node) {
+      // Attribution des classes CSS selon la logique exacte de l'image
       let boxClass = "";
-      if (node.isTarget) {
-        if (isUnknown) boxClass = "node-unknown";
-        else if (level === 0) boxClass = "node-target-root"; // Rouge
-        else boxClass = "node-target"; // Vert Olive
+      if (node.isUnknown) {
+        boxClass = "node-unknown";
+      } else if (node.isLeaf) {
+        boxClass = "node-leaf"; // Espèce (Fond blanc, texte olive)
+      } else if (node.rank === "Classe") {
+        boxClass = "node-root"; // Racine (Fond rouge)
       } else {
-        // Fausses pistes (branches mortes)
-        if (divergenceLevel <= 0) boxClass = "node-wrong-root";
-        else boxClass = "node-wrong";
+        boxClass = "node-clade"; // Famille, Ordre, Genre (Fond Olive)
       }
 
       let html = `<li>
         <div class="node-box ${boxClass}">
           <div class="node-rank">${node.rank}</div>
-          <div class="node-name">${displayName}</div>
+          <div class="node-name">${node.name}</div>
         </div>`;
 
-      // Si on ne doit pas cacher les enfants
-      if (!isUnknown) {
-        let childKeys = Object.keys(node.children);
-        if (childKeys.length > 0) {
-          
-          // TRI : On met toujours la VRAIE réponse à droite (à la fin) pour garder l'axe central visuellement droit
-          childKeys.sort((a, b) => {
-            let nA = node.children[a];
-            let nB = node.children[b];
-            if (nA.isTarget && !nB.isTarget) return 1;
-            if (!nA.isTarget && nB.isTarget) return -1;
-            return 0;
-          });
+      let childrenKeys = Object.keys(node.children);
+      if (childrenKeys.length > 0) {
+        // Triage : On force la branche "Cible" à s'afficher tout à fait à droite pour garder un tronc visuellement cohérent
+        childrenKeys.sort((a, b) => {
+          let isTargetA = node.children[a].isTarget ? 1 : 0;
+          let isTargetB = node.children[b].isTarget ? 1 : 0;
+          return isTargetA - isTargetB; 
+        });
 
-          html += `<ul>`;
-          for(let k of childKeys) {
-            let childNode = node.children[k];
-            // Calcul du niveau de séparation (pour la couleur des boîtes fausses)
-            let childDiv = divergenceLevel;
-            if (node.isTarget && !childNode.isTarget) childDiv = level;
-            
-            html += buildNodeHTML(childNode, level + 1, childDiv);
-          }
-          html += `</ul>`;
+        html += `<ul>`;
+        for (let key of childrenKeys) {
+          html += generateHTML(node.children[key]);
         }
+        html += `</ul>`;
       }
       html += `</li>`;
       return html;
     }
 
-    // --- CORRECTION ORTHOGRAPHIQUE (TOLÉRANCE AUX FAUTES) ---
+    // --- CORRECTION ORTHOGRAPHIQUE ---
     function nettoyer(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
     function levenshtein(a, b) {
       const mat = [];
-      for (let i=0; i<=b.length; i++) mat[i]=[i];
-      for (let j=0; j<=a.length; j++) mat[0][j]=j;
-      for (let i=1; i<=b.length; i++) {
-        for (let j=1; j<=a.length; j++) {
+      for (let i = 0; i <= b.length; i++) mat[i] = [i];
+      for (let j = 0; j <= a.length; j++) mat[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
           if (b.charAt(i-1) === a.charAt(j-1)) mat[i][j] = mat[i-1][j-1];
           else mat[i][j] = Math.min(mat[i-1][j-1]+1, Math.min(mat[i][j-1]+1, mat[i-1][j]+1));
         }
@@ -333,12 +320,12 @@
       else if (nbIndices === 3) {
         text = `🖼️ <strong>Aperçu :</strong><br><img src="${mystere.image || ''}" style="max-width:200px; margin-top:5px; border-radius:6px; filter:blur(4px);">`;
         btnHint.disabled = true;
-        btnHint.innerText = "Tous les indices sont utilisés";
+        btnHint.innerText = "Tous les indices ont été donnés";
       }
       container.innerHTML += `<p>${text}</p>`;
     }
 
-    // --- LOGIQUE DE VALIDATION DE LA RÉPONSE ---
+    // --- LOGIQUE DE VALIDATION ---
     function jouer() {
       if (!window.FICHES || tentatives <= 0) return;
       const input = document.getElementById("guess-input");
@@ -357,7 +344,13 @@
           if (err < minErr) { minErr = err; best = p; }
         });
         if (minErr <= 4 && best) errBox.innerHTML = `Vouliez-vous dire <span class="correction-link" onclick="appliquerCorrection('${best.nomScientifique}')">${best.nomScientifique}</span> ?`;
-        else errBox.innerText = "Espèce introuvable dans la base.";
+        else errBox.innerText = "Espèce introuvable dans la base de données.";
+        return;
+      }
+
+      // Doublon
+      if (historiques.find(h => h.nomScientifique === guess.nomScientifique)) {
+        errBox.innerText = "Espèce déjà proposée !";
         return;
       }
 
@@ -365,30 +358,28 @@
       document.getElementById("essais-restants").innerText = tentatives;
       input.value = "";
 
-      // On insère le chemin de la fausse réponse dans notre Graphe (Trie)
-      insertPathIntoTree(guess, false);
-
-      // On calcule jusqu'où cette proposition est juste, pour faire "pousser" la racine
-      let matchLevel = 0; 
+      // Calcul du niveau atteint (0=Classe partagée, 1=Ordre, 2=Famille, 3=Genre, 4=Espèce)
+      let shared = 0; 
       if (guess.ordre === mystere.ordre) {
-        matchLevel = 1;
+        shared = 1;
         if (guess.famille === mystere.famille) {
-          matchLevel = 2;
+          shared = 2;
           if (guess.genre === mystere.genre) {
-            matchLevel = 3;
-            if (guess.nomScientifique === mystere.nomScientifique) matchLevel = 4;
+            shared = 3;
+            if (guess.nomScientifique === mystere.nomScientifique) shared = 4;
           }
         }
       }
 
-      // Met à jour la profondeur dévoilée (on ne recule jamais)
-      highestRevealedLevel = Math.max(highestRevealedLevel, matchLevel);
-      
-      // On regénère l'affichage graphique !
+      // Ajoute à l'historique et met à jour le niveau max
+      historiques.push(guess);
+      highestMatch = Math.max(highestMatch, shared);
+
+      // Redessine l'arbre avec la nouvelle donnée
       renderTree();
 
-      // Gestion de la fin de partie
-      if (matchLevel === 4 || tentatives === 0) {
+      // Gestion Fin de partie
+      if (shared === 4 || tentatives === 0) {
         document.getElementById("end-screen").style.display = "block";
         document.getElementById("btn-submit").disabled = true;
         input.disabled = true;
@@ -398,15 +389,14 @@
         const txt = document.getElementById("end-text");
         const img = document.getElementById("end-img");
 
-        if (matchLevel === 4) {
+        if (shared === 4) {
           document.getElementById("end-screen").className = "end-screen victory";
           title.innerText = "🎉 Gagné !";
           title.style.color = "#4ade80";
-          txt.innerText = `C'était bien ${mystere.nomScientifique} (trouvé en ${MAX_TENTATIVES - tentatives} essai(s)).`;
+          txt.innerText = `C'était bien ${mystere.nomScientifique}. (Trouvé en ${MAX_TENTATIVES - tentatives} essai(s)).`;
         } else {
-          // Si perdu, on force la révélation de tout l'arbre
-          highestRevealedLevel = 4; 
-          renderTree();
+          highestMatch = 4; 
+          renderTree(); // Dévoile le reste de l'arbre
           document.getElementById("end-screen").className = "end-screen defeat";
           title.innerText = "💀 Perdu...";
           title.style.color = "#ef4444";
