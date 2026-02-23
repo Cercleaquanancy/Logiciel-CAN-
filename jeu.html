@@ -10,9 +10,6 @@
     body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; }
     .navbar { position: fixed; top: 0; left: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; justify-content: space-between; padding: 4px 16px; z-index: 50; }
     .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
-    .navbar-menu { display: flex; gap: 8px; }
-    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; }
-    .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
     .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 900px; margin: 0 auto; }
     .card { background: #111827; border-radius: 10px; border: 1px solid #1f2937; padding: 16px; margin-bottom: 14px; overflow: hidden; }
     h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; }
@@ -29,102 +26,68 @@
     #error-msg { margin-top: 8px; font-size: 0.9rem; color: #ef4444; }
     .correction-link { color: #38bdf8; text-decoration: underline; cursor: pointer; font-weight: bold; }
 
-    /* --- LE VÉRITABLE ARBRE PHYLOGÉNÉTIQUE METAZOOA --- */
+    /* --- VRAI ARBRE PHYLOGÉNÉTIQUE (STYLE METAZOOA) --- */
     #arbre-dynamique {
-      padding: 20px 0 20px 20px;
+      padding: 10px 0;
       overflow-x: auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .tree-row {
-      display: flex;
-      align-items: flex-start;
-      position: relative;
-      min-height: 80px;
-      padding-bottom: 25px;
-    }
-
-    /* La ligne verticale centrale */
-    .tree-row::after {
-      content: '';
-      position: absolute;
-      left: 98px; /* Au milieu de la boîte principale de 200px */
-      top: 55px; /* Démarre sous la boîte */
-      bottom: -10px; /* Descend jusqu'à la rangée suivante */
-      width: 4px;
-      background: #374151;
-      z-index: 1;
-    }
-    .tree-row:last-child::after { display: none; } /* Pas de ligne après la dernière boîte */
-    .tree-row.match::after { background: #22c55e; } /* La ligne devient verte si la suite est trouvée */
-
-    /* Les boîtes sur l'axe central (Ordre, Famille, etc.) */
-    .main-node {
-      width: 200px;
-      background: #1f2937;
-      border: 2px solid #374151;
-      border-radius: 8px;
-      padding: 12px;
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      animation: fadeInDown 0.4s ease-out;
-    }
-    .main-node.match { border-color: #22c55e; background: rgba(34, 197, 94, 0.1); }
-    .main-node.unknown { border-style: dashed; background: #020617; }
+    ul.tree { list-style: none; padding-left: 0; margin: 0; }
+    ul.tree ul { list-style: none; padding-left: 40px; margin: 0; }
     
-    .rank-label { font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; margin-bottom: 4px; font-weight: 700; }
-    .rank-name { font-size: 1.05rem; font-weight: bold; color: #e5e7eb; }
-    .main-node.match .rank-name { color: #4ade80; }
-    .main-node.unknown .rank-name { color: #6b7280; }
-
-    /* Conteneur des fausses réponses (Branches latérales) */
-    .side-branches {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-left: 40px;
-      position: relative;
+    li.node { position: relative; padding: 10px 0; animation: fadeIn 0.4s ease-out; }
+    
+    /* Ligne verticale de l'arbre */
+    li.node::before {
+      content: ''; position: absolute; top: -10px; bottom: 0; left: -20px;
+      border-left: 2px solid #4b5563;
     }
-    /* La ligne horizontale qui relie l'axe aux fausses réponses */
-    .side-branches::before {
-      content: '';
-      position: absolute;
-      left: -40px;
-      top: 25px; /* Au niveau du milieu de la boîte centrale */
-      width: 40px;
-      height: 4px;
-      background: #4b5563;
-      z-index: 1;
+    /* Ligne horizontale de l'arbre */
+    li.node::after {
+      content: ''; position: absolute; top: 33px; left: -20px; width: 20px;
+      border-top: 2px solid #4b5563;
     }
+    /* Coupe la ligne verticale à la dernière branche */
+    li.node:last-child::before { bottom: auto; height: 43px; }
+    
+    /* Pas de lignes pour la racine */
+    ul.root-ul > li.node::before { display: none; }
+    ul.root-ul > li.node::after { display: none; }
 
-    /* La carte d'une fausse réponse */
-    .guess-card {
-      background: #111827;
-      border: 1px solid #4b5563;
-      border-radius: 8px;
-      padding: 10px 14px;
-      min-width: 180px;
-      position: relative;
-      z-index: 2;
-      animation: slideInRight 0.3s ease-out;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    /* --- LES BOÎTES (TAXONS) --- */
+    .box {
+      display: inline-block; padding: 8px 14px; border-radius: 8px;
+      border: 2px solid transparent; min-width: 220px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2); position: relative; z-index: 10;
     }
-    .guess-diffs { font-size: 0.85rem; color: #9ca3af; margin-bottom: 6px; line-height: 1.4; }
-    .guess-diffs span.r { color: #6b7280; font-size: 0.7rem; text-transform: uppercase; margin-right: 4px; font-weight: bold;}
-    .guess-species { color: #f87171; font-weight: bold; font-style: italic; font-size: 0.95rem; border-top: 1px solid #374151; padding-top: 6px; margin-top: 4px;}
+    
+    /* La racine (Poissons) */
+    .root-box { background: #1e3a8a; border-color: #3b82f6; }
+    .root-box .box-rank { color: #93c5fd; }
+    
+    /* Le chemin correct (Vert) */
+    .main-box { background: rgba(34, 197, 94, 0.1); border-color: #22c55e; }
+    .main-box .box-name { color: #4ade80; }
+    
+    /* Le prochain à trouver (Gris avec "???") */
+    .unknown-box { background: #020617; border-color: #4b5563; border-style: dashed; }
+    .unknown-box .box-name { color: #9ca3af; font-style: italic; }
+    
+    /* Les mauvaises branches (Rouge sombre) */
+    .wrong-box { background: #3f0a0a; border-color: #ef4444; opacity: 0.9; }
+    .wrong-box .box-name { color: #fca5a5; font-style: italic; }
+    
+    .box-rank { display: block; font-size: 0.7rem; color: #9ca3af; text-transform: uppercase; font-weight: bold; margin-bottom: 2px; }
+    .box-name { display: block; font-size: 1.05rem; font-weight: bold; color: #e5e7eb; }
 
-    @keyframes slideInRight { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
-    /* --- BOUTON INDICE --- */
+    /* --- BOUTON INDICE & FIN --- */
     .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%; transition: 0.2s; }
     .btn-hint:hover { background: #d97706; }
     .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
     #hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; }
-
-    /* --- FIN DE PARTIE --- */
     .end-screen { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; }
     .victory { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; }
     .defeat { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; }
@@ -136,7 +99,6 @@
 
   <header class="navbar">
     <div class="navbar-title">Espace adhérent</div>
-    <div class="navbar-menu"><button class="nav-btn active">Jeu</button></div>
   </header>
 
   <main class="page">
@@ -144,12 +106,12 @@
     <div class="card">
       <div class="game-header">
         <h1>Meta-Aqua</h1>
-        <div class="compteur">Essais : <span id="essais-restants">30</span></div>
+        <div class="compteur">Essais restants : <span id="essais-restants">30</span></div>
       </div>
-      <p style="color:#9ca3af; font-size:0.85rem;">Trouve l'espèce mystère. L'arbre évoluera comme dans Metazooa !</p>
+      <p style="color:#9ca3af; font-size:0.85rem;">Devine l'espèce mystère. Les branches de l'arbre se construiront selon tes réponses.</p>
       
       <div class="input-group">
-        <input list="liste-poissons" id="guess-input" placeholder="Ex: Pterophyllum scalare..." autocomplete="off">
+        <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
         <datalist id="liste-poissons"></datalist>
         <button class="btn-play" id="btn-submit" onclick="jouer()">Valider</button>
       </div>
@@ -158,13 +120,14 @@
       <div id="end-screen" class="end-screen">
         <h2 id="end-title" style="border: none;"></h2>
         <p id="end-text"></p>
-        <img id="end-img" src="" alt="Espèce mystère" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
+        <img id="end-img" src="" alt="Espèce" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
       </div>
     </div>
 
     <div class="card">
-      <h2>Arbre phylogénétique</h2>
-      <div id="arbre-dynamique"></div>
+      <h2>Arbre Phylogénétique</h2>
+      <div id="arbre-dynamique">
+        </div>
     </div>
 
     <div class="card">
@@ -191,7 +154,7 @@
       }
 
       mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
-      console.log("Anti-triche : " + mystere.nomScientifique);
+      console.log("Solution (Ne pas regarder !) : " + mystere.nomScientifique);
 
       const datalist = document.getElementById("liste-poissons");
       window.FICHES.forEach(p => {
@@ -200,78 +163,103 @@
         datalist.appendChild(option);
       });
 
-      // Dessine l'arbre de départ (Juste la racine)
-      dessinerArbre();
+      genererArbre();
     };
 
-    // --- MOTEUR DE RENDU DU DIAGRAMME (STYLE METAZOOA) ---
-    function dessinerArbre() {
-      // Les 5 niveaux de notre arbre taxinomique
-      const niveaux = [
-        { rank: "Classe / Super-classe", val: "Actinopterygii (Poissons)" },
-        { rank: "Ordre", val: mystere.ordre },
-        { rank: "Famille", val: mystere.famille },
-        { rank: "Genre", val: mystere.genre },
-        { rank: "Espèce", val: mystere.nomScientifique }
-      ];
+    // --- CONSTRUCTION DE LA DONNÉE DE L'ARBRE ---
+    function buildTreeData() {
+      let root = { name: "Actinopterygii (Poissons)", rank: "Règne / Classe", isMain: true, isRevealed: true, children: [] };
+      const mainRanks = ["Ordre", "Famille", "Genre", "Espèce"];
+      const mainValues = [mystere.ordre, mystere.famille, mystere.genre, mystere.nomScientifique];
 
-      let html = "";
-
-      // Dans Metazooa, l'arbre entier jusqu'à l'espèce n'apparaît avec des "???" qu'APRÈS le premier essai.
-      // Au tout début (historiques.length == 0), on n'affiche que le niveau 0.
-      let maxAffichage = (historiques.length === 0) ? 0 : 4;
-
+      // 1. Construit le tronc principal jusqu'au prochain "???"
+      let currentMain = root;
+      let maxAffichage = historiques.length === 0 ? -1 : Math.min(highestMatch, 3);
+      
       for (let i = 0; i <= maxAffichage; i++) {
-        let isMatch = (i <= highestMatch);
-        let name = isMatch ? niveaux[i].val : "???";
-        let nodeClass = isMatch ? "main-node match" : "main-node unknown";
-        
-        // Si la ligne SUIVANTE est aussi un match, on colore la ligne de liaison en vert
-        let rowClass = "tree-row";
-        if (i < highestMatch) rowClass += " match";
-
-        // Récupérer les fausses propositions qui ont divergé précisément à CE niveau
-        let guessesHere = historiques.filter(h => h.highestShared === i);
-        let branchesHtml = '';
-
-        if (guessesHere.length > 0) {
-          branchesHtml = `<div class="side-branches">`;
-          guessesHere.forEach(h => {
-            let diffs = [];
-            // On n'affiche dans la carte que ce qui est DIFFÉRENT (en dessous du niveau partagé)
-            if (i < 1) diffs.push(`<span class="r">Ord</span> ${h.obj.ordre}`);
-            if (i < 2) diffs.push(`<span class="r">Fam</span> ${h.obj.famille}`);
-            if (i < 3) diffs.push(`<span class="r">Gen</span> ${h.obj.genre}`);
-            
-            branchesHtml += `
-            <div class="guess-card">
-              <div class="guess-diffs">${diffs.join('<br>')}</div>
-              <div class="guess-species">${h.obj.nomScientifique}</div>
-            </div>`;
-          });
-          branchesHtml += `</div>`;
-        }
-
-        // Assembler la rangée
-        html += `
-        <div class="${rowClass}">
-          <div class="${nodeClass}">
-            <div class="rank-label">${niveaux[i].rank}</div>
-            <div class="rank-name">${name}</div>
-          </div>
-          ${branchesHtml}
-        </div>
-        `;
+        let isUnknown = (i === highestMatch && highestMatch < 4);
+        let node = {
+          name: isUnknown ? "???" : mainValues[i],
+          rank: mainRanks[i],
+          isMain: true,
+          isRevealed: !isUnknown,
+          isUnknown: isUnknown,
+          children: []
+        };
+        currentMain.children.push(node);
+        currentMain = node;
       }
 
+      // 2. Greffe les mauvaises réponses sur les branches
+      historiques.forEach(h => {
+        const guessVals = [h.obj.ordre, h.obj.famille, h.obj.genre, h.obj.nomScientifique];
+        let current = root;
+
+        for (let i = 0; i < 4; i++) {
+          let val = guessVals[i];
+          if (val === mainValues[i] && i < highestMatch) {
+            current = current.children.find(c => c.isMain); // Suit le bon chemin
+          } else {
+            // Divergence (ou suite d'une divergence)
+            let child = current.children.find(c => !c.isMain && c.name === val);
+            if (!child) {
+              child = { name: val, rank: mainRanks[i], isMain: false, isRevealed: true, isUnknown: false, children: [] };
+              current.children.push(child);
+            }
+            current = child;
+          }
+        }
+      });
+
+      // 3. Trie les branches pour que le chemin correct (vert) s'affiche TOUJOURS EN BAS
+      function sortChildren(node) {
+        if (node.children.length > 0) {
+          node.children.sort((a, b) => {
+            if (a.isMain && !b.isMain) return 1;
+            if (!a.isMain && b.isMain) return -1;
+            return a.name.localeCompare(b.name);
+          });
+          node.children.forEach(sortChildren);
+        }
+      }
+      sortChildren(root);
+
+      return root;
+    }
+
+    // --- RENDU HTML RÉCURSIF DE L'ARBRE ---
+    function renderTreeHTML(node, isRoot = false) {
+      let boxClass = "box";
+      if (isRoot) boxClass += " root-box";
+      else if (node.isMain && node.isUnknown) boxClass += " unknown-box";
+      else if (node.isMain) boxClass += " main-box";
+      else boxClass += " wrong-box";
+
+      let html = `<li class="node">
+        <div class="${boxClass}">
+          <span class="box-rank">${node.rank}</span>
+          <span class="box-name">${node.name}</span>
+        </div>`;
+
+      if (node.children.length > 0) {
+        html += `<ul class="tree">`;
+        node.children.forEach(child => {
+          html += renderTreeHTML(child, false);
+        });
+        html += `</ul>`;
+      }
+      html += `</li>`;
+      return html;
+    }
+
+    function genererArbre() {
+      let data = buildTreeData();
+      let html = `<ul class="tree root-ul">${renderTreeHTML(data, true)}</ul>`;
       document.getElementById("arbre-dynamique").innerHTML = html;
     }
 
     // --- CORRECTION ORTHOGRAPHIQUE ---
-    function nettoyer(str) {
-      if (!str) return "";
-      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-    }
+    function nettoyer(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
     function levenshtein(a, b) {
       const mat = [];
       for (let i = 0; i <= b.length; i++) mat[i] = [i];
@@ -289,32 +277,26 @@
       jouer();
     }
 
-    // --- INDICES ---
     function donnerIndice() {
       const container = document.getElementById("hints-container");
       const btnHint = document.getElementById("btn-hint");
       nbIndices++;
-
       let text = "";
-      if (nbIndices === 1) text = `🌍 <strong>Continent :</strong> ${mystere.continent || "Non renseigné"}`;
-      else if (nbIndices === 2) {
-        let pays = mystere.pays && mystere.pays.length > 0 ? mystere.pays.join(", ") : "Non précisé";
-        text = `📍 <strong>Pays :</strong> ${pays}`;
-      }
+      if (nbIndices === 1) text = `🌍 <strong>Continent :</strong> ${mystere.continent || "Inconnu"}`;
+      else if (nbIndices === 2) text = `📍 <strong>Pays :</strong> ${mystere.pays && mystere.pays.length > 0 ? mystere.pays.join(", ") : "Inconnu"}`;
       else if (nbIndices === 3) {
         text = `🖼️ <strong>Image :</strong><br>`;
         if (mystere.image) text += `<img src="${mystere.image}" style="max-width:200px; border-radius:8px; margin-top:10px; opacity:0.9; filter: blur(4px);">`;
         else text += `<em>Aucune photo disponible.</em>`;
         btnHint.disabled = true;
-        btnHint.textContent = "Tous les indices ont été donnés";
+        btnHint.textContent = "Tous les indices donnés";
       }
-
       const p = document.createElement("p");
       p.innerHTML = text;
       container.appendChild(p);
     }
 
-    // --- LOGIQUE DE JEU ---
+    // --- MOTEUR DE JEU ---
     function jouer() {
       if (!window.FICHES || tentatives <= 0) return;
       
@@ -334,51 +316,38 @@
           let err = levenshtein(nettoyer(val), nettoyer(p.nomScientifique));
           if (err < minErreur) { minErreur = err; meilleurChoix = p; }
         });
-
         if (minErreur <= 4 && meilleurChoix) {
           errBox.innerHTML = `Vouliez-vous dire <span class="correction-link" onclick="appliquerCorrection('${meilleurChoix.nomScientifique}')">${meilleurChoix.nomScientifique}</span> ?`;
-        } else {
-          errBox.innerText = "Espèce introuvable dans le système.";
-        }
+        } else errBox.innerText = "Espèce introuvable.";
         return;
       }
 
-      // Éviter les doublons
       if (historiques.find(h => h.obj.nomScientifique === guess.nomScientifique)) {
-        errBox.innerText = "Espèce déjà proposée !";
-        return;
+        errBox.innerText = "Espèce déjà proposée !"; return;
       }
 
-      // Mise à jour compteur
       tentatives--;
       document.getElementById("essais-restants").innerText = tentatives;
       input.value = "";
 
-      // Calcul du niveau partagé ("highestShared")
-      let shared = 0; // Le règne (0) est toujours partagé
+      // Calcul des correspondances pour l'avancée de l'arbre
+      let shared = 0;
       if (guess.ordre === mystere.ordre) {
         shared = 1;
         if (guess.famille === mystere.famille) {
           shared = 2;
           if (guess.genre === mystere.genre) {
             shared = 3;
-            if (guess.nomScientifique === mystere.nomScientifique) {
-              shared = 4;
-            }
+            if (guess.nomScientifique === mystere.nomScientifique) shared = 4;
           }
         }
       }
 
-      // Mémoriser la proposition
       historiques.push({ obj: guess, highestShared: shared });
-      
-      // Mettre à jour la progression globale
       highestMatch = Math.max(highestMatch, shared);
 
-      // Rafraîchir l'interface
-      dessinerArbre();
+      genererArbre();
 
-      // Gestion fin de partie
       if (highestMatch === 4 || tentatives === 0) {
         const endScreen = document.getElementById("end-screen");
         const endTitle = document.getElementById("end-title");
@@ -395,18 +364,15 @@
           endTitle.style.color = "#4ade80";
           endText.innerText = `C'était bien ${mystere.nomScientifique}. (Trouvé en ${MAX_TENTATIVES - tentatives} essai(s))`;
         } else {
-          highestMatch = 4; // Dévoile la solution
-          dessinerArbre();
+          highestMatch = 4; genererArbre(); // Dévoile la solution complète
           endScreen.className = "end-screen defeat";
           endTitle.innerText = "💀 Fin de partie";
           endTitle.style.color = "#f87171";
-          endText.innerText = `Tu n'as plus d'essais. L'espèce mystère était ${mystere.nomScientifique}.`;
+          endText.innerText = `L'espèce mystère était ${mystere.nomScientifique}.`;
         }
-
         if (mystere.image) {
           const imgElement = document.getElementById("end-img");
-          imgElement.src = mystere.image; 
-          imgElement.style.display = "block";
+          imgElement.src = mystere.image; imgElement.style.display = "block";
         }
       }
     }
