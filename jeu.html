@@ -29,19 +29,38 @@
     #error-msg { margin-top: 8px; font-size: 0.9rem; color: #ef4444; }
     .correction-link { color: #38bdf8; text-decoration: underline; cursor: pointer; font-weight: bold; }
 
-    /* --- VRAI ARBRE PHYLOGÉNÉTIQUE (METAZOOA) --- */
-    #arbre-dynamique { font-family: monospace; font-size: 0.95rem; margin-top: 15px; line-height: 1.6; background: #020617; padding: 15px; border-radius: 8px; border: 1px solid #1f2937; overflow-x: auto;}
-    .tree-root { color: #38bdf8; font-weight: bold; margin-bottom: 5px; font-size: 1.05rem; }
-    .mystery-path { position: relative; border-left: 2px solid #22c55e; margin-left: 7px; padding-left: 15px; margin-bottom: 2px; }
-    .mystery-path::before { content: '└─ '; position: absolute; left: 0; color: #22c55e; }
-    .wrong-branch { position: relative; border-left: 1px dashed #4b5563; margin-left: 7px; padding-left: 15px; margin-bottom: 2px; color: #9ca3af; font-size: 0.85rem;}
-    .wrong-branch::before { content: '├─ '; position: absolute; left: 0; color: #4b5563; }
+    /* --- VRAI ARBRE PHYLOGÉNÉTIQUE (STYLE METAZOOA) --- */
+    #arbre-dynamique { margin-top: 20px; padding: 10px 0; overflow-x: auto; }
+    .mz-row { display: flex; min-height: 70px; }
     
-    .rank { color: #9ca3af; font-size: 0.75rem; text-transform: uppercase; margin-right: 5px; }
-    .unknown { color: #6b7280; font-weight: bold; border: 1px dashed #374151; padding: 2px 6px; border-radius: 4px; }
-    .revealed { color: #22c55e; font-weight: bold; animation: fadeIn 0.4s ease-out; }
-    .diverge-text { color: #ef4444; font-weight: bold; margin-right: 4px;}
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    /* Axe vertical principal */
+    .mz-main { width: 220px; border-right: 3px solid #374151; position: relative; padding: 0 20px 20px 0; text-align: right; flex-shrink: 0; }
+    .mz-main.match { border-right-color: #22c55e; }
+    .mz-main.last { border-right: none; } /* Enlève la ligne sous le dernier élément */
+    
+    /* Le point sur la ligne */
+    .mz-dot { position: absolute; right: -9px; top: 15px; width: 15px; height: 15px; border-radius: 50%; background: #374151; border: 3px solid #111827; z-index: 2;}
+    .mz-main.match .mz-dot { background: #22c55e; }
+
+    /* La boîte du taxon (Ordre, Famille...) */
+    .mz-box { background: #1f2937; border: 1px solid #374151; padding: 8px 12px; border-radius: 8px; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.2); animation: fadeIn 0.4s; text-align: left; min-width: 150px;}
+    .mz-box.match { background: rgba(34, 197, 94, 0.1); border-color: #22c55e; }
+    .mz-box.unknown { border: 1px dashed #6b7280; background: #111827; }
+    
+    .mz-rank { font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; margin-bottom: 2px; font-weight: bold; }
+    .mz-name { font-size: 0.95rem; font-weight: bold; color: #e5e7eb; }
+    .mz-box.match .mz-name { color: #4ade80; }
+    .mz-box.unknown .mz-name { color: #6b7280; }
+
+    /* Branches latérales (Mauvaises réponses) */
+    .mz-branches { flex: 1; padding: 0 0 20px 30px; display: flex; flex-direction: column; gap: 8px; position: relative; }
+    .mz-connector { position: absolute; left: 0; top: 22px; width: 30px; height: 2px; background: #4b5563; z-index: 1;}
+    .mz-guess { background: #020617; border: 1px solid #4b5563; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; color: #d1d5db; animation: slideIn 0.3s ease-out; display: inline-block; max-width: fit-content; }
+    .mz-guess-path { color: #9ca3af; font-size: 0.75rem; margin-bottom: 4px; }
+    .mz-guess-name { font-weight: bold; font-style: italic; color: #f87171; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
     /* --- BOUTON INDICE --- */
     .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%; transition: 0.2s; }
@@ -71,7 +90,7 @@
         <h1>Meta-Aqua</h1>
         <div class="compteur">Essais : <span id="essais-restants">30</span></div>
       </div>
-      <p style="color:#9ca3af; font-size:0.85rem;">Devine l'espèce mystère. L'arbre évoluera selon tes propositions.</p>
+      <p style="color:#9ca3af; font-size:0.85rem;">Trouve l'espèce mystère (nom scientifique). Tes propositions se grefferont à l'arbre phylogénétique.</p>
       
       <div class="input-group">
         <input list="liste-poissons" id="guess-input" placeholder="Ex: Pterophyllum scalare..." autocomplete="off">
@@ -83,14 +102,13 @@
       <div id="end-screen" class="end-screen">
         <h2 id="end-title" style="border: none;"></h2>
         <p id="end-text"></p>
-        <img id="end-img" src="" alt="Espèce mystère" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none;">
+        <img id="end-img" src="" alt="Espèce mystère" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
       </div>
     </div>
 
     <div class="card">
       <h2>Arbre phylogénétique</h2>
-      <div id="arbre-dynamique">
-        </div>
+      <div id="arbre-dynamique"></div>
     </div>
 
     <div class="card">
@@ -107,10 +125,8 @@
     const MAX_TENTATIVES = 30;
     let nbIndices = 0;
     
-    // Le tableau qui enregistre toutes les propositions du joueur
     let historiques = []; 
-    // Niveau d'avancement de la branche principale (0 à 4)
-    let highestMatch = 0; 
+    let highestMatch = 0; // 0=Classe, 1=Ordre, 2=Famille, 3=Genre, 4=Espèce
 
     window.onload = () => {
       if (typeof window.FICHES === "undefined" || window.FICHES.length === 0) {
@@ -131,65 +147,78 @@
       dessinerArbre();
     };
 
-    // --- MOTEUR DE RENDU DE L'ARBRE PHYLOGÉNÉTIQUE ---
+    // --- LE VRAI MOTEUR DE RENDU METAZOOA ---
     function dessinerArbre() {
-      let html = `<div class="tree-root">Actinopterygii (Poissons)</div>`;
+      // Les niveaux officiels qu'on cherche à débloquer
+      const niveaux = [
+        { rank: "Règne/Classe", val: "Actinopterygii (Poissons)" },
+        { rank: "Ordre", val: mystere.ordre },
+        { rank: "Famille", val: mystere.famille },
+        { rank: "Genre", val: mystere.genre },
+        { rank: "Espèce", val: mystere.nomScientifique }
+      ];
 
-      // Fonction pour dessiner les branches mortes (fausses réponses)
-      // Elles s'affichent au niveau de divergence (0=Ordre, 1=Famille, etc.)
-      const renderFaussesBranches = (niveauDivergence, marge) => {
+      let html = "";
+
+      // On affiche les blocs jusqu'à highestMatch + 1 (pour afficher le prochain "???")
+      let maxAffichage = Math.min(highestMatch + 1, 4);
+
+      for (let i = 0; i <= maxAffichage; i++) {
+        let isMatch = (i <= highestMatch);
+        let isUnknown = (i > highestMatch);
+        let isLast = (i === maxAffichage);
+
+        // Style de la ligne verticale principale
+        let lineClass = "mz-main";
+        if (isMatch && i < 4) lineClass += " match";
+        if (isLast) lineClass += " last";
+
+        // Style de la boîte
+        let boxClass = "mz-box";
+        if (isMatch) boxClass += " match";
+        if (isUnknown) boxClass += " unknown";
+
+        let displayedName = isUnknown ? "???" : niveaux[i].val;
+
+        // Récupérer les mauvaises réponses qui ont divergé à ce niveau exact
+        let faussesReponses = historiques.filter(h => h.divergence === i);
         let branchesHtml = "";
-        let faussesReponses = historiques.filter(h => h.divergence === niveauDivergence);
-        faussesReponses.forEach(h => {
-          let chemin = [];
-          if (niveauDivergence < 1) chemin.push(`Ord: ${h.obj.ordre}`);
-          if (niveauDivergence < 2) chemin.push(`Fam: ${h.obj.famille}`);
-          if (niveauDivergence < 3) chemin.push(`Gen: ${h.obj.genre}`);
-          if (niveauDivergence < 4) chemin.push(`<i>${h.obj.nomScientifique}</i>`);
-          
-          branchesHtml += `<div class="wrong-branch" style="margin-left: ${marge}px;"><span class="diverge-text">❌</span> ${chemin.join(' ➔ ')}</div>`;
-        });
-        return branchesHtml;
-      };
 
-      // Niveau 0 : Divergence à l'Ordre
-      html += renderFaussesBranches(0, 0);
-      
-      // Branche de l'Ordre
-      if (highestMatch >= 1) {
-        html += `<div class="mystery-path" style="margin-left: 0px;"><span class="rank">Ordre</span> <span class="revealed">${mystere.ordre}</span></div>`;
-        
-        // Niveau 1 : Divergence à la Famille
-        html += renderFaussesBranches(1, 20);
-        
-        // Branche de la Famille
-        if (highestMatch >= 2) {
-          html += `<div class="mystery-path" style="margin-left: 20px;"><span class="rank">Famille</span> <span class="revealed">${mystere.famille}</span></div>`;
+        if (faussesReponses.length > 0) {
+          branchesHtml += `<div class="mz-connector"></div>`; // La ligne horizontale
           
-          // Niveau 2 : Divergence au Genre
-          html += renderFaussesBranches(2, 40);
-          
-          // Branche du Genre
-          if (highestMatch >= 3) {
-            html += `<div class="mystery-path" style="margin-left: 40px;"><span class="rank">Genre</span> <span class="revealed">${mystere.genre}</span></div>`;
-            
-            // Niveau 3 : Divergence à l'Espèce
-            html += renderFaussesBranches(3, 60);
-            
-            // Branche de l'Espèce
-            if (highestMatch >= 4) {
-              html += `<div class="mystery-path" style="margin-left: 60px; border-left-color: transparent;"><span class="rank">Espèce</span> <span class="revealed" style="color:#4ade80;">${mystere.nomScientifique} 🎉</span></div>`;
-            } else {
-              html += `<div class="mystery-path" style="margin-left: 60px; border-left-color: transparent;"><span class="rank">Espèce</span> <span class="unknown">???</span></div>`;
-            }
-          } else {
-            html += `<div class="mystery-path" style="margin-left: 40px; border-left-color: transparent;"><span class="rank">Genre</span> <span class="unknown">???</span></div>`;
-          }
-        } else {
-          html += `<div class="mystery-path" style="margin-left: 20px; border-left-color: transparent;"><span class="rank">Famille</span> <span class="unknown">???</span></div>`;
+          faussesReponses.forEach(h => {
+            // Construire le texte de ce qui a changé
+            let diffs = [];
+            if (i < 1) diffs.push(h.obj.ordre);
+            if (i < 2) diffs.push(h.obj.famille);
+            if (i < 3) diffs.push(h.obj.genre);
+            let wrongPath = diffs.join(' ➔ ');
+
+            branchesHtml += `
+              <div class="mz-guess">
+                ${wrongPath ? `<div class="mz-guess-path">❌ ${wrongPath}</div>` : ''}
+                <div class="mz-guess-name">${h.obj.nomScientifique}</div>
+              </div>
+            `;
+          });
         }
-      } else {
-        html += `<div class="mystery-path" style="margin-left: 0px; border-left-color: transparent;"><span class="rank">Ordre</span> <span class="unknown">???</span></div>`;
+
+        // Construire la ligne HTML
+        html += `
+          <div class="mz-row">
+            <div class="${lineClass}">
+              ${isLast && isUnknown ? '' : '<div class="mz-dot"></div>'}
+              <div class="${boxClass}">
+                <div class="mz-rank">${niveaux[i].rank}</div>
+                <div class="mz-name">${displayedName}</div>
+              </div>
+            </div>
+            <div class="mz-branches">
+              ${branchesHtml}
+            </div>
+          </div>
+        `;
       }
 
       document.getElementById("arbre-dynamique").innerHTML = html;
@@ -255,6 +284,7 @@
 
       let guess = window.FICHES.find(p => nettoyer(p.nomScientifique) === nettoyer(val));
 
+      // Tolérance d'orthographe
       if (!guess) {
         let meilleurChoix = null;
         let minErreur = Infinity;
@@ -271,7 +301,7 @@
         return;
       }
 
-      // Si l'espèce a déjà été tentée
+      // Doublon
       if (historiques.find(h => h.obj.nomScientifique === guess.nomScientifique)) {
         errBox.innerText = "Tu as déjà essayé cette espèce !";
         return;
@@ -282,7 +312,8 @@
       document.getElementById("essais-restants").innerText = tentatives;
       input.value = "";
 
-      // Calcul du niveau de divergence de la réponse par rapport au mystère
+      // Calcul de la divergence (Où est-ce que ça coince par rapport au mystère ?)
+      // 0 = Différent dès l'ordre. 1 = Ordre OK, Famille différente. etc.
       let divergence = 0;
       if (guess.ordre === mystere.ordre) {
         divergence = 1;
@@ -301,11 +332,11 @@
         }
       }
 
-      // Enregistrement et mise à jour de l'arbre
+      // Enregistrement et mise à jour
       historiques.push({ obj: guess, divergence: divergence });
       dessinerArbre();
 
-      // Gestion de la Fin de partie
+      // Fin de partie
       if (highestMatch === 4 || tentatives === 0) {
         const endScreen = document.getElementById("end-screen");
         const endTitle = document.getElementById("end-title");
@@ -322,7 +353,7 @@
           endTitle.style.color = "#4ade80";
           endText.innerText = `L'espèce trouvée est bien ${mystere.nomScientifique}. (Trouvé en ${MAX_TENTATIVES - tentatives} essai(s))`;
         } else {
-          highestMatch = 4; // Force l'arbre à se dévoiler
+          highestMatch = 4; // Révèle tout l'arbre à la défaite
           dessinerArbre();
           endScreen.className = "end-screen defeat";
           endTitle.innerText = "💀 Fin de partie";
