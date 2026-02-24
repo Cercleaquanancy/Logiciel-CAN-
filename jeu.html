@@ -2,22 +2,29 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Meta-Aqua - Jeux</title>
+  <title>Meta-Aqua - Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* --- DESIGN GLOBAL DU SITE --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; overflow-y: auto; }
-    .navbar { position: fixed; top: 0; left: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; justify-content: space-between; padding: 4px 16px; z-index: 50; }
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; justify-content: space-between; padding: 4px 16px; z-index: 50; flex-wrap: wrap; gap: 4px;}
+    .navbar-left { display: flex; align-items: center; gap: 10px; }
     .navbar-title { font-size: 0.95rem; font-weight: 600; color: #e5e7eb; }
-    .navbar-menu { display: flex; gap: 8px; }
-    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; }
+    .navbar-user { font-size: 0.8rem; color: #9ca3af; }
+    .navbar-menu { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-btn { border: none; background: transparent; color: #cbd5f5; font-size: 0.8rem; padding: 6px 8px; border-radius: 999px; cursor: pointer; display: flex; align-items: center; gap: 4px; position: relative; }
+    .nav-btn span.icon { font-size: 1rem; position: relative; }
     .nav-btn.active { background: #1d4ed8; color: #e5e7eb; }
+    .nav-btn:hover { background: #111827; }
+    .navbar-logout { border-radius: 999px; border: 1px solid #374151; background: #111827; color: #e5e7eb; padding: 5px 10px; font-size: 0.8rem; cursor: pointer; }
+    .navbar-logout:hover { background: #1f2937; }
+
     .page { padding-top: 72px; padding-left: 12px; padding-right: 12px; padding-bottom: 20px; max-width: 1200px; margin: 0 auto; }
     .card { background: #111827; border-radius: 10px; border: 1px solid #1f2937; padding: 16px; margin-bottom: 14px; }
-    h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; }
+    h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; text-align: center;}
 
-    /* --- ONGLETS DE MODE DE JEU --- */
+    /* --- ONGलेट्स DE MODE DE JEU --- */
     .tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
     .tab-btn { background: #1f2937; color: #9ca3af; border: 1px solid #374151; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem; }
     .tab-btn:hover { background: #374151; color: #e5e7eb; }
@@ -79,13 +86,29 @@
   </style>
 
   <script src="especes.js"></script>
-
 </head>
 <body>
 
   <header class="navbar">
-    <div class="navbar-title">Espace adhérent</div>
-    <div class="navbar-menu"><button class="nav-btn active">Jeux</button></div>
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌿</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcul</span></button>
+      <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="nav-btn" data-link="cerfa.html"><span class="icon">📋</span><span>Cerfa</span></button>
+      <button class="nav-btn active" data-link="quiz.html"><span class="icon">🎮</span><span>Quiz</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
   </header>
 
   <main class="page">
@@ -100,10 +123,10 @@
     <div id="mode-taxo">
       <div class="card">
         <div class="game-header">
-          <h1>Arbre Mystère</h1>
+          <h1 style="margin:0;">Arbre Mystère</h1>
           <div class="compteur">Essais : <span id="essais-restants">30</span></div>
         </div>
-        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches sur l'arbre phylogénétique.</p>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px; text-align:center;">Trouve l'espèce mystère. Tes erreurs créeront des branches.</p>
         
         <div class="input-group">
           <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
@@ -136,10 +159,10 @@
     <div id="mode-image" style="display: none;">
       <div class="card">
         <div class="game-header">
-          <h1>Qui est ce poisson ?</h1>
+          <h1 style="margin:0;">Qui est-ce ?</h1>
           <div class="compteur">Essais : <span id="essais-restants-img">10</span></div>
         </div>
-        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 15px;">Trouve le nom scientifique exact de l'espèce sur la photo.</p>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 15px; text-align: center;">Trouve le nom scientifique exact de l'espèce sur la photo.</p>
         
         <div class="img-quiz-container">
           <img id="img-quiz" class="img-quiz" src="" alt="Poisson Mystère">
@@ -166,7 +189,48 @@
   </main>
 
   <script>
-    // --- VARIABLES GLOBALES ET PARTAGÉES ---
+    // --- GESTION DU MENU ET DES DROITS UTILISATEURS ---
+    const storedUser = localStorage.getItem("user");
+    let currentUser = null;
+    if (!storedUser) { 
+      window.location.href = "login.html";
+    } else {
+      try { 
+        currentUser = JSON.parse(storedUser); 
+      } catch (e) { 
+        window.location.href = "login.html";
+      }
+      if (currentUser && currentUser.username) {
+        const navbarUser = document.getElementById('navbarUser');
+        const roleLabel = currentUser.role === "admin" ? "Admin" : currentUser.role === "membre_bureau" ? "Membre de bureau" : "Adhérent";
+        navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+        // Cache les boutons selon les droits
+        document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
+          if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
+        });
+        document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+          if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) { btn.style.display = "none"; }
+        });
+      }
+    }
+
+    // Liens du menu
+    document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
+      btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
+    });
+
+    // Déconnexion
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("notificationsSeen");
+        window.location.href = "login.html";
+      });
+    }
+
+    // --- VARIABLES GLOBALES JEUX ---
     let listeAvecImage = [];
 
     window.onload = () => {
@@ -472,7 +536,6 @@
 
       let guess = window.FICHES.find(p => nettoyer(p.nomScientifique) === nettoyer(val));
 
-      // Correcteur orthographique (Fuzzy search)
       if (!guess) {
         let best = null; let minErr = Infinity;
         window.FICHES.forEach(p => {
@@ -488,14 +551,11 @@
         return;
       }
 
-      // Action valide -> baisse les essais
       tentativesImg--;
       document.getElementById("essais-restants-img").innerText = tentativesImg;
       input.value = "";
 
-      // Vérification de la réponse
       if (guess.nomScientifique === mystereImg.nomScientifique) {
-        // GAGNÉ
         resBox.className = "res-success";
         resBox.innerText = `🎉 Bravo ! C'est bien un ${mystereImg.nomScientifique} ! (Trouvé en ${MAX_TENTATIVES_IMG - tentativesImg} essai(s))`;
         input.disabled = true;
@@ -503,7 +563,6 @@
         document.getElementById("btn-hint-img").disabled = true;
         document.getElementById("btn-next-img").style.display = "block"; 
       } else {
-        // PERDU LA PARTIE (0 essai)
         if (tentativesImg === 0) {
           resBox.className = "res-error";
           resBox.innerText = `💀 Perdu ! Il n'y a plus d'essais. C'était : ${mystereImg.nomScientifique}`;
@@ -512,11 +571,10 @@
           document.getElementById("btn-hint-img").disabled = true;
           document.getElementById("btn-next-img").style.display = "block"; 
         } else {
-          // FAUX MAIS ENCORE DES ESSAIS
           resBox.className = "res-error";
           resBox.innerText = `❌ Ce n'est pas un ${guess.nomScientifique}, essaie encore !`;
           resBox.classList.remove("res-error");
-          void resBox.offsetWidth; // Animation relance
+          void resBox.offsetWidth; 
           resBox.classList.add("res-error");
         }
       }
