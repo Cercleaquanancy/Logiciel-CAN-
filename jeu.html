@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Meta-Aqua - Le Jeu</title>
+  <title>Meta-Aqua - Jeux</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* --- DESIGN GLOBAL DU SITE --- */
@@ -17,97 +17,48 @@
     .card { background: #111827; border-radius: 10px; border: 1px solid #1f2937; padding: 16px; margin-bottom: 14px; }
     h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; }
 
-    /* --- UI DU JEU --- */
-    .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .compteur { font-size: 0.9rem; font-weight: bold; padding: 4px 10px; background: #1f2937; border-radius: 6px; color: #facc15; border: 1px solid #374151;}
+    /* --- ONGलेट्स DE MODE DE JEU --- */
+    .tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+    .tab-btn { background: #1f2937; color: #9ca3af; border: 1px solid #374151; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+    .tab-btn:hover { background: #374151; color: #e5e7eb; }
+    .tab-btn.active { background: #38bdf8; color: #020617; border-color: #38bdf8; }
+
+    /* --- UI COMMUNE --- */
     .input-group { display: flex; gap: 10px; margin-top: 5px; }
     input { flex: 1; padding: 10px; background: #020617; border: 1px solid #374151; border-radius: 6px; color: #e5e7eb; font-size: 1rem;}
     input:focus { border-color: #38bdf8; outline: none; }
     button.btn-play { background: #38bdf8; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
     button.btn-play:hover { background: #0ea5e9; }
-    #error-msg { margin-top: 8px; font-size: 0.9rem; color: #ef4444; text-align: center; }
+    .error-msg { margin-top: 8px; font-size: 0.9rem; color: #ef4444; text-align: center; }
     .correction-link { color: #38bdf8; text-decoration: underline; cursor: pointer; font-weight: bold; }
+    .btn-replay { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; transition: 0.2s; }
+    .btn-replay:hover { background: #2563eb; }
 
-    /* =========================================
-       LE GRAPHE ARBORESCENT (STYLE METAZOOA)
-       ========================================= */
-    .tree-container {
-      display: flex;
-      justify-content: center;
-      overflow-x: auto; 
-      padding: 20px 20px 40px 20px;
-    }
-
-    .tree ul {
-      padding-top: 20px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      padding-left: 0;
-      margin: 0;
-      transition: all 0.5s;
-    }
-
-    .tree li {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      list-style-type: none;
-      position: relative;
-      padding: 20px 6px 0 6px;
-      transition: all 0.5s;
-    }
-
-    .tree li::before, .tree li::after {
-      content: '';
-      position: absolute; top: 0; right: 50%;
-      border-top: 3px solid #8b7d6b;
-      width: 50%; height: 20px;
-    }
-    .tree li::after {
-      right: auto; left: 50%;
-      border-left: 3px solid #8b7d6b;
-    }
-
+    /* --- MODE 1 : ARBRE METAZOOA --- */
+    .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .compteur { font-size: 0.9rem; font-weight: bold; padding: 4px 10px; background: #1f2937; border-radius: 6px; color: #facc15; border: 1px solid #374151;}
+    .tree-container { display: flex; justify-content: center; overflow-x: auto; padding: 20px 20px 40px 20px; }
+    .tree ul { padding-top: 20px; position: relative; display: flex; justify-content: center; padding-left: 0; margin: 0; transition: all 0.5s; }
+    .tree li { display: flex; flex-direction: column; align-items: center; list-style-type: none; position: relative; padding: 20px 6px 0 6px; transition: all 0.5s; }
+    .tree li::before, .tree li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 3px solid #8b7d6b; width: 50%; height: 20px; }
+    .tree li::after { right: auto; left: 50%; border-left: 3px solid #8b7d6b; }
     .tree li:only-child::after, .tree li:only-child::before { display: none; }
     .tree li:only-child { padding-top: 0; }
     .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
-    
     .tree li:last-child::before { border-right: 3px solid #8b7d6b; border-radius: 0 10px 0 0; }
     .tree li:first-child::after { border-radius: 10px 0 0 0; }
+    .tree ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 3px solid #8b7d6b; width: 0; height: 20px; transform: translateX(-1.5px); }
 
-    .tree ul ul::before {
-      content: '';
-      position: absolute; top: 0; left: 50%;
-      border-left: 3px solid #8b7d6b;
-      width: 0; height: 20px;
-      transform: translateX(-1.5px);
-    }
-
-    /* --- STYLES DES BOÎTES --- */
-    .node-box {
-      padding: 6px 14px;
-      border-radius: 6px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 2;
-      min-width: 110px;
-      text-align: center;
-      animation: popIn 0.3s ease-out;
-    }
-
+    .node-box { padding: 6px 14px; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative; z-index: 2; min-width: 110px; text-align: center; animation: popIn 0.3s ease-out; }
     .node-root { background: #690b0a; color: #fff; border: 2px solid #3a0808; } 
     .node-clade { background: #6b7316; color: #fff; border: 2px solid #4a5010; } 
     .node-leaf { background: #fdfdfd; color: #4a5010; border: 2px solid #6b7316; } 
     .node-unknown { background: #111827; color: #9ca3af; border: 2px dashed #4b5563; box-shadow: none; } 
-
     .node-rank { font-size: 0.65rem; text-transform: uppercase; margin-bottom: 2px; opacity: 0.8; font-weight: bold;}
     .node-name { font-size: 1rem; font-weight: bold; }
     .node-leaf .node-name { font-style: italic; font-weight: 600; font-size: 0.9rem;} 
-
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-    /* --- INDICES ET FIN DE JEU --- */
     .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.2s; }
     .btn-hint:hover { background: #d97706; }
     .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
@@ -116,10 +67,14 @@
     .end-screen { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; }
     .victory { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; }
     .defeat { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; }
-    
-    /* Bouton Rejouer */
-    .btn-replay { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; transition: 0.2s; }
-    .btn-replay:hover { background: #2563eb; }
+
+    /* --- MODE 2 : QUIZ IMAGE --- */
+    .img-quiz-container { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .img-quiz { max-width: 100%; max-height: 400px; object-fit: contain; border-radius: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.5); border: 2px solid #374151; }
+    #result-img { font-size: 1.2rem; font-weight: bold; margin-top: 15px; text-align: center; min-height: 28px;}
+    .res-success { color: #4ade80; }
+    .res-error { color: #ef4444; animation: shake 0.4s; }
+    @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
   </style>
 
   <script src="especes.js"></script>
@@ -128,58 +83,80 @@
 
   <header class="navbar">
     <div class="navbar-title">Espace adhérent</div>
-    <div class="navbar-menu"><button class="nav-btn active">Jeu</button></div>
+    <div class="navbar-menu"><button class="nav-btn active">Jeux</button></div>
   </header>
 
   <main class="page">
+
+    <div class="tabs">
+      <button id="tab-taxo" class="tab-btn active" onclick="switchMode('taxo')">🌳 Arbre Phylogénétique</button>
+      <button id="tab-image" class="tab-btn" onclick="switchMode('image')">📸 Quiz Photo</button>
+    </div>
+
+    <datalist id="liste-poissons"></datalist>
     
-    <div class="card">
-      <div class="game-header">
-        <h1>Meta-Aqua</h1>
-        <div class="compteur">Essais : <span id="essais-restants">30</span></div>
-      </div>
-      <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches sur l'arbre phylogénétique.</p>
-      
-      <div class="input-group">
-        <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
-        <datalist id="liste-poissons"></datalist>
-        <button class="btn-play" id="btn-submit" onclick="jouer()">Valider</button>
-      </div>
-      <div id="error-msg"></div>
-
-      <div id="end-screen" class="end-screen">
-        <h2 id="end-title" style="border: none;"></h2>
-        <p id="end-text"></p>
-        <img id="end-img" src="" alt="Espèce mystère" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
+    <div id="mode-taxo">
+      <div class="card">
+        <div class="game-header">
+          <h1>Arbre Mystère</h1>
+          <div class="compteur">Essais : <span id="essais-restants">30</span></div>
+        </div>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches.</p>
         
-        <button class="btn-replay" onclick="resetGame()">🔄 Rejouer une partie</button>
+        <div class="input-group">
+          <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
+          <button class="btn-play" id="btn-submit" onclick="jouerArbre()">Valider</button>
+        </div>
+        <div id="error-msg" class="error-msg"></div>
+
+        <div id="end-screen" class="end-screen">
+          <h2 id="end-title" style="border: none;"></h2>
+          <p id="end-text"></p>
+          <img id="end-img" src="" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
+          <button class="btn-replay" onclick="resetArbre()">🔄 Rejouer</button>
+        </div>
+      </div>
+
+      <div class="card" style="border:none; background: transparent; padding: 0;">
+        <div class="tree-container">
+          <div class="tree" id="arbre-dynamique"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>💡 Besoin d'un indice ?</h2>
+        <div id="hints-container"></div>
+        <button class="btn-hint" onclick="donnerIndice()" id="btn-hint">Révéler un indice</button>
       </div>
     </div>
 
-    <div class="card" style="border:none; background: transparent; padding: 0;">
-      <div class="tree-container">
-        <div class="tree" id="arbre-dynamique">
-          </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <h2>💡 Besoin d'un indice ?</h2>
-      <div id="hints-container"></div>
-      <button class="btn-hint" onclick="donnerIndice()" id="btn-hint">Révéler un indice</button>
+    <div id="mode-image" style="display: none;">
+      <div class="card">
+        <h1 style="text-align: center;">Qui est ce poisson ?</h1>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 15px; text-align: center;">Trouve le nom scientifique de l'espèce sur la photo.</p>
+        
+        <div class="img-quiz-container">
+          <img id="img-quiz" class="img-quiz" src="" alt="Poisson Mystère">
+        </div>
+
+        <div class="input-group">
+          <input list="liste-poissons" id="guess-input-img" placeholder="Nom scientifique exact..." autocomplete="off">
+          <button class="btn-play" id="btn-submit-img" onclick="jouerImage()">Valider</button>
+        </div>
+        
+        <div id="error-msg-img" class="error-msg"></div>
+        <div id="result-img"></div>
+
+        <button id="btn-next-img" class="btn-replay" style="display:none;" onclick="initImageQuiz()">Suivant ➔</button>
+      </div>
     </div>
 
   </main>
 
   <script>
-    let mystere = null;
-    let tentatives = 30;
-    const MAX_TENTATIVES = 30;
-    let nbIndices = 0;
-    
-    let historiques = []; 
-    let highestMatch = 0; 
-    let treeData = {};
+    // --- VARIABLES GLOBALES ET PARTAGÉES ---
+    let listeAvecImage = [];
 
     window.onload = () => {
       if (typeof window.FICHES === "undefined" || window.FICHES.length === 0) {
@@ -187,7 +164,7 @@
         return;
       }
 
-      // Initialiser l'auto-complétion une seule fois
+      // Remplissage Datalist
       const datalist = document.getElementById("liste-poissons");
       window.FICHES.forEach(p => {
         let option = document.createElement("option");
@@ -195,133 +172,26 @@
         datalist.appendChild(option);
       });
 
-      // Lancer la première partie
-      resetGame();
+      // Préparer la liste pour le mode image (uniquement ceux qui ont une image)
+      listeAvecImage = window.FICHES.filter(p => p.image && p.image.trim() !== "");
+
+      // Initialiser les deux jeux
+      resetArbre();
+      initImageQuiz();
     };
 
-    // --- FONCTION POUR RÉINITIALISER ET REJOUER ---
-    function resetGame() {
-      // 1. Tirer un nouveau poisson au sort
-      mystere = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
-      // console.log("Anti-triche : " + mystere.nomScientifique); // Décommente pour tricher
+    // Basculer entre les modes
+    function switchMode(mode) {
+      document.getElementById('tab-taxo').classList.remove('active');
+      document.getElementById('tab-image').classList.remove('active');
+      document.getElementById('mode-taxo').style.display = 'none';
+      document.getElementById('mode-image').style.display = 'none';
 
-      // 2. Remettre les variables à zéro
-      tentatives = MAX_TENTATIVES;
-      nbIndices = 0;
-      historiques = [];
-      highestMatch = 0;
-      treeData = {};
-
-      // 3. Réinitialiser l'interface (Inputs, Boutons, Textes)
-      document.getElementById("essais-restants").innerText = tentatives;
-      
-      const input = document.getElementById("guess-input");
-      input.value = "";
-      input.disabled = false;
-      
-      document.getElementById("btn-submit").disabled = false;
-      document.getElementById("error-msg").innerHTML = "";
-
-      // 4. Cacher l'écran de fin
-      const endScreen = document.getElementById("end-screen");
-      endScreen.style.display = "none";
-      endScreen.className = "end-screen"; // Enlève classes victory/defeat
-      document.getElementById("end-img").style.display = "none";
-      document.getElementById("end-img").src = "";
-
-      // 5. Réinitialiser la zone d'indices
-      const btnHint = document.getElementById("btn-hint");
-      btnHint.disabled = false;
-      btnHint.innerText = "Révéler un indice";
-      document.getElementById("hints-container").innerHTML = "";
-
-      // 6. Redessiner l'arbre vierge
-      renderTree();
+      document.getElementById(`tab-${mode}`).classList.add('active');
+      document.getElementById(`mode-${mode}`).style.display = 'block';
     }
 
-    // --- RÉCUPÉRATION DU CHEMIN COMPLET D'UNE ESPÈCE ---
-    function getTaxonomyPath(poisson) {
-      let classe = poisson.classe ? poisson.classe : "Actinopterygii";
-      return [
-        { rank: "Classe", name: classe },
-        { rank: "Ordre", name: poisson.ordre },
-        { rank: "Famille", name: poisson.famille },
-        { rank: "Genre", name: poisson.genre },
-        { rank: "Espèce", name: poisson.nomScientifique }
-      ];
-    }
-
-    // --- MOTEUR DE RENDU HTML (Génère l'arbre) ---
-    function renderTree() {
-      treeData = { name: "Animalia", rank: "Règne", isTarget: true, isUnknown: false, isLeaf: false, children: {} };
-      let targetPath = getTaxonomyPath(mystere);
-
-      let current = treeData;
-      for (let i = 0; i < highestMatch; i++) {
-        if (i === 5) break; 
-        let nName = targetPath[i].name;
-        current.children[nName] = { name: nName, rank: targetPath[i].rank, isTarget: true, isUnknown: false, isLeaf: false, children: {} };
-        current = current.children[nName];
-      }
-      
-      if (highestMatch < 5) {
-        current.children["???"] = { name: "???", rank: targetPath[highestMatch].rank, isTarget: true, isUnknown: true, isLeaf: true, children: {} };
-      }
-
-      historiques.forEach(guess => {
-        let gPath = getTaxonomyPath(guess);
-        let curr = treeData;
-        for (let i = 0; i < gPath.length; i++) {
-          let nName = gPath[i].name;
-          if (!curr.children[nName]) {
-             curr.children[nName] = { name: nName, rank: gPath[i].rank, isTarget: false, isUnknown: false, isLeaf: false, children: {} };
-          }
-          curr = curr.children[nName];
-          if (i === 4) curr.isLeaf = true; 
-        }
-      });
-
-      let html = `<ul>` + generateHTML(treeData) + `</ul>`;
-      document.getElementById("arbre-dynamique").innerHTML = html;
-    }
-
-    function generateHTML(node) {
-      let boxClass = "";
-      if (node.isUnknown) {
-        boxClass = "node-unknown"; 
-      } else if (node.isLeaf) {
-        boxClass = "node-leaf"; 
-      } else if (node.rank === "Règne" || node.rank === "Classe") {
-        boxClass = "node-root"; 
-      } else {
-        boxClass = "node-clade"; 
-      }
-
-      let html = `<li>
-        <div class="node-box ${boxClass}">
-          <div class="node-rank">${node.rank}</div>
-          <div class="node-name">${node.name}</div>
-        </div>`;
-
-      let childrenKeys = Object.keys(node.children);
-      if (childrenKeys.length > 0) {
-        childrenKeys.sort((a, b) => {
-          let isTargetA = node.children[a].isTarget ? 1 : 0;
-          let isTargetB = node.children[b].isTarget ? 1 : 0;
-          return isTargetA - isTargetB; 
-        });
-
-        html += `<ul>`;
-        for (let key of childrenKeys) {
-          html += generateHTML(node.children[key]);
-        }
-        html += `</ul>`;
-      }
-      html += `</li>`;
-      return html;
-    }
-
-    // --- CORRECTION ORTHOGRAPHIQUE ---
+    // --- OUTILS DE CORRECTION ORTHOGRAPHIQUE (Partagés) ---
     function nettoyer(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
     function levenshtein(a, b) {
       const mat = [];
@@ -335,27 +205,122 @@
       }
       return mat[b.length][a.length];
     }
-    function appliquerCorrection(nom) { document.getElementById("guess-input").value = nom; jouer(); }
 
-    // --- INDICES ---
+
+    /* ====================================================================
+       LOGIQUE DU MODE 1 : L'ARBRE (inchangée)
+       ==================================================================== */
+    let mystereArbre = null;
+    let tentativesArbre = 30;
+    const MAX_TENTATIVES = 30;
+    let nbIndices = 0;
+    let historiquesArbre = []; 
+    let highestMatch = 0; 
+    let treeData = {};
+
+    function resetArbre() {
+      mystereArbre = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
+      tentativesArbre = MAX_TENTATIVES;
+      nbIndices = 0;
+      historiquesArbre = [];
+      highestMatch = 0;
+      treeData = {};
+
+      document.getElementById("essais-restants").innerText = tentativesArbre;
+      const input = document.getElementById("guess-input");
+      input.value = ""; input.disabled = false;
+      document.getElementById("btn-submit").disabled = false;
+      document.getElementById("error-msg").innerHTML = "";
+
+      const endScreen = document.getElementById("end-screen");
+      endScreen.style.display = "none";
+      endScreen.className = "end-screen"; 
+      document.getElementById("end-img").style.display = "none";
+      document.getElementById("end-img").src = "";
+
+      const btnHint = document.getElementById("btn-hint");
+      btnHint.disabled = false; btnHint.innerText = "Révéler un indice";
+      document.getElementById("hints-container").innerHTML = "";
+
+      renderTree();
+    }
+
+    function getTaxonomyPath(poisson) {
+      let classe = poisson.classe ? poisson.classe : "Actinopterygii";
+      return [
+        { rank: "Classe", name: classe }, { rank: "Ordre", name: poisson.ordre },
+        { rank: "Famille", name: poisson.famille }, { rank: "Genre", name: poisson.genre },
+        { rank: "Espèce", name: poisson.nomScientifique }
+      ];
+    }
+
+    function renderTree() {
+      treeData = { name: "Animalia", rank: "Règne", isTarget: true, isUnknown: false, isLeaf: false, children: {} };
+      let targetPath = getTaxonomyPath(mystereArbre);
+
+      let current = treeData;
+      for (let i = 0; i < highestMatch; i++) {
+        if (i === 5) break; 
+        let nName = targetPath[i].name;
+        current.children[nName] = { name: nName, rank: targetPath[i].rank, isTarget: true, isUnknown: false, isLeaf: false, children: {} };
+        current = current.children[nName];
+      }
+      if (highestMatch < 5) {
+        current.children["???"] = { name: "???", rank: targetPath[highestMatch].rank, isTarget: true, isUnknown: true, isLeaf: true, children: {} };
+      }
+
+      historiquesArbre.forEach(guess => {
+        let gPath = getTaxonomyPath(guess);
+        let curr = treeData;
+        for (let i = 0; i < gPath.length; i++) {
+          let nName = gPath[i].name;
+          if (!curr.children[nName]) curr.children[nName] = { name: nName, rank: gPath[i].rank, isTarget: false, isUnknown: false, isLeaf: false, children: {} };
+          curr = curr.children[nName];
+          if (i === 4) curr.isLeaf = true; 
+        }
+      });
+
+      document.getElementById("arbre-dynamique").innerHTML = `<ul>` + generateHTML(treeData) + `</ul>`;
+    }
+
+    function generateHTML(node) {
+      let boxClass = "";
+      if (node.isUnknown) boxClass = "node-unknown"; 
+      else if (node.isLeaf) boxClass = "node-leaf"; 
+      else if (node.rank === "Règne" || node.rank === "Classe") boxClass = "node-root"; 
+      else boxClass = "node-clade"; 
+
+      let html = `<li><div class="node-box ${boxClass}"><div class="node-rank">${node.rank}</div><div class="node-name">${node.name}</div></div>`;
+
+      let childrenKeys = Object.keys(node.children);
+      if (childrenKeys.length > 0) {
+        childrenKeys.sort((a, b) => { return (node.children[a].isTarget ? 1 : 0) - (node.children[b].isTarget ? 1 : 0); });
+        html += `<ul>`;
+        for (let key of childrenKeys) html += generateHTML(node.children[key]);
+        html += `</ul>`;
+      }
+      html += `</li>`;
+      return html;
+    }
+
+    function appliquerCorrectionArbre(nom) { document.getElementById("guess-input").value = nom; jouerArbre(); }
+
     function donnerIndice() {
       const container = document.getElementById("hints-container");
       const btnHint = document.getElementById("btn-hint");
       nbIndices++;
       let text = "";
-      if (nbIndices === 1) text = `🌍 <strong>Continent :</strong> ${mystere.continent || "Inconnu"}`;
-      else if (nbIndices === 2) text = `📍 <strong>Pays :</strong> ${mystere.pays ? mystere.pays.join(", ") : "Inconnu"}`;
+      if (nbIndices === 1) text = `🌍 <strong>Continent :</strong> ${mystereArbre.continent || "Inconnu"}`;
+      else if (nbIndices === 2) text = `📍 <strong>Pays :</strong> ${mystereArbre.pays ? mystereArbre.pays.join(", ") : "Inconnu"}`;
       else if (nbIndices === 3) {
-        text = `🖼️ <strong>Aperçu :</strong><br><img src="${mystere.image || ''}" style="max-width:200px; margin-top:5px; border-radius:6px; filter:blur(4px);">`;
-        btnHint.disabled = true;
-        btnHint.innerText = "Tous les indices sont utilisés";
+        text = `🖼️ <strong>Aperçu :</strong><br><img src="${mystereArbre.image || ''}" style="max-width:200px; margin-top:5px; border-radius:6px; filter:blur(4px);">`;
+        btnHint.disabled = true; btnHint.innerText = "Tous les indices sont utilisés";
       }
       container.innerHTML += `<p>${text}</p>`;
     }
 
-    // --- LOGIQUE DE JEU ---
-    function jouer() {
-      if (!window.FICHES || tentatives <= 0) return;
+    function jouerArbre() {
+      if (!window.FICHES || tentativesArbre <= 0) return;
       const input = document.getElementById("guess-input");
       const errBox = document.getElementById("error-msg");
       let val = input.value.trim();
@@ -363,56 +328,45 @@
       errBox.innerHTML = "";
 
       let guess = window.FICHES.find(p => nettoyer(p.nomScientifique) === nettoyer(val));
-
       if (!guess) {
         let best = null; let minErr = Infinity;
         window.FICHES.forEach(p => {
           let err = levenshtein(nettoyer(val), nettoyer(p.nomScientifique));
           if (err < minErr) { minErr = err; best = p; }
         });
-        if (minErr <= 4 && best) errBox.innerHTML = `Vouliez-vous dire <span class="correction-link" onclick="appliquerCorrection('${best.nomScientifique}')">${best.nomScientifique}</span> ?`;
+        if (minErr <= 4 && best) errBox.innerHTML = `Vouliez-vous dire <span class="correction-link" onclick="appliquerCorrectionArbre('${best.nomScientifique}')">${best.nomScientifique}</span> ?`;
         else errBox.innerText = "Espèce introuvable dans la base.";
         return;
       }
 
-      if (historiques.find(h => h.nomScientifique === guess.nomScientifique)) {
-        errBox.innerText = "Tu as déjà proposé cette espèce !";
-        return;
+      if (historiquesArbre.find(h => h.nomScientifique === guess.nomScientifique)) {
+        errBox.innerText = "Tu as déjà proposé cette espèce !"; return;
       }
 
-      tentatives--;
-      document.getElementById("essais-restants").innerText = tentatives;
+      tentativesArbre--;
+      document.getElementById("essais-restants").innerText = tentativesArbre;
       input.value = "";
 
       let gPath = getTaxonomyPath(guess);
-      let mPath = getTaxonomyPath(mystere);
-      
+      let mPath = getTaxonomyPath(mystereArbre);
       let shared = 0; 
-      if (gPath[0].name === mPath[0].name) {
-        shared = 1;
-        if (gPath[1].name === mPath[1].name) {
-          shared = 2;
-          if (gPath[2].name === mPath[2].name) {
-            shared = 3;
-            if (gPath[3].name === mPath[3].name) {
-              shared = 4;
+      if (gPath[0].name === mPath[0].name) { shared = 1;
+        if (gPath[1].name === mPath[1].name) { shared = 2;
+          if (gPath[2].name === mPath[2].name) { shared = 3;
+            if (gPath[3].name === mPath[3].name) { shared = 4;
               if (gPath[4].name === mPath[4].name) shared = 5;
             }
           }
         }
       }
 
-      historiques.push(guess);
+      historiquesArbre.push(guess);
       highestMatch = Math.max(highestMatch, shared);
-
       renderTree();
 
-      // Fin de partie
-      if (shared === 5 || tentatives === 0) {
+      if (shared === 5 || tentativesArbre === 0) {
         document.getElementById("end-screen").style.display = "block";
-        document.getElementById("btn-submit").disabled = true;
-        input.disabled = true;
-        document.getElementById("btn-hint").disabled = true;
+        document.getElementById("btn-submit").disabled = true; input.disabled = true; document.getElementById("btn-hint").disabled = true;
         
         const title = document.getElementById("end-title");
         const txt = document.getElementById("end-text");
@@ -420,26 +374,106 @@
 
         if (shared === 5) {
           document.getElementById("end-screen").className = "end-screen victory";
-          title.innerText = "🎉 Gagné !";
-          title.style.color = "#4ade80";
-          txt.innerText = `C'était bien ${mystere.nomScientifique} (trouvé en ${MAX_TENTATIVES - tentatives} essai(s)).`;
+          title.innerText = "🎉 Gagné !"; title.style.color = "#4ade80";
+          txt.innerText = `C'était bien ${mystereArbre.nomScientifique} (trouvé en ${MAX_TENTATIVES - tentativesArbre} essai(s)).`;
         } else {
-          highestMatch = 5; 
-          renderTree(); 
+          highestMatch = 5; renderTree(); 
           document.getElementById("end-screen").className = "end-screen defeat";
-          title.innerText = "💀 Perdu...";
-          title.style.color = "#ef4444";
-          txt.innerText = `Tu n'as plus d'essais. La réponse était : ${mystere.nomScientifique}.`;
+          title.innerText = "💀 Perdu..."; title.style.color = "#ef4444";
+          txt.innerText = `Tu n'as plus d'essais. La réponse était : ${mystereArbre.nomScientifique}.`;
         }
+        if (mystereArbre.image) { img.src = mystereArbre.image; img.style.display = "block"; }
+      }
+    }
+    document.getElementById("guess-input").addEventListener("keypress", e => { if (e.key === "Enter") jouerArbre(); });
+
+
+    /* ====================================================================
+       LOGIQUE DU MODE 2 : QUIZ IMAGE
+       ==================================================================== */
+    let mystereImg = null;
+
+    function initImageQuiz() {
+      if (listeAvecImage.length === 0) {
+        document.getElementById("error-msg-img").innerText = "Aucune espèce avec photo n'a été trouvée dans la base de données.";
+        return;
+      }
+      
+      // Tirer au hasard parmi les espèces QUI ONT une image
+      mystereImg = listeAvecImage[Math.floor(Math.random() * listeAvecImage.length)];
+      
+      // Afficher l'image
+      document.getElementById("img-quiz").src = mystereImg.image;
+      
+      // Réinitialiser l'interface
+      const inputImg = document.getElementById("guess-input-img");
+      inputImg.value = "";
+      inputImg.disabled = false;
+      document.getElementById("btn-submit-img").disabled = false;
+      document.getElementById("error-msg-img").innerHTML = "";
+      document.getElementById("result-img").innerHTML = "";
+      document.getElementById("btn-next-img").style.display = "none";
+    }
+
+    function appliquerCorrectionImg(nom) {
+      document.getElementById("guess-input-img").value = nom;
+      jouerImage();
+    }
+
+    function jouerImage() {
+      const input = document.getElementById("guess-input-img");
+      const errBox = document.getElementById("error-msg-img");
+      const resBox = document.getElementById("result-img");
+      
+      let val = input.value.trim();
+      if (!val) return;
+      
+      errBox.innerHTML = "";
+      resBox.innerHTML = "";
+
+      let guess = window.FICHES.find(p => nettoyer(p.nomScientifique) === nettoyer(val));
+
+      // Correcteur orthographique (Fuzzy search)
+      if (!guess) {
+        let best = null; let minErr = Infinity;
+        window.FICHES.forEach(p => {
+          let err = levenshtein(nettoyer(val), nettoyer(p.nomScientifique));
+          if (err < minErr) { minErr = err; best = p; }
+        });
         
-        if (mystere.image) {
-          img.src = mystere.image;
-          img.style.display = "block";
+        if (minErr <= 4 && best) {
+          errBox.innerHTML = `Vouliez-vous dire <span class="correction-link" onclick="appliquerCorrectionImg('${best.nomScientifique}')">${best.nomScientifique}</span> ?`;
+        } else {
+          errBox.innerText = "Espèce introuvable dans la base.";
         }
+        return;
+      }
+
+      // Vérification de la réponse
+      if (guess.nomScientifique === mystereImg.nomScientifique) {
+        // GAGNÉ
+        resBox.className = "res-success";
+        resBox.innerText = `🎉 Bravo ! C'est bien un ${mystereImg.nomScientifique} !`;
+        input.disabled = true;
+        document.getElementById("btn-submit-img").disabled = true;
+        document.getElementById("btn-next-img").style.display = "block"; // Affiche le bouton suivant
+      } else {
+        // PERDU
+        resBox.className = "res-error";
+        resBox.innerText = `❌ Ce n'est pas un ${guess.nomScientifique}, essaie encore !`;
+        
+        // Petite astuce pour relancer l'animation CSS (shake)
+        resBox.classList.remove("res-error");
+        void resBox.offsetWidth; // trigger reflow
+        resBox.classList.add("res-error");
       }
     }
 
-    document.getElementById("guess-input").addEventListener("keypress", e => { if (e.key === "Enter") jouer(); });
+    // Touche Entrée pour l'image
+    document.getElementById("guess-input-img").addEventListener("keypress", e => { 
+      if (e.key === "Enter") jouerImage(); 
+    });
+
   </script>
 </body>
 </html>
