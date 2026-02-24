@@ -17,13 +17,15 @@
     .card { background: #111827; border-radius: 10px; border: 1px solid #1f2937; padding: 16px; margin-bottom: 14px; }
     h1 { font-size: 1.4rem; color: #38bdf8; margin-bottom: 8px; }
 
-    /* --- ONGलेट्स DE MODE DE JEU --- */
+    /* --- ONGLETS DE MODE DE JEU --- */
     .tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
     .tab-btn { background: #1f2937; color: #9ca3af; border: 1px solid #374151; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem; }
     .tab-btn:hover { background: #374151; color: #e5e7eb; }
     .tab-btn.active { background: #38bdf8; color: #020617; border-color: #38bdf8; }
 
     /* --- UI COMMUNE --- */
+    .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .compteur { font-size: 0.9rem; font-weight: bold; padding: 4px 10px; background: #1f2937; border-radius: 6px; color: #facc15; border: 1px solid #374151;}
     .input-group { display: flex; gap: 10px; margin-top: 5px; }
     input { flex: 1; padding: 10px; background: #020617; border: 1px solid #374151; border-radius: 6px; color: #e5e7eb; font-size: 1rem;}
     input:focus { border-color: #38bdf8; outline: none; }
@@ -34,9 +36,13 @@
     .btn-replay { background: #3b82f6; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; font-size: 1rem; transition: 0.2s; }
     .btn-replay:hover { background: #2563eb; }
 
+    /* INDICES */
+    .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.2s; }
+    .btn-hint:hover { background: #d97706; }
+    .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
+    .hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; animation: popIn 0.3s;}
+
     /* --- MODE 1 : ARBRE METAZOOA --- */
-    .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .compteur { font-size: 0.9rem; font-weight: bold; padding: 4px 10px; background: #1f2937; border-radius: 6px; color: #facc15; border: 1px solid #374151;}
     .tree-container { display: flex; justify-content: center; overflow-x: auto; padding: 20px 20px 40px 20px; }
     .tree ul { padding-top: 20px; position: relative; display: flex; justify-content: center; padding-left: 0; margin: 0; transition: all 0.5s; }
     .tree li { display: flex; flex-direction: column; align-items: center; list-style-type: none; position: relative; padding: 20px 6px 0 6px; transition: all 0.5s; }
@@ -59,11 +65,6 @@
     .node-leaf .node-name { font-style: italic; font-weight: 600; font-size: 0.9rem;} 
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-    .btn-hint { background: #f59e0b; color: #020617; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.2s; }
-    .btn-hint:hover { background: #d97706; }
-    .btn-hint:disabled { background: #4b5563; color: #9ca3af; cursor: not-allowed; }
-    #hints-container p { background: #1f2937; border-left: 4px solid #f59e0b; padding: 10px; margin-bottom: 8px; border-radius: 4px; font-size: 0.9rem; animation: popIn 0.3s;}
-    
     .end-screen { display: none; margin-top: 15px; padding: 15px; border-radius: 8px; text-align: center; }
     .victory { background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; }
     .defeat { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; }
@@ -78,6 +79,7 @@
   </style>
 
   <script src="especes.js"></script>
+
 </head>
 <body>
 
@@ -101,7 +103,7 @@
           <h1>Arbre Mystère</h1>
           <div class="compteur">Essais : <span id="essais-restants">30</span></div>
         </div>
-        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches.</p>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 10px;">Trouve l'espèce mystère. Tes erreurs créeront des branches sur l'arbre phylogénétique.</p>
         
         <div class="input-group">
           <input list="liste-poissons" id="guess-input" placeholder="Tape un nom scientifique..." autocomplete="off">
@@ -113,7 +115,7 @@
           <h2 id="end-title" style="border: none;"></h2>
           <p id="end-text"></p>
           <img id="end-img" src="" style="max-width: 100%; border-radius: 8px; margin-top: 10px; display: none; margin-left:auto; margin-right:auto;">
-          <button class="btn-replay" onclick="resetArbre()">🔄 Rejouer</button>
+          <button class="btn-replay" onclick="resetArbre()">🔄 Rejouer une partie</button>
         </div>
       </div>
 
@@ -125,30 +127,39 @@
 
       <div class="card">
         <h2>💡 Besoin d'un indice ?</h2>
-        <div id="hints-container"></div>
-        <button class="btn-hint" onclick="donnerIndice()" id="btn-hint">Révéler un indice</button>
+        <div id="hints-container" class="hints-container"></div>
+        <button class="btn-hint" onclick="donnerIndiceArbre()" id="btn-hint">Révéler un indice</button>
       </div>
     </div>
 
 
     <div id="mode-image" style="display: none;">
       <div class="card">
-        <h1 style="text-align: center;">Qui est ce poisson ?</h1>
-        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 15px; text-align: center;">Trouve le nom scientifique de l'espèce sur la photo.</p>
+        <div class="game-header">
+          <h1>Qui est ce poisson ?</h1>
+          <div class="compteur">Essais : <span id="essais-restants-img">10</span></div>
+        </div>
+        <p style="color:#9ca3af; font-size:0.85rem; margin-bottom: 15px;">Trouve le nom scientifique exact de l'espèce sur la photo.</p>
         
         <div class="img-quiz-container">
           <img id="img-quiz" class="img-quiz" src="" alt="Poisson Mystère">
         </div>
 
         <div class="input-group">
-          <input list="liste-poissons" id="guess-input-img" placeholder="Nom scientifique exact..." autocomplete="off">
+          <input list="liste-poissons" id="guess-input-img" placeholder="Nom scientifique..." autocomplete="off">
           <button class="btn-play" id="btn-submit-img" onclick="jouerImage()">Valider</button>
         </div>
         
         <div id="error-msg-img" class="error-msg"></div>
         <div id="result-img"></div>
 
-        <button id="btn-next-img" class="btn-replay" style="display:none;" onclick="initImageQuiz()">Suivant ➔</button>
+        <button id="btn-next-img" class="btn-replay" style="display:none;" onclick="initImageQuiz()">📸 Suivant ➔</button>
+      </div>
+
+      <div class="card">
+        <h2>💡 Besoin d'un indice ?</h2>
+        <div id="hints-container-img" class="hints-container"></div>
+        <button class="btn-hint" onclick="donnerIndiceImg()" id="btn-hint-img">Révéler un indice</button>
       </div>
     </div>
 
@@ -172,7 +183,7 @@
         datalist.appendChild(option);
       });
 
-      // Préparer la liste pour le mode image (uniquement ceux qui ont une image)
+      // Préparer la liste pour le mode image (uniquement ceux qui ont une image valide)
       listeAvecImage = window.FICHES.filter(p => p.image && p.image.trim() !== "");
 
       // Initialiser les deux jeux
@@ -180,7 +191,7 @@
       initImageQuiz();
     };
 
-    // Basculer entre les modes
+    // Basculer entre les modes (Onglets)
     function switchMode(mode) {
       document.getElementById('tab-taxo').classList.remove('active');
       document.getElementById('tab-image').classList.remove('active');
@@ -208,12 +219,12 @@
 
 
     /* ====================================================================
-       LOGIQUE DU MODE 1 : L'ARBRE (inchangée)
+       LOGIQUE DU MODE 1 : L'ARBRE (Metazooa)
        ==================================================================== */
     let mystereArbre = null;
     let tentativesArbre = 30;
     const MAX_TENTATIVES = 30;
-    let nbIndices = 0;
+    let nbIndicesArbre = 0;
     let historiquesArbre = []; 
     let highestMatch = 0; 
     let treeData = {};
@@ -221,7 +232,7 @@
     function resetArbre() {
       mystereArbre = window.FICHES[Math.floor(Math.random() * window.FICHES.length)];
       tentativesArbre = MAX_TENTATIVES;
-      nbIndices = 0;
+      nbIndicesArbre = 0;
       historiquesArbre = [];
       highestMatch = 0;
       treeData = {};
@@ -305,14 +316,14 @@
 
     function appliquerCorrectionArbre(nom) { document.getElementById("guess-input").value = nom; jouerArbre(); }
 
-    function donnerIndice() {
+    function donnerIndiceArbre() {
       const container = document.getElementById("hints-container");
       const btnHint = document.getElementById("btn-hint");
-      nbIndices++;
+      nbIndicesArbre++;
       let text = "";
-      if (nbIndices === 1) text = `🌍 <strong>Continent :</strong> ${mystereArbre.continent || "Inconnu"}`;
-      else if (nbIndices === 2) text = `📍 <strong>Pays :</strong> ${mystereArbre.pays ? mystereArbre.pays.join(", ") : "Inconnu"}`;
-      else if (nbIndices === 3) {
+      if (nbIndicesArbre === 1) text = `🌍 <strong>Continent :</strong> ${mystereArbre.continent || "Inconnu"}`;
+      else if (nbIndicesArbre === 2) text = `📍 <strong>Pays :</strong> ${mystereArbre.pays ? mystereArbre.pays.join(", ") : "Inconnu"}`;
+      else if (nbIndicesArbre === 3) {
         text = `🖼️ <strong>Aperçu :</strong><br><img src="${mystereArbre.image || ''}" style="max-width:200px; margin-top:5px; border-radius:6px; filter:blur(4px);">`;
         btnHint.disabled = true; btnHint.innerText = "Tous les indices sont utilisés";
       }
@@ -392,26 +403,35 @@
        LOGIQUE DU MODE 2 : QUIZ IMAGE
        ==================================================================== */
     let mystereImg = null;
+    let tentativesImg = 10;
+    const MAX_TENTATIVES_IMG = 10;
+    let nbIndicesImg = 0;
 
     function initImageQuiz() {
       if (listeAvecImage.length === 0) {
-        document.getElementById("error-msg-img").innerText = "Aucune espèce avec photo n'a été trouvée dans la base de données.";
+        document.getElementById("error-msg-img").innerText = "Aucune espèce avec photo n'a été trouvée.";
         return;
       }
       
-      // Tirer au hasard parmi les espèces QUI ONT une image
       mystereImg = listeAvecImage[Math.floor(Math.random() * listeAvecImage.length)];
       
-      // Afficher l'image
-      document.getElementById("img-quiz").src = mystereImg.image;
+      tentativesImg = MAX_TENTATIVES_IMG;
+      nbIndicesImg = 0;
       
-      // Réinitialiser l'interface
+      document.getElementById("img-quiz").src = mystereImg.image;
+      document.getElementById("essais-restants-img").innerText = tentativesImg;
+      
       const inputImg = document.getElementById("guess-input-img");
-      inputImg.value = "";
-      inputImg.disabled = false;
+      inputImg.value = ""; inputImg.disabled = false;
       document.getElementById("btn-submit-img").disabled = false;
+      
+      const btnHint = document.getElementById("btn-hint-img");
+      btnHint.disabled = false; btnHint.innerText = "Révéler un indice";
+      document.getElementById("hints-container-img").innerHTML = "";
+
       document.getElementById("error-msg-img").innerHTML = "";
       document.getElementById("result-img").innerHTML = "";
+      document.getElementById("result-img").className = "";
       document.getElementById("btn-next-img").style.display = "none";
     }
 
@@ -420,7 +440,26 @@
       jouerImage();
     }
 
+    function donnerIndiceImg() {
+      const container = document.getElementById("hints-container-img");
+      const btnHint = document.getElementById("btn-hint-img");
+      nbIndicesImg++;
+      
+      let text = "";
+      if (nbIndicesImg === 1) text = `🧬 <strong>Ordre :</strong> ${mystereImg.ordre}`;
+      else if (nbIndicesImg === 2) text = `🐟 <strong>Famille :</strong> ${mystereImg.famille}`;
+      else if (nbIndicesImg === 3) {
+        text = `🌍 <strong>Origine :</strong> ${mystereImg.continent} (${mystereImg.pays ? mystereImg.pays.join(", ") : "Inconnu"})`;
+        btnHint.disabled = true;
+        btnHint.innerText = "Tous les indices sont utilisés";
+      }
+      
+      container.innerHTML += `<p>${text}</p>`;
+    }
+
     function jouerImage() {
+      if (tentativesImg <= 0) return;
+
       const input = document.getElementById("guess-input-img");
       const errBox = document.getElementById("error-msg-img");
       const resBox = document.getElementById("result-img");
@@ -449,27 +488,40 @@
         return;
       }
 
+      // Action valide -> baisse les essais
+      tentativesImg--;
+      document.getElementById("essais-restants-img").innerText = tentativesImg;
+      input.value = "";
+
       // Vérification de la réponse
       if (guess.nomScientifique === mystereImg.nomScientifique) {
         // GAGNÉ
         resBox.className = "res-success";
-        resBox.innerText = `🎉 Bravo ! C'est bien un ${mystereImg.nomScientifique} !`;
+        resBox.innerText = `🎉 Bravo ! C'est bien un ${mystereImg.nomScientifique} ! (Trouvé en ${MAX_TENTATIVES_IMG - tentativesImg} essai(s))`;
         input.disabled = true;
         document.getElementById("btn-submit-img").disabled = true;
-        document.getElementById("btn-next-img").style.display = "block"; // Affiche le bouton suivant
+        document.getElementById("btn-hint-img").disabled = true;
+        document.getElementById("btn-next-img").style.display = "block"; 
       } else {
-        // PERDU
-        resBox.className = "res-error";
-        resBox.innerText = `❌ Ce n'est pas un ${guess.nomScientifique}, essaie encore !`;
-        
-        // Petite astuce pour relancer l'animation CSS (shake)
-        resBox.classList.remove("res-error");
-        void resBox.offsetWidth; // trigger reflow
-        resBox.classList.add("res-error");
+        // PERDU LA PARTIE (0 essai)
+        if (tentativesImg === 0) {
+          resBox.className = "res-error";
+          resBox.innerText = `💀 Perdu ! Il n'y a plus d'essais. C'était : ${mystereImg.nomScientifique}`;
+          input.disabled = true;
+          document.getElementById("btn-submit-img").disabled = true;
+          document.getElementById("btn-hint-img").disabled = true;
+          document.getElementById("btn-next-img").style.display = "block"; 
+        } else {
+          // FAUX MAIS ENCORE DES ESSAIS
+          resBox.className = "res-error";
+          resBox.innerText = `❌ Ce n'est pas un ${guess.nomScientifique}, essaie encore !`;
+          resBox.classList.remove("res-error");
+          void resBox.offsetWidth; // Animation relance
+          resBox.classList.add("res-error");
+        }
       }
     }
 
-    // Touche Entrée pour l'image
     document.getElementById("guess-input-img").addEventListener("keypress", e => { 
       if (e.key === "Enter") jouerImage(); 
     });
