@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Schistura oedipus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Schistura oedipus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Nemacheilidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Schistura</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>S. oedipus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Schistura-oedipus/Schistura-oedipus.PNG" alt="Schistura oedipus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Schistura oedipus</strong> est une espèce de loche cavernicole endémique de Thaïlande, décrite par Kottelat en 1988. Son nom d'espèce fait référence au personnage mythologique Œdipe, en allusion à la dégénérescence de ses yeux, caractéristique des espèces troglobies (vivant exclusivement dans les grottes).
+          </p>
+          <p class="section-text">
+            Le corps est allongé et cylindrique, typique du genre, atteignant une taille d'environ 7 à 8&nbsp;cm. L'espèce présente les adaptations morphologiques classiques à la vie souterraine : une dépigmentation quasi totale (le corps est blanc rosâtre) et des yeux vestigiaux, extrêmement réduits et recouverts par la peau, parfois à peine visibles sous forme de petits points noirs. Elle ne possède pas d'écailles visibles sur la majeure partie du corps.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson benthique (vivant sur le fond) qui dépend principalement de ses sens tactiles et olfactifs pour se repérer. Ses barbillons sont bien développés et lui servent à sonder le substrat à la recherche de nourriture.
+          </p>
+          <p class="section-text">
+            Bien qu'aveugle, <em>Schistura oedipus</em> conserve le comportement territorial typique des Nemacheilidae. En aquarium, les individus peuvent défendre de petites cavités ou des zones de nourrissage. Cependant, l'agressivité est généralement modérée comparée aux espèces de surface. Ils apprécient le courant et les eaux bien oxygénées, simulant les rivières souterraines.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare.
+          </p>
+          <p class="section-text">
+            Les données sur la reproduction de cette espèce en milieu naturel et en captivité sont extrêmement limitées. Comme pour d'autres espèces cavernicoles, il est probable que la reproduction soit saisonnière, liée aux crues qui apportent des nutriments dans les grottes, ou continue si les ressources sont stables.
+          </p>
+          <p class="section-text">
+            Il n'existe pas de rapports documentés de reproduction réussie et régulière en aquarium amateur, ce qui en fait une espèce difficile à élever.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Difficile à observer visuellement. Les femelles matures sont probablement un peu plus larges au niveau de l'abdomen.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Inconnue avec précision, mais estimée à plus de 5 ans en captivité, une longévité courante chez les loches.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            <em>Schistura oedipus</em> est strictement localisé dans les grottes calcaires de la province de Mae Hong Son, dans le nord-ouest de la Thaïlande. La localité type est la grotte de Tham Nam Lang.
+          </p>
+          <p class="section-text">
+            L'habitat est constitué de ruisseaux souterrains où l'eau est claire, courante et fraîche, avec un fond rocheux ou sablonneux, souvent recouvert de guano de chauve-souris qui constitue la base de la chaîne alimentaire dans cet écosystème fermé.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Schistura-oedipus/Maps-Schistura-oedipus.PNG"
+              alt="Répartition de Schistura oedipus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Asie du Sud-Est : Thaïlande.</li>
+              <li>Localité : Province de Mae Hong Son (Bassin de la Nam Lang).</li>
+              <li>Endémique stricte des réseaux karstiques de cette région.</li>
+            </ul>
+            <p>
+              Espèce rare, classée comme Vulnérable (VU) par l'UICN en raison de sa distribution restreinte et de la sensibilité de son habitat aux perturbations humaines.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 22 à 26&nbsp;°C.</p>
+            <p><strong>pH :</strong> 7,0 à 8,5; eau alcaline et dure (environnement calcaire).</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH.</p>
+            <p><strong>Éclairage :</strong> Nul ou très faible (lumière rouge pour l'observation).</p>
+            <p><strong>Volume conseillé :</strong> minimum 80&nbsp;L pour un petit groupe, avec de nombreuses cachettes rocheuses.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance carnivore / détritivore.
+            </p>
+            <p>
+              Dans la nature, se nourrit d'invertébrés aquatiques, de larves d'insectes et de matière organique.
+            </p>
+            <p>
+              En aquarium, accepte les vers de vase, les artémias, les daphnies (vivants ou congelés) et les comprimés de fond qui coulent.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

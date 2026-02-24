@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Uaru fernandezyepezi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Uaru fernandezyepezi</h1>
+      </div>
+
+      <div class="fiche-body">
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cichliformes</li>
+              <li><span class="sys-label">Famille :</span> Cichlidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Uaru</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>U. fernandezyepezi</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Uaru-fernandezyepezi/Uaru-fernandezyepezi.PNG" alt="Uaru fernandezyepezi">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Uaru fernandezyepezi</strong> est un grand cichlidé d'Amérique du Sud, originaire du bassin de l'Orénoque. Décrit relativement récemment (Stawikowski, 1989), il est beaucoup plus rare et exigeant que son cousin <em>Uaru amphiacanthoides</em>. Il est souvent surnommé "Uaru panda" en raison de ses motifs contrastés.
+          </p>
+          <p class="section-text">
+            Le corps est haut, comprimé latéralement et de forme discoïdale. À l'âge adulte, il atteint une taille comprise entre 20 et 25&nbsp;cm. Sa coloration est unique : un fond blanc crème à beige clair marqué de larges taches noires caractéristiques, notamment une grande zone sombre sur le milieu du corps et une autre à la base du pédoncule caudal. Les yeux sont souvent d'un rouge ambré intense. Les juvéniles possèdent un patron de coloration totalement différent, très sombre et tacheté, qui évolue radicalement lors de la croissance.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire qui doit être maintenu en groupe de 5 à 6 individus au minimum pour s'épanouir et réduire son stress. Bien qu'il soit pacifique envers les autres espèces, une hiérarchie stricte s'établit au sein du groupe. C'est une espèce réputée pour sa grande sensibilité aux variations de paramètres et à la qualité de l'eau.
+          </p>
+          <p class="section-text">
+            En aquarium, il est calme mais nécessite un volume de nage conséquent. Il est connu pour sa tendance à consommer la végétation aquatique ; un décor composé de racines de bois flotté et de roches lisses est donc préférable. Comme les autres <em>Uaru</em>, il est intelligent et peut devenir très familier avec son soigneur.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Ovipare, pondeur sur substrat découvert.
+          </p>
+          <p class="section-text">
+            La reproduction est jugée difficile en captivité. Le couple nettoie une surface plane (pierre ou racine) pour y déposer les œufs. Une particularité biologique partagée avec les Discus est la production d'un mucus cutané nutritif par les parents, dont les alevins se nourrissent durant les premiers jours suivant la résorption de la vésicule vitelline. Une eau extrêmement douce et acide, proche des conditions naturelles de "Blackwater", est indispensable pour le succès de l'éclosion.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Pratiquement inexistant. Les mâles et femelles sont identiques. La distinction n'est possible qu'au moment de la ponte par l'observation des papilles génitales (plus pointue chez le mâle, plus ronde chez la femelle).
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Environ 8 à 12 ans en captivité si les conditions de maintenance sont optimales.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            <em>Uaru fernandezyepezi</em> habite exclusivement les eaux noires (blackwater) du bassin du haut Orénoque et de la rivière Atabapo au Venezuela et en Colombie. Ces eaux sont caractérisées par une très forte concentration en tannins, une conductivité extrêmement basse et un pH très acide. Le substrat est généralement sablonneux, jonché de feuilles mortes et de nombreuses racines d'arbres immergées offrant des cachettes.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+            <img src="../img/Uaru-fernandezyepezi/Maps-Uaru-fernandezyepezi.PNG" alt="Répartition de Uaru fernandezyepezi" class="carte-img">
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Venezuela : Bassin de l'Orénoque, Rivière Atabapo.</li>
+              <li>Colombie : Zones frontalières liées au système de l'Atabapo.</li>
+              <li>Localité type : Rio Atabapo, près de San Fernando de Atabapo.</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 27 à 30&nbsp;°C (espèce thermophile).</p>
+            <p><strong>pH :</strong> 4,5 à 6,5 (eau très acide indispensable).</p>
+            <p><strong>GH :</strong> 1 à 5&nbsp;°dGH (eau extrêmement douce).</p>
+            <p><strong>Courant :</strong> Faible à modéré.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 600–800&nbsp;L pour un groupe d'adultes compte tenu de leur taille et de leur comportement social.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p><strong>Régime :</strong> Omnivore à forte tendance végétarienne.</p>
+            <p>
+              Dans la nature, il consomme des éponges d'eau douce, des détritus végétaux et des fruits tombés. En aquarium, il accepte les nourritures sèches de qualité, mais doit impérativement recevoir un apport végétal quotidien : épinards, courgettes, poivrons, ou granulés à base de spiruline. Une carence en végétaux peut entraîner des maladies intestinales.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

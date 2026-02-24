@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ancistrus cryptophthalmus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Ancistrus cryptophthalmus</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Siluriformes</li>
+              <li><span class="sys-label">Famille :</span> Loricariidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Ancistrus</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>A. cryptophthalmus</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Ancistrus-cryptophthalmus/Ancistrus-cryptophthalmus.PNG" alt="Ancistrus cryptophthalmus">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Ancistrus cryptophthalmus</strong> est une espèce rare de Loricariidae, décrite par Reis en 1987. C'est un poisson exclusivement cavernicole (troglobie) originaire du Brésil. Son nom scientifique fait référence à sa particularité la plus notable : des yeux non fonctionnels et cachés sous la peau (<em>cryptos</em> = caché, <em>ophthalmos</em> = œil).
+          </p>
+          <p class="section-text">
+            Ce poisson de petite taille atteint environ 6 à 7&nbsp;cm de longueur standard (SL). Il présente les adaptations typiques de la vie souterraine : une dépigmentation marquée (le corps est pâle, rosâtre ou blanchâtre) et une régression oculaire avancée. Bien qu'aveugle, il conserve la morphologie générale des <em>Ancistrus</em>, avec un corps aplati, une bouche en ventouse munie de dents râpeuses et des plaques osseuses protégeant le corps.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            Adapté à l'obscurité totale, <em>Ancistrus cryptophthalmus</em> s'oriente grâce à ses canaux sensoriels céphaliques élargis et à sa ligne latérale très développée, qui lui permettent de détecter les moindres mouvements et vibrations dans l'eau. C'est un poisson benthique qui se déplace sur le substrat rocheux et les parois des grottes.
+          </p>
+          <p class="section-text">
+            En milieu naturel, il vit dans des conditions de calme relatif et de stabilité. En aquarium, il est timide et nécessite un environnement ombragé ou totalement obscur pour se sentir à l'aise. Il est généralement pacifique mais peut défendre son territoire, notamment les cavités propices au repos ou à la reproduction.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> Ovipare, pondeur sur substrat caché.
+          </p>
+          <p class="section-text">
+            La reproduction suit le schéma classique du genre <em>Ancistrus</em>. Le mâle choisit et nettoie une cavité (fissure rocheuse ou grotte) où la femelle dépose ses œufs. Les œufs, de couleur jaune-orangé, sont ensuite fécondés et gardés farouchement par le mâle qui les ventile jusqu'à l'éclosion.
+          </p>
+          <p class="section-text">
+            La fertilité semble plus faible que chez les espèces de surface, avec des pontes moins nombreuses mais constituées d'œufs proportionnellement plus gros, une stratégie fréquente chez les animaux cavernicoles pour maximiser les chances de survie des alevins dans un milieu pauvre en ressources.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> Bien que moins spectaculaire que chez certaines espèces de surface, le dimorphisme est présent. Les mâles matures développent des tentacules charnus (excroissances) sur le museau et la tête, tandis que les femelles en sont dépourvues ou n'en possèdent que de très petits sur le bord du museau.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> Estimée entre 5 et 8 ans en captivité, bien que les données précises sur cette espèce rare soient limitées.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique de l'État de Goiás au Brésil. Elle peuple spécifiquement deux systèmes de grottes karstiques : le système São Vicente et le système Angélica-Bezerra, qui drainent vers la rivière Paranã (bassin du haut Tocantins).
+          </p>
+          <p class="section-text">
+            Son habitat est constitué de rivières souterraines aux eaux claires, traversant des formations calcaires. Le courant y est modéré, avec des zones de radiers et de bassins calmes. Le fond est composé de roches, de graviers et de sédiments argileux, souvent enrichis par du guano de chauve-souris et des débris végétaux importés de la surface lors des crues.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Ancistrus-cryptophthalmus/Maps-Ancistrus-cryptophthalmus.PNG"
+              alt="Répartition de Ancistrus cryptophthalmus"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Brésil : État de Goiás (Nord-Est).</li>
+              <li>Localité type : Caverna Passa Três (Système São Vicente).</li>
+              <li>Distribution extrêmement restreinte (aire estimée à quelques km² de réseaux souterrains).</li>
+            </ul>
+            <p>
+              Classée "En Danger" (EN) par l'UICN en raison de la fragilité de son écosystème karstique unique.
+            </p>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 23 à 26&nbsp;°C (température stable des grottes).</p>
+            <p><strong>pH :</strong> 6,8 à 7,6; eau neutre à légèrement alcaline (environnement calcaire).</p>
+            <p><strong>GH :</strong> 5 à 15&nbsp;°dGH; eau moyennement minéralisée.</p>
+            <p><strong>Éclairage :</strong> Nul ou très faible; l'espèce fuit la lumière vive.</p>
+            <p><strong>Volume conseillé :</strong> Minimum 80-100&nbsp;L pour un petit groupe, avec un décor rocheux riche en cachettes.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Omnivore à tendance détritivore / brouteur.
+            </p>
+            <p>
+              Dans son milieu naturel, il se nourrit de biofilm, de micro-organismes, de détritus organiques et probablement de guano.
+            </p>
+            <p>
+              En aquarium, il accepte les comprimés de fond pour poissons de fond (spiruline, carnés), les légumes pochés et les nourritures congelées. Une alimentation variée est essentielle.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Garra barreimiae</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 16px auto 20px auto;
+      padding: 0 12px 20px 12px;
+    }
+
+    .fiche-wrapper {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      overflow: hidden;
+    }
+
+    .fiche-header-bar {
+      background: #16a34a;
+      color: #f9fafb;
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .fiche-header-bar h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .fiche-header-bar h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    .fiche-body {
+      padding: 16px 18px 18px 18px;
+    }
+
+    .top-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .sys-block {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+      font-size: 0.8rem;
+    }
+
+    .sys-block h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .sys-list {
+      list-style: none;
+    }
+
+    .sys-list li {
+      margin-bottom: 3px;
+    }
+
+    .sys-label {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .fiche-photo {
+      text-align: center;
+    }
+
+    .fiche-photo img {
+      max-width: 100%;
+      max-height: 260px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      object-fit: cover;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+
+    .section-text {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .section-text strong { color: #fbbf24; }
+
+    .grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .bloc {
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 10px 12px;
+      background: #020617;
+    }
+
+    .bloc h3 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #38bdf8;
+    }
+
+    .bloc p, .bloc ul {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.4;
+    }
+
+    .bloc ul { padding-left: 16px; }
+
+    .carte-img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      object-fit: cover;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .note-retour {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .note-retour a { color: #38bdf8; }
+
+    @media (max-width: 768px) {
+      .page { margin-top: 10px; }
+      .top-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="fiche-wrapper">
+      <div class="fiche-header-bar">
+        <h1>Garra barreimiae</h1>
+      </div>
+
+      <div class="fiche-body">
+
+        <div class="top-row">
+          <div class="sys-block">
+            <h2>Systématique</h2>
+            <ul class="sys-list">
+              <li><span class="sys-label">Ordre :</span> Cypriniformes</li>
+              <li><span class="sys-label">Famille :</span> Cyprinidae</li>
+              <li><span class="sys-label">Genre :</span> <em>Garra</em></li>
+              <li><span class="sys-label">Espèce :</span> <em>G. barreimiae</em></li>
+            </ul>
+          </div>
+
+          <div class="fiche-photo">
+            <img src="../img/Garra-barreimiae/Garra-barreimiae.PNG" alt="Garra barreimiae">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-title">Présentation</div>
+          <p class="section-text">
+            <strong>Garra barreimiae</strong> est un cyprinidé benthique originaire de la péninsule arabique, décrit par Fowler en 1905. Cette espèce est particulièrement connue pour présenter deux formes distinctes : une forme de surface "normale", pigmentée et voyante, et une forme cavernicole aveugle et dépigmentée (souvent issue de la grotte Al Hoota à Oman), très prisée des aquariophiles spécialisés.
+          </p>
+          <p class="section-text">
+            Il atteint une taille adulte comprise entre 6 et 8&nbsp;cm. La forme de surface arbore un corps brun-gris avec des marbrures sombres et une tache noire derrière l'opercule. La forme cavernicole est rosâtre, dépourvue d'yeux externes fonctionnels et de pigmentation. Comme tous les membres du genre <em>Garra</em>, il possède une bouche en ventouse (disque adhésif mentonnier) lui permettant de s'accrocher aux roches dans les forts courants.
+          </p>
+
+          <div class="section-title">Comportement & mode de vie</div>
+          <p class="section-text">
+            C'est un poisson grégaire qui vit en groupes lâches. Il passe la majorité de son temps à brouter le biofilm sur les surfaces solides (roches, vitres, décors). Bien que généralement pacifique, il peut manifester une certaine territorialité alimentaire, chassant brièvement ses congénères d'une bonne zone de nourrissage.
+          </p>
+          <p class="section-text">
+            La forme aveugle a développé des capacités sensorielles compensatoires (goût, toucher, ligne latérale) lui permettant de naviguer et de trouver sa nourriture avec une efficacité redoutable dans l'obscurité totale ou partielle. C'est un poisson actif et robuste.
+          </p>
+
+          <div class="section-title">Reproduction</div>
+          <p class="section-text">
+            <strong>Mode :</strong> ovipare, diffuseur d'œufs.
+          </p>
+          <p class="section-text">
+            Dans la nature, la reproduction est souvent déclenchée par les crues saisonnières (wadis). En aquarium, elle est possible mais rarement spontanée sans une simulation de saison des pluies (changement d'eau important, baisse de température, augmentation du courant). Les œufs sont dispersés parmi les graviers. Il n'y a pas de soin parental.
+          </p>
+          <p class="section-text">
+            Les alevins éclosent rapidement et se nourrissent de micro-organismes présents dans le biofilm. La forme cavernicole se reproduit également en captivité, maintenant ses caractéristiques (cécité) sur les générations suivantes.
+          </p>
+
+          <div class="section-title">Dimorphisme & espérance de vie</div>
+          <p class="section-text">
+            <strong>Dimorphisme sexuel :</strong> En période de reproduction, les mâles développent des tubercules nuptiaux visibles sur le museau (excroissances kératinisées) et la tête. Les femelles sont généralement plus corpulentes, présentant un abdomen rebondi lorsqu'elles sont gravides.
+          </p>
+          <p class="section-text">
+            <strong>Espérance de vie :</strong> 5 à 7 ans en captivité.
+          </p>
+
+          <div class="section-title">Biotope</div>
+          <p class="section-text">
+            L'espèce est endémique des montagnes d'Oman (Jebel Akhdar) et des Émirats arabes unis.
+          </p>
+          <p class="section-text">
+            La forme de surface vit dans les wadis (cours d'eau temporaires ou permanents), les sources et les bassins rocheux (falajs) où l'eau est souvent claire, peu profonde et soumise à un fort ensoleillement, favorisant la croissance des algues. La forme souterraine habite les lacs et rivières des réseaux karstiques profonds, dans l'obscurité totale.
+          </p>
+        </div>
+
+        <div class="grid-bottom">
+          <div class="bloc">
+            <h3>Répartition</h3>
+
+            <img
+              src="../img/Garra-barreimiae/Maps-Garra-barreimiae.PNG"
+              alt="Répartition de Garra barreimiae"
+              class="carte-img"
+            >
+
+            <p><strong>Origine naturelle :</strong></p>
+            <ul>
+              <li>Oman : Montagnes du Hajar, Jebel Akhdar.</li>
+              <li>Émirats arabes unis : Zones montagneuses frontalières.</li>
+              <li>Localité type de la forme aveugle : Grotte Al Hoota (Oman).</li>
+            </ul>
+          </div>
+
+          <div class="bloc">
+            <h3>Paramètres de maintenance</h3>
+            <p><strong>Température :</strong> 20 à 28&nbsp;°C; supporte des températures élevées typiques du climat désertique, mais préfère la fraîcheur (24°C).</p>
+            <p><strong>pH :</strong> 7,0 à 8,5; eau alcaline.</p>
+            <p><strong>GH :</strong> 10 à 25&nbsp;°dGH; eau dure et minéralisée.</p>
+            <p><strong>Courant :</strong> modéré à fort; apprécie une eau bien oxygénée.</p>
+            <p><strong>Volume conseillé :</strong> minimum 100-120&nbsp;L pour un petit groupe, avec un décor rocheux stable.</p>
+          </div>
+
+          <div class="bloc">
+            <h3>Régime alimentaire</h3>
+            <p>
+              <strong>Régime :</strong> Aufwuchs (brouteur d'algues et micro-faune).
+            </p>
+            <p>
+              Sa bouche est adaptée pour râper les algues sur les rochers.
+            </p>
+            <p>
+              En aquarium, il est omnivore à tendance végétarienne. Il accepte les comprimés de fond à base de spiruline, les légumes pochés (courgette, épinard) et les larves d'insectes. Il est un excellent nettoyeur d'algues encroûtantes.
+            </p>
+          </div>
+        </div>
+
+        <p class="note-retour">
+          ⟵ <a href="../fiche.html">Retour à la liste des fiches</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
