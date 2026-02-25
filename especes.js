@@ -1196,8 +1196,8 @@ window.FICHES = [
   genre: "Xiphophorus",
   continent: "Amérique du Nord",
   pays: ["Mexique", "Belize", "Guatemala"],
-  page: "fiche/Xiphophorus-maculatus.html",
-  image: "img/Xiphophorus-maculatus/Xiphophorus-maculatus.jpeg"
+  page: "fiche/Xiohophorus-maculatus.html",
+  image: "img/Xiphophorus-maculatus/Xiphophorus-maculatus.PNG"
 },
 {
   id: "priapella-intermedia",
@@ -2168,7 +2168,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Cuba"],
   page: "fiche/Girardinus-rivasi.html",
-  image: "img/Girardinus-rivasi/Girardinus-rivasi.PNG"
+  image: "img/pas-image.PNG"
 },
 {
   id: "girardinus-creolus",
@@ -2215,7 +2215,7 @@ window.FICHES = [
   continent: "Amérique Centrale",
   pays: ["Cuba"],
   page: "fiche/Girardinus-ramsdeni.html",
-  image: "img/Girardinus-ramsdeni/Girardinus-ramsdeni.PNG"
+  image: "img/pas-image.PNG"
 }, 
 {
   id: "girardinus-denticulatus",
@@ -2996,18 +2996,6 @@ window.FICHES = [
   pays: ["Mexique"],
   page: "fiche/Allodontichthys-zonistius.html",
   image: "img/Allodontichthys-zonistius/Allodontichthys-zonistius.PNG"
-},
-{
-  id: "xenotoca-dugesii",
-  nomScientifique: "Xenotoca dugesii",
-  nomCommun: "Aucun",
-  ordre: "Cyprinodontiformes",
-  famille: "Goodeidae",
-  genre: "Xenotoca",
-  continent: "Amérique du Nord",
-  pays: ["Mexique"],
-  page: "fiche/Xenotoca-dugesii.html",
-  image: "img/Xenotoca-dugesii/Xenotoca-dugesii.PNG"
 },
 {
   id: "skiffia-bilineata",
