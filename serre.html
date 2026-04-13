@@ -342,7 +342,7 @@
     <div class="card">
       <h1>Gestion des bacs de serre</h1>
       <p class="subtitle">
-        Étiquettes de bacs pour la serre, avec pense‑bête général, suivi des dates d’entretien et
+        Étiquettes de bacs pour la serre, avec pense‑bête général, suivi des dates d'entretien et
         répartition des bacs entre les membres autorisés.
       </p>
     </div>
@@ -350,12 +350,12 @@
     <div class="card">
       <h2>Bloc‑notes de serre</h2>
       <p class="subtitle">
-        Notes globales sur la serre (rotation des bacs, projets d’ensemencement, matériel, etc.).
+        Notes globales sur la serre (rotation des bacs, projets d'ensemencement, matériel, etc.).
       </p>
 
       <div class="field">
         <label for="notesSerre">Notes générales serre</label>
-        <textarea id="notesSerre" placeholder="Ex : Prévoir rotation des bacs de quarantaine, vérifier les stocks de tests d’eau pour la serre…"></textarea>
+        <textarea id="notesSerre" placeholder="Ex : Prévoir rotation des bacs de quarantaine, vérifier les stocks de tests d'eau pour la serre…"></textarea>
       </div>
       <button class="btn-primary" id="saveSerreNotesBtn">Sauvegarder les notes</button>
       <div class="note-info" id="serreNotesInfo"></div>
@@ -365,13 +365,13 @@
       <h2>Étiquettes des bacs de serre</h2>
       <p class="subtitle">
         Un clic ajoute une étiquette de bac de serre. Tu peux renommer le titre, suivre les dates
-        d’entretien et attribuer chaque bac à un membre ayant accès à la serre.
+        d'entretien et attribuer chaque bac à un membre ayant accès à la serre.
       </p>
 
       <button class="btn-primary" id="addSerreBacBtn">Ajouter un bac serre</button>
 
       <p class="small-note">
-        Couleurs : changement d’eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
+        Couleurs : changement d'eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
       </p>
 
       <div id="serreBacList" class="aquarium-grid"></div>
@@ -430,7 +430,7 @@
       </div>
       <div id="feedResult" class="feed-result"></div>
       <p class="small-note">
-        La consommation moyenne est estimée à partir de l’évolution du stock entre le premier et le dernier enregistrement pour le type choisi.
+        La consommation moyenne est estimée à partir de l'évolution du stock entre le premier et le dernier enregistrement pour le type choisi.
       </p>
     </div>
   </main>
@@ -465,7 +465,7 @@
     async function apiGetSerreData() {
       const res = await fetch('/api/serre');
       if (!res.ok) throw new Error('Erreur GET /api/serre');
-      return res.json(); // { notes, bacs, assignments, ... }
+      return res.json(); // { notes, bacs, assignments, feed }
     }
 
     async function apiSaveSerreNotes(notes) {
@@ -485,6 +485,24 @@
         body: JSON.stringify({ bacs, assignments })
       });
       if (!res.ok) throw new Error('Erreur POST /api/serre/bacs');
+      return res.json();
+    }
+
+    // --- API nourriture ---
+    // On stocke : id=id, name=type, unit=dateIso, quantity=qtyKg
+    async function apiSaveFeed() {
+      const items = feedHistory.map(x => ({
+        id: x.id,
+        name: x.type,
+        unit: x.dateIso,
+        quantity: x.qtyKg
+      }));
+      const res = await fetch('/api/serre/feed', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items, monthlyUseKg: 0 })
+      });
+      if (!res.ok) throw new Error('Erreur POST /api/serre/feed');
       return res.json();
     }
 
@@ -673,7 +691,7 @@
         assignBtn.textContent = "Attribuer";
         assignBtn.addEventListener("click", async () => {
           if (!SERRE_MEMBRES_AUTORISES.length) {
-            alert("Aucun membre n’a actuellement l’accès serre dans la page admin.");
+            alert("Aucun membre n'a actuellement l'accès serre dans la page admin.");
             return;
           }
           const val = select.value;
@@ -715,6 +733,7 @@
     }
 
     // --- Bloc nourriture : historique par type et par date ---
+    // Stockage BDD : id=id, name=type, unit=dateIso, quantity=qtyKg
     let feedHistory = []; // { id, type, dateIso, qtyKg }
 
     const feedTypeInput = document.getElementById('feedTypeInput');
@@ -779,9 +798,10 @@
       `;
 
       feedTableWrapper.querySelectorAll('.btn-del').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
           const id = btn.getAttribute('data-id');
           feedHistory = feedHistory.filter(x => x.id !== id);
+          await apiSaveFeed();
           renderFeedTable();
         });
       });
@@ -811,7 +831,7 @@
     }
 
     if (feedAddBtn) {
-      feedAddBtn.addEventListener('click', () => {
+      feedAddBtn.addEventListener('click', async () => {
         const type = (feedTypeInput.value || '').trim();
         const dateStr = feedDateInput.value;
         const qty = parseFloat((feedQtyInput.value || '').replace(',', '.'));
@@ -837,6 +857,14 @@
         });
 
         feedQtyInput.value = '';
+
+        try {
+          await apiSaveFeed();
+        } catch(e) {
+          console.error('Erreur sauvegarde nourriture :', e);
+          alert("Erreur lors de la sauvegarde en base de données.");
+        }
+
         renderFeedTable();
       });
     }
@@ -899,6 +927,17 @@
         serreNotes = data.notes || "";
         serreBacs = Array.isArray(data.bacs) ? data.bacs : [];
         serreAssignments = data.assignments || {};
+
+        // Charger l'historique nourriture depuis la BDD
+        // name=type, unit=dateIso, quantity=qtyKg
+        if (data.feed && Array.isArray(data.feed.items)) {
+          feedHistory = data.feed.items.map(it => ({
+            id: String(it.id),
+            type: it.name || '',
+            dateIso: it.unit || '',
+            qtyKg: Number(it.quantity) || 0
+          }));
+        }
 
         notesSerreTextArea.value = serreNotes;
         serreNotesInfo.textContent = serreNotes ? "Notes de serre chargées." : "";

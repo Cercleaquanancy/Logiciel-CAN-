@@ -59,7 +59,7 @@
     .event-home-btn:disabled { background: #9ca3af; cursor: not-allowed; }
     .facebook-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 12px; }
     .facebook-card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; overflow: hidden; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
-    .facebook-card:hover { border-color: #1d4ed8; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2); transform: translateY(-2px); }
+    .facebook-card:hover { border-color: #1d4ed8; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2); }
     .facebook-header { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #1f2937; background: linear-gradient(135deg, #111827 0%, #1a1f2e 100%); }
     .facebook-icon { width: 40px; height: 40px; background: #1d4ed8; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
     .facebook-info { flex: 1; min-width: 0; }
@@ -67,14 +67,8 @@
     .facebook-info p { font-size: 0.75rem; color: #9ca3af; }
     .facebook-link { font-size: 0.8rem; color: #38bdf8; text-decoration: none; font-weight: 500; transition: color 0.2s; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
     .facebook-link:hover { color: #0ea5e9; }
-    .facebook-posts { margin-top: 0; border-radius: 0; overflow: hidden; background: #111827; border-top: 1px solid #1f2937; }
-    .facebook-post { padding: 12px; border-bottom: 1px solid #1f2937; transition: all 0.2s; cursor: pointer; }
-    .facebook-post:last-child { border-bottom: none; }
-    .facebook-post:hover { background: #0f172a; }
-    .post-image { width: 100%; height: 150px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
-    .post-text { font-size: 0.8rem; color: #d1d5db; line-height: 1.4; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .post-meta { font-size: 0.7rem; color: #9ca3af; }
-    .fb-loading { color: #9ca3af; font-size: 0.85rem; text-align: center; padding: 12px; }
+    .facebook-embed-wrapper { width: 100%; overflow: hidden; }
+    .facebook-embed-wrapper iframe { width: 100%; border: none; display: block; }
     .resource-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
     .resource-btn { flex: 1; min-width: 200px; padding: 12px 16px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; text-decoration: none; color: #38bdf8; font-weight: 500; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
     .resource-btn:hover { background: #1d4ed8; border-color: #1d4ed8; color: #e5e7eb; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3); }
@@ -103,9 +97,7 @@
       <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
       <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
       <button class="nav-btn" data-link="cerfa.html"><span class="icon">📋</span><span>Cerfa</span></button>
-      
       <button class="nav-btn" data-link="jeu.html"><span class="icon">🎮</span><span>Quiz</span></button>
-
       <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
@@ -153,7 +145,10 @@
     <div class="card">
       <h2>📱 Dernières nouvelles Facebook</h2>
       <p class="subtitle">Suis les publications du Cercle et de Fish In The News.</p>
-      
+
+      <!-- SDK Facebook nécessaire pour les embeds officiels -->
+      <div id="fb-root"></div>
+
       <div class="facebook-container">
         <div class="facebook-card">
           <div class="facebook-header">
@@ -164,8 +159,17 @@
             </div>
             <a onclick="window.open('https://www.facebook.com/CercleAquariophileNancy', '_blank')" class="facebook-link">Voir →</a>
           </div>
-          <div id="fbPostsCAN" class="facebook-posts">
-            <div class="fb-loading">Chargement des posts...</div>
+          <div class="facebook-embed-wrapper">
+            <div class="fb-page"
+              data-href="https://www.facebook.com/CercleAquariophileNancy"
+              data-tabs="timeline"
+              data-width="500"
+              data-height="400"
+              data-small-header="true"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false">
+            </div>
           </div>
         </div>
 
@@ -178,13 +182,27 @@
             </div>
             <a onclick="window.open('https://www.facebook.com/FishInTheNews', '_blank')" class="facebook-link">Voir →</a>
           </div>
-          <div id="fbPostsFITN" class="facebook-posts">
-            <div class="fb-loading">Chargement des posts...</div>
+          <div class="facebook-embed-wrapper">
+            <div class="fb-page"
+              data-href="https://www.facebook.com/FishInTheNews"
+              data-tabs="timeline"
+              data-width="500"
+              data-height="400"
+              data-small-header="true"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- SDK Facebook officiel : charge les embeds fb-page -->
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v19.0">
+  </script>
 
   <script>
     const storedUser = localStorage.getItem("user");
@@ -434,50 +452,10 @@
       }).join("");
     }
 
-    const FB_POSTS_CACHE = "fbPostsCache";
-    const FB_POSTS_TIMESTAMP = "fbPostsTimestamp";
-    const CACHE_DURATION = 10 * 60 * 1000;
-
-    async function fetchFacebookPosts(pageId) {
-      const now = Date.now();
-      const cached = JSON.parse(localStorage.getItem(FB_POSTS_CACHE) || '{}');
-      const timestamp = localStorage.getItem(FB_POSTS_TIMESTAMP) || 0;
-      if (cached[pageId] && now - timestamp < CACHE_DURATION) return cached[pageId];
-      try {
-        const res = await fetch(`/api/facebook-posts?page=${pageId}`);
-        if (res.ok) {
-          const posts = await res.json();
-          cached[pageId] = posts;
-          localStorage.setItem(FB_POSTS_CACHE, JSON.stringify(cached));
-          localStorage.setItem(FB_POSTS_TIMESTAMP, now.toString());
-          return posts;
-        }
-      } catch (e) { console.log("Erreur FB fetch", e); }
-      return [];
-    }
-
-    async function renderFacebookPosts(pageId, containerId) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const posts = await fetchFacebookPosts(pageId);
-      if (!posts || posts.length === 0) {
-        container.innerHTML = '<div class="fb-loading">📭 Pas de publications récentes.</div>';
-        return;
-      }
-      container.innerHTML = posts.slice(0, 3).map(post => `
-          <div class="facebook-post" onclick="window.open('${post.link}', '_blank')">
-            <div class="post-text">${post.text || 'Voir le post...'}</div>
-            <div class="post-meta">${new Date(post.date).toLocaleDateString('fr-FR')}</div>
-          </div>
-      `).join('');
-    }
-
     // Lancement
     renderHomeEvents();
     renderHomeSerreSlots();
     initNotifications();
-    renderFacebookPosts('CercleAquariophileNancy', 'fbPostsCAN');
-    renderFacebookPosts('FishInTheNews', 'fbPostsFITN');
   </script>
 </body>
 </html>

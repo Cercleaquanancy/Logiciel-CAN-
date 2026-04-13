@@ -212,17 +212,24 @@
         published: false
       };
 
+      // Récupérer toutes les espèces existantes du membre + ajouter la nouvelle
+      const myCurrentEntries = allPopulationData.filter(
+        e => e.memberUsername === CURRENT_MEMBER_USERNAME
+      );
+      const allEntries = [...myCurrentEntries, newEntry];
+
       try {
         const res = await fetch('/api/population/sync', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: [newEntry] })
+          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: allEntries })
         });
 
         if (!res.ok) throw new Error('Erreur sync population');
         speciesNameInput.value = "";
         speciesSourceInput.value = "";
         popCountInput.value = "";
+        suggestionsBox.style.display = "none";
         await loadPopulationData();
       } catch (e) {
         console.error(e);
@@ -236,11 +243,16 @@
 
       const updatedEntry = { ...entry, published: !entry.published };
 
+      // Remplacer l'entrée concernée dans la liste complète du membre
+      const myEntries = allPopulationData
+        .filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME)
+        .map(e => e.speciesName === speciesName ? updatedEntry : e);
+
       try {
         const res = await fetch('/api/population/sync', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: [updatedEntry] })
+          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: myEntries })
         });
 
         if (!res.ok) throw new Error('Erreur update publication');
@@ -255,8 +267,9 @@
       if (!confirm("Supprimer cette espèce et toutes ses populations ?")) return;
 
       try {
-        const remaining = allPopulationData.filter(e => !(e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName === speciesName));
-        const myRemaining = remaining.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
+        const myRemaining = allPopulationData.filter(
+          e => e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName !== speciesName
+        );
 
         const res = await fetch('/api/population/sync', {
           method: 'POST',
