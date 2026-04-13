@@ -173,6 +173,7 @@
     });
 
     const CURRENT_MEMBER_USERNAME = currentUser.username;
+    const POPULATION_KEY = "populationData"; // Clé locale pour le fallback
     const speciesNameInput = document.getElementById("species-name");
     const speciesSourceInput = document.getElementById("species-source");
     const popCountInput = document.getElementById("pop-count");
@@ -190,6 +191,47 @@
     const suggestionsBox = document.getElementById("species-suggestions");
 
     let allPopulationData = [];
+
+    // NOUVELLE FONCTION : Gère la synchronisation locale ET serveur en même temps
+    async function syncPopulation(memberUsername, entries) {
+      // 1. Mise à jour instantanée de la base locale (garde les espèces des autres)
+      allPopulationData = allPopulationData.filter(e => e.memberUsername !== memberUsername).concat(entries);
+      localStorage.setItem(POPULATION_KEY, JSON.stringify(allPopulationData));
+
+      // 2. Envoi au serveur en tâche de fond
+      try {
+        const res = await fetch('/api/population/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ memberUsername, entries })
+        });
+        if (!res.ok) throw new Error('Erreur sync population');
+      } catch (e) {
+        console.warn("Serveur injoignable. Sauvegarde locale effectuée.");
+      }
+    }
+
+    // FONCTION MODIFIÉE : Contourne le cache du navigateur et utilise le local storage en cas d'erreur
+    async function loadPopulationData() {
+      try {
+        // Le cache: 'no-store' empêche le navigateur de charger une ancienne liste vide
+        const res = await fetch('/api/population', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Erreur GET /api/population');
+        allPopulationData = await res.json();
+        localStorage.setItem(POPULATION_KEY, JSON.stringify(allPopulationData));
+      } catch (e) {
+        console.warn("Utilisation des données locales (fallback)");
+        const raw = localStorage.getItem(POPULATION_KEY);
+        if (raw) {
+          try { allPopulationData = JSON.parse(raw); } catch(err) { allPopulationData = []; }
+        } else {
+          allPopulationData = [];
+        }
+      }
+      renderPrivateSpecies();
+      renderPublicBySpecies();
+      renderPublicByMember();
+    }
 
     function updateSpeciesCount() {
       const mySpecies = allPopulationData.filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME);
@@ -212,29 +254,30 @@
         published: false
       };
 
-      // Récupérer toutes les espèces existantes du membre + ajouter la nouvelle
       const myCurrentEntries = allPopulationData.filter(
         e => e.memberUsername === CURRENT_MEMBER_USERNAME
       );
-      const allEntries = [...myCurrentEntries, newEntry];
 
-      try {
-        const res = await fetch('/api/population/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: allEntries })
-        });
+      // CORRECTION : On vérifie si l'espèce existe déjà pour éviter d'écraser bêtement ou de faire un doublon
+      const existingIndex = myCurrentEntries.findIndex(e => e.speciesName.toLowerCase() === name.toLowerCase());
 
-        if (!res.ok) throw new Error('Erreur sync population');
-        speciesNameInput.value = "";
-        speciesSourceInput.value = "";
-        popCountInput.value = "";
-        suggestionsBox.style.display = "none";
-        await loadPopulationData();
-      } catch (e) {
-        console.error(e);
-        alert("Erreur lors de l'ajout de l'espèce.");
+      if (existingIndex !== -1) {
+        myCurrentEntries[existingIndex].totalCount += newEntry.totalCount; // On additionne
+        if (newEntry.source) {
+          myCurrentEntries[existingIndex].source = newEntry.source; // On met à jour la source si fournie
+        }
+      } else {
+        myCurrentEntries.push(newEntry);
       }
+
+      await syncPopulation(CURRENT_MEMBER_USERNAME, myCurrentEntries);
+
+      speciesNameInput.value = "";
+      speciesSourceInput.value = "";
+      popCountInput.value = "";
+      suggestionsBox.style.display = "none";
+      
+      await loadPopulationData();
     });
 
     async function togglePublish(speciesName) {
@@ -243,46 +286,23 @@
 
       const updatedEntry = { ...entry, published: !entry.published };
 
-      // Remplacer l'entrée concernée dans la liste complète du membre
       const myEntries = allPopulationData
         .filter(e => e.memberUsername === CURRENT_MEMBER_USERNAME)
         .map(e => e.speciesName === speciesName ? updatedEntry : e);
 
-      try {
-        const res = await fetch('/api/population/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: myEntries })
-        });
-
-        if (!res.ok) throw new Error('Erreur update publication');
-        await loadPopulationData();
-      } catch (e) {
-        console.error(e);
-        alert("Erreur lors de la mise à jour.");
-      }
+      await syncPopulation(CURRENT_MEMBER_USERNAME, myEntries);
+      await loadPopulationData();
     }
 
     async function deleteSpecies(speciesName) {
       if (!confirm("Supprimer cette espèce et toutes ses populations ?")) return;
 
-      try {
-        const myRemaining = allPopulationData.filter(
-          e => e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName !== speciesName
-        );
+      const myRemaining = allPopulationData.filter(
+        e => e.memberUsername === CURRENT_MEMBER_USERNAME && e.speciesName !== speciesName
+      );
 
-        const res = await fetch('/api/population/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ memberUsername: CURRENT_MEMBER_USERNAME, entries: myRemaining })
-        });
-
-        if (!res.ok) throw new Error('Erreur delete');
-        await loadPopulationData();
-      } catch (e) {
-        console.error(e);
-        alert("Erreur lors de la suppression.");
-      }
+      await syncPopulation(CURRENT_MEMBER_USERNAME, myRemaining);
+      await loadPopulationData();
     }
 
     function renderPrivateSpecies(search = "") {
@@ -328,20 +348,6 @@
     }
 
     privateSearchInput.addEventListener("input", () => { renderPrivateSpecies(privateSearchInput.value); });
-
-    async function loadPopulationData() {
-      try {
-        const res = await fetch('/api/population');
-        if (!res.ok) throw new Error('Erreur GET /api/population');
-        allPopulationData = await res.json();
-        renderPrivateSpecies();
-        renderPublicBySpecies();
-        renderPublicByMember();
-      } catch (e) {
-        console.error(e);
-        privateSearchSummary.textContent = "Erreur lors du chargement.";
-      }
-    }
 
     function groupBySpecies(entries) {
       const map = {};
