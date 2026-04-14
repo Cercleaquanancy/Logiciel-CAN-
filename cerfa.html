@@ -221,55 +221,51 @@
         page.drawText(String(text), { x, y, size, font, color: rgb(0, 0, 0) });
       };
  
-      // --- SECTION A : ANIMAUX (Calibrage millimétrique) ---
-      const yA = [630, 603, 576, 549, 522];
+      // --- SECTION A : ANIMAUX ---
+      const yA = [642, 616, 590, 564, 538];
       for (let i = 0; i < 5; i++) {
-        draw(v(`sci${i}`), 48,  yA[i], 9);       // Ligne Nom Scientifique
-        draw(v(`com${i}`), 48,  yA[i] - 12, 9);  // Ligne Nom Commun
-        draw(v(`qty${i}`), 245, yA[i] - 6, 10);  // Centre case Quantité
-        draw(v(`dsc${i}`), 295, yA[i] - 6, 8);   // Centre case Description
-        draw(v(`sta${i}`), 480, yA[i] - 6, 8);   // Centre case Statut
+        draw(v(`sci${i}`), 50,  yA[i], 9);
+        draw(v(`com${i}`), 50,  yA[i] - 14, 9);
+        draw(v(`qty${i}`), 245, yA[i] - 8, 10);
+        draw(v(`dsc${i}`), 295, yA[i] - 8, 8);
+        draw(v(`sta${i}`), 485, yA[i] - 8, 8);
       }
  
-      // --- SECTION B : CÉDANT (Dégage les labels du formulaire) ---
+      // --- SECTION B : CÉDANT ---
       const civC = radioVal('civC');
-      if (civC === 'Madame')      draw('X', 48,  478, 12);
-      if (civC === 'Mademoiselle') draw('X', 113, 478, 12);
-      if (civC === 'Monsieur')     draw('X', 198, 478, 12);
+      if (civC === 'Madame')       draw('X', 47,  540, 11);
+      if (civC === 'Mademoiselle') draw('X', 112, 540, 11);
+      if (civC === 'Monsieur')     draw('X', 196, 540, 11);
 
-      draw(v('cNom'),   215, 451, 10); // Après "Raison sociale :"
-      draw(v('cNum'),   135, 426, 10); // Après "Numéro :"
-      draw(v('cExt'),   225, 426, 10); // Après "Extension :"
-      draw(v('cRue'),   305, 426, 10); // Après "Nom de voie :"
-      draw(v('cCP'),    115, 401, 10); // Après "Code postal :"
-      draw(v('cVille'), 225, 401, 10); // Après "Commune :"
-      draw(v('cPays'),  405, 401, 10); // Après "Pays :"
+      draw(v('cNom'),   220, 526, 10);
+ 
+      draw(v('cNum'),   135, 496, 10);
+      draw(v('cExt'),   230, 496, 10);
+      draw(v('cRue'),   310, 496, 10);
+ 
+      draw(v('cCP'),    140, 466, 10);
+      draw(v('cVille'), 260, 466, 10);
+      draw(v('cPays'),  430, 466, 10);
  
       // --- SECTION C : CESSIONNAIRE ---
       const civA = radioVal('civA');
-      if (civA === 'Madame')      draw('X', 48,  345, 12);
-      if (civA === 'Mademoiselle') draw('X', 113, 345, 12);
-      if (civA === 'Monsieur')     draw('X', 198, 345, 12);
+      if (civA === 'Madame')       draw('X', 47,  400, 11);
+      if (civA === 'Mademoiselle') draw('X', 112, 400, 11);
+      if (civA === 'Monsieur')     draw('X', 196, 400, 11);
 
-      draw(v('aNom'),   215, 318, 10);
-      draw(v('aNum'),   135, 293, 10);
-      draw(v('aExt'),   225, 293, 10);
-      draw(v('aRue'),   305, 293, 10);
-      draw(v('aCP'),    115, 268, 10);
-      draw(v('aVille'), 225, 268, 10);
-      draw(v('aPays'),  405, 268, 10);
+      draw(v('aNom'),   220, 386, 10);
  
-      // --- SECTION D : LIEU ET DATE (Case par case) ---
-      draw(v('lieu'), 250, 153, 10);
-      const dateStr = v('date');
-      if (dateStr && dateStr.includes('/')) {
-        const p = dateStr.split('/');
-        draw(p[0], 418, 153, 10); // Jour [ ]
-        draw(p[1], 446, 153, 10); // Mois [ ]
-        draw(p[2], 476, 153, 10); // Année [ ]
-      } else {
-        draw(dateStr, 418, 153, 10);
-      }
+      draw(v('aNum'),   135, 356, 10);
+      draw(v('aExt'),   230, 356, 10);
+      draw(v('aRue'),   310, 356, 10);
+ 
+      draw(v('aCP'),    140, 326, 10);
+      draw(v('aVille'), 260, 326, 10);
+      draw(v('aPays'),  430, 326, 10);
+ 
+      // --- SECTION D : LIEU ET DATE ---
+      draw(v('lieu'), 260, 156, 10);
+      draw(v('date'), 125, 131, 10); 
  
       // --- SIGNATURES ---
       const drawSig = async (pad, x, y) => {
