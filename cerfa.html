@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <title>Attestation de Cession - Cerfa 14367*01</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; }
@@ -19,208 +17,348 @@
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
     .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 10px; }
     label { font-size: 0.72rem; color: #94a3b8; display: block; margin-bottom: 4px; }
-    input { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; font-size: 0.85rem; }
-    select { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; }
+    input { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; font-size: 0.85rem; transition: border-color 0.2s; }
+    input:focus { outline: none; border-color: #38bdf8; }
+    select { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; font-size: 0.85rem; }
 
+    /* Civilité radio */
     .civ-group { display: flex; gap: 16px; margin-bottom: 12px; }
-    .civ-group label { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: #cbd5e1; }
-    .civ-group input[type=radio] { width: auto; }
+    .civ-group label { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: #cbd5e1; cursor: pointer; margin-bottom: 0; }
+    .civ-group input[type=radio] { width: auto; accent-color: #38bdf8; }
 
-    .animals-header { display: grid; grid-template-columns: 30px 1.8fr 1.2fr 0.5fr 2fr 1.5fr; gap: 8px; margin-bottom: 4px; }
+    /* Section A - tableau animaux */
+    .animals-header { display: grid; grid-template-columns: 30px 1.8fr 1.2fr 0.5fr 2fr 1.5fr; gap: 8px; margin-bottom: 4px; padding: 0 4px; }
     .animals-header span { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
-
     .animal-row { display: grid; grid-template-columns: 30px 1.8fr 1.2fr 0.5fr 2fr 1.5fr; gap: 8px; align-items: center; margin-bottom: 6px; }
-    .row-label { font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-align: center; }
+    .row-label { font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-align: center; padding-top: 2px; }
 
+    /* Signatures */
     .sig-container { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
-    .canvas-wrapper { background: white; border-radius: 6px; height: 130px; position: relative; }
-    canvas { position: absolute; width: 100%; height: 100%; }
+    .sig-box { flex: 1; min-width: 260px; }
+    .sig-box > label { font-size: 0.78rem; color: #94a3b8; margin-bottom: 6px; }
+    .canvas-wrapper { background: white; border-radius: 6px; height: 130px; position: relative; margin: 5px 0; }
+    canvas { position: absolute; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
+    .btn-clear { background: #1e293b; border: 1px solid #334155; color: #94a3b8; padding: 4px 12px; font-size: 0.7rem; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+    .btn-clear:hover { background: #334155; }
 
-    .btn-main { background: #38bdf8; color: #020617; border: none; padding: 13px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; margin-top: 20px; }
+    /* Bouton générer */
+    .btn-main { background: #38bdf8; color: #020617; border: none; padding: 13px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.95rem; width: 100%; margin-top: 20px; letter-spacing: 0.03em; transition: background 0.2s; }
+    .btn-main:hover { background: #7dd3fc; }
+    .btn-main:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+    .notice { font-size: 0.72rem; color: #64748b; margin-top: 8px; line-height: 1.5; font-style: italic; }
+    .field { margin-bottom: 0; }
   </style>
 </head>
-
 <body>
 
 <header class="navbar">
-  <div class="navbar-title">Générateur Cerfa 14367*01</div>
+  <div class="navbar-title">Générateur Cerfa 14367*01 — Cession d'animaux non domestiques</div>
 </header>
 
 <main class="page">
-<form>
+  <form id="cerfaForm" onsubmit="return false;">
 
-<!-- SECTION A -->
-<div class="card">
-<h2>A – Description</h2>
+    <!-- SECTION A -->
+    <div class="card">
+      <h2>A – Description des spécimens concernés par la cession</h2>
+      <div class="animals-header">
+        <span></span>
+        <span>Nom scientifique</span>
+        <span>Nom commun</span>
+        <span>Qté</span>
+        <span>Description (ID, sexe…)</span>
+        <span>Statut juridique</span>
+      </div>
 
-<div class="animals-header">
-<span></span><span>Nom scientifique</span><span>Nom commun</span><span>Qté</span><span>Description</span><span>Statut</span>
-</div>
+      <div class="animal-row">
+        <div class="row-label">A1</div>
+        <div><input type="text" id="sci0" placeholder="ex : Pterophyllum scalare"></div>
+        <div><input type="text" id="com0" placeholder="ex : Scalaire"></div>
+        <div><input type="text" id="qty0" placeholder="2"></div>
+        <div><input type="text" id="dsc0" placeholder="Mâle, ID: 001"></div>
+        <div><input type="text" id="sta0" placeholder="Annexe B CITES"></div>
+      </div>
 
-<div id="animals"></div>
+      <div class="animal-row">
+        <div class="row-label">A2</div>
+        <div><input type="text" id="sci1"></div>
+        <div><input type="text" id="com1"></div>
+        <div><input type="text" id="qty1"></div>
+        <div><input type="text" id="dsc1"></div>
+        <div><input type="text" id="sta1"></div>
+      </div>
 
-</div>
+      <div class="animal-row">
+        <div class="row-label">A3</div>
+        <div><input type="text" id="sci2"></div>
+        <div><input type="text" id="com2"></div>
+        <div><input type="text" id="qty2"></div>
+        <div><input type="text" id="dsc2"></div>
+        <div><input type="text" id="sta2"></div>
+      </div>
 
-<!-- SECTION B -->
-<div class="card">
-<h2>B – Cédant</h2>
-<input id="cNom" placeholder="Nom">
-<input id="cNum" placeholder="Numéro">
-<input id="cExt" placeholder="Extension">
-<input id="cRue" placeholder="Rue">
-<input id="cCP" placeholder="Code postal">
-<input id="cVille" placeholder="Ville">
-<input id="cPays" value="France">
-</div>
+      <div class="animal-row">
+        <div class="row-label">A4</div>
+        <div><input type="text" id="sci3"></div>
+        <div><input type="text" id="com3"></div>
+        <div><input type="text" id="qty3"></div>
+        <div><input type="text" id="dsc3"></div>
+        <div><input type="text" id="sta3"></div>
+      </div>
 
-<!-- SECTION C -->
-<div class="card">
-<h2>C – Acheteur</h2>
-<input id="aNom">
-<input id="aNum">
-<input id="aExt">
-<input id="aRue">
-<input id="aCP">
-<input id="aVille">
-<input id="aPays" value="France">
-</div>
+      <div class="animal-row">
+        <div class="row-label">A5</div>
+        <div><input type="text" id="sci4"></div>
+        <div><input type="text" id="com4"></div>
+        <div><input type="text" id="qty4"></div>
+        <div><input type="text" id="dsc4"></div>
+        <div><input type="text" id="sta4"></div>
+      </div>
 
-<!-- SECTION D -->
-<div class="card">
-<h2>D – Signature</h2>
+      <p class="notice">(1) numéro d'identification, sexe, signes particuliers des spécimens.<br>
+      (2) préciser s'il s'agit d'une espèce : protégée (art. L.411-1), figurant en annexe A, B ou X du règlement CE n°338/97 (CITES), figurant aux annexes 1 ou 2 des arrêtés du 10 août 2004.</p>
+    </div>
 
-<input id="lieu" placeholder="Lieu">
-<input id="date" placeholder="JJ/MM/AAAA">
+    <!-- SECTION B -->
+    <div class="card">
+      <h2>B – Identification du cédant des animaux</h2>
+      <div class="civ-group">
+        <label><input type="radio" name="civC" value="Madame"> Madame</label>
+        <label><input type="radio" name="civC" value="Mademoiselle"> Mademoiselle</label>
+        <label><input type="radio" name="civC" value="Monsieur" checked> Monsieur</label>
+      </div>
+      <div class="field" style="margin-bottom:10px">
+        <label>Nom, prénom(s) ou raison sociale</label>
+        <input type="text" id="cNom">
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Numéro de voie</label><input type="text" id="cNum"></div>
+        <div class="field"><label>Extension (bis, ter…)</label><input type="text" id="cExt"></div>
+        <div class="field"><label>Nom de voie</label><input type="text" id="cRue"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Code postal</label><input type="text" id="cCP" maxlength="5"></div>
+        <div class="field"><label>Commune</label><input type="text" id="cVille"></div>
+        <div class="field"><label>Pays</label><input type="text" id="cPays" value="France"></div>
+      </div>
+    </div>
 
-<div class="sig-container">
-<div class="canvas-wrapper"><canvas id="canvasC"></canvas></div>
-<div class="canvas-wrapper"><canvas id="canvasA"></canvas></div>
-</div>
+    <!-- SECTION C -->
+    <div class="card">
+      <h2>C – Identification du cessionnaire (qui acquiert ou reçoit)</h2>
+      <div class="civ-group">
+        <label><input type="radio" name="civA" value="Madame"> Madame</label>
+        <label><input type="radio" name="civA" value="Mademoiselle"> Mademoiselle</label>
+        <label><input type="radio" name="civA" value="Monsieur" checked> Monsieur</label>
+      </div>
+      <div class="field" style="margin-bottom:10px">
+        <label>Nom, prénom(s) ou raison sociale</label>
+        <input type="text" id="aNom">
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Numéro de voie</label><input type="text" id="aNum"></div>
+        <div class="field"><label>Extension (bis, ter…)</label><input type="text" id="aExt"></div>
+        <div class="field"><label>Nom de voie</label><input type="text" id="aRue"></div>
+      </div>
+      <div class="grid3">
+        <div class="field"><label>Code postal</label><input type="text" id="aCP" maxlength="5"></div>
+        <div class="field"><label>Commune</label><input type="text" id="aVille"></div>
+        <div class="field"><label>Pays</label><input type="text" id="aPays" value="France"></div>
+      </div>
+    </div>
 
-<button type="button" class="btn-main" id="generate">GÉNÉRER</button>
+    <!-- SECTION D -->
+    <div class="card">
+      <h2>D – Signature de l'attestation de cession</h2>
+      <div class="grid2">
+        <div class="field"><label>Fait à</label><input type="text" id="lieu" placeholder="Nancy"></div>
+        <div class="field"><label>Date (JJ/MM/AAAA)</label><input type="text" id="date" placeholder="14/04/2026"></div>
+      </div>
+      <div class="sig-container">
+        <div class="sig-box">
+          <label>Signature du cédant</label>
+          <div class="canvas-wrapper"><canvas id="canvasC"></canvas></div>
+          <button type="button" class="btn-clear" id="clearC">Effacer</button>
+        </div>
+        <div class="sig-box">
+          <label>Signature du cessionnaire</label>
+          <div class="canvas-wrapper"><canvas id="canvasA"></canvas></div>
+          <button type="button" class="btn-clear" id="clearA">Effacer</button>
+        </div>
+      </div>
+      <p class="notice">⚠ Les signatures sont obligatoires lorsque les animaux appartiennent à une espèce figurant en annexe 1 ou 2 des arrêtés du 10 août 2004.</p>
+      <button type="button" class="btn-main" id="generate">GÉNÉRER LE PDF SIGNÉ</button>
+    </div>
 
-</div>
-
-</form>
+  </form>
 </main>
 
 <script>
+  // --- Initialisation des pads de signature ---
+  const initPad = (id) => {
+    const canvas = document.getElementById(id);
+    const dpr = Math.max(window.devicePixelRatio || 1, 1);
+    const wrapper = canvas.parentElement;
+    canvas.width = wrapper.clientWidth * dpr;
+    canvas.height = wrapper.clientHeight * dpr;
+    canvas.getContext('2d').scale(dpr, dpr);
+    return new SignaturePad(canvas, { penColor: '#000000' });
+  };
 
-// ================= TABLEAU A =================
-const animals = document.getElementById("animals");
+  const pC = initPad('canvasC');
+  const pA = initPad('canvasA');
 
-for(let i=0;i<5;i++){
-animals.innerHTML += `
-<div class="animal-row">
-<div class="row-label">A${i+1}</div>
-<input id="sci${i}">
-<input id="com${i}">
-<input id="qty${i}">
-<input id="dsc${i}">
-<input id="sta${i}">
-</div>`;
-}
+  document.getElementById('clearC').onclick = () => pC.clear();
+  document.getElementById('clearA').onclick = () => pA.clear();
 
-// ================= SIGNATURE =================
-const initPad = (id)=>{
-  const canvas = document.getElementById(id);
-  const ratio = window.devicePixelRatio || 1;
-  canvas.width = canvas.offsetWidth * ratio;
-  canvas.height = canvas.offsetHeight * ratio;
-  canvas.getContext("2d").scale(ratio, ratio);
-  return new SignaturePad(canvas);
-};
+  // --- Utilitaires ---
+  const v = (id) => {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  };
 
-const pC = initPad("canvasC");
-const pA = initPad("canvasA");
+  const radioVal = (name) => {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  };
 
-// ================= UTILS =================
-const v = id => document.getElementById(id)?.value.trim() || "";
-const cut = (t,m)=> t.length>m ? t.slice(0,m) : t;
+  // --- Génération PDF ---
+  document.getElementById('generate').onclick = async () => {
+    const btn = document.getElementById('generate');
+    btn.textContent = 'Génération en cours…';
+    btn.disabled = true;
 
-// ================= PDF =================
-document.getElementById("generate").onclick = async ()=>{
+    try {
+      const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
-const { PDFDocument, rgb, StandardFonts } = PDFLib;
+      // Chargement du cerfa original (doit être dans le même dossier)
+      const pdfBytes = await fetch('cerfa-14367-01.pdf').then(r => {
+        if (!r.ok) throw new Error('Fichier cerfa-14367-01.pdf introuvable. Placez-le dans le même dossier que cette page HTML.');
+        return r.arrayBuffer();
+      });
 
-const bytes = await fetch("cerfa-14367-01.pdf").then(r=>r.arrayBuffer());
-const pdf = await PDFDocument.load(bytes);
-const font = await pdf.embedFont(StandardFonts.Helvetica);
+      const pdf = await PDFDocument.load(pdfBytes);
+      const font = await pdf.embedFont(StandardFonts.Helvetica);
+      const page = pdf.getPages()[0];
+      const { height } = page.getSize();
 
-const page = pdf.getPages()[0];
-const { height } = page.getSize();
+      // Fonction de dessin (y = distance depuis le HAUT de la page)
+      const draw = (text, x, yFromTop, size = 9) => {
+        if (!text) return;
+        page.drawText(String(text), {
+          x,
+          y: height - yFromTop,
+          size,
+          font,
+          color: rgb(0, 0, 0)
+        });
+      };
 
-const draw = (txt,x,y,size=9)=>{
-if(!txt) return;
-page.drawText(txt,{x,y:height-y,size,font,color:rgb(0,0,0)});
-};
+      // =============================================
+      // SECTION A — Spécimens (lignes A1 à A5)
+      // Y mesuré depuis le haut pour chaque ligne
+      // =============================================
+      const lignesA = [
+        { yTop: 196, yBot: 208 },  // A1
+        { yTop: 226, yBot: 238 },  // A2
+        { yTop: 256, yBot: 268 },  // A3
+        { yTop: 286, yBot: 298 },  // A4
+        { yTop: 316, yBot: 328 },  // A5
+      ];
 
-// ===== TABLE =====
-let baseY=195, gap=30;
+      for (let i = 0; i < 5; i++) {
+        const { yTop, yBot } = lignesA[i];
+        draw(v(`sci${i}`), 48,  yTop, 8);  // Nom scientifique (ligne haute)
+        draw(v(`com${i}`), 48,  yBot, 8);  // Nom commun (ligne basse)
+        draw(v(`qty${i}`), 230, yTop + 6, 9); // Quantité (centré entre les deux)
+        draw(v(`dsc${i}`), 290, yTop + 6, 8); // Description
+        draw(v(`sta${i}`), 478, yTop + 6, 8); // Statut juridique
+      }
 
-for(let i=0;i<5;i++){
-let y=baseY+i*gap;
+      // =============================================
+      // SECTION B — Cédant
+      // =============================================
+      draw(v('cNom'),   172, 444, 9);
 
-draw(cut(v(`sci${i}`),30),50,y,8);
-draw(cut(v(`com${i}`),30),50,y+10,8);
+      // Adresse cédant
+      const cAdresse = [v('cNum'), v('cExt'), v('cRue')].filter(Boolean).join(' ');
+      draw(cAdresse, 96, 464, 9);
 
-draw(v(`qty${i}`),235,y+5);
-draw(cut(v(`dsc${i}`),35),290,y+5,8);
-draw(cut(v(`sta${i}`),25),480,y+5,8);
-}
+      draw(v('cCP'),    96,  483, 9);
+      draw(v('cVille'), 200, 483, 9);
+      draw(v('cPays'),  368, 483, 9);
 
-// ===== CEDANT =====
-draw(cut(v("cNom"),50),170,445);
-draw(cut(`${v("cNum")} ${v("cExt")} ${v("cRue")}`,60),95,465);
+      // =============================================
+      // SECTION C — Cessionnaire
+      // =============================================
+      draw(v('aNom'),   172, 529, 9);
 
-v("cCP").split("").forEach((n,i)=>draw(n,95+i*12,485));
-draw(v("cVille"),170,485);
-draw(v("cPays"),360,485);
+      const aAdresse = [v('aNum'), v('aExt'), v('aRue')].filter(Boolean).join(' ');
+      draw(aAdresse, 96, 549, 9);
 
-// ===== ACHETEUR =====
-draw(cut(v("aNom"),50),170,530);
-draw(cut(`${v("aNum")} ${v("aExt")} ${v("aRue")}`,60),95,550);
+      draw(v('aCP'),    96,  568, 9);
+      draw(v('aVille'), 200, 568, 9);
+      draw(v('aPays'),  368, 568, 9);
 
-v("aCP").split("").forEach((n,i)=>draw(n,95+i*12,570));
-draw(v("aVille"),170,570);
-draw(v("aPays"),360,570);
+      // =============================================
+      // SECTION D — Lieu, date
+      // =============================================
+      draw(v('lieu'), 232, 637, 9);
 
-// ===== DATE =====
-draw(v("lieu"),230,640);
+      // Découpage de la date JJ/MM/AAAA dans les cases
+      const dateStr = v('date');
+      if (dateStr) {
+        const parts = dateStr.split('/');
+        if (parts.length === 3) {
+          draw(parts[0], 422, 637, 9); // Jour
+          draw(parts[1], 443, 637, 9); // Mois
+          draw(parts[2], 460, 637, 9); // Année
+        } else {
+          draw(dateStr, 422, 637, 9);
+        }
+      }
 
-let d=v("date").split("/");
-if(d.length===3){
-d[0].split("").forEach((n,i)=>draw(n,420+i*12,640));
-d[1].split("").forEach((n,i)=>draw(n,450+i*12,640));
-d[2].split("").forEach((n,i)=>draw(n,480+i*12,640));
-}
+      // =============================================
+      // SIGNATURES
+      // =============================================
+      const drawSig = async (pad, x, yFromTop) => {
+        if (!pad.isEmpty()) {
+          const imgData = pad.toDataURL('image/png');
+          const img = await pdf.embedPng(imgData);
+          page.drawImage(img, {
+            x,
+            y: height - yFromTop,
+            width: 130,
+            height: 50
+          });
+        }
+      };
 
-// ===== SIGNATURE =====
-const drawSig = async(p,x,y)=>{
-if(!p.isEmpty()){
-const img = await pdf.embedPng(p.toDataURL());
-page.drawImage(img,{x,y:height-y,width:130,height:50});
-}
-};
+      await drawSig(pC, 62,  720);  // Signature cédant
+      await drawSig(pA, 322, 720);  // Signature cessionnaire
 
-await drawSig(pC,60,720);
-await drawSig(pA,320,720);
+      // =============================================
+      // SAUVEGARDE ET TÉLÉCHARGEMENT
+      // =============================================
+      const savedBytes = await pdf.save();
+      const blob = new Blob([savedBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const nomFichier = v('sci0') ? v('sci0').replace(/[^a-z0-9]/gi, '_') : 'espece';
+      a.download = `Cession_${nomFichier}.pdf`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
 
-// ===== EXPORT =====
-const final = await pdf.save();
-const blob = new Blob([final],{type:"application/pdf"});
-const url = URL.createObjectURL(blob);
+    } catch (e) {
+      alert('Erreur : ' + e.message);
+      console.error(e);
+    }
 
-const a=document.createElement("a");
-a.href=url;
-a.download="cerfa.pdf";
-a.click();
-
-URL.revokeObjectURL(url);
-
-};
-
+    btn.textContent = 'GÉNÉRER LE PDF SIGNÉ';
+    btn.disabled = false;
+  };
 </script>
-
 </body>
 </html>
