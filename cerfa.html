@@ -1,29 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Générateur Cerfa 14367*01</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Attestation de Cession - Cerfa 14367*01</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
 
-<style>
-body { font-family: sans-serif; background:#0b1120; color:white; padding:20px; }
-input { width:100%; margin:4px 0; padding:6px; }
-button { padding:10px; margin-top:10px; cursor:pointer; }
-canvas { background:white; width:100%; height:120px; }
-</style>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #020617; color: #e5e7eb; min-height: 100vh; }
+    .navbar { position: fixed; top: 0; width: 100%; min-height: 56px; background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid #1f2937; display: flex; align-items: center; padding: 0 16px; z-index: 50; gap: 10px; }
+    .navbar-title { font-size: 0.95rem; font-weight: 600; color: #38bdf8; }
+    .page { padding: 80px 12px 40px; max-width: 960px; margin: 0 auto; }
+    .card { background: #0b1120; border-radius: 10px; border: 1px solid #1f2937; padding: 20px; margin-bottom: 16px; }
+    .card h2 { font-size: 0.85rem; color: #fbbf24; margin-bottom: 14px; border-bottom: 1px solid #1f2937; padding-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+    label { font-size: 0.72rem; color: #94a3b8; display: block; margin-bottom: 4px; }
+    input { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; font-size: 0.85rem; }
+    select { width: 100%; padding: 8px 10px; background: #0f172a; border: 1px solid #1f2937; border-radius: 6px; color: white; }
+
+    .civ-group { display: flex; gap: 16px; margin-bottom: 12px; }
+    .civ-group label { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: #cbd5e1; }
+    .civ-group input[type=radio] { width: auto; }
+
+    .animals-header { display: grid; grid-template-columns: 30px 1.8fr 1.2fr 0.5fr 2fr 1.5fr; gap: 8px; margin-bottom: 4px; }
+    .animals-header span { font-size: 0.68rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+
+    .animal-row { display: grid; grid-template-columns: 30px 1.8fr 1.2fr 0.5fr 2fr 1.5fr; gap: 8px; align-items: center; margin-bottom: 6px; }
+    .row-label { font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-align: center; }
+
+    .sig-container { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+    .canvas-wrapper { background: white; border-radius: 6px; height: 130px; position: relative; }
+    canvas { position: absolute; width: 100%; height: 100%; }
+
+    .btn-main { background: #38bdf8; color: #020617; border: none; padding: 13px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; margin-top: 20px; }
+  </style>
 </head>
 
 <body>
 
-<h2>Générateur Cerfa</h2>
+<header class="navbar">
+  <div class="navbar-title">Générateur Cerfa 14367*01</div>
+</header>
 
-<h3>Animaux</h3>
+<main class="page">
+<form>
+
+<!-- SECTION A -->
+<div class="card">
+<h2>A – Description</h2>
+
+<div class="animals-header">
+<span></span><span>Nom scientifique</span><span>Nom commun</span><span>Qté</span><span>Description</span><span>Statut</span>
+</div>
+
 <div id="animals"></div>
 
-<h3>Cédant</h3>
+</div>
+
+<!-- SECTION B -->
+<div class="card">
+<h2>B – Cédant</h2>
 <input id="cNom" placeholder="Nom">
 <input id="cNum" placeholder="Numéro">
 <input id="cExt" placeholder="Extension">
@@ -31,8 +71,11 @@ canvas { background:white; width:100%; height:120px; }
 <input id="cCP" placeholder="Code postal">
 <input id="cVille" placeholder="Ville">
 <input id="cPays" value="France">
+</div>
 
-<h3>Acheteur</h3>
+<!-- SECTION C -->
+<div class="card">
+<h2>C – Acheteur</h2>
 <input id="aNom">
 <input id="aNum">
 <input id="aExt">
@@ -40,41 +83,45 @@ canvas { background:white; width:100%; height:120px; }
 <input id="aCP">
 <input id="aVille">
 <input id="aPays" value="France">
+</div>
 
-<h3>Signature</h3>
+<!-- SECTION D -->
+<div class="card">
+<h2>D – Signature</h2>
+
 <input id="lieu" placeholder="Lieu">
 <input id="date" placeholder="JJ/MM/AAAA">
 
-<p>Cédant</p>
-<canvas id="c1"></canvas>
-<button onclick="pad1.clear()">Effacer</button>
+<div class="sig-container">
+<div class="canvas-wrapper"><canvas id="canvasC"></canvas></div>
+<div class="canvas-wrapper"><canvas id="canvasA"></canvas></div>
+</div>
 
-<p>Acheteur</p>
-<canvas id="c2"></canvas>
-<button onclick="pad2.clear()">Effacer</button>
+<button type="button" class="btn-main" id="generate">GÉNÉRER</button>
 
-<button id="gen">GÉNÉRER PDF</button>
+</div>
+
+</form>
+</main>
 
 <script>
-// =======================
-// INIT TABLEAU A
-// =======================
-const animalsDiv = document.getElementById("animals");
 
-for (let i=0;i<5;i++){
-  animalsDiv.innerHTML += `
-    <input id="sci${i}" placeholder="Nom scientifique">
-    <input id="com${i}" placeholder="Nom commun">
-    <input id="qty${i}" placeholder="Qté">
-    <input id="dsc${i}" placeholder="Description">
-    <input id="sta${i}" placeholder="Statut">
-    <hr>
-  `;
+// ================= TABLEAU A =================
+const animals = document.getElementById("animals");
+
+for(let i=0;i<5;i++){
+animals.innerHTML += `
+<div class="animal-row">
+<div class="row-label">A${i+1}</div>
+<input id="sci${i}">
+<input id="com${i}">
+<input id="qty${i}">
+<input id="dsc${i}">
+<input id="sta${i}">
+</div>`;
 }
 
-// =======================
-// SIGNATURES
-// =======================
+// ================= SIGNATURE =================
 const initPad = (id)=>{
   const canvas = document.getElementById(id);
   const ratio = window.devicePixelRatio || 1;
@@ -84,139 +131,95 @@ const initPad = (id)=>{
   return new SignaturePad(canvas);
 };
 
-const pad1 = initPad("c1");
-const pad2 = initPad("c2");
+const pC = initPad("canvasC");
+const pA = initPad("canvasA");
 
-// =======================
-// UTILS
-// =======================
+// ================= UTILS =================
 const v = id => document.getElementById(id)?.value.trim() || "";
+const cut = (t,m)=> t.length>m ? t.slice(0,m) : t;
 
-// coupe texte si trop long
-const cut = (txt, max=40)=>{
-  if(txt.length > max) return txt.slice(0,max);
-  return txt;
-};
-
-// =======================
-// GENERATION PDF
-// =======================
-document.getElementById("gen").onclick = async ()=>{
+// ================= PDF =================
+document.getElementById("generate").onclick = async ()=>{
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
 const bytes = await fetch("cerfa-14367-01.pdf").then(r=>r.arrayBuffer());
 const pdf = await PDFDocument.load(bytes);
-
 const font = await pdf.embedFont(StandardFonts.Helvetica);
+
 const page = pdf.getPages()[0];
 const { height } = page.getSize();
 
 const draw = (txt,x,y,size=9)=>{
-  if(!txt) return;
-  page.drawText(txt,{
-    x,
-    y: height - y,
-    size,
-    font,
-    color: rgb(0,0,0)
-  });
+if(!txt) return;
+page.drawText(txt,{x,y:height-y,size,font,color:rgb(0,0,0)});
 };
 
-// =======================
-// TABLEAU A (PARFAIT)
-// =======================
-const startY = 195;
-const gap = 30;
+// ===== TABLE =====
+let baseY=195, gap=30;
 
 for(let i=0;i<5;i++){
-  let y = startY + i*gap;
+let y=baseY+i*gap;
 
-  draw(cut(v(`sci${i}`),30), 50, y, 8);
-  draw(cut(v(`com${i}`),30), 50, y+10, 8);
+draw(cut(v(`sci${i}`),30),50,y,8);
+draw(cut(v(`com${i}`),30),50,y+10,8);
 
-  draw(v(`qty${i}`), 235, y+5);
-  draw(cut(v(`dsc${i}`),35), 290, y+5, 8);
-  draw(cut(v(`sta${i}`),25), 480, y+5, 8);
+draw(v(`qty${i}`),235,y+5);
+draw(cut(v(`dsc${i}`),35),290,y+5,8);
+draw(cut(v(`sta${i}`),25),480,y+5,8);
 }
 
-// =======================
-// CEDANT
-// =======================
+// ===== CEDANT =====
 draw(cut(v("cNom"),50),170,445);
+draw(cut(`${v("cNum")} ${v("cExt")} ${v("cRue")}`,60),95,465);
 
-const adrC = [v("cNum"),v("cExt"),v("cRue")].join(" ");
-draw(cut(adrC,60),95,465);
-
-// code postal cases
-v("cCP").split("").forEach((n,i)=>{
-  draw(n,95+i*12,485);
-});
-
+v("cCP").split("").forEach((n,i)=>draw(n,95+i*12,485));
 draw(v("cVille"),170,485);
 draw(v("cPays"),360,485);
 
-// =======================
-// ACHETEUR
-// =======================
+// ===== ACHETEUR =====
 draw(cut(v("aNom"),50),170,530);
+draw(cut(`${v("aNum")} ${v("aExt")} ${v("aRue")}`,60),95,550);
 
-const adrA = [v("aNum"),v("aExt"),v("aRue")].join(" ");
-draw(cut(adrA,60),95,550);
-
-v("aCP").split("").forEach((n,i)=>{
-  draw(n,95+i*12,570);
-});
-
+v("aCP").split("").forEach((n,i)=>draw(n,95+i*12,570));
 draw(v("aVille"),170,570);
 draw(v("aPays"),360,570);
 
-// =======================
-// DATE
-// =======================
+// ===== DATE =====
 draw(v("lieu"),230,640);
 
-let d = v("date").split("/");
+let d=v("date").split("/");
 if(d.length===3){
-  d[0].split("").forEach((n,i)=>draw(n,420+i*12,640));
-  d[1].split("").forEach((n,i)=>draw(n,450+i*12,640));
-  d[2].split("").forEach((n,i)=>draw(n,480+i*12,640));
+d[0].split("").forEach((n,i)=>draw(n,420+i*12,640));
+d[1].split("").forEach((n,i)=>draw(n,450+i*12,640));
+d[2].split("").forEach((n,i)=>draw(n,480+i*12,640));
 }
 
-// =======================
-// SIGNATURES
-// =======================
-const drawSig = async(pad,x,y)=>{
-  if(!pad.isEmpty()){
-    const img = await pdf.embedPng(pad.toDataURL());
-    page.drawImage(img,{
-      x,
-      y: height - y,
-      width:130,
-      height:50
-    });
-  }
+// ===== SIGNATURE =====
+const drawSig = async(p,x,y)=>{
+if(!p.isEmpty()){
+const img = await pdf.embedPng(p.toDataURL());
+page.drawImage(img,{x,y:height-y,width:130,height:50});
+}
 };
 
-await drawSig(pad1,60,720);
-await drawSig(pad2,320,720);
+await drawSig(pC,60,720);
+await drawSig(pA,320,720);
 
-// =======================
-// EXPORT
-// =======================
+// ===== EXPORT =====
 const final = await pdf.save();
 const blob = new Blob([final],{type:"application/pdf"});
-
 const url = URL.createObjectURL(blob);
-const a = document.createElement("a");
 
-a.href = url;
-a.download = "cerfa.pdf";
+const a=document.createElement("a");
+a.href=url;
+a.download="cerfa.pdf";
 a.click();
 
 URL.revokeObjectURL(url);
 
 };
+
 </script>
 
 </body>
