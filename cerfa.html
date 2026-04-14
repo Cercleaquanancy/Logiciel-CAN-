@@ -228,9 +228,8 @@
     try {
       const { PDFDocument, rgb, StandardFonts } = PDFLib;
  
-      // Chargement du cerfa original (doit être dans le même dossier)
       const pdfBytes = await fetch('cerfa-14367-01.pdf').then(r => {
-        if (!r.ok) throw new Error('Fichier cerfa-14367-01.pdf introuvable. Placez-le dans le même dossier que cette page HTML.');
+        if (!r.ok) throw new Error('Fichier cerfa-14367-01.pdf introuvable.');
         return r.arrayBuffer();
       });
  
@@ -239,8 +238,8 @@
       const page = pdf.getPages()[0];
       const { height } = page.getSize();
  
-      // Fonction de dessin (y = distance depuis le HAUT de la page)
-      const draw = (text, x, yFromTop, size = 9) => {
+      // Fonction de dessin principal
+      const draw = (text, x, yFromTop, size = 10) => {
         if (!text) return;
         page.drawText(String(text), {
           x,
@@ -252,83 +251,75 @@
       };
  
       // =============================================
-      // SECTION A — Spécimens (lignes A1 à A5)
-      // Ajustement de la hauteur (y) pour le CERFA
+      // SECTION A — Spécimens (Ajusté vers la droite)
       // =============================================
       const lignesA = [
-        { yTop: 198, yBot: 210 },  // A1
-        { yTop: 222, yBot: 234 },  // A2
-        { yTop: 246, yBot: 258 },  // A3
-        { yTop: 270, yBot: 282 },  // A4
-        { yTop: 294, yBot: 306 },  // A5
+        { yTop: 198, yBot: 210 },  
+        { yTop: 222, yBot: 234 },  
+        { yTop: 246, yBot: 258 },  
+        { yTop: 270, yBot: 282 },  
+        { yTop: 294, yBot: 306 },  
       ];
  
       for (let i = 0; i < 5; i++) {
         const { yTop, yBot } = lignesA[i];
-        draw(v(`sci${i}`), 46,  yTop, 9);  
-        draw(v(`com${i}`), 46,  yBot, 9);  
-        draw(v(`qty${i}`), 242, yTop + 6, 9); 
-        draw(v(`dsc${i}`), 282, yTop + 6, 8); 
-        draw(v(`sta${i}`), 485, yTop + 6, 8); 
+        draw(v(`sci${i}`), 55,  yTop, 9);  
+        draw(v(`com${i}`), 55,  yBot, 9);  
+        draw(v(`qty${i}`), 255, yTop + 6, 10); 
+        draw(v(`dsc${i}`), 295, yTop + 6, 8); 
+        draw(v(`sta${i}`), 475, yTop + 6, 8); 
       }
  
       // =============================================
-      // SECTION B — Cédant
+      // SECTION B — Cédant (Ajusté vers la droite)
       // =============================================
-      
-      // Civilité
       const civC = radioVal('civC');
-      if (civC === 'Madame') draw('X', 48, 413, 10);
-      if (civC === 'Mademoiselle') draw('X', 113, 413, 10);
-      if (civC === 'Monsieur') draw('X', 198, 413, 10);
+      if (civC === 'Madame') draw('X', 40, 412, 11);
+      if (civC === 'Mademoiselle') draw('X', 105, 412, 11);
+      if (civC === 'Monsieur') draw('X', 182, 412, 11);
 
-      draw(v('cNom'),   175, 442, 10);
+      draw(v('cNom'),   195, 442, 10); // Décalé de +20px
  
-      // Champs d'adresse totalement séparés pour ne pas superposer le texte du CERFA
-      draw(v('cNum'),   96,  461, 10);
-      draw(v('cExt'),   180, 461, 10);
-      draw(v('cRue'),   250, 461, 10);
+      draw(v('cNum'),   115, 461, 10); // Décalé de +19px
+      draw(v('cExt'),   215, 461, 10); // Décalé de +35px
+      draw(v('cRue'),   295, 461, 10); // Décalé de +45px
  
-      draw(v('cCP'),    96,  481, 10);
-      draw(v('cVille'), 200, 481, 10);
-      draw(v('cPays'),  400, 481, 10);
+      draw(v('cCP'),    120, 481, 10); // Décalé de +24px
+      draw(v('cVille'), 235, 481, 10); // Décalé de +35px
+      draw(v('cPays'),  395, 481, 10); // Décalé de -5px pour centrer
  
       // =============================================
-      // SECTION C — Cessionnaire
+      // SECTION C — Cessionnaire (Ajusté vers la droite)
       // =============================================
-      
-      // Civilité
       const civA = radioVal('civA');
-      if (civA === 'Madame') draw('X', 48, 498, 10);
-      if (civA === 'Mademoiselle') draw('X', 113, 498, 10);
-      if (civA === 'Monsieur') draw('X', 198, 498, 10);
+      if (civA === 'Madame') draw('X', 40, 498, 11);
+      if (civA === 'Mademoiselle') draw('X', 105, 498, 11);
+      if (civA === 'Monsieur') draw('X', 182, 498, 11);
 
-      draw(v('aNom'),   175, 528, 10);
+      draw(v('aNom'),   195, 528, 10);
  
-      // Champs d'adresse totalement séparés
-      draw(v('aNum'),   96,  547, 10);
-      draw(v('aExt'),   180, 547, 10);
-      draw(v('aRue'),   250, 547, 10);
+      draw(v('aNum'),   115, 547, 10);
+      draw(v('aExt'),   215, 547, 10);
+      draw(v('aRue'),   295, 547, 10);
  
-      draw(v('aCP'),    96,  567, 10);
-      draw(v('aVille'), 200, 567, 10);
-      draw(v('aPays'),  400, 567, 10);
+      draw(v('aCP'),    120, 567, 10);
+      draw(v('aVille'), 235, 567, 10);
+      draw(v('aPays'),  395, 567, 10);
  
       // =============================================
-      // SECTION D — Lieu, date
+      // SECTION D — Lieu, date (Ajusté)
       // =============================================
-      draw(v('lieu'), 235, 635, 10);
+      draw(v('lieu'), 250, 635, 10); // Décalé de +15px
  
-      // Découpage parfait de la date dans les 3 cases dédiées
       const dateStr = v('date');
       if (dateStr) {
         const parts = dateStr.split('/');
         if (parts.length === 3) {
-          draw(parts[0], 421, 635, 10); // Jour
-          draw(parts[1], 443, 635, 10); // Mois
-          draw(parts[2], 465, 635, 10); // Année
+          draw(parts[0], 416, 635, 10); 
+          draw(parts[1], 442, 635, 10); 
+          draw(parts[2], 468, 635, 10); 
         } else {
-          draw(dateStr, 421, 635, 10);
+          draw(dateStr, 416, 635, 10);
         }
       }
  
@@ -348,11 +339,11 @@
         }
       };
  
-      await drawSig(pC, 62,  730);  // Signature cédant
-      await drawSig(pA, 322, 730);  // Signature cessionnaire
+      await drawSig(pC, 62,  730);  
+      await drawSig(pA, 322, 730);  
  
       // =============================================
-      // SAUVEGARDE ET TÉLÉCHARGEMENT
+      // SAUVEGARDE
       // =============================================
       const savedBytes = await pdf.save();
       const blob = new Blob([savedBytes], { type: 'application/pdf' });
