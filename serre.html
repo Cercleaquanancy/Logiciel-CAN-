@@ -377,7 +377,6 @@
       <div id="serreBacList" class="aquarium-grid"></div>
     </div>
 
-    <!-- NOUVELLE CARTE : STOCKS DE NOURRITURE PAR TYPE + DATE -->
     <div class="card">
       <h2>Stocks de nourriture de la serre</h2>
       <p class="subtitle">
@@ -461,11 +460,15 @@
       return res.json();
     }
 
+    // --- CLÉ DE SAUVEGARDE LOCALE POUR LA NOURRITURE ---
+    const FEED_STORAGE_KEY = "serreFeedLocalData";
+
     // --- API serre ---
     async function apiGetSerreData() {
-      const res = await fetch('/api/serre');
+      // CORRECTION: Désactivation du cache pour forcer la lecture fraîche
+      const res = await fetch('/api/serre', { cache: 'no-store' });
       if (!res.ok) throw new Error('Erreur GET /api/serre');
-      return res.json(); // { notes, bacs, assignments, feed }
+      return res.json(); 
     }
 
     async function apiSaveSerreNotes(notes) {
@@ -489,7 +492,6 @@
     }
 
     // --- API nourriture ---
-    // On stocke : id=id, name=type, unit=dateIso, quantity=qtyKg
     async function apiSaveFeed() {
       const items = feedHistory.map(x => ({
         id: x.id,
@@ -497,13 +499,21 @@
         unit: x.dateIso,
         quantity: x.qtyKg
       }));
-      const res = await fetch('/api/serre/feed', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, monthlyUseKg: 0 })
-      });
-      if (!res.ok) throw new Error('Erreur POST /api/serre/feed');
-      return res.json();
+
+      // CORRECTION: Sauvegarde locale immédiate (Fallback)
+      localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
+
+      try {
+        const res = await fetch('/api/serre/feed', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items, monthlyUseKg: 0 })
+        });
+        if (!res.ok) throw new Error('Erreur POST /api/serre/feed');
+        return await res.json();
+      } catch (e) {
+        console.warn("Serveur injoignable, sauvegarde de la nourriture conservée en local.");
+      }
     }
 
     // --- Contrôle d'accès serre ---
@@ -733,8 +743,7 @@
     }
 
     // --- Bloc nourriture : historique par type et par date ---
-    // Stockage BDD : id=id, name=type, unit=dateIso, quantity=qtyKg
-    let feedHistory = []; // { id, type, dateIso, qtyKg }
+    let feedHistory = []; 
 
     const feedTypeInput = document.getElementById('feedTypeInput');
     const feedDateInput = document.getElementById('feedDateInput');
@@ -747,7 +756,6 @@
     const feedCalcBtn = document.getElementById('feedCalcBtn');
     const feedResult = document.getElementById('feedResult');
 
-    // date par défaut = aujourd'hui
     (function presetTodayForFeed() {
       if (!feedDateInput) return;
       const d = new Date();
@@ -801,6 +809,10 @@
         btn.addEventListener('click', async () => {
           const id = btn.getAttribute('data-id');
           feedHistory = feedHistory.filter(x => x.id !== id);
+          
+          // CORRECTION: Sauvegarde locale au moment de la suppression
+          localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
+          
           await apiSaveFeed();
           renderFeedTable();
         });
@@ -928,15 +940,25 @@
         serreBacs = Array.isArray(data.bacs) ? data.bacs : [];
         serreAssignments = data.assignments || {};
 
-        // Charger l'historique nourriture depuis la BDD
-        // name=type, unit=dateIso, quantity=qtyKg
-        if (data.feed && Array.isArray(data.feed.items)) {
+        // CORRECTION: Logique intelligente pour charger l'historique nourriture
+        let serverHasFeed = false;
+        if (data.feed && Array.isArray(data.feed.items) && data.feed.items.length > 0) {
+          serverHasFeed = true;
           feedHistory = data.feed.items.map(it => ({
             id: String(it.id),
             type: it.name || '',
             dateIso: it.unit || '',
             qtyKg: Number(it.quantity) || 0
           }));
+          localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
+        }
+
+        // Si le serveur n'a rien renvoyé, on charge la sauvegarde locale par sécurité
+        if (!serverHasFeed) {
+          const localFeed = localStorage.getItem(FEED_STORAGE_KEY);
+          if (localFeed) {
+            try { feedHistory = JSON.parse(localFeed); } catch(e) { feedHistory = []; }
+          }
         }
 
         notesSerreTextArea.value = serreNotes;
@@ -945,7 +967,13 @@
         renderFeedTable();
       } catch (e) {
         console.error(e);
-        alert("Erreur lors du chargement des données de serre.");
+        // Fallback local en cas d'erreur totale du serveur
+        const localFeed = localStorage.getItem(FEED_STORAGE_KEY);
+        if (localFeed) {
+          try { feedHistory = JSON.parse(localFeed); } catch(err) { feedHistory = []; }
+          renderFeedTable();
+        }
+        alert("Problème réseau lors du chargement, récupération des données locales si disponibles.");
       }
     }
 
