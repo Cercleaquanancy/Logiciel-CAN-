@@ -202,7 +202,6 @@
 </main>
  
 <script>
-  // Chargement des paramètres de calibrage sauvegardés
   document.getElementById('offsetX').value = localStorage.getItem('cerfaOffsetX') || 0;
   document.getElementById('offsetY').value = localStorage.getItem('cerfaOffsetY') || 0;
 
@@ -231,13 +230,11 @@
     btn.textContent = 'Génération en cours...';
     btn.disabled = true;
 
-    // Sauvegarde des offsets
     const offX_mm = parseFloat(document.getElementById('offsetX').value) || 0;
     const offY_mm = parseFloat(document.getElementById('offsetY').value) || 0;
     localStorage.setItem('cerfaOffsetX', offX_mm);
     localStorage.setItem('cerfaOffsetY', offY_mm);
 
-    // Conversion mm vers points PDF (1 mm = 2.83465 points)
     const ptX = offX_mm * 2.83465;
     const ptY = offY_mm * 2.83465;
  
@@ -248,7 +245,6 @@
       const font = await pdf.embedFont(StandardFonts.Helvetica);
       const page = pdf.getPages()[0];
  
-      // Fonction de dessin qui applique automatiquement les offsets de calibrage
       const draw = (text, x, y, size = 10) => {
         if (!text) return;
         page.drawText(String(text), { 
@@ -260,11 +256,8 @@
         });
       };
  
-      // =============================================
-      // SECTION A — Spécimens 
-      // (Coordonnées corrigées, Y démarre d'en bas)
-      // =============================================
-      const yA = [645, 620, 595, 570, 545];
+      // --- SECTION A : ANIMAUX ---
+      const yA = [630, 606, 582, 558, 534];
       for (let i = 0; i < 5; i++) {
         draw(v(`sci${i}`), 50,  yA[i], 9);
         draw(v(`com${i}`), 50,  yA[i] - 12, 9);
@@ -273,55 +266,47 @@
         draw(v(`sta${i}`), 485, yA[i] - 6, 8);
       }
  
-      // =============================================
-      // SECTION B — Cédant
-      // =============================================
+      // --- SECTION B : CÉDANT ---
       const civC = radioVal('civC');
-      if (civC === 'Madame')       draw('X', 48,  515, 11);
-      if (civC === 'Mademoiselle') draw('X', 113, 515, 11);
-      if (civC === 'Monsieur')     draw('X', 198, 515, 11);
+      if (civC === 'Madame')       draw('X', 48,  525, 11);
+      if (civC === 'Mademoiselle') draw('X', 113, 525, 11);
+      if (civC === 'Monsieur')     draw('X', 198, 525, 11);
 
-      draw(v('cNom'),   220, 490, 10);
-      draw(v('cNum'),   135, 465, 10);
-      draw(v('cExt'),   230, 465, 10);
-      draw(v('cRue'),   310, 465, 10);
-      draw(v('cCP'),    140, 440, 10);
-      draw(v('cVille'), 260, 440, 10);
-      draw(v('cPays'),  430, 440, 10);
+      draw(v('cNom'),   230, 500, 10);
+      draw(v('cNum'),   150, 475, 10);
+      draw(v('cExt'),   250, 475, 10);
+      draw(v('cRue'),   330, 475, 10);
+      draw(v('cCP'),    145, 450, 10);
+      draw(v('cVille'), 270, 450, 10);
+      draw(v('cPays'),  440, 450, 10);
  
-      // =============================================
-      // SECTION C — Cessionnaire
-      // =============================================
+      // --- SECTION C : CESSIONNAIRE ---
       const civA = radioVal('civA');
-      if (civA === 'Madame')       draw('X', 48,  365, 11);
-      if (civA === 'Mademoiselle') draw('X', 113, 365, 11);
-      if (civA === 'Monsieur')     draw('X', 198, 365, 11);
+      if (civA === 'Madame')       draw('X', 48,  375, 11);
+      if (civA === 'Mademoiselle') draw('X', 113, 375, 11);
+      if (civA === 'Monsieur')     draw('X', 198, 375, 11);
 
-      draw(v('aNom'),   220, 340, 10);
-      draw(v('aNum'),   135, 315, 10);
-      draw(v('aExt'),   230, 315, 10);
-      draw(v('aRue'),   310, 315, 10);
-      draw(v('aCP'),    140, 290, 10);
-      draw(v('aVille'), 260, 290, 10);
-      draw(v('aPays'),  430, 290, 10);
+      draw(v('aNom'),   230, 350, 10);
+      draw(v('aNum'),   150, 325, 10);
+      draw(v('aExt'),   250, 325, 10);
+      draw(v('aRue'),   330, 325, 10);
+      draw(v('aCP'),    145, 300, 10);
+      draw(v('aVille'), 270, 300, 10);
+      draw(v('aPays'),  440, 300, 10);
  
-      // =============================================
-      // SECTION D — Lieu et Date
-      // =============================================
-      draw(v('lieu'), 260, 160, 10);
+      // --- SECTION D : LIEU ET DATE ---
+      draw(v('lieu'), 270, 145, 10);
       const dateStr = v('date');
       if (dateStr && dateStr.includes('/')) {
         const p = dateStr.split('/');
-        draw(p[0], 418, 160, 10); // Jour
-        draw(p[1], 446, 160, 10); // Mois
-        draw(p[2], 476, 160, 10); // Année
+        draw(p[0], 422, 145, 10); 
+        draw(p[1], 448, 145, 10); 
+        draw(p[2], 478, 145, 10); 
       } else {
-        draw(dateStr, 418, 160, 10);
+        draw(dateStr, 422, 145, 10);
       }
  
-      // =============================================
-      // SIGNATURES
-      // =============================================
+      // --- SIGNATURES ---
       const drawSig = async (pad, x, y) => {
         if (!pad.isEmpty()) {
           const img = await pdf.embedPng(pad.toDataURL());
@@ -331,7 +316,6 @@
       await drawSig(pC, 65,  60);  
       await drawSig(pA, 320, 60);  
  
-      // Génération et téléchargement
       const bytes = await pdf.save();
       const blob = new Blob([bytes], { type: 'application/pdf' });
       const link = document.createElement('a');
