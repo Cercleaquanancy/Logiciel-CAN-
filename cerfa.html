@@ -59,7 +59,6 @@
 <main class="page">
   <form id="cerfaForm" onsubmit="return false;">
  
-    <!-- SECTION A -->
     <div class="card">
       <h2>A – Description des spécimens concernés par la cession</h2>
       <div class="animals-header">
@@ -120,7 +119,6 @@
       (2) préciser s'il s'agit d'une espèce : protégée (art. L.411-1), figurant en annexe A, B ou X du règlement CE n°338/97 (CITES), figurant aux annexes 1 ou 2 des arrêtés du 10 août 2004.</p>
     </div>
  
-    <!-- SECTION B -->
     <div class="card">
       <h2>B – Identification du cédant des animaux</h2>
       <div class="civ-group">
@@ -130,21 +128,20 @@
       </div>
       <div class="field" style="margin-bottom:10px">
         <label>Nom, prénom(s) ou raison sociale</label>
-        <input type="text" id="cNom">
+        <input type="text" id="cNom" placeholder="ex : Dupont Jean">
       </div>
       <div class="grid3">
-        <div class="field"><label>Numéro de voie</label><input type="text" id="cNum"></div>
-        <div class="field"><label>Extension (bis, ter…)</label><input type="text" id="cExt"></div>
-        <div class="field"><label>Nom de voie</label><input type="text" id="cRue"></div>
+        <div class="field"><label>Numéro de voie</label><input type="text" id="cNum" placeholder="ex : 12"></div>
+        <div class="field"><label>Extension (bis, ter…)</label><input type="text" id="cExt" placeholder="ex : bis"></div>
+        <div class="field"><label>Nom de voie</label><input type="text" id="cRue" placeholder="ex : Rue des lilas"></div>
       </div>
       <div class="grid3">
-        <div class="field"><label>Code postal</label><input type="text" id="cCP" maxlength="5"></div>
-        <div class="field"><label>Commune</label><input type="text" id="cVille"></div>
-        <div class="field"><label>Pays</label><input type="text" id="cPays" value="France"></div>
+        <div class="field"><label>Code postal</label><input type="text" id="cCP" maxlength="5" placeholder="ex : 54000"></div>
+        <div class="field"><label>Commune</label><input type="text" id="cVille" placeholder="ex : Nancy"></div>
+        <div class="field"><label>Pays</label><input type="text" id="cPays" placeholder="ex : France"></div>
       </div>
     </div>
  
-    <!-- SECTION C -->
     <div class="card">
       <h2>C – Identification du cessionnaire (qui acquiert ou reçoit)</h2>
       <div class="civ-group">
@@ -154,7 +151,7 @@
       </div>
       <div class="field" style="margin-bottom:10px">
         <label>Nom, prénom(s) ou raison sociale</label>
-        <input type="text" id="aNom">
+        <input type="text" id="aNom" placeholder="ex : Martin Alice">
       </div>
       <div class="grid3">
         <div class="field"><label>Numéro de voie</label><input type="text" id="aNum"></div>
@@ -164,16 +161,15 @@
       <div class="grid3">
         <div class="field"><label>Code postal</label><input type="text" id="aCP" maxlength="5"></div>
         <div class="field"><label>Commune</label><input type="text" id="aVille"></div>
-        <div class="field"><label>Pays</label><input type="text" id="aPays" value="France"></div>
+        <div class="field"><label>Pays</label><input type="text" id="aPays" placeholder="ex : France"></div>
       </div>
     </div>
  
-    <!-- SECTION D -->
     <div class="card">
       <h2>D – Signature de l'attestation de cession</h2>
       <div class="grid2">
-        <div class="field"><label>Fait à</label><input type="text" id="lieu" placeholder="Nancy"></div>
-        <div class="field"><label>Date (JJ/MM/AAAA)</label><input type="text" id="date" placeholder="14/04/2026"></div>
+        <div class="field"><label>Fait à</label><input type="text" id="lieu" placeholder="ex : Nancy"></div>
+        <div class="field"><label>Date (JJ/MM/AAAA)</label><input type="text" id="date" placeholder="ex : 14/04/2026"></div>
       </div>
       <div class="sig-container">
         <div class="sig-box">
@@ -257,65 +253,82 @@
  
       // =============================================
       // SECTION A — Spécimens (lignes A1 à A5)
-      // Y mesuré depuis le haut pour chaque ligne
+      // Ajustement de la hauteur (y) pour le CERFA
       // =============================================
       const lignesA = [
-        { yTop: 196, yBot: 208 },  // A1
-        { yTop: 226, yBot: 238 },  // A2
-        { yTop: 256, yBot: 268 },  // A3
-        { yTop: 286, yBot: 298 },  // A4
-        { yTop: 316, yBot: 328 },  // A5
+        { yTop: 198, yBot: 210 },  // A1
+        { yTop: 222, yBot: 234 },  // A2
+        { yTop: 246, yBot: 258 },  // A3
+        { yTop: 270, yBot: 282 },  // A4
+        { yTop: 294, yBot: 306 },  // A5
       ];
  
       for (let i = 0; i < 5; i++) {
         const { yTop, yBot } = lignesA[i];
-        draw(v(`sci${i}`), 48,  yTop, 8);  // Nom scientifique (ligne haute)
-        draw(v(`com${i}`), 48,  yBot, 8);  // Nom commun (ligne basse)
-        draw(v(`qty${i}`), 230, yTop + 6, 9); // Quantité (centré entre les deux)
-        draw(v(`dsc${i}`), 290, yTop + 6, 8); // Description
-        draw(v(`sta${i}`), 478, yTop + 6, 8); // Statut juridique
+        draw(v(`sci${i}`), 46,  yTop, 9);  
+        draw(v(`com${i}`), 46,  yBot, 9);  
+        draw(v(`qty${i}`), 242, yTop + 6, 9); 
+        draw(v(`dsc${i}`), 282, yTop + 6, 8); 
+        draw(v(`sta${i}`), 485, yTop + 6, 8); 
       }
  
       // =============================================
       // SECTION B — Cédant
       // =============================================
-      draw(v('cNom'),   172, 444, 9);
+      
+      // Civilité
+      const civC = radioVal('civC');
+      if (civC === 'Madame') draw('X', 48, 413, 10);
+      if (civC === 'Mademoiselle') draw('X', 113, 413, 10);
+      if (civC === 'Monsieur') draw('X', 198, 413, 10);
+
+      draw(v('cNom'),   175, 442, 10);
  
-      // Adresse cédant
-      const cAdresse = [v('cNum'), v('cExt'), v('cRue')].filter(Boolean).join(' ');
-      draw(cAdresse, 96, 464, 9);
+      // Champs d'adresse totalement séparés pour ne pas superposer le texte du CERFA
+      draw(v('cNum'),   96,  461, 10);
+      draw(v('cExt'),   180, 461, 10);
+      draw(v('cRue'),   250, 461, 10);
  
-      draw(v('cCP'),    96,  483, 9);
-      draw(v('cVille'), 200, 483, 9);
-      draw(v('cPays'),  368, 483, 9);
+      draw(v('cCP'),    96,  481, 10);
+      draw(v('cVille'), 200, 481, 10);
+      draw(v('cPays'),  400, 481, 10);
  
       // =============================================
       // SECTION C — Cessionnaire
       // =============================================
-      draw(v('aNom'),   172, 529, 9);
+      
+      // Civilité
+      const civA = radioVal('civA');
+      if (civA === 'Madame') draw('X', 48, 498, 10);
+      if (civA === 'Mademoiselle') draw('X', 113, 498, 10);
+      if (civA === 'Monsieur') draw('X', 198, 498, 10);
+
+      draw(v('aNom'),   175, 528, 10);
  
-      const aAdresse = [v('aNum'), v('aExt'), v('aRue')].filter(Boolean).join(' ');
-      draw(aAdresse, 96, 549, 9);
+      // Champs d'adresse totalement séparés
+      draw(v('aNum'),   96,  547, 10);
+      draw(v('aExt'),   180, 547, 10);
+      draw(v('aRue'),   250, 547, 10);
  
-      draw(v('aCP'),    96,  568, 9);
-      draw(v('aVille'), 200, 568, 9);
-      draw(v('aPays'),  368, 568, 9);
+      draw(v('aCP'),    96,  567, 10);
+      draw(v('aVille'), 200, 567, 10);
+      draw(v('aPays'),  400, 567, 10);
  
       // =============================================
       // SECTION D — Lieu, date
       // =============================================
-      draw(v('lieu'), 232, 637, 9);
+      draw(v('lieu'), 235, 635, 10);
  
-      // Découpage de la date JJ/MM/AAAA dans les cases
+      // Découpage parfait de la date dans les 3 cases dédiées
       const dateStr = v('date');
       if (dateStr) {
         const parts = dateStr.split('/');
         if (parts.length === 3) {
-          draw(parts[0], 422, 637, 9); // Jour
-          draw(parts[1], 443, 637, 9); // Mois
-          draw(parts[2], 460, 637, 9); // Année
+          draw(parts[0], 421, 635, 10); // Jour
+          draw(parts[1], 443, 635, 10); // Mois
+          draw(parts[2], 465, 635, 10); // Année
         } else {
-          draw(dateStr, 422, 637, 9);
+          draw(dateStr, 421, 635, 10);
         }
       }
  
@@ -335,8 +348,8 @@
         }
       };
  
-      await drawSig(pC, 62,  720);  // Signature cédant
-      await drawSig(pA, 322, 720);  // Signature cessionnaire
+      await drawSig(pC, 62,  730);  // Signature cédant
+      await drawSig(pA, 322, 730);  // Signature cessionnaire
  
       // =============================================
       // SAUVEGARDE ET TÉLÉCHARGEMENT
