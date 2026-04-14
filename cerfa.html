@@ -42,9 +42,6 @@
     .btn-main:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
  
     .notice { font-size: 0.72rem; color: #64748b; margin-top: 8px; line-height: 1.5; font-style: italic; }
-    
-    .calibration-card { border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
-    .calibration-card h2 { color: #38bdf8; border-bottom-color: #38bdf8; }
   </style>
 </head>
 <body>
@@ -55,21 +52,6 @@
  
 <main class="page">
   <form id="cerfaForm" onsubmit="return false;">
-
-    <div class="card calibration-card">
-      <h2>⚙️ Calibrage millimétrique de l'impression</h2>
-      <p class="notice" style="color: #cbd5e1; margin-bottom: 10px; margin-top: 0;">Si le texte ne tombe pas parfaitement dans les cases de ton PDF, ajuste les marges ici. Les valeurs sont en millimètres (ex: mettre <strong>-5</strong> pour descendre le texte de 5mm). Tes réglages seront sauvegardés sur ton appareil.</p>
-      <div class="grid2">
-        <div class="field">
-          <label>Décalage Horizontal (Gauche/Droite en mm)</label>
-          <input type="number" id="offsetX" step="0.5" value="0">
-        </div>
-        <div class="field">
-          <label>Décalage Vertical (Haut/Bas en mm)</label>
-          <input type="number" id="offsetY" step="0.5" value="0">
-        </div>
-      </div>
-    </div>
  
     <div class="card">
       <h2>A – Description des spécimens concernés par la cession</h2>
@@ -84,9 +66,9 @@
  
       <div class="animal-row">
         <div class="row-label">A1</div>
-        <div><input type="text" id="sci0"></div>
-        <div><input type="text" id="com0"></div>
-        <div><input type="text" id="qty0"></div>
+        <div><input type="text" id="sci0" placeholder="ex : Pterophyllum scalare"></div>
+        <div><input type="text" id="com0" placeholder="ex : Scalaire"></div>
+        <div><input type="text" id="qty0" placeholder="2"></div>
         <div><input type="text" id="dsc0"></div>
         <div><input type="text" id="sta0"></div>
       </div>
@@ -202,9 +184,6 @@
 </main>
  
 <script>
-  document.getElementById('offsetX').value = localStorage.getItem('cerfaOffsetX') || 0;
-  document.getElementById('offsetY').value = localStorage.getItem('cerfaOffsetY') || 0;
-
   const initPad = (id) => {
     const canvas = document.getElementById(id);
     const dpr = Math.max(window.devicePixelRatio || 1, 1);
@@ -229,14 +208,6 @@
     const btn = document.getElementById('generate');
     btn.textContent = 'Génération en cours...';
     btn.disabled = true;
-
-    const offX_mm = parseFloat(document.getElementById('offsetX').value) || 0;
-    const offY_mm = parseFloat(document.getElementById('offsetY').value) || 0;
-    localStorage.setItem('cerfaOffsetX', offX_mm);
-    localStorage.setItem('cerfaOffsetY', offY_mm);
-
-    const ptX = offX_mm * 2.83465;
-    const ptY = offY_mm * 2.83465;
  
     try {
       const { PDFDocument, rgb, StandardFonts } = PDFLib;
@@ -245,76 +216,67 @@
       const font = await pdf.embedFont(StandardFonts.Helvetica);
       const page = pdf.getPages()[0];
  
+      // Coordonnées absolues strictes (Origine 0,0 en bas à gauche du PDF)
       const draw = (text, x, y, size = 10) => {
         if (!text) return;
-        page.drawText(String(text), { 
-          x: x + ptX, 
-          y: y + ptY, 
-          size, 
-          font, 
-          color: rgb(0, 0, 0) 
-        });
+        page.drawText(String(text), { x, y, size, font, color: rgb(0, 0, 0) });
       };
  
       // --- SECTION A : ANIMAUX ---
-      const yA = [630, 606, 582, 558, 534];
+      const yA = [575, 551, 527, 503, 479];
       for (let i = 0; i < 5; i++) {
         draw(v(`sci${i}`), 50,  yA[i], 9);
         draw(v(`com${i}`), 50,  yA[i] - 12, 9);
-        draw(v(`qty${i}`), 245, yA[i] - 6, 10);
-        draw(v(`dsc${i}`), 295, yA[i] - 6, 8);
+        draw(v(`qty${i}`), 250, yA[i] - 6, 10);
+        draw(v(`dsc${i}`), 300, yA[i] - 6, 8);
         draw(v(`sta${i}`), 485, yA[i] - 6, 8);
       }
  
       // --- SECTION B : CÉDANT ---
       const civC = radioVal('civC');
-      if (civC === 'Madame')       draw('X', 48,  525, 11);
-      if (civC === 'Mademoiselle') draw('X', 113, 525, 11);
-      if (civC === 'Monsieur')     draw('X', 198, 525, 11);
+      if (civC === 'Madame')       draw('X', 48,  405, 11);
+      if (civC === 'Mademoiselle') draw('X', 113, 405, 11);
+      if (civC === 'Monsieur')     draw('X', 198, 405, 11);
 
-      draw(v('cNom'),   230, 500, 10);
-      draw(v('cNum'),   150, 475, 10);
-      draw(v('cExt'),   250, 475, 10);
-      draw(v('cRue'),   330, 475, 10);
-      draw(v('cCP'),    145, 450, 10);
-      draw(v('cVille'), 270, 450, 10);
-      draw(v('cPays'),  440, 450, 10);
+      draw(v('cNom'),   230, 382, 10); 
+ 
+      draw(v('cNum'),   135, 358, 10); 
+      draw(v('cExt'),   230, 358, 10); 
+      draw(v('cRue'),   310, 358, 10); 
+ 
+      draw(v('cCP'),    140, 334, 10); 
+      draw(v('cVille'), 260, 334, 10); 
+      draw(v('cPays'),  430, 334, 10); 
  
       // --- SECTION C : CESSIONNAIRE ---
       const civA = radioVal('civA');
-      if (civA === 'Madame')       draw('X', 48,  375, 11);
-      if (civA === 'Mademoiselle') draw('X', 113, 375, 11);
-      if (civA === 'Monsieur')     draw('X', 198, 375, 11);
+      if (civA === 'Madame')       draw('X', 48,  254, 11);
+      if (civA === 'Mademoiselle') draw('X', 113, 254, 11);
+      if (civA === 'Monsieur')     draw('X', 198, 254, 11);
 
-      draw(v('aNom'),   230, 350, 10);
-      draw(v('aNum'),   150, 325, 10);
-      draw(v('aExt'),   250, 325, 10);
-      draw(v('aRue'),   330, 325, 10);
-      draw(v('aCP'),    145, 300, 10);
-      draw(v('aVille'), 270, 300, 10);
-      draw(v('aPays'),  440, 300, 10);
+      draw(v('aNom'),   230, 230, 10); 
+ 
+      draw(v('aNum'),   135, 206, 10); 
+      draw(v('aExt'),   230, 206, 10); 
+      draw(v('aRue'),   310, 206, 10); 
+ 
+      draw(v('aCP'),    140, 182, 10); 
+      draw(v('aVille'), 260, 182, 10); 
+      draw(v('aPays'),  430, 182, 10); 
  
       // --- SECTION D : LIEU ET DATE ---
-      draw(v('lieu'), 270, 145, 10);
-      const dateStr = v('date');
-      if (dateStr && dateStr.includes('/')) {
-        const p = dateStr.split('/');
-        draw(p[0], 422, 145, 10); 
-        draw(p[1], 448, 145, 10); 
-        draw(p[2], 478, 145, 10); 
-      } else {
-        draw(dateStr, 422, 145, 10);
-      }
+      draw(v('lieu'), 260, 115, 10);
+      draw(v('date'), 425, 115, 10); 
  
       // --- SIGNATURES ---
       const drawSig = async (pad, x, y) => {
         if (!pad.isEmpty()) {
           const img = await pdf.embedPng(pad.toDataURL());
-          page.drawImage(img, { x: x + ptX, y: y + ptY, width: 130, height: 50 });
+          page.drawImage(img, { x, y, width: 130, height: 50 });
         }
       };
-      await drawSig(pC, 65,  60);  
-      await drawSig(pA, 320, 60);  
+      await drawSig(pC, 65,  40);  
+      await drawSig(pA, 320, 40);  
  
       const bytes = await pdf.save();
       const blob = new Blob([bytes], { type: 'application/pdf' });
