@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ichtyologique : Jordanella floridae</title>
+    <style>
+        :root {
+            --blue-primary: #1D3557;
+            --teal-secondary: #0A9396;
+            --gold-accent: #D4AF37;
+            --light-bg: #F1FAEE;
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            color: var(--blue-primary);
+            text-align: center;
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--teal-secondary);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--blue-primary);
+            border-left: 5px solid var(--gold-accent);
+            padding-left: 10px;
+            margin-top: 40px;
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+        }
+
+        h3 {
+            color: var(--teal-secondary);
+            margin-top: 25px;
+        }
+
+        /* Encadré de synthèse */
+        .summary-box {
+            background-color: var(--light-bg);
+            border: 2px solid var(--teal-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .summary-box ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-box li {
+            padding: 5px 0;
+        }
+
+        /* Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--teal-secondary);
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: #f9fdfd;
+        }
+
+        tbody tr:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        /* Formule Méristique */
+        .meristic-box {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--blue-primary);
+            color: var(--gold-accent);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Bibliographie alternée */
+        .biblio-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .biblio-list li {
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+
+        .biblio-list li:nth-child(odd) {
+            border-left: 4px solid var(--teal-secondary);
+        }
+
+        .biblio-list li:nth-child(even) {
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FICHE ICHTYOLOGIQUE</h1>
+    <div class="subtitle">
+        <strong>Jordanella floridae</strong> (Goode & Bean, 1879)<br>
+        Killi drapeau de Floride · American Flagfish / Florida Flagfish<br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        Fiche Ichtyologique Complète — Niveau Expert
+    </div>
+
+    <div class="summary-box">
+        <ul>
+            <li><strong>Famille :</strong> Cyprinodontidae</li>
+            <li><strong>Origine :</strong> Floride (USA) — endémique strict</li>
+            <li><strong>Taille adulte :</strong> 5–6 cm (LS) — genre monotypique</li>
+            <li><strong>Difficulté :</strong> ★★☆ Intermédiaire</li>
+            <li><strong>Température :</strong> 18–26 °C (tolérance 4–30 °C)</li>
+            <li><strong>pH recommandé :</strong> 6,5 – 8,5</li>
+        </ul>
+    </div>
+
+    <section id="section-1">
+        <h2>1. SYSTÉMATIQUE & TAXONOMIE</h2>
+        <h3>Classification phylogénétique complète</h3>
+        <table>
+            <tbody>
+                <tr><th>Règne</th><td>Animalia</td></tr>
+                <tr><th>Sous-règne</th><td>Eumetazoa — Bilateria — Deuterostomia</td></tr>
+                <tr><th>Embranchement</th><td>Chordata</td></tr>
+                <tr><th>Sous-embranchement</th><td>Vertebrata — Gnathostomata</td></tr>
+                <tr><th>Super-classe</th><td>Osteichthyes</td></tr>
+                <tr><th>Classe</th><td>Actinopterygii</td></tr>
+                <tr><th>Sous-classe</th><td>Neopterygii — Division Teleostei</td></tr>
+                <tr><th>Série</th><td>Ovalentaria (Atherinomorphae)</td></tr>
+                <tr><th>Ordre</th><td>Cyprinodontiformes</td></tr>
+                <tr><th>Sous-ordre</th><td>Cyprinodontoidei</td></tr>
+                <tr><th>Famille</th><td>Cyprinodontidae</td></tr>
+                <tr><th>Sous-famille</th><td>Cyprinodontinae</td></tr>
+                <tr><th>Tribu</th><td>Cyprinodontini</td></tr>
+                <tr><th>Genre</th><td>Jordanella Goode & Bean, 1879 — monotypique</td></tr>
+                <tr><th>Espèce</th><td>Jordanella floridae Goode & Bean, 1879</td></tr>
+                <tr><th>Synonyme valide</th><td>Cyprinodon floridae (Goode & Bean, 1879)</td></tr>
+                <tr><th>Localité type</th><td>Lake Monroe, St. Johns drainage, Florida, U.S.A.</td></tr>
+                <tr><th>Espèce proche</th><td>Garmanella pulchra Hubbs, 1936 (Yucatan flagfish — parfois placée dans Jordanella)</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Étymologie & Histoire taxonomique</th>
+                    <td>Jordanella : genre dédié à David Starr Jordan (1851–1931), ichtyologue américain, fondateur de l'Université Stanford et pionnier de la systématique des poissons d'eau douce nord-américains. Genre monotypique — une seule espèce valide.</td>
+                    <td>floridae : du latin, 'de la Floride' — référence à l'aire de répartition exclusive dans l'État de Floride (U.S.A.). Description originale : Goode, G.B. (1879), Proc. U.S. Natl. Mus. 2(73) : 108-121. Décrit initialement sous Cyprinodon floridae puis transféré dans le genre nouveau Jordanella dans la même publication.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-2">
+        <h2>2. GÉNÉTIQUE & PHYLOGÉNIE MOLÉCULAIRE</h2>
+        <h3>2.1 — Position phylogénétique du genre</h3>
+        <p>Le genre Jordanella appartient à la famille Cyprinodontidae (Teleostei : Cyprinodontiformes).</p>
+        <p>La révision phylogénétique fondatrice de Parenti (1981, Bull. AMNH 168:335-557) a repositionné l'ordre Cyprinodontiformes, anciennement Atheriniformes, sur la base de synapomorphies ostéologiques et reproductives.</p>
+        <p>Les analyses moléculaires de Parker & Kornfield (1995, Copeia 1995:8-21), basées sur l'ARNr mitochondrial 16S (378 pb, GenBank U05964-U05980), confirment la monophylie de Cyprinodontidae et placent Jordanella dans la tribu dérivée Cyprinodontini, groupe frère de Cyprinodon.</p>
+        <p>Les marqueurs disponibles dans BOLD Systems (8 barcodes COI) et GenBank (45 séquences nucléotidiques partielles) confirment l'unicité de l'espèce.</p>
+        <p>Le génome mitochondrial complet de J. floridae n'est pas encore publié (2025).</p>
+        <p>Note : Jordanella est phylogénétiquement très éloigné des Cichlidae (ordre Cichliformes) — une confusion fréquente en aquariophilie due à leur morphologie convergente de corps profond.</p>
+
+        <h3>2.2 — Historique taxonomique et controverses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Événement taxonomique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1879</td><td>Goode & Bean décrivent Cyprinodon floridae et créent simultanément le genre Jordanella — publication unique fondatrice (Proc. U.S. Natl. Mus. 2:108-121)</td></tr>
+                <tr><td>1931</td><td>Mort de David Starr Jordan, auquel le genre est dédié</td></tr>
+                <tr><td>1966</td><td>Mertz & Barlow publient la première analyse détaillée du comportement reproducteur (Zeitschrift für Tierpsychologie 23:537-554)</td></tr>
+                <tr><td>1969</td><td>Foster et al. — étude classique sur la reproduction et les soins paternels en conditions naturelles</td></tr>
+                <tr><td>1981</td><td>Parenti repositionne l'ordre dans Cyprinodontiformes et confirme la position de Jordanella dans Cyprinodontinae (Bull. AMNH 168:335-557)</td></tr>
+                <tr><td>1995</td><td>Parker & Kornfield — première phylogénie moléculaire robuste des Cyprinodontidae incluant Jordanella (Copeia 1995:8-21, ARNr 16S)</td></tr>
+                <tr><td>2001</td><td>Saint Mary et al. — effets de l'environnement sur le succès reproducteur et les soins paternels (Ethology 107:1035-1052)</td></tr>
+                <tr><td>2004</td><td>Saint Mary et al. — effets environnementaux sur le développement des oeufs et le taux d'éclosion (J. Fish Biol. 65:760-768)</td></tr>
+                <tr><td>2005</td><td>Klug & Saint Mary — conséquences adaptatives du cannibalisme filial (Animal Behaviour 70:685-691)</td></tr>
+                <tr><td>2025</td><td>Statut valide confirmé — genre monotypique. 8 barcodes COI dans BOLD Systems, 45 séquences dans GenBank. Aucune nouvelle espèce décrite depuis 1879</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2.3 — Hypothèse biogéographique et spéciation</h3>
+        <p>J. floridae est un endémique strict de la péninsule floridienne, limité aux bassins du St. Johns River et de l'Ochlockonee River.</p>
+        <p>Cette distribution restreinte résulte de l'isolement progressif de la péninsule floridienne depuis le Pliocène — un archipel calcaire émergé permettant la diversification in situ d'une ichtyofaune unique.</p>
+        <p>Les Cyprinodontidae nord-américains sont interprétés comme des reliques d'une faune côtière subtropicale fragmentée par les transgressions marines quaternaires.</p>
+        <p>L'absence de diversité cryptique démontrée chez J. floridae contraste avec la radiation de Cyprinodon (>50 espèces).</p>
+        <p>La relation phylogénétique avec Garmanella pulchra (Yucatan) reste débattue : Parker (1997) la place dans Jordanella selon certains critères moléculaires, mais la majorité des auteurs maintiennent les deux genres séparés.</p>
+        <p>Une population introduite documentée dans le comté de Harrison, Mississippi (Ellwanger et al., Southeastern Fishes Council Proc. 83, 2021) soulève des questions de compétition avec Cyprinodon variegatus dans les zones de contact.</p>
+    </section>
+
+    <section id="section-3">
+        <h2>3. DESCRIPTION MORPHOLOGIQUE</h2>
+        <h3>3.1 — Morphologie générale</h3>
+        <p>Jordanella floridae est un petit poisson trapu et profondément comprimé latéralement, de forme ovale à sub-circulaire très caractéristique.</p>
+        <p>Le profil dorsal de la tête est CONVEXE et régulièrement arrondi, du museau à la nuque, sans rupture ni concavité — ceci distingue immédiatement J. floridae des Cichlidae à profil variable.</p>
+        <p>La hauteur du corps est remarquablement grande (rapport H/LS ~ 0,50-0,55), conférant un aspect trapu qui rappelle superficiellement un petit sunfish (Centrarchidae) — un exemple classique de convergence morphologique.</p>
+        <p>La tête est courte, massive, avec un museau tronqué souvent comparé à celui d'un bouledogue.</p>
+        <p>La bouche est terminale, petite, légèrement supère, à lèvres épaisses portant des dents tricuspides adaptées au broyage d'algues et d'invertébrés benthiques.</p>
+        <p>L'oeil est grand, placé haut sur la tête. Le pédoncule caudal est court et robuste.</p>
+
+        <table>
+            <tbody>
+                <tr><th>Longueur standard (LS)</th><td>5–6 cm (max. 6,4 cm). Espèce non annuelle — durée de vie 3–4 ans</td></tr>
+                <tr><th>Rapport H/LS</th><td>~0,50–0,55 — corps profond, trapu. Caractéristique du genre</td></tr>
+                <tr><th>Profil dorsal de la tête</th><td>CONVEXE et régulièrement arrondi — museau tronqué sans concavité ni rupture de pente</td></tr>
+                <tr><th>Tache du mâle (flanc)</th><td>Grande tache noire arrondie dans le rectangle sombre du flanc — CARACTÈRE DIAGNOSTIQUE ABSOLU</td></tr>
+                <tr><th>Tache de la femelle (dorsale)</th><td>Tache noire bien délimitée au bord postérieur de la nageoire dorsale — DIAGNOSTIC FEMELLE, absente chez le mâle</td></tr>
+                <tr><th>Dorsale</th><td>Unique, très longue, à base étendue couvrant la moitié postérieure du dos</td></tr>
+                <tr><th>Anale</th><td>Courte, opposée à la partie postérieure de la dorsale</td></tr>
+                <tr><th>Caudale</th><td>Arrondie, non fourchue — typique des Cyprinodontidae</td></tr>
+                <tr><th>Pectorales</th><td>Larges, translucides, insérées haut sur le flanc</td></tr>
+                <tr><th>Ventrales (pelviennes)</th><td>Présentes — petites, insérées sous les pectorales. 6 rayons mous (P2. 6) — aucune épine, comme toutes les nageoires des Cyprinodontiformes</td></tr>
+                <tr><th>Bouche</th><td>Terminale, petite, légèrement supère — dents tricuspides sur prémaxillaires et dentaires</td></tr>
+                <tr><th>Ligne latérale</th><td>INCOMPLÈTE ou ABSENTE — typique de toute la famille Cyprinodontidae</td></tr>
+                <tr><th>Écailles</th><td>Cténoïdes, grandes, bien visibles. Irisées chez le mâle adulte</td></tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 — Coloration & Patron pigmentaire</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Description de la livrée</th>
+                    <td>Livrée du mâle adulte (nuptiale) :</td>
+                    <td>Corps olive-verdâtre à bleu-vert irisé. Flancs parcourus de bandes horizontales alternant rouge vif et bleu-vert métallique, évoquant les rayures du drapeau américain. Un rectangle sombre (bleu-noir) occupe le tiers antéro-médian, au centre duquel se trouve une grande tache noire arrondie bien isolée — marque diagnostique absolue. Les écailles portent des points iridescents turquoise brillants. Nageoires dorsale et anale bordées d'un liseré rouge-orange.</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>Livrée de la femelle adulte :</td>
+                    <td>Fond olive-brun terne, bandes peu marquées, reflets atténués. MARQUEUR DIAGNOSTIQUE FEMELLE ABSOLU : tache noire bien délimitée au bord postérieur de la nageoire dorsale, absente chez le mâle à tout âge. Ventre plus clair jaunâtre, s'arrondissant nettement en période de gravité. Pondeur fractionné — dépose peu d'oeufs par session.</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td colspan="2">Variations comportementales : en parade, le mâle intensifie ses rouges et bleus en quelques secondes via les chromatophores. Sous stress ou soumission, la coloration s'atténue et des bandes transversales pâles peuvent apparaître.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 — Dimorphisme sexuel</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère</th>
+                    <th>MÂLE ♂</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Coloration</td><td>Très coloré — bandes rouges/bleu-vert vives, points turquoise iridescents, rectangle sombre central avec tache noire</td></tr>
+                <tr><td>Nageoires</td><td>Dorsale et anale étendues, effilées — bord rouge-orange</td></tr>
+                <tr><td>Tache dorsale</td><td>ABSENTE sur la dorsale</td></tr>
+                <tr><td>Tache flanc</td><td>Grande tache noire centrale dans le rectangle sombre</td></tr>
+                <tr><td>Comportement</td><td>Territorial, parade intensive, roue de flanc, défense active du territoire</td></tr>
+                <tr>
+                    <th>Caractère</th>
+                    <th>FEMELLE ♀</th>
+                </tr>
+                <tr><td>Coloration</td><td>Terne — fond olive-brun, bandes peu marquées</td></tr>
+                <tr><td>Nageoires</td><td>Dorsale et anale plus courtes et arrondies</td></tr>
+                <tr><td>Tache dorsale</td><td>PRÉSENTE — tache noire caractéristique au bord postérieur de la dorsale (diagnostic absolu)</td></tr>
+                <tr><td>Ventre</td><td>S'arrondit nettement en période de gravité</td></tr>
+                <tr><td>Ponte</td><td>Pondeur fractionné — 1 à 20 oeufs par session, pontes répétées sur toute la saison reproductive (mars–septembre). Comportement typique des Cyprinodontidae</td></tr>
+            </tbody>
+        </table>
+        <p>Sexage fiable dès 6–8 semaines. La tache dorsale de la femelle est le critère le plus constant — elle persiste indépendamment de l'état de stress ou de la coloration comportementale (St Mary et al., 2004).</p>
+    </section>
+
+    <section id="section-4">
+        <h2>4. MÉRISTIQUE & MORPHOLOGIE AVANCÉE</h2>
+        <h3>4.1 — Formule méristique de Jordanella floridae</h3>
+        <p>La formule méristique est la notation standardisée du décompte des rayons de nageoires, des écailles et des vertèbres.</p>
+        <p>Pour les Cyprinodontidae, dont fait partie J. floridae, toutes les nageoires — dorsale, anale, pelviennes et pectorales — sont entièrement composées de rayons mous.</p>
+        <p>Ce sont des poissons malacoptérygiens : il n'existe aucune épine dure sur aucune nageoire, contrairement aux Perciformes ou Cichliformes.</p>
+        <p>Les chiffres de la formule méristique correspondent donc exclusivement à des rayons mous.</p>
+
+        <div class="meristic-box">
+            D. 14-16 ; A. 11-12 ; P1. 15-17 ; P2. 6 ; C. 16-18 ; LL 23-28 ; Vert. 26-28
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Nageoire</th>
+                    <th>Min.</th>
+                    <th>Max.</th>
+                    <th>Signification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>D.</td><td>Dorsale</td><td>14</td><td>16</td><td>14-16 rayons (tous mous chez les Cyprinodontidae — pas d'épines). Très longue, base étendue couvrant la moitié postérieure du dos — caractéristique du genre Jordanella</td></tr>
+                <tr><td>A.</td><td>Anale</td><td>11</td><td>12</td><td>11-12 rayons mous. Courte, opposée à la partie postérieure de la dorsale</td></tr>
+                <tr><td>P1.</td><td>Pectorale</td><td>15</td><td>17</td><td>15-17 rayons mous. Large, translucide. Propulsion principale</td></tr>
+                <tr><td>P2.</td><td>Ventrale (pelvienne)</td><td>6</td><td>6</td><td>6 rayons mous — aucune épine. Petites, insérées sous les pectorales. Toutes les nageoires des Cyprinodontiformes sont exclusivement à rayons mous (poissons malacoptérygiens)</td></tr>
+                <tr><td>C.</td><td>Caudale</td><td>16</td><td>18</td><td>16-18 rayons. Arrondie, non fourchue — typique Cyprinodontidae</td></tr>
+                <tr><td>LL</td><td>Écailles (flanc)</td><td>23</td><td>28</td><td>23-28 écailles en séries longitudinales. Ligne latérale fonctionnelle ABSENTE — apomorphie de la famille</td></tr>
+                <tr><td>Vert.</td><td>Vertèbres</td><td>26</td><td>28</td><td>26-28 vertèbres totales. Typique des petits Cyprinodontiformes</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 — Tableau méristique comparatif des espèces congénères</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère méristique</th>
+                    <th>J. floridae</th>
+                    <th>Cyprinodon variegatus</th>
+                    <th>Garmanella pulchra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>LS max.</td><td>6,4 cm</td><td>7,6 cm</td><td>5,5 cm</td></tr>
+                <tr><td>Corps (H/LS)</td><td>Profond ~0,53</td><td>Profond ~0,48</td><td>Profond ~0,50</td></tr>
+                <tr><td>Dorsale (D.)</td><td>14-16 rayons mous</td><td>10-14 rayons mous</td><td>11-13 rayons mous</td></tr>
+                <tr><td>Anale (A.)</td><td>XI-XII</td><td>IX-XI</td><td>X-XI</td></tr>
+                <tr><td>Écailles flanc</td><td>23-28</td><td>24-28</td><td>22-26</td></tr>
+                <tr><td>Profil tête</td><td>Convexe (arrondi)</td><td>Convexe</td><td>Convexe</td></tr>
+                <tr><td>Tache flanc mâle</td><td>Grande tache noire centrale</td><td>Absente</td><td>Tache latérale variable</td></tr>
+                <tr><td>Tache dorsale fem.</td><td>Présente (diagnostic)</td><td>Absente</td><td>Présente</td></tr>
+                <tr><td>Ligne latérale</td><td>Absente</td><td>Absente</td><td>Absente</td></tr>
+                <tr><td>Aire</td><td>Floride uniquement</td><td>Côtes atlantiques+Golfe USA</td><td>Yucatan, Mexique</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.3 — Clé de détermination dichotomique du genre</h3>
+        <p>Clé basée sur les caractères diagnostiques stables, indépendants de l'état de stress ou de la coloration comportementale.</p>
+
+        <table>
+            <tbody>
+                <tr><td>1a</td><td>Corps profond (H/LS > 0,45), trapu. Dorsale unique très longue couvrant plus de la moitié postérieure du dos. Caudale arrondie. Bouche terminale à dents tricuspides. Ligne latérale absente. Taille < 7 cm. Endémique de Floride (USA).</td><td>→ Genre Jordanella — aller en 2</td></tr>
+                <tr><td>1b</td><td>Autre morphologie. Corps plus allongé OU dorsale moins développée OU répartition géographique différente.</td><td>→ Autres familles ou genres (Fundulidae, Poeciliidae, Centrarchidae...)</td></tr>
+                <tr><td>2a</td><td>Femelle avec tache noire bien délimitée au bord postérieur de la nageoire dorsale. Mâle avec bandes horizontales rouge/bleu-vert et grande tache noire centrale sur le flanc. Floride péninsulaire uniquement (St. Johns + Ochlockonee drainages).</td><td>→ Jordanella floridae Goode & Bean, 1879</td></tr>
+                <tr><td>2b</td><td>N/A — Le genre Jordanella est monotypique (une seule espèce). Note : Garmanella pulchra (Yucatan) est parfois placée dans Jordanella — elle s'en distingue par sa répartition mexicaine et quelques caractères méristiques.</td><td>→ Garmanella pulchra si Yucatan / Mexique</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-5">
+        <h2>5. RÉPARTITION GÉOGRAPHIQUE & BIOTOPE NATUREL</h2>
+        <table>
+            <tbody>
+                <tr><th>Continent</th><td>Amérique du Nord</td></tr>
+                <tr><th>Pays</th><td>États-Unis d'Amérique — endémisme strict</td></tr>
+                <tr><th>État</th><td>Floride (péninsule) uniquement — sud du bassin du St. Johns River et Ochlockonee River</td></tr>
+                <tr><th>Localité type</th><td>Lake Monroe, bassin du St. Johns River, Florida, U.S.A.</td></tr>
+                <tr><th>Extension</th><td>Population introduite signalée : Harrison County, Mississippi (Ellwanger et al., SE Fishes Council Proc. 83, 2021)</td></tr>
+                <tr><th>Habitats préférentiels</th><td>Eaux peu profondes lentiques ou stagnantes fortement végétalisées</td></tr>
+                <tr><th>Types de milieux</th><td>Marécages, marais, fossés, canaux, étangs, mares, bras morts, zones littorales herbacées de lacs et rivières</td></tr>
+                <tr><th>Profondeur</th><td>0,1 à 1,5 m — zones marginales littorales très peu profondes</td></tr>
+                <tr><th>Végétation</th><td>Dense à très dense — Vallisneria americana, Ceratophyllum demersum, Myriophyllum, Chara, algues filamenteuses abondantes</td></tr>
+                <tr><th>Substrat</th><td>Vaseux à sablo-vaseux, riche en matières organiques, souvent recouvert d'algues et de débris végétaux</td></tr>
+                <tr><th>Type d'eau</th><td>Douce à légèrement saumâtre (0 à ~5 ppt NaCl). Eaux claires à légèrement colorées par la végétation</td></tr>
+                <tr><th>Courant</th><td>Nul à très faible — préférence marquée pour les zones d'eau calme</td></tr>
+                <tr><th>Lumière</th><td>Zones bien ensoleillées à mi-ombragées — favorise la croissance des algues filamenteuses</td></tr>
+                <tr><th>Température naturelle</th><td>18–30 °C selon la saison. Tolérance documentée de 4 °C à 37 °C (FishBase)</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Caractéristiques du biotope naturel</th>
+                    <td>Le St. Johns River est l'un des rares grands fleuves nord-américains à couler vers le nord. Ses eaux sont douces à légèrement teintées (tanins), pH légèrement acide à neutre (6,5-7,5), minéralisation faible à modérée (~200-400 µS/cm). La saison des pluies floridienne (juin-septembre) dilue les paramètres et augmente les niveaux d'eau. La végétation aquatique dense (Vallisneria, Ceratophyllum, Chara, algues filamenteuses) est indissociable de l'habitat — elle constitue le garde-manger, le site de ponte et la protection anti-prédateurs de J. floridae. Le Florida flagfish sert d'espèce indicatrice dans les programmes de restauration des Everglades (Comprehensive Everglades Restoration Plan, 2000).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-6">
+        <h2>6. ÉVOLUTION SAISONNIÈRE DES PARAMÈTRES D'EAU EN MILIEU NATUREL</h2>
+        <p>Sources des données chiffrées : (1) Température de l'eau du St. Johns River à DeLand (station USGS-02236000 — localité type de J. floridae) : watertemps.com/Deland, données USGS temps réel.</p>
+        <p>(2) Température mensuelle moyenne de l'air à Sanford/Orlando (proxy eau) : climate-data.org/usa/sanford, données 1991–2021.</p>
+        <p>(3) pH et conductivité : tendances saisonnières documentées par Kroening, S.E.</p>
+        <p>(USGS SIR 2004-5177, 2004) — zone Lake Monroe–DeLand — fourchettes annuelles, pas de tableau mensuel publié accessible.</p>
+        <p>(4) Reproduction : Foster et al. (1969) ; Saint Mary et al. (2001, Ethology 107).</p>
+
+        <h3>6.1 — Température de l'eau — moyennes mensuelles mesurées</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Station / Paramètre</th>
+                    <th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>T° eau (°C)<br>USGS-02236000<br>DeLand — moy. annuelle 21–27°C</td>
+                    <td>16°</td><td>17°</td><td>19°</td><td>22°</td><td>25°</td><td>27°</td><td>28°</td><td>28°</td><td>27°</td><td>24°</td><td>21°</td><td>17°</td>
+                </tr>
+                <tr>
+                    <td>Pluviométrie (mm)<br>Sanford, FL<br>(climate-data.org 1991–2021)</td>
+                    <td>62</td><td>65</td><td>88</td><td>64</td><td>91</td><td>191</td><td>194</td><td>189</td><td>148</td><td>91</td><td>54</td><td>53</td>
+                </tr>
+                <tr>
+                    <td>pH / Conductivité<br>(tendances USGS SIR<br>2004-5177 — zone DeLand)</td>
+                    <td>pH haut<br>cond. haute</td><td>↑</td><td>↑</td><td>↓ pluies</td><td>↓</td><td>Minimum<br>(pluies max)</td><td>↓</td><td>↓</td><td>↑</td><td>↑</td><td>pH haut<br>cond. haute</td><td>↑</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>T° eau : moyennes estimées à partir des données USGS-02236000 (DeLand) et seatemperature.net (multi-annuel). Pluviométrie : climate-data.org station Sanford (1991-2021).</p>
+        <p>pH/conductivité : tendances saisonnières seulement — valeurs numériques précises non disponibles sans accès aux tableaux bruts USGS SIR 2004-5177.</p>
+
+        <h3>6.2 — ⭐ Période de reproduction en milieu naturel</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>J. floridae — Reproduction documentée en milieu naturel (Foster et al., 1969)</th>
+                    <td>Période confirmée : MARS à SEPTEMBRE (saison printanière–estivale)</td>
+                </tr>
+                <tr>
+                    <th>Paramètres au déclenchement (printemps) :</th>
+                    <td>T° eau ~19–22°C en hausse / Pluviométrie en augmentation (64–91 mm/mois) / Niveau d'eau en montée / Végétation aquatique en pleine croissance</td>
+                </tr>
+                <tr>
+                    <th>Pic reproducteur (été) :</th>
+                    <td>T° eau ~27–28°C / Pluviométrie maximale (191–194 mm/mois juin–août) / Algues abondantes / Pontes fractionnées quasi-quotidiennes</td>
+                </tr>
+                <tr>
+                    <th>Arrêt reproducteur :</th>
+                    <td>octobre–février. T° en baisse (<22°C). Espèce résistante au froid (FishBase : survie documentée jusqu'à 4°C).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-7">
+        <h2>7. ÉCOLOGIE & ÉTHOLOGIE AVANCÉE</h2>
+        <h3>7.1 — Structure sociale et hiérarchie</h3>
+        <p>J. floridae est une espèce semi-solitaire à organisation sociale de type harem défensif saisonnier.</p>
+        <p>En dehors de la reproduction, les individus cohabitent pacifiquement dans les zones végétalisées.</p>
+        <p>Pendant la saison reproductive, les mâles dominants établissent des territoires exclusifs (rayon ~20-40 cm).</p>
+        <p>L'intensité de la coloration est corrélée au statut de dominance — les mâles dominants arborent des rouges et bleus plus saturés, attirant davantage de femelles (Saint Mary et al., 2001).</p>
+        <p>Des mâles satellites ont été observés, fécondant furtivement les pontes des mâles territoriaux (Klug & Saint Mary, 2005).</p>
+        <p>C'est la seule espèce de Cyprinodontidae documentée pour exhiber des soins paternels (Bonnevier et al., 2003 ; Foster et al., 1969).</p>
+        <p>La communication visuelle repose sur les chromatophores mélanophores et xanthophores, modulés en quelques secondes.</p>
+
+        <h3>7.2 — Comportement territorial et défense du nid</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase comportementale</th>
+                    <th>Description — Sources : Mertz & Barlow (1966) ; Saint Mary et al. (2001) ; Klug & Saint Mary (2005)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Établissement du territoire</td><td>Le mâle choisit une zone à végétation dense ou algueuse. Il charge et chasse systématiquement les intrus. Coloration maximale — roue de flanc pour exhiber le patron drapeau</td></tr>
+                <tr><td>Parade nuptiale (T-dance)</td><td>Le mâle se positionne en T perpendiculaire à la femelle, nageoires érigées. La femelle mord parfois le mâle pour stimuler la poursuite (comportement unique documenté par Mertz & Barlow, 1966)</td></tr>
+                <tr><td>Dépôt des oeufs</td><td>Pontes fractionnées — 1 à 20 oeufs par session, déposés sur algues, mop de frai ou sable (nid en dépression). Fixation par filaments adhésifs. Comportement de pondeur fractionné typique des Cyprinodontidae</td></tr>
+                <tr><td>Soins paternels (documentés)</td><td>Le mâle garde, ventile (fanning) et nettoie les oeufs. Comportement variable selon la salinité : plus important en eau douce qu'en eau saumâtre (Saint Mary et al., 2004 — J. Fish Biol. 65:760-768)</td></tr>
+                <tr><td>Cannibalisme filial</td><td>Les mâles consomment parfois leurs propres oeufs — interprété comme trade-off adaptatif : énergie récupérée réinvestie dans futures pontes (Klug & Saint Mary, 2005 — Animal Behaviour 70:685-691)</td></tr>
+                <tr><td>Post-éclosion</td><td>Aucun soin parental après l'éclosion. Les alevins se dissimulent dans la végétation et sont livrés à eux-mêmes</td></tr>
+            </tbody>
+        </table>
+
+        <h3>7.3 — Régime alimentaire naturel et guilde trophique</h3>
+        <p>J. floridae est classé dans la guilde des omnivores algophages-microprédateurs.</p>
+        <p>Son régime présente 40-70 % de matière végétale selon la saison.</p>
+        <p>En milieu naturel : algues filamenteuses (Spirogyra, Cladophora) grattées sur substrats, periphyton (biofilm algal), micro-crustacés (Daphnia, Cladocères, Ostracodes), larves de Chironomidae et Culicidae, vers oligochètes, petits mollusques.</p>
+        <p>La bouche à dents tricuspides est spécialement adaptée au grattage des algues.</p>
+        <p>Note importante en aquariophilie : J. floridae est fréquemment utilisé comme mangeur d'algues filamenteuses dans les bacs plantés et bassins extérieurs — il est particulièrement efficace contre les algues barbu (Cladophora) et spirogyra (Aquariumcoop, 2023).</p>
+    </section>
+
+    <section id="section-8">
+        <h2>8. INSTALLATION — L'AQUARIUM IDÉAL</h2>
+        <table>
+            <tbody>
+                <tr><th>Volume minimum</th><td>60 litres pour un couple (60×30 cm de base minimum)</td></tr>
+                <tr><th>Volume recommandé</th><td>120–200 litres pour un groupe : 1 mâle / 2-3 femelles</td></tr>
+                <tr><th>Dimensions conseillées</th><td>100×40×40 cm minimum — longueur importante pour les territoires mâles</td></tr>
+                <tr><th>Fond</th><td>Sable fin ou gravier fin, naturel, sombre de préférence. 3-5 cm</td></tr>
+                <tr><th>Filtration</th><td>Filtre interne ou externe silencieux — débit 4-5× le volume/heure</td></tr>
+                <tr><th>Circulation</th><td>Faible à modérée — pas de courant fort. Diffuseur de sortie recommandé</td></tr>
+                <tr><th>Éclairage</th><td>FORT recommandé (8-12 h/jour) — favorise la croissance des algues essentielles au bien-être</td></tr>
+                <tr><th>Chauffage</th><td>NON obligatoire en zone tempérée (tolérance 4-30°C). Si chauffage : 20-22°C pour entretien ; 22-25°C pour reproduction</td></tr>
+                <tr><th>Décor</th><td>Nombreuses zones végétalisées, racines, rochers, galets. Coupures de vue entre les territoires</td></tr>
+                <tr><th>Algues (essentiel)</th><td>Algues filamenteuses INDISPENSABLES au bien-être nutritionnel — prévoir surfaces bien éclairées. Sans algues, ronge les plantes à feuilles tendres</td></tr>
+                <tr><th>Plantes recommandées</th><td>Vallisneria, Ceratophyllum, Egeria, Myriophyllum, mousses. Éviter les plantes à feuilles tendres (Hygrophila, Cabomba) — mordillage documenté</td></tr>
+                <tr><th>Cachettes femelles</th><td>Nombreuses — tubes, grottes, enchevêtrements de racines pour protéger les femelles de l'agressivité mâle</td></tr>
+                <tr><th>Renouvellement eau</th><td>20-25 % hebdomadaire. Eau du robinet déchlaminée acceptée — espèce tolérante. pH et GH peu contraignants</td></tr>
+                <tr><th>Note spéciale</th><td>Un bac bien éclairé avec algues naturelles est la condition sine qua non du bien-être. Espèce excellente pour bacs non chauffés et bassins extérieurs estivaux</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-9">
+        <h2>9. PARAMÈTRES DE L'EAU — Aquarium</h2>
+        <h3>9.1 — Paramètres physico-chimiques recommandés</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre</th>
+                    <th>Valeur idéale</th>
+                    <th>Fourchette tolérée</th>
+                    <th>Critique (limite)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Température</td><td>20–24 °C</td><td>18–26 °C</td><td>< 4 °C ou > 32 °C (stress)</td></tr>
+                <tr><td>pH</td><td>7,0–7,8</td><td>6,5–8,5</td><td>< 5,5 ou > 9,0</td></tr>
+                <tr><td>GH (dureté totale)</td><td>5–15 °dH</td><td>3–30 °dH</td><td>Aucune restriction sévère</td></tr>
+                <tr><td>KH</td><td>3–10 °dH</td><td>1–15 °dH</td><td>< 1 °dH (instabilité pH)</td></tr>
+                <tr><td>Conductivité</td><td>200–500 µS/cm</td><td>100–1500 µS/cm</td><td>Espèce tolérante jusqu'à ~5 ppt NaCl</td></tr>
+                <tr><td>Nitrites NO2</td><td>0 mg/L</td><td>< 0,1 mg/L</td><td>Tout seuil > 0</td></tr>
+                <tr><td>Nitrates NO3</td><td>< 20 mg/L</td><td>< 50 mg/L</td><td>> 100 mg/L (stress chronique)</td></tr>
+                <tr><td>O2 dissous</td><td>> 6 mg/L</td><td>5–9 mg/L</td><td>< 4 mg/L</td></tr>
+                <tr><td>Chlore / Chloramine</td><td>0 mg/L</td><td>0 mg/L</td><td>Tout seuil > 0</td></tr>
+            </tbody>
+        </table>
+
+        <h3>9.2 — Traitement et préparation de l'eau</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Techniques de préparation de l'eau</th>
+                    <td>J. floridae est une espèce robuste et très tolérante — elle accepte l'eau du robinet déchlaminée dans la plupart des régions. Pas d'osmose inverse nécessaire. Eau neutre à légèrement alcaline idéale. Si le pH dépasse 8,5 : adjonction modérée de tourbe ou de feuilles de catappa. Pour la reproduction : légère baisse de T° (3-4°C sur 1 semaine) puis remontée progressive — simuler l'arrivée du printemps. Un bac légèrement saumâtre (0,5-1 g/L NaCl) peut réduire les maladies fongiques sur les oeufs (Saint Mary et al., 2004).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-10">
+        <h2>10. ALIMENTATION</h2>
+        <p>J. floridae est un omnivore algophage en captivité. Son trait le plus marquant en aquariophilie est son appétit pour les algues filamenteuses — il est fréquemment utilisé comme nettoyeur biologique dans les bacs plantés.</p>
+        <p>Sans algues disponibles, il ronge les plantes à feuilles tendres.</p>
+        <p>Il accepte bien tous les aliments standards mais une part végétale régulière est indispensable à sa santé à long terme.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Type d'aliment</th>
+                    <th>Exemples</th>
+                    <th>Fréquence / Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Algues (essentiel)</td><td>Algues filamenteuses naturelles (Spirogyra, Cladophora), spiruline en galettes, pastilles végétales, courgette blanchie</td><td>Ad libitum si disponible — à favoriser absolument</td></tr>
+                <tr><td>Vivant</td><td>Artémias adultes et nauplii, Daphnies, Moustiques rouges (Chironomus), vers de vase, tubifex (risque bactérien)</td><td>3-4 fois/semaine — excellent pour le conditionnement reproducteur</td></tr>
+                <tr><td>Congelé</td><td>Artémias congelées, Mysis, vers de vase congelés, crevettes hachées</td><td>2-3 fois/semaine — décongeler avant distribution</td></tr>
+                <tr><td>Granulés / flocons</td><td>Granulés omnivores petite taille (1-2 mm), flocons de qualité, pastilles de fond. Tetra Rubin, NLS, Hikari Micro Pellets</td><td>1-2 fois/semaine — complémentaire</td></tr>
+                <tr><td>Végétal complémentaire</td><td>Épinards blanchis, petits pois écrasés, laitue romaine, courgette, algues nori</td><td>2-3 fois/semaine si pas d'algues en bac</td></tr>
+                <tr><td>À éviter absolument</td><td>Nourriture lyophilisée en excès, aliments trop gras, tubifex vivants douteux (vecteurs de maladies bactériennes)</td><td>Jamais ou très occasionnel</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-11">
+        <h2>11. COMPORTEMENT & COHABITATION</h2>
+        <p>Tempérament généralement pacifique hors période de reproduction. En période de frai, les mâles peuvent devenir agressifs envers les congénères et harcelants envers les femelles.</p>
+        <p>Prévoir un ratio 1 mâle / 2-3 femelles minimum et de nombreuses cachettes. Peut cohabiter en communauté si suffisamment d'espace.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cohabitation recommandée</th>
+                    <th>Cohabitation déconseillée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>• Poissons d'eau tempérée à fraîche de même taille : Danios, petits Rasboras, Corydoras paleatus/sterbai</td><td>• Autres Cyprinodontiformes de taille similaire (Fundulopanchax si T° compatible)</td></tr>
+                <tr><td>• Petits Loches (Pangio, Yasuhikotakia) — zones de nage séparées</td><td>• Ancistrus, Otocinclus — nettoyeurs de vitres, aucune interaction négative</td></tr>
+                <tr><td>• Gastérosteus aculeatus (épinoche) si eau fraîche — cohabitation documentée en milieu naturel floridien</td><td>• Poissons à longues nageoires voilées (guppys, betas) — mordillage documenté des nageoires par les mâles de J. floridae</td></tr>
+                <tr><td>• Poissons tropicaux exigeant T° > 26-28°C (discus, cichlidés amazoniens) — incompatibilité thermique</td><td>• Grands cichlidés agressifs — risque de prédation sur J. floridae</td></tr>
+                <tr><td>• Autres mâles J. floridae en petit bac (< 100 L) — combat territorial intense jusqu'à mort</td><td></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-12">
+        <h2>12. PROTOCOLE DE REPRODUCTION COMPLET</h2>
+        <h3>12.1 — Prérequis & Conditionnement</h3>
+        <table>
+            <tbody>
+                <tr><th>Âge de maturité sexuelle</th><td>6–8 semaines environ (espèce précoce)</td></tr>
+                <tr><th>Taille minimale reproductrice</th><td>3,5–4 cm (LS)</td></tr>
+                <tr><th>Composition recommandée</th><td>1 mâle dominant / 2-3 femelles minimum pour diluer le harcèlement</td></tr>
+                <tr><th>Durée du conditionnement</th><td>2 à 4 semaines d'alimentation intensifiée (vivant ou congelé quotidien)</td></tr>
+                <tr><th>Aquarium de ponte</th><td>Bac 40-60 L avec végétation dense ou mop de ponte en laine de nylon (Foster et al., 1969)</td></tr>
+                <tr><th>Eau du bac de ponte</th><td>T° 22-25°C / pH 7,0-7,8 / GH 5-15°dH. Ajout léger NaCl (0,5-1 g/L) réduit la mortalité des oeufs par champignon</td></tr>
+                <tr><th>Support de ponte préférentiel</th><td>Algues filamenteuses, mop de laine de nylon, Java moss (Taxiphyllum), sable fin (le mâle y crée parfois un nid en dépression)</td></tr>
+                <tr><th>Signal de déclenchement</th><td>Baisse de T° 3-4°C sur 1 semaine PUIS remontée à 22-25°C — simule l'arrivée du printemps floridien</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.2 — Conditionnement des reproducteurs</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Menu de conditionnement</th>
+                    <td>Alimentation 2-3 fois/jour pendant 3-4 semaines : artémias vivantes le matin, moustiques rouges à midi, daphnies le soir. Alterner avec spiruline en galettes et courgette blanchie. 1 jour de jeûne hebdomadaire obligatoire. Maintenir une couche d'algues naturelles en permanence dans le bac de conditionnement.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>12.3 — Déclenchement de la ponte</h3>
+        <p>Signal principal : hausse printanière de la T° et disponibilité de végétation/algues.</p>
+        <p>En aquarium : maintenir T° 22-25°C, eau légèrement acide (pH 6,0-7,0), niveau bas (< 25 cm), végétation dense ou mop de ponte.</p>
+        <p>Le mâle forme un territoire et attire la femelle. Dans la nature, pontes de mars à septembre (Foster et al., 1969).</p>
+        <p>Seriouslyfish.com confirme le comportement de garde de nid en eau peu profonde.</p>
+        <p>Aquadiction.world et Fishkeeper.co.uk recommandent un diviseur transparent si le mâle harcèle la femelle non prête à pondre.</p>
+
+        <h3>12.4 — La ponte : déroulement et caractéristiques</h3>
+        <table>
+            <tbody>
+                <tr><th>Parade nuptiale</th><td>Très caractéristique : danse en T, la femelle mord le mâle pour stimuler la poursuite, puis le couple nage côte à côte avec fréquents fléchissements latéraux synchronisés (Mertz & Barlow, 1966)</td></tr>
+                <tr><th>Nombre d'oeufs par session</th><td>5 à 20 oeufs par dépôt (la femelle dépose 5-6 oeufs et recommence plusieurs fois). Total documenté en un cycle : 50 à 145 oeufs (Brooklyn Aquarium Society, 2010 : 145 oeufs dont 115 éclos). Pondeur fractionné sur plusieurs jours</td></tr>
+                <tr><th>Fréquence des pontes</th><td>Continue si T° maintenue à 22-25°C — les femelles pondent quasi quotidiennement sur plusieurs semaines</td></tr>
+                <tr><th>Couleur des oeufs</th><td>Beige à jaunâtre translucide. Les oeufs non fécondés blanchissent rapidement (Saprolegnia — voir soins)</td></tr>
+                <tr><th>Adhérence</th><td>Oeufs adhésifs avec filaments fixateurs — se collent sur algues, végétation, sable (si nid en dépression)</td></tr>
+                <tr><th>Durée d'incubation</th><td>6 à 14 jours selon la T° — Diszhal.info : 7-14 jours ; Aquaryus.com : 6-9 jours à 25°C ; Saint Mary et al. (2004) : taux d'éclosion augmente avec salinité, indépendant de T°</td></tr>
+                <tr><th>Soins paternels</th><td>Le mâle garde et ventile le nid. Variable selon salinité : soins plus intenses en eau douce (Saint Mary et al., 2004 — J. Fish Biol. 65:760-768). Seriouslyfish.com confirme la garde de nid en eau peu profonde. Retirer la femelle après la ponte</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.5 — Développement larvaire et élevage des alevins</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stade</th>
+                    <th>Observations & Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Oeufs (J0–J7 à J14)</td><td>Retirer les parents si cannibalisme. Maintenir légère aération sur les oeufs. Retirer immédiatement les oeufs blanchis (Saprolegnia). Ajout bleu de méthylène 1-2 mg/L si cannibalisme fongique important</td></tr>
+                <tr><td>Nage libre (J7–J14)</td><td>Alevins nagent librement mais restent près du fond dans la végétation. Corpuscule vitellin résiduel pendant 24-48h</td></tr>
+                <tr><td>Premier nourrissage</td><td>Vinegar eels (anguillules du vinaigre) et rotifers congelés en premier (Brooklyn AqS, 2010). Puis nauplii d'artémias après 1 semaine. Crushed flakes également acceptés rapidement (BAS). Infusoires si disponibles</td></tr>
+                <tr><td>Alevins (sem. 2–4)</td><td>Passer aux artémias adultes, microworms, Grindal worms. Petits changements d'eau quotidiens (10-15%). ATTENTION : séparer par taille — les grands dévorent les petits</td></tr>
+                <tr><td>Juvéniles (mois 1–2)</td><td>Alimentation adulte progressive. Sexage possible dès 6-8 semaines (tache dorsale femelle). Espèce non annuelle — élevage multi-couvées possible</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.6 — Élevage artificiel (séparation des parents)</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Protocole d'incubation artificielle</th>
+                    <td>Si le mâle consomme les oeufs (fréquent) ou si soins parentaux absents : retirer le support de ponte dans un bac de 10-20 L. Eau identique au bac parental + NaCl 0,5-1 g/L (réduit Saprolegnia — Saint Mary et al., 2004). Légère aération dirigée sur les oeufs. Bleu de méthylène 1-2 mg/L optionnel. À l'éclosion et nage libre, primer avec eau verte puis nauplii artémias. L'élevage artificiel est la méthode la plus productive pour J. floridae en aquarium.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-13">
+        <h2>13. SANTÉ & MALADIES COURANTES</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maladie / Pathologie</th>
+                    <th>Symptômes</th>
+                    <th>Causes</th>
+                    <th>Traitement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Saprolegniose (champignon)</td><td>Filaments cotonneux blancs/gris sur oeufs ou plaies</td><td>Stress, blessure, eau froide — Saprolegnia ferax surtout sur les oeufs</td><td>Bleu de méthylène 2 mg/L en bac d'élevage. NaCl 0,5-1 g/L prévention. Élever T°</td></tr>
+                <tr><td>Ich (Ichthyophthirius)</td><td>Points blancs grains de sel, frottements</td><td>Stress, refroidissement brutal, introduction de poissons porteurs</td><td>Élever T° à 28°C progressivement (5 jours). NaCl 1-2 g/L. Traitement copper-based si sévère</td></tr>
+                <tr><td>Columnariose</td><td>Plaques cotonneuses, érosion des nageoires, roussissement</td><td>Flavobacterium columnare — eau chaude et surpopulation</td><td>Oxytétracycline 50 mg/L bain 5 jours. NaCl 1 g/L symptomatique</td></tr>
+                <tr><td>Oodiniose (velours)</td><td>Poudre dorée sur le corps, frottements intenses, opercules battants</td><td>Oodinium pillularis — protiste — eau stagnante</td><td>Sulfate de cuivre 0,2 mg/L ou formaldéhyde. Obscurité (sensible à la lumière). T° 28°C</td></tr>
+                <tr><td>Parasites internes</td><td>Amaigrissement malgré bon appétit, selles blanchâtres</td><td>Capillaria, Camallanus — via nourriture vivante non contrôlée</td><td>Flubendazole 0,1-0,2 mg/L bain 3-5 jours (Capillaria). Lévamisole HCl 5 mg/L (Camallanus)</td></tr>
+                <tr><td>Hydropisie</td><td>Écailles hérissées, abdomen gonflé</td><td>Insuffisance rénale, bactéries internes</td><td>Pronostic sombre. Antibiotiques, isolement, réduire stress</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-14">
+        <h2>14. PARASITOLOGIE & PATHOLOGIE AVANCÉE</h2>
+        <h3>14.1 — Principaux agents pathogènes avec cycles biologiques</h3>
+        
+        <table>
+            <tbody>
+                <tr>
+                    <th>1. Saprolegnia ferax (Roth, 1802) — Saprolegniose</th>
+                    <td>Classe : Oomycota | Ordre : Saprolegniales | Famille : Saprolegniaceae</td>
+                    <td>Cycle biologique : Oomycète (pseudo-champignon). Spores biflagellées (zoospores primaires et secondaires) dans l'eau → germination sur substrat vulnérable (oeufs non fécondés, tissu nécrosé, peau blessée) → hyphes mycéliaux envahissants → sporanges producteurs de nouvelles zoospores. Cycle direct, ubiquitaire, opportuniste. Pathogène principal des oeufs de J. floridae — cause principale de mortalité embryonnaire. La salinité de l'eau inhibe significativement la germination des zoospores (Saint Mary et al., 2004).</td>
+                    <td>Traitement DCI : Bleu de méthylène (chlorure de méthylthioninium), 1-2 mg/L en bain continu sur le bac d'incubation. Effet antifongique par inhibition de la NADH oxidase. Chlorure de sodium (NaCl), 0,5-2 g/L en bac d'élevage des oeufs — réduction préventive démontrée par Saint Mary et al. (2004). Alternative douce : permanganate de potassium (KMnO4) 2-4 mg/L en bain court de 30 minutes — antifongique et antibactérien à large spectre, bien toléré par les Cyprinodontidae.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>2. Ichthyophthirius multifiliis (Fouquet, 1876) — Maladie des points blancs</th>
+                    <td>Classe : Oligohymenophorea | Ordre : Hymenostomatida | Famille : Ichthyophthiriidae</td>
+                    <td>Cycle biologique (direct, 3 stades) : Trophonte (parasite sous-épidermique, 0,1-1 mm, visible comme point blanc) → Tomont (libre, se kyste sur substrat, se divise jusqu'à 256 tomites) → Tomites (infestants nageurs, doivent trouver un hôte en 24-72h à T° ambiante ou meurent). Seul le stade tomite est sensible aux traitements chimiques. La durée du cycle est inversement proportionnelle à la T° (cycle complet 3-4 jours à 26°C vs 14-21 jours à 15°C).</td>
+                    <td>Traitement DCI : Élever la T° à 28-30°C progressivement (accélère le cycle et réduit la durée de l'infestation). Chlorure de sodium 1-3 g/L en bain. Formaldéhyde 15-25 mg/L (attention : stress respiratoire). J. floridae tolère bien les traitements sel/température grâce à sa résistance naturelle aux eaux saumâtres.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>3. Oodinium pillularis (Schäperclaus, 1954) — Velours d'eau douce</th>
+                    <td>Classe : Dinophyceae | Ordre : Blastodiniales | Famille : Oodinaceae</td>
+                    <td>Cycle biologique : Dinoflagellé parasite obligatoire. Trophont (parasite fixé sur épiderme/branchies, aspect doré/rouille sous lumière rasante) → se détache et forme une hypnospore kystée → division interne jusqu'à 256 dinoforés infestants → libération et recherche d'un nouvel hôte en 24h. Particulièrement virulent chez les petits Cyprinodontiformes. Taux de mortalité élevé si non traité rapidement.</td>
+                    <td>Traitement DCI : Sulfate de cuivre (CuSO4) 0,2 mg/L en bain. Formaldéhyde 15-25 mg/L. OBSCURITÉ complète 7-10 jours (les dinoflagellés sont phototrophes — privation de lumière réduit la virulence). Élever T° à 28°C. Éviter le cuivre en bac planté — toxique pour les invertébrés.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>14.2 — Tableau récapitulatif des traitements DCI et posologies</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Agent pathogène</th>
+                    <th>DCI</th>
+                    <th>Voie</th>
+                    <th>Posologie indicative</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Saprolegnia (oeufs)</td><td>Bleu de méthylène (Chlorure de méthylthioninium)</td><td>Bain continu</td><td>1-2 mg/L bac d'incubation + NaCl 0,5-1 g/L</td><td>Pendant incubation</td></tr>
+                <tr><td>I. multifiliis (Ich)</td><td>NaCl + hausse T°</td><td>Bain</td><td>NaCl 1-3 g/L + T° 28-30°C progressif</td><td>7-10 jours</td></tr>
+                <tr><td>Oodinium pillularis</td><td>Sulfate de cuivre (CuSO4)</td><td>Bain</td><td>0,2 mg/L + obscurité totale + T° 28°C</td><td>7-10 jours</td></tr>
+                <tr><td>Columnariose</td><td>Oxytétracycline</td><td>Bain + aliment</td><td>50 mg/L bain OU 1% dans nourriture</td><td>5-7 jours</td></tr>
+                <tr><td>Capillaria</td><td>Flubendazole</td><td>Bain</td><td>0,1-0,2 mg/L, renouveler à J+7</td><td>3-5 j × 2</td></tr>
+                <tr><td>Camallanus</td><td>Lévamisole HCl</td><td>Bain 24h</td><td>5-10 mg/L, répéter à J+14</td><td>1-2 appl.</td></tr>
+            </tbody>
+        </table>
+        <p>Avertissement : posologies indicatives — consulter un vétérinaire habilité. Respecter la réglementation en vigueur.</p>
+    </section>
+
+    <section id="section-15">
+        <h2>15. STATUT DE CONSERVATION</h2>
+        <table>
+            <tbody>
+                <tr><th>Statut UICN</th><td>Least Concern (LC) — Préoccupation mineure (évaluation UICN, dernière révision 2012)</td></tr>
+                <tr><th>Tendance population</th><td>Stable dans les zones préservées. Déclin local documenté dans les zones d'urbanisation intensive de Floride</td></tr>
+                <tr><th>Pressions principales</th><td>Destruction des habitats humides (drainage agricole et urbanisation en Floride), pollution par les herbicides et pesticides des zones agricoles, introduction d'espèces envahissantes (Hydrilla verticillata remplace la végétation native), eutrophisation</td></tr>
+                <tr><th>Risque espèces invasives</th><td>Population introduite à Harrison County, Mississippi — risque de compétition/hybridation avec Cyprinodon variegatus local (Ellwanger et al., SE Fishes Council Proc. 83, 2021)</td></tr>
+                <tr><th>Rôle dans la conservation</th><td>Espèce indicatrice dans le Comprehensive Everglades Restoration Plan (CERP, 2000). Utilisée pour surveiller la santé des zones humides restaurées en Floride (FWC)</td></tr>
+                <tr><th>Pêche ornementale</th><td>Production commerciale en Floride et en Asie du Sud-Est. Poisson-fourniture dans le commerce aquariophile nord-américain — rarement disponible en Europe. Disponible dans la profession aquariophile spécialisée (killifisheries)</td></tr>
+                <tr><th>Élevage en captivité</th><td>Production commerciale bien établie — espèce non menacée par l'ornement. Les spécimens en vente sont quasi exclusivement élevés en captivité (Seriouslyfish.com)</td></tr>
+                <tr><th>Recommandation</th><td>Toujours privilégier les spécimens d'élevage. Attention : la forme ballon (balloon strain) est une déformation génétique obtenue par sélection artificielle — non recommandée pour la conservation génétique</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-16">
+        <h2>16. BIBLIOGRAPHIE SCIENTIFIQUE COMPLÈTE</h2>
+        <p>Références classées par ordre chronologique — format académique avec DOI</p>
+        <ul class="biblio-list">
+            <li>Goode, G.B. (1879). A preliminary catalogue of the fishes of the St. John's River and the east coast of Florida, with descriptions of a new genus and three new species. Proceedings of the United States National Museum, 2(73): 108-121. [Description originale de Jordanella floridae et Cyprinodon floridae]</li>
+            <li>Mertz, J.C. & Barlow, G.W. (1966). On the reproductive behaviour of Jordanella floridae (Pisces: Cyprinodontidae) with special reference to a quantitative analysis of parental fanning. Zeitschrift für Tierpsychologie, 23(5): 537-554.</li>
+            <li>Foster, N.R. (1969). Courtship and spawning of the American flagfish, Jordanella floridae (Cyprinodontidae). In: Stroud, R.H. & Clepper, H. (eds), Sport Fishing Institute, Washington D.C.</li>
+            <li>Parenti, L.R. (1981). A phylogenetic and biogeographic analysis of cyprinodontiform fishes (Teleostei, Atherinomorpha). Bulletin of the American Museum of Natural History, 168(4): 335-557.</li>
+            <li>Parker, A. & Kornfield, I. (1995). Molecular perspective on evolution and zoogeography of Cyprinodontid killifishes (Teleostei: Atherinomorpha). Copeia, 1995(1): 8-21. doi: 10.2307/1446797</li>
+            <li>Bonnevier, J., Lindstrom, K. & St Mary, C.M. (2003). Context-dependent male care in the Florida flagfish (Jordanella floridae): filial cannibalism and breeding behaviour. Behavioral Ecology and Sociobiology, 53(2): 82-90.</li>
+            <li>Saint Mary, C.M., Noureddine, C.G. & Lindstrom, K. (2001). Effects of the environment on male reproductive success and parental care in the Florida flagfish, Jordanella floridae. Ethology, 107(11): 1035-1052. doi: 10.1046/j.1439-0310.2001.00714.x</li>
+            <li>Saint Mary, C.M., Gordon, E. & Hale, R.E. (2004). Environmental effects on egg development and hatching success in Jordanella floridae, a species with parental care. Journal of Fish Biology, 65(3): 760-768. doi: 10.1111/j.0022-1112.2004.00481.x</li>
+            <li>Klug, H. & Saint Mary, C.M. (2005). Reproductive fitness consequences of filial cannibalism in the flagfish, Jordanella floridae. Animal Behaviour, 70(3): 685-691. doi: 10.1016/j.anbehav.2004.12.018</li>
+            <li>Klug, H., Chin, A. & Saint Mary, C.M. (2005). The net effects of guarding on egg survivorship in the flagfish, Jordanella floridae. Animal Behaviour, 69(3): 661-668. doi: 10.1016/j.anbehav.2004.07.005</li>
+            <li>Uribe, M.C., Grier, H.J. & Mejía-Roa, V. (2014). Comparative testicular structure and spermatogenesis in bony fishes including the flagfish. Spermatogenesis, 4(3): e983400. doi: 10.4161/21565562.2014.983400</li>
+            <li>Ellwanger, M.P. et al. (2021). New records of non-native fishes in Mississippi including Jordanella floridae. Southeastern Fishes Council Proceedings, 83: 1-6.</li>
+            <li>Froese, R. & Pauly, D. (Eds.) (2025). FishBase. World Wide Web electronic publication. www.fishbase.se — Jordanella floridae (Ref. 13371). Version 04/2025.</li>
+            <li>WoRMS Editorial Board (2025). World Register of Marine Species. https://www.marinespecies.org/aphia.php?p=taxdetails&id=281204 — AphiaID 281204.</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        <div>Jordanella floridae — Fiche Ichtyologique Complète</div>
+        <div>Document réalisé à des fins aquariophiles et scientifiques • 2026</div>
+    </div>
+
+</body>
+</html>

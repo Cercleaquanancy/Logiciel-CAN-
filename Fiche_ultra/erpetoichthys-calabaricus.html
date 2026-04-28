@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ichtyologique : Erpetoichthys calabaricus</title>
+    <style>
+        :root {
+            --blue-primary: #1D3557;
+            --teal-secondary: #0A9396;
+            --gold-accent: #D4AF37;
+            --light-bg: #F1FAEE;
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            color: var(--blue-primary);
+            text-align: center;
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--teal-secondary);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--blue-primary);
+            border-left: 5px solid var(--gold-accent);
+            padding-left: 10px;
+            margin-top: 40px;
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+        }
+
+        h3 {
+            color: var(--teal-secondary);
+            margin-top: 25px;
+        }
+
+        /* Encadré de synthèse */
+        .summary-box {
+            background-color: var(--light-bg);
+            border: 2px solid var(--teal-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .summary-box ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-box li {
+            padding: 5px 0;
+        }
+
+        /* Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--teal-secondary);
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: #f9fdfd;
+        }
+
+        tbody tr:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        /* Formule Méristique */
+        .meristic-box {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--blue-primary);
+            color: var(--gold-accent);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Bibliographie alternée */
+        .biblio-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .biblio-list li {
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+
+        .biblio-list li:nth-child(odd) {
+            border-left: 4px solid var(--teal-secondary);
+        }
+
+        .biblio-list li:nth-child(even) {
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FICHE ICHTYOLOGIQUE</h1>
+    <div class="subtitle">
+        <strong>Erpetoichthys calabaricus</strong> (J.A. Smith, 1865)<br>
+        Poisson-roseau / Poisson-corde · Reedfish / Ropefish<br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        Fiche Ichtyologique Complète — Niveau Expert
+    </div>
+
+    <div class="summary-box">
+        <ul>
+            <li><strong>Famille :</strong> Polypteridae</li>
+            <li><strong>Origine :</strong> Afrique occidentale et centrale (Bénin, Nigeria, Cameroun)</li>
+            <li><strong>Taille adulte :</strong> ≤ 41,4 cm (37 cm muséum ; le mythe des 90 cm est incorrect)</li>
+            <li><strong>Difficulté :</strong> Modérée — espèce fugueuse, sensible à la qualité de l’eau</li>
+            <li><strong>Température :</strong> 23–30 °C</li>
+            <li><strong>pH recommandé :</strong> 6,0–7,5</li>
+        </ul>
+    </div>
+
+    <section id="section-1">
+        <h2>1. SYSTÉMATIQUE & TAXONOMIE</h2>
+        <h3>Classification phylogénétique complète</h3>
+        <table>
+            <tbody>
+                <tr><th>Règne</th><td>Animalia</td></tr>
+                <tr><th>Embranchement</th><td>Chordata</td></tr>
+                <tr><th>Classe</th><td>Actinopterygii (Cladistii selon NCBI) — groupe-frère de tous les autres Actinoptérygiens</td></tr>
+                <tr><th>Ordre</th><td>Polypteriformes</td></tr>
+                <tr><th>Famille</th><td>Polypteridae Bonaparte, 1835</td></tr>
+                <tr><th>Sous-famille</th><td>— (famille monotypique en deux genres : Erpetoichthys et Polypterus)</td></tr>
+                <tr><th>Genre</th><td>Erpetoichthys J.A. Smith, 1865</td></tr>
+                <tr><th>Espèce</th><td>Erpetoichthys calabaricus J.A. Smith, 1865</td></tr>
+                <tr><th>Synonymes</th><td>Calamoichthys calabaricus (Smith, 1865) ; Erpetoichthys robbianus Smith, 1865 ; Herpetoichthys calabaricus (Smith, 1865) ; Polypterus erpetoideus Smith, 1865</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Étymologie & Histoire taxonomique</th>
+                    <td>Étymologie du genre : du grec erpeton (reptile rampant / chose qui rampe) + ichthys (poisson) — allusion directe à l'allure serpentiforme de l'animal.</td>
+                    <td>Étymologie de l'espèce : calabaricus — de la ville portuaire de Calabar (Nigeria), lieu de collecte des premiers spécimens par le Rev. Alexander Robb, missionnaire écossais.</td>
+                    <td>Description originale : Smith, J.A. (1865). Notice of a new genus of ganoid fish allied to the genus Polypterus (Geoff.-St-Hillaire), recently received from Old Calabar. Proceedings of the Royal Physical Society of Edinburgh, 3 : 273–278.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-2">
+        <h2>2. GÉNÉTIQUE & PHYLOGÉNIE MOLÉCULAIRE</h2>
+        <h3>2.1 — Position phylogénétique du genre</h3>
+        <p>E. calabaricus appartient aux Cladistia (= Polypteriformes), groupe-frère de tous les autres Actinoptérygiens vivants — le clade le plus basal des poissons à nageoires rayonnées.</p>
+        <p>Études moléculaires basées sur 16S, 12S et cyt-b (Morescalchi et al., 2007). Génome séquencé et assemblé (fErpCal1.3, NCBI GCF_900747795.2).</p>
+        <p>Caryotype : 2n = 36 ; NF = 72 (Capanna & Cataudella, 1973). Deux régions NOR sur le bras p de la paire n°1 (Ag-NOR et CMA3).</p>
+
+        <h3>2.2 — Historique taxonomique et controverses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Événement taxonomique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1865</td><td>Description originale par J.A. Smith — création du genre Erpetoichthys et de l'espèce E. calabaricus sur des spécimens de Old Calabar (Nigeria). E. robbianus et Polypterus erpetoideus décrits simultanément, synonymisés ensuite.</td></tr>
+                <tr><td>1866</td><td>Reclassification en Calamoichthys calabaricus — dénomination longtemps utilisée en parallèle dans la littérature.</td></tr>
+                <tr><td>1984</td><td>Greenwood confirme la distinction diagnostique d'E. calabaricus de tous les Polypterus : absence de nageoire ventrale et de sous-operculaire.</td></tr>
+                <tr><td>2003</td><td>Britz & Johnson : révision de Polypteridae — genre Erpetoichthys confirmé monotypique ; 13 espèces de Polypterus validées.</td></tr>
+                <tr><td>2007</td><td>Claeson & Hagadorn : nouvelle description du crâne par CT-scan 3D — différences crâniales profondes avec Polypterus.</td></tr>
+                <tr><td>2019</td><td>Moritz & Britz : étude sur > 2 000 spécimens sauvages — taille maximale 41,4 cm ; mythe des 90 cm définitivement réfuté.</td></tr>
+                <tr><td>2020</td><td>Évaluation UICN : NT (Quasi-menacée) — Lalèyè, Moelants & Olaosebikan. doi:10.2305/IUCN.UK.2020-2.RLTS.T182479A135026602.en</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2.3 — Hypothèse biogéographique et spéciation</h3>
+        <p>Les Polypteriformes sont exclusivement africains depuis au moins l'Éocène (fossiles de Polypterus).</p>
+        <p>La découverte de restes fossiles de Cladistia en Amérique du Sud (Bolivie, Maastrichtien–Paléocène) par Gayet & Meunier (1991–1992) suggère une origine gondwanienne entre 148 et 110 Ma.</p>
+        <p>E. calabaricus est la seule espèce côtière et estuarienne du groupe — adaptation aux eaux saumâtres constituant une apomorphie au sein des Polypteridae.</p>
+        <p>L'élongation du corps résulte de l'addition de vertèbres précaudales (et non caudales comme chez les anguilles) — convergence évolutive remarquable.</p>
+    </section>
+
+    <section id="section-3">
+        <h2>3. DESCRIPTION MORPHOLOGIQUE</h2>
+        <h3>3.1 — Morphologie générale</h3>
+        <p>Corps anguiforme extrêmement allongé, cylindrique, légèrement comprimé latéralement vers le pédoncule caudal. Profil dorsal et ventral quasi-rectilignes.</p>
+        <p>Tête allongée, aplatie dorsoventralement, museau pointu. Absence totale de nageoires ventrales (pelviennes) — caractère diagnostique absolu par rapport à tous les Polypterus.</p>
+        <p>Narines sur courts tentacules tubulaires. Organes électrorécepteurs passifs (ampoules ampullaires) sur la tête.</p>
+
+        <p><strong>Morphologie de précision :</strong> Son corps est exceptionnellement allongé grâce à une prolifération de vertèbres précaudales (et non caudales), lui conférant une locomotion anguiforme stricte. Son corps est protégé par une armure articulée d'écailles ganoïdes rhomboïdales imbriquées, très dures et recouvertes de ganoïne. Son système respiratoire repose sur une vessie natatoire modifiée en poumons asymétriques fonctionnels (le lobe droit s'étendant sur presque toute la longueur de la cavité abdominale), le rendant dépendant de l'oxygène atmosphérique et vulnérable aux aérosols volatils toxiques dans l'air ambiant, tandis que son épiderme et ses branchies primitifs le rendent très intolérant aux traitements chimiques dissous dans l'eau.</p>
+
+        <table>
+            <tbody>
+                <tr><th>Longueur standard (LS)</th><td>≤ 37 cm (spécimen de muséum) ; ≤ 41,4 cm (terrain, > 2 000 spécimens, Moritz & Britz 2019) — la donnée de 90 cm est INCORRECTE</td></tr>
+                <tr><th>Hauteur totale (nageoires)</th><td>Corps anguiforme — hauteur très faible, section transversale quasi-circulaire</td></tr>
+                <tr><th>Profil prédorsal</th><td>Rectiligne à légèrement convexe — caractère diagnostique</td></tr>
+                <tr><th>Taches / marques distinctives</th><td>Petite tache noire constante à la base de chaque nageoire pectorale — marque diagnostique fiable</td></tr>
+                <tr><th>Dorsale</th><td>Série de 7 à 13 pinnules indépendantes (épine + quelques rayons articulés + membrane) — rarement relevées</td></tr>
+                <tr><th>Anale</th><td>Présente, petite — caractère de dimorphisme sexuel (voir sec. 3.3)</td></tr>
+                <tr><th>Bouche</th><td>Terminale, légèrement infère, dents coniques en brosse</td></tr>
+                <tr><th>Écailles</th><td>Ganoïdes (rhomboèdres), disposées en rangées obliques, surface brillante</td></tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 — Coloration & Patron pigmentaire</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Description de la livrée</th>
+                    <td>Coloration de base : dos et flancs vert olive foncé à brun-gris, avec de légers reflets métalliques.</td>
+                    <td>Marques diagnostiques : face ventrale jaune clair à orange pâle (nettement contrastée). Tache noire constante et diagnostique à la base de chaque nageoire pectorale.</td>
+                    <td>Variations comportementales / dimorphisme chromatique subtil : mâles plus vert-olive ; femelles plus brun-jaunâtre (Asuquo, 2019). Larves avec branchies externes très développées, aspect urodèle.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 — Dimorphisme sexuel</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère</th>
+                    <th>MÂLE — ♂</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Nageoire anale</td><td>12 à 14 rayons — plus large, épaissie et convexe en période reproductrice</td></tr>
+                <tr><td>Coloration</td><td>Plus vert-olive</td></tr>
+                <tr>
+                    <th>Caractère</th>
+                    <th>FEMELLE — ♀</th>
+                </tr>
+                <tr><td>Nageoire anale</td><td>9 à 12 rayons — plus petite, étroite</td></tr>
+                <tr><td>Abdomen</td><td>Plus volumineux à maturité sexuelle ; femelles plus lourdes que mâles de même longueur</td></tr>
+                <tr><td>Coloration</td><td>Plus brun-jaunâtre</td></tr>
+            </tbody>
+        </table>
+        <p>Note : sexage fiable à partir d'~20 cm par simple comptage des rayons de l'anale — méthode non invasive et rapide.</p>
+    </section>
+
+    <section id="section-4">
+        <h2>4. MÉRISTIQUE & MORPHOLOGIE AVANCÉE</h2>
+        <h3>4.1 — Formule méristique de Erpetoichthys calabaricus</h3>
+        <p>La formule méristique est la notation standardisée du décompte des rayons et épines des nageoires.</p>
+        <p>P2 = 0 : nageoires pelviennes totalement absentes — caractère générique absolu.</p>
+
+        <div class="meristic-box">
+            D. VII–XIII ; A. 9–14 ; P1. présente ; P2. ABSENTE (0) ; C. arrondie ; Vert. 110–113
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Nageoire</th>
+                    <th>Min.</th>
+                    <th>Max.</th>
+                    <th>Signification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>D.</td><td>Dorsale (pinnules)</td><td>7</td><td>13</td><td>Série de pinnules indépendantes. Chaque pinnule est constituée d'une épine dure à l'avant, suivie de plusieurs petits rayons mous articulés soutenant la membrane.</td></tr>
+                <tr><td>A.</td><td>Anale (rayons mous)</td><td>9</td><td>14</td><td>Dimorphisme sexuel clé : mâles 12–14 rayons / femelles 9–12 rayons</td></tr>
+                <tr><td>P1.</td><td>Pectorales</td><td>—</td><td>—</td><td>Bien développées, essentielles pour la propulsion par ondulation des nageoires pectorales</td></tr>
+                <tr><td>P2.</td><td>Pelviennes (ventrales)</td><td>0</td><td>0</td><td>ABSENTES — apomorphie générique absolue, distingue Erpetoichthys de tout Polypterus</td></tr>
+                <tr><td>C.</td><td>Caudale</td><td>—</td><td>—</td><td>Arrondie, indifférenciée — utilisée en locomotion rapide anguiforme</td></tr>
+                <tr><td>LL1</td><td>Ligne latérale</td><td>—</td><td>—</td><td>Continue sur toute la longueur du corps</td></tr>
+                <tr><td>Vert.</td><td>Vertèbres</td><td>110</td><td>113</td><td>Dont nombreuses vertèbres précaudales (~2× plus que Polypterus) — allongement axial unique</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 — Tableau méristique comparatif des espèces congénères</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère méristique</th>
+                    <th>E. calabaricus vs Polypterus spp.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Nageoires ventrales</td><td>E. calabaricus : ABSENTES / Polypterus : présentes (I + 5 rayons)</td></tr>
+                <tr><td>LL1 (ligne latérale)</td><td>Continue sur toute la longueur du corps dans les deux genres</td></tr>
+                <tr><td>Vertèbres précaudales</td><td>E. calabaricus : ~2× plus que Polypterus — allongement axial spécifique</td></tr>
+                <tr><td>Sous-operculaire</td><td>E. calabaricus : ABSENT / Polypterus : présent — caractère diagnostique de famille</td></tr>
+                <tr><td>Marque diagnostique</td><td>E. calabaricus : tache noire constante base des pectorales / Polypterus : absente</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.3 — Clé de détermination dichotomique du genre</h3>
+        <p>Clé basée sur les caractères diagnostiques stables, indépendants de l'état de stress ou de la coloration comportementale.</p>
+
+        <table>
+            <tbody>
+                <tr><td>1a</td><td>Nageoires ventrales (pelviennes) PRÉSENTES ; sous-operculaire présent</td><td>→ Genre Polypterus (13 espèces)</td></tr>
+                <tr><td>1b</td><td>Nageoires ventrales (pelviennes) ABSENTES ; sous-operculaire absent</td><td>→ Genre Erpetoichthys</td></tr>
+                <tr><td>2a</td><td>Genre Erpetoichthys : seule espèce valide connue</td><td>→ Erpetoichthys calabaricus (Smith, 1865)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-5">
+        <h2>5. RÉPARTITION GÉOGRAPHIQUE & BIOTOPE NATUREL</h2>
+        <table>
+            <tbody>
+                <tr><th>Continent</th><td>Afrique subsaharienne occidentale et centrale</td></tr>
+                <tr><th>Pays</th><td>Bénin, Nigeria, Cameroun. Anciens enregistrements douteux : Chiloango (RD Congo), Cabinda (Angola) — non confirmés (Moritz & Britz, 2019)</td></tr>
+                <tr><th>Bassins / Fleuves</th><td>Du fleuve Ouémé (Bénin) au fleuve Sanaga (Cameroun), en passant par le delta du Niger, la Cross River, et les bassins côtiers intermédiaires du Golfe de Guinée</td></tr>
+                <tr><th>Habitat</th><td>Zones marécageuses, plaines d'inondation, deltas intérieurs, eaux saumâtres côtières, bras morts, lagunes</td></tr>
+                <tr><th>Profondeur</th><td>Faible — généralement 0,2 à 1,5 m ; plaines d'inondation peu profondes</td></tr>
+                <tr><th>Végétation</th><td>Roseaux (Phragmites, Typha), jacinthes d'eau, nymphéas, hydrophytes denses — végétation émergente et submergée</td></tr>
+                <tr><th>Substrat</th><td>Limon, vase, argile noire ; débris végétaux en décomposition abondants</td></tr>
+                <tr><th>Type d'eau</th><td>Eau douce à légèrement saumâtre (estuaires) ; eau brune, très turbide (visibilité souvent < 20 cm)</td></tr>
+                <tr><th>Courant</th><td>Nul à très faible — eaux stagnantes ou à courant très lent</td></tr>
+                <tr><th>Lumière</th><td>Faible à très faible sous la végétation dense ; milieu ombragé</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Caractéristiques du biotope naturel</th>
+                    <td>E. calabaricus est le seul Polypteridae à fréquenter les eaux saumâtres côtières — apomorphie remarquable. Il exploite des habitats à très faible oxygène dissous grâce à sa respiration aérienne obligatoire. La turbidité élevée et la densité végétale offrent protection et terrain de chasse pour ce prédateur nocturne olfactif.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-6">
+        <h2>6. ÉVOLUTION SAISONNIÈRE DES PARAMÈTRES D'EAU EN MILIEU NATUREL</h2>
+        <p>Données issues de relevés scientifiques sur les cours d'eau de l'aire de répartition. Sources : Andem et al. (2012) et Oribhabor et al. (2019) pour la Cross River (Nigeria) — plages mesurées : T°C 27,3–29,8 / pH 6,8–7,3.</p>
+        <p>Cycle climatique régional : tropical guinéen bimodal (deux saisons des pluies : mars–juillet et septembre–octobre ; deux saisons sèches : décembre–février et août).</p>
+        <p>AVERTISSEMENT : les valeurs mensuelles ci-dessous sont des estimations théoriques justifiées par inférence climatologique à partir de ces fourchettes publiées — ce ne sont pas des relevés de terrain directs dans les zones à E. calabaricus.</p>
+
+        <h3>6.1 — Température de l'eau (°C) — Variations mensuelles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cours d'eau</th>
+                    <th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cross River / Ouémé (théorique*)</td>
+                    <td>29</td><td>30</td><td>29</td><td>28</td><td>27</td><td>26</td><td>26</td><td>27</td><td>26</td><td>27</td><td>28</td><td>29</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>* Valeurs en °C. Fourchette publiée : 27,3–29,8 °C (Andem et al. 2012, Cross River). Valeurs mensuelles par inférence climatologique bimodale.</p>
+
+        <h3>6.2 — pH — Variations mensuelles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cours d'eau</th>
+                    <th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cross River / Ouémé (théorique*)</td>
+                    <td>7.2</td><td>7.3</td><td>7.1</td><td>6.9</td><td>6.8</td><td>6.8</td><td>6.8</td><td>7.0</td><td>6.8</td><td>6.9</td><td>7.0</td><td>7.2</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>* Fourchette publiée : 6,8–7,3 (Andem et al. 2012). Légère acidification en saison des pluies par dilution des bicarbonates + apports d'acides humiques des sols latéritiques.</p>
+
+        <h3>6.3 — Conductivité (µS/cm) — Variations mensuelles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cours d'eau</th>
+                    <th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cross River / Ouémé (théorique*)</td>
+                    <td>380</td><td>420</td><td>320</td><td>190</td><td>140</td><td>120</td><td>110</td><td>160</td><td>120</td><td>140</td><td>220</td><td>340</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>* Valeurs en µS/cm. Référence : 100–500 µS/cm eaux tropicales saines (Andem et al. 2012). C'est le paramètre qui varie le plus sur l'année (rapport max/min ≈ 4).</p>
+
+        <h3>6.4 — Cycle hydrologique et comportement saisonnier</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Saison</th>
+                    <th>Comportement de l'espèce</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Saison sèche 1 (déc–fév)</td><td>T°C : 29–30 °C | pH : 7,2–7,3 | Conductivité : 340–420 µS/cm. Eau concentrée et chaude. Retrait dans les marécages les plus profonds. Faible activité.</td></tr>
+                <tr><td>Début saison des pluies 1 (mar–avr)</td><td>T°C : 28–29 °C | pH : 6,9–7,1 | Conductivité : 190–320 µS/cm. Montée progressive. Phase de préparation reproductive.</td></tr>
+                <tr><td>Cœur saison des pluies 1 (mai–jul)</td><td>T°C : 26–27 °C | pH : 6,8 | Conductivité : 110–140 µS/cm. Eau la plus diluée. Alimentation intensive. Reproduction supposée principale.</td></tr>
+                <tr><td>Petite saison sèche (août)</td><td>T°C : 27 °C | pH : 7,0 | Conductivité : 160 µS/cm. Pause pluviale transitoire.</td></tr>
+                <tr><td>Saison des pluies 2 (sep–oct)</td><td>T°C : 26–27 °C | pH : 6,8–6,9 | Conductivité : 120–140 µS/cm. Deuxième fenêtre de reproduction possible.</td></tr>
+                <tr><td>Transition (nov–déc)</td><td>T°C : 28–29 °C | pH : 7,0–7,2 | Conductivité : 220–340 µS/cm. Retour progressif à la concentration.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-7">
+        <h2>7. ÉCOLOGIE & ÉTHOLOGIE AVANCÉE</h2>
+        <h3>7.1 — Structure sociale et hiérarchie</h3>
+        <p>Espèce nocturne, solitaire en milieu naturel mais non agressive intraspécifiquement.</p>
+        <p>En aquarium, comportement grégaire facultatif — les individus tendent à se regrouper. Aucune hiérarchie de dominance documentée.</p>
+        <p>La vision est très réduite — l'olfaction constitue le sens dominant pour la détection des proies et des congénères.</p>
+        <p>Organes électrorécepteurs passifs (ampoules ampullaires) sur la tête compensant la faible visibilité en milieu turbide.</p>
+
+        <h3>7.2 — Comportement territorial et défense du nid</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase comportementale</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Repos diurne</td><td>Se cache dans les zones végétalisées denses, sous les racines, dans les anfractuosités — comportement cryptique marqué</td></tr>
+                <tr><td>Activité nocturne</td><td>Émergence des refuges, exploration active, chasse olfactive des proies benthiques</td></tr>
+                <tr><td>Locomotion amphibie</td><td>Exploration spontanée hors de l'eau pour fuir un milieu hostile ou rejoindre une mare voisine (captivité et milieu naturel confirmés) — unique parmi les Polypteridae</td></tr>
+                <tr><td>Fuite / échappement</td><td>Tendance forte à sauter hors des aquariums et à entrer dans les tuyaux de filtration</td></tr>
+            </tbody>
+        </table>
+
+        <h3>7.3 — Régime alimentaire naturel et guilde trophique</h3>
+        <p><strong>Alimentation précise dans le milieu naturel (In Situ) :</strong> Prédateur benthique et nocturne strict. Dans ses habitats marécageux souvent turbides et pauvres en oxygène, la vision est secondaire. L'espèce traque activement les invertébrés benthiques (vers oligochètes, larves d'insectes, petits décapodes) grâce à un système olfactif extrêmement développé (narines prolongées en forme de tubes directionnels) et un réseau d'électrorécepteurs passifs sur la tête détectant les champs bioélectriques musculaires de ses proies cachées dans la vase. Bien qu'il puisse ramper hors de l'eau pour fuir un milieu hostile ou migrer entre deux mares grâce à sa respiration pulmonaire, la capture de proies terrestres n'est pas un comportement trophique naturel avéré.</p>
+    </section>
+
+    <section id="section-8">
+        <h2>8. INSTALLATION — L'AQUARIUM IDÉAL</h2>
+        <table>
+            <tbody>
+                <tr><th>Volume minimum</th><td>300 litres pour un spécimen adulte</td></tr>
+                <tr><th>Volume recommandé</th><td>540 litres minimum (150 × 60 × 60 cm) pour un individu adulte</td></tr>
+                <tr><th>Dimensions conseillées</th><td>Longueur prépondérante — au minimum 1,5 m de long pour les déplacements naturels</td></tr>
+                <tr><th>Fond</th><td>Sable fin ou limon — substrat meuble indispensable ; le poisson fouille et se couche sur le fond</td></tr>
+                <tr><th>Filtration</th><td>Filtration biologique puissante (charge en matière organique élevée) ; débits modérés — espèce d'eau calme</td></tr>
+                <tr><th>Circulation</th><td>Faible à modérée — milieu naturel à courant lent ou stagnant</td></tr>
+                <tr><th>Éclairage</th><td>Tamisée — espèce nocturne très sensible à la lumière vive ; cycle jour/nuit respecté</td></tr>
+                <tr><th>Chauffage</th><td>Chauffage fiable, 25–28 °C recommandés</td></tr>
+                <tr><th>Décor</th><td>Racines, pièces de bois, tubes en PVC ou bambou, plantes denses offrant des refuges obscurs</td></tr>
+                <tr><th>Plantes recommandées</th><td>Vallisneria, Microsorum, Anubias — robustes, tolérantes à la pénombre</td></tr>
+                <tr><th>Cachettes</th><td>Obligatoires : tubes, grottes, amas de racines — l'animal passe la journée caché</td></tr>
+                <tr><th>Renouvellement eau</th><td>20–30 % / semaine — espèce sensible à l'accumulation de nitrates</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-9">
+        <h2>9. PARAMÈTRES DE L'EAU — Aquarium</h2>
+        <h3>9.1 — Paramètres physico-chimiques recommandés</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre</th>
+                    <th>Valeur idéale</th>
+                    <th>Fourchette tolérée</th>
+                    <th>Critique (limite)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Température</td><td>26–28 °C</td><td>23–30 °C</td><td>< 20 °C ou > 32 °C</td></tr>
+                <tr><td>pH</td><td>6,5–7,0</td><td>6,0–7,5</td><td>< 5,5 ou > 8,0</td></tr>
+                <tr><td>GH (dureté)</td><td>5–10 °dH</td><td>3–20 °dH</td><td>< 2 ou > 25 °dH</td></tr>
+                <tr><td>KH</td><td>3–6 °dKH</td><td>2–10 °dKH</td><td>< 1 °dKH (instabilité pH)</td></tr>
+                <tr><td>Conductivité</td><td>150–400 µS/cm</td><td>100–600 µS/cm</td><td>Eau douce ; tolère légèrement saumâtre</td></tr>
+                <tr><td>Nitrites NO2</td><td>0 mg/L</td><td>< 0,1 mg/L</td><td>Tout > 0</td></tr>
+                <tr><td>Nitrates NO3</td><td>< 20 mg/L</td><td>< 50 mg/L</td><td>> 80 mg/L — stress chronique</td></tr>
+                <tr><td>O2 dissous</td><td>Respir. aérienne</td><td>Tolérance extrême (hypoxie)</td><td>Accès surface OBLIGATOIRE</td></tr>
+            </tbody>
+        </table>
+
+        <h3>9.2 — Traitement et préparation de l'eau</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Techniques de préparation de l'eau</th>
+                    <td>Eau du robinet : déchloration obligatoire. Un pH de 6,5–7,0 convient sans traitement supplémentaire pour la majorité des eaux municipales françaises.</td>
+                    <td>Eau trop dure (> 20 °dH) : mélange osmose inverse + eau du robinet. Reminéraliser si conductivité < 100 µS/cm.</td>
+                    <td>Tourbe / feuilles de Catappa : légère acidification bénéfique et tannins aux propriétés antiseptiques naturelles.</td>
+                    <td>SÉCURITÉ : couvercle hermétique INDISPENSABLE — l'espèce saute et s'échappe par tout interstice. Boucher tous les orifices (tubes de filtre, fils électriques).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-10">
+        <h2>10. ALIMENTATION ET PROFIL MACRO-NUTRITIONNEL</h2>
+        <p>Carnivore strict. En captivité, l'espèce se fie à son odorat pour localiser les aliments — nourrir la nuit ou à l'extinction des lumières pour respecter le rythme nyctéméral.</p>
+        <p>Les aliments vivants ou frais sont détectés rapidement ; les granulés sont souvent ignorés sans acclimatation prolongée.</p>
+
+        <h3>10.1 — Répartition macro-nutritionnelle idéale (sur matière sèche)</h3>
+        <ul>
+            <li><strong>Protéines (45 à 55 %) :</strong> Besoins très élevés en raison de son métabolisme de prédateur strict. Doivent provenir exclusivement de proies aquatiques (crustacés, poissons, vers) ou d'insectes.</li>
+            <li><strong>Lipides (5 à 8 %) :</strong> À maintenir impérativement à un taux modéré. <strong>Avertissement métabolique :</strong> L'exclusion des graisses d'animaux terrestres endothermes (comme le cœur de bœuf ou de volaille) est vitale. Ces graisses saturent le foie du poisson qui ne possède pas les enzymes pour les cliver correctement, provoquant rapidement une stéatose hépatique (foie gras) souvent fatale en captivité.</li>
+            <li><strong>Glucides et Fibres (< 10 %) :</strong> Les glucides simples sont inassimilables. Les fibres, telles que la chitine des insectes, sont par contre bénéfiques pour assurer un bon transit intestinal.</li>
+        </ul>
+
+        <p><strong>Calcul de la ration quotidienne :</strong> La distribution doit être strictement rationnée pour éviter les surcharges. Pour un spécimen adulte, la ration optimale correspond à 1 à 1,5 % de sa masse corporelle par jour, idéalement donnée en une seule fois de nuit. Avec une ration aussi précisément contrôlée et équilibrée, imposer un traditionnel "jour de jeûne" est totalement superflu d'un point de vue physiologique.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Type d'aliment</th>
+                    <th>Exemples</th>
+                    <th>Fréquence / Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vivant (idéal)</td><td>Vers de terre, tubifex purifiés, artémias, grillons, petites crevettes vivantes</td><td>Base nocturne quotidienne — meilleur déclencheur alimentaire</td></tr>
+                <tr><td>Congelé</td><td>Vers de vase (chironomides), crevettes décortiquées, moules, éperlans</td><td>Excellente alternative pratique à alterner</td></tr>
+                <tr><td>Granulés premium</td><td>Granulés coulants carnivores (> 45 % protéines)</td><td>Rarement acceptés sans conditionnement — requiert de la patience</td></tr>
+                <tr><td>À éviter absolument</td><td>Cœur de bœuf, aliments végétaux, aliments trop petits ignorés sur le fond</td><td>Jamais — risque de stéatose et de pollution</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-11">
+        <h2>11. COMPORTEMENT & COHABITATION</h2>
+        <p>Tempérament pacifique envers les poissons qu'il ne peut pas avaler. Nocturne et discret le jour.</p>
+        <p>Peut être intimidé par des espèces trop actives lors de la distribution de nourriture (risque de sous-alimentation).</p>
+        <p>Peut ingérer tout poisson de taille ≤ 1,5–2 fois sa largeur corporelle.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cohabitation recommandée</th>
+                    <th>Cohabitation déconseillée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>• Autres E. calabaricus (comportement grégaire facultatif documenté)</td><td>• Polypterus spp. de taille similaire ou supérieure</td></tr>
+                <tr><td>• Synodontis spp. — même biotope, nocturnes, zones de nage différentes</td><td>• Tout poisson pouvant tenir dans la gueule (taille < 2× largeur corporelle)</td></tr>
+                <tr><td>• Grands characins africains (Distichodus spp.) — paisibles, taille suffisante</td><td>• Crevettes et écrevisses ornementales — proies potentielles</td></tr>
+                <tr><td>• Cichlidés africains de grande taille (Ctenopoma, Chromidotilapia)</td><td>• Cichlidés très agressifs — compétition alimentaire et stress</td></tr>
+                <tr><td></td><td>• Espèces très actives de surface (hatchetfish) — stress par agitation</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-12">
+        <h2>12. PROTOCOLE DE REPRODUCTION COMPLET</h2>
+        <h3>12.1 — Prérequis & Conditionnement</h3>
+        <table>
+            <tbody>
+                <tr><th>Âge de maturité sexuelle</th><td>Estimé vers 18–24 mois / ~15–20 cm</td></tr>
+                <tr><th>Taille minimale reproductrice</th><td>~20 cm</td></tr>
+                <tr><th>Composition du groupe</th><td>Couple ou groupe mixte — espèce non agressive intraspécifiquement</td></tr>
+                <tr><th>Durée du conditionnement</th><td>4–6 semaines de nourrissage intensif avant tentative</td></tr>
+                <tr><th>Aquarium de reproduction</th><td>Bac végétalisé dense, eau très douce (conductivité 80–120 µS/cm)</td></tr>
+                <tr><th>Eau du bac de ponte</th><td>T°C : 26–27 °C | pH : 6,5–7,0 | Conductivité : 80–120 µS/cm — simulation saison des pluies</td></tr>
+                <tr><th>Support de ponte préférentiel</th><td>Végétation aquatique dense (Vallisneria, algues filamenteuses)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.2 — Conditionnement des reproducteurs</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Menu de conditionnement</th>
+                    <td>Nourrissage intensif 2× par jour : vers de terre vivants (priorité), artémias, chironomides congelés, crevettes fraîches. Renouvellements d'eau importants et fréquents (30–40 %/semaine) avec eau fraîche et douce pour simuler la dilution saisonnière. Réduction progressive de la durée d'éclairage.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>12.3 — Déclenchement de la ponte</h3>
+        <p>Signal environnemental hypothétique : baisse significative et progressive de la conductivité (de ~350 µS/cm vers ~80–120 µS/cm) combinée à une légère baisse de température (2–3 °C) — simulation de l'arrivée de la saison des pluies.</p>
+        <p>Avertissement : La reproduction en captivité amateur n'étant pas systématiquement maîtrisée, ces paramètres constituent une approche expérimentale déduite du cycle hydrologique naturel et des quelques succès documentés.</p>
+
+        <h3>12.4 — La ponte : déroulement et caractéristiques</h3>
+        <table>
+            <tbody>
+                <tr><th>Parade nuptiale</th><td>Rapprochement des individus, nage parallèle — peu de parade observable</td></tr>
+                <tr><th>Nombre d'œufs</th><td>Petits lots répétés déposés dans la nageoire anale du mâle (repliée en forme de coupe pour la fécondation externe)</td></tr>
+                <tr><th>Couleur des œufs</th><td>Petits, adhésifs, clairs — collés à la végétation et au substrat</td></tr>
+                <tr><th>Durée d'incubation</th><td>Environ 70 heures à 26–28 °C</td></tr>
+                <tr><th>Soins parentaux</th><td>AUCUN — œufs dispersés dans la végétation, aucune garde parentale documentée</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.5 — Développement larvaire et élevage des alevins</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stade</th>
+                    <th>Observations & Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Œufs (J0–J3)</td><td>Adhésifs sur végétaux — surveiller infection fongique (méthylène bleu en prévention)</td></tr>
+                <tr><td>Larves (J3–J22)</td><td>Branchies externes très développées (aspect urodèle) — attachées à la végétation, absorption du sac vitellin</td></tr>
+                <tr><td>Nage libre (J22+)</td><td>Premier nourrissage : artémias nauplii vivants, micro-vers — eau très douce et propre</td></tr>
+                <tr><td>Alevins</td><td>Alimentation progressive : chironomides, artémias, vers Grindal — changements d'eau fréquents</td></tr>
+                <tr><td>Juvéniles</td><td>Transition vers alimentation adulte vers 3–4 cm — même régime en miniature</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.6 — Élevage artificiel (séparation des parents)</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">🔬 Protocole d'incubation artificielle</th>
+                </tr>
+                <tr>
+                    <td>En cas de ponte, retirer les œufs dans un bac séparé : eau très douce (conductivité 80 µS/cm, pH 6,5), T°C 26–27 °C, méthylène bleu prophylactique, oxygénation douce. Des pontes, éclosions et le développement larvaire complet ont été documentés scientifiquement (Bartsch & Britz, 1995). L'élevage reste cependant exceptionnel en milieu aquariophile amateur en raison de la difficulté de nourrir les larves après la résorption du sac vitellin.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-13">
+        <h2>13. SANTÉ & MALADIES COURANTES</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maladie / Pathologie</th>
+                    <th>Symptômes</th>
+                    <th>Causes</th>
+                    <th>Traitement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Point blanc (Ichthyophthirius multifiliis)</td><td>Petits points blancs sur peau et nageoires, grattements sur le décor</td><td>Cilié parasite — introduction avec nouveaux poissons ; sensibilité accrue par stress thermique</td><td>Élévation progressive à 30 °C + vert malachite (à dose réduite de moitié) ou formol. Éviter les traitements agressifs.</td></tr>
+                <tr><td>Velours (Piscinoodinium pillulare)</td><td>Poudre dorée ou rouille sur la peau ; respiration accélérée, léthargie</td><td>Dinoflagellé parasite photosensible — réduire l'éclairage</td><td>Obscurité totale + Chlorure de quinine (10 mg/L). <strong>Le sulfate de cuivre est mortel pour les Polypteridae.</strong></td></tr>
+                <tr><td>Bactériose (Aeromonas, Pseudomonas)</td><td>Ulcères cutanés, rougeurs, nageoires rongées, exophtalmie</td><td>Bactéries opportunistes — surcharge azotée, blessures, stress</td><td>Antibiothérapie prescrite par vétérinaire : DCI amoxicilline ou enrofloxacine en bains</td></tr>
+                <tr><td>Nématodes intestinaux (Batrachocamallanus siluranae, Gendria polypteri)</td><td>Amaigrissement progressif, ventre creux, fèces blancs</td><td>Nématodes intestinaux spécifiques documentés chez E. calabaricus (Rehulkova et al. 2005)</td><td>DCI lévamisole (10 mg/L bain 24h) ou fenbendazole en aliment médicamenté — vétérinaire obligatoire</td></tr>
+                <tr><td>Trématodes (Macrogyrodactylus polypteri)</td><td>Mucus excessif, frottements, ulcérations cutanées</td><td>Monogène ectoparasite spécifique documenté sur E. calabaricus — cycle direct</td><td>DCI praziquantel (2 mg/L bain 3h) — à renouveler à J7 et J14 pour briser le cycle</td></tr>
+                <tr><td>Blessures / évasion</td><td>Plaies, desséchement cutané si capture tardive hors de l'eau</td><td>Tentative de fuite — espèce très fugueuse</td><td>Remise en eau immédiate ; antisepsie locale (bétadine diluée) ; couvercle hermétique OBLIGATOIRE</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-14">
+        <h2>14. PARASITOLOGIE & PATHOLOGIE AVANCÉE</h2>
+        <h3>14.1 — Principaux agents pathogènes avec cycles biologiques</h3>
+        
+        <table>
+            <tbody>
+                <tr>
+                    <th>Agent 1 — Batrachocamallanus siluranae (Rehulkova, Barus & Gelnar, 2005)</th>
+                    <td>Classe : Secernentea | Ordre : Spirurida | Famille : Camallanidae</td>
+                    <td>Cycle biologique : indirect — hôte intermédiaire copépode (Crustacea). Le poisson est hôte définitif. Les larves L3 sont ingérées avec les copépodes ; développement adulte dans l'intestin. Parasite spécifique documenté sur E. calabaricus.</td>
+                    <td>Traitement DCI : lévamisole (10 mg/L en bain de 24h) ou fenbendazole incorporé dans les aliments — consultation vétérinaire obligatoire.</td>
+                    <td>Référence : Rehulkova, Barus & Gelnar (2005). Helminthologia 42(3) : 149–153.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Agent 2 — Gendria polypteri (Nematoda, Quimperiidae)</th>
+                    <td>Classe : Secernentea | Ordre : Ascaridida | Famille : Quimperiidae</td>
+                    <td>Cycle biologique : indirect — passage par un ou plusieurs hôtes intermédiaires invertébrés. Adultes parasites de l'estomac et de l'intestin d'E. calabaricus.</td>
+                    <td>Traitement DCI : fenbendazole ou lévamisole (même protocole que ci-dessus).</td>
+                    <td>Référence : Rehulkova et al. (2005). Helminthologia 42(3) : 149–153.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Agent 3 — Macrogyrodactylus polypteri (Monogenea, Gyrodactylidae)</th>
+                    <td>Classe : Monogenea | Ordre : Gyrodactylidea | Famille : Gyrodactylidae</td>
+                    <td>Cycle biologique : direct — monogène ectoparasite, pas d'hôte intermédiaire. Viviparité : les embryons se développent à l'intérieur de l'adulte. Transmission directe de poisson à poisson.</td>
+                    <td>Traitement DCI : praziquantel (2 mg/L en bain de 3 heures, à renouveler à J7 et J14 pour briser le cycle).</td>
+                    <td>Référence : Poelen et al. (2014). Global Biotic Interactions database.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>14.2 — Tableau récapitulatif des traitements DCI et posologies</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Agent pathogène</th>
+                    <th>DCI</th>
+                    <th>Voie</th>
+                    <th>Posologie indicative</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ichthyophthirius</td><td>Vert malachite + Formol</td><td>Bain aquarium</td><td>Doses réduites de moitié (ex: 0,05 mg/L VM)</td><td>5–7 jours</td></tr>
+                <tr><td>Piscinoodinium (velours)</td><td>Chlorure de quinine (CUIVRE PROSCRIT)</td><td>Bain</td><td>10 mg/L + obscurité totale</td><td>10–14 jours</td></tr>
+                <tr><td>Bactériose</td><td>Enrofloxacine</td><td>Bain</td><td>10 mg/L (prescription vétérinaire)</td><td>5–7 jours</td></tr>
+                <tr><td>Nématodes intestinaux</td><td>Lévamisole</td><td>Bain</td><td>10 mg/L — 24h</td><td>1–2 traitements</td></tr>
+                <tr><td>Trématodes (Monogène)</td><td>Praziquantel</td><td>Bain</td><td>2 mg/L — 3h</td><td>J0, J7, J14</td></tr>
+            </tbody>
+        </table>
+        <p>Avertissement : posologies indicatives — consulter un vétérinaire habilité. Respecter la réglementation en vigueur.</p>
+    </section>
+
+    <section id="section-15">
+        <h2>15. STATUT DE CONSERVATION</h2>
+        <table>
+            <tbody>
+                <tr><th>Statut UICN</th><td>NT — Quasi-menacée (Near Threatened) — évaluation 2020. Réf. : T182479A135026602. doi:10.2305/IUCN.UK.2020-2.RLTS.T182479A135026602.en</td></tr>
+                <tr><th>Tendance population</th><td>En déclin — pression continue sur les habitats naturels</td></tr>
+                <tr><th>Pressions principales</th><td>1/ Destruction des zones humides (plantations de palmiers à huile, agriculture, urbanisation). 2/ Drainage des zones marécageuses au Bénin, Nigeria, Cameroun. 3/ Collecte pour le commerce aquariophile (pression modérée, à surveiller).</td></tr>
+                <tr><th>Pêche ornementale</th><td>Régulièrement importé en Europe et en Asie depuis le Nigeria. Tous les spécimens vendus sont wild-caught — aucun élevage commercial établi.</td></tr>
+                <tr><th>Élevage en captivité</th><td>RARE — reproduction et développement larvaire documentés scientifiquement (Bartsch & Britz, 1995), mais non reproductible à l'échelle commerciale.</td></tr>
+                <tr><th>Recommandation</th><td>Privilégier les spécimens d'élevage si disponibles. Vérifier la légalité de l'importation. Ne jamais relâcher en milieu naturel.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-16">
+        <h2>16. BIBLIOGRAPHIE SCIENTIFIQUE COMPLÈTE</h2>
+        <p>Références classées par ordre chronologique — format académique avec DOI</p>
+        <ul class="biblio-list">
+            <li>Smith, J.A. (1865). Notice of a new genus of ganoid fish allied to the genus Polypterus (Geoff.-St-Hillaire), recently received from Old Calabar. Proceedings of the Royal Physical Society of Edinburgh, 3 : 273–278.</li>
+            <li>Capanna, E. & Cataudella, S. (1973). The chromosomes of Calamoichthys calabaricus (Pisces, Polypteriformes). Experientia, 29 : 491–492.</li>
+            <li>Greenwood, P.H. (1984). Polypterus and Erpetoichthys : anachronistic osteichthyans. Proceedings of the Linnaean Society of London, 153 : 1–11.</li>
+            <li>Gayet, M., & Meunier, F. J. (1991). Première découverte de Polypteridae (Pisces, Cladistia, Polypteriformes) en dehors de l'Afrique. Comptes Rendus de l'Académie des Sciences, Paris, Série II, 312: 1045-1051.</li>
+            <li>Bartsch, P., & Britz, R. (1995). Reproduction and larval development of Erpetoichthys calabaricus.</li>
+            <li>Khalil, L. F., & Polling, L. (1997). Check list of the helminth parasites of African freshwater fishes. University of the North, Department of Zoology.</li>
+            <li>Britz, R. & Johnson, G.D. (2003). On the homology of the posteriormost gill arch in polypterids (Cladistia, Actinopterygii). Zoological Journal of the Linnean Society, 138(4) : 495–530.</li>
+            <li>Rehulkova, E., Barus, V. & Gelnar, M. (2005). Two remarkable nematodes from the African reedfish Erpetoichthys calabaricus (Polypteriformes : Polypteridae). Helminthologia, 42(3) : 149–153.</li>
+            <li>Morescalchi, M.A., Liguori, I., Rocco, L. & Stingo, V. (2007). Karyotypic characterization and genomic organization of the 5S rDNA in Erpetoichthys calabaricus (Osteichthyes, Polypteridae). Genetica, 131(2) : 209–216. doi:10.1007/s10709-006-9119-0</li>
+            <li>Claeson, K.M. & Hagadorn, J.W. (2007). New interpretations of the skull of a primitive bony fish Erpetoichthys calabaricus (Actinopterygii : Cladistia). Journal of Morphology, 268(12).</li>
+            <li>Noga, E.J. (2010). Fish Disease : Diagnosis and Treatment (2nd ed.). Wiley-Blackwell, Ames. ISBN 978-0-8138-0697-6.</li>
+            <li>National Research Council (NRC). (2011). Nutrient Requirements of Fish and Shrimp. National Academies Press, Washington, D.C.</li>
+            <li>Icardo, J.M. et al. (2017). The lungs of Polypterus senegalus and Erpetoichthys calabaricus : structure and functional distribution of the pulmonary epithelial cells. Journal of Morphology, 278(10) : 1321–1332. doi:10.1002/jmor.20729</li>
+            <li>Moritz, T. & Britz, R. (2019). Revision of the extant Polypteridae (Actinopterygii : Cladistia). Ichthyological Exploration of Freshwaters, 28 : 215–384.</li>
+            <li>Asuquo, P.E. (2019). Sexual dimorphism in the reedfish Erpetoichthys calabaricus (Smith, 1865) from the Cross River catchment, Nigeria. African Journal of Aquatic Science, 44 : 93–98.</li>
+            <li>Lalèyè, P., Moelants, T. & Olaosebikan, B.D. (2020). Erpetoichthys calabaricus. The IUCN Red List of Threatened Species. 2020 : e.T182479A135026602. doi:10.2305/IUCN.UK.2020-2.RLTS.T182479A135026602.en</li>
+            <li>Oribhabor, B.J. et al. (2019). Physicochemical parameters and fish species diversity of the lower Cross River system, Nigeria. Nigerian Journal of Agriculture, Food and Environment, 15(2) : 1–11.</li>
+            <li>Andem, A.B. et al. (2012). Physicochemical parameters and macrobenthic invertebrates of the Cross River, Nigeria. Journal of Natural Sciences Research, 2(8) : 2224–3186.</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        <div>Erpetoichthys calabaricus — Fiche Ichtyologique Complète</div>
+        <div>Document réalisé à des fins aquariophiles et scientifiques • 2026</div>
+    </div>
+
+</body>
+</html>

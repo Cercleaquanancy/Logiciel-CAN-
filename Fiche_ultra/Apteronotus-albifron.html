@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONOGRAPHIE ICHTYOLOGIQUE : Apteronotus albifrons</title>
+    <style>
+        :root {
+            --primary-gray: #2c3e50;
+            --soft-gray: #f8f9fa;
+            --border-color: #bdc3c7;
+            --accent-blue: #2980b9;
+            --alert-red: #c0392b;
+            --bg-page: #e0e4e8;
+            --bg-container: #ffffff;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: var(--bg-page);
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            background-color: var(--bg-container);
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid #d1d1d1;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-gray);
+            padding-bottom: 20px;
+        }
+        header p {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #444;
+        }
+        h1 {
+            font-style: italic;
+            font-size: 2.8em;
+            margin: 10px 0;
+            color: var(--primary-gray);
+        }
+        .separator {
+            font-size: 1.5em;
+            margin: 10px 0;
+            letter-spacing: -1px;
+            color: var(--border-color);
+        }
+        .expert-tag {
+            font-weight: bold;
+            font-size: 1.1em;
+            display: block;
+            margin-top: 15px;
+            text-transform: uppercase;
+            color: var(--alert-red);
+        }
+        h2 {
+            border-left: 6px solid var(--primary-gray);
+            padding-left: 12px;
+            background: #f4f7f6;
+            font-variant: small-caps;
+            margin-top: 45px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 1.5em;
+            color: var(--primary-gray);
+        }
+        h3 {
+            border-bottom: 1px solid var(--border-color);
+            margin-top: 30px;
+            color: var(--accent-blue);
+            font-size: 1.2em;
+            padding-bottom: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: var(--soft-gray);
+            font-weight: bold;
+            color: var(--primary-gray);
+        }
+        .meristic {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f8f9fa;
+            border: 1px dashed #7f8c8d;
+            padding: 20px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--primary-gray);
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+            background-color: #fdfbf7;
+            border-left: 3px solid #e67e22;
+            padding: 10px;
+            margin: 15px 0;
+        }
+        .alert {
+            font-weight: bold;
+            color: var(--alert-red);
+        }
+        .footer-ref {
+            font-size: 0.85em;
+            line-height: 1.4;
+            margin-top: 15px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .footer-ref li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            text-indent: -20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <p>FICHE ICHTYOLOGIQUE</p>
+        <h1>Apteronotus albifrons</h1>
+        <p>(Linnaeus, 1766)</p>
+        <p>Poisson-couteau fantôme noir · Black Ghost Knifefish</p>
+        <div class="separator">━━━━━━━━━━</div>
+        <span class="expert-tag">Fiche Ichtyologique Complète — Niveau Expert</span>
+    </header>
+
+    <table>
+        <tr>
+            <th>Famille</th>
+            <td>Apteronotidae Jordan, 1923 — sous-famille Apteronotinae</td>
+            <th>Origine</th>
+            <td>Amérique du Sud : Orénoque, Amazone, Paraná–Paraguay (Venezuela → Argentine)</td>
+        </tr>
+        <tr>
+            <th>Taille adulte</th>
+            <td>50 cm TL max. (FishBase, Réf. 36886) — aquarium : 30–45 cm TL</td>
+            <th>Difficulté</th>
+            <td><span class="alert">Difficile</span> — grand volume impératif, électrogène, agressivité intraspécifique, écailles très réduites enchâssées</td>
+        </tr>
+        <tr>
+            <th>Température</th>
+            <td>23–28 °C (FishBase, Réf. 1672)</td>
+            <th>pH recommandé</th>
+            <td>6,0–8,0 (FishBase, Réf. 1672) — idéal 6,5–7,5</td>
+        </tr>
+    </table>
+
+    <h2>1. Systématique & Taxonomie</h2>
+    <h3>1.1 Classification phylogénétique complète</h3>
+    <table>
+        <tr><th>Règne</th><td>Animalia</td></tr>
+        <tr><th>Embranchement</th><td>Chordata</td></tr>
+        <tr><th>Classe</th><td>Actinopterygii</td></tr>
+        <tr><th>Ordre</th><td>Gymnotiformes</td></tr>
+        <tr><th>Famille</th><td>Apteronotidae Jordan, 1923</td></tr>
+        <tr><th>Sous-famille</th><td>Apteronotinae</td></tr>
+        <tr><th>Genre</th><td>Apteronotus Lacépède, 1800</td></tr>
+        <tr><th>Espèce</th><td>Apteronotus albifrons (Linnaeus, 1766)</td></tr>
+        <tr><th>Synonymes historiques</th><td>Gymnotus albifrons Linnaeus, 1766 (basionyme) ; Apteronotus passan Lacépède, 1800 ; Sternarchus albifrons (Linnaeus, 1766) ; Sternarchus lacepedii Castelnau, 1855 ; Sternarchus maximilliani Castelnau, 1855</td></tr>
+        <tr><th>Complexe d'espèces</th><td>A. albifrons fait partie du 'complexe albifrons' (Albert & de Santana) regroupant au moins 8 espèces cryptiques encore partiellement non décrites</td></tr>
+    </table>
+
+    <h3>1.2 Étymologie & Histoire taxonomique</h3>
+    <table>
+        <tr><th>Étymologie du genre</th><td>Apteronotus — du grec apteros (sans ailes, sans nageoires) + noton (dos). Référence à l'absence de nageoire dorsale, caractère diagnostique du genre (ETYFish Project ; FishBase Réf. 45335).</td></tr>
+        <tr><th>Étymologie de l'espèce</th><td>albifrons — du latin albus (blanc) + frons (front, face). Référence à la bande blanche caractéristique s'étendant du bout du museau à l'occiput (ETYFish Project).</td></tr>
+        <tr><th>Description originale</th><td>Linnaeus, C. (1766). Systema Naturae per Regna Tria Naturae, 12e éd., vol. 1, pars 2 : 500. [Décrit sous Gymnotus albifrons — transfert dans Apteronotus par Lacépède (1800) et Jordan (1923) ; les parenthèses autour de l'auteur sont imposées par le Code International de Nomenclature Zoologique car il y a eu changement de genre original].</td></tr>
+    </table>
+
+    <h2>2. Génétique & Phylogénie Moléculaire</h2>
+    <h3>2.1 Position phylogénétique du genre</h3>
+    <p>A. albifrons appartient aux Gymnotiformes, ordre de téléostéens néotropicaux électrogènes divergé des Siluriformes au Crétacé (~120 Ma). La famille Apteronotidae est la plus dérivée de l'ordre et la seule dont l'organe électrique adulte soit neurogène (dérivé d'axones d'électroneurones spinaux), et non myogène.</p>
+    <p>Au sein des Apteronotidae, A. albifrons est le taxon frère de Parapteronotus (Albert, 2001). Analyse mitochondriale : 5 familles des Gymnotiformes résolues par séquençage mitochondrial complet (Castillo Cajas et al. 2012) — Apteronotidae et Sternopygidae ne sont pas groupes frères contrairement à la classification classique. Caryotype de A. albifrons : 2n = 24 (14m + 2sm + 8a), FN = 40 (Howell 1972 ; Almeida-Toledo 1981).</p>
+
+    <h3>2.2 Historique taxonomique et controverses</h3>
+    <table>
+        <tr><th>Année</th><th>Événement taxonomique</th></tr>
+        <tr><td>1766</td><td>Description originale par C. Linnaeus sous Gymnotus albifrons dans Systema Naturae, 12e édition, vol. 1, p. 500.</td></tr>
+        <tr><td>1800</td><td>Lacépède érige le genre Apteronotus et crée le synonyme Apteronotus passan — premier transfert générique.</td></tr>
+        <tr><td>1855</td><td>Castelnau décrit Sternarchus lacepedii et Sternarchus maximilliani — synonymisés ultérieurement avec A. albifrons.</td></tr>
+        <tr><td>1923</td><td>Jordan érige la famille Apteronotidae — classification encore en usage aujourd'hui.</td></tr>
+        <tr><td>2001</td><td>Albert, J.S. : révision systématique complète des Gymnotiformes — monographie de référence (Museum of Zoology, University of Michigan, 190 : 1–129). Définition du 'complexe albifrons'.</td></tr>
+        <tr><td>2003</td><td>de Santana, C.D. : description d'Apteronotus caudimaculosus (Pantanal) — première espèce du complexe albifrons décrite formellement après A. albifrons. Zootaxa 252 : 1–11.</td></tr>
+        <tr><td>2012</td><td>de Santana & Cox Fernandes : nouvelles espèces du complexe albifrons du bassin amazonien. Copeia 2012 : 283–292.</td></tr>
+        <tr><td>2022</td><td>Frederico, R.G. : évaluation UICN — A. albifrons classé LC (Préoccupation mineure). doi:10.2305/IUCN.UK.2022-2.RLTS.T49829499A159047904.en</td></tr>
+    </table>
+
+    <h3>2.3 Hypothèse biogéographique et spéciation</h3>
+    <p>Les Gymnotiformes sont exclusivement néotropicaux — aucune espèce en Afrique ou en Asie. Leur divergence des Siluriformes est estimée à ~120 Ma (Crétacé inférieur). Les Apteronotidae sont les plus dérivés et les plus abondants dans les grands fleuves (Orénoque, Amazone, Paraná).</p>
+    <p>A. albifrons est l'une des espèces à distribution la plus large du genre — Venezuela, Guyanes, Équateur, Pérou, Bolivie, Brésil, Paraguay, Argentine (provinces de Corrientes et Misiones). Diversité cryptique majeure : le 'complexe albifrons' regroupe au moins 8 espèces encore partiellement non décrites formellement (Albert 2001 ; de Santana 2003), rendant l'identification des spécimens commerciaux incertaine. Les populations de l'Orénoque présentent un dimorphisme sexuel des décharges électriques (EOD) beaucoup plus marqué que les populations amazoniennes — polymorphisme interpopulationnel documenté.</p>
+
+    <h2>3. Description Morphologique</h2>
+    <h3>3.1 Morphologie générale</h3>
+    <p>Corps extrêmement allongé, latéralement comprimé, s'effilant graduellement vers l'arrière jusqu'à une queue très longue et filiforme. Profil dorsal quasi-rectiligne sur toute la longueur — absence totale de nageoire dorsale (apomorphie du genre). Tête grande, robuste, à profil légèrement convexe ; museau court et arrondi avec grande bouche terminale. Corps dépourvu de nageoires pelviennes et de nageoire dorsale. Écailles cycloïdes microscopiques présentes, mais profondément enchâssées dans le derme sous une épaisse couche de mucus — elles ne sont pas visibles à l'œil nu et n'offrent pas de barrière mécanique efficace (Albert 2001). Nageoire anale très allongée, s'étendant de l'anus jusqu'à l'extrémité de la queue — organe de propulsion principal (locomotion par ondulation de cette nageoire, sans recours au corps = locomotion gymnotiforme). Nageoires pectorales présentes, petites. Nageoire caudale PRÉSENTE ET BIEN DÉVELOPPÉE — sa présence (rayons articulés sur un complexe hypural) est la synapomorphie diagnostique de la famille Apteronotidae, distinguant celle-ci de toutes les autres familles de Gymnotiformes (Albert 2001). Coloration : entièrement noire, sauf une bande blanche médio-dorsale irrégulière et deux bandes transversales blanches sur le pédoncule caudal — ces deux bandes constituent une synapomorphie du 'complexe albifrons'.</p>
+    
+    <p><strong>Morphologie de précision :</strong> Le corps est extrêmement allongé, sub-cylindrique à l'avant et fortement comprimé latéralement vers l'arrière, s'achevant par un pédoncule caudal filiforme. L'absence totale de nageoires pelviennes et dorsale est compensée par une nageoire anale hypertrophiée permettant une locomotion gymnotiforme multidirectionnelle (avant/arrière). Le derme est caractérisé par une réduction fonctionnelle extrême des écailles cycloïdes, qui sont microscopiques, non imbriquées et profondément enchâssées sous un épiderme riche en cellules à mucus et en électrorécepteurs. Ce trait anatomique le rend exceptionnellement vulnérable aux variations osmotiques et aux agents chimiques.</p>
+    
+    <table>
+        <tr><th>Longueur totale (TL) max.</th><td>50,0 cm TL (FishBase Réf. 36886) — en aquarium : généralement 30–45 cm TL</td></tr>
+        <tr><th>Hauteur du corps</th><td>Faible — corps très allongé et latéralement comprimé, s'effilant vers la queue</td></tr>
+        <tr><th>Profil prédorsal</th><td>Quasi-rectiligne — légèrement convexe au niveau de la tête. Absence totale de nageoire dorsale = caractère générique diagnostique absolu d'Apteronotus</td></tr>
+        <tr><th>Marques diagnostiques</th><td>Corps entièrement noir. Bande blanche médio-dorsale (longueur variable). Deux bandes transversales blanches sur le pédoncule caudal — synapomorphie du complexe albifrons (Albert 2001 ; de Santana 2003). Extrémité du museau blanchâtre.</td></tr>
+        <tr><th>Nageoire anale</th><td>Très longue, s'étendant de l'anus jusqu'à l'extrémité de la queue — organe de propulsion principal par locomotion ondulante gymnotiforme</td></tr>
+        <tr><th>Nageoires absentes</th><td>Nageoire dorsale absente (apomorphie du genre) ; nageoires pelviennes absentes</td></tr>
+        <tr><th>Bouche</th><td>Grande, terminale — espèce à grande bouche ('large-mouthed species' sensu de Santana 2003) ; carnivore macrophage</td></tr>
+        <tr><th>Écailles</th><td>Cycloïdes microscopiques, profondément enchâssées dans le derme sous une épaisse couche de mucus — non visibles à l'œil nu, sans rôle de barrière mécanique efficace (Albert 2001). La réduction fonctionnelle des écailles, et non leur absence, explique la vulnérabilité accrue aux agents chimiques et aux ectoparasites.</td></tr>
+    </table>
+
+    <h3>3.2 Coloration & Patron pigmentaire</h3>
+    <table>
+        <tr><th>Description de la livrée</th><td>Coloration adulte : corps entièrement brun-noir profond à noir de jais, sans variation chromatique comportementale (absence de chromatophores réactifs). La pigmentation est constitutive — pas de changement de couleur selon l'humeur ou le stress (contrairement aux cichlidés).</td></tr>
+        <tr><th>Marques diagnostiques</th><td>(1) Bande blanche médio-dorsale, de longueur variable selon les individus, parfois réduite à une tache sur le dessus de la tête. (2) Deux bandes transversales blanches encerclant le pédoncule caudal — première bande avec taches irrégulières chez A. albifrons sensu stricto (présence de taches régulières = A. caudimaculosus). Ces deux bandes sont présentes depuis le stade larvaire jusqu'à l'adulte (synapomorphie de tout le complexe albifrons).</td></tr>
+        <tr><th>Juvéniles</th><td>Coloration identique à l'adulte, mais bande dorsale blanche proportionnellement plus développée. Tête plus grande par rapport au corps que chez l'adulte — caractère pédomorphique documenté (Albert 2001 ; données sur A. leptorhynchus — Zupanc & Bullock 2005, in Bullock et al. eds.).</td></tr>
+    </table>
+
+    <h3>3.3 Dimorphisme sexuel</h3>
+    <table>
+        <tr><th>Caractère</th><th>MÂLE ♂</th></tr>
+        <tr><td>Nageoire anale</td><td>Légèrement plus développée — nageoire anale légèrement plus large et rayons plus longs</td></tr>
+        <tr><td>Comportement</td><td>Plus agressif en période reproductive — défense du territoire et compétition intraspécifique plus marquée</td></tr>
+        <tr><td>EOD (décharges)</td><td>Fréquences EOD généralement inférieures à celles des femelles chez les populations de l'Orénoque (dimorphisme sexuel électrique marqué)</td></tr>
+        <tr><th>Caractère</th><th>FEMELLE ♀</th></tr>
+        <tr><td>Abdomen</td><td>Plus arrondi en période de reproduction — abdomen distendu par les gonades</td></tr>
+        <tr><td>EOD (décharges)</td><td>Fréquences EOD généralement supérieures à celles des mâles chez les populations de l'Orénoque</td></tr>
+        <tr><td>Papille génitale</td><td>Visible en période de reproduction — permet d'identifier le sexe</td></tr>
+    </table>
+    <div class="note">
+        Note : le dimorphisme sexuel morphologique d'A. albifrons est subtil et peu fiable visuellement. La méthode la plus précise est la mesure de la fréquence des décharges électriques (EOD) : les femelles émettent des EOD de fréquence plus élevée que les mâles dans les populations de l'Orénoque (dimorphisme marqué) ; différence moins nette dans les populations amazoniennes. En aquarium, l'identification du sexe reste difficile sans instrumentation électronique.
+    </div>
+
+    <h2>4. Méristique & Morphologie Avancée</h2>
+    <h3>4.1 Formule méristique de Apteronotus albifrons</h3>
+    <p>La formule méristique des Gymnotiformes est atypique : l'absence de nageoire dorsale et de nageoires pelviennes rend la formule conventionnelle partielle. La méristique diagnostique repose principalement sur la nageoire anale (nombre de rayons), les tubules de la ligne latérale et la longueur relative de la queue.</p>
+    
+    <div class="meristic">
+        D. 0 (absente) ; A. 150-170 ; P1. présente ; P2. 0 (absente) ; C. présente (synapomorphie Apteronotidae) ; LL1 — tubules cutanés électrorécepteurs
+    </div>
+
+    <table>
+        <tr><th>Code</th><th>Nageoire</th><th>Min.</th><th>Max.</th><th>Signification</th></tr>
+        <tr><td>D.</td><td>Dorsale</td><td>0</td><td>0</td><td>ABSENTE — apomorphie diagnostique absolue du genre Apteronotus. Absence de nageoire dorsale sur toute la longueur du corps.</td></tr>
+        <tr><td>A.</td><td>Anale</td><td>150</td><td>170</td><td>150 à 170 rayons mous non ramifiés s'étendant de l'anus à l'extrémité caudale (Albert 2001).</td></tr>
+        <tr><td>P1.</td><td>Pectorales</td><td>n.d.</td><td>n.d.</td><td>Présentes, petites — utilisées pour les corrections de trajectoire. Données méristiques précises non disponibles.</td></tr>
+        <tr><td>P2.</td><td>Pelviennes</td><td>0</td><td>0</td><td>ABSENTES — caractère partagé avec tous les Gymnotiformes.</td></tr>
+        <tr><td>C.</td><td>Caudale</td><td>présente</td><td>développée</td><td>Nageoire caudale PRÉSENTE — rayons articulés sur un complexe hypural. Présence de la caudale = synapomorphie diagnostique de la famille Apteronotidae vs tous les autres Gymnotiformes (Albert 2001). Queue très allongée et filiforme constituant l'organe électrique principal.</td></tr>
+        <tr><td>LL1</td><td>Électrorécepteurs</td><td>—</td><td>—</td><td>Ligne de tubules électrorécepteurs distribués sur toute la surface corporelle — ~15 000 organes tubéreux et ampullaires. Pas de ligne latérale traditionnelle au sens strict.</td></tr>
+        <tr><td>Q.</td><td>Queue (LEA)</td><td>22%</td><td>23%</td><td>Longueur de la queue 22,3–23,1 % de la LEA (longueur totale) pour A. albifrons sensu stricto (de Santana 2003) — critère de distinction avec A. caudimaculosus (queue 10,4–19,2 % LEA).</td></tr>
+    </table>
+
+    <h3>4.2 Tableau méristique comparatif des espèces congénères</h3>
+    <table>
+        <tr><th>Caractère</th><th>A. albifrons vs A. caudimaculosus (espèce sœur dans le complexe albifrons)</th></tr>
+        <tr><td>Répartition</td><td>A. albifrons : Venezuela, Guyanes, Amazone, Paraná / A. caudimaculosus : Pantanal (fleuve Paraguay, Brésil occidental) uniquement</td></tr>
+        <tr><td>Première bande caudale</td><td>A. albifrons : première bande blanche sans taches irrégulières / A. caudimaculosus : taches irrégulières sur la première bande tout au long du développement — caractère diagnostique clé (de Santana 2003)</td></tr>
+        <tr><td>Longueur de queue</td><td>A. albifrons : queue longue 22,3–23,1 % LEA / A. caudimaculosus : queue courte 10,4–19,2 % LEA</td></tr>
+        <tr><td>Dimorphisme sexuel</td><td>A. albifrons : museau des deux sexes similaire / A. caudimaculosus : museau très allongé chez les mâles adultes (caractère remarquable)</td></tr>
+        <tr><td>Complexe albifrons</td><td>Au moins 6 autres espèces non encore formellement décrites font partie du complexe (Albert 2001 ; de Santana 2012) — les spécimens du commerce peuvent appartenir à l'une ou l'autre</td></tr>
+    </table>
+
+    <h3>4.3 Clé de détermination dichotomique du genre</h3>
+    <p>Clé basée sur les caractères diagnostiques stables, indépendants de l'état de stress ou de la coloration comportementale.</p>
+    <table>
+        <tr><td>1a</td><td>Nageoire dorsale présente — corps non entièrement noir ou brun uniforme</td><td>→ Autres familles de Gymnotiformes (Gymnotidae, Hypopomidae, Sternopygidae, Rhamphichthyidae)</td></tr>
+        <tr><td>1b</td><td>Nageoire dorsale absente — corps brun-noir uniforme avec marques blanches sur la tête et le pédoncule caudal</td><td>→ Famille Apteronotidae (genre Apteronotus et apparentés) — aller en 2</td></tr>
+        <tr><td>2a</td><td>Deux bandes blanches encerclant le pédoncule caudal présentes à tous les stades de développement — première bande SANS taches irrégulières ; queue longue (22–23 % LEA)</td><td>→ Apteronotus albifrons sensu stricto (Linnaeus, 1766)</td></tr>
+        <tr><td>2b</td><td>Deux bandes blanches présentes — première bande AVEC taches irrégulières ; queue courte (10–19 % LEA) ; museau allongé chez les mâles adultes ; Pantanal uniquement</td><td>→ Apteronotus caudimaculosus de Santana, 2003</td></tr>
+    </table>
+
+    <h2>5. Complexe Albifrons — Identification et Espèces Cryptiques</h2>
+    <h3>5.1 Le problème taxonomique du 'complexe albifrons'</h3>
+    <p>La quasi-totalité des spécimens vendus dans le commerce aquariophile sous le nom Apteronotus albifrons n'ont jamais fait l'objet d'une identification formelle. Le 'complexe albifrons' (sensu Albert 2001 ; de Santana 2003) regroupe au moins 8 espèces distinctes, dont plusieurs ne sont pas encore formellement décrites. Cette situation implique que le spécimen acquis en animalerie peut appartenir à n'importe quelle espèce du complexe — avec des paramètres naturels, des distributions et des caractères biologiques potentiellement différents. Une identification précise requiert l'examen morphométrique de la longueur de queue et de la première bande caudale.</p>
+
+    <h3>5.2 Critères diagnostiques de terrain</h3>
+    <table>
+        <tr><th>Caractère diagnostique</th><th>Description et méthode de mesure</th></tr>
+        <tr><td>Longueur de queue</td><td>Mesurer la distance entre l'origine de la nageoire anale et l'extrémité de la queue, exprimée en % de la longueur totale (LEA). A. albifrons sensu stricto : 22,3–23,1 % LEA. A. caudimaculosus : 10,4–19,2 % LEA. Méthode : photo latérale + logiciel de mesure (ImageJ).</td></tr>
+        <tr><td>Première bande caudale</td><td>Observer la première bande blanche transversale sur le pédoncule caudal. A. albifrons s.s. : bande régulière, SANS taches irrégulières à tous les stades de développement. A. caudimaculosus : taches irrégulières présentes sur la première bande à tous les stades (de Santana 2003) — critère le plus facile à observer.</td></tr>
+        <tr><td>Museau du mâle adulte</td><td>A. albifrons s.s. : museau des deux sexes similaire. A. caudimaculosus : museau très allongé chez les mâles adultes — caractère remarquable. Si le mâle présente un museau distinctement plus long et pointu que la femelle, l'espèce est probablement A. caudimaculosus.</td></tr>
+        <tr><td>Répartition géographique</td><td>A. albifrons s.s. : Orénoque, Amazone, Paraná, Guyanes. A. caudimaculosus : UNIQUEMENT le Pantanal (bassin du fleuve Paraguay, Brésil occidental) — si l'exportateur est établi au Mato Grosso do Sul, l'espèce est très probablement A. caudimaculosus.</td></tr>
+        <tr><td>Fréquence EOD</td><td>A. albifrons s.s. : environ 800–1 200 Hz. Des fréquences notablement inférieures ou supérieures peuvent indiquer une espèce cryptique. Mesure instrumentale requise (voir SEC 20).</td></tr>
+    </table>
+
+    <h3>5.3 Espèces cryptiques documentées du complexe</h3>
+    <table>
+        <tr><th>Espèce</th><th>Répartition et caractères distinctifs</th></tr>
+        <tr><td>A. albifrons s.s. (Linnaeus, 1766)</td><td>Espèce nominale — distribution la plus large (Orénoque, Amazone, Paraná). Critères : queue 22–23 % LEA, bande 1 sans taches.</td></tr>
+        <tr><td>A. caudimaculosus (de Santana, 2003)</td><td>Pantanal uniquement. Queue courte 10–19 % LEA. Taches sur bande 1. Museau allongé chez ♂ adulte. Première espèce du complexe formellement décrite après A. albifrons s.s.</td></tr>
+        <tr><td>A. macrolepis (de Santana & Crampton, 2012)</td><td>Bassin amazonien — grandes écailles cycloïdes visibles. Description formelle récente.</td></tr>
+        <tr><td>Espèces non décrites (spp. 1–5+)</td><td>Identifiées par différences morphométriques et EOD dans le cadre d'études de terrain (Albert 2001 ; de Santana & Cox Fernandes 2012) — en attente de description formelle.</td></tr>
+    </table>
+    <div class="note">RECOMMANDATION PRATIQUE : si l'identification précise est souhaitée, photographier le spécimen en vue latérale complète, mesurer la longueur de queue (% LEA), observer les taches de la première bande caudale à la loupe, et noter l'origine géographique auprès du fournisseur. Contacter le laboratoire de C.D. de Santana (Smithsonian Institution, National Museum of Natural History) pour les cas litigieux.</div>
+
+    <h2>6. Répartition Géographique & Biotope Naturel</h2>
+    <table>
+        <tr><th>Continent</th><td>Amérique du Sud (Néotropiques)</td></tr>
+        <tr><th>Pays</th><td>Venezuela, Colombie, Équateur, Pérou, Bolivie, Guyane française, Guyana, Suriname, Brésil (Acre, Amapá, Amazonas, Goiás, Mato Grosso, Mato Grosso do Sul, Minas Gerais, Pará, Paraná, Rio Grande do Sul, Rondônia, Roraima, Santa Catarina, São Paulo, Tocantins), Paraguay, Argentine (Corrientes, Misiones). Source : UICN 2022.</td></tr>
+        <tr><th>Bassins / Fleuves</th><td>Orénoque (Venezuela/Colombie) ; bassin amazonien (Amazone, Ucayali, Pérou) ; bassin du Paraná (Paraguay, Argentine, sud du Brésil) ; Guyanes. Espèce absente des bassins côtiers isolés.</td></tr>
+        <tr><th>Habitat</th><td>Cours d'eau à courant rapide à fond sableux (FishBase Réf. 12225). Ruisseaux et rivières à fond de sable et gravier. Zones benthopélagiques. Se réfugie dans les anfractuosités et les racines immergées de nuit.</td></tr>
+        <tr><th>Profondeur</th><td>Variable — zones benthiques et médiane selon l'heure (nocturne actif, diurne caché)</td></tr>
+        <tr><th>Végétation</th><td>Racines immergées d'arbres riverains, végétation dense en berge, bois flotté — utilisés comme refuges diurnes</td></tr>
+        <tr><th>Substrat</th><td>Sable fin à gravier — fond meuble à courant dans les zones actives ; limon et feuilles mortes dans les zones de repos</td></tr>
+        <tr><th>Type d'eau</th><td>Eau douce ; eau blanche à légèrement teintée ; pH 6,0–8,0 (FishBase) — tolérant sur une large gamme chimique grâce à la vaste aire de répartition</td></tr>
+        <tr><th>Courant</th><td>Modéré à fort — ruisseaux à courant rapide (FishBase Réf. 12225) ; eau bien oxygénée indispensable</td></tr>
+        <tr><th>Lumière</th><td>Très faible — espèce strictement nocturne se basant sur son système électrosensoriel pour la navigation et la chasse ; photophobie diurne marquée</td></tr>
+        <tr><th>Caractéristiques du biotope naturel</th><td>A. albifrons occupe une large gamme d'environnements grâce à son étendue géographique exceptionnelle. La majorité des habitats sont des eaux blanches à légèrement turbides, bien oxygénées, à courant modéré à fort, avec fond de sable ou gravier. Température naturelle : 23–28 °C (FishBase). Caractéristique écologique fondamentale : la réduction fonctionnelle des écailles (cycloïdes microscopiques enchâssées, sans rôle de barrière) impose une eau de qualité irréprochable — toute dégradation chimique atteint rapidement le derme via le mucus et les écailles non protectrices. NOTA BENE sur la localisation : les Apteronotidae sont les plus divers et abondants dans les grands fleuves (Albert & Crampton 2005, in Fish Physiology vol. 21). L'habitat de ruisseaux à courant rapide est typique pour l'espèce en dehors des grandes plaines d'inondation.</td></tr>
+    </table>
+
+    <h2>7. Évolution Saisonnière des Paramètres d'Eau en Milieu Naturel</h2>
+    <p>Trois bassins représentatifs de l'aire de répartition sont présentés : Orénoque (Venezuela), Amazone (Brésil/Pérou) et Paraná (Brésil/Paraguay/Argentine). Chaque bassin possède un régime hydrologique distinct. AVERTISSEMENT MÉTHODOLOGIQUE : les valeurs mensuelles ci-dessous sont des estimations théoriques justifiées par inférence à partir des données hydroclimatiques publiées pour chaque bassin. Ce ne sont pas des relevés de terrain mensuels directs dans des zones à A. albifrons. Sources d'inférence : FishBase (2024) pour les paramètres généraux ; données hydrologiques published pour chaque bassin (INPA, ORE-HYBAM, publications régionales).</p>
+
+    <h3>7.1 Température de l'eau (°C) — Variations mensuelles</h3>
+    <table>
+        <tr><th>Cours d'eau</th><th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th></tr>
+        <tr><td>Orénoque, Venezuela (théor.*)</td><td>26</td><td>27</td><td>28</td><td>28</td><td>27</td><td>26</td><td>26</td><td>26</td><td>27</td><td>27</td><td>27</td><td>26</td></tr>
+        <tr><td>Amazone, Brésil/Pérou (théor.*)</td><td>28</td><td>28</td><td>29</td><td>28</td><td>27</td><td>26</td><td>26</td><td>27</td><td>27</td><td>28</td><td>28</td><td>28</td></tr>
+        <tr><td>Paraná, Brésil/Paraguay (théor.*)</td><td>27</td><td>27</td><td>28</td><td>24</td><td>22</td><td>20</td><td>19</td><td>21</td><td>23</td><td>25</td><td>26</td><td>27</td></tr>
+    </table>
+    <div class="note">* Valeurs en °C. Fourchette publiée : 23–28 °C (FishBase Réf. 1672). Le bassin du Paraná présente des hivers marqués (juin–août : 19–22 °C) — limite basse de tolérance. L'Orénoque et l'Amazone restent dans des fourchettes stables. Valeurs par inférence hydroclimatologique.</div>
+
+    <h3>7.2 pH — Variations mensuelles</h3>
+    <table>
+        <tr><th>Bassin</th><th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th></tr>
+        <tr><td>Orénoque (théor.*)</td><td>6.8</td><td>6.8</td><td>6.7</td><td>6.6</td><td>6.5</td><td>6.5</td><td>6.5</td><td>6.6</td><td>6.6</td><td>6.7</td><td>6.7</td><td>6.8</td></tr>
+        <tr><td>Amazone (théor.*)</td><td>6.5</td><td>6.5</td><td>6.4</td><td>6.3</td><td>6.2</td><td>6.2</td><td>6.2</td><td>6.4</td><td>6.4</td><td>6.5</td><td>6.5</td><td>6.5</td></tr>
+        <tr><td>Paraná (théor.*)</td><td>7.0</td><td>7.0</td><td>7.0</td><td>7.1</td><td>7.2</td><td>7.3</td><td>7.3</td><td>7.2</td><td>7.1</td><td>7.0</td><td>7.0</td><td>7.0</td></tr>
+    </table>
+    <div class="note">* Valeurs de pH par inférence. Fourchette globale publiée : 6,0–8,0 (FishBase Réf. 1672). L'Amazone et ses affluents de type eaux noires peuvent descendre en dessous de 5,0, mais A. albifrons fréquente préférentiellement les eaux blanches à neutres. Le Paraná est généralement légèrement alcalin (pH 7,0–7,5).</div>
+
+    <h3>7.3 Conductivité (µS/cm) — Variations mensuelles</h3>
+    <table>
+        <tr><th>Bassin</th><th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th></tr>
+        <tr><td>Orénoque (théor.*)</td><td>80</td><td>90</td><td>70</td><td>50</td><td>40</td><td>35</td><td>35</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td></tr>
+        <tr><td>Amazone (théor.*)</td><td>50</td><td>55</td><td>45</td><td>35</td><td>25</td><td>20</td><td>20</td><td>25</td><td>30</td><td>40</td><td>45</td><td>50</td></tr>
+        <tr><td>Paraná (théor.*)</td><td>200</td><td>210</td><td>190</td><td>180</td><td>200</td><td>220</td><td>230</td><td>220</td><td>200</td><td>190</td><td>195</td><td>200</td></tr>
+    </table>
+    <div class="note">* Valeurs en µS/cm par inférence hydroclimatique. Dureté FishBase : 5–19 °dH (Réf. 1672). Le Paraná est nettement plus minéralisé que l'Orénoque ou l'Amazone. L'Amazone en zone d'eaux noires peut descendre sous 10 µS/cm. Les données de conductivité précises pour les zones à A. albifrons ne sont pas disponibles dans les sources consultées.</div>
+
+    <h3>7.4 Cycle hydrologique et comportement saisonnier</h3>
+    <table>
+        <tr><th>Bassin / Saison</th><th>Comportement de l'espèce — données et hypothèses</th></tr>
+        <tr><td>ORÉNOQUE — Saison sèche (jan–mars)</td><td>Niveau bas, eau concentrée, courant fort. Température 26–27 °C, pH ~6,8, conductivité ~80–90 µS/cm. Activité alimentaire maintenue. Territoriale dans les zones de rapides.</td></tr>
+        <tr><td>ORÉNOQUE — Début pluies (avr–jun)</td><td>Montée progressive des eaux, baisse de la conductivité (~35–50 µS/cm). Signal déclencheur de reproduction potentiel — maturation gonadique induite par la baisse de conductivité + hausse du niveau d'eau (inférence d'après Albert 2001 ; Schwassmann 1971 pour Gymnotiformes). Période de ponte hypothétique.</td></tr>
+        <tr><td>ORÉNOQUE — Hautes eaux (jul–sep)</td><td>Niveau maximal, eau très diluée (~35–40 µS/cm). Alimentation intensive. Dispersion dans les plaines inondées. Ponte fractionnée nocturne possible (23 h–2 h).</td></tr>
+        <tr><td>ORÉNOQUE — Décrue (oct–déc)</td><td>Retrait des eaux. Reconcentration. Retour vers les chenaux principaux. Activité reproductive réduite.</td></tr>
+        <tr><td>AMAZONE — cycle similaire</td><td>Hautes eaux de jan à juin (austral) ; basses eaux de juil à déc. Déclencheurs reproductifs identiques : baisse conductivité + hausse niveau eau.</td></tr>
+        <tr><td>PARANÁ — cycle austral</td><td>Hivers australs marqués (juin–août : 19–22 °C) — probable réduction de l'activité et ralentissement métabolique. Ponte probablement concentrée en période chaude (oct–mars).</td></tr>
+    </table>
+    <div class="note">
+        AVERTISSEMENT REPRODUCTION : la reproduction de A. albifrons en captivité n'est pas établie dans un cadre amateur. Les données présentées ici sont des hypothèses fondées sur : (1) le déclencheur documenté chez les Gymnotiformes (baisse de conductivité + hausse niveau d'eau induisant la maturation gonadique) ; (2) les données de ponte fractionnée nocturne (1–105 œufs, dépôt de 23 h à 2 h) ; (3) les analogies avec A. leptorhynchus (espèce de laboratoire très étudiée). AVERTISSEMENT VALEURS : valeurs mensuelles théoriques par inférence climatologique — sources : FishBase (2024), ORE-HYBAM, données hydrologiques régionales.
+    </div>
+
+    <h2>8. Écologie & Éthologie Avancée</h2>
+    <h3>8.1 Structure sociale et hiérarchie</h3>
+    <p>Espèce strictement solitaire et territoriale — l'une des plus agressives de la faune aquariophile d'eau douce vis-à-vis des conspécifiques. En milieu naturel, chaque individu occupe et défend un territoire exclusif dont les limites sont signalées par les décharges électriques (EOD). La cohabitation de deux individus entraîne un brouillage électrique : le poisson dominant émet un champ qui perturbe l'électroréception du subordonné ('aveuglement électrique') — le subordonné cesse de s'alimenter correctement et dépérit. À partir de trois individus ou plus, les fréquences EOD se répartissent par réponse d'évitement du brouillage (JAR — Jamming Avoidance Response) et la cohabitation redevient possible dans un grand volume. Espèce nocturne stricte — photophobie diurne marquée, refuge obligatoire en journée.</p>
+
+    <h3>8.2 Comportement territorial et défense du nid</h3>
+    <table>
+        <tr><th>Phase comportementale</th><th>Description</th></tr>
+        <tr><td>Électrolocation nocturne</td><td>Active dès la tombée de la nuit. L'individu parcourt son territoire en émettant des EOD continues à 800–1 200 Hz, détectant les proies et les obstacles par perturbation du champ électrique.</td></tr>
+        <tr><td>Signalisation électrique</td><td>Modulations de fréquence (FM) et chirps (impulsions brèves d'EOD intense) lors d'interactions sociales — signaux d'intimidation, de reconnaissance ou de cour.</td></tr>
+        <tr><td>Réponse d'évitement du brouillage (JAR)</td><td>En présence d'un conspécifique, chaque individu décale sa fréquence EOD pour éviter le chevauchement — mécanisme neuronal précis documenté (Heiligenberg 1991 ; Nelson & MacIver 1999).</td></tr>
+        <tr><td>Prédation</td><td>Capture de proies par une fuite courte et rapide depuis la position d'affût benthique. Les proies sont détectées à la vitesse et à la précision électrosensorielles même dans l'obscurité totale (Nelson & MacIver 1999).</td></tr>
+        <tr><td>Régénération caudale</td><td>Capacité documentée de régénérer la queue et la portion caudale de la moelle épinière après prédation partielle — adaptation évolutive à la prédation fréquente sur la queue en milieu naturel.</td></tr>
+    </table>
+
+    <h3>8.3 Régime alimentaire naturel et guilde trophique</h3>
+    <p>Carnivore strict — microprédateur d'invertébrés benthiques (FishBase Réf. 12225). Régime naturel : larves d'insectes aquatiques (chironomides, éphéméroptères, trichoptères), petits crustacés, vers annélides. Chasse exclusivement de nuit par électrolocation. Le champ électrique permet de détecter les mouvements et les propriétés électriques des proies dans l'eau turbide. Proies capturées par une courte fuite rapide depuis la position d'affût benthique (Nelson & MacIver 1999 — J. Exp. Biol. 202 : 1195–1203). Grands adultes capables de prédater de petits poissons — à considérer pour la cohabitation en aquarium.</p>
+    <p><strong>Alimentation précise dans le milieu naturel (In Situ) :</strong> Carnivore benthique nocturne strict. Dans son habitat naturel, <i>A. albifrons</i> exploite son système électrosensoriel actif (EOD) pour détecter ses proies dans l'obscurité totale ou les eaux turbides. Son régime se compose quasi exclusivement de macro-invertébrés benthiques : larves d'insectes aquatiques (Chironomidae, Ephemeroptera, Trichoptera), petits crustacés décapodes, et vers annélides. La détection se fait par perturbation du champ électrique, suivie d'une frappe rapide et précise.</p>
+
+    <h2>9. Électrophysiologie — Organe Électrique et Décharges</h2>
+    <h3>9.1 L'organe électrique : structure et origine</h3>
+    <p>L'organe électrique d'A. albifrons est strictement NEUROGÈNE — il est dérivé d'axones hypertrophiés d'électroneurones spinaux (et non de fibres musculaires comme chez tous les autres Gymnotiformes et chez les poissons électriques africains). Cette apomorphie, unique à la famille Apteronotidae, a des conséquences fonctionnelles majeures : la décharge est continue, quasi-sinusoïdale, à très haute fréquence, et d'une stabilité de fréquence exceptionnelle (écart-type < 0,012 % — Bullock 1970). L'organe s'étend sur toute la longueur de la queue, expliquant l'importance de celle-ci et la vulnérabilité de l'espèce aux prédateurs ciblant spécifiquement la queue (pression de sélection ayant conduit à la capacité de régénération documentée — voir SEC 18).</p>
+
+    <h3>9.2 Décharge électrique de base (EOD)</h3>
+    <table>
+        <tr><th>Paramètre EOD</th><th>Valeur et signification</th></tr>
+        <tr><td>Type d'onde</td><td>Onde sinusoïdale quasi-pure (wave-type EOD) — contraste avec les espèces à décharge pulsée (pulse-type, ex. Gymnotus). La forme sinusoïdale permet une électrolocation continue sans zones aveugles temporelles.</td></tr>
+        <tr><td>Fréquence de base</td><td>~800–1 200 Hz chez A. albifrons sensu stricto (Bullock 1970 ; Heiligenberg 1991). La fréquence est stable sur la vie adulte de l'individu mais variable entre individus et entre populations (Orénoque vs Amazone).</td></tr>
+        <tr><td>Stabilité de fréquence</td><td>Écart-type < 0,012 % sur 24 heures chez un individu sain (Bullock 1970) — parmi les oscillateurs biologiques les plus stables connus. Une instabilité de fréquence est un signe précoce de stress ou de maladie détectable instrumentalement.</td></tr>
+        <tr><td>Amplitude</td><td>Quelques millivolts à quelques dizaines de millivolts selon la distance à l'objet. Le champ s'étend jusqu'à ~30 cm autour du corps (Nelson & MacIver 1999).</td></tr>
+        <tr><td>Dimorphisme sexuel</td><td>Fréquence plus élevée chez les femelles que chez les mâles dans les populations de l'Orénoque (dimorphisme marqué, exploitable pour le sexage). Différence moins nette dans les populations amazoniennes. Base hormonale : l'œstradiol-17β abaisse la fréquence EOD — mécanisme inverse de celui de tous les autres poissons électrogènes dimorphiques (Zakon 1987).</td></tr>
+        <tr><td>Influence de la température</td><td>Coefficient de température (Q10) de la fréquence EOD : ~1,5 (augmentation de ~50 % par élévation de 10 °C). À 26 °C → ~1 000 Hz ; à 30 °C → ~1 150 Hz.</td></tr>
+    </table>
+
+    <h3>9.3 Modulations de la décharge (communication électrique)</h3>
+    <p>A. albifrons peut moduler activement sa fréquence EOD pour communiquer. Deux types de modulations sont documentés :</p>
+    <table>
+        <tr><th>Type de modulation</th><th>Mécanisme et contexte</th></tr>
+        <tr><td>Chirps (impulsions courtes)</td><td>Élévations brèves et intenses de la fréquence (durée : 20–150 ms ; élévation : 100–400 Hz au-dessus de la fréquence de base). Produits en contexte social et reproducteur — signaux d'excitation, de dominance, de cour. Deux types chez les Apteronotidae : chirps de type 1 (petite élévation, nombreux) et de type 2 (grande élévation, rares) — Zupanc & Maler 1993.</td></tr>
+        <tr><td>GFR (Gradual Frequency Rises)</td><td>Élévations progressives de la fréquence sur plusieurs secondes. Observées lors d'interactions sociales moins intenses. Rôle : signalisation de présence, maintien du territoire.</td></tr>
+        <tr><td>Modulateur neuronal</td><td>Le noyau prépacemaker (PPn) et le noyau bulbaire pacemaker (Bn) contrôlent la fréquence. Le PPn reçoit des projections de l'aire prémotrice mésencéphalique (nPP) — circuit neural entièrement cartographié chez les Apteronotidae (Zupanc & Maler 1993).</td></tr>
+    </table>
+
+    <h3>9.4 Réponse d'évitement du brouillage (JAR)</h3>
+    <p>La JAR (Jamming Avoidance Response) est le mécanisme neuronal par lequel deux individus de fréquence voisine décalent activement leurs EOD pour éviter le brouillage électrosensoriel. Décrit en détail par Heiligenberg (1991).</p>
+    <table>
+        <tr><th>Mécanisme JAR</th><th>Description</th></tr>
+        <tr><td>Déclenchement</td><td>Lorsque deux individus se trouvent à portée (< 30 cm), leurs champs électriques interagissent — chaque poisson perçoit un signal modulé en amplitude et en phase. Le système nerveux central détecte si la fréquence du voisin est légèrement plus haute ou plus basse.</td></tr>
+        <tr><td>Réponse</td><td>L'individu dont la fréquence est plus haute l'augmente encore. L'individu dont la fréquence est plus basse la diminue encore. Résultat : les fréquences s'éloignent jusqu'à ce que le brouillage disparaisse (différentiel > ~10–20 Hz).</td></tr>
+        <tr><td>Limite aquariophile</td><td>Deux individus de fréquences TRÈS PROCHES (< 5 Hz d'écart) ne peuvent pas décaler suffisamment leurs EOD — brouillage persistant. L'un des deux développe une incapacité partielle à électroloquer, compromettant son alimentation (dépérissement du subordonné). Cohabitation possible uniquement si les fréquences individuelles s'éloignent naturellement (mesure préalable obligatoire avec au moins 3 individus).</td></tr>
+        <tr><td>Référence</td><td>Heiligenberg, W. (1991). Neural Nets in Electric Fish. MIT Press. — Modèle neuronal complet de la JAR, espèce d'étude principale : Eigenmannia et Apteronotus.</td></tr>
+    </table>
+
+    <h2>10. Neurosciences — Électroréception et Traitement Sensoriel</h2>
+    <h3>10.1 Les deux systèmes d'électroréception</h3>
+    <p>A. albifrons possède deux systèmes d'électroréception fonctionnellement distincts et anatomiquement séparés, dérivés de la ligne latérale mécanoréceptrice ancestrale :</p>
+    <table>
+        <tr><th>Système</th><th>Caractéristiques et fonction</th></tr>
+        <tr><td>Récepteurs tubéreux (T-type et P-type)</td><td>Accordés à la fréquence EOD propre de l'individu (~1 000 Hz). Détectent les perturbations haute fréquence du champ électrique propre causées par des objets à conductivité différente de l'eau (proies, obstacles, conspécifiques). Seuil de détection : ~1–5 µV/cm. Fonction : électrolocation active.</td></tr>
+        <tr><td>Récepteurs ampullaires</td><td>Accordés aux très basses fréquences (< 20 Hz). Détectent les champs bioélectriques produits par les animaux vivants (potentiels d'action musculaires, gradients électrochimiques). Seuil : 0,6 µV/cm (Knudsen 1974) — parmi les seuils les plus bas documentés dans le règne animal. Fonction : électroréception passive (détection des proies cachées, orientation géomagnétique possible).</td></tr>
+        <tr><td>Distribution sur le corps</td><td>~15 000 organes électrorécepteurs distribués sur toute la surface corporelle (Knudsen 1974). La région céphalique est la plus dense — correspondance avec le champ électrique le plus intense (région rostrale de l'organe électrique).</td></tr>
+    </table>
+
+    <h3>10.2 Le cerveau électrosensoriel</h3>
+    <p>Le système nerveux central d'A. albifrons est l'un des plus étudiés en neurosciences sensorielles, précisément grâce à la clarté de son codage électrosensoriel. Le torus semicircularis (tectum électrosensoriel mésencéphalique) contient une carte spatiale de l'environnement électrique construite par l'analyse des différences temporelles entre les EOD reçus par les différents récepteurs du corps. Cette carte est analogiquement comparable à la carte rétinotopique du cortex visuel des vertébrés supérieurs — c'est pour cette raison qu'A. albifrons est devenu un organisme modèle en neurosciences comparatives (Bastian 1981 ; Heiligenberg 1991).</p>
+
+    <h3>10.3 Implications pratiques pour l'aquariophile</h3>
+    <table>
+        <tr><th>Facteur d'interférence</th><th>Source et précaution</th></tr>
+        <tr><td>Champs électriques parasites</td><td>Pompes submersibles, chauffages résistifs, éclairages fluorescents, câbles non blindés — tous génèrent des champs électriques à 50–60 Hz qui brouillent les récepteurs ampullaires (fréquence identique aux signaux bioélectriques des proies). Utiliser du matériel électrique bien blindé ou des pompes magnétiques en circuit fermé. Tous les équipements du bac doivent être branchés sur la même prise de courant (différence de potentiel entre circuits = champ parasite).</td></tr>
+        <tr><td>Mise à la terre du bac</td><td>Une mise à la terre du bac (câble de cuivre reliant le cadre métallique du bac à la prise de terre) réduit significativement les interférences électriques. Standard recommandé en élevage de Gymnotiformes (Noga 2010).</td></tr>
+        <tr><td>Variateurs de puissance</td><td>Les variateurs de pompes et d'éclairages à fréquence variable peuvent générer des harmoniques parasites dans la gamme 800–1 200 Hz — brouillage direct des récepteurs tubéreux. Éviter les variateurs à fréquence variable.</td></tr>
+        <tr><td>Écran entre bacs</td><td>Si plusieurs bacs contenant des Gymnotiformes sont côte à côte, une plaque d'aluminium mise à la terre entre les deux bacs empêche le couplage électrique d'un individu à l'autre à travers les parois (standard en laboratoire de recherche).</td></tr>
+    </table>
+
+    <h2>11. Installation — L'Aquarium Idéal</h2>
+    <table>
+        <tr><th>Volume minimum</th><td>400 litres pour un seul spécimen adulte — la longueur d'un adulte (45–50 cm) impose un bac d'au moins 200 cm de long pour permettre le demi-tour sans contrainte physique</td></tr>
+        <tr><th>Volume recommandé</th><td>600–800 litres pour un spécimen en conditions optimales</td></tr>
+        <tr><th>Dimensions conseillées</th><td>Longueur ≥ 200 cm IMPÉRATIVE (corps rigide, incapable de se plier sans blessure dans un espace insuffisant). Largeur ≥ 60 cm. Un bac de 250 × 60 × 60 cm constitue un minimum pour un adulte (rapport longueur/taille de l'espèce : 5× la longueur maximale, standard en zootechnie piscicole).</td></tr>
+        <tr><th>Fond</th><td>Sable fin — OBLIGATOIRE (espèce benthique fouissant légèrement ; les écailles enchâssées non protectrices rendent le derme sensible aux abrasions mécaniques)</td></tr>
+        <tr><th>Filtration</th><td>Puissante et biologique — eau riche en oxygène dissous indispensable. Filtre externe avec débit adapté au volume. Système UV stérilisateur recommandé (écailles enchâssées non protectrices = susceptibilité accrue aux pathogènes)</td></tr>
+        <tr><th>Circulation</th><td>Modérée à forte — l'espèce vit dans des ruisseaux à courant rapide en milieu naturel. Un courant soutenu est bénéfique et améliore l'oxygénation</td></tr>
+        <tr><th>Éclairage</th><td>TRÈS FAIBLE ou nul en journée — espèce photophobe. Éclairage nocturne rouge (spectre < 630 nm non perçu par les photorécepteurs des poissons) pour l'observation</td></tr>
+        <tr><th>Chauffage</th><td>23–27 °C — éviter les hivers simulés trop fréquents sauf intention reproductive. Stabilité thermique stricte</td></tr>
+        <tr><th>Décor</th><td>Tubes de PVC ou de bambou de diamètre légèrement supérieur à la largeur du poisson (refuge diurne obligatoire). Racines, bois flotté. Éviter les arêtes vives (abrasion du derme par les écailles enchâssées non protectrices)</td></tr>
+        <tr><th>Plantes recommandées</th><td>Non indispensables — espèce benthique nocturne peu sensible à la végétation. Végétation flottante pour atténuer l'éclairage</td></tr>
+        <tr><th>Cachettes</th><td>Tube de refuge OBLIGATOIRE — l'absence de refuge diurne provoque un stress chronique sévère. Un tube par individu minimum</td></tr>
+        <tr><th>Renouvellement eau</th><td>20–30 % par semaine — eau de qualité irréprochable (écailles enchâssées non protectrices = barrière physique insuffisante contre les polluants et les pathogènes)</td></tr>
+    </table>
+
+    <h2>12. Paramètres de l'Eau — Aquarium</h2>
+    <h3>12.1 Paramètres physico-chimiques recommandés</h3>
+    <table>
+        <tr><th>Paramètre</th><th>Valeur idéale</th><th>Fourchette tolérée</th><th>Critique (limite)</th></tr>
+        <tr><td>Température</td><td>24–26 °C</td><td>23–28 °C (tolère 19°C en hivernage)</td><td>< 18 °C ou > 30 °C — stress aigu</td></tr>
+        <tr><td>pH</td><td>6,5–7,5</td><td>6,0–8,0</td><td>< 5,5 ou > 8,5</td></tr>
+        <tr><td>GH (dureté)</td><td>4–12 °dH</td><td>5–19 °dH (FishBase)</td><td>< 2 °dH ou > 20 °dH</td></tr>
+        <tr><td>KH</td><td>3–6 °dKH</td><td>2–10 °dKH</td><td>< 1 °dKH (pH instable)</td></tr>
+        <tr><td>Conductivité</td><td>80–300 µS/cm</td><td>50–500 µS/cm</td><td>> 600 µS/cm — stress osmotique</td></tr>
+        <tr><td>Nitrites NO2</td><td>0 mg/L</td><td>< 0,1 mg/L</td><td>Tout > 0 — toxique — écailles enchâssées non protectrices = absorption rapide par le derme</td></tr>
+        <tr><td>Nitrates NO3</td><td>< 20 mg/L</td><td>< 40 mg/L</td><td>> 80 mg/L — toxicité accrue (barrière dermique insuffisante)</td></tr>
+        <tr><td>O2 dissous</td><td>> 7 mg/L</td><td>> 5 mg/L</td><td>< 4 mg/L — hypoxie (espèce de courant rapide)</td></tr>
+    </table>
+
+    <h3>12.2 Traitement et préparation de l'eau</h3>
+    <table>
+        <tr><th>Techniques de préparation de l'eau</th><td>Eau du robinet acceptable si GH 4–15 °dH, pH 6,5–7,5, absence de chloramine. Déchloration obligatoire (déchlorateur ou décantation 24h). Eau trop calcaire : dilution avec eau osmosée.</td></tr>
+        <tr><th>AVERTISSEMENT — TRAITEMENTS CHIMIQUES</th><td>A. albifrons est extrêmement sensible aux agents chimiques. Ses écailles cycloïdes microscopiques enchâssées profondément dans le derme n'offrent pas de barrière mécanique efficace contre les agents chimiques dissous — ceux-ci atteignent rapidement le derme et la circulation sanguine. Toujours réduire les doses de moitié par rapport aux recommandations standard pour les espèces écailleuses.</td></tr>
+    </table>
+
+    <h2>13. Alimentation et Profil Macro-Nutritionnel</h2>
+    <p>Carnivore strict. Les spécimens importés du milieu naturel (sauvages) refusent souvent les aliments inertes au départ — conditionnement progressif indispensable. Nourrir exclusivement la nuit, après extinction des lumières. Éviter les viandes de mammifères ou de volailles (bœuf, cœur de poulet) — les lipides non métabolisables provoquent des dépôts graisseux et une dégénérescence organique (Stoskopf 1993 ; Noga 2010). Ne jamais utiliser de poissons vivants (Poeciliidae, poissons rouges) comme nourriture vivante — vecteurs de parasites et agents pathogènes.</p>
+    
+    <h3>13.1 — Répartition macro-nutritionnelle idéale (sur matière sèche)</h3>
+    <ul>
+        <li><strong>Protéines (50 à 60 %) :</strong> Métabolisme de carnivore strict. Les protéines doivent provenir exclusivement de sources aquatiques (poissons, crustacés) ou entomologiques (insectes).</li>
+        <li><strong>Lipides (8 à 12 %) :</strong> Essentiels pour l'énergie, mais doivent être constitués d'acides gras polyinsaturés (Oméga-3/6). <strong>Avertissement métabolique :</strong> Il faut bannir absolument les graisses de mammifères ou d'oiseaux terrestres (cœur de bœuf, poulet). Les enzymes digestives d'<em>A. albifrons</em> ne peuvent pas cliver ces lipides saturés à 26°C, ce qui conduit inéluctablement à une stéatose hépatique (dégénérescence graisseuse du foie) et à une mort prématurée.</li>
+        <li><strong>Glucides et Fibres (< 10 %) :</strong> Les glucides simples sont très mal assimilés. Les fibres complexes (comme la chitine des exosquelettes d'insectes ou de crustacés) sont en revanche nécessaires pour assurer un bon transit intestinal.</li>
+    </ul>
+
+    <p><strong>Calcul de la ration quotidienne :</strong> La distribution doit être strictement rationnée pour éviter l'obésité en captivité. Pour un adulte, la ration quotidienne optimale correspond à environ 1 à 1,5 % de sa masse corporelle par jour. <strong>Crucial :</strong> L'alimentation doit impérativement être distribuée <strong>de nuit</strong> (après extinction de l'éclairage principal), moment où le poisson est biologiquement programmé pour chasser via son électrolocation. Une maîtrise parfaite du rationnement nocturne rend tout jour de jeûne superflu.</p>
+
+    <table>
+        <tr><th>Type d'aliment</th><th>Exemples</th><th>Fréquence / Notes</th></tr>
+        <tr><td>Vivant (idéal)</td><td>Vers de vase (chironomides), vers de terre, crevettes vivantes, artémias adultes, vers blancs, grillons et blattes sub-adultes</td><td>Base nocturne quotidienne — correspond au régime naturel</td></tr>
+        <tr><td>Congelé</td><td>Vers de vase congelés, crevettes, krill, artémias, cyclops, cœurs d'artémias</td><td>Excellent substitut — à proposer en alternance</td></tr>
+        <tr><td>Granulés coulants</td><td>Granulés carnivores coulant (Hikari, JBL) — acceptés après conditionnement progressif (jeûne 2–3 jours, puis présenter de nuit)</td><td>Complément utile — ne pas remplacer les vivants/congelés</td></tr>
+        <tr><td>À éviter</td><td>Poissons vivants (vecteurs de parasites) ; viandes de mammifères/volailles (lipides non métabolisables) ; aliments en surface (espèce benthique)</td><td>Jamais</td></tr>
+    </table>
+
+    <h2>14. Comportement & Cohabitation</h2>
+    <p>Espèce pacifique envers les poissons d'espèces différentes à condition qu'ils soient suffisamment grands pour ne pas être prédatés. Mais extrêmement agressive et intolérante envers ses conspécifiques en aquarium. Deux individus dans un même bac entraînent systématiquement le dépérissement du subordonné par brouillage électrique (impossibilité d'électrolocation = incapacité à se nourrir). Cohabitation multi-individuelle possible uniquement à partir de trois individus dans un très grand volume (> 1 000 litres), permettant la dispersion des fréquences EOD par réponse JAR.</p>
+    <table>
+        <tr><th>Cohabitation recommandée</th><th>Cohabitation déconseillée</th></tr>
+        <tr>
+            <td>
+                • Grands cichlidés sud-américains paisibles (Geophagus spp., Uaru amphiacanthoides) — fond, taille similaire ou supérieure<br>
+                • Grands characins paisibles (Colossoma macropomum juvéniles, Myleus spp.) — eau moyenne, non compétitifs avec l'aptéronotus<br>
+                • Grands Siluridés (Hoplias malabaricus exclu — prédateur) : Pimelodus blochii, grands Sorubim spp. — fond, zones différentes<br>
+                • Grands plécostomus (Hypostomus spp., Pterygoplichthys spp.) — benthiques mais non compétitifs (régime algues vs carnivore)
+            </td>
+            <td>
+                • Tout autre Apteronotus albifrons (ou espèce électrogène de même fréquence) — brouillage électrique et dépérissement du subordonné<br>
+                • Poissons de moins de 8–10 cm adultes — proies potentielles pour un spécimen adulte<br>
+                • Crevettes ornementales — proies directes<br>
+                • Espèces turbulentes ou nageant en bancs denses (danios, barbus vifs) — stress permanent pour l'aptéronotus nocturne<br>
+                • Tout autre poisson électrogène de fréquence similaire (Eigenmannia spp. dans un grand volume — JAR possible, mais risqué)
+            </td>
+        </tr>
+    </table>
+
+    <h2>15. Protocole de Reproduction Complet</h2>
+    <h3>15.1 Prérequis & Conditionnement</h3>
+    <table>
+        <tr><th>Âge de maturité sexuelle</th><td>~1 an ou moins — juvéniles atteignant la maturité minimale rapidement (données limitées pour A. albifrons spécifiquement)</td></tr>
+        <tr><th>Taille minimale reproductrice</th><td>Données non disponibles dans les sources consultées pour A. albifrons spécifiquement</td></tr>
+        <tr><th>Composition du groupe</th><td>Un couple — la cohabitation de deux individus est problématique ; la reproduction nécessite un grand volume et l'identification préalable du sexe par mesure EOD</td></tr>
+        <tr><th>Aquarium de reproduction</th><td>Très grand bac (≥ 600 L, L ≥ 200 cm) — NON reproductible dans un cadre amateur standard. La maturation gonadique en captivité n'est pas établie en conditions aquariophiles courantes.</td></tr>
+        <tr><th>Eau du bac de ponte</th><td>HYPOTHÈSE fondée sur les déclencheurs des Gymnotiformes : baisse progressive de la conductivité (de ~150 à ~40–50 µS/cm simulant la montée des eaux) + hausse du niveau d'eau de 10–20 cm. Température : 26–28 °C. pH : 6,5–7,0.</td></tr>
+        <tr><th>Déclencheur documenté</th><td>La maturation gonadique est induite par une baisse progressive de la conductivité de l'eau et une hausse du niveau d'eau — déclencheur documenté pour les Gymnotiformes (Schwassmann 1971, Science 173 ; Albert 2001).</td></tr>
+        <tr><th>Support de ponte</th><td>Sites spécifiques dans des anfractuosités ou des lacunes de l'environnement. Les œufs sont déposés un à un de nuit (23 h–2 h) par électrolocation du site.</td></tr>
+    </table>
+
+    <h3>15.2 Conditionnement des reproducteurs</h3>
+    <table>
+        <tr><th>Menu de conditionnement</th><td>Alimentation intensive avec proies vivantes variées 5–7 jours sur 7 pendant 4–6 semaines. Identifier préalablement les sexes par mesure de la fréquence EOD (fréquencemètre à eau ou logiciel d'analyse du signal). Abaisser progressivement la conductivité sur 4 semaines (réductions de 15–20 % par semaine). Rehausser le niveau d'eau de 10–15 cm.</td></tr>
+    </table>
+
+    <h3>15.3 Déclenchement de la ponte</h3>
+    <p>Déclencheurs documentés pour le genre Apteronotus (par analogie avec A. leptorhynchus et les données disponibles sur A. albifrons) : 1/ Baisse progressive de la conductivité simulant la montée des eaux saisonnière — de ~150 µS/cm vers ~30–50 µS/cm sur 4–6 semaines. 2/ Hausse du niveau d'eau de 10–20 cm. 3/ Maintien nocturne strict (photopériode importante). 4/ Conditionnement alimentaire intensif aux proies vivantes. Cohérent avec le cycle saisonnier naturel (saison des pluies — mars à juin pour l'Orénoque).</p>
+    <div class="note">AVERTISSEMENT : la reproduction en captivité amateur n'est pas établie de manière reproductible. Des pontes ont été obtenues en conditions de pisciculture avec des bassins de plusieurs milliers de litres. Cette section constitue une approche hypothétique rigoureusement fondée sur les données disponibles.</div>
+
+    <h3>15.4 La ponte : déroulement et caractéristiques</h3>
+    <table>
+        <tr><th>Parade nuptiale</th><td>Compétition mâle-mâle par EOD (décharges électriques) et exclusion physique. Sélection du partenaire par la femelle — communication électrique complexe. Données précises sur la parade non disponibles pour A. albifrons spécifiquement.</td></tr>
+        <tr><th>Ponte fractionnée</th><td>Gymnotiformes sont des pondeurs fractionnés — les œufs ne sont pas tous pondus en une seule fois. Fécondité : 1 à 105 œufs par événement de ponte. Dépôt nocturne (23 h–2 h) en utilisant l'électrolocation pour trouver les sites de ponte cachés.</td></tr>
+        <tr><th>Caractère des œufs</th><td>Œufs adhésifs — déposés un à un dans des anfractuosités cachées de l'environnement. Sac vitellin plus développé que chez les autres Gymnotiformes selon les observations disponibles.</td></tr>
+        <tr><th>Durée d'incubation</th><td>Données non disponibles dans les sources consultées pour A. albifrons spécifiquement. Par analogie avec d'autres Gymnotiformes : quelques jours.</td></tr>
+        <tr><th>Soins parentaux</th><td>AUCUN — données non disponibles spécifiquement. Comportement typique des Gymnotiformes : pas de garde parentale documentée.</td></tr>
+    </table>
+
+    <h3>15.5 Développement larvaire et élevage des alevins</h3>
+    <table>
+        <tr><th>Stade</th><th>Observations & Actions</th></tr>
+        <tr><td>Œufs</td><td>Adhésifs dans des sites cachés. Données d'incubation non disponibles spécifiquement. Surveillance difficile — sites de ponte cryptiques.</td></tr>
+        <tr><td>Larves</td><td>Tête disproportionnellement grande par rapport au corps (caractère pédomorphique documenté). Sac vitellin plus développé que chez d'autres Gymnotiformes. L'organe électrique est initialement myogène (larvaire) puis remplacé par l'organe neurogène adulte lors de la métamorphose — processus unique documenté.</td></tr>
+        <tr><td>Premiers stades nageurs</td><td>Premier nourrissage : infusoires, artémias nauplii fraîchement éclos. Les juvéniles émettent des EOD dès les premiers stades post-larvaires.</td></tr>
+        <tr><td>Juvéniles</td><td>Coloration adulte présente dès le stade juvénile (bandes blanches caudales visibles). Croissance lente en aquarium. Maturité sexuelle vers ~1 an (données limitées).</td></tr>
+        <tr><td>Note critique</td><td>Les données sur le développement larvaire d'A. albifrons sont extrêmement rares dans la littérature accessible. Les informations ci-dessus sont partiellement inférées à partir d'études sur A. leptorhynchus (espèce de laboratoire de référence du genre).</td></tr>
+    </table>
+
+    <h3>15.6 Élevage artificiel (séparation des parents)</h3>
+    <table>
+        <tr><th>Protocole d'incubation artificielle</th><td>En cas de ponte obtenue : retirer les œufs dans un incubateur de 20–30 L (même eau, légère agitation, méthylène bleu prophylactique 1 goutte/10 L). Maintenir dans le noir total — les larves sont photophobes. Premier nourrissage en infusoires puis artémias nauplii. Surveillance quotidienne des paramètres — eau de qualité irréprochable indispensable (absence d'écailles dès le stade larvaire). RAPPEL : reproduction non établie de manière reproductible en cadre amateur — cette section est à titre indicatif et prospectif.</td></tr>
+    </table>
+
+    <h2>16. Endocrinologie — Hormones et Reproduction</h2>
+    <h3>16.1 Le paradoxe hormonal d'A. albifrons</h3>
+    <p>A. albifrons présente un mécanisme endocrinien unique parmi les poissons électrogènes dimorphiques sexuellement : chez toutes les autres espèces connues, les androgènes (testostérone, 11-kétotestostérone) augmentent la fréquence EOD chez les mâles. Chez A. albifrons, c'est l'œstradiol-17β (hormone typiquement 'féminisante') qui ABAISSE la fréquence EOD — créant un dimorphisme où les femelles ont une fréquence EOD plus ÉLEVÉE que les mâles dans les populations de l'Orénoque. Ce mécanisme inversé a été démontré expérimentalement par implantation d'hormones et par castration (Zakon 1987 — Proceedings of the National Academy of Sciences, 84 : 4985–4988). C'est l'une des raisons qui font de cette espèce un organisme modèle en neuroendocrinologie comparée.</p>
+
+    <h3>16.2 Sexage par l'EOD — méthode endocrinienne</h3>
+    <table>
+        <tr><th>Paramètre</th><th>Mâle ♂</th></tr>
+        <tr><td>Fréquence EOD (Orénoque)</td><td>Plus basse (~800–950 Hz typique)</td></tr>
+        <tr><td>Fréquence EOD (Amazone)</td><td>Différence moins marquée — moins fiable pour le sexage</td></tr>
+        <tr><td>Mécanisme hormonal</td><td>Taux d'œstradiol plus bas → fréquence plus haute n'est pas inhibée</td></tr>
+        <tr><td>Méthode de mesure</td><td>Voir SEC 20 — instrumentation. Mesurer sur individu calme, eau à 25–26 °C, loin des sources d'interférence électrique</td></tr>
+        <tr><td>Fiabilité</td><td>Bonne pour les populations de l'Orénoque — moins fiable pour les autres populations et les espèces cryptiques du complexe albifrons</td></tr>
+    </table>
+
+    <h3>16.3 Déclencheurs hormonaux de la maturation gonadique</h3>
+    <p>Les déclencheurs environnementaux de la maturation gonadique chez A. albifrons agissent via l'axe hypothalamo-hypophyso-gonadique, comme chez tous les téléostéens. La GnRH (hormone de libération des gonadotrophines) est sécrétée en réponse aux signaux environnementaux (baisse de conductivité, hausse du niveau d'eau — correspondant à la saison des pluies) et stimule la sécrétion de LH/FSH hypophysaires, qui induisent la stéroïdogenèse gonadique et la gamétogenèse. En pisciculture, l'induction hormonale utilise l'extrait hypophysaire de carpe (EAGC) ou la GnRH de synthèse — permettant d'obtenir des pontes dans des conditions où les déclencheurs naturels ne sont pas entièrement réunis.</p>
+
+    <h2>17. Santé & Maladies Courantes</h2>
+    <table>
+        <tr><th>Maladie / Pathologie</th><th>Symptômes</th><th>Causes</th><th>Traitement</th></tr>
+        <tr><td>Point blanc (Ichthyophthirius multifiliis)</td><td>Taches blanches sur la peau, frottements intenses sur le décor, respiration accélérée. ÉVOLUTION RAPIDE — les écailles enchâssées non protectrices ne ralentissent pas la pénétration des trophontes.</td><td>Cilié parasite — cycle rapide ; les écailles enchâssées non protectrices favorisent une pénétration rapide des trophontes dans le derme</td><td>DOSE RÉDUITE : formol 15–20 mg/L (≤ 50% dose standard) + élévation à 28–29 °C max. Vert malachite 0,05 mg/L si nécessaire. JAMAIS de sulfate de cuivre (CONTRE-INDIQUÉ — voir sec. 19).</td></tr>
+        <tr><td>Velours (Piscinoodinium pillulare)</td><td>Poudre dorée fine sur la peau, difficile à détecter sans éclairage rasant ou UV, léthargie, frottements.</td><td>Dinoflagellé parasite — particulièrement dangereux : les écailles enchâssées non protectrices n'entravent pas le contact direct avec le derme</td><td>Obscurité totale + formol 20 mg/L. JAMAIS de cuivre. Chlorure de quinine 10 mg/L comme alternative.</td></tr>
+        <tr><td>Monogènes (Gyrodactylus spp.)</td><td>Mucus excessif, frottements, irritation cutanée, ulcérations si infestation sévère</td><td>Monogènes viviparides à cycle direct — très fréquents chez les sauvages importés ; les écailles enchâssées non protectrices n'entravent pas la fixation du hapteur</td><td>Praziquantel 2 mg/L en bain de 4 heures (J0, J7, J14). Formol 20 mg/L en bain court (30 min). Dose réduite — surveiller la tolérance.</td></tr>
+        <tr><td>Hexamitose (Spironucleus vortens)</td><td>Fèces blanches filamenteuses, amaigrissement rapide, léthargie, refus alimentaire</td><td>Protozoaire flagellé intestinal opportuniste — aggravé par le stress et la mauvaise qualité de l'eau</td><td>Métronidazole 10 mg/L en bain de 24 h (J0, J3, J6) ou aliments médicamentés (250 mg/100 g d'aliment). Améliorer la qualité de l'eau.</td></tr>
+        <tr><td>Infections bactériennes (Aeromonas/Pseudomonas)</td><td>Ulcères cutanés, hémorragies, décoloration localisée, nécrose des nageoires</td><td>Bactéries opportunistes — pénétration facilitée par la réduction fonctionnelle des écailles en cas de blessure ou de déficit immunitaire</td><td>Antibiothérapie prescrite par vétérinaire. Antisepsie locale des plaies (bétadine diluée). Eau propre et stable en priorité.</td></tr>
+    </table>
+
+    <h2>18. Régénération — Queue et Moelle Épinière</h2>
+    <h3>18.1 Capacité de régénération unique chez les vertébrés</h3>
+    <p>A. albifrons est l'une des rares espèces de vertébrés à posséder une capacité documentée de régénération de la queue ET d'une portion de la moelle épinière après amputation. Cette capacité a été sélectionnée en réponse à la prédation fréquente sur la queue (l'organe électrique, qui s'étend sur toute la queue, est biologiquement précieux — sa perte est préjudiciable mais pas létale). La régénération inclut : les axones des électroneurones spinaux (restauration de l'organe électrique), les vaisseaux sanguins, les muscles longitudinaux de la queue, la peau et les écailles. Aucune autre famille de Gymnotiformes ne présente ce niveau de régénération (Bhatt et al. 2004 — Journal of Neuroscience, 24 : 8940–8947).</p>
+
+    <h3>18.2 Protocole documenté et données expérimentales</h3>
+    <table>
+        <tr><th>Paramètre</th><th>Données documentées (Bhatt et al. 2004 ; Zakon & Unguez 1999)</th></tr>
+        <tr><td>Durée de régénération</td><td>Régénération complète fonctionnelle (EOD restauré) en 8–12 semaines à 25–26 °C. La queue régénérée est électriquement fonctionnelle — l'EOD reprend au fur et à mesure de la régénération des axones des électroneurones.</td></tr>
+        <tr><td>Critère de succès</td><td>Retour à une fréquence EOD stable et normale = marqueur fonctionnel de régénération complète. Mesurable instrumentalement (voir SEC 20).</td></tr>
+        <tr><td>Conditions optimales</td><td>Eau de qualité irréprochable (nitrites = 0, nitrates < 20 mg/L). Température stable 25–27 °C. Absence de conspécifiques (pas de brouillage électrique du sujet en régénération). Alimentation intensive (proies vivantes ou congelées).</td></tr>
+        <tr><td>Antisepsie de la plaie</td><td>Application locale de bétadine diluée (1% en solution, quelques secondes, rinçage) — seule intervention médicale justifiée. Ne jamais utiliser de sel en excès (écailles enchâssées non protectrices = absorption rapide). Ne jamais utiliser de cuivre (CONTRE-INDIQUÉ ABSOLU — voir SEC 19).</td></tr>
+        <tr><td>Risques à surveiller</td><td>Infections bactériennes de la plaie (Aeromonas) — surveiller les signes de nécrose ou de rougeur hémorragique. Antibiothérapie prescrite par vétérinaire si nécessaire.</td></tr>
+    </table>
+    <div class="note">IMPLICATION AQUARIOPHILE : une queue partiellement amputée n'est pas une condamnation à mort pour A. albifrons — c'est une espèce biologiquement équipée pour survivre à cette blessure si les conditions d'eau sont irréprochables. La priorité absolue en cas d'amputation accidentelle est l'amélioration immédiate de la qualité de l'eau et l'isolement du spécimen.</div>
+
+    <h2>19. Parasitologie & Pathologie Avancée</h2>
+    <h3>19.1 Principaux agents pathogènes avec cycles biologiques</h3>
+    <table>
+        <tr><th>Agent 1 — Ichthyophthirius multifiliis (Fouquet, 1876) — Point blanc</th><td>Classe : Oligohymenophorea | Ordre : Hymenostomatida | Famille : Ichthyophthiriidae</td></tr>
+        <tr><th>Cycle biologique</th><td>Direct — trophonte enkysté sous l'épiderme (point blanc visible) → se détache et tombe au fond → tomont libérant des tomites infestants → nouveaux hôtes. Cycle 3–10 jours selon la température. Extrêmement contagieux. SPÉCIFICITÉ A. albifrons : les écailles cycloïdes microscopiques enchâssées n'offrent pas de barrière mécanique efficace, permettant une pénétration épidermique plus profonde et plus rapide des trophontes, aggravant la pathogénicité.</td></tr>
+        <tr><th>Traitement DCI</th><td>élévation à 28–29 °C maximum (pas plus — l'espèce tolère 28 °C mais peut être stressée au-delà). Formol 15–20 mg/L (dose réduite de 50% par rapport aux espèces écailleuses) + vert malachite 0,05 mg/L. SULFATE DE CUIVRE STRICTEMENT CONTRE-INDIQUÉ.</td></tr>
+        <tr><th>Référence</th><td>Woo, P.T.K. (2006). Fish Diseases and Disorders, vol. 1, CABI Publishing. Noga, E.J. (2010). Fish Disease : Diagnosis and Treatment, 2e éd., Wiley-Blackwell.</td></tr>
+    </table>
+
+    <table>
+        <tr><th>Agent 2 — Gyrodactylus spp. (von Nordmann, 1832) — Monogènes ectoparasites</th><td>Classe : Monogenea | Ordre : Gyrodactylidea | Famille : Gyrodactylidae</td></tr>
+        <tr><th>Cycle biologique</th><td>Direct, sans hôte intermédiaire. Gyrodactylus est viviparide — donne naissance à des larves directement parasites, elles-mêmes déjà enceintes (cycles gigognes). Prolifération exponentielle possible en quelques jours sur un hôte affaibli. Fixation par hapteur (organe de fixation posterior) à deux grandes ancres et 16 crochets marginaux — les écailles enchâssées non protectrices d'A. albifrons ne font pas obstacle à la fixation du hapteur, qui cause des lésions dermiques plus profondes que sur un poisson aux écailles bien développées.</td></tr>
+        <tr><th>Traitement DCI</th><td>Praziquantel 2 mg/L en bain de 4 heures — à renouveler à J7 et J14 pour éliminer les larves écloses après le premier traitement. Formol 20 mg/L en bain court de 30 minutes. Surveillance de la tolérance — réduire la dose si signes de détresse. Traitement systématique recommandé lors de la quarantaine de tout spécimen sauvage.</td></tr>
+        <tr><th>Référence</th><td>Rohde, K. (ed.) (2005). Marine Parasitology. CSIRO Publishing. — Malmberg, G. (1970). The excretory systems and the marginal hooks as a basis for the systematics of Gyrodactylus. Arkiv för Zoologi, 23.</td></tr>
+    </table>
+
+    <table>
+        <tr><th>Agent 3 — NOTE CRITIQUE : Sulfate de cuivre — CONTRE-INDICATION ABSOLUE chez A. albifrons</th><td></td></tr>
+        <tr><th>Mécanisme de toxicité</th><td>le sulfate de cuivre (CuSO4) exerce son action parasiticide en précipitant les protéines de surface et en perturbant les membranes cellulaires. Chez les poissons écailleux, les écailles constituent une barrière physique qui ralentit l'absorption du cuivre et protège l'épiderme sous-jacent.</td></tr>
+        <tr><th>Spécificité A. albifrons</th><td>la réduction fonctionnelle des écailles (cycloïdes microscopiques enchâssées) élimine cette barrière protectrice. Le cuivre ionique (Cu²⁺) est absorbé rapidement par le derme faiblement protégé et le mucus épais — la concentration thérapeutique standard pour un poisson aux écailles bien développées (0,15–0,20 mg/L Cu²⁺) représente une dose potentiellement létale pour A. albifrons. Des cas de mort rapide (< 12 heures) sont documentés en aquariophilie après traitement au cuivre sans adaptation de dose.</td></tr>
+        <tr><th>Alternatives systématiques</th><td>Ichthyophthirius → formol + chaleur / Piscinoodinium → chlorure de quinine + obscurité / Gyrodactylus → praziquantel / Bactérioses → antibiothérapie prescrite. Le cuivre ne doit jamais être utilisé chez A. albifrons ni chez d'autres espèces à écailles réduites ou enchâssées (Gymnotidae, Siluridae, certains Siluroidei), ni chez les poissons réellement sans écailles (Anguillidae).</td></tr>
+        <tr><th>Références</th><td>Pough, F.H. (1976) — copper toxicity in scaleless fish ; Rach, J.J. et al. (1997) — Aquaculture and copper toxicity. Merck Veterinary Manual (2024) — Scaleless fish and chemical treatments.</td></tr>
+    </table>
+
+    <h3>19.2 Tableau récapitulatif des traitements DCI et posologies</h3>
+    <table>
+        <tr><th>Agent pathogène</th><th>DCI</th><th>Voie</th><th>Posologie indicative</th><th>Durée</th></tr>
+        <tr><td>Ichthyophthirius (point blanc)</td><td>Formol</td><td>Bain</td><td>15–20 mg/L (50% dose standard)</td><td>5–7 jours + 28 °C max.</td></tr>
+        <tr><td>Ichthyophthirius</td><td>Vert malachite</td><td>Bain</td><td>0,05 mg/L (50% dose standard)</td><td>En complément du formol</td></tr>
+        <tr><td>Velours (Piscinoodinium)</td><td>Chlorure de quinine</td><td>Bain</td><td>10 mg/L + obscurité totale</td><td>7–10 jours</td></tr>
+        <tr><td>Monogènes (Gyrodactylus)</td><td>Praziquantel</td><td>Bain</td><td>2 mg/L — 4 heures</td><td>J0, J7, J14</td></tr>
+        <tr><td>Hexamitose (Spironucleus)</td><td>Métronidazole</td><td>Bain ou alimentation orale</td><td>10 mg/L / 250 mg/100 g aliment</td><td>J0, J3, J6</td></tr>
+        <tr><td>Bactériose</td><td>Enrofloxacine</td><td>Bain</td><td>10 mg/L (prescription vétérinaire)</td><td>5–7 jours</td></tr>
+        <tr><td>CUIVRE (sulfate)</td><td>CONTRE-INDIQUÉ</td><td>—</td><td>CONTRE-INDIQUÉ ABSOLU chez A. albifrons — toxicité directe amplifiée par les écailles enchâssées non protectrices ; risque de mort en quelques heures à dose thérapeutique standard</td><td>JAMAIS</td></tr>
+    </table>
+    <div class="note">Avertissement : posologies indicatives — consulter un vétérinaire habilité. Respecter la réglementation en vigueur.</div>
+
+    <h2>20. Instrumentation Pratique — Mesure de l'EOD</h2>
+    <h3>20.1 Matériel nécessaire pour mesurer l'EOD</h3>
+    <p>La mesure de la décharge électrique (EOD) d'A. albifrons est la seule méthode fiable pour sexer l'espèce, évaluer son état de santé, vérifier la compatibilité de cohabitation et confirmer l'identification spécifique. Elle ne nécessite pas de matériel coûteux — un simple microphone de carte son ou une interface audio suffit.</p>
+    <table>
+        <tr><th>Équipement</th><th>Description et source</th></tr>
+        <tr><td>Deux électrodes de mesure</td><td>Deux tiges de cuivre ou d'acier inoxydable (tiges de soudure, clips de crocodile sur fils blindés). Diamètre 2–3 mm, longueur 10–15 cm. Immerger à 10–15 cm l'une de l'autre, alignées avec l'axe du corps du poisson.</td></tr>
+        <tr><td>Interface audio</td><td>Carte son d'ordinateur standard (entrée microphone) ou interface audio (Focusrite Scarlett, etc.). Brancher les deux électrodes sur l'entrée ligne ou microphone via un câble blindé. Le signal de l'EOD (~1 000 Hz) est parfaitement dans la gamme audio.</td></tr>
+        <tr><td>Logiciel d'analyse</td><td>Audacity (logiciel libre, gratuit) — enregistrer quelques secondes, analyser le spectre de fréquence (Analyze → Plot Spectrum). Le pic principal = fréquence EOD de l'individu. Précision suffisante pour le sexage et l'identification.</td></tr>
+        <tr><td>Alternative simplifiée</td><td>Compteur de fréquence ou multimètre avec mode fréquence (> 10 kHz) : connecter les deux électrodes, lire directement la fréquence en Hz. Moins précis qu'Audacity mais suffisant pour un usage pratique.</td></tr>
+    </table>
+
+    <h3>20.2 Protocole de mesure</h3>
+    <table>
+        <tr><th>Étape</th><th>Description</th></tr>
+        <tr><td>1. Préparation</td><td>Éteindre tous les équipements électriques du bac (pompe, chauffage, éclairage) pendant la mesure — ils génèrent des interférences. Attendre 5 minutes que l'animal soit calme.</td></tr>
+        <tr><td>2. Positionnement des électrodes</td><td>Immerger les deux électrodes dans le bac, parallèlement à l'axe longitudinal du poisson, à ~10 cm de distance l'une de l'autre. L'animal n'a pas besoin d'être immobilisé — l'EOD se propage dans toute l'eau du bac.</td></tr>
+        <tr><td>3. Enregistrement</td><td>Démarrer Audacity, lancer l'enregistrement 30–60 secondes. Le signal EOD (~1 000 Hz) doit être clairement visible sur la forme d'onde — onde sinusoïdale régulière.</td></tr>
+        <tr><td>4. Analyse de fréquence</td><td>Sélectionner 5–10 secondes de signal stable, puis Analyze → Plot Spectrum. Identifier le pic principal en Hz = fréquence EOD de base.</td></tr>
+        <tr><td>5. Interprétation</td><td>< 900 Hz (populations Orénoque) → probable mâle ♂. > 1 000 Hz (populations Orénoque) → probable femelle ♀. Pour les espèces cryptiques ou populations amazoniennes : différence moins fiable — comparer des individus du même lot (mesure relative).</td></tr>
+        <tr><td>6. Vérification de santé</td><td>Un EOD stable, régulier et à fréquence normale = individu sain. Irrégularités de fréquence, sautes ou diminution de l'amplitude = stress, maladie ou pathologie neurologique. Répéter la mesure à J0, J7, J14 pour suivre un animal malade ou en régénération.</td></tr>
+    </table>
+
+    <h3>20.3 Utilisation de l'EOD pour la cohabitation</h3>
+    <table>
+        <tr><th>Situation</th><th>Décision basée sur l'EOD</th></tr>
+        <tr><td>Deux individus à cohabiter</td><td>Mesurer les fréquences EOD des deux individus séparément. Si l'écart est > 50 Hz → cohabitation possible (JAR fonctionnelle). Si l'écart est < 20 Hz → risque élevé de brouillage persistant — éviter ou agrandir le volume (> 600 L avec nombreux refuges).</td></tr>
+        <tr><td>Groupe de ≥ 3 individus</td><td>Mesurer les fréquences de tous. Vérifier que les fréquences sont bien distribuées sur une plage de > 200 Hz — cohabitation facilitée par la dispersion des fréquences. Si deux individus ont des fréquences très proches dans un groupe, surveiller le comportement alimentaire du moins dominant.</td></tr>
+        <tr><td>Suivi de santé</td><td>Mesurer l'EOD à l'acquisition (donnée de base), puis une fois par mois. Toute baisse ou instabilité de fréquence inexpliquée est un signal d'alerte précoce — investiguer avant l'apparition de signes cliniques.</td></tr>
+    </table>
+    <div class="note">RÉFÉRENCES : Bullock, T.H. (1970). Species differences and electroreception in fish. Neurosciences Research Program Bulletin, 8 : 255–259. — Zakon, H.H. (1987). Regulation of electrosensory tuning by sex hormones. Journal of Neuroscience, 7 : 2741–2750. — Heiligenberg, W. (1991). Neural Nets in Electric Fish. MIT Press.</div>
+
+    <h2>21. Statut de Conservation</h2>
+    <table>
+        <tr><th>Statut UICN</th><td>LC — Préoccupation mineure (Least Concern). Évaluation : Frederico, R.G. (2022). doi:10.2305/IUCN.UK.2022-2.RLTS.T49829499A159047904.en</td></tr>
+        <tr><th>Tendance population</th><td>Stable — pas de déclin documenté à l'échelle de l'aire de répartition selon l'évaluation UICN 2022</td></tr>
+        <tr><th>Pressions documentées</th><td>Dégradation de la qualité de l'eau (pesticides agricoles, déforestation entraînant une sédimentation des cours d'eau). Prélèvement important pour le commerce aquariophile — les spécimens commercialisés sont quasi-exclusivement sauvages. Disparition des habitats de ruisseaux à courant rapide par déforestation en Amazonie et dans l'Orénoque.</td></tr>
+        <tr><th>Commerce aquariophile</th><td>Espèce très populaire dans le commerce mondial — disponible dans la grande majorité des animaleries spécialisées. Quasi-totalité des spécimens = sauvages (aucun élevage commercial établi). Exportation principalement depuis le Brésil, la Colombie et le Venezuela sous quotas CITES (aucune inscription aux annexes CITES actuellement — suivi non obligatoire). Mortalité élevée à l'importation et en aquarium peu adapté.</td></tr>
+        <tr><th>Élevage en captivité</th><td>NON ÉTABLI en conditions aquariophiles courantes. Quelques pontes obtenues en pisciculture industrielle (bassins > 4 000 L, induction hormonale). Aucune souche F1 ou F2 disponible dans le commerce. Tous les spécimens commercialisés sont des sauvages.</td></tr>
+        <tr><th>Recommandation</th><td>Espèce exigeante — ne pas acquérir sans infrastructure adaptée (bac ≥ 400 L, L ≥ 200 cm, filtration puissante, connaissance des contraintes). Mortalité en aquarium inadapté = pression directe sur les populations sauvages. Une meilleure sensibilisation des vendeurs et acheteurs est nécessaire. Ne jamais relâcher en milieu naturel (risque d'invasion hors de l'aire de répartition native).</td></tr>
+    </table>
+
+    <h2>22. Bibliographie Scientifique Complète</h2>
+    <p>Références classées par ordre chronologique — format académique avec DOI</p>
+    <ul class="footer-ref">
+        <li>Linnaeus, C. (1766). Systema Naturae per Regna Tria Naturae, 12e édition, vol. 1, pars 2. Holmiae : Laurentii Salvii : 500. [Description originale sous Gymnotus albifrons]</li>
+        <li>Lacépède, B.G.E. (1800). Histoire naturelle des poissons, vol. 2. Paris : Plassan : 1–632 + index. [Création du genre Apteronotus]</li>
+        <li>Castelnau, F.L. (1855). Animaux nouveaux ou rares recueillis pendant l'expédition dans les parties centrales de l'Amérique du Sud. Bertrand, Paris, Poissons : 1–112. [Description de Sternarchus lacepedii et S. maximilliani — synonymes]</li>
+        <li>Jordan, D.S. (1923). A classification of fishes. Stanford University Publications, University Series, Biological Sciences, 3(2) : 77–243. [Création de la famille Apteronotidae]</li>
+        <li>Bullock, T.H. (1970). Species differences and electroreception in fish. Neurosciences Research Program Bulletin, 8 : 255–259.</li>
+        <li>Knudsen, E.I. (1974). Behavioral thresholds to electric signals in high frequency electric fish. Journal of Comparative Physiology, 91 : 333–353.</li>
+        <li>Bastian, J. (1981). Electrolocation — behavior, anatomy, and physiology. in T.H. Bullock & W. Heiligenberg (eds.), Electroreception, Wiley, New York : 577–612.</li>
+        <li>Zakon, H.H. (1987). Regulation of electrosensory tuning by sex hormones in teleost fish. Journal of Neuroscience, 7(9) : 2741–2750.</li>
+        <li>Heiligenberg, W. (1991). Neural Nets in Electric Fish. MIT Press, Cambridge, Massachusetts. [Référence fondamentale sur l'électrophysiologie et la JAR chez les Gymnotiformes]</li>
+        <li>Zupanc, G.K.H. & Maler, L. (1993). Evoked chirping in the weakly electric fish Apteronotus leptorhynchus : a quantitative biophysical analysis. Canadian Journal of Zoology, 71 : 2301–2310.</li>
+        <li>Stoskopf, M.K. (ed.) (1993). Fish Medicine. W.B. Saunders, Philadelphia. ISBN 0-7216-2629-7.</li>
+        <li>Nelson, M.E. & MacIver, M.A. (1999). Prey capture in the weakly electric fish Apteronotus albifrons : sensory acquisition strategies and electrosensory consequences. Journal of Experimental Biology, 202 : 1195–1203.</li>
+        <li>Zakon, H.H. & Unguez, G.A. (1999). Development and regeneration of the electric organ. Journal of Experimental Biology, 202 : 1427–1434.</li>
+        <li>Albert, J.S. (2001). Species diversity and phylogenetic systematics of American knifefishes (Gymnotiformes, Teleostei). Miscellaneous Publications, Museum of Zoology, University of Michigan, 190 : 1–129.</li>
+        <li>de Santana, C.D. (2003). Apteronotus caudimaculosus n. sp. (Gymnotiformes : Apteronotidae), a new species from the Pantanal, Brazil. Zootaxa, 252 : 1–11.</li>
+        <li>Bhatt, D.L. et al. (2004). Regeneration of spinal cord axons in the electric fish Apteronotus albifrons. Journal of Neuroscience, 24(40) : 8940–8947.</li>
+        <li>Rohde, K. (ed.) (2005). Marine Parasitology. CSIRO Publishing, Collingwood. [Gyrodactylus — cycle biologique et pathogénicité]</li>
+        <li>Woo, P.T.K. (ed.) (2006). Fish Diseases and Disorders, Volume 1 : Protozoan and Metazoan Infections (2nd ed.). CABI Publishing, Wallingford. ISBN 0-85199-015-2.</li>
+        <li>Noga, E.J. (2010). Fish Disease : Diagnosis and Treatment (2nd ed.). Wiley-Blackwell, Ames. ISBN 978-0-8138-0697-6.</li>
+        <li>National Research Council (NRC). (2011). Nutrient Requirements of Fish and Shrimp. National Academies Press, Washington, D.C. [Référence de base pour les profils macro-nutritionnels des téléostéens carnivores]</li>
+        <li>de Santana, C.D. & Cox Fernandes, C. (2012). New species of Apteronotus (Gymnotiformes : Apteronotidae) from the Amazon basin. Copeia, 2012(2) : 283–292.</li>
+        <li>Castillo Cajas, R.F. et al. (2012). Comparative phylogeography of amazonian gymnotiform electric fishes supports a riverine barrier hypothesis. PLOS ONE, 7(6) : e39303. doi:10.1371/journal.pone.0039303</li>
+        <li>Frederico, R.G. (2022). Apteronotus albifrons. The IUCN Red List of Threatened Species. 2022 : e.T49829499A159047904. doi:10.2305/IUCN.UK.2022-2.RLTS.T49829499A159047904.en</li>
+        <li>Froese, R. & Pauly, D. (eds.) (2024). Apteronotus albifrons (Linnaeus, 1766) — species summary. FishBase. World Wide Web electronic publication, www.fishbase.org, version 02/2024.</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 50px; font-size: 0.85em; color: #7f8c8d; border-top: 1px solid #d1d1d1; padding-top: 20px;">
+        <p>Apteronotus albifrons — Fiche Ichtyologique Complète<br>Document finalisé selon les standards de la nomenclature académique • 2026</p>
+    </div>
+</div>
+
+</body>
+</html>

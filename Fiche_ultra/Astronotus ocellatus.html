@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ichtyologique : Astronotus ocellatus</title>
+    <style>
+        :root {
+            --blue-primary: #1D3557;
+            --teal-secondary: #0A9396;
+            --gold-accent: #D4AF37;
+            --light-bg: #F1FAEE;
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            color: var(--blue-primary);
+            text-align: center;
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--teal-secondary);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--blue-primary);
+            border-left: 5px solid var(--gold-accent);
+            padding-left: 10px;
+            margin-top: 40px;
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+        }
+
+        h3 {
+            color: var(--teal-secondary);
+            margin-top: 25px;
+        }
+
+        .summary-box {
+            background-color: var(--light-bg);
+            border: 2px solid var(--teal-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .summary-box ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-box li {
+            padding: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--teal-secondary);
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: #f9fdfd;
+        }
+
+        tbody tr:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        .meristic-box {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--blue-primary);
+            color: var(--gold-accent);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .biblio-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .biblio-list li {
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+
+        .biblio-list li:nth-child(odd) {
+            border-left: 4px solid var(--teal-secondary);
+        }
+
+        .biblio-list li:nth-child(even) {
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FICHE ICHTYOLOGIQUE</h1>
+    <div class="subtitle">
+        <strong>Astronotus ocellatus</strong> (Agassiz, 1831)<br>
+        Oscar · Cichlidé œil-de-paon · Acará-açu<br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        🐟 Le Géant Amazonien à l'Intelligence Remarquable 🧠
+    </div>
+
+    <div class="summary-box">
+        <ul>
+            <li><strong>🔬 Famille :</strong> Cichlidae (Sous-famille : Astronotinae)</li>
+            <li><strong>🌍 Origine :</strong> Bassin Amazonien, Río Orinoco, Guyanes</li>
+            <li><strong>📏 Taille adulte :</strong> 25–35 cm (Poids pouvant dépasser 1,5 kg)</li>
+            <li><strong>💧 Niveau de difficulté :</strong> ⭐⭐ Intermédiaire (Exigence de volume)</li>
+            <li><strong>🌡️ Température :</strong> 24–30 °C</li>
+            <li><strong>⚗️ pH recommandé :</strong> 6,0 – 7,5</li>
+        </ul>
+        <p>⚠️ <strong>Avertissement :</strong> Espèce dotée d'une très forte biomasse et d'un métabolisme polluant. Sensibilité extrême aux nitrates (NO3) déclenchant le syndrome HLLE. Croissance fulgurante nécessitant un volume colossal dès la première année.</p>
+    </div>
+
+    <section id="section-1">
+        <h2>1. SYSTÉMATIQUE & TAXONOMIE</h2>
+        <h3>Classification phylogénétique complète</h3>
+        <table>
+            <tbody>
+                <tr><th>Règne</th><td>Animalia</td></tr>
+                <tr><th>Sous-règne</th><td>Eumetazoa</td></tr>
+                <tr><th>Embranchement</th><td>Chordata</td></tr>
+                <tr><th>Sous-embranchement</th><td>Vertebrata</td></tr>
+                <tr><th>Classe</th><td>Actinopterygii</td></tr>
+                <tr><th>Sous-classe</th><td>Neopterygii</td></tr>
+                <tr><th>Division</th><td>Teleostei</td></tr>
+                <tr><th>Ordre</th><td>Cichliformes</td></tr>
+                <tr><th>Famille</th><td>Cichlidae</td></tr>
+                <tr><th>Sous-famille</th><td>Astronotinae (Kullander, 1998)</td></tr>
+                <tr><th>Tribu</th><td>Astronotini</td></tr>
+                <tr><th>Genre</th><td><i>Astronotus</i> Swainson, 1839</td></tr>
+                <tr><th>Espèce</th><td><i>Astronotus ocellatus</i> (Agassiz, 1831)</td></tr>
+                <tr><th>Synonymes</th><td><i>Lobotes ocellatus</i> Agassiz, 1831 ; <i>Acara compressus</i> Cope, 1872 ; <i>Astronotus ocellatus zebra</i> Pellegrin, 1904</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>📚 Étymologie & Histoire taxonomique</th>
+                    <td><strong>Astronotus</strong> : du grec <i>astra</i> (rayon, étoile) et <i>noton</i> (dos). Fait référence à l'aspect rayonnant de la nageoire dorsale ou des ocelles parfois présents à sa base.</td>
+                    <td><strong>ocellatus</strong> : du latin signifiant "pourvu d'un ocelle" (petit œil), en référence à la macule noire cerclée de rouge sur le pédoncule caudal.</td>
+                    <td>Décrit initialement par Louis Agassiz en 1831 sous le genre marin <i>Lobotes</i> en raison de sa morphologie robuste, l'espèce a été reclassée par Swainson en 1839.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-2">
+        <h2>2. GÉNÉTIQUE & PHYLOGÉNIE MOLÉCULAIRE</h2>
+        <h3>2.1 — Position phylogénétique et Complexes cryptiques</h3>
+        <p>Le genre <i>Astronotus</i> représente une lignée ancienne et très isolée au sein des Cichlidés néotropicaux. Il est l'unique genre de la tribu des Astronotini.</p>
+        <p>Les analyses moléculaires multi-locus (López-Fernández et al., 2010) placent les Astronotinae comme l'un des clades sud-américains les plus basaux, s'étant séparé des autres lignées (Cichlasomatinae, Geophaginae) il y a environ 40 à 50 millions d'années.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Phylogénie moléculaire et Diversité du genre <i>Astronotus</i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Génétique cellulaire :</strong></td>
+                    <td>2n = 48 chromosomes (formule diploïde standard des cichlidés basaux). Non documenté scientifiquement pour la présence de chromosomes sexuels hétéromorphes.</td>
+                </tr>
+                <tr>
+                    <td><strong>Marqueurs utilisés :</strong></td>
+                    <td>Cytochrome b (cyt-b), ARNr 16S, RAG1, Tmo-4C4. L'utilisation du barcoding génétique (COI) a révélé une forte structuration phylogéographique.</td>
+                </tr>
+                <tr>
+                    <td><strong>Diversité cryptique :</strong></td>
+                    <td>Bien que l'aquariophilie considère souvent tous les Oscars comme <i>A. ocellatus</i>, le genre comprend d'autres espèces valides (ex: <i>A. crassipinnis</i> au sud du bassin) et potentiellement jusqu'à 4 à 6 taxons cryptiques en cours de description dans différentes portions de l'Amazonie (Lozano et al., 2020). L'introgression hybride dans les souches d'élevage asiatiques rend la génétique des souches commerciales indéfinissable (hybrides inter-lignées).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-3">
+        <h2>3. DESCRIPTION MORPHOLOGIQUE</h2>
+        <h3>3.1 — Morphologie générale</h3>
+        <p><i>Astronotus ocellatus</i> possède une morphologie taillée pour la puissance et la prédation opportuniste. Son corps est massif, ovale, comprimé latéralement mais particulièrement épais au niveau de la région pectorale.</p>
+        
+        <table>
+            <tbody>
+                <tr><th>Longueur standard (LS)</th><td>25 à 35 cm en moyenne in natura (record mesuré > 40 cm).</td></tr>
+                <tr><th>Tête et Bouche</th><td>Tête large, mâchoires extrêmement puissantes avec de grosses lèvres charnues. Bouche terminale et très largement protractile, formant un tube aspirateur.</td></tr>
+                <tr><th>Denture</th><td>Dents maxillaires et prémaxillaires coniques et acérées. Dents pharyngiennes massives permettant le broyage de carapaces et coquilles (molluscivore facultatif).</td></tr>
+                <tr><th>Écailles</th><td>Cténoïdes, rugueuses. Base des nageoires dorsale et anale densément couverte de petites écailles (caractère distinctif des Astronotinae).</td></tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 — Coloration & Patron pigmentaire (Forme Sauvage)</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>🎨 Livrée sauvage</th>
+                    <td><strong>Fond :</strong> Olive sombre à brun-noir. Présence de marbrures et de bandes irrégulières vert clair à jaunâtre sur les flancs.<br><strong>Région ventrale :</strong> Souvent mouchetée d'orange cuivré ou de rouge brique.</td>
+                    <td><strong>Ocelle (Teardrop/Eyespot) :</strong> Situé sur la base de la nageoire caudale. C'est une large tache noire cernée d'un anneau orange ou rouge vif.</td>
+                </tr>
+                <tr>
+                    <th>Adaptation anti-prédateur :</th>
+                    <td colspan="2">L'ocelle caudal est un cas d'école de mimétisme de diversion. Dans les eaux troubles amazoniennes, cet ocelle imite l'œil d'un poisson beaucoup plus gros, ou détourne l'attaque des piranhas (qui visent les yeux) vers la nageoire caudale, une zone non vitale (Zaret, 1977).</td>
+                </tr>
+                <tr>
+                    <th>Mutations d'élevage :</th>
+                    <td colspan="2">Les variétés commerciales (Tigre, Rouge, Albino, Lutino, Lemon) sont le fruit de sélections génétiques (souvent asiatiques) altérant l'expression des mélanophores (noir/brun) et des érythrophores (rouge/orange). Les formes "voiles" (Long-fin) relèvent de mutations structurelles.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 — Dimorphisme sexuel (Quasi-inexistant)</h3>
+        <p>L'Oscar est l'un des cichlidés présentant le moins de dimorphisme sexuel. Le sexage visuel hors période de reproduction est scientifiquement considéré comme impossible et relève de la spéculation aquariophile.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère</th>
+                    <th>Mâle vs Femelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Morphologie, Taille, Couleur</td><td>Strictement identiques. Aucune bosse nucale diagnostique, aucun patron colorimétrique sexuellement dimorphique.</td></tr>
+                <tr><td>Papille génitale (Uniquement lors du frai)</td><td><strong>Mâle :</strong> Pointue, fine, en forme de petit cône incliné vers l'arrière.<br><strong>Femelle :</strong> Large, tubulaire, tronquée (ovipositeur évident).</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-4">
+        <h2>4. MÉRISTIQUE & MORPHOLOGIE AVANCÉE</h2>
+        <div class="meristic-box">
+            D. XII-XIV / 19-21 ; A. III / 15-16 ; P. 15 ; LL. 33-38 ; Écailles transversales : 9-10 / 23-25
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Nageoire / Structure</th>
+                    <th>Signification taxonomique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>D.</td><td>Dorsale</td><td>12 à 14 rayons épineux robustes suivis d'une très longue section molle (19 à 21 rayons).</td></tr>
+                <tr><td>A.</td><td>Anale</td><td>Seulement 3 rayons épineux (caractère diagnostique face à d'autres cichlidés massifs) et 15-16 mous.</td></tr>
+                <tr><td>LL.</td><td>Ligne latérale</td><td>33 à 38 écailles perforées. Divisée en deux segments distincts typiques des cichlidés.</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Analyse comparée au sein du genre</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Espèce</th>
+                    <th>Coloration juvénile</th>
+                    <th>Écailles de la ligne latérale</th>
+                    <th>Base de la dorsale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><i>A. ocellatus</i></td><td>Noire avec de larges bandes/taches blanches très nettes.</td><td>33 - 38</td><td>Ocelle présent ou absent selon les populations.</td></tr>
+                <tr><td><i>A. crassipinnis</i></td><td>Noire avec des marbrures blanches très fines et réticulées.</td><td>38 - 41 (écailles plus petites)</td><td>Généralement plusieurs petits ocelles à la base de la nageoire dorsale.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-5">
+        <h2>5. RÉPARTITION GÉOGRAPHIQUE & BIOTOPE NATUREL</h2>
+        <table>
+            <tbody>
+                <tr><th>Bassins Hydrographiques</th><td>Bassin de l'Amazone (Brésil, Pérou, Colombie), Bassin de l'Orénoque (Venezuela), rivières des Guyanes (Oyapock, Approuague).</td></tr>
+                <tr><th>Invasions biologiques</th><td>Espèce introduite et devenue invasive en Floride (USA), à Hawaï, et dans de nombreux réseaux hydrographiques du Sud-Est asiatique.</td></tr>
+                <tr><th>Type de milieu (In situ)</th><td>L'Oscar est une espèce d'eaux lentiques (à courant lent ou nul). Il évite le cours principal des grands fleuves. Il prolifère dans les lacs de bras mort (cochas, lagos), les marges inondées, et sous le couvert de branches immergées ou d'arbres tombés.</td></tr>
+                <tr><th>Typologie des eaux</th><td>Eurytope : S'adapte indifféremment aux eaux blanches (chargées en limon), aux eaux claires et aux marges des eaux noires.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-6">
+        <h2>6. ÉVOLUTION SAISONNIÈRE DU BIOTOPE (Dynamique de Várzea)</h2>
+        <p>L'écologie d'<i>Astronotus ocellatus</i> est intimement liée au "pulse d'inondation" de l'Amazonie.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Saison</th>
+                    <th>Niveau Hydrologique</th>
+                    <th>Comportement et Écologie Trophique de l'Oscar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hautes eaux (Cheia)</td>
+                    <td>Inondation des forêts (Várzea/Igapó)</td>
+                    <td>Dispersion totale. L'Oscar pénètre profondément dans la forêt inondée. Alimentation maximale : insectes terrestres noyés, crustacés, fruits, graines. C'est la période de croissance exponentielle et de préparation aux pontes.</td>
+                </tr>
+                <tr>
+                    <td>Décrue (Vazante)</td>
+                    <td>Retrait vers les chenaux</td>
+                    <td>L'eau se retire, les poissons se concentrent. La prédation s'intensifie. L'Oscar chasse activement les bancs de petits characidés pris au piège.</td>
+                </tr>
+                <tr>
+                    <td>Basses eaux (Seca)</td>
+                    <td>Isolement dans les lacs de bras morts</td>
+                    <td>Confinement. Haute densité de population, forte compétition. Paramètres de l'eau extrêmes (O2 bas, T° > 30°C). L'Oscar démontre sa robustesse en tolérant des niveaux d'hypoxie sévères.</td>
+                </tr>
+                <tr>
+                    <td>Montée des eaux (Enchente)</td>
+                    <td>Dilution et renouveau</td>
+                    <td>La montée des eaux, l'apport massif d'aliments et la baisse de température déclenchent le processus de reproduction.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-7">
+        <h2>7. ÉCOLOGIE & ÉTHOLOGIE AVANCÉE</h2>
+        <h3>7.1 — Cognition et Comportement</h3>
+        <p>L'Oscar est mondialement réputé pour ses capacités cognitives supérieures à la moyenne des poissons téléostéens. Des études comportementales montrent une capacité d'apprentissage spatial rapide et une mémoire à long terme (reconnaissance visuelle des soigneurs, association conditionnée).</p>
+        <ul>
+            <li><strong>Reconnaissance individuelle :</strong> Capable de distinguer les membres du groupe et les humains à travers la vitre.</li>
+            <li><strong>Comportement de "bouderie" :</strong> Réponse documentée au stress environnemental (changement de décor, changement d'eau massif) où le poisson se pose sur le fond, se couche sur le flanc, et modifie sa livrée (assombrissement) pendant plusieurs heures. Ce n'est pas une pathologie mais un mécanisme de thanatose partielle (faire le mort) ou de stress aigu.</li>
+        </ul>
+
+        <h3>7.2 — Guilde trophique et Mécanique de prédation</h3>
+        <p>Omnivore opportuniste à tendance carnivore/insectivore. </p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Mécanisme de capture : "Suction Feeding"</th>
+                    <td>L'Oscar n'est pas un chasseur de poursuite. Il pratique la chasse à l'affût. Sa mâchoire fortement protractile lui permet de projeter sa bouche vers l'avant en un dixième de seconde, créant une dépression hydrodynamique violente qui aspire l'eau et la proie directement dans la cavité buccale.</td>
+                </tr>
+                <tr>
+                    <th>Régime <i>In situ</i> :</th>
+                    <td>Poissons benthiques (petits silures), crevettes amazoniennes (<i>Macrobrachium</i>), insectes aquatiques et terrestres, escargots (broyés par les dents pharyngiennes), fruits charnus et noix en saison des pluies (Goulding, 1980).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-8">
+        <h2>8. INSTALLATION — L'AQUARIUM IDÉAL</h2>
+        <p>La maintenance de l'Oscar est souvent vouée à l'échec en raison de la sous-estimation de sa taille adulte et de sa production de déchets polluants.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre technique</th>
+                    <th>Prérequis stricts</th>
+                    <th>Justification scientifique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Volume du bac</td><td><strong>600 Litres minimum</strong> pour un individu ou un couple confirmé.</td><td>Un poisson de 30 cm et 1,5 kg nécessite un volume d'eau colossal pour diluer l'ammoniac excrété par ses branchies. Cuve de 150x60x60 cm minimum.</td></tr>
+                <tr><td>Filtration</td><td>Débit de 5 à 8 fois le volume du bac par heure. Décantation externe (Sump) idéale.</td><td>Charge organique (fèces, restes de nourriture) d'un niveau comparable à celui des poissons rouges ou carpes Koi.</td></tr>
+                <tr><td>Aménagement</td><td>Roches lourdes, grosses souches (mangrove). Pas de sable fin léger.</td><td>L'Oscar est un "terrassier". Il déplace le substrat, déracine toutes les plantes et peut briser les thermoplongeurs s'ils ne sont pas protégés (utiliser des grilles ou des filtres externes thermo-régulés).</td></tr>
+                <tr><td>Végétation</td><td>Plantes enracinées impossibles.</td><td>Seules les plantes flottantes robustes (<i>Pistia</i>) ou les épiphytes solidement fixées au bois (<i>Anubias barteri</i>, Fougère de Java) survivent.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-9">
+        <h2>9. PARAMÈTRES DE L'EAU — Aquarium</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre</th>
+                    <th>Plage Tolérée (Robustesse)</th>
+                    <th>Seuil Critique / Urgence absolue</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Température</td><td>24 – 30 °C</td><td>&lt; 20 °C (Choc thermique mortel)</td></tr>
+                <tr><td>pH</td><td>6.0 – 7.5 (Très grande tolérance)</td><td>Variations brusques &gt; 1 point/jour</td></tr>
+                <tr><td>Dureté (GH)</td><td>5 – 20 °dH</td><td>Pas de limite stricte documentée.</td></tr>
+                <tr><td>Nitrates (NO3)</td><td><strong>Maintien impératif &lt; 20 mg/L</strong></td><td>&gt; 40 mg/L. C'est le talon d'Achille de l'espèce. Les nitrates déclenchent les pathologies chroniques. Changements d'eau de 50% par semaine obligatoires.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-10">
+        <h2>10. ALIMENTATION ET PROFIL MACRO-NUTRITIONNEL</h2>
+        
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">❌ L'Avertissement Scientifique : Le mythe du Cœur de Bœuf</th>
+                </tr>
+                <tr>
+                    <td colspan="2">Pendant des décennies, l'aquariophilie a nourri les Oscars avec du cœur de bœuf ou de la viande de volaille pour accélérer la croissance. Biologiquement, le système enzymatique des poissons téléostéens (poïkilothermes) ne peut pas fondre ni métaboliser les lipides saturés des mammifères (homéothermes) à 26°C. Ces graisses se figent et s'accumulent dans le foie. Cela provoque inévitablement une <strong>stéatose hépatique (foie gras)</strong> fatale à moyen terme, réduisant l'espérance de vie du poisson de 15 ans à moins de 5 ans.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li><strong>Base (70%) :</strong> Granulés extrudés pour grands Cichlidés carnivores (riches en farines de poissons, krill, calmar).</li>
+            <li><strong>Proies fraîches/congelées (20%) :</strong> Moules entières, crevettes non décortiquées (la chitine est vitale pour la digestion), chair de poisson blanc (éperlan, tilapia), vers de terre (lombrics) très appréciés.</li>
+            <li><strong>Apport végétal (10%) :</strong> Spiruline, petits pois pochés, courgette. Essentiel pour la motilité intestinale.</li>
+            <li><strong>Rythme :</strong> 1 fois par jour pour un adulte, avec 1 à 2 jours de jeûne par semaine pour nettoyer le tube digestif.</li>
+        </ul>
+    </section>
+
+    <section id="section-11">
+        <h2>11. COMPORTEMENT & COHABITATION</h2>
+        <p>Règle d'or : "Tout ce qui rentre dans la bouche de l'Oscar finira dans l'estomac de l'Oscar".</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>✅ Cohabitation possible (Grands volumes &gt; 1000L)</th>
+                    <th>❌ Cohabitation mortelle / Interdite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>• Très grands Loricariidae (<i>Pterygoplichthys</i>, <i>Panaque</i>)</td><td>• Néons, Guppys, petits characidés (Nourriture)</td></tr>
+                <tr><td>• Characidés massifs (<i>Metynnis</i>, <i>Myleus</i> - "Silver Dollars")</td><td>• Corydoras (DANGER : leurs épines pectorales se bloquent dans la gorge de l'Oscar, tuant les deux poissons)</td></tr>
+                <tr><td>• Autres grands Cichlidés amazoniens placides (<i>Heros</i>, <i>Geophagus</i>)</td><td>• Grands Cichlidés d'Amérique Centrale hyper-agressifs (<i>Parachromis dovii</i>, <i>Amphilophus citrinellus</i>) qui terroriseront l'Oscar.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-12">
+        <h2>12. PROTOCOLE DE REPRODUCTION COMPLET</h2>
+        
+        <h3>12.1 — Formation du couple et Parade nuptiale</h3>
+        <p>Espèce monogame à soins biparentaux. La formation du couple est l'étape la plus complexe. Imposer deux adultes de sexe opposé se solde souvent par le meurtre du plus faible. La méthode scientifique (Mate choice) consiste à élever un groupe de 6 juvéniles et de laisser un couple se former naturellement, puis de retirer les 4 autres.</p>
+        <p><strong>Parade nuptiale :</strong> Extrêmement violente. Elle inclut le "Jaw-locking" (prises de becs où les poissons se mesurent la force des mâchoires), des frétillements intenses, et des claquements d'opercules. Ce rituel teste la robustesse du partenaire.</p>
+
+        <h3>12.2 — Déroulement du frai</h3>
+        <table>
+            <tbody>
+                <tr><th>Substrat</th><td>Reproducteurs sur substrat ouvert (roche plate, ardoise). La zone est nettoyée de manière obsessionnelle pendant 48h.</td></tr>
+                <tr><th>Ponte</th><td>1000 à 2000 œufs adhésifs ocre/blanc déposés en cercles concentriques.</td></tr>
+                <tr><th>Fécondation</th><td>Externe. Le mâle passe immédiatement après la femelle pour asperger la laitance.</td></tr>
+                <tr><th>Faux-couples</th><td>Phénomène documenté : Deux femelles dominantes en l'absence de mâle peuvent s'apparier, parader, et pondre ensemble. Les œufs (jusqu'à 3000) blanchiront par absence de fécondation.</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.3 — Élevage larvaire</h3>
+        <ul>
+            <li><strong>J0 - J+3 (Incubation) :</strong> Les parents ventilent la ponte et arrachent agressivement tout intrus.</li>
+            <li><strong>J+3 (Éclosion) :</strong> Les larves éclosent et sont déplacées dans une fosse creusée dans le substrat. Elles absorbent leur sac vitellin lourd.</li>
+            <li><strong>J+7 (Nage libre) :</strong> Le nuage d'alevins est dense. Nourrissage massif aux nauplies d'artémias et micro-vers. </li>
+            <li><strong>Attention :</strong> La pollution générée par 1000 alevins d'Oscar est astronomique. L'élevage nécessite des changements d'eau de 50% quotidiens dans les bacs de grossissement.</li>
+        </ul>
+    </section>
+
+    <section id="section-13">
+        <h2>13. SANTÉ ET PATHOLOGIE MAJEURE : LE SYNDROME HLLE</h2>
+        <p>L'Oscar est notoirement robuste contre les infections communes, mais il est la victime principale d'une pathologie spécifique et dévastatrice en captivité.</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="2">Trou dans la Tête / HLLE (Head and Lateral Line Erosion)</th>
+                </tr>
+                <tr>
+                    <th>Symptomatologie :</th>
+                    <td>Apparition de petites fosses blanches ou de cratères sur la région frontale et le long de la ligne latérale. Les lésions s'agrandissent, la chair à vif est exposée, ulcération purulente, perte de poids, mort lente.</td>
+                </tr>
+                <tr>
+                    <th>Étiologie (Causes) :</th>
+                    <td>Multifactorielle, non purement parasitaire. <strong>Cause #1 :</strong> Mauvaise qualité de l'eau (Nitrates > 40 mg/L chroniques) par manque de changements d'eau. <strong>Cause #2 :</strong> Carence nutritionnelle (manque de vitamine C, D, calcium, alimentation au cœur de bœuf). <strong>Cause #3 :</strong> Prolifération de flagellés intestinaux opportunistes (<i>Spironucleus</i>).</td>
+                </tr>
+                <tr>
+                    <th>Traitement DCI :</th>
+                    <td>1. Changements d'eau massifs immédiats (ramener NO3 < 10 mg/L).<br>2. Arrêt des viandes mammaliennes. Apport de granulés trempés dans des vitamines liquides.<br>3. <strong>Métronidazole</strong> (DCI) : 50 mg/kg de poisson/jour incorporé dans la nourriture pendant 7 à 10 jours. L'eau ne guérit pas les plaies si l'alimentation et l'hygiène ne sont pas corrigées. Les cicatrices restent souvent définitives.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-14">
+        <h2>14. PARASITOLOGIE GÉNÉRALE</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Agent Pathogène</th>
+                    <th>Symptomatologie</th>
+                    <th>Traitement (DCI)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Ichthyophthirius multifiliis</strong> (Ich)</td>
+                    <td>Points blancs (kystes) sur le corps massif. Assez rare chez l'adulte à forte immunité, fréquent chez le juvénile stressé en animalerie.</td>
+                    <td>Thermotherapie (30-31°C) + Vert de Malachite ou bain de NaCl (2g/Litre) bien toléré par l'espèce.</td>
+                </tr>
+                <tr>
+                    <td><strong>Nématodes intestinaux</strong> (Capillaria spp.)</td>
+                    <td>Ventre creux malgré un appétit vorace. Fèces blanches et filamenteuses.</td>
+                    <td><strong>Flubendazole</strong> ou <strong>Lévamisole HCl</strong> en bain longue durée ou dans l'alimentation.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-15">
+        <h2>15. STATUT DE CONSERVATION & IMPACT ÉCOLOGIQUE</h2>
+        <table>
+            <tbody>
+                <tr><th>Statut UICN</th><td>Non Évalué (NE) globalement, souvent considéré comme Préoccupation Mineure (LC) du fait de sa vaste aire de répartition.</td></tr>
+                <tr><th>Aquaculture</th><td>Élevé de manière intensive en Asie (Thaïlande, Indonésie, Floride) en bassins ouverts. La grande majorité des individus du commerce ne connaissent plus l'Amazonie depuis des dizaines de générations.</td></tr>
+                <tr><th>Impact Écologique (Espèce Invasive)</th><td>L'Oscar a été relâché par des aquariophiles irresponsables en Floride (Everglades), en Chine, à Singapour et en Australie. Sa taille, son appétit insatiable et ses soins parentaux en font un super-prédateur invasif qui détruit les écosystèmes locaux et les espèces endémiques plus petites. La législation interdit son relâchement dans la nature.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-16">
+        <h2>16. BIBLIOGRAPHIE SCIENTIFIQUE COMPLÈTE</h2>
+        <ul class="biblio-list">
+            <li>Agassiz, L. (1831). <i>Selecta genera et species piscium quos in itinere per Brasiliam</i>. Typis C. Wolf, Monachii. [Description originale sous <i>Lobotes ocellatus</i>].</li>
+            <li>Zaret, T. M. (1977). Inhibition of cannibalism in Cichla ocellaris and hypothesis of predator mimicry among South American fishes. <i>Evolution</i>, 31(2), 421-437. doi: 10.1111/j.1558-5646.1977.tb01024.x [Étude de la macule caudale anti-prédateur].</li>
+            <li>Goulding, M. (1980). <i>The Fishes and the Forest: Explorations in Amazonian Natural History</i>. University of California Press. [Écologie de l'alimentation en période de crue (Igapó/Várzea)].</li>
+            <li>Kullander, S.O. (1986). <i>Cichlid fishes of the Amazon River drainage of Peru</i>. Swedish Museum of Natural History. [Diagnose morphologique, données méristiques et différenciation d'<i>A. crassipinnis</i>].</li>
+            <li>Stawikowski, R., & Werner, U. (1998). <i>Die Buntbarsche Amerikas. Band 1</i>. Eugen Ulmer Verlag, Stuttgart. [Ouvrage aquariophile scientifique de référence].</li>
+            <li>López-Fernández, H., Winemiller, K. O., & Honeycutt, R. L. (2010). Multilocus phylogeny and rapid radiations in Neotropical cichlid fishes (Perciformes: Cichlidae: Cichlinae). <i>Molecular Phylogenetics and Evolution</i>, 55(3), 1070-1086. doi: 10.1016/j.ympev.2010.02.020 [Position basale des Astronotinae].</li>
+            <li>Lozano, C.A., Oliveira, C. et al. (2020). Hidden diversity in the Oscar fish <i>Astronotus</i> (Teleostei: Cichlidae) from the Amazon and Orinoco basins. <i>Neotropical Ichthyology</i>. [Mise en évidence du complexe cryptique d'espèces au sein d'<i>A. ocellatus</i>].</li>
+            <li>Roberts, R. J. (2012). <i>Fish Pathology (4th ed.)</i>. Wiley-Blackwell. [Documentation sur la dégénérescence hépatique liée aux acides gras saturés et le syndrome HLLE].</li>
+            <li>Noga, E. J. (2010). <i>Fish Disease: Diagnosis and Treatment</i>. Wiley-Blackwell. [Protocoles DCI pour Spironucleus, Metronidazole].</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        <div>Astronotus ocellatus — Fiche Ichtyologique Complète</div>
+        <div>Document généré à des fins aquariophiles expertes et scientifiques • Avril 2026</div>
+    </div>
+
+</body>
+</html>

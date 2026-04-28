@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche Ichtyologique : Microctenopoma congicum</title>
+    <style>
+        :root {
+            --blue-primary: #1D3557;
+            --teal-secondary: #0A9396;
+            --gold-accent: #D4AF37;
+            --light-bg: #F1FAEE;
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            position: relative;
+            padding-bottom: 60px;
+        }
+
+        h1 {
+            color: var(--blue-primary);
+            text-align: center;
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--teal-secondary);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--blue-primary);
+            border-left: 5px solid var(--gold-accent);
+            padding-left: 10px;
+            margin-top: 40px;
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+        }
+
+        h3 {
+            color: var(--teal-secondary);
+            margin-top: 25px;
+        }
+
+        /* Encadré de synthèse */
+        .summary-box {
+            background-color: var(--light-bg);
+            border: 2px solid var(--teal-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .summary-box ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .summary-box li {
+            padding: 5px 0;
+        }
+
+        /* Tableaux */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--teal-secondary);
+            color: white;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: #f9fdfd;
+        }
+
+        tbody tr:nth-of-type(odd) {
+            background-color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
+        /* Formule Méristique */
+        .meristic-box {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--blue-primary);
+            color: var(--gold-accent);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Bibliographie alternée */
+        .biblio-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .biblio-list li {
+            margin-bottom: 15px;
+            padding-left: 15px;
+        }
+
+        .biblio-list li:nth-child(odd) {
+            border-left: 4px solid var(--teal-secondary);
+        }
+
+        .biblio-list li:nth-child(even) {
+            border-left: 4px solid var(--gold-accent);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FICHE ICHTYOLOGIQUE</h1>
+    <div class="subtitle">
+        <strong>Microctenopoma congicum</strong><br>
+        ((Boulenger, 1887))<br>
+        Cténopome du Congo · Congo Ctenopoma / Congo Climbing Perch<br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        Fiche Ichtyologique Complète — Niveau Expert
+    </div>
+
+    <div class="summary-box">
+        <ul>
+            <li><strong>Famille :</strong> Anabantidae</li>
+            <li><strong>Origine :</strong> Bassin du Congo — RDC, Rep. Congo, RCA</li>
+            <li><strong>Taille adulte :</strong> 8–9 cm (LS) — genre type de la sous-famille</li>
+            <li><strong>Difficulté :</strong> ★★☆ Intermédiaire</li>
+            <li><strong>Température :</strong> 23–27 °C</li>
+            <li><strong>pH recommandé :</strong> 6,0 – 7,5</li>
+        </ul>
+    </div>
+
+    <section id="section-1">
+        <h2>1. SYSTÉMATIQUE & TAXONOMIE</h2>
+        <h3>Classification phylogénétique complète</h3>
+        <table>
+            <tbody>
+                <tr><th>Règne</th><td>Animalia</td></tr>
+                <tr><th>Sous-règne</th><td>Eumetazoa — Bilateria — Deuterostomia</td></tr>
+                <tr><th>Embranchement</th><td>Chordata</td></tr>
+                <tr><th>Sous-embranchement</th><td>Vertebrata — Gnathostomata</td></tr>
+                <tr><th>Super-classe</th><td>Osteichthyes</td></tr>
+                <tr><th>Classe</th><td>Actinopterygii (Actinopteri)</td></tr>
+                <tr><th>Sous-classe</th><td>Neopterygii — Infraclasse : Teleostei</td></tr>
+                <tr><th>Division</th><td>Percomorphaceae — Série : Anabantaria</td></tr>
+                <tr><th>Ordre</th><td>Anabantiformes</td></tr>
+                <tr><th>Sous-ordre</th><td>Anabantoidei</td></tr>
+                <tr><th>Famille</th><td>Anabantidae</td></tr>
+                <tr><th>Sous-famille</th><td>Ctenopominae Norris, 1995</td></tr>
+                <tr><th>Genre</th><td>Microctenopoma Norris, 1995 — espèce type du genre</td></tr>
+                <tr><th>Espèce</th><td>Microctenopoma congicum (Boulenger, 1887)</td></tr>
+                <tr><th>Synonymes valides</th><td>Ctenopoma congicum Boulenger, 1887 ; Anabas congicus (Boulenger, 1887) ; Ctenopoma congicum longipinnis Fowler, 1949</td></tr>
+                <tr><th>Localité type</th><td>Bassin inférieur du Congo (Fleuve Congo), République Démocratique du Congo</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Étymologie & Histoire taxonomique</th>
+                    <td>Microctenopoma : du grec mikros (petit) + ktenos (crête/peigne) + poma (couvercle). Genre érigé par Norris (1995) pour les Anabantidae africains constructeurs de nids de bulles. M. congicum est l'espèce type du genre.</td>
+                    <td>congicum : du latin -icum, 'appartenant au Congo'. Description originale : Boulenger, G.A. (1887), Ann. Mag. Nat. Hist. (5) 19(110) : 148-149 [sous Ctenopoma congicum].</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-2">
+        <h2>2. GÉNÉTIQUE & PHYLOGÉNIE MOLÉCULAIRE</h2>
+        <h3>2.1 — Position phylogénétique du genre</h3>
+        <p>Microctenopoma congicum appartient au sous-ordre Anabantoidei, caractérisé par la possession d'un organe labyrinthique suprabranchial permettant la respiration aérienne directe.</p>
+        <p>La phylogénie moléculaire de référence de Rüber, Britz & Zardoya (2006, Syst. Biol. 55:374-397, doi:10.1080/10635150500541664) — basée sur l'ADN mitochondrial complet (cyt-b, ARNr 12S, ARNt-Val, ARNr 16S partiels, 3332 pb) de 57 espèces représentant les 19 genres d'Anabantoidei, combiné à RAG1 nucléaire (1494 pb) pour 21 espèces — place la famille Anabantidae comme groupe basal des Anabantoidei, avec Microctenopoma dans la sous-famille dérivée Ctenopominae.</p>
+        <p>M. congicum est l'espèce type du genre Microctenopoma, érigé en 1995 par Norris pour séparer les constructeurs de nids de bulles africains des espèces sans soins parentaux (Ctenopoma s.s.).</p>
+        <p>La construction de nids de bulles aurait évolué indépendamment chez les Microctenopoma africains et les Osphronemidae asiatiques (Rüber et al., 2006).</p>
+        <p>Données moléculaires GenBank : quelques séquences COI partielles disponibles mais génome mitochondrial complet non publié (2025).</p>
+
+        <h3>2.2 — Historique taxonomique et controverses</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Événement taxonomique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1887</td><td>Boulenger, G.A. décrit Ctenopoma congicum d'après des spécimens du bas Congo (Ann. Mag. Nat. Hist. (5) 19:148-149) — description originale</td></tr>
+                <tr><td>1916</td><td>Boulenger transfère l'espèce dans Anabas congicus (Catalogue of the fresh-water fishes of Africa, vol. 4) — combinaison abandonnée</td></tr>
+                <tr><td>1949</td><td>Fowler décrit la sous-espèce Ctenopoma congicum longipinnis d'après des spécimens à nageoires allongées — aujourd'hui synonymisée</td></tr>
+                <tr><td>1986</td><td>Gosse, J.-P. répertorie l'espèce dans la check-list CLOFFA sous Ctenopoma congicum, confirmant sa distribution congo-basin</td></tr>
+                <tr><td>1995</td><td>Norris, S.M. érige le genre Microctenopoma — M. congicum devient l'espèce type du nouveau genre (Ichthyol. Explor. Freshwaters 6:357-376)</td></tr>
+                <tr><td>2003</td><td>Norris révise les Anabantidae de l'Afrique de l'Ouest dans Lévêque et al., Faune des poissons d'eaux douces de l'Afrique de l'Ouest, pp. 691-707</td></tr>
+                <tr><td>2006</td><td>Rüber, Britz & Zardoya confirment la position de Microctenopoma dans Ctenopominae via phylogénie moléculaire multi-locus (Syst. Biol. 55:374-397)</td></tr>
+                <tr><td>2018</td><td>Évaluation UICN : Least Concern (LC) — évaluée le 14 août 2018</td></tr>
+                <tr><td>2025</td><td>12 espèces valides dans le genre Microctenopoma, M. congicum restant l'espèce type et la mieux connue du genre</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2.3 — Hypothèse biogéographique et spéciation</h3>
+        <p>La distribution africaine-asiatique disjointe des Anabantoidei est un problème biogéographique classique. Rüber et al. (2006) proposent deux scénarios alternatifs basés sur la datation moléculaire : (1) vicariance par dérive continentale liée à la fragmentation du Gondwana (> 80 Ma), ou (2) dispersion transoceanique à la fin du Mésozoïque ou au début du Tertiaire depuis l'Afrique vers l'Asie ou vice versa.</p>
+        <p>La divergence des Anabantidae africains par rapport aux Osphronemidae asiatiques est estimée à 60-80 Ma.</p>
+        <p>Au sein du genre Microctenopoma (12 espèces valides), la distribution s'étend de l'Afrique tropicale occidentale au bassin du Congo, au bassin du lac Tchad, au Soudan, au bassin du lac Édouard, et au sud jusqu'aux bassins de l'Okavango, du Zambèze et du Kafue.</p>
+        <p>La radiation du genre est interprétée comme une diversification in situ en Afrique sub-saharienne, probablement liée aux reconfigurations hydrologiques du bassin du Congo au Cénozoïque.</p>
+        <p>M. congicum (bassin inférieur-central du Congo) et ses congénères septentrionaux (M. uelense, M. pekkolai) constituent des lignées probablement isolées par les zones de rapides du fleuve Congo — l'une des ichtyofaunes les plus diversifiées et les plus endémiques du monde.</p>
+    </section>
+
+    <section id="section-3">
+        <h2>3. DESCRIPTION MORPHOLOGIQUE</h2>
+        <h3>3.1 — Morphologie générale</h3>
+        <p>Microctenopoma congicum présente un corps allongé et légèrement comprimé latéralement, de profil sub-cylindrique à ovale allongé — nettement plus élancé que les Ctenopoma ou les espèces asiatiues du sous-ordre.</p>
+        <p>Le profil dorsal de la tête est convexe et régulièrement arrondi, avec un museau court et pointu, une bouche terminale protractile de taille modérée.</p>
+        <p>L'œil est grand, bien visible, placé haut sur la tête.</p>
+        <p>Le corps porte des écailles cténoïdes de taille modérée, et le bord postérieur de l'opercule est muni de petites épines (écailles épineuses operculaires), caractère diagnostique du genre Microctenopoma et signification du nom.</p>
+        <p>La nageoire dorsale est longue, à base étendue sur les deux tiers postérieurs du dos.</p>
+        <p>L'ensemble de la morphologie est typique d'un prédateur embusqué de taille modeste, à nage lente parmi la végétation.</p>
+
+        <table>
+            <tbody>
+                <tr><th>Longueur standard (LS)</th><td>8–9 cm en aquarium ; jusqu'à 10–11 cm signalé en milieu naturel (FishBase Ref. 2060)</td></tr>
+                <tr><th>Forme du corps</th><td>Allongé, légèrement comprimé latéralement — sub-cylindrique à ovale allongé</td></tr>
+                <tr><th>Profil de la tête</th><td>Convexe, museau court et pointu — bouche terminale protractile</td></tr>
+                <tr><th>Écailles operculaires</th><td>Petites épines sur le bord postérieur de l'opercule — CARACTÈRE DIAGNOSTIQUE du genre Microctenopoma</td></tr>
+                <tr><th>Bandes verticales</th><td>8 à 12 bandes transversales sombres sur fond olive-brun à beige — variables selon humeur et état</td></tr>
+                <tr><th>Tache pédiculaire</th><td>Tache sombre parfois visible à la base de la caudale selon les individus</td></tr>
+                <tr><th>Dorsale</th><td>Longue, à base étendue, épines antérieures robustes + rayons mous postérieurs</td></tr>
+                <tr><th>Anale</th><td>Modérément longue, symétrique à la partie postérieure de la dorsale</td></tr>
+                <tr><th>Caudale</th><td>Arrondie — typique des Anabantidae africains</td></tr>
+                <tr><th>Pelviennes</th><td>Présentes, allongées en filaments chez les mâles adultes — caractère de dimorphisme</td></tr>
+                <tr><th>Bouche</th><td>Terminale, protractile, armée de petites dents viliformes — prédateur de micro-invertébrés</td></tr>
+                <tr><th>Organe labyrinthique</th><td>Organe suprabranchial développé permettant la respiration aérienne directe — synapomorphie des Anabantoidei</td></tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 — Coloration & Patron pigmentaire</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Description de la livrée</th>
+                    <td>Coloration de base :</td>
+                    <td>Fond olive-brun à brun-grisâtre, avec 8 à 12 bandes transversales sombres plus ou moins marquées selon l'humeur du poisson. Le ventre est plus pâle, crème à jaunâtre. Les écailles portent parfois de légers reflets bronzés. Les nageoires dorsale, anale et caudale sont translucides à légèrement ocre, bordées d'un fin liseré sombre.</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>Livrée nuptiale du mâle :</td>
+                    <td>Lors du frai, les mâles présentent une intensification marquée du contraste — les bandes deviennent très sombres (quasi-noires), le fond s'éclaircit, donnant un aspect fortement contrasté. Les grandes espèces proches Microctenopoma nigricans peuvent virer au noir quasi-complet en phase nuptiale (Norris, 1995).</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td colspan="2">Variations comportementales : les bandes s'estompent lors du repos nocturne et s'intensifient lors de l'excitation (approche d'une proie, interaction agonistique, parade). Coloration cryptique générale permettant la chasse à l'affût parmi la végétation.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.3 — Dimorphisme sexuel</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère</th>
+                    <th>MÂLE ♂</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Pelviennes</td><td>Allongées en filaments — premier rayon prolongé, dépassant la base de l'anale</td></tr>
+                <tr><td>Coloration nuptiale</td><td>Très contrastée — bandes quasi-noires, fond pâle</td></tr>
+                <tr><td>Tête</td><td>Légèrement plus grosse et plus robuste chez les vieux mâles</td></tr>
+                <tr><td>Comportement</td><td>Constructeur du nid de bulles, garde exclusif du nid et des larves</td></tr>
+                <tr>
+                    <th>Caractère</th>
+                    <th>FEMELLE ♀</th>
+                </tr>
+                <tr><td>Pelviennes</td><td>Plus courtes, non filiformes</td></tr>
+                <tr><td>Ventre</td><td>Plus arrondi en période de gravité — abdomen visible</td></tr>
+                <tr><td>Coloration</td><td>Généralement plus terne — bandes moins contrastées</td></tr>
+                <tr><td>Comportement</td><td>Dépose les œufs dans le nid, puis éloignée par le mâle</td></tr>
+            </tbody>
+        </table>
+        <p>Sexage difficile chez les juvéniles. Fiable à partir de 5–6 cm (LS) sur la longueur des pelviennes et la robustesse de la tête.</p>
+        <p>Les pelviennes filiformes du mâle sont le critère le plus visible en aquarium.</p>
+    </section>
+
+    <section id="section-4">
+        <h2>4. MÉRISTIQUE & MORPHOLOGIE AVANCÉE</h2>
+        <h3>4.1 — Formule méristique de Microctenopoma congicum</h3>
+        <p>La formule méristique est la notation standardisée du décompte des rayons des nageoires.</p>
+        <p>Les chiffres romains désignent les rayons épineux indéfléchis (durs, non ramifiés), les chiffres arabes les rayons mous ramifiés.</p>
+        <p>Microctenopoma congicum, en tant que membre des Percomorphaceae (Anabantoidei), possède de véritables épines sur les nageoires dorsale, anale et pelviennes — contrairement aux Cyprinodontiformes (poissons malacoptérygiens).</p>
+        <p>Les données méristiques précises pour M. congicum restent peu documentées dans la littérature primaire accessible ;</p>
+        <p>les valeurs indiquées sont les meilleures estimations disponibles d'après Boulenger (1887) et les données FishBase (Ref. 2060, Ref. 45335).</p>
+
+        <div class="meristic-box">
+            D. XVI-XVIII/8-10 ; A. X-XII/8-10 ; P1. 12-14 ; P2. I/5 ; C. ~16 ; LL 28-32 ; Vert. ~30
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Nageoire</th>
+                    <th>Min.</th>
+                    <th>Max.</th>
+                    <th>Signification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>D.</td><td>Dorsale</td><td>XVI/8</td><td>XVIII/10</td><td>16-18 épines + 8-10 rayons mous. Longue, insérée à partir de la nuque</td></tr>
+                <tr><td>A.</td><td>Anale</td><td>X/8</td><td>XII/10</td><td>10-12 épines + 8-10 rayons mous. Modérément longue</td></tr>
+                <tr><td>P1.</td><td>Pectorale</td><td>12</td><td>14</td><td>12-14 rayons mous. Arrondies, translucides</td></tr>
+                <tr><td>P2.</td><td>Ventrale (pelvienne)</td><td>I/5</td><td>I/5</td><td>1 épine + 5 rayons mous. Premier rayon prolongé en filament chez le mâle adulte</td></tr>
+                <tr><td>C.</td><td>Caudale</td><td>~16</td><td>~16</td><td>Arrondie. Typique des Anabantidae africains</td></tr>
+                <tr><td>LL</td><td>Ligne latérale</td><td>28</td><td>32</td><td>28-32 écailles. Ligne latérale COMPLÈTE et fonctionnelle — contrairement aux Cyprinodontidae</td></tr>
+                <tr><td>Vert.</td><td>Vertèbres</td><td>~30</td><td>~30</td><td>Environ 30 vertèbres totales (valeur estimée d'après données génériques)</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 — Tableau méristique comparatif des espèces congénères</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caractère</th>
+                    <th>M. congicum</th>
+                    <th>M. nanum</th>
+                    <th>Ctenopoma acutirostre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>LS max.</td><td>~10 cm</td><td>~6 cm (nanum = nain)</td><td>~15 cm</td></tr>
+                <tr><td>Corps</td><td>Allongé, élancé</td><td>Très petit, allongé</td><td>Comprimé, haut</td></tr>
+                <tr><td>Dorsale (D.)</td><td>XVI-XVIII/8-10</td><td>XII-XIV/6-8</td><td>XVII-XVIII/8-9</td></tr>
+                <tr><td>Anale (A.)</td><td>X-XII/8-10</td><td>VIII-IX/6-8</td><td>VIII-IX/8-9</td></tr>
+                <tr><td>LL (écailles)</td><td>28-32</td><td>24-27</td><td>30-35</td></tr>
+                <tr><td>Épines operculaires</td><td>Présentes (genre)</td><td>Présentes (genre)</td><td>Présentes (Ctenopoma)</td></tr>
+                <tr><td>Nid de bulles</td><td>OUI — mâle constructeur</td><td>OUI — Microctenopoma</td><td>NON — pondeur libre</td></tr>
+                <tr><td>Pelviennes mâle</td><td>Filiformes</td><td>Filiformes</td><td>Non filiformes</td></tr>
+                <tr><td>Répartition</td><td>Congo inf./central</td><td>Afrique tropicale</td><td>Bassin du Congo</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.3 — Clé de détermination dichotomique du genre</h3>
+        <p>Clé basée sur les caractères diagnostiques stables, indépendants de l'état de stress ou de la coloration comportementale.</p>
+
+        <table>
+            <tbody>
+                <tr><td>1a</td><td>Poisson africain, organe labyrinthique présent. Bord postérieur de l'opercule portant de petites épines (écailles épineuses operculaires). Taille < 12 cm. Corps allongé à sub-cylindrique. Constructeur de nids de bulles.</td><td>→ Genre Microctenopoma — aller en 2</td></tr>
+                <tr><td>1b</td><td>Opercule sans épines, ou taille > 12 cm, ou poisson asiatique, ou pas de nid de bulles.</td><td>→ Autres genres (Ctenopoma, Anabas, ou Osphronemidae asiatiques)</td></tr>
+                <tr><td>2a</td><td>LS > 7 cm à maturité. Corps allongé élancé. 8 à 12 bandes transversales sombres sur fond olive. Pelviennes mâle en filaments prononcés. Bassin du Congo inférieur et central (RDC, Rep. Congo, RCA).</td><td>→ Microctenopoma congicum (Boulenger, 1887)</td></tr>
+                <tr><td>2b</td><td>LS < 6 cm à maturité (nanum = nain). Corps très petit. Distribution plus large en Afrique sub-saharienne ou au nord.</td><td>→ Autres espèces du genre (M. nanum, M. lineatum, M. uelense, etc.) — consulter Norris (1995, 2007)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-5">
+        <h2>5. RÉPARTITION GÉOGRAPHIQUE & BIOTOPE NATUREL</h2>
+        <table>
+            <tbody>
+                <tr><th>Continent</th><td>Afrique centrale et occidentale</td></tr>
+                <tr><th>Pays principaux</th><td>République Démocratique du Congo (RDC), République du Congo, République Centrafricaine (RCA)</td></tr>
+                <tr><th>Extension</th><td>Aussi dans le Chiloango River (Cabinda, Angola) ; un spécimen signalé dans l'Ogooué au Gabon (FishBase Ref. 1880, 81650)</td></tr>
+                <tr><th>Bassin principal</th><td>Bassin inférieur et central du fleuve Congo (Zaïre) — le second plus grand fleuve du monde</td></tr>
+                <tr><th>Données incertaines</th><td>Signalé dans le bassin du lac Tchad — non confirmé par spécimens vérifiables (FishBase Ref.)</td></tr>
+                <tr><th>Habitat préférentiel</th><td>Eaux douces lentiques à lénitiques, faiblement à modérément courantes — zones marginales et bras morts</td></tr>
+                <tr><th>Microhabitat</th><td>Parmi les herbiers denses, litière de feuilles, racines, branches immergées — prédateur à l'affût</td></tr>
+                <tr><th>Profondeur</th><td>Zones peu profondes (0,2 à 2 m) — fréquente les niveaux supérieur et médian</td></tr>
+                <tr><th>Végétation</th><td>Herbiers denses (Anubias, Bolbitis, Crinum, Nymphaea), plantes flottantes, plantes émergentes</td></tr>
+                <tr><th>Substrat</th><td>Sablo-vaseux, riche en matières organiques et litière de feuilles</td></tr>
+                <tr><th>Type d'eau</th><td>Eau douce tropicale, légèrement acide à neutre, modérément minéralisée</td></tr>
+                <tr><th>Courant</th><td>Faible à nul — zones calmes protégées des courants forts</td></tr>
+                <tr><th>Lumière</th><td>Ombragé à mi-ombragé sous couvert végétal ripicole dense de la forêt congolaise</td></tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Caractéristiques du biotope naturel</th>
+                    <td>Le fleuve Congo est le second fleuve du monde par débit (41 000 m³/s en moyenne). Ses eaux sont généralement légèrement acides à neutres (pH 6,0–7,5), modérément minéralisées (GH 5–15°dH), avec une conductivité variable selon les zones (100–400 µS/cm). Les secteurs à végétation dense de litière (igapó congolais) peuvent avoir des eaux plus acides (pH 5,5–6,5) colorées par les tanins. La forêt pluviale congolaise, second massif forestier équatorial mondial après l'Amazonie, maintient des températures d'eau stables de 23 à 27°C toute l'année grâce à l'ombrage du couvert arboré. Le Pool Malebo (anciennement Stanley Pool), lac naturel du Congo près de Kinshasa, est une zone clé de l'aire de répartition (Biotope Aquarium, 2020).</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-6">
+        <h2>6. ÉVOLUTION SAISONNIÈRE DES PARAMÈTRES D'EAU EN MILIEU NATUREL</h2>
+        <p>Sources des données chiffrées : (1) Température mensuelle de l'air à Brazzaville/Kinshasa (proxy eau) : Climates to Travel (climatestotravel.com/climate/congo/brazzaville), normes 1991–2020.</p>
+        <p>(2) T° eau mesurée : Moukandi N'Kaya et al. (MDPI Water 12:2613, 2020) — moy. 27,7°C ; Kitambo et al. (HESS 26:1857, 2022) — T° moy. bassin ~25°C. (3) Pluviométrie : Climates to Travel — normes 1991–2020.</p>
+        <p>(4) Conductivité et pH : Moukandi N'Kaya et al. (MDPI Geosciences 10:341, 2020) — SO-HYBAM, moy. annuelles mesurées.</p>
+        <p>(5) Débit : Moukandi (2020) + Britannica Congo River Hydrology.</p>
+        <p>Note : les valeurs de T° eau mensuelle précises ne sont pas publiées dans les études accessibles — la T° AIR est utilisée comme proxy fiable en zone équatoriale (écart eau/air < 2°C).</p>
+
+        <h3>6.1 — Paramètres mensuels — données mesurées et sourcées</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre</th>
+                    <th>Jan</th><th>Fév</th><th>Mar</th><th>Avr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Aoû</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Déc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>T° air moy. (°C)<br>Brazzaville<br>normes 1991–2020<br>(Climates to Travel)</td>
+                    <td>26,8°</td><td>27,0°</td><td>27,7°</td><td>27,8°</td><td>27,0°</td><td>24,8°</td><td>23,8°</td><td>24,8°</td><td>26,3°</td><td>26,8°</td><td>26,8°</td><td>26,6°</td>
+                </tr>
+                <tr>
+                    <td>T° eau (°C)<br>Estimée — moy. bassin<br>~25°C (Kitambo 2022)<br>moy. BZV 27,7°C<br>(Moukandi 2020)</td>
+                    <td>~26</td><td>~26</td><td>~27</td><td>~27</td><td>~26</td><td>~24</td><td>~23</td><td>~24</td><td>~25</td><td>~26</td><td>~26</td><td>~26</td>
+                </tr>
+                <tr>
+                    <td>Pluviométrie (mm)<br>Brazzaville<br>normes 1991–2020<br>(Climates to Travel)</td>
+                    <td>160</td><td>137</td><td>189</td><td>169</td><td>132</td><td>9</td><td>3</td><td>11</td><td>43</td><td>164</td><td>264</td><td>216</td>
+                </tr>
+                <tr>
+                    <td>Débit fleuve Congo<br>(m³/s) à BZV/KIN<br>(Moukandi 2020<br>+ Britannica)</td>
+                    <td>46000</td><td>43000</td><td>42000</td><td>48000</td><td>55000</td><td>42000</td><td>30000</td><td>31000</td><td>36000</td><td>52000</td><td>68000</td><td>75000</td>
+                </tr>
+                <tr>
+                    <td>Conductivité (µS/cm)<br>Fleuve Congo BZV/KIN<br>moy. annuelle 28,4<br>(SO-HYBAM 2006–2017<br>Moukandi Géosc. 2020)</td>
+                    <td>étiage<br>haut</td><td>↑</td><td>↑</td><td>↓ crue</td><td>↓ crue</td><td>↑ étiage</td><td>Maximum</td><td>↑</td><td>↑</td><td>↓ crue</td><td>↓ crue</td><td>Minimum<br>crue</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Valeurs chiffrées T° air : Climates to Travel (normes 1991–2020).</p>
+        <p>T° eau : estimée à ±1°C de la T° air (zone équatoriale). Pluviométrie : Climates to Travel.</p>
+        <p>Débits : Moukandi N'Kaya et al. (MDPI Water 2020) + Britannica (régime bimodal confirmé : pic principal nov.–jan., pic secondaire avr.–mai ; étiage majeur juillet, étiage mineur mars–avr.).</p>
+        <p>Conductivité : moy. annuelle 28,4 µS/cm mesurée SO-HYBAM — variations mensuelles représentées en tendances (pas de tableau mensuel publié accessible).</p>
+        <p>Tributaires forestiers : conductivité moy. 14,6 µS/cm (Bouillon et al. Sci. Rep. 4:5402, 2014).</p>
+
+        <h3>6.2 — ⭐ Période de reproduction en milieu naturel</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>M. congicum / M. fasciolatum — Période de reproduction probable</th>
+                    <td>IMPORTANT : aucune étude primaire ne documente directement les périodes de ponte de ces espèces en milieu naturel (2025). Les périodes ci-dessous sont inférées du régime hydrologique mesuré.</td>
+                </tr>
+                <tr>
+                    <th>Période probable 1 — Grandes pluies 1 (mars–mai) :</th>
+                    <td>T° eau ~26–27°C / Pluviométrie 132–189 mm/mois / Début de crue secondaire (débit ~42 000–55 000 m³/s) / Végétation inondée = nourriture abondante / Conditions analogues aux Anabantoidei africains décrits comme reproducteurs en début de saison des pluies</td>
+                </tr>
+                <tr>
+                    <th>Période probable 2 — Grandes pluies 2 (oct.–déc.) :</th>
+                    <td>T° eau ~26–27°C / Pluviométrie 164–264 mm/mois / Crue principale (débit ~52 000–75 000 m³/s) / Conditions similaires ou plus favorables / Second pic probable</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>Grande saison sèche (juin–août) : T° minimale (~23–24°C), étiage majeur, pluviométrie quasi nulle (3–11 mm). Reproduction réduite ou absente. En aquarium : reproduction possible toute l'année si T° maintenue > 24°C.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-7">
+        <h2>7. ÉCOLOGIE & ÉTHOLOGIE AVANCÉE</h2>
+        <h3>7.1 — Structure sociale et hiérarchie</h3>
+        <p>M. congicum est une espèce semi-solitaire dans la nature, occupant un territoire individuel défendu, surtout chez le mâle en période de reproduction.</p>
+        <p>Le dimorphisme comportemental est prononcé : les mâles sont constructeurs de nids de bulles et assurent la garde exclusive des œufs et des larves, un comportement unique au genre Microctenopoma parmi les Anabantidae africains (Rüber et al., 2006 ; Encyclopedia.com Anabantoidei).</p>
+        <p>La communication visuelle repose sur les bandes chromatiques : leur intensification (noircissement) lors des interactions agonistiques ou de la parade nuptiale permet l'évaluation de la dominance sans combat physique.</p>
+        <p>L'organe labyrinthique, au-delà de son rôle respiratoire, joue un rôle dans l'expression comportementale — Tate et al. (2017, J. Fish Biol. 91:723-749) montrent que l'utilisation de l'organe labyrinthique influence la territorialité, l'accouplement et l'agressivité chez les Anabantoidei.</p>
+
+        <h3>7.2 — Comportement territorial et défense du nid</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase comportementale</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Construction du nid (mâle seul)</td><td>Le mâle construit un nid de bulles en surface, souvent sous une feuille flottante ou en zone abritée. Les bulles sont enduites de mucus salivaire pour renforcer leur cohésion. Durée : 1 à 3 jours selon taille visée</td></tr>
+                <tr><td>Parade nuptiale</td><td>Le mâle parade sous le nid, nageoires érigées, bandes intensifiées. Il pousse la femelle sous le nid par des nageoiements circulaires. La femelle réceptive exhibe des bandes pâles (soumission)</td></tr>
+                <tr><td>Amplexus et ponte</td><td>L'accouplement est bref — le mâle enroule son corps autour de la femelle (embrassement). Les œufs buoyants (contenant une goutte d'huile) montent vers le nid. La femelle est ensuite chassée</td></tr>
+                <tr><td>Garde paternelle exclusive</td><td>Le mâle surveille, répare et aère le nid, replace les œufs tombés. Territoire défendu agressivement contre tous les intrus — y compris la femelle (séparer impérativement en aquarium)</td></tr>
+                <tr><td>Soins aux larves</td><td>Les larves restent dans le nid jusqu'à résorption du sac vitellin (2–3 jours). Le mâle les replace si elles tombent. À la nage libre, les larves se dispersent et le mâle cesse les soins</td></tr>
+                <tr><td>Comportement alimentaire</td><td>Prédateur à l'affût (sit-and-wait predator) — reste immobile parmi la végétation, puis frappe à courte distance. Nourrisseur crépusculaire à nocturne en priorité</td></tr>
+            </tbody>
+        </table>
+
+        <h3>7.3 — Régime alimentaire naturel et guilde trophique</h3>
+        <p>M. congicum est classé dans la guilde des carnivores insectivores-microprédateurs.</p>
+        <p>Son régime naturel comprend principalement des petits invertébrés aquatiques : larves d'insectes (Chironomidae, Culicidae, Ephemeroptera), micro-crustacés (Cladocères, Ostracodes, Copépodes), vers aquatiques, petits mollusques et araignées d'eau.</p>
+        <p>Il peut aussi capturer de petits poissons si l'occasion se présente.</p>
+        <p>La stratégie de chasse à l'affût (cryptique + attaque éclair) est typique du genre et différencie nettement Microctenopoma des espèces de même famille au régime plus omnivore (Anabas, Ctenopoma acutirostre — voir Encyclopedia.com Anabantoidei).</p>
+        <p>La composition de la bouche (dents viliformes, protractilité) confirme une spécialisation pour les proies molles de petite taille.</p>
+    </section>
+
+    <section id="section-8">
+        <h2>8. INSTALLATION — L'AQUARIUM IDÉAL</h2>
+        <table>
+            <tbody>
+                <tr><th>Volume minimum</th><td>120 litres pour un couple (120×40 cm min.)</td></tr>
+                <tr><th>Volume recommandé</th><td>200–300 litres pour un groupe 1M/2-3F ou cohabitation</td></tr>
+                <tr><th>Dimensions conseillées</th><td>120×40×40 cm minimum — longueur importante pour délimiter les territoires</td></tr>
+                <tr><th>Fond</th><td>Sable fin sombre ou gravier fin, litière de feuilles (feuilles de catappa et de chêne) 2–4 cm</td></tr>
+                <tr><th>Filtration</th><td>Filtre externe ou interne biologique robuste — débit 4–5× le volume/heure</td></tr>
+                <tr><th>Circulation</th><td>FAIBLE — courant presque nul. Diffuseur de sortie. Le nid de bulles doit rester stable</td></tr>
+                <tr><th>Éclairage</th><td>Faible à modéré — 6–8 h/jour. Espèce de sous-bois — éclairage tamisé par la végétation</td></tr>
+                <tr><th>Chauffage</th><td>Obligatoire — thermostat précis à 24–26 °C (min. 23°C, max. 28°C)</td></tr>
+                <tr><th>Décor</th><td>Biotope africain : racines de bois flotté (Mopani), galets, Anubias en pots, feuilles mortes, plantes flottantes</td></tr>
+                <tr><th>Plantes recommandées</th><td>Anubias sp., Bolbitis heudelotii (fougère d'eau africaine), Crinum natans, mousses, Pistia (flottante pour le nid)</td></tr>
+                <tr><th>Plantes flottantes</th><td>ESSENTIELLES pour le nid de bulles — Pistia stratiotes, Riccia, Salvinia. Fournissent ancrage et protection</td></tr>
+                <tr><th>Cachettes</th><td>Nombreuses — tubes de bambou, grottes, demi-cocos, espaces entre racines pour protéger les femelles</td></tr>
+                <tr><th>Couvercle</th><td>OBLIGATOIRE hermétique — l'organe labyrinthique nécessite un espace d'air chaud en surface (éviter condensation froide)</td></tr>
+                <tr><th>Renouvellement eau</th><td>15–20 % hebdomadaire avec eau légèrement plus fraîche (1–2°C en dessous) — peut stimuler la reproduction</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-9">
+        <h2>9. PARAMÈTRES DE L'EAU — Aquarium</h2>
+        <h3>9.1 — Paramètres physico-chimiques recommandés</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paramètre</th>
+                    <th>Valeur idéale</th>
+                    <th>Fourchette tolérée</th>
+                    <th>Critique (limite)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Température</td><td>24–26 °C</td><td>23–27 °C</td><td>< 20 °C ou > 30 °C</td></tr>
+                <tr><td>pH</td><td>6,5–7,2</td><td>6,0–7,8</td><td>< 5,5 ou > 8,5</td></tr>
+                <tr><td>GH (dureté totale)</td><td>3–10 °dH</td><td>2–20 °dH</td><td>> 25 °dH</td></tr>
+                <tr><td>KH</td><td>2–6 °dH</td><td>1–10 °dH</td><td>< 1 °dH (instabilité)</td></tr>
+                <tr><td>Conductivité</td><td>80–200 µS/cm</td><td>50–400 µS/cm</td><td>> 600 µS/cm</td></tr>
+                <tr><td>Nitrites NO2</td><td>0 mg/L</td><td>< 0,1 mg/L</td><td>Tout > 0</td></tr>
+                <tr><td>Nitrates NO3</td><td>< 15 mg/L</td><td>< 40 mg/L</td><td>> 80 mg/L</td></tr>
+                <tr><td>O2 dissous</td><td>> 5 mg/L</td><td>4–8 mg/L</td><td>< 3 mg/L (compensation par organe labyrinthique possible)</td></tr>
+                <tr><td>Espace d'air surface</td><td>Indispensable</td><td>5–10 cm minimum</td><td>Absence = asphyxie si eau trop froide</td></tr>
+            </tbody>
+        </table>
+
+        <h3>9.2 — Traitement et préparation de l'eau</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Techniques de préparation de l'eau</th>
+                    <td>Eau du robinet déchlaminée convient dans la plupart des régions si GH < 15°dH. Pour adoucir une eau dure : mélange osmosée/robinet (50/50) ou filtration sur tourbe. Ajout de feuilles de catappa (Terminalia catappa) ou de chêne séché (1 feuille/50 L) : colorent légèrement l'eau en brun ambré, libèrent tanins et acides humiques antibactériens, abaissent modérément le pH et créent une ambiance biotope. Crucial : maintenir l'espace d'air entre la surface de l'eau et le couvercle à 23–26°C pour la santé de l'organe labyrinthique.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-10">
+        <h2>10. ALIMENTATION</h2>
+        <p>M. congicum est un carnivore strict en captivité — il n'est pas intéressé par les aliments végétaux et peut refuser les granulés secs, surtout à l'introduction.</p>
+        <p>L'alimentation vivante ou congelée est indispensable, au moins à l'introduction.</p>
+        <p>Avec le temps et la confiance, il peut apprendre à accepter des aliments congelés de qualité.</p>
+        <p>Sa chasse à l'affût implique que la nourriture doit être présentée à proximité ou en mouvement.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Type d'aliment</th>
+                    <th>Exemples</th>
+                    <th>Fréquence / Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vivant (indispensable)</td><td>Artémias adultes, Daphnies, Moustiques rouges (Chironomus), vers de vase, grindal worms, petits vers de terre, larves d'insectes</td><td>2–3 fois/jour en petites quantités — seul moyen fiable de nourrir les individus refractaires</td></tr>
+                <tr><td>Congelé</td><td>Artémias, Mysis, vers de vase congelés, crevettes hachées, cœur de bœuf maigre haché</td><td>2–3 fois/semaine — décongeler, présenter avec pince ou pipette pour simuler une proie vivante</td></tr>
+                <tr><td>Granulés (acceptation variable)</td><td>Granulés carnivores mini (1–2 mm) : NLS Thera-A, Hikari Carnivore. Acceptation progressive selon individu</td><td>Si acceptés : 1–2 fois/semaine max en complément — ne jamais en base unique</td></tr>
+                <tr><td>À éviter absolument</td><td>Flocons de base, nourriture végétale, tubifex vivants (vecteurs Camallanus), nourriture sèche exclusive</td><td>Jamais — régime végétal ou sec exclusif = cachexie lente</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-11">
+        <h2>11. COMPORTEMENT & COHABITATION</h2>
+        <p>Tempérament globalement paisible vis-à-vis des espèces de taille similaire ou supérieure, mais prédateur efficace des petits poissons et crevettes.</p>
+        <p>En période de reproduction, les mâles sont agressifs envers les femelles et les congénères.</p>
+        <p>Éviter les espèces trop actives, bruyantes ou nageuses rapides qui stressent ce poisson discret de sous-bois.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Cohabitation recommandée</th>
+                    <th>Cohabitation déconseillée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>• Tétras du Congo (Phenacogrammus interruptus) — même biotope, zones de nage séparées</td><td>• Petits poissons < 3 cm (néons, rasboras nano) — proies potentielles</td></tr>
+                <tr><td>• Tétras africains de taille similaire (Alestopetersius, Brycinus) — actifs mais pas agressifs</td><td>• Crevettes (Neocaridina, Caridina) — proies certaines pour un adulte</td></tr>
+                <tr><td>• Synodontis nigriventris, S. schoutedeni — catfishes du Congo, fond, aucune interaction</td><td>• Poissons à nageoires longues voilées (guppys, bêtas) — mordillage des voiles</td></tr>
+                <tr><td>• Polyptères nains (Polypterus palmas, P. senegalus) — fond, trop lents pour être stressants</td><td>• Autres Anabantoidei mâles en petit bac — combat territorial sévère</td></tr>
+                <tr><td>• Cichlidés nains africains (Pelvicachromis, Anomalochromis thomasi) — même biotope si espace</td><td>• Poissons très actifs, nageurs rapides — stress chronique pour M. congicum</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-12">
+        <h2>12. PROTOCOLE DE REPRODUCTION COMPLET</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Avertissement sur les sources de cette section</th>
+                    <td>Aucune publication primaire documentant en détail la reproduction en captivité de M. congicum n'a pu être identifiée (2025). Les données ci-dessous sont extrapolées de : (1) la biologie reproductive générale du genre Microctenopoma — confirmée (nid de bulles, garde paternelle, oeufs buoyants — Wikipedia Bubble Nest ; Rüber et al. 2006) ; (2) les données de reproduction documentées de M. fasciolatum (Van der Voort, Practical Fishkeeping 2019) ; (3) les pratiques générales des Anabantoidei constructeurs de nids de bulles. Ces extrapolations sont biologiquement raisonnées mais doivent être vérifiées sur l'espèce. Toute source primaire supplémentaire sera bienvenue.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>12.1 — Prérequis & Conditionnement</h3>
+        <table>
+            <tbody>
+                <tr><th>Âge de maturité sexuelle</th><td>8–12 mois (selon alimentation et T°)</td></tr>
+                <tr><th>Taille minimale reproductrice</th><td>5–6 cm (LS) — attendre 7–8 cm pour un succès optimal</td></tr>
+                <tr><th>Composition du groupe</th><td>1 mâle / 1–2 femelles minimum. Mâle solitaire + femelles retirées après ponte</td></tr>
+                <tr><th>Durée du conditionnement</th><td>3 à 6 semaines d'alimentation intensive (vivant quotidien)</td></tr>
+                <tr><th>Aquarium de ponte</th><td>60–100 L minimum, eau calme, plantes flottantes abondantes (Pistia, Riccia)</td></tr>
+                <tr><th>Eau du bac de ponte</th><td>T° 25–26 °C / pH 6,5–7,0 / GH 3–8 °dH / conductivité 60–120 µS/cm</td></tr>
+                <tr><th>Niveau d'eau</th><td>RÉDUIRE à 15–20 cm — facilite la construction du nid et la monte des œufs buoyants</td></tr>
+                <tr><th>Signal de déclenchement</th><td>Changement d'eau de 20–30 % avec eau légèrement plus fraîche (1–2°C), puis remontée progressive. Ajout de feuilles de catappa fraîches.</td></tr>
+                <tr><th>Support nid de bulles</th><td>Plantes flottantes (Pistia, Riccia), feuilles flottantes d'Anubias, ou demi-coco flottant en surface</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.2 — Conditionnement des reproducteurs</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Menu de conditionnement</th>
+                    <td>Alimentation 2–3 fois/jour pendant 4–6 semaines : moustiques rouges vivants le matin, artémias adultes à midi, vers de vase le soir. Alterner avec daphnies et grindal worms. Objectif : gonflement visible de l'abdomen de la femelle (ovaires chargés). 1 jour de jeûne par semaine. Les mâles commencent à construire spontanément le nid de bulles quand le conditionnement est suffisant.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>12.3 — Déclenchement de la ponte</h3>
+        <p>Déclenchement par simulation d'une petite saison des pluies : grand changement d'eau (30–40 %) avec eau légèrement plus fraîche (-2°C), puis remontée à 25–26°C.</p>
+        <p>Le mâle intensifie la construction du nid dans les 48–72h suivant ce changement. Allonger la photopériode à 10–12h simultanément.</p>
+        <p>La réduction du niveau d'eau à 15–20 cm est souvent décisive pour initier la construction du nid.</p>
+
+        <h3>12.4 — La ponte : déroulement et caractéristiques</h3>
+        <table>
+            <tbody>
+                <tr><th>Parade nuptiale</th><td>Le mâle réalise une parade sous le nid — cercles autour de la femelle, nageoires érigées, bandes noircies. Tentative d'attirer la femelle sous le nid. La femelle réceptive pâlit légèrement et suit le mâle</td></tr>
+                <tr><th>Amplexus</th><td>Le mâle enroule son corps autour de la femelle sous le nid (accolade ventrale). L'espèce Microctenopoma est dite à 'œufs buoyants' — les œufs remontent seuls vers le nid</td></tr>
+                <tr><th>Nombre d'œufs</th><td>Généralement entre 100 et 500 oeufs par ponte. Oeufs minuscules mais la femelle ne peut physiquement pas en contenir des milliers — standard pour un petit constructeur de nid de bulles de 8 cm</td></tr>
+                <tr><th>Œufs</th><td>Très petits (0,7 mm — Encyclopedia.com), buoyants grâce à une goutte d'huile, translucides à légèrement jaunâtres</td></tr>
+                <tr><th>Durée d'incubation</th><td>24–48 heures à 25–26°C (très rapide comparé à d'autres Anabantoidei)</td></tr>
+                <tr><th>Soins paternels exclusifs</th><td>Le mâle garde le nid, replace les œufs et larves tombés, répare les bulles. La femelle DOIT être retirée — le mâle l'attaque brutalement après la ponte</td></tr>
+                <tr><th>Stade nage libre</th><td>2–4 jours après éclosion. Les larves abandonnent le nid progressivement. Le mâle perd son intérêt pour elles — retirer aussi à ce stade</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.5 — Développement larvaire et élevage des alevins</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stade</th>
+                    <th>Observations & Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Oeufs (J0–J2)</td><td>Laisser le mâle en place — il assure la garde. Ne pas perturber le bac. Maintenir T° stable. Retirer la femelle impérativement</td></tr>
+                <tr><td>Larves au nid (J2–J4)</td><td>Les larves éclosent et restent dans le nid suspendu à la surface. Sac vitellin visible. Ne pas nourrir encore. Retirer le mâle quand les larves commencent à s'éloigner du nid</td></tr>
+                <tr><td>Nage libre (J4–J7)</td><td>Premier nourrissage : infusoires (Paramecium) ou eau verte (Chlorella) en continu les 2–3 premiers jours. Puis nauplii d'artémias fraîchement éclos (< 24h). Microworms dès J7</td></tr>
+                <tr><td>Alevins (sem. 2–4)</td><td>Artémias adultes, microworms, grindal worms. Changements d'eau quotidiens légers (5–10 %). Attention : les larves Microctenopoma sont très petites — filtration par éponge uniquement</td></tr>
+                <tr><td>Juvéniles (mois 1–3)</td><td>Alimentation adulte progressive. Croissance rapide si bien nourris. Sexage des pelviennes possible à ~4 cm chez les mâles. Séparer si cannibalisme</td></tr>
+            </tbody>
+        </table>
+
+        <h3>12.6 — Élevage artificiel (séparation des parents)</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Protocole d'incubation artificielle</th>
+                    <td>Si le mâle détruit le nid ou mange les œufs (rare mais possible) : transférer délicatement le nid entier (et les œufs buoyants alentour) dans un bac d'incubation de 10 L, eau identique, aération très légère dirigée sous la surface pour éviter l'affaissement du nid. Ajouter 1–2 gouttes de bleu de méthylène (1 mg/L) contre les moisissures. À l'éclosion et nage libre, primer avec eau verte et infusoires. L'élevage par le mâle reste fortement préférable pour M. congicum.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-13">
+        <h2>13. SANTÉ & MALADIES COURANTES</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Maladie / Pathologie</th>
+                    <th>Symptômes</th>
+                    <th>Causes</th>
+                    <th>Traitement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ich (Ichthyophthirius)</td><td>Points blancs, frottements, léthargie</td><td>Stress, refroidissement, poissons porteurs introduits</td><td>Élever T° à 29°C sur 5–7 jours + NaCl 1–2 g/L</td></tr>
+                <tr><td>Oodinium (velours)</td><td>Poudre dorée sur le corps, frottements intenses, opercules battants</td><td>Oodinium pillularis — eau stagnante, faible O2</td><td>Sulfate de cuivre 0,2 mg/L + obscurité totale 7–10 jours</td></tr>
+                <tr><td>Saprolegniose (œufs/plaies)</td><td>Filaments cotonneux blancs sur oeufs ou plaies</td><td>Champignon opportuniste — eau froide, poisson blessé</td><td>Bleu de méthylène 1–2 mg/L. NaCl préventif</td></tr>
+                <tr><td>Camallanus (vers rouges)</td><td>Vers rouge-brun visibles à l'anus, amaigrissement</td><td>Nématode — via nourriture vivante non contrôlée</td><td>Lévamisole HCl 5–10 mg/L bain 24h, répéter J+14</td></tr>
+                <tr><td>Nageoires voilées déchirées</td><td>Nageoires déchiquetées</td><td>Morsures de colocataires ou mâle sur femelle</td><td>Isoler, sel 1 g/L, cicatrisation naturelle en eau propre</td></tr>
+                <tr><td>Dépérissement lent</td><td>Amaigrissement progressif malgré alimentation</td><td>Capillaria intestinalis, Hexamita, tuberculose pisciaire</td><td>Flubendazole (Capillaria) ; Métronidazole oral (Hexamita) ; Isoler si tuberculose</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-14">
+        <h2>14. PARASITOLOGIE & PATHOLOGIE AVANCÉE</h2>
+        <h3>14.1 — Principaux agents pathogènes avec cycles biologiques</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>1. Ichthyophthirius multifiliis (Fouquet, 1876) — Ich, maladie des points blancs</th>
+                    <td>Classe : Oligohymenophorea | Ordre : Hymenostomatida | Famille : Ichthyophthiriidae</td>
+                    <td>Cycle biologique direct (3 stades) : Trophonte (sous-épidermique, visible comme point blanc, 0,1–1 mm) → Tomont (libre, se kyste sur substrat, se divise jusqu'à 256 tomites) → Tomites (infestants nageurs, 24–72h pour trouver un hôte sinon mort). Seul le stade tomite est sensible aux traitements. Accéléré par la chaleur : cycle 3–4 j à 26°C vs 14–21 j à 15°C.</td>
+                    <td>Traitement DCI : Chlorure de sodium (NaCl) 1–3 g/L + élévation T° à 28–29°C progressivement sur 5 jours. Traitement cuivre-based si sévère (attention : sensibilité des Anabantoidei au cuivre — demi-dose initiale).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>2. Oodinium pillularis (Schäperclaus, 1954) — Velours d'eau douce</th>
+                    <td>Classe : Dinophyceae | Ordre : Blastodiniales | Famille : Oodinaceae</td>
+                    <td>Cycle biologique : Dinoflagellé parasite. Trophont (fixé sur épiderme/branchies, aspect doré sous lumière rasante) → détachement → hypnospore kystée → division → 256 dinoforés infestants → libération → recherche hôte en < 24h. Très virulent, taux de mortalité élevé si non traité rapidement. Phototrophique : la lumière stimule sa prolifération.</td>
+                    <td>Traitement DCI : Sulfate de cuivre (CuSO4) 0,2 mg/L en bain. OBSCURITÉ totale 7–10 jours obligatoire (inhibe la photosynthèse du parasite). T° à 28°C. Retirer plantes, mollusques et invertébrés avant traitement cuivre.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>3. Camallanus spp. — Camallanose (nématode rouge)</th>
+                    <td>Classe : Chromadorea | Ordre : Camallanida | Famille : Camallanidae</td>
+                    <td>Cycle biologique indirect : Larves L1 libres dans l'eau → ingestion par hôte intermédiaire (Cyclops, Daphnia) → métamorphose en L3 dans hôte intermédiaire → ingestion par le poisson → adultes rouge-brun dans l'intestin postérieur, visibles à l'anus. Contamination principale par nourriture vivante non contrôlée (tubifex, copépodes sauvages).</td>
+                    <td>Traitement DCI : Lévamisole HCl, 5–10 mg/L en bain de 24h, répéter à J+14. Fenbendazole (Panacur) 0,1 mg/L également efficace. Retrait mécanique des vers visibles avec pince stérile possible mais risque de rupture.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>14.2 — Tableau récapitulatif des traitements DCI et posologies</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Agent pathogène</th>
+                    <th>DCI</th>
+                    <th>Voie</th>
+                    <th>Posologie indicative</th>
+                    <th>Durée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>I. multifiliis (Ich)</td><td>NaCl + T° (ou cuivre)</td><td>Bain</td><td>NaCl 1–3 g/L + T° 28–29°C</td><td>7–10 jours</td></tr>
+                <tr><td>Oodinium pillularis</td><td>Sulfate de cuivre (CuSO4)</td><td>Bain + obscurité</td><td>0,2 mg/L + obscurité totale + T° 28°C</td><td>7–10 jours</td></tr>
+                <tr><td>Camallanus spp.</td><td>Lévamisole HCl</td><td>Bain 24h</td><td>5–10 mg/L, répéter à J+14</td><td>1–2 appl.</td></tr>
+                <tr><td>Capillaria spp.</td><td>Flubendazole</td><td>Bain</td><td>0,1–0,2 mg/L, renouveler J+7</td><td>3–5 j × 2</td></tr>
+                <tr><td>Saprolegniose</td><td>Bleu de méthylène</td><td>Bain</td><td>1–2 mg/L bain continu</td><td>5–7 jours</td></tr>
+                <tr><td>Columnariose</td><td>Oxytétracycline</td><td>Bain + aliment</td><td>50 mg/L bain OU 1% dans nourriture</td><td>5–7 jours</td></tr>
+            </tbody>
+        </table>
+        <p>Avertissement : posologies indicatives — consulter un vétérinaire habilité. Respecter la réglementation en vigueur.</p>
+    </section>
+
+    <section id="section-15">
+        <h2>15. STATUT DE CONSERVATION</h2>
+        <table>
+            <tbody>
+                <tr><th>Statut UICN</th><td>Least Concern (LC) — Préoccupation mineure. Évaluation : 14 août 2018 (FishBase Ref.)</td></tr>
+                <tr><th>Tendance population</th><td>Stable dans les zones protégées. Probablement en déclin local dans les zones d'urbanisation intense du bassin congolais</td></tr>
+                <tr><th>Pressions principales</th><td>Déforestation du bassin du Congo (second massif forestier mondial), agriculture itinérante, mines artisanales (contamination au mercure des rivières), pollution organique urbaine (Kinshasa, Brazzaville)</td></tr>
+                <tr><th>Pêche ornementale</th><td>Collecte sauvage pour l'aquariophilie existe mais reste limitée. Espèce peu commune dans le commerce — principalement disponible via éleveurs spécialisés européens (Allemagne, Pays-Bas, France)</td></tr>
+                <tr><th>Élevage en captivité</th><td>Possible et pratiqué par des éleveurs spécialisés. La reproduction en captivité est documentée (nid de bulles). Disponibilité variable en Europe — espèce plutôt confidentielle</td></tr>
+                <tr><th>Conservation forêt</th><td>La préservation de la forêt congolaise est l'enjeu de conservation principal — elle abrite une biodiversité ichtyologique unique avec un taux d'endémisme parmi les plus élevés du monde (bassin du Congo : ~700 espèces, dont ~80 % d'endémiques — projet CongoFish, MRAC Tervuren)</td></tr>
+                <tr><th>Recommandation</th><td>Privilégier les spécimens élevés en captivité. Éviter les individus sauvages fraîchement importés en mauvais état (stress de transport élevé)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="section-16">
+        <h2>16. BIBLIOGRAPHIE SCIENTIFIQUE COMPLÈTE</h2>
+        <p>Références classées par ordre chronologique — format académique avec DOI</p>
+        <ul class="biblio-list">
+            <li>Boulenger, G.A. (1887). On new fishes from the lower Congo. Annals and Magazine of Natural History (Series 5) 19(110): 148-149. [Description originale de Ctenopoma congicum]</li>
+            <li>Boulenger, G.A. (1916). Catalogue of the fresh-water fishes of Africa in the British Museum (Natural History), vol. 4. British Museum (Natural History), London, i–xxviii + 1–392. [Transfert dans Anabas congicus]</li>
+            <li>Gosse, J.-P. (1986). Anabantidae (pp. 402-414). In : Daget, Gosse & Thys van den Audenaerde (eds), Check-list of the freshwater fishes of Africa (CLOFFA), vol. 2. ISNB Bruxelles / MRAC Tervuren / ORSTOM Paris, i-xiv + 1-520.</li>
+            <li>Norris, S.M. (1995). Microctenopoma uelense and M. nigricans, a new genus and two new species of anabantid fishes from Africa. Ichthyological Exploration of Freshwaters, 6(4): 357-376. [Érection du genre Microctenopoma — M. congicum espèce type]</li>
+            <li>Norris, S.M. (2003). Anabantidae (pp. 691-707). In : Lévêque, Paugy & Teugels (eds), Faune des poissons d'eaux douces et saumâtres de l'Afrique de l'Ouest, Tome 2. MRAC Tervuren / MNHN Paris / IRD Paris, 815 p.</li>
+            <li>Norris, S.M. (2007). Anabantidae. In : Stiassny, Teugels & Hopkins (eds), Poissons d'eaux douces et saumâtres de basse Guinée, ouest de l'Afrique centrale. IRD Editions, Paris.</li>
+            <li>Rüber, L., Britz, R. & Zardoya, R. (2006). Molecular phylogenetics and evolutionary diversification of labyrinth fishes (Perciformes: Anabantoidei). Systematic Biology, 55(3): 374-397. doi: 10.1080/10635150500541664</li>
+            <li>Tate, M., McGoran, R.E., White, C.R. & Portugal, S.J. (2017). Life in a bubble: the role of the labyrinth organ in determining territory, mating and aggressive behaviours in anabantoids. Journal of Fish Biology, 91(3): 723-749. doi: 10.1111/jfb.13357</li>
+            <li>Skelton, P.H., Stauffer, J.R., Chakona, A. & Wisor, J. (2021). Microctenopoma steveboyesi n. sp. and M. stevenorrisi n. sp., two new anabantid species from southern Africa. Zootaxa, 4908(2): 201-234.</li>
+            <li>Encyclopedia.com (eds.). (2024). Anabantoidei (Labyrinth Fishes). In: Grzimek's Animal Life Encyclopedia (2nd ed.). Gale / Cengage. https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/anabantoidei-labyrinth-fishes</li>
+            <li>Froese, R. & Pauly, D. (Eds.) (2025). FishBase. World Wide Web electronic publication. www.fishbase.se — Microctenopoma congicum (Ref. 2060 ; 1880 ; 45335 ; 45441 ; 45477). Version 06/2024.</li>
+            <li>Lévêque, C., Paugy, D. & Teugels, G.G. (Eds.) (2003). Faune des poissons d'eaux douces et saumâtres de l'Afrique de l'Ouest, Tome 2. Coll. Faune et Flore tropicales 40. MRAC Tervuren / MNHN Paris / IRD Paris. 815 p.</li>
+            <li>Vreven, E.J., Snoeks, J. et al. (2016). The ichthyofauna of the Congo basin — biodiversity and endemism. Hydrobiologia, 776 (special issue Congo basin ichthyofauna). doi: 10.1007/s10750-016-2707-y</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        <div>Microctenopoma congicum — Fiche Ichtyologique Complète</div>
+        <div>Document réalisé à des fins aquariophiles et scientifiques • 2026</div>
+    </div>
+
+</body>
+</html>
