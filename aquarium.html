@@ -7,183 +7,209 @@
   <style>
     * { box-sizing:border-box; margin:0; padding:0; }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:#020617;
-      color:#e5e7eb;
-      min-height:100vh;
-    }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+  min-height:100vh;
+}
 
-    .navbar {
-      position:fixed; top:0; left:0; width:100%;
-      min-height:56px;
-      background:rgba(15,23,42,0.98);
-      border-bottom:1px solid #1f2937;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:4px 16px;
-      z-index:50;
-      flex-wrap:wrap; gap:4px;
-    }
-    .navbar-left { display:flex; align-items:center; gap:10px; }
-    .navbar-title { font-size:0.95rem; font-weight:600; }
-    .navbar-user { font-size:0.8rem; color:#9ca3af; }
+.navbar {
+  position:fixed; top:0; left:0; width:100%;
+  min-height:56px;
+  background:rgba(15,23,42,0.98);
+  border-bottom:1px solid #1f2937;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:4px 16px;
+  z-index:50;
+  flex-wrap:wrap; gap:4px;
+}
+.navbar-left { display:flex; align-items:center; gap:10px; }
+.navbar-title { font-size:0.95rem; font-weight:600; }
+.navbar-user { font-size:0.8rem; color:#9ca3af; }
 
-    .navbar-menu {
-      display:flex; gap:8px; align-items:center;
-      flex-wrap:wrap; justify-content:flex-end;
-    }
-    .nav-btn {
-      border:none; background:transparent; color:#cbd5f5;
-      font-size:0.8rem; padding:6px 8px; border-radius:999px;
-      cursor:pointer; display:flex; align-items:center; gap:4px;
-    }
-    .nav-btn span.icon { font-size:1rem; }
-    .nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
-    .nav-btn:hover { background:#111827; }
+.navbar-menu {
+  display:flex; gap:8px; align-items:center;
+  flex-wrap:wrap; justify-content:flex-end;
+}
+.nav-btn {
+  border:none; background:transparent; color:#cbd5f5;
+  font-size:0.8rem; padding:6px 8px; border-radius:999px;
+  cursor:pointer; display:flex; align-items:center; gap:4px;
+}
+.nav-btn span.icon { font-size:1rem; }
+.nav-btn.active { background:#1d4ed8; color:#e5e7eb; }
+.nav-btn:hover { background:#111827; }
 
-    .navbar-logout {
-      border-radius:999px; border:1px solid #374151;
-      background:#111827; color:#e5e7eb;
-      padding:5px 10px; font-size:0.8rem; cursor:pointer;
-    }
-    .navbar-logout:hover { background:#1f2937; }
+.navbar-logout {
+  border-radius:999px; border:1px solid #374151;
+  background:#111827; color:#e5e7eb;
+  padding:5px 10px; font-size:0.8rem; cursor:pointer;
+}
+.navbar-logout:hover { background:#1f2937; }
 
-    .page {
-      padding-top:72px;
-      padding:72px 12px 20px;
-      max-width:1100px;
-      margin:0 auto;
-    }
+.page {
+  padding-top:72px;
+  padding:72px 12px 20px;
+  max-width:1100px;
+  margin:0 auto;
+}
 
-    .card {
-      background:#020617;
-      border-radius:10px;
-      border:1px solid #1f2937;
-      padding:14px 16px;
-      margin-bottom:14px;
-    }
+.card {
+  background:#020617;
+  border-radius:10px;
+  border:1px solid #1f2937;
+  padding:14px 16px;
+  margin-bottom:14px;
+}
 
-    .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
-    .card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
-    .subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
+.card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
+.card h2 { font-size:1.05rem; margin-bottom:6px; color:#e5e7eb; }
+.subtitle { font-size:0.85rem; color:#9ca3af; margin-bottom:10px; }
 
-    label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
-    textarea {
-      width:100%; padding:7px 9px;
-      background:#020617; border-radius:7px;
-      border:1px solid #1f2937; color:#e5e7eb;
-      font-size:0.85rem; min-height:120px; resize:vertical;
-    }
-    textarea:focus {
-      outline:none; border-color:#38bdf8;
-      box-shadow:0 0 0 1px rgba(56,189,248,0.4);
-    }
+label { font-size:0.8rem; color:#cbd5f5; display:block; margin-bottom:2px; }
+textarea {
+  width:100%; padding:7px 9px;
+  background:#020617; border-radius:7px;
+  border:1px solid #1f2937; color:#e5e7eb;
+  font-size:0.85rem; min-height:120px; resize:vertical;
+}
+textarea:focus {
+  outline:none; border-color:#38bdf8;
+  box-shadow:0 0 0 1px rgba(56,189,248,0.4);
+}
 
-    .btn-primary {
-      background:#38bdf8; color:#0f172a;
-      border:none; border-radius:7px;
-      padding:7px 10px; font-size:0.8rem;
-      cursor:pointer;
-    }
-    .btn-primary:hover { filter:brightness(1.05); }
+.btn-primary {
+  background:#38bdf8; color:#0f172a;
+  border:none; border-radius:7px;
+  padding:7px 10px; font-size:0.8rem;
+  cursor:pointer;
+}
+.btn-primary:hover { filter:brightness(1.05); }
 
-    .note-info { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
-    .small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+.note-info { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
+.small-note { font-size:0.75rem; color:#9ca3af; margin-top:4px; }
 
-    .aquarium-grid {
-      display:flex;
-      flex-wrap:wrap;
-      gap:16px;
-      margin-top:10px;
-    }
+.aquarium-grid {
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-top:10px;
+}
 
-    .aquarium-tag {
-      width:260px;
-      border-radius:14px;
-      border:1px solid #1f2937;
-      background:#020617;
-      color:#e5e7eb;
-      padding:10px 12px 12px;
-      font-size:0.85rem;
-      position:relative;
-      box-shadow:0 6px 16px rgba(15,23,42,0.7);
-    }
+.aquarium-tag {
+  width:260px;
+  border-radius:14px;
+  border:1px solid #1f2937;
+  background:#020617;
+  color:#e5e7eb;
+  padding:10px 12px 12px;
+  font-size:0.85rem;
+  position:relative;
+  box-shadow:0 6px 16px rgba(15,23,42,0.7);
+}
 
-    .aquarium-tag-header {
-      text-align:center;
-      font-weight:600;
-      font-size:0.9rem;
-      border-bottom:1px solid #1f2937;
-      padding-bottom:4px;
-      margin-bottom:6px;
-    }
+.aquarium-tag-header {
+  text-align:center;
+  font-weight:600;
+  font-size:0.9rem;
+  border-bottom:1px solid #1f2937;
+  padding-bottom:4px;
+  margin-bottom:6px;
+}
 
-    .aquarium-tag-header input {
-      border:none;
-      background:transparent;
-      text-align:center;
-      width:100%;
-      font-size:0.9rem;
-      color:#e5e7eb;
-      outline:none;
-    }
+.aquarium-tag-header input {
+  border:none;
+  background:transparent;
+  text-align:center;
+  width:100%;
+  font-size:0.9rem;
+  color:#e5e7eb;
+  outline:none;
+}
 
-    .aquarium-tag-delete {
-      position:absolute;
-      top:6px;
-      right:6px;
-      width:20px;
-      height:20px;
-      border-radius:999px;
-      border:none;
-      background:#dc2626;
-      color:#fff;
-      cursor:pointer;
-      font-size:12px;
-      line-height:20px;
-      text-align:center;
-    }
+.aquarium-tag-delete {
+  position:absolute;
+  top:6px;
+  right:6px;
+  width:20px;
+  height:20px;
+  border-radius:999px;
+  border:none;
+  background:#dc2626;
+  color:#fff;
+  cursor:pointer;
+  font-size:12px;
+  line-height:20px;
+  text-align:center;
+}
 
-    .aquarium-tag-green-btn {
-      display:block;
-      width:140px;
-      margin:4px auto 4px;
-      background:#22c55e;
-      color:#0b1120;
-      border:none;
-      border-radius:999px;
-      padding:5px 0;
-      font-size:0.8rem;
-      cursor:pointer;
-      font-weight:500;
-    }
-    .aquarium-tag-green-btn:hover { filter:brightness(1.05); }
+.aquarium-tag-green-btn {
+  display:block;
+  width:140px;
+  margin:4px auto 4px;
+  background:#22c55e;
+  color:#0b1120;
+  border:none;
+  border-radius:999px;
+  padding:5px 0;
+  font-size:0.8rem;
+  cursor:pointer;
+  font-weight:500;
+}
+.aquarium-tag-green-btn:hover { filter:brightness(1.05); }
 
-    .aquarium-tag-block {
-      margin-top:8px;
-      text-align:center;
-      font-size:0.8rem;
-    }
+.aquarium-tag-block {
+  margin-top:8px;
+  text-align:center;
+  font-size:0.8rem;
+}
 
-    .aquarium-tag-block-title {
-      font-weight:600;
-      margin-bottom:3px;
-    }
+.aquarium-tag-block-title {
+  font-weight:600;
+  margin-bottom:3px;
+}
 
-    .aquarium-tag-date-btn {
-      width:95px;
-      height:28px;
-      border-radius:999px;
-      border:1px solid #1f2937;
-      background:#111827;
-      cursor:pointer;
-      font-size:0.78rem;
-    }
+.aquarium-tag-date-btn {
+  width:95px;
+  height:28px;
+  border-radius:999px;
+  border:1px solid #1f2937;
+  background:#111827;
+  cursor:pointer;
+  font-size:0.78rem;
+}
 
-    .status-ok   { background:#16a34a; color:#f9fafb; }
-    .status-warn { background:#facc15; color:#111827; }
-    .status-bad  { background:#dc2626; color:#f9fafb; }
-  </style>
+.status-ok   { background:#16a34a; color:#f9fafb; }
+.status-warn { background:#facc15; color:#111827; }
+.status-bad  { background:#dc2626; color:#f9fafb; }
+
+/* Règle de confinement pour terminaux mobiles */
+@media (max-width: 768px) {
+  .page {
+    /* Maintien de l'écartement initial augmenté pour compenser la barre fixe */
+    padding-top: 90px; 
+  }
+  
+  .navbar-menu {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    /* Optimisation de la fluidité du défilement sur les interfaces tactiles */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Dissimulation esthétique de la barre de défilement */
+  .navbar-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .navbar-menu {
+    scrollbar-width: none;
+  }
+}
+</style>
 </head>
 <body>
   <header class="navbar">
