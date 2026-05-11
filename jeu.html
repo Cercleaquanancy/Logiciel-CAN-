@@ -83,6 +83,26 @@
     .res-success { color: #4ade80; }
     .res-error { color: #ef4444; animation: shake 0.4s; }
     @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-5px);} 75% {transform: translateX(5px);} }
+
+    /* Règle de confinement pour terminaux mobiles */
+    @media (max-width: 768px) {
+      .page { padding-top: 90px; }
+      
+      .navbar-menu {
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .navbar-menu::-webkit-scrollbar {
+        display: none;
+      }
+      .navbar-menu {
+        scrollbar-width: none;
+      }
+    }
   </style>
 
   <script src="especes.js"></script>
@@ -173,6 +193,8 @@
           <button class="btn-play" id="btn-submit-img" onclick="jouerImage()">Valider</button>
         </div>
         
+        <button id="btn-skip-img" class="btn-replay" style="background: #4b5563; margin-top: 10px;" onclick="passerImage()">⏭️ Passer cette image</button>
+        
         <div id="error-msg-img" class="error-msg"></div>
         <div id="result-img"></div>
 
@@ -205,7 +227,6 @@
         const roleLabel = currentUser.role === "admin" ? "Admin" : currentUser.role === "membre_bureau" ? "Membre de bureau" : "Adhérent";
         navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
 
-        // Cache les boutons selon les droits
         document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
           if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
         });
@@ -215,12 +236,10 @@
       }
     }
 
-    // Liens du menu
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
     });
 
-    // Déconnexion
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
@@ -239,7 +258,6 @@
         return;
       }
 
-      // Remplissage Datalist
       const datalist = document.getElementById("liste-poissons");
       window.FICHES.forEach(p => {
         let option = document.createElement("option");
@@ -247,15 +265,12 @@
         datalist.appendChild(option);
       });
 
-      // Préparer la liste pour le mode image (uniquement ceux qui ont une image valide)
       listeAvecImage = window.FICHES.filter(p => p.image && p.image.trim() !== "");
 
-      // Initialiser les deux jeux
       resetArbre();
       initImageQuiz();
     };
 
-    // Basculer entre les modes (Onglets)
     function switchMode(mode) {
       document.getElementById('tab-taxo').classList.remove('active');
       document.getElementById('tab-image').classList.remove('active');
@@ -266,8 +281,8 @@
       document.getElementById(`mode-${mode}`).style.display = 'block';
     }
 
-    // --- OUTILS DE CORRECTION ORTHOGRAPHIQUE (Partagés) ---
     function nettoyer(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim(); }
+    
     function levenshtein(a, b) {
       const mat = [];
       for (let i = 0; i <= b.length; i++) mat[i] = [i];
@@ -280,7 +295,6 @@
       }
       return mat[b.length][a.length];
     }
-
 
     /* ====================================================================
        LOGIQUE DU MODE 1 : L'ARBRE (Metazooa)
@@ -478,7 +492,6 @@
       }
       
       mystereImg = listeAvecImage[Math.floor(Math.random() * listeAvecImage.length)];
-      
       tentativesImg = MAX_TENTATIVES_IMG;
       nbIndicesImg = 0;
       
@@ -496,7 +509,10 @@
       document.getElementById("error-msg-img").innerHTML = "";
       document.getElementById("result-img").innerHTML = "";
       document.getElementById("result-img").className = "";
+      
+      // Réinitialisation des boutons de fin/passage
       document.getElementById("btn-next-img").style.display = "none";
+      document.getElementById("btn-skip-img").style.display = "block";
     }
 
     function appliquerCorrectionImg(nom) {
@@ -519,6 +535,11 @@
       }
       
       container.innerHTML += `<p>${text}</p>`;
+    }
+
+    // Nouvelle fonction pour passer manuellement une image
+    function passerImage() {
+      initImageQuiz();
     }
 
     function jouerImage() {
@@ -558,21 +579,28 @@
       if (guess.nomScientifique === mystereImg.nomScientifique) {
         resBox.className = "res-success";
         resBox.innerText = `🎉 Bravo ! C'est bien un ${mystereImg.nomScientifique} ! (Trouvé en ${MAX_TENTATIVES_IMG - tentativesImg} essai(s))`;
+        
+        // Bloquer l'interface et afficher la suite
         input.disabled = true;
         document.getElementById("btn-submit-img").disabled = true;
         document.getElementById("btn-hint-img").disabled = true;
+        document.getElementById("btn-skip-img").style.display = "none";
         document.getElementById("btn-next-img").style.display = "block"; 
       } else {
         if (tentativesImg === 0) {
           resBox.className = "res-error";
           resBox.innerText = `💀 Perdu ! Il n'y a plus d'essais. C'était : ${mystereImg.nomScientifique}`;
+          
+          // Bloquer l'interface et afficher la suite
           input.disabled = true;
           document.getElementById("btn-submit-img").disabled = true;
           document.getElementById("btn-hint-img").disabled = true;
+          document.getElementById("btn-skip-img").style.display = "none";
           document.getElementById("btn-next-img").style.display = "block"; 
         } else {
           resBox.className = "res-error";
           resBox.innerText = `❌ Ce n'est pas un ${guess.nomScientifique}, essaie encore !`;
+          // Petit hack pour relancer l'animation CSS shake
           resBox.classList.remove("res-error");
           void resBox.offsetWidth; 
           resBox.classList.add("res-error");
