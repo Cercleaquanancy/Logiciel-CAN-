@@ -94,17 +94,17 @@
       </div>
     </div>
     <div class="navbar-menu" id="navbarMenu">
-      <button href="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
-      <button href="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
-      <button href="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
-      <button href="serre.html" data-requires-serre="1"><span class="icon">🌿</span><span>Serre</span></button>
-      <button href="calcule.html"><span class="icon">📐</span><span>Calcul</span></button>
-      <button href="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
-      <button hrefk="population.html"><span class="icon">👥</span><span>Population</span></button>
-      <button href="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
-      <button href="cerfa.html"><span class="icon">📋</span><span>Cerfa</span></button>
-      <button href="jeu.html"><span class="icon">🎮</span><span>Quiz</span></button>
-      <button href="logoutBtn">Déconnexion</button>
+      <button class="nav-btn active" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌿</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcul</span></button>
+      <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="nav-btn" data-link="cerfa.html"><span class="icon">📋</span><span>Cerfa</span></button>
+      <button class="nav-btn" data-link="jeu.html"><span class="icon">🎮</span><span>Quiz</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
     </div>
   </header>
 
@@ -193,67 +193,30 @@
   </main>
 
   <script>
-    // --- 1. Vérification de session ---
-  const storedUser = localStorage.getItem("user");
-  if (!storedUser) { window.location.href = "login.html"; }
-  let currentUser;
-  try { currentUser = JSON.parse(storedUser); } catch(e){ window.location.href = "login.html"; }
-  if (!currentUser || !currentUser.username) { window.location.href = "login.html"; }
-
-  // Affichage du nom et du rôle dans la navbar
-  const roleLabel = 
-    currentUser.role === "admin" ? "Admin" : 
-    currentUser.role === "membre_bureau" ? "Membre de bureau" : 
-    "Adhérent";
-  document.getElementById("navbarUser").textContent = currentUser.username + " (" + roleLabel + ")";
-
-  // --- 2. Unification et gestion dynamique du menu ---
-  const currentPath = window.location.pathname.split("/").pop().toLowerCase() || "index.html";
-
-  document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
-    const link = btn.dataset.link.toLowerCase();
-    
-    // Activation automatique de la classe active sur la page courante
-    if (link === currentPath) {
-      btn.classList.add("active");
-    } else {
-      btn.classList.remove("active");
-    }
-
-    // Gestion du clic de redirection
-    btn.addEventListener("click", () => {
-      window.location.href = btn.dataset.link;
-    });
-  });
-
-  // --- 3. Gestion des droits d'accès (Serre & Bureau) ---
-  const navSerreBtn = document.getElementById("navSerreBtn");
-  if (navSerreBtn) {
-    if (currentUser.role === "admin" || currentUser.serre === true) {
-      navSerreBtn.style.display = "flex";
-    } else {
-      navSerreBtn.style.display = "none";
-    }
-  }
-
-  const navBureauBtn = document.getElementById("navBureauBtn");
-  if (navBureauBtn) {
-    if (currentUser.role === "admin" || currentUser.role === "membre_bureau") {
-      navBureauBtn.style.display = "flex";
-    } else {
-      navBureauBtn.style.display = "none";
-    }
-  }
-
-  // --- 4. Déconnexion unifiée ---
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("user");
-      localStorage.removeItem("notificationsSeen");
+    const storedUser = localStorage.getItem("user");
+    let currentUser = null;
+    if (!storedUser) { 
       window.location.href = "login.html";
-    });
-  }
+    } else {
+      try { 
+        currentUser = JSON.parse(storedUser); 
+      } catch (e) { 
+        window.location.href = "login.html";
+      }
+      if (currentUser && currentUser.username) {
+        const navbarUser = document.getElementById('navbarUser');
+        const roleLabel = currentUser.role === "admin" ? "Admin" : currentUser.role === "membre_bureau" ? "Membre de bureau" : "Adhérent";
+        navbarUser.textContent = currentUser.username + " (" + roleLabel + ")";
+
+        document.querySelectorAll('[data-requires-serre="1"]').forEach(btn => {
+          if (!(currentUser.role === "admin" || currentUser.serre === true)) { btn.style.display = "none"; }
+        });
+
+        document.querySelectorAll('[data-requires-bureau="1"]').forEach(btn => {
+          if (!(currentUser.role === "admin" || currentUser.role === "membre_bureau")) { btn.style.display = "none"; }
+        });
+      }
+    }
 
     document.querySelectorAll(".nav-btn[data-link]").forEach(btn => {
       btn.addEventListener("click", () => { window.location.href = btn.dataset.link; });
