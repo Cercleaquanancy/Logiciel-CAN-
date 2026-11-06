@@ -305,26 +305,27 @@ body {
 </style>
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-left">
-    <div>
-      <div class="navbar-title">Espace adhérent</div>
-      <div class="navbar-user" id="navbarUser">Non connecté</div>
+  <header class="navbar">
+    <div class="navbar-left">
+      <div>
+        <div class="navbar-title">Espace adhérent</div>
+        <div class="navbar-user" id="navbarUser">Non connecté</div>
+      </div>
     </div>
-  </div>
-  <div class="navbar-menu" id="navbarMenu">
-    <!-- Les boutons standardisés seront injectés ou gérés uniformément ici -->
-    <button class="nav-btn" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
-    <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
-    <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
-    <button class="nav-btn" data-link="serre.html" id="navSerreBtn" style="display: none;"><span class="icon">🌱</span><span>Serre</span></button>
-    <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcule</span></button>
-    <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
-    <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
-    <button class="nav-btn" data-link="bureau.html" id="navBureauBtn" style="display: none;"><span class="icon">🏛️</span><span>Bureau</span></button>
-    <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
-  </div>
-</header>
+    <div class="navbar-menu" id="navbarMenu">
+      <button class="nav-btn active" data-link="index.html"><span class="icon">🏠</span><span>Accueil</span></button>
+      <button class="nav-btn" data-link="fiche.html"><span class="icon">📄</span><span>Fiche</span></button>
+      <button class="nav-btn" data-link="aquarium.html"><span class="icon">🐟</span><span>Aquarium</span></button>
+      <button class="nav-btn" data-link="serre.html" data-requires-serre="1"><span class="icon">🌿</span><span>Serre</span></button>
+      <button class="nav-btn" data-link="calcule.html"><span class="icon">📐</span><span>Calcul</span></button>
+      <button class="nav-btn" data-link="echange.html" id="navEchange"><span class="icon">💬</span><span>Échange</span></button>
+      <button class="nav-btn" data-link="population.html"><span class="icon">👥</span><span>Population</span></button>
+      <button class="nav-btn" data-link="bureau.html" data-requires-bureau="1"><span class="icon">🏛️</span><span>Bureau</span></button>
+      <button class="nav-btn" data-link="cerfa.html"><span class="icon">📋</span><span>Cerfa</span></button>
+      <button class="nav-btn" data-link="jeu.html"><span class="icon">🎮</span><span>Quiz</span></button>
+      <button class="navbar-logout" id="logoutBtn">Déconnexion</button>
+    </div>
+  </header>
 
   <main class="page">
     <div class="card">
