@@ -49,8 +49,7 @@
     .navbar-logout:hover { background:#1f2937; }
 
     .page {
-      padding-top:72px;
-      padding:0 12px 20px;
+      padding: 72px 12px 20px;
       max-width:1100px;
       margin:0 auto;
     }
@@ -61,6 +60,13 @@
       border:1px solid #1f2937;
       padding:14px 16px;
       margin-bottom:14px;
+    }
+
+    /* Style mis en valeur pour la section stock */
+    .card-stock {
+      border: 1px solid #0284c7;
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
+      background: linear-gradient(to bottom, #020617, #0b1329);
     }
 
     .card h1 { font-size:1.4rem; margin-bottom:6px; color:#38bdf8; }
@@ -84,6 +90,7 @@
       border:none; border-radius:7px;
       padding:7px 10px; font-size:0.8rem;
       cursor:pointer;
+      font-weight:600;
     }
     .btn-primary:hover { filter:brightness(1.05); }
 
@@ -240,7 +247,8 @@
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:4px;
+      margin-top:6px;
+      align-items: flex-end;
     }
     .col-feed {
       flex:1 1 160px;
@@ -280,8 +288,12 @@
       box-shadow:0 0 0 1px rgba(56,189,248,0.4);
     }
     .feed-table-wrapper {
-      margin-top:4px;
+      margin-top:6px;
       overflow-x:auto;
+      max-height: 220px;
+      overflow-y: auto;
+      border-radius: 6px;
+      border: 1px solid #1f2937;
     }
     .feed-table-wrapper table {
       width:100%;
@@ -291,11 +303,14 @@
     .feed-table-wrapper th,
     .feed-table-wrapper td {
       border:1px solid #1f2937;
-      padding:4px 6px;
+      padding:6px 8px;
       text-align:left;
     }
     .feed-table-wrapper th {
       background:#111827;
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
     .btn-small {
       border:none;
@@ -312,7 +327,11 @@
     .feed-result {
       font-size:0.85rem;
       color:#cbd5f5;
-      margin-top:8px;
+      margin-top:10px;
+      padding: 10px;
+      background: #090d16;
+      border-radius: 6px;
+      border-left: 3px solid #38bdf8;
     }
     .feed-result strong { color:#38bdf8; }
   </style>
@@ -347,43 +366,14 @@
       </p>
     </div>
 
-    <div class="card">
-      <h2>Bloc‑notes de serre</h2>
-      <p class="subtitle">
-        Notes globales sur la serre (rotation des bacs, projets d'ensemencement, matériel, etc.).
-      </p>
-
-      <div class="field">
-        <label for="notesSerre">Notes générales serre</label>
-        <textarea id="notesSerre" placeholder="Ex : Prévoir rotation des bacs de quarantaine, vérifier les stocks de tests d'eau pour la serre…"></textarea>
-      </div>
-      <button class="btn-primary" id="saveSerreNotesBtn">Sauvegarder les notes</button>
-      <div class="note-info" id="serreNotesInfo"></div>
-    </div>
-
-    <div class="card">
-      <h2>Étiquettes des bacs de serre</h2>
-      <p class="subtitle">
-        Un clic ajoute une étiquette de bac de serre. Tu peux renommer le titre, suivre les dates
-        d'entretien et attribuer chaque bac à un membre ayant accès à la serre.
-      </p>
-
-      <button class="btn-primary" id="addSerreBacBtn">Ajouter un bac serre</button>
-
-      <p class="small-note">
-        Couleurs : changement d'eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
-      </p>
-
-      <div id="serreBacList" class="aquarium-grid"></div>
-    </div>
-
-    <div class="card">
-      <h2>Stocks de nourriture de la serre</h2>
+    <!-- PARTIE STOCK REMONTÉE ET MISE EN VALEUR POUR ACCESSIBILITÉ MAXIMALE -->
+    <div class="card card-stock">
+      <h2>📦 Stocks de nourriture de la serre</h2>
       <p class="subtitle">
         Paramétrage par type de nourriture, date et quantité, puis estimation des besoins sur 3, 6, 9 ou 12 mois.
       </p>
 
-      <h3 style="font-size:0.95rem; margin-top:6px; margin-bottom:6px;">Ajouter un enregistrement</h3>
+      <h3 style="font-size:0.95rem; margin-top:8px; margin-bottom:6px; color:#38bdf8;">Enregistrer un mouvement / stock</h3>
       <div class="row-feed">
         <div class="col-feed">
           <label for="feedTypeInput">Type de nourriture</label>
@@ -398,39 +388,72 @@
           <input id="feedQtyInput" class="feed-input" type="number" step="0.1" min="0" placeholder="Ex : 5">
         </div>
         <div class="col-feed col-feed-button">
-          <button class="btn-primary" id="feedAddBtn">Enregistrer la ligne</button>
+          <button class="btn-primary" id="feedAddBtn" style="width:100%;">Enregistrer</button>
         </div>
       </div>
       <p class="small-note">
-        Tu peux saisir plusieurs enregistrements pour le même type à des dates différentes (réceptions, inventaires, etc.).
+        Saisissez plusieurs enregistrements pour suivre l'évolution des stocks au fil du temps.
       </p>
 
-      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:6px;">Historique enregistré</h3>
-      <div id="feedTableWrapper" class="feed-table-wrapper"></div>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px;">
+        <div>
+          <h3 style="font-size:0.95rem; margin-top:6px; margin-bottom:6px;">Historique enregistré</h3>
+          <div id="feedTableWrapper" class="feed-table-wrapper"></div>
+        </div>
 
-      <h3 style="font-size:0.95rem; margin-top:10px; margin-bottom:6px;">Calcul des besoins</h3>
-      <div class="row-feed">
-        <div class="col-feed">
-          <label for="feedTypeSelect">Type de nourriture</label>
-          <select id="feedTypeSelect" class="feed-select"></select>
-        </div>
-        <div class="col-feed">
-          <label for="feedDurationSelect">Durée</label>
-          <select id="feedDurationSelect" class="feed-select">
-            <option value="3">3 mois</option>
-            <option value="6">6 mois</option>
-            <option value="9">9 mois</option>
-            <option value="12">12 mois</option>
-          </select>
-        </div>
-        <div class="col-feed col-feed-button">
-          <button class="btn-primary" id="feedCalcBtn">Calculer</button>
+        <div>
+          <h3 style="font-size:0.95rem; margin-top:6px; margin-bottom:6px;">Calcul des prévisions de besoins</h3>
+          <div class="row-feed" style="margin-top:0;">
+            <div class="col-feed">
+              <label for="feedTypeSelect">Type de nourriture</label>
+              <select id="feedTypeSelect" class="feed-select"></select>
+            </div>
+            <div class="col-feed">
+              <label for="feedDurationSelect">Durée cible</label>
+              <select id="feedDurationSelect" class="feed-select">
+                <option value="3">3 mois</option>
+                <option value="6">6 mois</option>
+                <option value="9">9 mois</option>
+                <option value="12">12 mois</option>
+              </select>
+            </div>
+            <div class="col-feed col-feed-button">
+              <button class="btn-primary" id="feedCalcBtn" style="width:100%;">Calculer</button>
+            </div>
+          </div>
+          <div id="feedResult" class="feed-result">Cliquez sur "Calculer" pour estimer les besoins et les écarts de stock.</div>
         </div>
       </div>
-      <div id="feedResult" class="feed-result"></div>
-      <p class="small-note">
-        La consommation moyenne est estimée à partir de l'évolution du stock entre le premier et le dernier enregistrement pour le type choisi.
+    </div>
+
+    <div class="card">
+      <h2>Bloc‑notes de serre</h2>
+      <p class="subtitle">
+        Notes globales sur la serre (rotation des bacs, projets d'ensemencement, matériel, etc.).
       </p>
+
+      <div class="field">
+        <label for="notesSerre">Notes générales serre</label>
+        <textarea id="notesSerre" placeholder="Ex : Prévoir rotation des bacs de quarantaine, vérifier les stocks de tests d'eau pour la serre…"></textarea>
+      </div>
+      <button class="btn-primary" id="saveSerreNotesBtn" style="margin-top: 8px;">Sauvegarder les notes</button>
+      <div class="note-info" id="serreNotesInfo"></div>
+    </div>
+
+    <div class="card">
+      <h2>Étiquettes des bacs de serre</h2>
+      <p class="subtitle">
+        Un clic ajoute une étiquette de bac de serre. Vous pouvez renommer le titre, suivre les dates
+        d'entretien et attribuer chaque bac à un membre ayant accès à la serre.
+      </p>
+
+      <button class="btn-primary" id="addSerreBacBtn">Ajouter un bac serre</button>
+
+      <p class="small-note" style="margin-top:6px;">
+        Code couleur : changement d'eau jaune après 1 mois, rouge après 2 mois ; nettoyage filtre jaune après 3 mois, rouge après 6 mois.
+      </p>
+
+      <div id="serreBacList" class="aquarium-grid"></div>
     </div>
   </main>
 
@@ -460,12 +483,8 @@
       return res.json();
     }
 
-    // --- CLÉ DE SAUVEGARDE LOCALE POUR LA NOURRITURE ---
-    const FEED_STORAGE_KEY = "serreFeedLocalData";
-
     // --- API serre ---
     async function apiGetSerreData() {
-      // CORRECTION: Désactivation du cache pour forcer la lecture fraîche
       const res = await fetch('/api/serre', { cache: 'no-store' });
       if (!res.ok) throw new Error('Erreur GET /api/serre');
       return res.json(); 
@@ -491,7 +510,7 @@
       return res.json();
     }
 
-    // --- API nourriture ---
+    // --- API nourriture (Neon DB via Server) ---
     async function apiSaveFeed() {
       const items = feedHistory.map(x => ({
         id: x.id,
@@ -499,9 +518,6 @@
         unit: x.dateIso,
         quantity: x.qtyKg
       }));
-
-      // CORRECTION: Sauvegarde locale immédiate (Fallback)
-      localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
 
       try {
         const res = await fetch('/api/serre/feed', {
@@ -512,7 +528,8 @@
         if (!res.ok) throw new Error('Erreur POST /api/serre/feed');
         return await res.json();
       } catch (e) {
-        console.warn("Serveur injoignable, sauvegarde de la nourriture conservée en local.");
+        console.error("Erreur de sauvegarde de la nourriture sur le serveur Neon :", e);
+        throw e;
       }
     }
 
@@ -769,7 +786,7 @@
       if (!feedTableWrapper) return;
 
       if (!feedHistory.length) {
-        feedTableWrapper.innerHTML = '<p class="small-note">Aucun enregistrement pour le moment.</p>';
+        feedTableWrapper.innerHTML = '<p class="small-note" style="padding:10px;">Aucun enregistrement pour le moment.</p>';
         updateFeedTypeSelect();
         return;
       }
@@ -782,7 +799,7 @@
             <td>${item.type}</td>
             <td>${new Date(item.dateIso).toLocaleDateString()}</td>
             <td>${item.qtyKg.toFixed(2)} kg</td>
-            <td>
+            <td style="text-align:center;">
               <button class="btn-small btn-del" data-id="${item.id}">Supprimer</button>
             </td>
           </tr>
@@ -796,7 +813,7 @@
               <th>Type</th>
               <th>Date</th>
               <th>Quantité (kg)</th>
-              <th></th>
+              <th style="width:70px;">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -810,10 +827,11 @@
           const id = btn.getAttribute('data-id');
           feedHistory = feedHistory.filter(x => x.id !== id);
           
-          // CORRECTION: Sauvegarde locale au moment de la suppression
-          localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
-          
-          await apiSaveFeed();
+          try {
+            await apiSaveFeed();
+          } catch(e) {
+            alert("Erreur lors de la suppression en base de données.");
+          }
           renderFeedTable();
         });
       });
@@ -915,14 +933,14 @@
         const needed = monthlyUse * durationMonths;
         const diff = currentStock - needed;
 
-        let msg = `Type : <strong>${type}</strong>. `;
-        msg += `Consommation moyenne estimée : <strong>${monthlyUse.toFixed(2)} kg/mois</strong>. `;
-        msg += `Besoin pour ${durationMonths} mois : <strong>${needed.toFixed(2)} kg</strong>. `;
-        msg += `Stock actuel (dernier enregistrement) : <strong>${currentStock.toFixed(2)} kg</strong>. `;
+        let msg = `Type : <strong>${type}</strong><br>`;
+        msg += `Consommation moyenne estimée : <strong>${monthlyUse.toFixed(2)} kg/mois</strong><br>`;
+        msg += `Besoin estimé pour ${durationMonths} mois : <strong>${needed.toFixed(2)} kg</strong><br>`;
+        msg += `Stock actuel (dernier enregistrement) : <strong>${currentStock.toFixed(2)} kg</strong><br>`;
         if (diff >= 0) {
-          msg += `Surplus estimé : <strong>${diff.toFixed(2)} kg</strong>.`;
+          msg += `Surplus estimé : <strong style="color:#22c55e;">+${diff.toFixed(2)} kg</strong>`;
         } else {
-          msg += `Manque estimé : <strong>${Math.abs(diff).toFixed(2)} kg</strong>.`;
+          msg += `Manque estimé : <strong style="color:#dc2626;">-${Math.abs(diff).toFixed(2)} kg</strong>`;
         }
 
         feedResult.innerHTML = msg;
@@ -940,25 +958,13 @@
         serreBacs = Array.isArray(data.bacs) ? data.bacs : [];
         serreAssignments = data.assignments || {};
 
-        // CORRECTION: Logique intelligente pour charger l'historique nourriture
-        let serverHasFeed = false;
-        if (data.feed && Array.isArray(data.feed.items) && data.feed.items.length > 0) {
-          serverHasFeed = true;
+        if (data.feed && Array.isArray(data.feed.items)) {
           feedHistory = data.feed.items.map(it => ({
             id: String(it.id),
             type: it.name || '',
             dateIso: it.unit || '',
             qtyKg: Number(it.quantity) || 0
           }));
-          localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(feedHistory));
-        }
-
-        // Si le serveur n'a rien renvoyé, on charge la sauvegarde locale par sécurité
-        if (!serverHasFeed) {
-          const localFeed = localStorage.getItem(FEED_STORAGE_KEY);
-          if (localFeed) {
-            try { feedHistory = JSON.parse(localFeed); } catch(e) { feedHistory = []; }
-          }
         }
 
         notesSerreTextArea.value = serreNotes;
@@ -967,13 +973,7 @@
         renderFeedTable();
       } catch (e) {
         console.error(e);
-        // Fallback local en cas d'erreur totale du serveur
-        const localFeed = localStorage.getItem(FEED_STORAGE_KEY);
-        if (localFeed) {
-          try { feedHistory = JSON.parse(localFeed); } catch(err) { feedHistory = []; }
-          renderFeedTable();
-        }
-        alert("Problème réseau lors du chargement, récupération des données locales si disponibles.");
+        alert("Problème réseau lors du chargement des données de la serre.");
       }
     }
 
